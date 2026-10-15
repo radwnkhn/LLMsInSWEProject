@@ -1,6 +1,9 @@
 
 # Angle — using ai to make connections romantically
 
+## References
+hinge.com
+
 ## Overview
 Angle is a dating app designed to help people build real relationships without endless swiping and texting. It uses AI-powered matchmaking to recommend compatible partners and limits messaging to encourage connecting.
 
