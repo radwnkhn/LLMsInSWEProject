@@ -1,0 +1,46 @@
+........................................................................ [ 19%]
+........................................................................ [ 38%]
+.................s...................................................... [ 57%]
+........................................................................ [ 77%]
+........................................................................ [ 96%]
+..............                                                           [100%]
+================================ tests coverage ================================
+_______________ coverage: platform darwin, python 3.13.7-final-0 _______________
+
+Name                       Stmts   Miss  Cover   Missing
+--------------------------------------------------------
+app/admin.py                  14      0   100%
+app/analyzability.py          16      0   100%
+app/annotate.py               68      3    96%   83-84, 97
+app/auth.py                   90      8    91%   58, 63, 71-73, 76, 81-82
+app/breakdown.py              10      0   100%
+app/config.py                 41      9    78%   39-48
+app/correction.py             40      1    98%   24
+app/faults.py                 37      1    97%   34
+app/feedback.py               16      1    94%   13
+app/history.py                12      0   100%
+app/lifts.py                   5      0   100%
+app/llm/client.py             30      0   100%
+app/llm/prompt.py             51      6    88%   59-62, 69, 72
+app/llm/providers.py          56      1    98%   64
+app/llm/schema.py             60      0   100%
+app/main.py                  210     10    95%   100, 234, 270-277
+app/measure.py               292     11    96%   119, 136, 147, 154, 210, 288, 309, 364-365, 404-405
+app/pipeline.py               55      1    98%   25
+app/pose.py                   43      3    93%   55-62
+app/repository.py            213      0   100%
+app/results.py                43      0   100%
+app/rules.py                  33      0   100%
+app/safety.py                 12      0   100%
+app/services.py               36      7    81%   41, 54-60
+app/storage.py                41      3    93%   38-40
+app/testing/fakes.py          98      6    94%   130-133, 150-152
+app/testing/synthetic.py     166      4    98%   79-80, 105, 178
+app/uploads.py                49      0   100%
+app/validator.py             130      3    98%   125, 133-134
+app/video.py                  65      2    97%   43, 92
+--------------------------------------------------------
+TOTAL                       2032     80    96%
+
+3 empty files skipped.
+373 passed, 1 skipped in 8.94s

@@ -1,0 +1,73 @@
+
+ RUN  v3.2.7 /Users/dakshghadia/Documents/LLMsInSWEProject/frontend
+      Coverage enabled with v8
+
+ ✓ src/components/__tests__/us03-filming-guide.test.tsx (10 tests) 399ms
+ ✓ src/components/__tests__/us02-lift-picker.test.tsx (5 tests) 439ms
+ ✓ src/components/__tests__/us16-feedback.test.tsx (8 tests) 495ms
+ ✓ src/components/__tests__/us17-us18-lists.test.tsx (9 tests) 496ms
+ ✓ src/components/__tests__/us01-auth.test.tsx (6 tests) 595ms
+ ✓ src/components/__tests__/us13-us14-us15-results.test.tsx (11 tests) 677ms
+ ✓ src/components/__tests__/us04-upload-form.test.tsx (9 tests) 896ms
+ ✓ src/lib/__tests__/us04-upload-request.test.ts (4 tests) 23ms
+ ✓ src/lib/__tests__/us04-video-file.test.ts (13 tests) 10ms
+ ✓ src/components/__tests__/us05-us09-status.test.tsx (4 tests) 152ms
+ ✓ src/components/__tests__/us11-us12-frame-and-reps.test.tsx (7 tests) 186ms
+ ✓ src/components/__tests__/us10-top-fix.test.tsx (5 tests) 301ms
+
+ Test Files  12 passed (12)
+      Tests  91 passed (91)
+   Start at  22:13:36
+   Duration  3.38s (transform 872ms, setup 2.77s, collect 2.26s, tests 4.67s, environment 7.73s, prepare 871ms)
+
+ % Coverage report from v8
+-------------------|---------|----------|---------|---------|-------------------
+File               | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+-------------------|---------|----------|---------|---------|-------------------
+All files          |   67.34 |    90.18 |   73.86 |   67.34 |                   
+ src               |       0 |        0 |       0 |       0 |                   
+  middleware.ts    |       0 |        0 |       0 |       0 | 1-15              
+ src/app           |       0 |        0 |       0 |       0 |                   
+  page.tsx         |       0 |        0 |       0 |       0 | 1-5               
+ src/app/admin     |       0 |      100 |     100 |       0 |                   
+  page.tsx         |       0 |      100 |     100 |       0 | 3-30              
+ .../analyses/[id] |       0 |        0 |       0 |       0 |                   
+  page.tsx         |       0 |        0 |       0 |       0 | 1-62              
+ src/app/history   |       0 |      100 |     100 |       0 |                   
+  page.tsx         |       0 |      100 |     100 |       0 | 3-23              
+ src/app/login     |       0 |        0 |       0 |       0 |                   
+  page.tsx         |       0 |        0 |       0 |       0 | 1-7               
+ ...p/results/[id] |       0 |        0 |       0 |       0 |                   
+  page.tsx         |       0 |        0 |       0 |       0 | 1-53              
+ src/app/signup    |       0 |        0 |       0 |       0 |                   
+  page.tsx         |       0 |        0 |       0 |       0 | 1-7               
+ src/app/status    |       0 |      100 |     100 |       0 |                   
+  page.tsx         |       0 |      100 |     100 |       0 | 3-19              
+ src/app/upload    |       0 |      100 |     100 |       0 |                   
+  page.tsx         |       0 |      100 |     100 |       0 | 3-30              
+ src/components    |   89.86 |    94.96 |   91.66 |   89.86 |                   
+  ...ysesTable.tsx |     100 |      100 |     100 |     100 |                   
+  ...Forbidden.tsx |     100 |      100 |     100 |     100 |                   
+  ...atedFrame.tsx |     100 |      100 |     100 |     100 |                   
+  AuthForm.tsx     |     100 |      100 |     100 |     100 |                   
+  AuthPage.tsx     |       0 |      100 |     100 |       0 | 3-32              
+  ErrorSummary.tsx |     100 |    83.33 |     100 |     100 | 31                
+  FeedbackForm.tsx |   96.15 |    84.21 |     100 |   96.15 | 30-31             
+  FilmingGuide.tsx |     100 |      100 |     100 |     100 |                   
+  HistoryList.tsx  |     100 |    81.81 |     100 |     100 | 22,31             
+  LiftPicker.tsx   |     100 |      100 |     100 |     100 |                   
+  NavBar.tsx       |       0 |      100 |     100 |       0 | 3-36              
+  NotMeasured.tsx  |     100 |      100 |     100 |     100 |                   
+  ...CuePrompt.tsx |     100 |      100 |     100 |     100 |                   
+  RepBreakdown.tsx |     100 |      100 |     100 |     100 |                   
+  ResultsView.tsx  |   93.61 |      100 |   55.55 |   93.61 | 78-83             
+  UploadForm.tsx   |     100 |    94.87 |     100 |     100 | 53,73             
+ src/lib           |   75.28 |    84.44 |   56.66 |   75.28 |                   
+  api.ts           |   63.51 |    71.42 |   35.29 |   63.51 | 19-40,48-52,79    
+  filming.ts       |     100 |      100 |     100 |     100 |                   
+  format.ts        |     100 |      100 |     100 |     100 |                   
+  lifts.ts         |   85.71 |    66.66 |   66.66 |   85.71 | 18-19             
+  session.ts       |     100 |    88.88 |     100 |     100 | 9                 
+  types.ts         |       0 |        0 |       0 |       0 |                   
+  videoFile.ts     |   53.12 |      100 |   66.66 |   53.12 | 24-38             
+-------------------|---------|----------|---------|---------|-------------------

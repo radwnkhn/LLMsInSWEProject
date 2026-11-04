@@ -1,0 +1,14 @@
+US-06 rep counting with a moving camera: new tests run against the original code (pytest -k "height_signal or drifting or moving_away")
+
+Run 1 (before any change):
+FAILED tests/test_us06_measure.py::test_us06_height_signal_is_hips_above_ankles_for_squat_and_deadlift_and_wrists_above_shoulders_for_bench
+FAILED tests/test_us06_measure.py::test_us06_rep_count_survives_the_camera_drifting[squat]
+FAILED tests/test_us06_measure.py::test_us06_rep_count_survives_the_camera_drifting[deadlift]
+FAILED tests/test_us06_measure.py::test_us06_rep_count_survives_the_camera_drifting[bench_press]
+4 failed, 1 passed (the feet-out-of-frame fallback, which is the original behavior)
+
+Size-change test, original code (reps counted out of 3, body shrinking to 0.75 of its size over the set):
+squat 3 (passes), deadlift 2 (FAILS), bench_press 2 (FAILS)
+Camera drifting 0.25 of the frame height, original code: squat 1, deadlift 0, bench_press 1 (all FAIL)
+
+Real clip that found the bug (3-rep squat, side view, 9.1 s, 60 fps): original code counted 1 rep; fixed code counts 3.

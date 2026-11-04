@@ -1,0 +1,22 @@
+[WebServer] INFO:     Started server process [4588]
+[WebServer] INFO:     Waiting for application startup.
+[WebServer] INFO:     Application startup complete.
+[WebServer] INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+
+Running 12 tests using 1 worker
+
+  -   1 e2e/setup02-deploy.spec.ts:7:5 › setup02_deployed_frontend_reaches_backend_health
+  ✓   2 e2e/setup02-deploy.spec.ts:13:5 › setup02_status_page_reports_backend_health_locally (227ms)
+  ✓   3 e2e/us01-auth.spec.ts:5:5 › us01_after_logging_out_history_redirects_to_login (519ms)
+  ✓   4 e2e/us01-auth.spec.ts:15:5 › us01_wrong_password_shows_message (1.1s)
+  ✓   5 e2e/us03-guide.spec.ts:8:7 › us03_guide_fits_375px_without_sideways_scroll_squat (289ms)
+  ✓   6 e2e/us03-guide.spec.ts:8:7 › us03_guide_fits_375px_without_sideways_scroll_deadlift (247ms)
+  ✓   7 e2e/us03-guide.spec.ts:8:7 › us03_guide_fits_375px_without_sideways_scroll_bench_press (256ms)
+  ✓   8 e2e/us05-us09-status.spec.ts:5:5 › us05_unanalyzable_message_has_refilm_button_that_opens_the_guide (457ms)
+  ✓   9 e2e/us05-us09-status.spec.ts:14:5 › us09_fallback_result_shows_the_note (2.1s)
+  ✓  10 e2e/us11-us12-video.spec.ts:5:5 › us11_tapping_the_frame_plays_the_video_from_the_start_of_that_rep (2.3s)
+  ✓  11 e2e/us11-us12-video.spec.ts:18:5 › us12_tapping_a_rep_row_jumps_the_video_to_that_rep (501ms)
+  ✓  12 e2e/us17-history.spec.ts:5:5 › us17_tapping_a_history_entry_opens_its_full_results (492ms)
+
+  1 skipped
+  11 passed (18.7s)
