@@ -1,0 +1,7 @@
+US-13 bar checks on squats filmed without a bar: new tests run against the original code (pytest tests/test_us13_not_measured.py -k bar)
+
+FAILED tests/test_us13_not_measured.py::test_us13_bar_drift_not_measured_when_the_arms_are_held_out_front
+FAILED tests/test_us13_not_measured.py::test_us13_bar_drift_not_measured_when_the_hands_are_clasped_at_the_chest
+2 failed, 2 passed, 8 deselected in 0.09s
+
+(The two passing tests are guards: a back squat, deadlift and bench must keep their bar check.)
