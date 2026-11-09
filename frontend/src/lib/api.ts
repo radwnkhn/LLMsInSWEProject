@@ -19,11 +19,14 @@ function detailText(detail: Detail, fallback: string): string {
   return fallback;
 }
 
-async function request<T>(path: string, { method = "GET", body, token }: { method?: string; body?: unknown; token?: string | null } = {}): Promise<T> {
+async function request<T>(path: string, { method = "GET", body, token, signal }: {
+  method?: string; body?: unknown; token?: string | null; signal?: AbortSignal;
+} = {}): Promise<T> {
   let res: Response;
   try {
     res = await fetch(`${API_URL}${path}`, {
       method,
+      signal,
       headers: {
         ...(body !== undefined ? { "Content-Type": "application/json" } : {}),
         ...(token ? { Authorization: `Bearer ${token}` } : {}),
@@ -43,7 +46,9 @@ export const api = {
   signup: (email: string, password: string) => request<Session>("/auth/signup", { method: "POST", body: { email, password } }),
   login: (email: string, password: string) => request<Session>("/auth/login", { method: "POST", body: { email, password } }),
   logout: (token: string) => request<void>("/auth/logout", { method: "POST", token }),
-  analysis: (id: string, token: string | null) => request<AnalysisResult>(`/analyses/${encodeURIComponent(id)}`, { token }),
+  analysis: (id: string, token: string | null, signal?: AbortSignal) => request<AnalysisResult>(`/analyses/${encodeURIComponent(id)}`, { token, signal }),
+  retryAnalysis: (id: string, token: string | null) => request<{ analysis_id: string; status: "queued" }>(
+    `/analyses/${encodeURIComponent(id)}/retry`, { method: "POST", token }),
   sendFeedback: (id: string, answer: Partial<FeedbackAnswer>, token: string | null) => {
     const body: { rating?: number; tried_cue?: TriedCue } = {};
     if (answer.rating != null) body.rating = answer.rating;

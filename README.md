@@ -46,6 +46,18 @@ cd frontend && npm run e2e        # Playwright end-to-end tests against the API 
 - Tests refined or added by hand are marked `# manual` (Python) or `// manual` (TypeScript).
 - `docs/tdd/` holds the output of the failing (red) run for each suite.
 
+## Processing status (US-19 / #21)
+
+Uploads show Uploading → Measuring → Writing feedback → Checking. The results page polls the API every
+1.5 seconds while a job is queued or processing and opens the result automatically when it finishes.
+Worker failures offer Retry using the saved video; each retry creates an analysis and keeps the failed
+attempt for inspection. Network failures offer Retry to reconnect.
+
+Apply `supabase/migrations/20261109000000_us19_processing_stage.sql` to an existing Alpha database before
+running the updated backend. Fresh databases should apply all migrations in order as usual.
+
+The acceptance criteria, red/green evidence and test commands are in `docs/tdd/us19.md`.
+
 ## Deploy
 
 - **Database:** run `supabase/migrations/*.sql` in the Supabase SQL editor (or `supabase db push`).

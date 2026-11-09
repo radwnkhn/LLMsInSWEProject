@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from typing import Callable
 
 from app.llm.client import LLMClient, LLMRequest
 from app.llm.prompt import build_retry_request
@@ -36,15 +37,20 @@ class CorrectionResult:
 
 
 def run_correction_loop(llm: LLMClient, request: LLMRequest, ctx: ValidationContext,
-                        max_attempts: int = MAX_ATTEMPTS) -> CorrectionResult:
+                        max_attempts: int = MAX_ATTEMPTS,
+                        on_stage: Callable[[str], None] | None = None) -> CorrectionResult:
     attempts: list[AttemptLog] = []
     current = request
     for n in range(1, max_attempts + 1):
+        if on_stage:
+            on_stage("writing_feedback")
         try:
             reply = llm.complete(current)
         except Exception as err:  # network errors, rate limits, provider outages
             attempts.append(AttemptLog(n, "", [ValidationIssue("llm_error", f"LLM request failed: {err}")], 0, 0))
             continue
+        if on_stage:
+            on_stage("checking")
         result = validate(reply.text, ctx)
         attempts.append(AttemptLog(n, reply.text, result.issues, reply.input_tokens, reply.output_tokens))
         if result.ok:

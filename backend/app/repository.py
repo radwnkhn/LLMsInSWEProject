@@ -51,6 +51,7 @@ class AnalysisRecord:
     error: str | None = None
     created_at: datetime | None = None
     completed_at: datetime | None = None
+    processing_stage: str | None = None  # measuring | writing_feedback | checking
 
 
 @dataclass
@@ -83,7 +84,7 @@ class AdminAnalysisRow:
 
 
 ANALYSIS_FIELDS = {"status", "final_status", "rep_count", "camera_angle", "top_fault_id", "result",
-                   "unanalyzable_reason", "frame_path", "error", "completed_at"}
+                   "unanalyzable_reason", "frame_path", "error", "completed_at", "processing_stage"}
 
 
 class Repository(Protocol):
@@ -226,7 +227,8 @@ class PostgresRepository:
                               status=r["status"], final_status=r["final_status"], rep_count=r["rep_count"],
                               camera_angle=r["camera_angle"], top_fault_id=r["top_fault_id"], result=r["result"],
                               unanalyzable_reason=r["unanalyzable_reason"], frame_path=r["frame_path"],
-                              error=r["error"], created_at=r["created_at"], completed_at=r["completed_at"])
+                              error=r["error"], created_at=r["created_at"], completed_at=r["completed_at"],
+                              processing_stage=r["processing_stage"])
 
     def ensure_user(self, id, email, is_admin=False):
         self._q("insert into public.users (id, email, is_admin) values (%s, %s, %s) "

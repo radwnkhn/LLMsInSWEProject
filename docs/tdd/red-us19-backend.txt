@@ -1,0 +1,114 @@
+FFFFFFFFFFFFFFFs                                                         [100%]
+================================== FAILURES ===================================
+_____ test_us19_owner_can_poll_the_persisted_processing_stage[measuring] ______
+tests\test_us19_processing.py:24: in test_us19_owner_can_poll_the_persisted_processing_stage
+    services.repo.update_analysis(aid, status="processing", processing_stage=stage)
+app\repository.py:152: in update_analysis
+    raise ValueError(f"unknown analysis fields: {unknown}")
+E   ValueError: unknown analysis fields: {'processing_stage'}
+__ test_us19_owner_can_poll_the_persisted_processing_stage[writing_feedback] __
+tests\test_us19_processing.py:24: in test_us19_owner_can_poll_the_persisted_processing_stage
+    services.repo.update_analysis(aid, status="processing", processing_stage=stage)
+app\repository.py:152: in update_analysis
+    raise ValueError(f"unknown analysis fields: {unknown}")
+E   ValueError: unknown analysis fields: {'processing_stage'}
+______ test_us19_owner_can_poll_the_persisted_processing_stage[checking] ______
+tests\test_us19_processing.py:24: in test_us19_owner_can_poll_the_persisted_processing_stage
+    services.repo.update_analysis(aid, status="processing", processing_stage=stage)
+app\repository.py:152: in update_analysis
+    raise ValueError(f"unknown analysis fields: {unknown}")
+E   ValueError: unknown analysis fields: {'processing_stage'}
+_______________ test_us19_queued_analysis_has_no_started_stage ________________
+tests\test_us19_processing.py:35: in test_us19_queued_analysis_has_no_started_stage
+    assert "processing_stage" in data and data["processing_stage"] is None
+E   AssertionError: assert ('processing_stage' in {'final_status': None, 'camera_angle': None, 'rep_count': None, 'unanalyzable_reason': None, ...})
+_____ test_us19_pipeline_reports_real_steps_before_the_corresponding_work _____
+tests\test_us19_processing.py:56: in test_us19_pipeline_reports_real_steps_before_the_corresponding_work
+    assert observed == [("poses", "measuring"), ("llm", "writing_feedback"), ("validator", "checking")]
+E   AssertionError: assert [('poses', No...dator', None)] == [('poses', 'm..., 'checking')]
+E     
+E     At index 0 diff: ('poses', None) != ('poses', 'measuring')
+E     Use -v to get more diff
+_______ test_us19_each_correction_attempt_reports_writing_then_checking _______
+tests\test_us19_processing.py:76: in test_us19_each_correction_attempt_reports_writing_then_checking
+    assert observed == ["writing_feedback", "writing_feedback"]
+E   AssertionError: assert [None, None] == ['writing_fee...ing_feedback']
+E     
+E     At index 0 diff: None != 'writing_feedback'
+E     Use -v to get more diff
+_ test_us19_completion_exposes_results_and_clears_the_stage[no_person.mp4-unanalyzable] _
+tests\test_us19_processing.py:86: in test_us19_completion_exposes_results_and_clears_the_stage
+    assert "processing_stage" in data and data["processing_stage"] is None
+E   assert ('processing_stage' in {'final_status': 'unanalyzable', 'camera_angle': None, 'rep_count': 0, 'unanalyzable_reason': "Couldn't analyze: no person found", ...})
+_ test_us19_completion_exposes_results_and_clears_the_stage[set.mp4-passed_first_try] _
+tests\test_us19_processing.py:86: in test_us19_completion_exposes_results_and_clears_the_stage
+    assert "processing_stage" in data and data["processing_stage"] is None
+E   AssertionError: assert ('processing_stage' in {'final_status': 'passed_first_try', 'camera_angle': 'side', 'rep_count': 5, 'unanalyzable_reason': None, ...})
+_ test_us19_processing_failure_is_terminal_and_does_not_expose_internal_errors _
+tests\test_us19_processing.py:100: in test_us19_processing_failure_is_terminal_and_does_not_expose_internal_errors
+    assert "processing_stage" in data and data["processing_stage"] is None
+E   AssertionError: assert ('processing_stage' in {'final_status': None, 'camera_angle': None, 'rep_count': None, 'unanalyzable_reason': None, ...})
+------------------------------ Captured log call ------------------------------
+ERROR    app.uploads:uploads.py:64 analysis 24b14829-98b6-477b-ac0c-fe740129ac3c failed
+Traceback (most recent call last):
+  File "C:\Users\imran\LLMsInSWEProject\backend\app\uploads.py", line 42, in process_analysis
+    frames = services.video.poses(path, info, upload.filename)
+  File "C:\Users\imran\LLMsInSWEProject\backend\tests\test_us19_processing.py", line 94, in fail
+    raise RuntimeError("private storage credentials")
+RuntimeError: private storage credentials
+____ test_us19_retry_uses_the_saved_video_and_preserves_the_failed_attempt ____
+tests\test_us19_processing.py:110: in test_us19_retry_uses_the_saved_video_and_preserves_the_failed_attempt
+    assert response.status_code == 202
+E   assert 404 == 202
+E    +  where 404 = <Response [404 Not Found]>.status_code
+____________ test_us19_only_failed_analyses_can_be_retried[queued] ____________
+tests\test_us19_processing.py:125: in test_us19_only_failed_analyses_can_be_retried
+    assert client.post(f"/analyses/{aid}/retry", headers=headers).status_code == 409
+E   AssertionError: assert 404 == 409
+E    +  where 404 = <Response [404 Not Found]>.status_code
+E    +    where <Response [404 Not Found]> = post('/analyses/c623d6fc-bfa3-4c40-9e1f-0202c60d27b1/retry', headers={'Authorization': 'Bearer eaZU2SVNWhxhG56wMSSBqFfi8tnglMsC'})
+E    +      where post = <starlette.testclient.TestClient object at 0x0000015326867020>.post
+__________ test_us19_only_failed_analyses_can_be_retried[processing] __________
+tests\test_us19_processing.py:125: in test_us19_only_failed_analyses_can_be_retried
+    assert client.post(f"/analyses/{aid}/retry", headers=headers).status_code == 409
+E   AssertionError: assert 404 == 409
+E    +  where 404 = <Response [404 Not Found]>.status_code
+E    +    where <Response [404 Not Found]> = post('/analyses/516af82a-15c6-4080-aa61-ee2b0bc5d268/retry', headers={'Authorization': 'Bearer CnN6E0kEKnZH8mNf1K8KAjJEW3mznpOx'})
+E    +      where post = <starlette.testclient.TestClient object at 0x000001532651D370>.post
+_____________ test_us19_only_failed_analyses_can_be_retried[done] _____________
+tests\test_us19_processing.py:125: in test_us19_only_failed_analyses_can_be_retried
+    assert client.post(f"/analyses/{aid}/retry", headers=headers).status_code == 409
+E   AssertionError: assert 404 == 409
+E    +  where 404 = <Response [404 Not Found]>.status_code
+E    +    where <Response [404 Not Found]> = post('/analyses/87275c31-d5d2-4f54-b129-601437c12b37/retry', headers={'Authorization': 'Bearer QxUkZv64m8XjoWbVCMd9cC2OMYUdHqVS'})
+E    +      where post = <starlette.testclient.TestClient object at 0x000001532651C5A0>.post
+________________ test_us19_status_and_retry_require_ownership _________________
+tests\test_us19_processing.py:135: in test_us19_status_and_retry_require_ownership
+    assert method(path).status_code == 401
+E   AssertionError: assert 404 == 401
+E    +  where 404 = <Response [404 Not Found]>.status_code
+E    +    where <Response [404 Not Found]> = post('/analyses/1ceb4421-857b-4787-a0eb-8cb86b840f6b/retry')
+_ test_us19_repo_persists_processing_stage_without_changing_job_status_contract[memory] _
+tests\test_setup02_repository.py:80: in test_us19_repo_persists_processing_stage_without_changing_job_status_contract
+    assert getattr(repo.get_analysis(an), "processing_stage", "missing") is None
+E   AssertionError: assert 'missing' is None
+E    +  where 'missing' = getattr(AnalysisRecord(id='df9f0ca6-6d11-454d-b077-d208d94d72ac', upload_id='67e04fc6-0845-4bbf-b9e7-65f69daab648', user_id='7...r=None, created_at=datetime.datetime(2026, 11, 9, 21, 10, 28, 970307, tzinfo=datetime.timezone.utc), completed_at=None), 'processing_stage', 'missing')
+E    +    where AnalysisRecord(id='df9f0ca6-6d11-454d-b077-d208d94d72ac', upload_id='67e04fc6-0845-4bbf-b9e7-65f69daab648', user_id='7...r=None, created_at=datetime.datetime(2026, 11, 9, 21, 10, 28, 970307, tzinfo=datetime.timezone.utc), completed_at=None) = get_analysis('df9f0ca6-6d11-454d-b077-d208d94d72ac')
+E    +      where get_analysis = <app.repository.InMemoryRepository object at 0x00000153266B1300>.get_analysis
+=========================== short test summary info ===========================
+FAILED tests/test_us19_processing.py::test_us19_owner_can_poll_the_persisted_processing_stage[measuring]
+FAILED tests/test_us19_processing.py::test_us19_owner_can_poll_the_persisted_processing_stage[writing_feedback]
+FAILED tests/test_us19_processing.py::test_us19_owner_can_poll_the_persisted_processing_stage[checking]
+FAILED tests/test_us19_processing.py::test_us19_queued_analysis_has_no_started_stage
+FAILED tests/test_us19_processing.py::test_us19_pipeline_reports_real_steps_before_the_corresponding_work
+FAILED tests/test_us19_processing.py::test_us19_each_correction_attempt_reports_writing_then_checking
+FAILED tests/test_us19_processing.py::test_us19_completion_exposes_results_and_clears_the_stage[no_person.mp4-unanalyzable]
+FAILED tests/test_us19_processing.py::test_us19_completion_exposes_results_and_clears_the_stage[set.mp4-passed_first_try]
+FAILED tests/test_us19_processing.py::test_us19_processing_failure_is_terminal_and_does_not_expose_internal_errors
+FAILED tests/test_us19_processing.py::test_us19_retry_uses_the_saved_video_and_preserves_the_failed_attempt
+FAILED tests/test_us19_processing.py::test_us19_only_failed_analyses_can_be_retried[queued]
+FAILED tests/test_us19_processing.py::test_us19_only_failed_analyses_can_be_retried[processing]
+FAILED tests/test_us19_processing.py::test_us19_only_failed_analyses_can_be_retried[done]
+FAILED tests/test_us19_processing.py::test_us19_status_and_retry_require_ownership
+FAILED tests/test_setup02_repository.py::test_us19_repo_persists_processing_stage_without_changing_job_status_contract[memory]
+15 failed, 1 skipped, 14 deselected in 2.48s

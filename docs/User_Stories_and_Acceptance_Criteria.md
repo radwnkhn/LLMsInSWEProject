@@ -363,3 +363,19 @@ As an **admin**, I want to see every analysis with its measurements, each AI att
 - **US-26 Track AI usage and cost:** As an admin, I want to see LLM token usage and cost per analysis, so that we know what the app costs to run.
 - **US-27 Usage and moderation:** As an admin, I want to see sign-ups and uploads over time and remove inappropriate uploads, so that the app stays healthy and on-topic.
 - **US-28 More lifts:** As a gym goer, I want feedback on more lifts, such as overhead press and Romanian deadlift, so that I can use the app for more of my workout.
+
+### [US-19] Show processing status while I wait
+
+GitHub issue: [#21](https://github.com/radwnkhn/LLMsInSWEProject/issues/21)
+
+As a **gym goer**, I want to see each analysis step while my video is processed, so that I know the app is working.
+
+#### Acceptance criteria
+- [ ] [integration] [e2e] Show Uploading → Measuring → Writing feedback → Checking, updating without a refresh.
+- [ ] [e2e] When analysis finishes, open the results automatically, including fallback and unanalyzable results.
+- [ ] [integration] [e2e] If analysis fails, show an error with Retry instead of an endless spinner.
+
+The current step comes from the worker's persisted progress. A correction attempt returns to Writing
+feedback before Checking again. Retry reuses the stored video, creates a fresh analysis and preserves the
+failed analysis and its logs. Status reads and retries require the upload owner's session. A failed status
+request offers Retry to reconnect; leaving the page cancels its polling and pending request.

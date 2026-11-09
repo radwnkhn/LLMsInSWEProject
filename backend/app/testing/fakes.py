@@ -159,3 +159,17 @@ class FakeVideoBackend:
 
     def frame(self, path: str, index: int) -> np.ndarray:
         return np.zeros((360, 640, 3), np.uint8)
+
+
+class ScenarioVideoBackend(FakeVideoBackend):
+    """Browser test mode: fail once for each `fail_once-...` filename, then allow retry."""
+
+    def __init__(self):
+        super().__init__(probe_files=True)
+        self.failed_filenames: set[str] = set()
+
+    def poses(self, path: str, info: VideoInfo, filename: str) -> list[PoseFrame]:
+        if filename.startswith("fail_once-") and filename not in self.failed_filenames:
+            self.failed_filenames.add(filename)
+            raise RuntimeError("Simulated transient pose failure")
+        return super().poses(path, info, filename)

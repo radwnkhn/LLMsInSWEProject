@@ -2,6 +2,7 @@ export type Lift = "squat" | "deadlift" | "bench_press";
 export type TriedCue = "yes" | "no" | "not_yet";
 export type FinalStatus = "passed_first_try" | "passed_after_retry" | "fallback" | "unanalyzable";
 export type JobStatus = "queued" | "processing" | "done" | "failed";
+export type ProcessingStage = "measuring" | "writing_feedback" | "checking";
 
 export type Session = { access_token: string; user: { id: string; email: string; is_admin: boolean } };
 
@@ -44,6 +45,7 @@ export type AnalysisResult = {
   analysis_id: string;
   created_at: string;
   status: JobStatus;
+  processing_stage: ProcessingStage | null;
   final_status: FinalStatus | null;
   lift: Lift;
   lift_label: string;

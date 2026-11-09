@@ -1,0 +1,16 @@
+
+> frontend@0.1.0 test
+> vitest run us19-processing
+
+
+ RUN  v3.2.7 C:/Users/imran/LLMsInSWEProject/frontend
+
+ ✓ src/components/__tests__/us19-processing.test.tsx (12 tests) 2011ms
+   ✓ US-19 live processing status > us19_uploading_shows_all_steps_in_order_and_preserves_byte_progress  1108ms
+   ✓ US-19 live processing status > us19_polling_network_failure_offers_retry_and_resumes_polling  402ms
+
+ Test Files  1 passed (1)
+      Tests  12 passed (12)
+   Start at  16:17:52
+   Duration  23.79s (transform 728ms, setup 3.91s, collect 2.84s, tests 2.01s, environment 13.47s, prepare 851ms)
+

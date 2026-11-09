@@ -131,7 +131,8 @@ def create_app(services: Services) -> FastAPI:
         upload = services.repo.get_upload(a.upload_id)
         view = {**EMPTY_RESULT, **copy.deepcopy(a.result or {})}
         view.update(analysis_id=a.id, created_at=a.created_at.isoformat() if a.created_at else None, status=a.status,
-                    final_status=a.final_status, lift=a.lift, lift_label=LIFT_LABELS[a.lift],
+                    final_status=a.final_status, processing_stage=a.processing_stage,
+                    lift=a.lift, lift_label=LIFT_LABELS[a.lift],
                     error="Analysis failed" if a.status == "failed" else None)
         view["video_url"] = absolute(request, services.storage.signed_url(upload.video_path))
         if view["annotated_frame"] and a.frame_path:
@@ -233,6 +234,17 @@ def create_app(services: Services) -> FastAPI:
     @app.get("/analyses/{analysis_id}")
     def get_analysis(analysis_id: str, request: Request, user: AuthUser = Depends(current_user)):
         return analysis_view(request, own_analysis(analysis_id, user), user.id)
+
+    @app.post("/analyses/{analysis_id}/retry", status_code=202)
+    def retry_analysis(analysis_id: str, background: BackgroundTasks, user: AuthUser = Depends(current_user)):
+        original = own_analysis(analysis_id, user)
+        if original.status != "failed":
+            raise HTTPException(409, "Only failed analyses can be retried")
+        # A fresh analysis preserves the failed attempt and avoids duplicate measurements/logs.
+        new_id = str(uuid.uuid4())
+        services.repo.create_analysis(new_id, original.upload_id, user.id, original.lift)
+        background.add_task(process_analysis, services, new_id)
+        return {"analysis_id": new_id, "status": "queued"}
 
     @app.post("/analyses/{analysis_id}/feedback")
     def post_feedback(analysis_id: str, body: FeedbackBody, user: AuthUser = Depends(current_user)):

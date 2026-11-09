@@ -6,6 +6,7 @@ export function passedResult(overrides: Partial<AnalysisResult> = {}): AnalysisR
     analysis_id: "a1",
     created_at: "2026-11-03T15:04:05Z",
     status: "done",
+    processing_stage: null,
     final_status: "passed_first_try",
     lift: "squat",
     lift_label: "Squat",

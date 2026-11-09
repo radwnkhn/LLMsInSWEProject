@@ -75,6 +75,17 @@ def test_setup02_repo_rejects_unknown_analysis_fields(repo):
         repo.update_analysis(_analysis(repo, uid), user_id="someone-else")
 
 
+def test_us19_repo_persists_processing_stage_without_changing_job_status_contract(repo):
+    an = _analysis(repo, _user(repo))
+    assert getattr(repo.get_analysis(an), "processing_stage", "missing") is None
+    for stage in ("measuring", "writing_feedback", "checking"):
+        repo.update_analysis(an, status="processing", processing_stage=stage)
+        saved = repo.get_analysis(an)
+        assert saved.status == "processing" and saved.processing_stage == stage
+    repo.update_analysis(an, status="done", processing_stage=None)
+    assert repo.get_analysis(an).processing_stage is None
+
+
 def test_setup02_repo_lists_a_users_analyses_newest_first(repo):
     a, b = _user(repo), _user(repo, "b@virginia.edu")
     first, other, second = _analysis(repo, a), _analysis(repo, b), _analysis(repo, a, "bench_press")
