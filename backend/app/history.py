@@ -23,6 +23,7 @@ def history_item(a: AnalysisRecord) -> dict:
     top = (a.result or {}).get("top_fix")
     return {
         "analysis_id": a.id,
+        "upload_id": a.upload_id,
         "created_at": a.created_at.isoformat() if a.created_at else None,
         "lift": a.lift,
         "lift_label": LIFT_LABELS[a.lift],

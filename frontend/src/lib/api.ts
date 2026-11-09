@@ -56,6 +56,9 @@ export const api = {
     return request<FeedbackAnswer>(`/analyses/${encodeURIComponent(id)}/feedback`, { method: "POST", body, token });
   },
   history: (token: string | null) => request<{ items: HistoryItem[] }>("/history", { token }),
+  deleteUpload: (uploadId: string, token: string | null) => request<void>(`/uploads/${encodeURIComponent(uploadId)}`,
+    { method: "DELETE", token, body: { confirmed: true } }),
+  deleteAccount: (token: string | null) => request<void>("/account", { method: "DELETE", token, body: { confirmed: true } }),
   comparison: (firstId: string, secondId: string, token: string | null, signal?: AbortSignal) => request<AnalysisComparison>(
     `/comparisons?${new URLSearchParams({ first_id: firstId, second_id: secondId })}`, { token, signal }),
   adminAnalyses: (token: string | null) => request<{ items: AdminRow[] }>("/admin/analyses", { token }),

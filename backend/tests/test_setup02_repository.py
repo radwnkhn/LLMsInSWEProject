@@ -136,3 +136,46 @@ def test_setup02_repo_admin_rows(repo):
     assert rows[1].attempt_count == 2 and rows[1].user_email == "a@virginia.edu"
     assert [r.analysis.id for r in repo.list_admin_rows(final_status="passed_after_retry")] == [an]
     assert repo.get_user(a).email == "a@virginia.edu"
+
+
+def test_us21_repo_upload_delete_cascades_all_analyses_measurements_and_logs(repo):
+    uid = _user(repo)
+    aid = _analysis(repo, uid)
+    upload_id = repo.get_analysis(aid).upload_id
+    retry = str(uuid.uuid4())
+    repo.create_analysis(retry, upload_id, uid, "squat")
+    repo.save_rep_measurements(aid, [RepMeasurement(1, 0, 1, 2, 0, 1, {"x": 1})])
+    repo.save_llm_attempt(aid, 1, "bad", 1, 1, [ValidationIssue("invalid_json", "bad")])
+    repo.upsert_feedback(aid, uid, 4, None)
+    repo.delete_upload(upload_id)
+    assert repo.get_upload(upload_id) is None
+    for analysis in (aid, retry):
+        assert repo.get_analysis(analysis) is None
+        assert repo.list_rep_measurements(analysis) == repo.list_llm_attempts(analysis) == []
+        assert repo.list_feedback(analysis) == []
+    assert repo.all_validation_issues() == []
+
+
+def test_us21_repo_user_delete_removes_only_the_users_data(repo):
+    uid, other = _user(repo), _user(repo, "other@virginia.edu")
+    a, b = _analysis(repo, uid), _analysis(repo, other)
+    repo.delete_user(uid)
+    assert repo.get_user(uid) is None and repo.get_analysis(a) is None
+    assert repo.get_analysis(b) is not None and repo.get_user(other) is not None
+
+
+def test_us21_repo_lists_owned_uploads_for_complete_account_cleanup(repo):
+    uid = _user(repo)
+    aid = _analysis(repo, uid)
+    _analysis(repo, _user(repo, "other@virginia.edu"))
+    rows = repo.list_uploads_for_user(uid)
+    assert [r.id for r in rows] == [repo.get_analysis(aid).upload_id]
+
+
+def test_us21_repo_user_lock_allows_nested_repository_operations(repo):
+    uid = _user(repo)
+    with repo.user_lock(uid):
+        aid = _analysis(repo, uid)
+        with repo.user_lock(uid):
+            assert repo.get_analysis(aid).user_id == uid
+    assert repo.get_analysis(aid) is not None

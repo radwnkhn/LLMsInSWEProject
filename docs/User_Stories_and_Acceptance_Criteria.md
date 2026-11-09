@@ -398,3 +398,21 @@ is still present even if the newer coaching output no longer ranks it first. Mis
 an unsuitable camera angle do not establish that a fault was fixed. Measurements-only results remain
 comparable; an earlier fallback has no validated coaching fault to compare. Failed, unfinished and
 unanalyzable jobs and two attempts for the same upload are excluded.
+
+### [US-21] Delete my videos and account
+
+GitHub issue: [#23](https://github.com/radwnkhn/LLMsInSWEProject/issues/23)
+
+As a **gym goer**, I want to delete my videos or my whole account, so that I stay in control of my data.
+
+#### Acceptance criteria
+- [ ] [unit] [integration] [e2e] I can delete an upload after confirming, which removes its video, frames, measurements and AI output.
+- [ ] [unit] [integration] [e2e] I can delete my account and all its data from settings.
+- [ ] [integration] [e2e] Deleted data no longer appears anywhere in the app.
+
+Deletion requires a valid owner session and an explicit confirmation. Deleting an upload also removes
+all retries and ratings. Account deletion removes all owned media, records and Auth credentials and
+invalidates existing sessions. Missing/deleted results cannot be inspected or compared, including by
+admins. Other users' data is preserved. Queued/processing analyses must finish first; otherwise a
+clear message asks the user to wait and retry. Failures never produce a false success, and incomplete
+cleanup can be retried. Both dialogs explain permanence and provide Cancel; account deletion is in Settings.

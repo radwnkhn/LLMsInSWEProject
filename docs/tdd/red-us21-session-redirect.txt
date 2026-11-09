@@ -1,0 +1,35 @@
+
+> frontend@0.1.0 test
+> vitest run us21-session-redirect
+
+
+ RUN  v3.2.7 C:/Users/imran/LLMsInSWEProject/frontend
+
+ ❯ src/lib/__tests__/us21-session-redirect.test.ts (2 tests | 1 failed) 47ms
+   × US-21 returning to a protected page after account deletion > us21_redirect_keeps_the_browser_loopback_origin_instead_of_normalized_localhost 40ms
+     → expected 'http://localhost:3124' to be 'http://127.0.0.1:3124' // Object.is equality
+   ✓ US-21 returning to a protected page after account deletion > us21_redirect_preserves_a_production_origin 5ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/lib/__tests__/us21-session-redirect.test.ts > US-21 returning to a protected page after account deletion > us21_redirect_keeps_the_browser_loopback_origin_instead_of_normalized_localhost
+AssertionError: expected 'http://localhost:3124' to be 'http://127.0.0.1:3124' // Object.is equality
+
+Expected: "http://127.0.0.1:3124"
+Received: "http://localhost:3124"
+
+ ❯ src/lib/__tests__/us21-session-redirect.test.ts:11:29
+      9|     const request = new NextRequest("http://localhost:3124/results/del…
+     10|     const location = new URL(middleware(request).headers.get("location…
+     11|     expect(location.origin).toBe("http://127.0.0.1:3124");
+       |                             ^
+     12|     expect(location.pathname).toBe("/login");
+     13|     expect(location.searchParams.get("next")).toBe("/results/deleted");
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 1 passed (2)
+   Start at  17:46:53
+   Duration  17.02s (transform 130ms, setup 3.05s, collect 491ms, tests 47ms, environment 11.74s, prepare 510ms)

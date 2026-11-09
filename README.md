@@ -70,6 +70,23 @@ be compared. No new LLM call or database migration is needed. See `docs/tdd/us20
 
 Browser tests use `.next-e2e/` for their build so a local development server can keep its own `.next/` files.
 
+## Delete uploads or your account (US-21 / #23)
+
+In **History**, choose **Delete upload** and confirm to remove that video, all of its analysis attempts,
+frames, measurements, AI output and ratings. In **Settings**, choose **Delete account** and confirm to
+remove your account and all its data. Successful account deletion signs you out and prevents old
+sessions from accessing the API. Both confirmation dialogs support Cancel and Escape.
+
+Wait for queued or processing analyses to finish before deleting. Cleanup failures show an error and
+allow another attempt. The backend coordinates deletion with uploads/retries, removes files through
+the Storage API, and uses the existing database cascades for related records. Account deletion also
+cleans orphaned media under that user's private folders. The existing backend-only Supabase service
+role key is used for Auth account deletion; no new migration or environment variable is needed.
+
+See `docs/tdd/us21.md` for acceptance coverage and red/green evidence. To run browser tests alongside an
+existing demo, set `E2E_API_PORT`, `E2E_WEB_PORT` and `E2E_BUILD_DIR` to unused ports and a separate build
+folder (this change was verified with ports 8766/3124 and `.next-us21-e2e`).
+
 ## Deploy
 
 - **Database:** run `supabase/migrations/*.sql` in the Supabase SQL editor (or `supabase db push`).

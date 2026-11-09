@@ -41,7 +41,7 @@ def build_test_services(**overrides) -> Services:
 
 def build_services(settings: Settings) -> Services:
     return Services(
-        auth=SupabaseAuth(settings.supabase_url, settings.supabase_anon_key),
+        auth=SupabaseAuth(settings.supabase_url, settings.supabase_anon_key, service_key=settings.supabase_service_role_key),
         repo=PostgresRepository(settings.database_url),
         storage=SupabaseStorage(settings.supabase_url, settings.supabase_service_role_key, settings.storage_bucket),
         video=OpenCVMediaPipeBackend(model_path=settings.pose_model_path),

@@ -17,7 +17,10 @@ export default function HistoryPage() {
     <div className="space-y-4">
       <h1 className="text-2xl font-bold">Your uploads</h1>
       {error && <p role="alert">Couldn&apos;t load your history.</p>}
-      {items && <HistoryList items={items} />}
+      {items && <HistoryList items={items} onDelete={async (uploadId) => {
+        await api.deleteUpload(uploadId, getToken());
+        setItems((previous) => previous?.filter((item) => item.upload_id !== uploadId) ?? []);
+      }} />}
     </div>
   );
 }

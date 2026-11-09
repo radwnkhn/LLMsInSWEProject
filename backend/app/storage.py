@@ -14,6 +14,8 @@ class Storage(Protocol):
     def upload(self, path: str, data: bytes | BinaryIO, content_type: str) -> None: ...
     def download(self, path: str) -> bytes: ...
     def signed_url(self, path: str, expires_in: int = 3600) -> str: ...
+    def delete(self, paths: list[str]) -> None: ...
+    def list_paths(self, prefix: str) -> list[str]: ...
 
 
 class SupabaseStorage:
@@ -45,6 +47,36 @@ class SupabaseStorage:
         r.raise_for_status()
         return f"{self.base}{r.json()['signedURL']}"
 
+    def delete(self, paths):
+        # Use Storage's API: deleting storage.objects rows alone leaves the files behind.
+        paths = list(dict.fromkeys(paths))
+        for start in range(0, len(paths), 1000):
+            response = self.http.request("DELETE", f"{self.base}/object/{self.bucket}",
+                                         json={"prefixes": paths[start:start + 1000]}, headers=self.headers)
+            response.raise_for_status()
+
+    def list_paths(self, prefix):
+        paths, pending = [], [prefix]
+        while pending:
+            folder = pending.pop()
+            offset = 0
+            while True:
+                response = self.http.post(f"{self.base}/object/list/{self.bucket}", headers=self.headers,
+                                          json={"prefix": folder, "limit": 1000, "offset": offset,
+                                                "sortBy": {"column": "name", "order": "asc"}})
+                response.raise_for_status()
+                items = response.json()
+                for item in items:
+                    path = folder.rstrip("/") + "/" + item["name"]
+                    if item.get("id") is None:
+                        pending.append(path + "/")
+                    else:
+                        paths.append(path)
+                if len(items) < 1000:
+                    break
+                offset += len(items)
+        return paths
+
 
 class InMemoryStorage:
     """Keeps objects in a dict. Signed URLs point at the test-mode /test-storage route and carry an HMAC token."""
@@ -66,3 +98,11 @@ class InMemoryStorage:
 
     def signed_url(self, path, expires_in=3600):
         return f"/test-storage/{quote(path)}?token={self.token_for(path)}"
+
+    def delete(self, paths):
+        for path in paths:
+            self.objects.pop(path, None)
+            self.content_types.pop(path, None)
+
+    def list_paths(self, prefix):
+        return sorted(path for path in list(self.objects) if path.startswith(prefix))

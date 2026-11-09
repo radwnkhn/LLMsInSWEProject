@@ -71,6 +71,7 @@ export type AnalysisResult = {
 
 export type HistoryItem = {
   analysis_id: string;
+  upload_id?: string;
   created_at: string;
   lift: Lift;
   lift_label: string;

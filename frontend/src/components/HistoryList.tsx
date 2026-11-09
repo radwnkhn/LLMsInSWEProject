@@ -3,18 +3,21 @@
 import Link from "next/link";
 import { useState } from "react";
 
+import { DeleteUploadButton } from "@/components/DeleteUploadButton";
+
 import { formatDate } from "@/lib/format";
 import { LIFTS } from "@/lib/lifts";
 import type { HistoryItem } from "@/lib/types";
 
-export function HistoryList({ items }: { items: HistoryItem[] }) {
+export function HistoryList({ items, onDelete }: { items: HistoryItem[]; onDelete?: (uploadId: string) => Promise<void> }) {
   const [lift, setLift] = useState("all");
-  const [selected, setSelected] = useState<string[]>([]);
+  const [selection, setSelected] = useState<string[]>([]);
+  const selected = selection.filter((id) => items.some((item) => item.analysis_id === id));
   const first = items.find((item) => item.analysis_id === selected[0]);
   const shown = lift === "all" ? items : items.filter((i) => i.lift === lift);
 
   function toggle(id: string) {
-    setSelected((previous) => previous.includes(id) ? previous.filter((value) => value !== id) : [...previous, id]);
+    setSelected(selected.includes(id) ? selected.filter((value) => value !== id) : [...selected, id]);
   }
   return (
     <div className="space-y-3">
@@ -46,6 +49,7 @@ export function HistoryList({ items }: { items: HistoryItem[] }) {
                 className="accent-zinc-900 disabled:opacity-40" />
               Compare this upload
             </label>
+            {i.upload_id && onDelete && <DeleteUploadButton uploadId={i.upload_id} onDelete={onDelete} />}
           </li>
         ))}
       </ul>

@@ -15,7 +15,7 @@ import httpx
 from fastapi import BackgroundTasks, Depends, FastAPI, File, Form, HTTPException, Query, Request, Response, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
-from pydantic import BaseModel, StrictInt, field_validator, model_validator
+from pydantic import BaseModel, StrictBool, StrictInt, field_validator, model_validator
 
 from app.admin import admin_row_view, filter_admin_rows, summarize_validation_errors
 from app.auth import AuthUser, EmailTaken, InvalidCredentials
@@ -69,6 +69,17 @@ class LoginBody(BaseModel):
     password: str
 
 
+class DeleteBody(BaseModel):
+    confirmed: StrictBool
+
+    @field_validator("confirmed")
+    @classmethod
+    def _confirmed(cls, value):
+        if not value:
+            raise ValueError("Confirm deletion before continuing")
+        return value
+
+
 class FeedbackBody(BaseModel):
     rating: StrictInt | None = None
     tried_cue: Literal["yes", "no", "not_yet"] | None = None
@@ -111,7 +122,11 @@ def create_app(services: Services) -> FastAPI:
         user = services.auth.get_user(creds.credentials) if creds else None
         if user is None:
             raise HTTPException(401, "Please log in")
-        services.repo.ensure_user(user.id, user.email, user.is_admin)
+        with services.repo.user_lock(user.id):
+            # A request may have authenticated just before account deletion acquired its lock.
+            if services.repo.get_user(user.id) is None and services.auth.get_user(creds.credentials) is None:
+                raise HTTPException(401, "Please log in")
+            services.repo.ensure_user(user.id, user.email, user.is_admin)
         return user
 
     def admin_user(user: AuthUser = Depends(current_user)) -> AuthUser:
@@ -181,6 +196,12 @@ def create_app(services: Services) -> FastAPI:
     @app.post("/uploads", status_code=201)
     def create_upload(background: BackgroundTasks, user: AuthUser = Depends(current_user),
                       file: UploadFile = File(...), lift: str = Form(...), note: str | None = Form(None)):
+        with services.repo.user_lock(user.id):
+            if services.repo.get_user(user.id) is None:
+                raise HTTPException(401, "Please log in")
+            return store_upload(background, user, file, lift, note)
+
+    def store_upload(background, user, file, lift, note):
         if lift not in LIFTS:
             raise HTTPException(422, "Choose squat, deadlift or bench_press")
         if note is not None and len(note) > MAX_NOTE_LENGTH:
@@ -238,14 +259,58 @@ def create_app(services: Services) -> FastAPI:
 
     @app.post("/analyses/{analysis_id}/retry", status_code=202)
     def retry_analysis(analysis_id: str, background: BackgroundTasks, user: AuthUser = Depends(current_user)):
-        original = own_analysis(analysis_id, user)
-        if original.status != "failed":
-            raise HTTPException(409, "Only failed analyses can be retried")
-        # A fresh analysis preserves the failed attempt and avoids duplicate measurements/logs.
-        new_id = str(uuid.uuid4())
-        services.repo.create_analysis(new_id, original.upload_id, user.id, original.lift)
-        background.add_task(process_analysis, services, new_id)
-        return {"analysis_id": new_id, "status": "queued"}
+        with services.repo.user_lock(user.id):
+            if services.repo.get_user(user.id) is None:
+                raise HTTPException(401, "Please log in")
+            original = own_analysis(analysis_id, user)
+            if original.status != "failed":
+                raise HTTPException(409, "Only failed analyses can be retried")
+            # A fresh analysis preserves the failed attempt and avoids duplicate measurements/logs.
+            new_id = str(uuid.uuid4())
+            services.repo.create_analysis(new_id, original.upload_id, user.id, original.lift)
+            background.add_task(process_analysis, services, new_id)
+            return {"analysis_id": new_id, "status": "queued"}
+
+    # ------------------------------------------------------------------ deletion
+
+    def finished_before_deletion(analyses):
+        if any(a.status in ("queued", "processing") for a in analyses):
+            raise HTTPException(409, "Wait for analyses to finish before deleting. Then try again.")
+
+    @app.delete("/uploads/{upload_id}", status_code=204)
+    def delete_upload(upload_id: str, body: DeleteBody, user: AuthUser = Depends(current_user)):
+        with services.repo.user_lock(user.id):
+            upload = services.repo.get_upload(upload_id)
+            if upload is None or upload.user_id != user.id:
+                raise HTTPException(404, "Upload not found")
+            analyses = [a for a in services.repo.list_analyses_for_user(user.id) if a.upload_id == upload_id]
+            finished_before_deletion(analyses)
+            paths = {upload.video_path}
+            for a in analyses:
+                paths.add(f"frames/{user.id}/{a.id}.png")  # includes frames from a partially failed attempt
+                if a.frame_path:
+                    paths.add(a.frame_path)
+            try:
+                services.storage.delete(sorted(paths))
+                services.repo.delete_upload(upload_id)
+            except Exception:
+                log.exception("deleting upload %s failed", upload_id)
+                raise HTTPException(502, "Couldn't delete the video completely. Please try again.")
+        return Response(status_code=204)
+
+    @app.delete("/account", status_code=204)
+    def delete_account(body: DeleteBody, user: AuthUser = Depends(current_user)):
+        with services.repo.user_lock(user.id):
+            finished_before_deletion(services.repo.list_analyses_for_user(user.id))
+            try:
+                paths = services.storage.list_paths(f"{user.id}/") + services.storage.list_paths(f"frames/{user.id}/")
+                services.storage.delete(paths)
+                services.repo.delete_user(user.id)
+                services.auth.delete_user(user.id)
+            except Exception:
+                log.exception("deleting account %s failed", user.id)
+                raise HTTPException(502, "Couldn't delete your account completely. Please try again.")
+        return Response(status_code=204)
 
     @app.post("/analyses/{analysis_id}/feedback")
     def post_feedback(analysis_id: str, body: FeedbackBody, user: AuthUser = Depends(current_user)):
