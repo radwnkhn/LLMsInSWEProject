@@ -1,0 +1,2069 @@
+
+ RUN  v3.2.7 /Users/dakshghadia/Documents/LLMsInSWEProject/frontend
+
+ ❯ src/lib/__tests__/us04-upload-request.test.ts (4 tests | 4 failed) 15ms
+   × US-04 upload request > us04_upload_reports_progress_as_a_percentage 13ms
+     → not implemented
+   × US-04 upload request > us04_upload_sends_file_lift_note_and_token 1ms
+     → not implemented
+   × US-04 upload request > us04_upload_rejects_with_the_server_message 1ms
+     → not implemented
+   × US-04 upload request > us04_upload_rejects_on_network_error 1ms
+     → not implemented
+ ❯ src/components/__tests__/us01-auth.test.tsx (6 tests | 6 failed) 38ms
+   × US-01 sign up and log in > us01_signup_submits_email_and_password_and_reports_success 33ms
+     → Unable to find a label with the text of: Email
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+   × US-01 sign up and log in > us01_signup_password_field_requires_8_characters 2ms
+     → Unable to find a label with the text of: Password
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+   × US-01 sign up and log in > us01_wrong_password_shows_message_and_does_not_log_in 1ms
+     → Unable to find a label with the text of: Email
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+   × US-01 sign up and log in > us01_network_failure_shows_a_generic_error 2ms
+     → Unable to find a label with the text of: Email
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+   × US-01 sign up and log in > us01_session_is_stored_in_a_cookie_and_cleared_on_logout 0ms
+     → not implemented
+   × US-01 sign up and log in > us01_history_upload_results_and_admin_pages_need_login 0ms
+     → not implemented
+ ❯ src/components/__tests__/us04-upload-form.test.tsx (9 tests | 9 failed) 117ms
+   × US-04 upload a set video from my phone > us04_file_input_accepts_videos_from_camera_or_library 32ms
+     → Unable to find a label with the text of: Video of your set
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+   × US-04 upload a set video from my phone > us04_wrong_type_rejected_before_uploading 2ms
+     → Unable to find a label with the text of: Squat
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+   × US-04 upload a set video from my phone > us04_too_long_video_rejected_with_the_limit 2ms
+     → Unable to find a label with the text of: Squat
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+   × US-04 upload a set video from my phone > us04_too_large_video_rejected_with_the_limit 13ms
+     → Unable to find a label with the text of: Squat
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+   × US-04 upload a set video from my phone > us04_unreadable_duration_is_left_to_the_server 4ms
+     → Unable to find a label with the text of: Squat
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+   × US-04 upload a set video from my phone > us04_progress_is_shown_as_a_percentage 3ms
+     → Unable to find a label with the text of: Squat
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+   × US-04 upload a set video from my phone > us04_success_hands_back_the_analysis_id 2ms
+     → Unable to find a label with the text of: Squat
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+   × US-04 upload a set video from my phone > us04_failed_upload_shows_error_with_retry_that_reuses_the_file 55ms
+     → Unable to find a label with the text of: Squat
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+   × US-04 upload a set video from my phone > us04_server_rejection_message_is_shown 3ms
+     → Unable to find a label with the text of: Squat
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ src/components/__tests__/us03-filming-guide.test.tsx (7 tests | 7 failed) 246ms
+   × US-03 filming guidance before recording > us03_guide_tips_are_specific_to_the_lift 11ms
+     → Cannot read properties of undefined (reading 'tips')
+   × US-03 filming guidance before recording > us03_guide_shows_example_image_of_correct_framing 206ms
+     → Unable to find an accessible element with the role "img" and name "Example of correct framing for a deadlift"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+   × US-03 filming guidance before recording > us03_guide_opens_after_choosing_a_lift 7ms
+     → Unable to find a label with the text of: Squat
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+   × US-03 filming guidance before recording > us03_guide_can_be_dismissed_and_reopened 2ms
+     → Unable to find a label with the text of: Squat
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+   × US-03 filming guidance before recording > us03_guide_does_not_reopen_on_its_own_when_changing_lift 1ms
+     → Unable to find a label with the text of: Squat
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+   × US-03 filming guidance before recording > us03_tips_button_is_disabled_until_a_lift_is_chosen 9ms
+     → Unable to find an accessible element with the role "button" and name "Filming tips"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+   × US-03 filming guidance before recording > us03_guide_open_on_arrival_when_asked_to_refilm 9ms
+     → Unable to find an accessible element with the role "dialog" and name "Filming tips: Squat"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ src/components/__tests__/us17-us18-lists.test.tsx (9 tests | 9 failed) 243ms
+   × US-17 upload history > us17_lists_entries_with_date_lift_reps_and_top_fix 191ms
+     → Unable to find an accessible element with the role "listitem"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+   × US-17 upload history > us17_history_can_be_filtered_by_lift 8ms
+     → Unable to find a label with the text of: Lift
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+   × US-17 upload history > us17_unanalyzable_and_fallback_entries_show_their_status 12ms
+     → Unable to find an accessible element with the role "listitem"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+   × US-18 inspect analyses and validator logs > us18_table_shows_lift_attempts_and_final_status 18ms
+     → Unable to find an accessible element with the role "row"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+   × US-18 inspect analyses and validator logs > us18_filter_by_lift_and_final_status 3ms
+     → Unable to find a label with the text of: Lift
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+   × US-18 inspect analyses and validator logs > us18_status_filter_offers_the_four_final_statuses 1ms
+     → Unable to find a label with the text of: Final status
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+   × US-18 inspect analyses and validator logs > us18_error_summary_shows_counts_per_error_type 3ms
+     → Unable to find an accessible element with the role "listitem"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+   × US-18 inspect analyses and validator logs > us18_error_summary_empty_state 3ms
+     → Unable to find an element with the text: No validator errors yet.. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+   × US-18 inspect analyses and validator logs > us18_non_admins_see_403 5ms
+     → Unable to find an accessible element with the role "heading" and name "403: Admins only"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ src/components/__tests__/us13-us14-us15-results.test.tsx (11 tests | 8 failed) 255ms
+   × US-13 say what couldn't be measured > us13_not_measured_checks_listed_with_reasons 201ms
+     → Unable to find an accessible element with the role "region" and name "Not measured"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+   ✓ US-13 say what couldn't be measured > us13_section_hidden_when_everything_was_measured 5ms
+   × US-13 say what couldn't be measured > us13_not_measured_check_is_not_shown_as_a_fault 8ms
+     → Unable to find an accessible element with the role "region" and name "Top fix"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+   × US-14 safety issues come first > us14_safety_top_fix_shows_a_warning_label 7ms
+     → Unable to find an accessible element with the role "region" and name "Top fix"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+   ✓ US-14 safety issues come first > us14_technique_fix_has_no_warning_label 5ms
+   × US-14 safety issues come first > us14_safety_faults_under_see_more_are_labeled_too 16ms
+     → Unable to find an accessible element with the role "button" and name "See more"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+   × US-15 recommend a professional if I mention pain > us15_note_field_is_optional_and_limited_to_300_characters 2ms
+     → Unable to find a label with the text of: Anything we should know? (optional)
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+   × US-15 recommend a professional if I mention pain > us15_note_counter_and_text_are_sent 1ms
+     → Unable to find a label with the text of: Anything we should know? (optional)
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+   × US-15 recommend a professional if I mention pain > us15_note_cannot_exceed_300_characters 2ms
+     → Unable to find a label with the text of: Anything we should know? (optional)
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+   × US-15 recommend a professional if I mention pain > us15_results_show_the_professional_recommendation 6ms
+     → Unable to find an accessible element with the role "note" and name "See a professional"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+   ✓ US-15 recommend a professional if I mention pain > us15_no_recommendation_without_pain 1ms
+ ❯ src/components/__tests__/us16-feedback.test.tsx (8 tests | 7 failed) 265ms
+   × US-16 rate the feedback and say if I tried the cue > us16_asks_for_a_1_to_5_rating_and_whether_the_cue_was_tried 207ms
+     → Unable to find an accessible element with the role "radiogroup" and name "How helpful was this feedback?"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+   × US-16 rate the feedback and say if I tried the cue > us16_submits_the_answers 8ms
+     → Unable to find a label with the text of: 4
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+   × US-16 rate the feedback and say if I tried the cue > us16_shows_the_previous_answer_and_allows_changing_it 26ms
+     → Unable to find a label with the text of: 2
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+   × US-16 rate the feedback and say if I tried the cue > us16_send_disabled_until_something_is_chosen 8ms
+     → Unable to find an accessible element with the role "button" and name "Send feedback"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+   × US-16 rate the feedback and say if I tried the cue > us16_every_results_screen_asks_for_feedback 10ms
+     → Unable to find an accessible element with the role "radiogroup" and name "How helpful was this feedback?"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+   ✓ US-16 rate the feedback and say if I tried the cue > us16_cue_question_only_when_there_was_a_cue 3ms
+   × US-16 rate the feedback and say if I tried the cue > us16_asks_about_the_previous_cue_for_the_same_lift 1ms
+     → Unable to find an element with the text: /Last squat, your cue was “Push your knees out”\. Did you try it\?/. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+   × US-16 rate the feedback and say if I tried the cue > us16_results_include_the_previous_cue_prompt_when_given 1ms
+     → Unable to find an element with the text: /your cue was “Brace hard”/. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ src/components/__tests__/us02-lift-picker.test.tsx (5 tests | 5 failed) 120ms
+   × US-02 choose the lift before uploading > us02_lift_picker_offers_exactly_three_options 107ms
+     → Unable to find an accessible element with the role "radio"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+   × US-02 choose the lift before uploading > us02_lift_picker_reports_the_lift_id 5ms
+     → Unable to find a label with the text of: Bench Press
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+   × US-02 choose the lift before uploading > us02_upload_button_disabled_until_lift_selected 2ms
+     → Unable to find a label with the text of: Video of your set
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+   × US-02 choose the lift before uploading > us02_upload_button_disabled_without_a_video_even_with_a_lift 2ms
+     → Unable to find a label with the text of: Deadlift
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+   × US-02 choose the lift before uploading > us02_selected_lift_is_sent_with_the_upload 5ms
+     → Unable to find a label with the text of: Deadlift
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ src/components/__tests__/us11-us12-frame-and-reps.test.tsx (7 tests | 7 failed) 118ms
+   × US-11 annotated frame > us11_frame_image_and_caption_match_the_stored_values 97ms
+     → Unable to find an accessible element with the role "img" and name "Rep 4 at 0:06.7 with the measurement Torso +14°"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+   × US-11 annotated frame > us11_tapping_the_frame_plays_from_the_start_of_that_rep 9ms
+     → Unable to find an accessible element with the role "button" and name `/play rep 4/i`
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+   × US-11 annotated frame > us11_time_format 1ms
+     → not implemented
+   × US-12 rep-by-rep breakdown > us12_one_row_per_rep_in_order 3ms
+     → Unable to find an accessible element with the role "listitem"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+   × US-12 rep-by-rep breakdown > us12_rows_show_clean_or_their_faults 2ms
+     → Unable to find an accessible element with the role "listitem" and name "Rep 1"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+   × US-12 rep-by-rep breakdown > us12_fatigue_note_shown_when_present 2ms
+     → Unable to find an element with the text: Form broke down late in the set, likely from fatigue.. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+   × US-12 rep-by-rep breakdown > us12_tapping_a_row_seeks_to_that_rep 2ms
+     → Unable to find an accessible element with the role "listitem" and name "Rep 3"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ src/components/__tests__/us10-top-fix.test.tsx (5 tests | 4 failed) 135ms
+   × US-10 show one top fix and one cue > us10_shows_exactly_one_top_fix_in_plain_language 114ms
+     → Unable to find an accessible element with the role "heading" and name "Top fix"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+   × US-10 show one top fix and one cue > us10_shows_exactly_one_cue_with_the_top_fix 10ms
+     → Unable to find a label with the text of: Cue for your next set
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+   × US-10 show one top fix and one cue > us10_other_faults_are_collapsed_under_see_more 6ms
+     → Unable to find an accessible element with the role "button" and name "See more"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+   ✓ US-10 show one top fix and one cue > us10_no_see_more_without_other_faults 1ms
+   × US-10 show one top fix and one cue > us10_no_major_issues_found 2ms
+     → Unable to find an element with the text: No major issues found. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ src/lib/__tests__/us04-video-file.test.ts (13 tests | 13 failed) 22ms
+   × US-04 video file checks before uploading > us04_limits_and_messages 15ms
+     → expected +0 to be 60 // Object.is equality
+   × US-04 video file checks before uploading > us04_accepts_mp4_and_mov_set.mp4 2ms
+     → not implemented
+   × US-04 video file checks before uploading > us04_accepts_mp4_and_mov_IMG_0042.MOV 0ms
+     → not implemented
+   × US-04 video file checks before uploading > us04_accepts_mp4_and_mov_clip.mov 0ms
+     → not implemented
+   × US-04 video file checks before uploading > us04_accepts_mp4_and_mov_clip.MP4 0ms
+     → not implemented
+   × US-04 video file checks before uploading > us04_rejects_other_types_set.avi 1ms
+     → not implemented
+   × US-04 video file checks before uploading > us04_rejects_other_types_set.webm 1ms
+     → not implemented
+   × US-04 video file checks before uploading > us04_rejects_other_types_photo.jpg 1ms
+     → not implemented
+   × US-04 video file checks before uploading > us04_rejects_other_types_set.mp4.exe 1ms
+     → not implemented
+   × US-04 video file checks before uploading > us04_rejects_other_types_noextension 0ms
+     → not implemented
+   × US-04 video file checks before uploading > us04_rejects_videos_longer_than_60_seconds 0ms
+     → not implemented
+   × US-04 video file checks before uploading > us04_rejects_videos_larger_than_200_mb 0ms
+     → not implemented
+   × US-04 video file checks before uploading > us04_type_is_checked_first 1ms
+     → not implemented
+ ❯ src/components/__tests__/us05-us09-status.test.tsx (4 tests | 3 failed) 112ms
+   × US-05 tell me when a video can't be analyzed > us05_unanalyzable_result_shows_the_reason_and_a_refilm_link 99ms
+     → Unable to find an accessible element with the role "heading" and name "Couldn't analyze: body not clearly visible"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+   × US-09 safe fallback > us09_fallback_shows_the_note_and_measurements_but_no_coaching 5ms
+     → Unable to find an element with the text: Coaching feedback isn't available for this video. Here are your measurements.. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+   ✓ US-09 safe fallback > us09_no_fallback_note_on_a_normal_result 4ms
+   × US-09 safe fallback > us09_processing_and_failed_states 3ms
+     → Unable to find an accessible element with the role "status"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 82 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/components/__tests__/us01-auth.test.tsx > US-01 sign up and log in > us01_signup_submits_email_and_password_and_reports_success
+TestingLibraryElementError: Unable to find a label with the text of: Email
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ getAllByLabelText node_modules/@testing-library/dom/dist/queries/label-text.js:111:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ fill src/components/__tests__/us01-auth.test.tsx:10:31
+      8| 
+      9| async function fill(email: string, password: string) {
+     10|   await userEvent.type(screen.getByLabelText("Email"), email);
+       |                               ^
+     11|   await userEvent.type(screen.getByLabelText("Password"), password);
+     12| }
+ ❯ src/components/__tests__/us01-auth.test.tsx:20:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/82]⎯
+
+ FAIL  src/components/__tests__/us01-auth.test.tsx > US-01 sign up and log in > us01_signup_password_field_requires_8_characters
+TestingLibraryElementError: Unable to find a label with the text of: Password
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ getAllByLabelText node_modules/@testing-library/dom/dist/queries/label-text.js:111:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/components/__tests__/us01-auth.test.tsx:28:19
+     26|   it("us01_signup_password_field_requires_8_characters", () => {
+     27|     render(<AuthForm mode="signup" submit={vi.fn()} onSuccess={vi.fn()…
+     28|     expect(screen.getByLabelText("Password")).toHaveAttribute("minLeng…
+       |                   ^
+     29|     expect(screen.getByLabelText("Email")).toHaveAttribute("type", "em…
+     30|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/82]⎯
+
+ FAIL  src/components/__tests__/us01-auth.test.tsx > US-01 sign up and log in > us01_wrong_password_shows_message_and_does_not_log_in
+TestingLibraryElementError: Unable to find a label with the text of: Email
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ getAllByLabelText node_modules/@testing-library/dom/dist/queries/label-text.js:111:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ fill src/components/__tests__/us01-auth.test.tsx:10:31
+      8| 
+      9| async function fill(email: string, password: string) {
+     10|   await userEvent.type(screen.getByLabelText("Email"), email);
+       |                               ^
+     11|   await userEvent.type(screen.getByLabelText("Password"), password);
+     12| }
+ ❯ src/components/__tests__/us01-auth.test.tsx:36:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/82]⎯
+
+ FAIL  src/components/__tests__/us01-auth.test.tsx > US-01 sign up and log in > us01_network_failure_shows_a_generic_error
+TestingLibraryElementError: Unable to find a label with the text of: Email
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ getAllByLabelText node_modules/@testing-library/dom/dist/queries/label-text.js:111:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ fill src/components/__tests__/us01-auth.test.tsx:10:31
+      8| 
+      9| async function fill(email: string, password: string) {
+     10|   await userEvent.type(screen.getByLabelText("Email"), email);
+       |                               ^
+     11|   await userEvent.type(screen.getByLabelText("Password"), password);
+     12| }
+ ❯ src/components/__tests__/us01-auth.test.tsx:46:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/82]⎯
+
+ FAIL  src/components/__tests__/us01-auth.test.tsx > US-01 sign up and log in > us01_session_is_stored_in_a_cookie_and_cleared_on_logout
+Error: not implemented
+ ❯ setSession src/lib/session.ts:2:58
+      1| // TDD stub: not implemented yet.
+      2| export function setSession(_token: string): void { throw new Error("no…
+       |                                                          ^
+      3| export function getToken(): string | null { throw new Error("not imple…
+      4| export function clearSession(): void { throw new Error("not implemente…
+ ❯ src/components/__tests__/us01-auth.test.tsx:52:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/82]⎯
+
+ FAIL  src/components/__tests__/us01-auth.test.tsx > US-01 sign up and log in > us01_history_upload_results_and_admin_pages_need_login
+Error: not implemented
+ ❯ isProtectedPath src/lib/session.ts:5:65
+      3| export function getToken(): string | null { throw new Error("not imple…
+      4| export function clearSession(): void { throw new Error("not implemente…
+      5| export function isProtectedPath(_path: string): boolean { throw new Er…
+       |                                                                 ^
+      6| 
+ ❯ src/components/__tests__/us01-auth.test.tsx:61:14
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/82]⎯
+
+ FAIL  src/components/__tests__/us02-lift-picker.test.tsx > US-02 choose the lift before uploading > us02_lift_picker_offers_exactly_three_options
+TestingLibraryElementError: Unable to find an accessible element with the role "radio"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:109:15
+ ❯ src/components/__tests__/us02-lift-picker.test.tsx:14:28
+     12|   it("us02_lift_picker_offers_exactly_three_options", () => {
+     13|     render(<LiftPicker value={null} onChange={vi.fn()} />);
+     14|     const options = screen.getAllByRole("radio");
+       |                            ^
+     15|     expect(options).toHaveLength(3);
+     16|     expect(options.map((o) => o.closest("label")?.textContent?.trim())…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/82]⎯
+
+ FAIL  src/components/__tests__/us02-lift-picker.test.tsx > US-02 choose the lift before uploading > us02_lift_picker_reports_the_lift_id
+TestingLibraryElementError: Unable to find a label with the text of: Bench Press
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ getAllByLabelText node_modules/@testing-library/dom/dist/queries/label-text.js:111:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/components/__tests__/us02-lift-picker.test.tsx:22:34
+     20|     const onChange = vi.fn();
+     21|     render(<LiftPicker value={null} onChange={onChange} />);
+     22|     await userEvent.click(screen.getByLabelText("Bench Press"));
+       |                                  ^
+     23|     expect(onChange).toHaveBeenCalledWith("bench_press");
+     24|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/82]⎯
+
+ FAIL  src/components/__tests__/us02-lift-picker.test.tsx > US-02 choose the lift before uploading > us02_upload_button_disabled_until_lift_selected
+TestingLibraryElementError: Unable to find a label with the text of: Video of your set
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ getAllByLabelText node_modules/@testing-library/dom/dist/queries/label-text.js:111:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/components/__tests__/us02-lift-picker.test.tsx:28:35
+     26|   it("us02_upload_button_disabled_until_lift_selected", async () => {
+     27|     render(<UploadForm upload={okUpload()} readDuration={async () => 1…
+     28|     await userEvent.upload(screen.getByLabelText("Video of your set"),…
+       |                                   ^
+     29|     expect(screen.getByRole("button", { name: "Upload" })).toBeDisable…
+     30|     await userEvent.click(screen.getByLabelText("Squat"));
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/82]⎯
+
+ FAIL  src/components/__tests__/us02-lift-picker.test.tsx > US-02 choose the lift before uploading > us02_upload_button_disabled_without_a_video_even_with_a_lift
+TestingLibraryElementError: Unable to find a label with the text of: Deadlift
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ getAllByLabelText node_modules/@testing-library/dom/dist/queries/label-text.js:111:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/components/__tests__/us02-lift-picker.test.tsx:37:34
+     35|   it("us02_upload_button_disabled_without_a_video_even_with_a_lift", a…
+     36|     render(<UploadForm upload={okUpload()} readDuration={async () => 1…
+     37|     await userEvent.click(screen.getByLabelText("Deadlift"));
+       |                                  ^
+     38|     expect(screen.getByRole("button", { name: "Upload" })).toBeDisable…
+     39|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/82]⎯
+
+ FAIL  src/components/__tests__/us02-lift-picker.test.tsx > US-02 choose the lift before uploading > us02_selected_lift_is_sent_with_the_upload
+TestingLibraryElementError: Unable to find a label with the text of: Deadlift
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ getAllByLabelText node_modules/@testing-library/dom/dist/queries/label-text.js:111:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/components/__tests__/us02-lift-picker.test.tsx:44:34
+     42|     const upload = okUpload();
+     43|     render(<UploadForm upload={upload} readDuration={async () => 10} /…
+     44|     await userEvent.click(screen.getByLabelText("Deadlift"));
+       |                                  ^
+     45|     await userEvent.click(screen.getByRole("button", { name: "Got it" …
+     46|     await userEvent.upload(screen.getByLabelText("Video of your set"),…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/82]⎯
+
+ FAIL  src/components/__tests__/us03-filming-guide.test.tsx > US-03 filming guidance before recording > us03_guide_tips_are_specific_to_the_lift
+TypeError: Cannot read properties of undefined (reading 'tips')
+ ❯ src/components/__tests__/us03-filming-guide.test.tsx:23:33
+     21| 
+     22|   it("us03_guide_tips_are_specific_to_the_lift", () => {
+     23|     expect(FILMING_GUIDES.squat.tips).not.toEqual(FILMING_GUIDES.bench…
+       |                                 ^
+     24|     render(<FilmingGuide lift="bench_press" onClose={vi.fn()} />);
+     25|     expect(screen.getByRole("dialog", { name: "Filming tips: Bench Pre…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[12/82]⎯
+
+ FAIL  src/components/__tests__/us03-filming-guide.test.tsx > US-03 filming guidance before recording > us03_guide_shows_example_image_of_correct_framing
+TestingLibraryElementError: Unable to find an accessible element with the role "img" and name "Example of correct framing for a deadlift"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/components/__tests__/us03-filming-guide.test.tsx:30:24
+     28|   it("us03_guide_shows_example_image_of_correct_framing", () => {
+     29|     render(<FilmingGuide lift="deadlift" onClose={vi.fn()} />);
+     30|     const img = screen.getByRole("img", { name: "Example of correct fr…
+       |                        ^
+     31|     expect(img).toHaveAttribute("src", expect.stringContaining("/frami…
+     32|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[13/82]⎯
+
+ FAIL  src/components/__tests__/us03-filming-guide.test.tsx > US-03 filming guidance before recording > us03_guide_opens_after_choosing_a_lift
+TestingLibraryElementError: Unable to find a label with the text of: Squat
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ getAllByLabelText node_modules/@testing-library/dom/dist/queries/label-text.js:111:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/components/__tests__/us03-filming-guide.test.tsx:37:34
+     35|     render(<UploadForm upload={vi.fn()} readDuration={async () => 10} …
+     36|     expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+     37|     await userEvent.click(screen.getByLabelText("Squat"));
+       |                                  ^
+     38|     expect(screen.getByRole("dialog", { name: "Filming tips: Squat" })…
+     39|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[14/82]⎯
+
+ FAIL  src/components/__tests__/us03-filming-guide.test.tsx > US-03 filming guidance before recording > us03_guide_can_be_dismissed_and_reopened
+TestingLibraryElementError: Unable to find a label with the text of: Squat
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ getAllByLabelText node_modules/@testing-library/dom/dist/queries/label-text.js:111:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/components/__tests__/us03-filming-guide.test.tsx:43:34
+     41|   it("us03_guide_can_be_dismissed_and_reopened", async () => {
+     42|     render(<UploadForm upload={vi.fn()} readDuration={async () => 10} …
+     43|     await userEvent.click(screen.getByLabelText("Squat"));
+       |                                  ^
+     44|     await userEvent.click(within(screen.getByRole("dialog")).getByRole…
+     45|     expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[15/82]⎯
+
+ FAIL  src/components/__tests__/us03-filming-guide.test.tsx > US-03 filming guidance before recording > us03_guide_does_not_reopen_on_its_own_when_changing_lift
+TestingLibraryElementError: Unable to find a label with the text of: Squat
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ getAllByLabelText node_modules/@testing-library/dom/dist/queries/label-text.js:111:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/components/__tests__/us03-filming-guide.test.tsx:52:34
+     50|   it("us03_guide_does_not_reopen_on_its_own_when_changing_lift", async…
+     51|     render(<UploadForm upload={vi.fn()} readDuration={async () => 10} …
+     52|     await userEvent.click(screen.getByLabelText("Squat"));
+       |                                  ^
+     53|     await userEvent.click(screen.getByRole("button", { name: "Got it" …
+     54|     await userEvent.click(screen.getByLabelText("Deadlift"));
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[16/82]⎯
+
+ FAIL  src/components/__tests__/us03-filming-guide.test.tsx > US-03 filming guidance before recording > us03_tips_button_is_disabled_until_a_lift_is_chosen
+TestingLibraryElementError: Unable to find an accessible element with the role "button" and name "Filming tips"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/components/__tests__/us03-filming-guide.test.tsx:62:19
+     60|   it("us03_tips_button_is_disabled_until_a_lift_is_chosen", () => {
+     61|     render(<UploadForm upload={vi.fn()} readDuration={async () => 10} …
+     62|     expect(screen.getByRole("button", { name: "Filming tips" })).toBeD…
+       |                   ^
+     63|   });
+     64| 
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[17/82]⎯
+
+ FAIL  src/components/__tests__/us03-filming-guide.test.tsx > US-03 filming guidance before recording > us03_guide_open_on_arrival_when_asked_to_refilm
+TestingLibraryElementError: Unable to find an accessible element with the role "dialog" and name "Filming tips: Squat"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/components/__tests__/us03-filming-guide.test.tsx:67:19
+     65|   it("us03_guide_open_on_arrival_when_asked_to_refilm", () => {
+     66|     render(<UploadForm upload={vi.fn()} readDuration={async () => 10} …
+     67|     expect(screen.getByRole("dialog", { name: "Filming tips: Squat" })…
+       |                   ^
+     68|   });
+     69| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[18/82]⎯
+
+ FAIL  src/components/__tests__/us04-upload-form.test.tsx > US-04 upload a set video from my phone > us04_file_input_accepts_videos_from_camera_or_library
+TestingLibraryElementError: Unable to find a label with the text of: Video of your set
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ getAllByLabelText node_modules/@testing-library/dom/dist/queries/label-text.js:111:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/components/__tests__/us04-upload-form.test.tsx:18:26
+     16|   it("us04_file_input_accepts_videos_from_camera_or_library", () => {
+     17|     render(<UploadForm upload={vi.fn()} readDuration={async () => 10} …
+     18|     const input = screen.getByLabelText("Video of your set");
+       |                          ^
+     19|     expect(input).toHaveAttribute("type", "file");
+     20|     expect(input.getAttribute("accept")).toContain("video/mp4");
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[19/82]⎯
+
+ FAIL  src/components/__tests__/us04-upload-form.test.tsx > US-04 upload a set video from my phone > us04_wrong_type_rejected_before_uploading
+TestingLibraryElementError: Unable to find a label with the text of: Squat
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ getAllByLabelText node_modules/@testing-library/dom/dist/queries/label-text.js:111:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/components/__tests__/us04-upload-form.test.tsx:27:34
+     25|     const upload = vi.fn();
+     26|     render(<UploadForm upload={upload} readDuration={async () => 10} /…
+     27|     await userEvent.click(screen.getByLabelText("Squat"));
+       |                                  ^
+     28|     await userEvent.click(screen.getByRole("button", { name: "Got it" …
+     29|     await userEvent.upload(screen.getByLabelText("Video of your set"),…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[20/82]⎯
+
+ FAIL  src/components/__tests__/us04-upload-form.test.tsx > US-04 upload a set video from my phone > us04_too_long_video_rejected_with_the_limit
+TestingLibraryElementError: Unable to find a label with the text of: Squat
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ getAllByLabelText node_modules/@testing-library/dom/dist/queries/label-text.js:111:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ chooseLiftAndFile src/components/__tests__/us04-upload-form.test.tsx:10:32
+      8| 
+      9| async function chooseLiftAndFile(file = videoFile()) {
+     10|   await userEvent.click(screen.getByLabelText("Squat"));
+       |                                ^
+     11|   await userEvent.click(screen.getByRole("button", { name: "Got it" })…
+     12|   await userEvent.upload(screen.getByLabelText("Video of your set"), f…
+ ❯ src/components/__tests__/us04-upload-form.test.tsx:37:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[21/82]⎯
+
+ FAIL  src/components/__tests__/us04-upload-form.test.tsx > US-04 upload a set video from my phone > us04_too_large_video_rejected_with_the_limit
+TestingLibraryElementError: Unable to find a label with the text of: Squat
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ getAllByLabelText node_modules/@testing-library/dom/dist/queries/label-text.js:111:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ chooseLiftAndFile src/components/__tests__/us04-upload-form.test.tsx:10:32
+      8| 
+      9| async function chooseLiftAndFile(file = videoFile()) {
+     10|   await userEvent.click(screen.getByLabelText("Squat"));
+       |                                ^
+     11|   await userEvent.click(screen.getByRole("button", { name: "Got it" })…
+     12|   await userEvent.upload(screen.getByLabelText("Video of your set"), f…
+ ❯ src/components/__tests__/us04-upload-form.test.tsx:44:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[22/82]⎯
+
+ FAIL  src/components/__tests__/us04-upload-form.test.tsx > US-04 upload a set video from my phone > us04_unreadable_duration_is_left_to_the_server
+TestingLibraryElementError: Unable to find a label with the text of: Squat
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ getAllByLabelText node_modules/@testing-library/dom/dist/queries/label-text.js:111:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ chooseLiftAndFile src/components/__tests__/us04-upload-form.test.tsx:10:32
+      8| 
+      9| async function chooseLiftAndFile(file = videoFile()) {
+     10|   await userEvent.click(screen.getByLabelText("Squat"));
+       |                                ^
+     11|   await userEvent.click(screen.getByRole("button", { name: "Got it" })…
+     12|   await userEvent.upload(screen.getByLabelText("Video of your set"), f…
+ ❯ src/components/__tests__/us04-upload-form.test.tsx:50:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[23/82]⎯
+
+ FAIL  src/components/__tests__/us04-upload-form.test.tsx > US-04 upload a set video from my phone > us04_progress_is_shown_as_a_percentage
+TestingLibraryElementError: Unable to find a label with the text of: Squat
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ getAllByLabelText node_modules/@testing-library/dom/dist/queries/label-text.js:111:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ chooseLiftAndFile src/components/__tests__/us04-upload-form.test.tsx:10:32
+      8| 
+      9| async function chooseLiftAndFile(file = videoFile()) {
+     10|   await userEvent.click(screen.getByLabelText("Squat"));
+       |                                ^
+     11|   await userEvent.click(screen.getByRole("button", { name: "Got it" })…
+     12|   await userEvent.upload(screen.getByLabelText("Video of your set"), f…
+ ❯ src/components/__tests__/us04-upload-form.test.tsx:58:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[24/82]⎯
+
+ FAIL  src/components/__tests__/us04-upload-form.test.tsx > US-04 upload a set video from my phone > us04_success_hands_back_the_analysis_id
+TestingLibraryElementError: Unable to find a label with the text of: Squat
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ getAllByLabelText node_modules/@testing-library/dom/dist/queries/label-text.js:111:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ chooseLiftAndFile src/components/__tests__/us04-upload-form.test.tsx:10:32
+      8| 
+      9| async function chooseLiftAndFile(file = videoFile()) {
+     10|   await userEvent.click(screen.getByLabelText("Squat"));
+       |                                ^
+     11|   await userEvent.click(screen.getByRole("button", { name: "Got it" })…
+     12|   await userEvent.upload(screen.getByLabelText("Video of your set"), f…
+ ❯ src/components/__tests__/us04-upload-form.test.tsx:70:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[25/82]⎯
+
+ FAIL  src/components/__tests__/us04-upload-form.test.tsx > US-04 upload a set video from my phone > us04_failed_upload_shows_error_with_retry_that_reuses_the_file
+TestingLibraryElementError: Unable to find a label with the text of: Squat
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ getAllByLabelText node_modules/@testing-library/dom/dist/queries/label-text.js:111:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ chooseLiftAndFile src/components/__tests__/us04-upload-form.test.tsx:10:32
+      8| 
+      9| async function chooseLiftAndFile(file = videoFile()) {
+     10|   await userEvent.click(screen.getByLabelText("Squat"));
+       |                                ^
+     11|   await userEvent.click(screen.getByRole("button", { name: "Got it" })…
+     12|   await userEvent.upload(screen.getByLabelText("Video of your set"), f…
+ ❯ src/components/__tests__/us04-upload-form.test.tsx:82:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[26/82]⎯
+
+ FAIL  src/components/__tests__/us04-upload-form.test.tsx > US-04 upload a set video from my phone > us04_server_rejection_message_is_shown
+TestingLibraryElementError: Unable to find a label with the text of: Squat
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ getAllByLabelText node_modules/@testing-library/dom/dist/queries/label-text.js:111:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ chooseLiftAndFile src/components/__tests__/us04-upload-form.test.tsx:10:32
+      8| 
+      9| async function chooseLiftAndFile(file = videoFile()) {
+     10|   await userEvent.click(screen.getByLabelText("Squat"));
+       |                                ^
+     11|   await userEvent.click(screen.getByRole("button", { name: "Got it" })…
+     12|   await userEvent.upload(screen.getByLabelText("Video of your set"), f…
+ ❯ src/components/__tests__/us04-upload-form.test.tsx:95:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[27/82]⎯
+
+ FAIL  src/components/__tests__/us05-us09-status.test.tsx > US-05 tell me when a video can't be analyzed > us05_unanalyzable_result_shows_the_reason_and_a_refilm_link
+TestingLibraryElementError: Unable to find an accessible element with the role "heading" and name "Couldn't analyze: body not clearly visible"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/components/__tests__/us05-us09-status.test.tsx:12:19
+     10|   it("us05_unanalyzable_result_shows_the_reason_and_a_refilm_link", ()…
+     11|     render(<ResultsView result={unanalyzableResult("Couldn't analyze: …
+     12|     expect(screen.getByRole("heading", { name: "Couldn't analyze: body…
+       |                   ^
+     13|     const refilm = screen.getByRole("link", { name: "Refilm" });
+     14|     expect(refilm).toHaveAttribute("href", "/upload?lift=squat&guide=1…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[28/82]⎯
+
+ FAIL  src/components/__tests__/us05-us09-status.test.tsx > US-09 safe fallback > us09_fallback_shows_the_note_and_measurements_but_no_coaching
+TestingLibraryElementError: Unable to find an element with the text: Coaching feedback isn't available for this video. Here are your measurements.. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/components/__tests__/us05-us09-status.test.tsx:22:19
+     20|   it("us09_fallback_shows_the_note_and_measurements_but_no_coaching", …
+     21|     render(<ResultsView result={fallbackResult()} onFeedback={noop} />…
+     22|     expect(screen.getByText("Coaching feedback isn't available for thi…
+       |                   ^
+     23|     expect(screen.queryByRole("heading", { name: /top fix/i })).not.to…
+     24|     expect(screen.queryByText("No major issues found")).not.toBeInTheD…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[29/82]⎯
+
+ FAIL  src/components/__tests__/us05-us09-status.test.tsx > US-09 safe fallback > us09_processing_and_failed_states
+TestingLibraryElementError: Unable to find an accessible element with the role "status"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/components/__tests__/us05-us09-status.test.tsx:35:19
+     33|   it("us09_processing_and_failed_states", () => {
+     34|     const { rerender } = render(<ResultsView result={passedResult({ st…
+     35|     expect(screen.getByRole("status")).toHaveTextContent("Analyzing yo…
+       |                   ^
+     36|     rerender(<ResultsView result={passedResult({ status: "failed", err…
+     37|     expect(screen.getByRole("alert")).toHaveTextContent("Something wen…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[30/82]⎯
+
+ FAIL  src/components/__tests__/us10-top-fix.test.tsx > US-10 show one top fix and one cue > us10_shows_exactly_one_top_fix_in_plain_language
+TestingLibraryElementError: Unable to find an accessible element with the role "heading" and name "Top fix"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:109:15
+ ❯ src/components/__tests__/us10-top-fix.test.tsx:13:19
+     11|   it("us10_shows_exactly_one_top_fix_in_plain_language", () => {
+     12|     render(<ResultsView result={passedResult()} onFeedback={noop} />);
+     13|     expect(screen.getAllByRole("heading", { name: "Top fix" })).toHave…
+       |                   ^
+     14|     const fix = screen.getByRole("region", { name: "Top fix" });
+     15|     expect(fix).toHaveTextContent("Hips rise before your shoulders");
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[31/82]⎯
+
+ FAIL  src/components/__tests__/us10-top-fix.test.tsx > US-10 show one top fix and one cue > us10_shows_exactly_one_cue_with_the_top_fix
+TestingLibraryElementError: Unable to find a label with the text of: Cue for your next set
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ getAllByLabelText node_modules/@testing-library/dom/dist/queries/label-text.js:111:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:109:15
+ ❯ src/components/__tests__/us10-top-fix.test.tsx:21:25
+     19|   it("us10_shows_exactly_one_cue_with_the_top_fix", () => {
+     20|     render(<ResultsView result={passedResult()} onFeedback={noop} />);
+     21|     const cues = screen.getAllByLabelText("Cue for your next set");
+       |                         ^
+     22|     expect(cues).toHaveLength(1);
+     23|     expect(cues[0]).toHaveTextContent("Drive your chest up with your h…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[32/82]⎯
+
+ FAIL  src/components/__tests__/us10-top-fix.test.tsx > US-10 show one top fix and one cue > us10_other_faults_are_collapsed_under_see_more
+TestingLibraryElementError: Unable to find an accessible element with the role "button" and name "See more"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/components/__tests__/us10-top-fix.test.tsx:29:27
+     27|   it("us10_other_faults_are_collapsed_under_see_more", async () => {
+     28|     render(<ResultsView result={passedResult()} onFeedback={noop} />);
+     29|     const toggle = screen.getByRole("button", { name: "See more" });
+       |                           ^
+     30|     expect(toggle).toHaveAttribute("aria-expanded", "false");
+     31|     expect(screen.queryByText("Bar drifts forward and back")).not.toBe…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[33/82]⎯
+
+ FAIL  src/components/__tests__/us10-top-fix.test.tsx > US-10 show one top fix and one cue > us10_no_major_issues_found
+TestingLibraryElementError: Unable to find an element with the text: No major issues found. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/components/__tests__/us10-top-fix.test.tsx:44:19
+     42|   it("us10_no_major_issues_found", () => {
+     43|     render(<ResultsView result={passedResult({ top_fix: null, cue: nul…
+     44|     expect(screen.getByText("No major issues found")).toBeInTheDocumen…
+       |                   ^
+     45|     expect(screen.queryByRole("heading", { name: "Top fix" })).not.toB…
+     46|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[34/82]⎯
+
+ FAIL  src/components/__tests__/us11-us12-frame-and-reps.test.tsx > US-11 annotated frame > us11_frame_image_and_caption_match_the_stored_values
+TestingLibraryElementError: Unable to find an accessible element with the role "img" and name "Rep 4 at 0:06.7 with the measurement Torso +14°"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/components/__tests__/us11-us12-frame-and-reps.test.tsx:15:19
+     13|   it("us11_frame_image_and_caption_match_the_stored_values", () => {
+     14|     render(<AnnotatedFrame frame={frame} onPlayFrom={vi.fn()} />);
+     15|     expect(screen.getByRole("img", { name: "Rep 4 at 0:06.7 with the m…
+       |                   ^
+     16|     const caption = screen.getByText(/Rep 4/);
+     17|     expect(caption).toHaveTextContent("Rep 4 · 0:06.7 · Torso +14°");
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[35/82]⎯
+
+ FAIL  src/components/__tests__/us11-us12-frame-and-reps.test.tsx > US-11 annotated frame > us11_tapping_the_frame_plays_from_the_start_of_that_rep
+TestingLibraryElementError: Unable to find an accessible element with the role "button" and name `/play rep 4/i`
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/components/__tests__/us11-us12-frame-and-reps.test.tsx:23:34
+     21|     const onPlayFrom = vi.fn();
+     22|     render(<AnnotatedFrame frame={frame} onPlayFrom={onPlayFrom} />);
+     23|     await userEvent.click(screen.getByRole("button", { name: /play rep…
+       |                                  ^
+     24|     expect(onPlayFrom).toHaveBeenCalledWith(5.53);
+     25|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[36/82]⎯
+
+ FAIL  src/components/__tests__/us11-us12-frame-and-reps.test.tsx > US-11 annotated frame > us11_time_format
+Error: not implemented
+ ❯ formatTime src/lib/format.ts:2:56
+      1| // TDD stub: not implemented yet.
+      2| export function formatTime(_s: number): string { throw new Error("not …
+       |                                                        ^
+      3| 
+ ❯ src/components/__tests__/us11-us12-frame-and-reps.test.tsx:28:12
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[37/82]⎯
+
+ FAIL  src/components/__tests__/us11-us12-frame-and-reps.test.tsx > US-12 rep-by-rep breakdown > us12_one_row_per_rep_in_order
+TestingLibraryElementError: Unable to find an accessible element with the role "listitem"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:109:15
+ ❯ src/components/__tests__/us11-us12-frame-and-reps.test.tsx:39:25
+     37|   it("us12_one_row_per_rep_in_order", () => {
+     38|     render(<RepBreakdown breakdown={breakdown} onSeek={vi.fn()} />);
+     39|     const rows = screen.getAllByRole("listitem");
+       |                         ^
+     40|     expect(rows).toHaveLength(5);
+     41|     expect(rows.map((r) => r.getAttribute("aria-label"))).toEqual(["Re…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[38/82]⎯
+
+ FAIL  src/components/__tests__/us11-us12-frame-and-reps.test.tsx > US-12 rep-by-rep breakdown > us12_rows_show_clean_or_their_faults
+TestingLibraryElementError: Unable to find an accessible element with the role "listitem" and name "Rep 1"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/components/__tests__/us11-us12-frame-and-reps.test.tsx:46:26
+     44|   it("us12_rows_show_clean_or_their_faults", () => {
+     45|     render(<RepBreakdown breakdown={breakdown} onSeek={vi.fn()} />);
+     46|     expect(within(screen.getByRole("listitem", { name: "Rep 1" })).get…
+       |                          ^
+     47|     const rep4 = screen.getByRole("listitem", { name: "Rep 4" });
+     48|     expect(rep4).toHaveTextContent("Hips rise before your shoulders");
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[39/82]⎯
+
+ FAIL  src/components/__tests__/us11-us12-frame-and-reps.test.tsx > US-12 rep-by-rep breakdown > us12_fatigue_note_shown_when_present
+TestingLibraryElementError: Unable to find an element with the text: Form broke down late in the set, likely from fatigue.. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/components/__tests__/us11-us12-frame-and-reps.test.tsx:54:19
+     52|   it("us12_fatigue_note_shown_when_present", () => {
+     53|     const { rerender } = render(<RepBreakdown breakdown={breakdown} on…
+     54|     expect(screen.getByText("Form broke down late in the set, likely f…
+       |                   ^
+     55|     rerender(<RepBreakdown breakdown={{ ...breakdown, fatigue_note: nu…
+     56|     expect(screen.queryByText(/likely from fatigue/)).not.toBeInTheDoc…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[40/82]⎯
+
+ FAIL  src/components/__tests__/us11-us12-frame-and-reps.test.tsx > US-12 rep-by-rep breakdown > us12_tapping_a_row_seeks_to_that_rep
+TestingLibraryElementError: Unable to find an accessible element with the role "listitem" and name "Rep 3"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/components/__tests__/us11-us12-frame-and-reps.test.tsx:62:41
+     60|     const onSeek = vi.fn();
+     61|     render(<RepBreakdown breakdown={breakdown} onSeek={onSeek} />);
+     62|     await userEvent.click(within(screen.getByRole("listitem", { name: …
+       |                                         ^
+     63|     expect(onSeek).toHaveBeenCalledWith(breakdown.rows[2].start_time);
+     64|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[41/82]⎯
+
+ FAIL  src/components/__tests__/us13-us14-us15-results.test.tsx > US-13 say what couldn't be measured > us13_not_measured_checks_listed_with_reasons
+TestingLibraryElementError: Unable to find an accessible element with the role "region" and name "Not measured"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/components/__tests__/us13-us14-us15-results.test.tsx:18:28
+     16|       { check: "rounded_back", name: "Your back rounds during the pull…
+     17|     ]} />);
+     18|     const section = screen.getByRole("region", { name: "Not measured" …
+       |                            ^
+     19|     expect(section).toHaveTextContent("Knees cave inward");
+     20|     expect(section).toHaveTextContent("needs a front view");
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[42/82]⎯
+
+ FAIL  src/components/__tests__/us13-us14-us15-results.test.tsx > US-13 say what couldn't be measured > us13_not_measured_check_is_not_shown_as_a_fault
+TestingLibraryElementError: Unable to find an accessible element with the role "region" and name "Top fix"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/components/__tests__/us13-us14-us15-results.test.tsx:33:24
+     31|   it("us13_not_measured_check_is_not_shown_as_a_fault", () => {
+     32|     render(<ResultsView result={passedResult()} onFeedback={noop} />);
+     33|     const fix = screen.getByRole("region", { name: "Top fix" });
+       |                        ^
+     34|     expect(fix).not.toHaveTextContent("Knees cave inward");
+     35|     expect(screen.getByRole("region", { name: "Not measured" })).toHav…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[43/82]⎯
+
+ FAIL  src/components/__tests__/us13-us14-us15-results.test.tsx > US-14 safety issues come first > us14_safety_top_fix_shows_a_warning_label
+TestingLibraryElementError: Unable to find an accessible element with the role "region" and name "Top fix"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/components/__tests__/us13-us14-us15-results.test.tsx:44:24
+     42|       top_fix: { fault_id: "knee_cave", title: "Knees cave inward", ca…
+     43|     })} onFeedback={noop} />);
+     44|     const fix = screen.getByRole("region", { name: "Top fix" });
+       |                        ^
+     45|     expect(within(fix).getByText("Safety issue")).toBeInTheDocument();
+     46|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[44/82]⎯
+
+ FAIL  src/components/__tests__/us13-us14-us15-results.test.tsx > US-14 safety issues come first > us14_safety_faults_under_see_more_are_labeled_too
+TestingLibraryElementError: Unable to find an accessible element with the role "button" and name "See more"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/components/__tests__/us13-us14-us15-results.test.tsx:57:34
+     55|       other_faults: [{ fault_id: "elbow_flare", title: "Elbows flare o…
+     56|     })} onFeedback={noop} />);
+     57|     await userEvent.click(screen.getByRole("button", { name: "See more…
+       |                                  ^
+     58|     expect(screen.getByText("Safety issue")).toBeInTheDocument();
+     59|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[45/82]⎯
+
+ FAIL  src/components/__tests__/us13-us14-us15-results.test.tsx > US-15 recommend a professional if I mention pain > us15_note_field_is_optional_and_limited_to_300_characters
+TestingLibraryElementError: Unable to find a label with the text of: Anything we should know? (optional)
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ getAllByLabelText node_modules/@testing-library/dom/dist/queries/label-text.js:111:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/components/__tests__/us13-us14-us15-results.test.tsx:66:25
+     64|     const upload = vi.fn().mockResolvedValue({ analysis_id: "a1" });
+     65|     render(<UploadForm upload={upload} readDuration={async () => 10} /…
+     66|     const note = screen.getByLabelText("Anything we should know? (opti…
+       |                         ^
+     67|     expect(note).toHaveAttribute("maxLength", "300");
+     68|     expect(note).not.toBeRequired();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[46/82]⎯
+
+ FAIL  src/components/__tests__/us13-us14-us15-results.test.tsx > US-15 recommend a professional if I mention pain > us15_note_counter_and_text_are_sent
+TestingLibraryElementError: Unable to find a label with the text of: Anything we should know? (optional)
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ getAllByLabelText node_modules/@testing-library/dom/dist/queries/label-text.js:111:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/components/__tests__/us13-us14-us15-results.test.tsx:79:33
+     77|     const upload = vi.fn().mockResolvedValue({ analysis_id: "a1" });
+     78|     render(<UploadForm upload={upload} readDuration={async () => 10} /…
+     79|     await userEvent.type(screen.getByLabelText("Anything we should kno…
+       |                                 ^
+     80|     expect(screen.getByText("13/300")).toBeInTheDocument();
+     81|     await userEvent.click(screen.getByLabelText("Squat"));
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[47/82]⎯
+
+ FAIL  src/components/__tests__/us13-us14-us15-results.test.tsx > US-15 recommend a professional if I mention pain > us15_note_cannot_exceed_300_characters
+TestingLibraryElementError: Unable to find a label with the text of: Anything we should know? (optional)
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ getAllByLabelText node_modules/@testing-library/dom/dist/queries/label-text.js:111:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/components/__tests__/us13-us14-us15-results.test.tsx:90:25
+     88|   it("us15_note_cannot_exceed_300_characters", async () => {
+     89|     render(<UploadForm upload={vi.fn()} readDuration={async () => 10} …
+     90|     const note = screen.getByLabelText("Anything we should know? (opti…
+       |                         ^
+     91|     await userEvent.click(note);
+     92|     await userEvent.paste("a".repeat(320));
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[48/82]⎯
+
+ FAIL  src/components/__tests__/us13-us14-us15-results.test.tsx > US-15 recommend a professional if I mention pain > us15_results_show_the_professional_recommendation
+TestingLibraryElementError: Unable to find an accessible element with the role "note" and name "See a professional"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/components/__tests__/us13-us14-us15-results.test.tsx:99:19
+     97|     const message = "You mentioned pain or an injury. Please see a doc…
+     98|     render(<ResultsView result={passedResult({ professional_message: m…
+     99|     expect(screen.getByRole("note", { name: "See a professional" })).t…
+       |                   ^
+    100|   });
+    101| 
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[49/82]⎯
+
+ FAIL  src/components/__tests__/us16-feedback.test.tsx > US-16 rate the feedback and say if I tried the cue > us16_asks_for_a_1_to_5_rating_and_whether_the_cue_was_tried
+TestingLibraryElementError: Unable to find an accessible element with the role "radiogroup" and name "How helpful was this feedback?"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/components/__tests__/us16-feedback.test.tsx:13:27
+     11|   it("us16_asks_for_a_1_to_5_rating_and_whether_the_cue_was_tried", ()…
+     12|     render(<FeedbackForm initial={null} onSubmit={vi.fn()} />);
+     13|     const rating = screen.getByRole("radiogroup", { name: "How helpful…
+       |                           ^
+     14|     expect(within(rating).getAllByRole("radio").map((r) => r.getAttrib…
+     15|     const tried = screen.getByRole("radiogroup", { name: "Did you try …
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[50/82]⎯
+
+ FAIL  src/components/__tests__/us16-feedback.test.tsx > US-16 rate the feedback and say if I tried the cue > us16_submits_the_answers
+TestingLibraryElementError: Unable to find a label with the text of: 4
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ getAllByLabelText node_modules/@testing-library/dom/dist/queries/label-text.js:111:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/components/__tests__/us16-feedback.test.tsx:22:34
+     20|     const onSubmit = vi.fn().mockResolvedValue(undefined);
+     21|     render(<FeedbackForm initial={null} onSubmit={onSubmit} />);
+     22|     await userEvent.click(screen.getByLabelText("4"));
+       |                                  ^
+     23|     await userEvent.click(screen.getByLabelText("Not yet"));
+     24|     await userEvent.click(screen.getByRole("button", { name: "Send fee…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[51/82]⎯
+
+ FAIL  src/components/__tests__/us16-feedback.test.tsx > US-16 rate the feedback and say if I tried the cue > us16_shows_the_previous_answer_and_allows_changing_it
+TestingLibraryElementError: Unable to find a label with the text of: 2
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ getAllByLabelText node_modules/@testing-library/dom/dist/queries/label-text.js:111:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/components/__tests__/us16-feedback.test.tsx:31:19
+     29|   it("us16_shows_the_previous_answer_and_allows_changing_it", () => {
+     30|     render(<FeedbackForm initial={{ rating: 2, tried_cue: "yes" }} onS…
+     31|     expect(screen.getByLabelText("2")).toBeChecked();
+       |                   ^
+     32|     expect(screen.getByLabelText("Yes")).toBeChecked();
+     33|     expect(screen.getByRole("button", { name: "Update feedback" })).to…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[52/82]⎯
+
+ FAIL  src/components/__tests__/us16-feedback.test.tsx > US-16 rate the feedback and say if I tried the cue > us16_send_disabled_until_something_is_chosen
+TestingLibraryElementError: Unable to find an accessible element with the role "button" and name "Send feedback"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/components/__tests__/us16-feedback.test.tsx:38:19
+     36|   it("us16_send_disabled_until_something_is_chosen", () => {
+     37|     render(<FeedbackForm initial={null} onSubmit={vi.fn()} />);
+     38|     expect(screen.getByRole("button", { name: "Send feedback" })).toBe…
+       |                   ^
+     39|   });
+     40| 
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[53/82]⎯
+
+ FAIL  src/components/__tests__/us16-feedback.test.tsx > US-16 rate the feedback and say if I tried the cue > us16_every_results_screen_asks_for_feedback
+TestingLibraryElementError: Unable to find an accessible element with the role "radiogroup" and name "How helpful was this feedback?"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/components/__tests__/us16-feedback.test.tsx:44:21
+     42|     for (const result of [passedResult(), fallbackResult(), unanalyzab…
+     43|       const { unmount } = render(<ResultsView result={result} onFeedba…
+     44|       expect(screen.getByRole("radiogroup", { name: "How helpful was t…
+       |                     ^
+     45|       unmount();
+     46|     }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[54/82]⎯
+
+ FAIL  src/components/__tests__/us16-feedback.test.tsx > US-16 rate the feedback and say if I tried the cue > us16_asks_about_the_previous_cue_for_the_same_lift
+TestingLibraryElementError: Unable to find an element with the text: /Last squat, your cue was “Push your knees out”\. Did you try it\?/. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/components/__tests__/us16-feedback.test.tsx:57:19
+     55|     const onAnswer = vi.fn().mockResolvedValue(undefined);
+     56|     render(<PreviousCuePrompt prompt={{ analysis_id: "old", cue: "Push…
+     57|     expect(screen.getByText(/Last squat, your cue was “Push your knees…
+       |                   ^
+     58|     await userEvent.click(screen.getByRole("button", { name: "Yes" }));
+     59|     expect(onAnswer).toHaveBeenCalledWith("old", "yes");
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[55/82]⎯
+
+ FAIL  src/components/__tests__/us16-feedback.test.tsx > US-16 rate the feedback and say if I tried the cue > us16_results_include_the_previous_cue_prompt_when_given
+TestingLibraryElementError: Unable to find an element with the text: /your cue was “Brace hard”/. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/components/__tests__/us16-feedback.test.tsx:65:19
+     63|   it("us16_results_include_the_previous_cue_prompt_when_given", () => {
+     64|     const { rerender } = render(<ResultsView result={passedResult({ pr…
+     65|     expect(screen.getByText(/your cue was “Brace hard”/)).toBeInTheDoc…
+       |                   ^
+     66|     rerender(<ResultsView result={passedResult()} onFeedback={vi.fn()}…
+     67|     expect(screen.queryByText(/your cue was/)).not.toBeInTheDocument();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[56/82]⎯
+
+ FAIL  src/components/__tests__/us17-us18-lists.test.tsx > US-17 upload history > us17_lists_entries_with_date_lift_reps_and_top_fix
+TestingLibraryElementError: Unable to find an accessible element with the role "listitem"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:109:15
+ ❯ src/components/__tests__/us17-us18-lists.test.tsx:32:26
+     30|   it("us17_lists_entries_with_date_lift_reps_and_top_fix", () => {
+     31|     render(<HistoryList items={history} />);
+     32|     const first = screen.getAllByRole("listitem")[0];
+       |                          ^
+     33|     expect(first).toHaveTextContent("Deadlift");
+     34|     expect(first).toHaveTextContent("3 reps");
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[57/82]⎯
+
+ FAIL  src/components/__tests__/us17-us18-lists.test.tsx > US-17 upload history > us17_history_can_be_filtered_by_lift
+TestingLibraryElementError: Unable to find a label with the text of: Lift
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ getAllByLabelText node_modules/@testing-library/dom/dist/queries/label-text.js:111:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/components/__tests__/us17-us18-lists.test.tsx:42:42
+     40|   it("us17_history_can_be_filtered_by_lift", async () => {
+     41|     render(<HistoryList items={history} />);
+     42|     await userEvent.selectOptions(screen.getByLabelText("Lift"), "squa…
+       |                                          ^
+     43|     expect(screen.getAllByRole("listitem")).toHaveLength(2);
+     44|     await userEvent.selectOptions(screen.getByLabelText("Lift"), "benc…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[58/82]⎯
+
+ FAIL  src/components/__tests__/us17-us18-lists.test.tsx > US-17 upload history > us17_unanalyzable_and_fallback_entries_show_their_status
+TestingLibraryElementError: Unable to find an accessible element with the role "listitem"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:109:15
+ ❯ src/components/__tests__/us17-us18-lists.test.tsx:53:47
+     51|   it("us17_unanalyzable_and_fallback_entries_show_their_status", () =>…
+     52|     render(<HistoryList items={history} />);
+     53|     const [, fallback, unanalyzable] = screen.getAllByRole("listitem");
+       |                                               ^
+     54|     expect(fallback).toHaveTextContent("Measurements only");
+     55|     expect(unanalyzable).toHaveTextContent("Couldn't analyze");
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[59/82]⎯
+
+ FAIL  src/components/__tests__/us17-us18-lists.test.tsx > US-18 inspect analyses and validator logs > us18_table_shows_lift_attempts_and_final_status
+TestingLibraryElementError: Unable to find an accessible element with the role "row"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:109:15
+ ❯ src/components/__tests__/us17-us18-lists.test.tsx:62:25
+     60|   it("us18_table_shows_lift_attempts_and_final_status", () => {
+     61|     render(<AdminAnalysesTable items={admin} />);
+     62|     const rows = screen.getAllByRole("row").slice(1);
+       |                         ^
+     63|     expect(rows).toHaveLength(3);
+     64|     expect(rows[1]).toHaveTextContent("Deadlift");
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[60/82]⎯
+
+ FAIL  src/components/__tests__/us17-us18-lists.test.tsx > US-18 inspect analyses and validator logs > us18_filter_by_lift_and_final_status
+TestingLibraryElementError: Unable to find a label with the text of: Lift
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ getAllByLabelText node_modules/@testing-library/dom/dist/queries/label-text.js:111:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/components/__tests__/us17-us18-lists.test.tsx:72:42
+     70|   it("us18_filter_by_lift_and_final_status", async () => {
+     71|     render(<AdminAnalysesTable items={admin} />);
+     72|     await userEvent.selectOptions(screen.getByLabelText("Lift"), "squa…
+       |                                          ^
+     73|     expect(screen.getAllByRole("row").slice(1)).toHaveLength(2);
+     74|     await userEvent.selectOptions(screen.getByLabelText("Final status"…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[61/82]⎯
+
+ FAIL  src/components/__tests__/us17-us18-lists.test.tsx > US-18 inspect analyses and validator logs > us18_status_filter_offers_the_four_final_statuses
+TestingLibraryElementError: Unable to find a label with the text of: Final status
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ getAllByLabelText node_modules/@testing-library/dom/dist/queries/label-text.js:111:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/components/__tests__/us17-us18-lists.test.tsx:82:35
+     80|   it("us18_status_filter_offers_the_four_final_statuses", () => {
+     81|     render(<AdminAnalysesTable items={admin} />);
+     82|     const options = within(screen.getByLabelText("Final status")).getA…
+       |                                   ^
+     83|     expect(options).toEqual(["All", "Passed first try", "Passed after …
+     84|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[62/82]⎯
+
+ FAIL  src/components/__tests__/us17-us18-lists.test.tsx > US-18 inspect analyses and validator logs > us18_error_summary_shows_counts_per_error_type
+TestingLibraryElementError: Unable to find an accessible element with the role "listitem"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:109:15
+ ❯ src/components/__tests__/us17-us18-lists.test.tsx:88:25
+     86|   it("us18_error_summary_shows_counts_per_error_type", () => {
+     87|     render(<ErrorSummary counts={{ rep_count: 4, fault_not_confirmed: …
+     88|     const rows = screen.getAllByRole("listitem");
+       |                         ^
+     89|     expect(rows[0]).toHaveTextContent("Wrong rep count");
+     90|     expect(rows[0]).toHaveTextContent("4");
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[63/82]⎯
+
+ FAIL  src/components/__tests__/us17-us18-lists.test.tsx > US-18 inspect analyses and validator logs > us18_error_summary_empty_state
+TestingLibraryElementError: Unable to find an element with the text: No validator errors yet.. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/components/__tests__/us17-us18-lists.test.tsx:97:19
+     95|   it("us18_error_summary_empty_state", () => {
+     96|     render(<ErrorSummary counts={{}} />);
+     97|     expect(screen.getByText("No validator errors yet.")).toBeInTheDocu…
+       |                   ^
+     98|   });
+     99| 
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[64/82]⎯
+
+ FAIL  src/components/__tests__/us17-us18-lists.test.tsx > US-18 inspect analyses and validator logs > us18_non_admins_see_403
+TestingLibraryElementError: Unable to find an accessible element with the role "heading" and name "403: Admins only"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/components/__tests__/us17-us18-lists.test.tsx:102:19
+    100|   it("us18_non_admins_see_403", () => {
+    101|     render(<AdminForbidden />);
+    102|     expect(screen.getByRole("heading", { name: "403: Admins only" })).…
+       |                   ^
+    103|   });
+    104| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[65/82]⎯
+
+ FAIL  src/lib/__tests__/us04-upload-request.test.ts > US-04 upload request > us04_upload_reports_progress_as_a_percentage
+Error: not implemented
+ ❯ uploadVideo src/lib/api.ts:6:83
+      4| }
+      5| // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      6| export function uploadVideo(_args: any): Promise<{ analysis_id: string…
+       |                                                                                   ^
+      7| 
+ ❯ src/lib/__tests__/us04-upload-request.test.ts:31:21
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[66/82]⎯
+
+ FAIL  src/lib/__tests__/us04-upload-request.test.ts > US-04 upload request > us04_upload_sends_file_lift_note_and_token
+Error: not implemented
+ ❯ uploadVideo src/lib/api.ts:6:83
+      4| }
+      5| // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      6| export function uploadVideo(_args: any): Promise<{ analysis_id: string…
+       |                                                                                   ^
+      7| 
+ ❯ src/lib/__tests__/us04-upload-request.test.ts:46:21
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[67/82]⎯
+
+ FAIL  src/lib/__tests__/us04-upload-request.test.ts > US-04 upload request > us04_upload_rejects_with_the_server_message
+Error: not implemented
+ ❯ uploadVideo src/lib/api.ts:6:83
+      4| }
+      5| // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      6| export function uploadVideo(_args: any): Promise<{ analysis_id: string…
+       |                                                                                   ^
+      7| 
+ ❯ src/lib/__tests__/us04-upload-request.test.ts:62:21
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[68/82]⎯
+
+ FAIL  src/lib/__tests__/us04-upload-request.test.ts > US-04 upload request > us04_upload_rejects_on_network_error
+Error: not implemented
+ ❯ uploadVideo src/lib/api.ts:6:83
+      4| }
+      5| // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      6| export function uploadVideo(_args: any): Promise<{ analysis_id: string…
+       |                                                                                   ^
+      7| 
+ ❯ src/lib/__tests__/us04-upload-request.test.ts:71:21
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[69/82]⎯
+
+ FAIL  src/lib/__tests__/us04-video-file.test.ts > US-04 video file checks before uploading > us04_limits_and_messages
+AssertionError: expected +0 to be 60 // Object.is equality
+
+- Expected
++ Received
+
+- 60
++ 0
+
+ ❯ src/lib/__tests__/us04-video-file.test.ts:10:34
+      8| describe("US-04 video file checks before uploading", () => {
+      9|   it("us04_limits_and_messages", () => {
+     10|     expect(MAX_DURATION_SECONDS).toBe(60);
+       |                                  ^
+     11|     expect(MAX_SIZE_BYTES).toBe(200 * 1024 * 1024);
+     12|     expect(TYPE_MESSAGE).toBe("Please upload an MP4 or MOV video");
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[70/82]⎯
+
+ FAIL  src/lib/__tests__/us04-video-file.test.ts > US-04 video file checks before uploading > us04_accepts_mp4_and_mov_set.mp4
+ FAIL  src/lib/__tests__/us04-video-file.test.ts > US-04 video file checks before uploading > us04_accepts_mp4_and_mov_IMG_0042.MOV
+ FAIL  src/lib/__tests__/us04-video-file.test.ts > US-04 video file checks before uploading > us04_accepts_mp4_and_mov_clip.mov
+ FAIL  src/lib/__tests__/us04-video-file.test.ts > US-04 video file checks before uploading > us04_accepts_mp4_and_mov_clip.MP4
+Error: not implemented
+ ❯ checkVideoType src/lib/videoFile.ts:7:68
+      5| export const DURATION_MESSAGE = "";
+      6| export const SIZE_MESSAGE = "";
+      7| export function checkVideoType(_file: File): string | null { throw new…
+       |                                                                    ^
+      8| export function validateVideoFile(_file: File, _duration: number): str…
+      9| 
+ ❯ src/lib/__tests__/us04-video-file.test.ts:23:12
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[71/82]⎯
+
+ FAIL  src/lib/__tests__/us04-video-file.test.ts > US-04 video file checks before uploading > us04_rejects_other_types_set.avi
+ FAIL  src/lib/__tests__/us04-video-file.test.ts > US-04 video file checks before uploading > us04_rejects_other_types_set.webm
+ FAIL  src/lib/__tests__/us04-video-file.test.ts > US-04 video file checks before uploading > us04_rejects_other_types_photo.jpg
+ FAIL  src/lib/__tests__/us04-video-file.test.ts > US-04 video file checks before uploading > us04_rejects_other_types_set.mp4.exe
+ FAIL  src/lib/__tests__/us04-video-file.test.ts > US-04 video file checks before uploading > us04_rejects_other_types_noextension
+Error: not implemented
+ ❯ checkVideoType src/lib/videoFile.ts:7:68
+      5| export const DURATION_MESSAGE = "";
+      6| export const SIZE_MESSAGE = "";
+      7| export function checkVideoType(_file: File): string | null { throw new…
+       |                                                                    ^
+      8| export function validateVideoFile(_file: File, _duration: number): str…
+      9| 
+ ❯ src/lib/__tests__/us04-video-file.test.ts:33:12
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[72/82]⎯
+
+ FAIL  src/lib/__tests__/us04-video-file.test.ts > US-04 video file checks before uploading > us04_rejects_videos_longer_than_60_seconds
+Error: not implemented
+ ❯ validateVideoFile src/lib/videoFile.ts:8:90
+      6| export const SIZE_MESSAGE = "";
+      7| export function checkVideoType(_file: File): string | null { throw new…
+      8| export function validateVideoFile(_file: File, _duration: number): str…
+       |                                                                                          ^
+      9| 
+ ❯ src/lib/__tests__/us04-video-file.test.ts:37:12
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[73/82]⎯
+
+ FAIL  src/lib/__tests__/us04-video-file.test.ts > US-04 video file checks before uploading > us04_rejects_videos_larger_than_200_mb
+Error: not implemented
+ ❯ validateVideoFile src/lib/videoFile.ts:8:90
+      6| export const SIZE_MESSAGE = "";
+      7| export function checkVideoType(_file: File): string | null { throw new…
+      8| export function validateVideoFile(_file: File, _duration: number): str…
+       |                                                                                          ^
+      9| 
+ ❯ src/lib/__tests__/us04-video-file.test.ts:42:12
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[74/82]⎯
+
+ FAIL  src/lib/__tests__/us04-video-file.test.ts > US-04 video file checks before uploading > us04_type_is_checked_first
+Error: not implemented
+ ❯ validateVideoFile src/lib/videoFile.ts:8:90
+      6| export const SIZE_MESSAGE = "";
+      7| export function checkVideoType(_file: File): string | null { throw new…
+      8| export function validateVideoFile(_file: File, _duration: number): str…
+       |                                                                                          ^
+      9| 
+ ❯ src/lib/__tests__/us04-video-file.test.ts:47:12
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[75/82]⎯
+
+
+ Test Files  12 failed (12)
+      Tests  82 failed | 6 passed (88)
+   Start at  21:49:11
+   Duration  2.72s (transform 1.15s, setup 3.10s, collect 1.64s, tests 1.69s, environment 7.40s, prepare 775ms)
+

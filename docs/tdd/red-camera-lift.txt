@@ -1,0 +1,22 @@
+Camera angle, lift choice and 'No major issues' wording: new tests run against the original code
+
+Backend (pytest -k 'turned or standing_lift_is_kept'):
+FAILED tests/test_us06_measure.py::test_us06_a_slightly_turned_side_view_is_still_side
+FAILED tests/test_us06_measure.py::test_us06_hips_rising_early_is_caught_on_a_slightly_turned_side_view
+FAILED tests/test_us08_validator.py::test_us08_selected_standing_lift_is_kept_when_detection_disagrees[squat-deadlift]
+FAILED tests/test_us08_validator.py::test_us08_selected_standing_lift_is_kept_when_detection_disagrees[deadlift-squat]
+4 failed, 80 deselected in 0.10s
+
+Frontend (vitest us10-top-fix):
+   ✓ US-10 show one top fix and one cue > us10_shows_exactly_one_top_fix_in_plain_language 67ms
+   ✓ US-10 show one top fix and one cue > us10_shows_exactly_one_cue_with_the_top_fix 8ms
+   ✓ US-10 show one top fix and one cue > us10_other_faults_are_collapsed_under_see_more 29ms
+   ✓ US-10 show one top fix and one cue > us10_no_see_more_without_other_faults 11ms
+   ✓ US-10 show one top fix and one cue > us10_no_major_issues_found 5ms
+   × US-10 show one top fix and one cue > us10_no_major_issues_says_how_many_checks_were_skipped 7ms
+   × US-10 show one top fix and one cue > us10_no_major_issues_says_one_check_was_skipped 4ms
+   ✓ US-10 show one top fix and one cue > us10_no_major_issues_has_no_skipped_note_when_everything_was_checked 3ms
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+      Tests  2 failed | 6 passed (8)
+
+(us10_no_major_issues_has_no_skipped_note_when_everything_was_checked passes on the old code: it's an absence check paired with the two failing tests.)
