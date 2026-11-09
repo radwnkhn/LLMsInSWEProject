@@ -1,0 +1,131 @@
+FFFFFFFFFFFFFFFFFFFF                                                     [100%]
+================================== FAILURES ===================================
+_ test_us20_same_lift_uploads_show_saved_videos_and_key_measurements_in_chronological_order _
+tests\test_us20_comparison.py:25: in test_us20_same_lift_uploads_show_saved_videos_and_key_measurements_in_chronological_order
+    assert response.status_code == 200
+E   assert 404 == 200
+E    +  where 404 = <Response [404 Not Found]>.status_code
+_ test_us20_earlier_fault_is_not_detected_when_new_measurements_no_longer_confirm_it _
+tests\test_us20_comparison.py:42: in test_us20_earlier_fault_is_not_detected_when_new_measurements_no_longer_confirm_it
+    assert response.status_code == 200
+E   assert 404 == 200
+E    +  where 404 = <Response [404 Not Found]>.status_code
+_ test_us20_earlier_fault_is_still_present_even_when_it_is_not_the_new_top_fix _
+tests\test_us20_comparison.py:55: in test_us20_earlier_fault_is_still_present_even_when_it_is_not_the_new_top_fix
+    assert response.status_code == 200
+E   assert 404 == 200
+E    +  where 404 = <Response [404 Not Found]>.status_code
+______ test_us20_unmeasurable_faults_are_never_reported_as_fixed[camera] ______
+tests\test_us20_comparison.py:76: in test_us20_unmeasurable_faults_are_never_reported_as_fixed
+    assert response.status_code == 200
+E   assert 404 == 200
+E    +  where 404 = <Response [404 Not Found]>.status_code
+____ test_us20_unmeasurable_faults_are_never_reported_as_fixed[confidence] ____
+tests\test_us20_comparison.py:76: in test_us20_unmeasurable_faults_are_never_reported_as_fixed
+    assert response.status_code == 200
+E   assert 404 == 200
+E    +  where 404 = <Response [404 Not Found]>.status_code
+___ test_us20_unmeasurable_faults_are_never_reported_as_fixed[missing_rep] ____
+tests\test_us20_comparison.py:76: in test_us20_unmeasurable_faults_are_never_reported_as_fixed
+    assert response.status_code == 200
+E   assert 404 == 200
+E    +  where 404 = <Response [404 Not Found]>.status_code
+___ test_us20_unmeasurable_faults_are_never_reported_as_fixed[all_missing] ____
+tests\test_us20_comparison.py:76: in test_us20_unmeasurable_faults_are_never_reported_as_fixed
+    assert response.status_code == 200
+E   assert 404 == 200
+E    +  where 404 = <Response [404 Not Found]>.status_code
+_ test_us20_measurements_only_results_can_be_compared_without_inventing_coaching _
+tests\test_us20_comparison.py:84: in test_us20_measurements_only_results_can_be_compared_without_inventing_coaching
+    assert response.status_code == 200
+E   assert 404 == 200
+E    +  where 404 = <Response [404 Not Found]>.status_code
+____________ test_us20_no_earlier_top_fault_is_reported_explicitly ____________
+tests\test_us20_comparison.py:95: in test_us20_no_earlier_top_fault_is_reported_explicitly
+    assert response.status_code == 200
+E   assert 404 == 200
+E    +  where 404 = <Response [404 Not Found]>.status_code
+_ test_us20_lift_specific_measurements_are_available_for_other_lifts[deadlift-deadlift.mp4] _
+tests\test_us20_comparison.py:105: in test_us20_lift_specific_measurements_are_available_for_other_lifts
+    assert response.status_code == 200
+E   assert 404 == 200
+E    +  where 404 = <Response [404 Not Found]>.status_code
+_ test_us20_lift_specific_measurements_are_available_for_other_lifts[bench_press-bench.mp4] _
+tests\test_us20_comparison.py:105: in test_us20_lift_specific_measurements_are_available_for_other_lifts
+    assert response.status_code == 200
+E   assert 404 == 200
+E    +  where 404 = <Response [404 Not Found]>.status_code
+_______ test_us20_different_lifts_are_rejected_even_for_the_same_owner ________
+tests\test_us20_comparison.py:116: in test_us20_different_lifts_are_rejected_even_for_the_same_owner
+    assert response.status_code == 422
+E   assert 404 == 422
+E    +  where 404 = <Response [404 Not Found]>.status_code
+_ test_us20_detected_lift_mismatch_cannot_silently_compare_different_movements _
+tests\test_us20_comparison.py:124: in test_us20_detected_lift_mismatch_cannot_silently_compare_different_movements
+    assert compare(client, headers, older, newer).status_code == 422
+E   AssertionError: assert 404 == 422
+E    +  where 404 = <Response [404 Not Found]>.status_code
+E    +    where <Response [404 Not Found]> = compare(<starlette.testclient.TestClient object at 0x000002AE67E9DD00>, {'Authorization': 'Bearer _AaxE1e5zARr1d8cn3hYdus9lzXRppfS'}, 'd96fd665-feff-420e-92d4-39593b23b139', 'a7019970-3284-485c-8f96-74636a3c0659')
+_ test_us20_unfinished_failed_and_unanalyzable_uploads_cannot_be_compared[queued-None] _
+tests\test_us20_comparison.py:131: in test_us20_unfinished_failed_and_unanalyzable_uploads_cannot_be_compared
+    assert compare(client, headers, older, newer).status_code == 409
+E   AssertionError: assert 404 == 409
+E    +  where 404 = <Response [404 Not Found]>.status_code
+E    +    where <Response [404 Not Found]> = compare(<starlette.testclient.TestClient object at 0x000002AE680F58C0>, {'Authorization': 'Bearer X0WyeXHhMMrs9iC4eifB8f-Lljd_wwDz'}, '0714cbc7-ffbd-4587-a150-493e8a6f4558', 'f666300f-bb34-4cd6-952c-c062b66ba9f0')
+_ test_us20_unfinished_failed_and_unanalyzable_uploads_cannot_be_compared[processing-None] _
+tests\test_us20_comparison.py:131: in test_us20_unfinished_failed_and_unanalyzable_uploads_cannot_be_compared
+    assert compare(client, headers, older, newer).status_code == 409
+E   AssertionError: assert 404 == 409
+E    +  where 404 = <Response [404 Not Found]>.status_code
+E    +    where <Response [404 Not Found]> = compare(<starlette.testclient.TestClient object at 0x000002AE680F6F10>, {'Authorization': 'Bearer RO6JVoXehspL9YjNox1hDwWiroDY9-7t'}, 'c1ed6c4a-6e71-4502-b110-e74b8d0400a3', '823eba78-5dd6-41f3-87c3-3b6671d80c30')
+_ test_us20_unfinished_failed_and_unanalyzable_uploads_cannot_be_compared[failed-None] _
+tests\test_us20_comparison.py:131: in test_us20_unfinished_failed_and_unanalyzable_uploads_cannot_be_compared
+    assert compare(client, headers, older, newer).status_code == 409
+E   AssertionError: assert 404 == 409
+E    +  where 404 = <Response [404 Not Found]>.status_code
+E    +    where <Response [404 Not Found]> = compare(<starlette.testclient.TestClient object at 0x000002AE682046B0>, {'Authorization': 'Bearer a8AQBjw-KJbRx7FTucQPxX6UOXiIoJ59'}, 'bbc3a1cc-3589-4f5c-b9c9-3a1da1c712ae', '90d8dae3-929b-4cbc-b264-a60dbbd50b5a')
+_ test_us20_unfinished_failed_and_unanalyzable_uploads_cannot_be_compared[done-unanalyzable] _
+tests\test_us20_comparison.py:131: in test_us20_unfinished_failed_and_unanalyzable_uploads_cannot_be_compared
+    assert compare(client, headers, older, newer).status_code == 409
+E   AssertionError: assert 404 == 409
+E    +  where 404 = <Response [404 Not Found]>.status_code
+E    +    where <Response [404 Not Found]> = compare(<starlette.testclient.TestClient object at 0x000002AE682057B0>, {'Authorization': 'Bearer RJ1Ywg8FHEeXkTfyGUHCnFB89hAxiG9n'}, '1be85344-ebae-42d0-93a0-f483ccf87589', '5ef8a2e7-b549-4fce-acc9-b64fe670dd72')
+______ test_us20_same_analysis_and_same_upload_retry_are_not_two_uploads ______
+tests\test_us20_comparison.py:136: in test_us20_same_analysis_and_same_upload_retry_are_not_two_uploads
+    assert compare(client, headers, older, older).status_code == 422
+E   AssertionError: assert 404 == 422
+E    +  where 404 = <Response [404 Not Found]>.status_code
+E    +    where <Response [404 Not Found]> = compare(<starlette.testclient.TestClient object at 0x000002AE68024160>, {'Authorization': 'Bearer MhSEIHy1nzqD_tNjXz7xbwa77sMKZqWi'}, '29572115-ddad-4af1-bd6a-ee30a91feefb', '29572115-ddad-4af1-bd6a-ee30a91feefb')
+___ test_us20_both_uploads_must_be_owned_and_no_private_urls_are_disclosed ____
+tests\test_us20_comparison.py:148: in test_us20_both_uploads_must_be_owned_and_no_private_urls_are_disclosed
+    assert compare(client, {}, older, newer).status_code == 401
+E   AssertionError: assert 404 == 401
+E    +  where 404 = <Response [404 Not Found]>.status_code
+E    +    where <Response [404 Not Found]> = compare(<starlette.testclient.TestClient object at 0x000002AE68207130>, {}, '6e51b837-d393-40c4-b937-9860198f8e6d', 'ced4dbfe-00b0-43e3-96db-288c5ac2c0d0')
+__________ test_us20_rep_order_missing_values_and_zero_are_preserved __________
+tests\test_us20_comparison.py:162: in test_us20_rep_order_missing_values_and_zero_are_preserved
+    assert response.status_code == 200
+E   assert 404 == 200
+E    +  where 404 = <Response [404 Not Found]>.status_code
+=========================== short test summary info ===========================
+FAILED tests/test_us20_comparison.py::test_us20_same_lift_uploads_show_saved_videos_and_key_measurements_in_chronological_order
+FAILED tests/test_us20_comparison.py::test_us20_earlier_fault_is_not_detected_when_new_measurements_no_longer_confirm_it
+FAILED tests/test_us20_comparison.py::test_us20_earlier_fault_is_still_present_even_when_it_is_not_the_new_top_fix
+FAILED tests/test_us20_comparison.py::test_us20_unmeasurable_faults_are_never_reported_as_fixed[camera]
+FAILED tests/test_us20_comparison.py::test_us20_unmeasurable_faults_are_never_reported_as_fixed[confidence]
+FAILED tests/test_us20_comparison.py::test_us20_unmeasurable_faults_are_never_reported_as_fixed[missing_rep]
+FAILED tests/test_us20_comparison.py::test_us20_unmeasurable_faults_are_never_reported_as_fixed[all_missing]
+FAILED tests/test_us20_comparison.py::test_us20_measurements_only_results_can_be_compared_without_inventing_coaching
+FAILED tests/test_us20_comparison.py::test_us20_no_earlier_top_fault_is_reported_explicitly
+FAILED tests/test_us20_comparison.py::test_us20_lift_specific_measurements_are_available_for_other_lifts[deadlift-deadlift.mp4]
+FAILED tests/test_us20_comparison.py::test_us20_lift_specific_measurements_are_available_for_other_lifts[bench_press-bench.mp4]
+FAILED tests/test_us20_comparison.py::test_us20_different_lifts_are_rejected_even_for_the_same_owner
+FAILED tests/test_us20_comparison.py::test_us20_detected_lift_mismatch_cannot_silently_compare_different_movements
+FAILED tests/test_us20_comparison.py::test_us20_unfinished_failed_and_unanalyzable_uploads_cannot_be_compared[queued-None]
+FAILED tests/test_us20_comparison.py::test_us20_unfinished_failed_and_unanalyzable_uploads_cannot_be_compared[processing-None]
+FAILED tests/test_us20_comparison.py::test_us20_unfinished_failed_and_unanalyzable_uploads_cannot_be_compared[failed-None]
+FAILED tests/test_us20_comparison.py::test_us20_unfinished_failed_and_unanalyzable_uploads_cannot_be_compared[done-unanalyzable]
+FAILED tests/test_us20_comparison.py::test_us20_same_analysis_and_same_upload_retry_are_not_two_uploads
+FAILED tests/test_us20_comparison.py::test_us20_both_uploads_must_be_owned_and_no_private_urls_are_disclosed
+FAILED tests/test_us20_comparison.py::test_us20_rep_order_missing_values_and_zero_are_preserved
+20 failed in 6.15s

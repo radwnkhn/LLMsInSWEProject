@@ -92,6 +92,20 @@ export type AdminRow = {
   final_status_label: string;
 };
 
+export type AnalysisComparison = {
+  older: AnalysisResult;
+  newer: AnalysisResult;
+  metrics: {
+    metric: string; label: string; unit: string; aggregation: "Minimum" | "Maximum" | "Count";
+    older: number | null; newer: number | null;
+  }[];
+  fault_comparison: {
+    fault_id: string | null; title: string | null;
+    status: "still_present" | "not_detected" | "not_measured" | "no_previous_fault" | "unavailable";
+    older_reps: number[]; newer_reps: number[];
+  };
+};
+
 export type AdminAttempt = {
   attempt_number: number;
   output_text: string;

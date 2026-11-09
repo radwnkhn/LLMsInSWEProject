@@ -379,3 +379,22 @@ The current step comes from the worker's persisted progress. A correction attemp
 feedback before Checking again. Retry reuses the stored video, creates a fresh analysis and preserves the
 failed analysis and its logs. Status reads and retries require the upload owner's session. A failed status
 request offers Retry to reconnect; leaving the page cancels its polling and pending request.
+
+### [US-20] Compare a new upload with an older one
+
+GitHub issue: [#22](https://github.com/radwnkhn/LLMsInSWEProject/issues/22)
+
+As a **gym goer**, I want to compare a new upload with an older one of the same lift, so that I can see
+if I fixed the problem.
+
+#### Acceptance criteria
+- [ ] [integration] [e2e] Two uploads of the same lift can be shown side by side with key measurements.
+- [ ] [unit] [integration] [e2e] The comparison shows whether the earlier top fault appears in the newer upload.
+- [ ] [unit] [integration] [e2e] Uploads of different lifts can't be compared.
+
+Select two eligible uploads from History. The API orders them by upload creation time, checks ownership
+and matching lifts, and compares saved per-rep measurements using the existing fault thresholds. A fault
+is still present even if the newer coaching output no longer ranks it first. Missing measurements or
+an unsuitable camera angle do not establish that a fault was fixed. Measurements-only results remain
+comparable; an earlier fallback has no validated coaching fault to compare. Failed, unfinished and
+unanalyzable jobs and two attempts for the same upload are excluded.

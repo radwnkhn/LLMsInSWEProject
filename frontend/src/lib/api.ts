@@ -1,5 +1,5 @@
 import type {
-  AdminDetail, AdminRow, AnalysisResult, FeedbackAnswer, HistoryItem, Lift, Session, TriedCue,
+  AdminDetail, AdminRow, AnalysisComparison, AnalysisResult, FeedbackAnswer, HistoryItem, Lift, Session, TriedCue,
 } from "@/lib/types";
 
 export const API_URL = (process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000").replace(/\/$/, "");
@@ -56,6 +56,8 @@ export const api = {
     return request<FeedbackAnswer>(`/analyses/${encodeURIComponent(id)}/feedback`, { method: "POST", body, token });
   },
   history: (token: string | null) => request<{ items: HistoryItem[] }>("/history", { token }),
+  comparison: (firstId: string, secondId: string, token: string | null, signal?: AbortSignal) => request<AnalysisComparison>(
+    `/comparisons?${new URLSearchParams({ first_id: firstId, second_id: secondId })}`, { token, signal }),
   adminAnalyses: (token: string | null) => request<{ items: AdminRow[] }>("/admin/analyses", { token }),
   adminAnalysis: (id: string, token: string | null) => request<AdminDetail>(`/admin/analyses/${encodeURIComponent(id)}`, { token }),
   adminErrors: (token: string | null) => request<{ counts: Record<string, number> }>("/admin/validator-errors", { token }),

@@ -1,0 +1,217 @@
+
+> frontend@0.1.0 test
+> vitest run us20-comparison-page
+
+
+ RUN  v3.2.7 C:/Users/imran/LLMsInSWEProject/frontend
+
+ ❯ src/components/__tests__/us20-comparison-page.test.tsx (8 tests | 8 failed) 5400ms
+   × US-20 comparison page > us20_fetches_the_selected_uploads_and_displays_the_comparison 1060ms
+     → Unable to find role="heading" and name "Compare Squat uploads"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div />[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div />[39m
+[36m</body>[39m
+   × US-20 comparison page > us20_missing_selection_sends_the_user_back_to_history_without_a_request 186ms
+     → Unable to find an accessible element with the role "alert"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div />[39m
+[36m</body>[39m
+   × US-20 comparison page > us20_server_404_errors_are_shown_without_private_results 1028ms
+     → Unable to find role="alert"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div />[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div />[39m
+[36m</body>[39m
+   × US-20 comparison page > us20_server_409_errors_are_shown_without_private_results 1023ms
+     → Unable to find role="alert"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div />[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div />[39m
+[36m</body>[39m
+   × US-20 comparison page > us20_server_422_errors_are_shown_without_private_results 1070ms
+     → Unable to find role="alert"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div />[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div />[39m
+[36m</body>[39m
+   × US-20 comparison page > us20_network_failure_can_be_retried 1018ms
+     → Unable to find role="button" and name "Retry"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div />[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div />[39m
+[36m</body>[39m
+   × US-20 comparison page > us20_an_expired_session_returns_to_login 10ms
+     → expected "spy" to be called with arguments: [ StringContaining "/login?next=" ]
+
+Number of calls: 0
+
+   × US-20 comparison page > us20_leaving_the_comparison_aborts_the_pending_request 3ms
+     → expected "spy" to be called 1 times, but got 0 times
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 8 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/components/__tests__/us20-comparison-page.test.tsx > US-20 comparison page > us20_fetches_the_selected_uploads_and_displays_the_comparison
+TestingLibraryElementError: Unable to find role="heading" and name "Compare Squat uploads"
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/components/__tests__/us20-comparison-page.test.tsx:31:25
+     29|     vi.mocked(api.comparison).mockResolvedValue(data);
+     30|     render(<ComparePage />);
+     31|     expect(await screen.findByRole("heading", { name: "Compare Squat u…
+       |                         ^
+     32|     expect(api.comparison).toHaveBeenCalledWith("a1", "a2", null, expe…
+     33|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/8]⎯
+
+ FAIL  src/components/__tests__/us20-comparison-page.test.tsx > US-20 comparison page > us20_missing_selection_sends_the_user_back_to_history_without_a_request
+TestingLibraryElementError: Unable to find an accessible element with the role "alert"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/components/__tests__/us20-comparison-page.test.tsx:38:19
+     36|     navigation.query = "first=a1";
+     37|     render(<ComparePage />);
+     38|     expect(screen.getByRole("alert")).toHaveTextContent("Choose two up…
+       |                   ^
+     39|     expect(screen.getByRole("link", { name: "Back to history" })).toHa…
+     40|     expect(api.comparison).not.toHaveBeenCalled();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/8]⎯
+
+ FAIL  src/components/__tests__/us20-comparison-page.test.tsx > US-20 comparison page > us20_server_404_errors_are_shown_without_private_results
+ FAIL  src/components/__tests__/us20-comparison-page.test.tsx > US-20 comparison page > us20_server_409_errors_are_shown_without_private_results
+ FAIL  src/components/__tests__/us20-comparison-page.test.tsx > US-20 comparison page > us20_server_422_errors_are_shown_without_private_results
+TestingLibraryElementError: Unable to find role="alert"
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/components/__tests__/us20-comparison-page.test.tsx:46:25
+     44|     vi.mocked(api.comparison).mockRejectedValue(new ApiError(status, "…
+     45|     render(<ComparePage />);
+     46|     expect(await screen.findByRole("alert")).toHaveTextContent("Choose…
+       |                         ^
+     47|     expect(screen.queryByLabelText("Earlier video")).not.toBeInTheDocu…
+     48|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/8]⎯
+
+ FAIL  src/components/__tests__/us20-comparison-page.test.tsx > US-20 comparison page > us20_network_failure_can_be_retried
+TestingLibraryElementError: Unable to find role="button" and name "Retry"
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/components/__tests__/us20-comparison-page.test.tsx:53:40
+     51|     vi.mocked(api.comparison).mockRejectedValueOnce(new ApiError(0, "N…
+     52|     render(<ComparePage />);
+     53|     await userEvent.click(await screen.findByRole("button", { name: "R…
+       |                                        ^
+     54|     expect(await screen.findByRole("heading", { name: "Compare Squat u…
+     55|     expect(screen.queryByRole("alert")).not.toBeInTheDocument();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/8]⎯
+
+ FAIL  src/components/__tests__/us20-comparison-page.test.tsx > US-20 comparison page > us20_an_expired_session_returns_to_login
+AssertionError: expected "spy" to be called with arguments: [ StringContaining "/login?next=" ]
+
+Number of calls: 0
+
+ ❯ src/components/__tests__/us20-comparison-page.test.tsx:62:29
+     60|     render(<ComparePage />);
+     61|     await act(async () => {});
+     62|     expect(navigation.push).toHaveBeenCalledWith(expect.stringContaini…
+       |                             ^
+     63|   });
+     64| 
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/8]⎯
+
+ FAIL  src/components/__tests__/us20-comparison-page.test.tsx > US-20 comparison page > us20_leaving_the_comparison_aborts_the_pending_request
+AssertionError: expected "spy" to be called 1 times, but got 0 times
+ ❯ src/components/__tests__/us20-comparison-page.test.tsx:68:28
+     66|     vi.mocked(api.comparison).mockReturnValue(new Promise(() => {}));
+     67|     const { unmount } = render(<ComparePage />);
+     68|     expect(api.comparison).toHaveBeenCalledTimes(1);
+       |                            ^
+     69|     const signal = vi.mocked(api.comparison).mock.calls[0][3];
+     70|     unmount();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/8]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  8 failed (8)
+   Start at  16:41:07
+   Duration  21.11s (transform 189ms, setup 3.00s, collect 926ms, tests 5.40s, environment 9.82s, prepare 919ms)
+

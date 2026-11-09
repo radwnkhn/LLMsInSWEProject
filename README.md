@@ -58,6 +58,18 @@ running the updated backend. Fresh databases should apply all migrations in orde
 
 The acceptance criteria, red/green evidence and test commands are in `docs/tdd/us19.md`.
 
+## Compare uploads (US-20 / #22)
+
+In **History**, select two completed uploads of the same lift and choose **Compare selected uploads**.
+The comparison shows the earlier and newer videos side by side, their rep counts and key measurements,
+and whether measurements in the newer set still confirm the earlier top fault. It reports when that
+fault cannot be measured instead of implying that it was fixed. Measurements-only results are supported.
+
+Different lifts, another user's uploads, unfinished analyses and two analyses of the same upload cannot
+be compared. No new LLM call or database migration is needed. See `docs/tdd/us20.md` for TDD evidence.
+
+Browser tests use `.next-e2e/` for their build so a local development server can keep its own `.next/` files.
+
 ## Deploy
 
 - **Database:** run `supabase/migrations/*.sql` in the Supabase SQL editor (or `supabase db push`).

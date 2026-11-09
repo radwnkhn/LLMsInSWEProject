@@ -32,7 +32,7 @@ export default defineConfig({
     {
       // A production build: no on-demand compiling, so timings match what users get.
       command: `npx next build && npx next start -p ${WEB_PORT} -H 127.0.0.1`,
-      env: { NEXT_PUBLIC_API_URL: `http://127.0.0.1:${API_PORT}` },
+      env: { NEXT_PUBLIC_API_URL: `http://127.0.0.1:${API_PORT}`, NEXT_BUILD_DIR: ".next-e2e" },
       url: `http://127.0.0.1:${WEB_PORT}/login`,
       reuseExistingServer: !process.env.CI,
       timeout: 240_000,

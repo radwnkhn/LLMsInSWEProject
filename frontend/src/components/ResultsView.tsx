@@ -117,6 +117,7 @@ export function ResultsView({ result, onFeedback, onPreviousCueAnswer, onRetry }
         <h1 className="text-2xl font-bold">{result.lift_label}</h1>
         {!unanalyzable && result.rep_count !== null && <p className="text-sm text-zinc-600">{result.rep_count} reps</p>}
       </header>
+      {!unanalyzable && <Link href="/history" className="inline-block text-sm font-medium underline">Compare with a past upload</Link>}
 
       {result.professional_message && (
         <aside role="note" aria-label="See a professional" className="rounded-xl bg-amber-50 p-4 text-sm text-amber-900">

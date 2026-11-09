@@ -20,6 +20,7 @@ from pydantic import BaseModel, StrictInt, field_validator, model_validator
 from app.admin import admin_row_view, filter_admin_rows, summarize_validation_errors
 from app.auth import AuthUser, EmailTaken, InvalidCredentials
 from app.compress import STORED_CONTENT_TYPE, STORED_EXTENSION
+from app.comparison import COMPARABLE_STATUSES, compare_earlier_fault, measurement_comparison
 from app.feedback import find_previous_cue_prompt
 from app.history import history_item
 from app.lifts import LIFT_LABELS, LIFTS
@@ -257,6 +258,26 @@ def create_app(services: Services) -> FastAPI:
         if lift is not None and lift not in LIFTS:
             raise HTTPException(422, "Unknown lift")
         return {"items": [history_item(a) for a in services.repo.list_analyses_for_user(user.id, lift=lift)]}
+
+    @app.get("/comparisons")
+    def get_comparison(request: Request, first_id: str, second_id: str, user: AuthUser = Depends(current_user)):
+        # Check both owners before validating the pair or creating private storage URLs.
+        first, second = own_analysis(first_id, user), own_analysis(second_id, user)
+        if first.upload_id == second.upload_id:
+            raise HTTPException(422, "Choose two different uploads")
+        actual_first = (first.result or {}).get("lift", first.lift)
+        actual_second = (second.result or {}).get("lift", second.lift)
+        if first.lift != second.lift or actual_first != actual_second or actual_first != first.lift:
+            raise HTTPException(422, "Choose two uploads of the same lift, with matching analyzed movements")
+        if any(a.status != "done" or a.final_status not in COMPARABLE_STATUSES for a in (first, second)):
+            raise HTTPException(409, "Choose two completed uploads with measurable reps")
+        ordered = sorted((first, second), key=lambda a: services.repo.get_upload(a.upload_id).created_at)
+        older, newer = ordered
+        old_reps = services.repo.list_rep_measurements(older.id)
+        new_reps = services.repo.list_rep_measurements(newer.id)
+        return {"older": analysis_view(request, older, user.id), "newer": analysis_view(request, newer, user.id),
+                "metrics": measurement_comparison(older, newer, old_reps, new_reps),
+                "fault_comparison": compare_earlier_fault(older, newer, new_reps)}
 
     # ------------------------------------------------------------------ admin
 
