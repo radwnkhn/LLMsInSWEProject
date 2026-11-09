@@ -1,0 +1,146 @@
+
+> frontend@0.1.0 test:coverage
+> vitest run --coverage
+
+
+ RUN  v3.2.7 C:/Users/imran/LLMsInSWEProject/frontend
+      Coverage enabled with v8
+
+ ✓ src/components/__tests__/us05-us09-status.test.tsx (4 tests) 2827ms
+   ✓ US-05 tell me when a video can't be analyzed > us05_unanalyzable_result_shows_the_reason_and_a_refilm_link  2142ms
+   ✓ US-09 safe fallback > us09_fallback_shows_the_note_and_measurements_but_no_coaching  483ms
+ ✓ src/components/__tests__/us03-filming-guide.test.tsx (10 tests) 6123ms
+   ✓ US-03 filming guidance before recording > us03_guide_shows_the_core_tips_for_Squat  1887ms
+   ✓ US-03 filming guidance before recording > us03_guide_tips_are_specific_to_the_lift  384ms
+   ✓ US-03 filming guidance before recording > us03_guide_opens_after_choosing_a_lift  528ms
+   ✓ US-03 filming guidance before recording > us03_guide_can_be_dismissed_and_reopened  1204ms
+   ✓ US-03 filming guidance before recording > us03_guide_does_not_reopen_on_its_own_when_changing_lift  1549ms
+ ✓ src/components/__tests__/us02-lift-picker.test.tsx (5 tests) 6381ms
+   ✓ US-02 choose the lift before uploading > us02_lift_picker_offers_exactly_three_options  2785ms
+   ✓ US-02 choose the lift before uploading > us02_upload_button_disabled_until_lift_selected  1418ms
+   ✓ US-02 choose the lift before uploading > us02_selected_lift_is_sent_with_the_upload  1627ms
+ ✓ src/components/__tests__/us11-us12-frame-and-reps.test.tsx (7 tests) 4957ms
+   ✓ US-11 annotated frame > us11_frame_image_and_caption_match_the_stored_values  3185ms
+   ✓ US-11 annotated frame > us11_tapping_the_frame_plays_from_the_start_of_that_rep  379ms
+   ✓ US-12 rep-by-rep breakdown > us12_one_row_per_rep_in_order  749ms
+ ✓ src/components/__tests__/us13-us14-us15-results.test.tsx (11 tests) 9750ms
+   ✓ US-13 say what couldn't be measured > us13_not_measured_checks_listed_with_reasons  2500ms
+   ✓ US-14 safety issues come first > us14_safety_faults_under_see_more_are_labeled_too  1235ms
+   ✓ US-15 recommend a professional if I mention pain > us15_note_field_is_optional_and_limited_to_300_characters  1855ms
+   ✓ US-15 recommend a professional if I mention pain > us15_note_counter_and_text_are_sent  3083ms
+ ✓ src/components/__tests__/us10-top-fix.test.tsx (8 tests) 6938ms
+   ✓ US-10 show one top fix and one cue > us10_shows_exactly_one_top_fix_in_plain_language  3350ms
+   ✓ US-10 show one top fix and one cue > us10_other_faults_are_collapsed_under_see_more  1911ms
+   ✓ US-10 show one top fix and one cue > us10_no_see_more_without_other_faults  533ms
+   ✓ US-10 show one top fix and one cue > us10_no_major_issues_says_how_many_checks_were_skipped  482ms
+stderr | src/components/__tests__/us19-processing.test.tsx > US-19 live processing status > us19_polls_without_refresh_then_opens_results_and_stops_polling
+The current testing environment is not configured to support act(...)
+
+ ✓ src/components/__tests__/us16-feedback.test.tsx (8 tests) 7431ms
+   ✓ US-16 rate the feedback and say if I tried the cue > us16_asks_for_a_1_to_5_rating_and_whether_the_cue_was_tried  3901ms
+   ✓ US-16 rate the feedback and say if I tried the cue > us16_submits_the_answers  1675ms
+   ✓ US-16 rate the feedback and say if I tried the cue > us16_every_results_screen_asks_for_feedback  1206ms
+ ✓ src/components/__tests__/us21-pages.test.tsx (2 tests) 5045ms
+   ✓ US-21 deletion pages > us21_history_removes_every_analysis_of_the_deleted_upload  4837ms
+ ✓ src/components/__tests__/us01-auth.test.tsx (6 tests) 10487ms
+   ✓ US-01 sign up and log in > us01_signup_submits_email_and_password_and_reports_success  4880ms
+   ✓ US-01 sign up and log in > us01_wrong_password_shows_message_and_does_not_log_in  3438ms
+   ✓ US-01 sign up and log in > us01_network_failure_shows_a_generic_error  2118ms
+ ✓ src/components/__tests__/us20-comparison-page.test.tsx (8 tests) 4800ms
+   ✓ US-20 comparison page > us20_fetches_the_selected_uploads_and_displays_the_comparison  3141ms
+   ✓ US-20 comparison page > us20_server_404_errors_are_shown_without_private_results  394ms
+   ✓ US-20 comparison page > us20_server_409_errors_are_shown_without_private_results  309ms
+   ✓ US-20 comparison page > us20_network_failure_can_be_retried  598ms
+ ✓ src/components/__tests__/us04-upload-form.test.tsx (9 tests) 13365ms
+   ✓ US-04 upload a set video from my phone > us04_file_input_accepts_videos_from_camera_or_library  898ms
+   ✓ US-04 upload a set video from my phone > us04_wrong_type_rejected_before_uploading  3201ms
+   ✓ US-04 upload a set video from my phone > us04_too_long_video_rejected_with_the_limit  725ms
+   ✓ US-04 upload a set video from my phone > us04_too_large_video_rejected_with_the_limit  1383ms
+   ✓ US-04 upload a set video from my phone > us04_unreadable_duration_is_left_to_the_server  1439ms
+   ✓ US-04 upload a set video from my phone > us04_progress_is_shown_as_a_percentage  1612ms
+   ✓ US-04 upload a set video from my phone > us04_success_hands_back_the_analysis_id  1688ms
+   ✓ US-04 upload a set video from my phone > us04_failed_upload_shows_error_with_retry_that_reuses_the_file  1527ms
+   ✓ US-04 upload a set video from my phone > us04_server_rejection_message_is_shown  888ms
+ ❯ src/components/__tests__/us20-comparison.test.tsx (12 tests | 1 failed) 9964ms
+   × US-20 compare uploads > us20_history_selects_two_same_lift_uploads_and_opens_the_comparison 5280ms
+     → Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+   ✓ US-20 compare uploads > us20_a_different_lift_is_disabled_after_the_first_selection  973ms
+   ✓ US-20 compare uploads > us20_only_two_completed_measurable_uploads_can_be_selected  688ms
+   ✓ US-20 compare uploads > us20_changing_the_history_filter_clears_hidden_selections  1227ms
+   ✓ US-20 compare uploads > us20_two_videos_and_their_measurements_are_shown_side_by_side  390ms
+   ✓ US-20 compare uploads > us20_displays_the_not_detected_outcome_without_claiming_a_cure 91ms
+   ✓ US-20 compare uploads > us20_displays_the_still_present_outcome_without_claiming_a_cure 115ms
+   ✓ US-20 compare uploads > us20_displays_the_not_measured_outcome_without_claiming_a_cure 231ms
+   ✓ US-20 compare uploads > us20_displays_the_no_previous_fault_outcome_without_claiming_a_cure  685ms
+   ✓ US-20 compare uploads > us20_displays_the_unavailable_outcome_without_claiming_a_cure 193ms
+   ✓ US-20 compare uploads > us20_changing_camera_angles_has_context_for_interpreting_measurements 83ms
+   ✓ US-20 compare uploads > us20_comparison_page_requires_a_session 5ms
+ ✓ src/components/__tests__/us21-deletion.test.tsx (10 tests) 10118ms
+   ✓ US-21 upload deletion > us21_upload_delete_requires_confirmation_and_cancel_preserves_the_upload  4148ms
+   ✓ US-21 upload deletion > us21_confirmation_deletes_the_upload_id_including_its_analysis_retries  700ms
+   ✓ US-21 upload deletion > us21_escape_cancels_and_returns_focus_to_the_delete_trigger  1239ms
+   ✓ US-21 upload deletion > us21_pending_deletion_blocks_duplicate_confirmation  870ms
+   ✓ US-21 upload deletion > us21_failed_cleanup_remains_retryable_without_claiming_success  1139ms
+   ✓ US-21 upload deletion > us21_deleted_entries_cannot_remain_selected_for_comparison  419ms
+   ✓ US-21 account deletion > us21_account_delete_has_a_separate_confirmation_explaining_what_is_removed  379ms
+   ✓ US-21 account deletion > us21_the_session_is_cleared_only_after_successful_account_deletion  715ms
+   ✓ US-21 account deletion > us21_account_deletion_failure_does_not_sign_the_user_out  397ms
+ ❯ src/components/__tests__/us19-processing.test.tsx (12 tests | 1 failed) 9464ms
+   × US-19 live processing status > us19_uploading_shows_all_steps_in_order_and_preserves_byte_progress 5968ms
+     → Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+   ✓ US-19 live processing status > us19_highlights_the_actual_measuring_step 168ms
+   ✓ US-19 live processing status > us19_highlights_the_actual_writing_feedback_step 192ms
+   ✓ US-19 live processing status > us19_highlights_the_actual_checking_step 59ms
+   ✓ US-19 live processing status > us19_polls_without_refresh_then_opens_results_and_stops_polling  1107ms
+   ✓ US-19 live processing status > us19_failed_analysis_has_retry_and_no_endless_status_indicator 218ms
+   ✓ US-19 live processing status > us19_a_failed_retry_keeps_an_actionable_error 218ms
+   ✓ US-19 live processing status > us19_disables_retry_while_the_request_is_pending  363ms
+   ✓ US-19 live processing status > us19_polling_network_failure_offers_retry_and_resumes_polling  739ms
+   ✓ US-19 live processing status > us19_cancels_scheduled_polling_when_leaving_the_page 18ms
+   ✓ US-19 live processing status > us19_a_stalled_status_request_times_out_to_an_actionable_error 159ms
+   ✓ US-19 live processing status > us19_route_changes_discard_late_responses_from_the_previous_analysis 250ms
+ ✓ src/components/__tests__/us17-us18-lists.test.tsx (9 tests) 5728ms
+   ✓ US-17 upload history > us17_lists_entries_with_date_lift_reps_and_top_fix  2889ms
+   ✓ US-17 upload history > us17_history_can_be_filtered_by_lift  1288ms
+   ✓ US-18 inspect analyses and validator logs > us18_table_shows_lift_attempts_and_final_status  641ms
+   ✓ US-18 inspect analyses and validator logs > us18_filter_by_lift_and_final_status  466ms
+ ✓ src/lib/__tests__/us21-session-redirect.test.ts (2 tests) 53ms
+ ✓ src/lib/__tests__/us04-video-file.test.ts (13 tests) 48ms
+ ✓ src/lib/__tests__/us04-upload-request.test.ts (4 tests) 80ms
+ ✓ src/lib/__tests__/us21-delete-request.test.ts (2 tests) 44ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/components/__tests__/us19-processing.test.tsx > US-19 live processing status > us19_uploading_shows_all_steps_in_order_and_preserves_byte_progress
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ src/components/__tests__/us19-processing.test.tsx:28:3
+     26|
+     27| describe("US-19 live processing status", () => {
+     28|   it("us19_uploading_shows_all_steps_in_order_and_preserves_byte_progr…
+       |   ^
+     29|     let report: UploadArgs["onProgress"] = () => {};
+     30|     const upload = vi.fn((args: UploadArgs) => {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  src/components/__tests__/us20-comparison.test.tsx > US-20 compare uploads > us20_history_selects_two_same_lift_uploads_and_opens_the_comparison
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ src/components/__tests__/us20-comparison.test.tsx:33:3
+     31|
+     32| describe("US-20 compare uploads", () => {
+     33|   it("us20_history_selects_two_same_lift_uploads_and_opens_the_compari…
+       |   ^
+     34|     render(<HistoryList items={items} />);
+     35|     const choices = screen.getAllByRole("checkbox");
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  2 failed | 17 passed (19)
+      Tests  2 failed | 140 passed (142)
+   Start at  18:43:21
+   Duration  177.90s (transform 26.60s, setup 384.70s, collect 150.35s, tests 113.60s, environment 1345.54s, prepare 69.41s)

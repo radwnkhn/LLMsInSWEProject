@@ -1,0 +1,47 @@
+
+> frontend@0.1.0 build
+> next build
+
+   ▲ Next.js 15.5.29
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully in 29.2s
+   Linting and checking validity of types ...
+
+   We detected TypeScript in your project and reconfigured your tsconfig.json file for you.
+   The following suggested values were added to your tsconfig.json. These values can be changed to fit your project's needs:
+
+    - include was updated to add 'node_modules/.cache/us19-us20-us21-e2e/types/**/*.ts'
+
+   Collecting page data ...
+   Generating static pages (0/13) ...
+   Generating static pages (3/13)
+   Generating static pages (6/13)
+   Generating static pages (9/13)
+ ✓ Generating static pages (13/13)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                                 Size  First Load JS
+┌ ○ /                                      123 B         103 kB
+├ ○ /_not-found                            989 B         104 kB
+├ ○ /admin                               3.25 kB         109 kB
+├ ƒ /admin/analyses/[id]                 2.56 kB         105 kB
+├ ○ /compare                             3.63 kB         110 kB
+├ ○ /history                             3.79 kB         110 kB
+├ ○ /login                               2.51 kB         109 kB
+├ ƒ /results/[id]                        5.58 kB         112 kB
+├ ○ /settings                            2.81 kB         106 kB
+├ ○ /signup                              2.51 kB         109 kB
+├ ○ /status                              1.52 kB         104 kB
+└ ○ /upload                              4.61 kB         107 kB
++ First Load JS shared by all             103 kB
+  ├ chunks/255-73938ce8a8eac1ad.js       46.6 kB
+  ├ chunks/4bd1b696-c023c6e3521b1417.js  54.2 kB
+  └ other shared chunks (total)          1.99 kB
+
+
+ƒ Middleware                             34.2 kB
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand

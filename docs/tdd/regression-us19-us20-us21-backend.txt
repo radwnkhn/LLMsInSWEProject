@@ -1,0 +1,8 @@
+.s.s.s.s.s.............................................................  [100%]
+=========================== short test summary info ===========================
+SKIPPED [1] tests\test_setup02_repository.py:78: set TEST_DATABASE_URL to run the Postgres repository tests
+SKIPPED [1] tests\test_setup02_repository.py:141: set TEST_DATABASE_URL to run the Postgres repository tests
+SKIPPED [1] tests\test_setup02_repository.py:159: set TEST_DATABASE_URL to run the Postgres repository tests
+SKIPPED [1] tests\test_setup02_repository.py:167: set TEST_DATABASE_URL to run the Postgres repository tests
+SKIPPED [1] tests\test_setup02_repository.py:175: set TEST_DATABASE_URL to run the Postgres repository tests
+66 passed, 5 skipped, 400 deselected in 23.92s

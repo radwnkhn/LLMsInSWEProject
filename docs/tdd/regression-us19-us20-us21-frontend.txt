@@ -1,0 +1,33 @@
+
+> frontend@0.1.0 test
+> vitest run us19 us20 us21
+
+
+ RUN  v3.2.7 C:/Users/imran/LLMsInSWEProject/frontend
+
+ ✓ src/lib/__tests__/us21-delete-request.test.ts (2 tests) 56ms
+ ✓ src/lib/__tests__/us21-session-redirect.test.ts (2 tests) 84ms
+ ✓ src/components/__tests__/us21-pages.test.tsx (2 tests) 2486ms
+   ✓ US-21 deletion pages > us21_history_removes_every_analysis_of_the_deleted_upload  2164ms
+   ✓ US-21 deletion pages > us21_settings_deletes_the_account_clears_its_cookie_and_returns_to_login  319ms
+ ✓ src/components/__tests__/us20-comparison-page.test.tsx (8 tests) 1919ms
+   ✓ US-20 comparison page > us20_fetches_the_selected_uploads_and_displays_the_comparison  1495ms
+ ✓ src/components/__tests__/us20-comparison.test.tsx (12 tests) 3976ms
+   ✓ US-20 compare uploads > us20_history_selects_two_same_lift_uploads_and_opens_the_comparison  2068ms
+   ✓ US-20 compare uploads > us20_changing_the_history_filter_clears_hidden_selections  380ms
+   ✓ US-20 compare uploads > us20_two_videos_and_their_measurements_are_shown_side_by_side  347ms
+   ✓ US-20 compare uploads > us20_displays_the_not_detected_outcome_without_claiming_a_cure  384ms
+ ✓ src/components/__tests__/us21-deletion.test.tsx (10 tests) 4551ms
+   ✓ US-21 upload deletion > us21_upload_delete_requires_confirmation_and_cancel_preserves_the_upload  1854ms
+   ✓ US-21 upload deletion > us21_confirmation_deletes_the_upload_id_including_its_analysis_retries  672ms
+   ✓ US-21 upload deletion > us21_escape_cancels_and_returns_focus_to_the_delete_trigger  305ms
+   ✓ US-21 upload deletion > us21_failed_cleanup_remains_retryable_without_claiming_success  323ms
+   ✓ US-21 upload deletion > us21_deleted_entries_cannot_remain_selected_for_comparison  691ms
+ ✓ src/components/__tests__/us19-processing.test.tsx (12 tests) 3492ms
+   ✓ US-19 live processing status > us19_uploading_shows_all_steps_in_order_and_preserves_byte_progress  2100ms
+   ✓ US-19 live processing status > us19_a_failed_retry_keeps_an_actionable_error  393ms
+
+ Test Files  7 passed (7)
+      Tests  48 passed (48)
+   Start at  18:36:43
+   Duration  42.35s (transform 4.45s, setup 49.27s, collect 27.44s, tests 16.57s, environment 157.65s, prepare 9.97s)

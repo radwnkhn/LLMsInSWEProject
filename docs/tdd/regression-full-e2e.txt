@@ -1,0 +1,32 @@
+
+> frontend@0.1.0 e2e
+> playwright test
+
+
+Running 20 tests using 1 worker
+
+(node:18368) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  -   1 e2e\setup02-deploy.spec.ts:7:5 › setup02_deployed_frontend_reaches_backend_health
+  ok  2 e2e\setup02-deploy.spec.ts:13:5 › setup02_status_page_reports_backend_health_locally (7.7s)
+  ok  3 e2e\us01-auth.spec.ts:5:5 › us01_after_logging_out_history_redirects_to_login (2.7s)
+  ok  4 e2e\us01-auth.spec.ts:15:5 › us01_wrong_password_shows_message (2.2s)
+  ok  5 e2e\us03-guide.spec.ts:8:7 › us03_guide_fits_375px_without_sideways_scroll_squat (2.5s)
+  ok  6 e2e\us03-guide.spec.ts:8:7 › us03_guide_fits_375px_without_sideways_scroll_deadlift (1.6s)
+  ok  7 e2e\us03-guide.spec.ts:8:7 › us03_guide_fits_375px_without_sideways_scroll_bench_press (1.8s)
+  ok  8 e2e\us05-us09-status.spec.ts:5:5 › us05_unanalyzable_message_has_refilm_button_that_opens_the_guide (4.4s)
+  ok  9 e2e\us05-us09-status.spec.ts:14:5 › us09_fallback_result_shows_the_note (4.6s)
+  ok 10 e2e\us11-us12-video.spec.ts:5:5 › us11_tapping_the_frame_plays_the_video_from_the_start_of_that_rep (5.4s)
+  ok 11 e2e\us11-us12-video.spec.ts:18:5 › us12_tapping_a_rep_row_jumps_the_video_to_that_rep (4.4s)
+  ok 12 e2e\us17-history.spec.ts:5:5 › us17_tapping_a_history_entry_opens_its_full_results (5.1s)
+  ok 13 e2e\us19-processing.spec.ts:7:5 › us19_progress_updates_without_reload_and_results_open_automatically (8.2s)
+  ok 14 e2e\us19-processing.spec.ts:42:5 › us19_failed_analysis_retries_the_saved_video (6.0s)
+  ok 15 e2e\us19-us20-us21-flow.spec.ts:5:5 › us19_us20_us21_retry_compare_delete_upload_and_account (12.1s)
+  ok 16 e2e\us20-comparison.spec.ts:5:5 › us20_history_opens_two_uploads_with_measurements_and_a_resolved_previous_fault (9.0s)
+  ok 17 e2e\us20-comparison.spec.ts:22:5 › us20_comparison_shows_the_earlier_fault_is_still_present (7.8s)
+  ok 18 e2e\us20-comparison.spec.ts:33:5 › us20_different_lifts_are_blocked_in_history_and_in_direct_comparison_urls (8.3s)
+  ok 19 e2e\us21-deletion.spec.ts:5:5 › us21_confirmed_upload_deletion_removes_it_from_history_results_and_comparison (8.9s)
+  ok 20 e2e\us21-deletion.spec.ts:27:5 › us21_settings_deletes_account_and_protects_old_pages (5.4s)
+
+  1 skipped
+  19 passed (2.3m)
