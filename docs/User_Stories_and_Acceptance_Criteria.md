@@ -416,3 +416,24 @@ invalidates existing sessions. Missing/deleted results cannot be inspected or co
 admins. Other users' data is preserved. Queued/processing analyses must finish first; otherwise a
 clear message asks the user to wait and retry. Failures never produce a false success, and incomplete
 cleanup can be retried. Both dialogs explain permanence and provide Cancel; account deletion is in Settings.
+
+### [US-25] Manage the fault list
+
+GitHub issue: [#27](https://github.com/radwnkhn/LLMsInSWEProject/issues/27)
+
+As an **admin**, I want to add, edit or disable faults the AI can report, so that feedback stays within
+what we can measure as we add checks.
+
+#### Acceptance criteria
+- [ ] [integration] [e2e] An admin page lists every fault grouped by lift, showing its name, category, whether it is a safety fault, the measurement that confirms it and whether it is enabled.
+- [ ] [unit] [integration] [e2e] An admin can edit a fault's display name and short description; blank or too-long values are rejected.
+- [ ] [unit] [integration] [e2e] An admin can disable and re-enable a fault. A disabled fault is left out of the fault list in the LLM prompt, and the validator rejects a reply that cites it, which starts the correction loop.
+- [ ] [unit] [integration] [e2e] An admin can add a fault only by choosing a measurement the app already computes for that lift; unknown measurements, unknown lifts and duplicate IDs are rejected.
+- [ ] [integration] Non-admin users get 403 on the fault list page and every fault endpoint.
+- [ ] [unit] [integration] Changes are saved through the repository (Postgres in production, in memory in tests), and new analyses use the saved list. The saved list starts as the current fault definitions.
+
+The fault list is seeded with the Alpha definitions, so Alpha behavior is unchanged until an admin makes a
+change. Results and comparisons from earlier analyses still show disabled faults. Faults are never
+deleted, only disabled, because saved analyses refer to them. A new fault's camera angles, joints and
+unit come from the measurement it uses. Its threshold is set only when it is added: changing thresholds
+later is US-24.
