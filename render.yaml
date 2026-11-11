@@ -1,14 +1,14 @@
 services:
   - type: web
     name: alibi-api
-    runtime: python
+    runtime: docker
+    plan: free
+    region: virginia
     rootDir: backend
-    buildCommand: pip install -r requirements.txt && ./scripts/download_pose_model.sh
-    startCommand: uvicorn app.asgi:app --host 0.0.0.0 --port $PORT
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
     healthCheckPath: /health
     envVars:
-      - key: PYTHON_VERSION
-        value: "3.13.7"
       - key: POSE_MODEL_PATH
         value: models/pose_landmarker_full.task
       - key: SUPABASE_URL
