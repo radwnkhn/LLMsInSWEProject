@@ -107,6 +107,13 @@ browser tests can reach the page. See `docs/tdd/us25.md` for TDD evidence.
 - **Database:** run `supabase/migrations/*.sql` in the Supabase SQL editor (or `supabase db push`).
   In Supabase Auth, turn off "Confirm email" for the Alpha. Make someone an admin by setting their
   `app_metadata` to `{"role": "admin"}`.
-- **Backend (Render):** `render.yaml` defines the service. Set the variables from `backend/.env.example`.
+- **Backend (Render):** `render.yaml` defines a Docker web service on the free plan in Virginia.
+  Set the variables from `backend/.env.example` in Render, keeping real credentials out of Git.
+  The image includes MediaPipe's EGL/GLES system libraries, downloads the pose model and runs
+  real inference during the build. An import check alone does not load all native dependencies.
+  To verify the same image locally, run `docker build -t alibi-api backend`, then
+  `docker run --rm --env-file backend/.env -e PORT=10000 -p 10000:10000 alibi-api`.
+  For an existing native Python service, sync the Docker configuration to that service rather
+  than creating another API. Verify `/health` and a real upload after it becomes live.
 - **Frontend (Vercel):** import the repo with `frontend` as the root directory and set
   `NEXT_PUBLIC_API_URL` to the Render URL. `/status` shows whether the frontend can reach the backend.
