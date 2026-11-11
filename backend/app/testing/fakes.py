@@ -29,6 +29,13 @@ DEFAULT_CUE = "Move with control through every rep"  # for faults an admin added
 REFERRAL = "Please see a doctor or physical therapist about the pain before training through it."
 
 
+MOCK_PROVIDER, MOCK_MODEL = "mock", "mock-coach"  # US-26: priced only in tests and test mode
+
+
+def _reply(text: str, input_tokens: int, output_tokens: int) -> LLMReply:
+    return LLMReply(text, input_tokens, output_tokens, provider=MOCK_PROVIDER, model=MOCK_MODEL)
+
+
 def _tokens(request: LLMRequest, text: str) -> tuple[int, int]:
     return max(1, sum(len(m.content) for m in request.messages) // 4 + 300 * len(request.images)), max(1, len(text) // 4)
 
@@ -36,6 +43,8 @@ def _tokens(request: LLMRequest, text: str) -> tuple[int, int]:
 class RuleFollowingLLM:
     """Answers like a well-behaved model: reports the measured facts and puts the most important confirmed
     fault first (safety before technique, then the fault list's order)."""
+
+    provider, model = MOCK_PROVIDER, MOCK_MODEL
 
     def __init__(self):
         self.requests: list[LLMRequest] = []
@@ -78,7 +87,7 @@ class RuleFollowingLLM:
     def complete(self, request: LLMRequest) -> LLMReply:
         self.requests.append(request)
         text = self.reply_for(request)
-        return LLMReply(text, *_tokens(request, text))
+        return _reply(text, *_tokens(request, text))
 
 
 class SpyLLM(RuleFollowingLLM):
@@ -87,6 +96,8 @@ class SpyLLM(RuleFollowingLLM):
 
 class ScriptedLLM:
     """Replies with the given texts in order (repeating the last)."""
+
+    provider, model = MOCK_PROVIDER, MOCK_MODEL
 
     def __init__(self, replies: Sequence[str]):
         self.replies = list(replies)
@@ -98,7 +109,7 @@ class ScriptedLLM:
 
     def complete(self, request: LLMRequest) -> LLMReply:
         self.requests.append(request)
-        return LLMReply(self.replies[min(len(self.requests), len(self.replies)) - 1], 100, 50)
+        return _reply(self.replies[min(len(self.requests), len(self.replies)) - 1], 100, 50)
 
 
 class SequenceLLM(RuleFollowingLLM):
@@ -114,11 +125,13 @@ class SequenceLLM(RuleFollowingLLM):
             return super().complete(request)
         self.requests.append(request)
         text = "this is not JSON"
-        return LLMReply(text, *_tokens(request, text))
+        return _reply(text, *_tokens(request, text))
 
 
 class FailingLLM:
     """Every call fails, like a provider outage."""
+
+    provider, model = MOCK_PROVIDER, MOCK_MODEL
 
     def __init__(self):
         self.calls = 0
@@ -134,7 +147,7 @@ class ScenarioLLM(RuleFollowingLLM):
     def complete(self, request: LLMRequest) -> LLMReply:
         if re.search(r"#fallback\b", request.payload.get("note") or ""):
             self.requests.append(request)
-            return LLMReply("this is not JSON", 10, 5)
+            return _reply("this is not JSON", 10, 5)
         return super().complete(request)
 
 

@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 
 import { AdminAnalysesTable } from "@/components/AdminAnalysesTable";
 import { AdminForbidden } from "@/components/AdminForbidden";
+import { CostSummary } from "@/components/CostSummary";
 import { ErrorSummary } from "@/components/ErrorSummary";
 import { ApiError, api } from "@/lib/api";
 import { getToken } from "@/lib/session";
@@ -27,6 +28,7 @@ export default function AdminPage() {
         <h1 className="text-2xl font-bold">Analyses</h1>
         <Link href="/admin/faults" className="text-sm underline">Fault list</Link>
       </div>
+      {rows && <CostSummary token={getToken()} />}
       {rows && <AdminAnalysesTable items={rows} />}
       <ErrorSummary counts={counts} />
     </div>

@@ -1,6 +1,6 @@
 import type {
-  AdminDetail, AdminFault, AdminFaultLift, AdminRow, AnalysisComparison, AnalysisResult, FaultEdit, FeedbackAnswer,
-  HistoryItem, Lift, NewFault, Session, TriedCue,
+  AdminDetail, AdminFault, AdminFaultLift, AdminRow, AnalysisComparison, AnalysisResult, CostSummary, FaultEdit,
+  FeedbackAnswer, HistoryItem, Lift, NewFault, Session, TriedCue,
 } from "@/lib/types";
 
 export const API_URL = (process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000").replace(/\/$/, "");
@@ -64,6 +64,13 @@ export const api = {
     `/comparisons?${new URLSearchParams({ first_id: firstId, second_id: secondId })}`, { token, signal }),
   adminAnalyses: (token: string | null) => request<{ items: AdminRow[] }>("/admin/analyses", { token }),
   adminAnalysis: (id: string, token: string | null) => request<AdminDetail>(`/admin/analyses/${encodeURIComponent(id)}`, { token }),
+  adminCosts: (start: string | null, end: string | null, token: string | null) => {
+    const range = new URLSearchParams();
+    if (start) range.set("start", start);
+    if (end) range.set("end", end);
+    const query = range.toString();
+    return request<CostSummary>(`/admin/costs${query ? `?${query}` : ""}`, { token });
+  },
   adminErrors: (token: string | null) => request<{ counts: Record<string, number> }>("/admin/validator-errors", { token }),
   adminFaults: (token: string | null) => request<{ lifts: AdminFaultLift[] }>("/admin/faults", { token }),
   updateFault: (lift: string, id: string, edit: FaultEdit, token: string | null) => request<AdminFault>(

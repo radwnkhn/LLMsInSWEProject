@@ -1,0 +1,111 @@
+
+> frontend@0.1.0 test:coverage
+> vitest run --coverage
+
+
+ RUN  v3.2.7 frontend
+      Coverage enabled with v8
+
+ ✓ src/components/__tests__/us13-us14-us15-results.test.tsx (11 tests) 859ms
+ ✓ src/components/__tests__/us04-upload-form.test.tsx (9 tests) 1273ms
+   ✓ US-04 upload a set video from my phone > us04_wrong_type_rejected_before_uploading  379ms
+ ✓ src/components/__tests__/us25-fault-list.test.tsx (9 tests) 2449ms
+   ✓ US-25 fault list page > us25_lists_every_fault_per_lift_with_category_safety_measurement_and_status  434ms
+   ✓ US-25 fault list page > us25_editing_saves_the_display_name_and_short_description  447ms
+   ✓ US-25 fault list page > us25_blank_or_too_long_names_are_rejected_before_saving  575ms
+   ✓ US-25 fault list page > us25_adding_a_fault_sends_it_and_lists_it_under_its_lift  413ms
+ ✓ src/components/__tests__/us21-deletion.test.tsx (10 tests) 907ms
+   ✓ US-21 upload deletion > us21_upload_delete_requires_confirmation_and_cancel_preserves_the_upload  314ms
+ ✓ src/components/__tests__/us19-processing.test.tsx (12 tests) 825ms
+   ✓ US-19 live processing status > us19_uploading_shows_all_steps_in_order_and_preserves_byte_progress  481ms
+ ✓ src/components/__tests__/us01-auth.test.tsx (6 tests) 800ms
+   ✓ US-01 sign up and log in > us01_signup_submits_email_and_password_and_reports_success  395ms
+ ✓ src/components/__tests__/us20-comparison.test.tsx (12 tests) 836ms
+   ✓ US-20 compare uploads > us20_history_selects_two_same_lift_uploads_and_opens_the_comparison  369ms
+ ✓ src/components/__tests__/us16-feedback.test.tsx (8 tests) 658ms
+ ✓ src/components/__tests__/us17-us18-lists.test.tsx (9 tests) 651ms
+ ✓ src/components/__tests__/us02-lift-picker.test.tsx (5 tests) 611ms
+ ✓ src/components/__tests__/us03-filming-guide.test.tsx (10 tests) 757ms
+ ✓ src/components/__tests__/us10-top-fix.test.tsx (8 tests) 553ms
+ ✓ src/components/__tests__/us26-ai-cost.test.tsx (7 tests) 661ms
+ ✓ src/components/__tests__/us21-pages.test.tsx (2 tests) 407ms
+   ✓ US-21 deletion pages > us21_history_removes_every_analysis_of_the_deleted_upload  346ms
+ ✓ src/components/__tests__/us20-comparison-page.test.tsx (8 tests) 442ms
+ ✓ src/components/__tests__/us11-us12-frame-and-reps.test.tsx (7 tests) 423ms
+ ✓ src/components/__tests__/us05-us09-status.test.tsx (4 tests) 306ms
+ ✓ src/lib/__tests__/us26-cost-requests.test.ts (3 tests) 39ms
+ ✓ src/lib/__tests__/us04-video-file.test.ts (13 tests) 31ms
+ ✓ src/lib/__tests__/us25-fault-requests.test.ts (4 tests) 34ms
+ ✓ src/lib/__tests__/us21-session-redirect.test.ts (2 tests) 27ms
+ ✓ src/lib/__tests__/us04-upload-request.test.ts (4 tests) 20ms
+ ✓ src/lib/__tests__/us21-delete-request.test.ts (2 tests) 21ms
+
+ Test Files  23 passed (23)
+      Tests  165 passed (165)
+   Start at  20:41:54
+   Duration  16.39s (transform 829ms, setup 4.01s, collect 2.40s, tests 13.59s, environment 18.83s, prepare 2.34s)
+
+ % Coverage report from v8
+-------------------|---------|----------|---------|---------|-------------------
+File               | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+-------------------|---------|----------|---------|---------|-------------------
+All files          |   91.05 |    89.44 |   85.39 |   91.05 |                   
+ src               |   86.66 |       60 |     100 |   86.66 |                   
+  middleware.ts    |   86.66 |       60 |     100 |   86.66 | 17-18             
+ src/app           |       0 |        0 |       0 |       0 |                   
+  page.tsx         |       0 |        0 |       0 |       0 | 1-5               
+ src/app/admin     |     100 |    83.33 |     100 |     100 |                   
+  page.tsx         |     100 |    83.33 |     100 |     100 | 24                
+ .../analyses/[id] |   97.36 |    58.82 |     100 |   97.36 |                   
+  page.tsx         |   97.36 |    58.82 |     100 |   97.36 | 43,75             
+ ...p/admin/faults |   96.87 |    77.77 |     100 |   96.87 |                   
+  page.tsx         |   96.87 |    77.77 |     100 |   96.87 | 24                
+ src/app/compare   |     100 |    91.66 |     100 |     100 |                   
+  page.tsx         |     100 |    91.66 |     100 |     100 | 28,37             
+ src/app/history   |     100 |    77.77 |     100 |     100 |                   
+  page.tsx         |     100 |    77.77 |     100 |     100 | 19,22             
+ src/app/login     |       0 |        0 |       0 |       0 |                   
+  page.tsx         |       0 |        0 |       0 |       0 | 1-7               
+ ...p/results/[id] |     100 |    84.61 |   66.66 |     100 |                   
+  page.tsx         |     100 |    84.61 |   66.66 |     100 | 37-39,72          
+ src/app/settings  |     100 |      100 |     100 |     100 |                   
+  page.tsx         |     100 |      100 |     100 |     100 |                   
+ src/app/signup    |       0 |        0 |       0 |       0 |                   
+  page.tsx         |       0 |        0 |       0 |       0 | 1-7               
+ src/app/status    |       0 |      100 |     100 |       0 |                   
+  page.tsx         |       0 |      100 |     100 |       0 | 3-19              
+ src/app/upload    |       0 |      100 |     100 |       0 |                   
+  page.tsx         |       0 |      100 |     100 |       0 | 3-30              
+ src/components    |   93.98 |    92.28 |   93.85 |   93.98 |                   
+  ...ysesTable.tsx |     100 |      100 |     100 |     100 |                   
+  ...FaultList.tsx |   98.21 |    86.66 |    92.1 |   98.21 | 59-61,92          
+  ...Forbidden.tsx |     100 |      100 |     100 |     100 |                   
+  ...sProgress.tsx |     100 |      100 |     100 |     100 |                   
+  ...atedFrame.tsx |     100 |      100 |     100 |     100 |                   
+  AuthForm.tsx     |     100 |      100 |     100 |     100 |                   
+  AuthPage.tsx     |       0 |      100 |     100 |       0 | 3-34              
+  ...risonView.tsx |     100 |    92.85 |     100 |     100 | 19                
+  CostSummary.tsx  |   98.61 |    78.26 |     100 |   98.61 | 18                
+  ...countForm.tsx |     100 |      100 |     100 |     100 |                   
+  ...firmation.tsx |     100 |       88 |     100 |     100 | 23,30,43          
+  ...oadButton.tsx |     100 |      100 |     100 |     100 |                   
+  ErrorSummary.tsx |     100 |    83.33 |     100 |     100 | 32                
+  FeedbackForm.tsx |   96.15 |    84.21 |     100 |   96.15 | 30-31             
+  FilmingGuide.tsx |     100 |      100 |     100 |     100 |                   
+  HistoryList.tsx  |     100 |    96.87 |     100 |     100 | 41                
+  LiftPicker.tsx   |     100 |      100 |     100 |     100 |                   
+  NavBar.tsx       |       0 |      100 |     100 |       0 | 3-38              
+  NotMeasured.tsx  |     100 |      100 |     100 |     100 |                   
+  ...CuePrompt.tsx |     100 |      100 |     100 |     100 |                   
+  RepBreakdown.tsx |     100 |      100 |     100 |     100 |                   
+  ResultsView.tsx  |   95.34 |    97.67 |   66.66 |   95.34 | 106-111           
+  UploadForm.tsx   |     100 |       95 |     100 |     100 | 54,74             
+ src/lib           |   87.01 |    91.13 |      65 |   87.01 |                   
+  api.ts           |   89.36 |    89.47 |      52 |   89.36 | ...2,54-58,64,101 
+  filming.ts       |     100 |      100 |     100 |     100 |                   
+  format.ts        |     100 |      100 |     100 |     100 |                   
+  lifts.ts         |   85.71 |    66.66 |   66.66 |   85.71 | 18-19             
+  session.ts       |     100 |    88.88 |     100 |     100 | 9                 
+  types.ts         |       0 |        0 |       0 |       0 |                   
+  videoFile.ts     |   53.12 |      100 |   66.66 |   53.12 | 24-38             
+-------------------|---------|----------|---------|---------|-------------------

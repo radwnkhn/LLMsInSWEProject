@@ -32,6 +32,7 @@ class Settings:
     storage_bucket: str = "videos"
     cors_origins: tuple[str, ...] = ("http://localhost:3000",)
     pose_model_path: str | None = None
+    llm_prices_file: str | None = None  # US-26: JSON price table; None uses backend/app/llm_prices.json
 
 
 def load_dotenv(path: str | os.PathLike | None = None) -> None:
@@ -73,4 +74,5 @@ def load_settings(env: Mapping[str, str] | None = None) -> Settings:
         storage_bucket=(env.get("STORAGE_BUCKET") or "videos").strip(),
         cors_origins=origins,
         pose_model_path=(env.get("POSE_MODEL_PATH") or "").strip() or None,
+        llm_prices_file=(env.get("LLM_PRICES_FILE") or "").strip() or None,
     )

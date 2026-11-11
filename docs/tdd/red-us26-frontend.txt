@@ -1,0 +1,3409 @@
+
+ RUN  v3.2.7 frontend
+
+ ❯ src/lib/__tests__/us26-cost-requests.test.ts (3 tests | 3 failed) 28ms
+   × US-26 cost requests and formatting > us26_cost_summary_is_read_for_the_chosen_dates_with_the_admin_session 19ms
+     → api.adminCosts is not a function
+   × US-26 cost requests and formatting > us26_cost_summary_without_dates_uses_the_server_default_range 6ms
+     → api.adminCosts is not a function
+   × US-26 cost requests and formatting > us26_costs_are_shown_in_dollars_and_unknown_costs_say_so 2ms
+     → formatCost is not a function
+ ❯ src/components/__tests__/us26-ai-cost.test.tsx (6 tests | 6 failed) 6075ms
+   × US-26 cost on the analysis detail page > us26_each_attempt_shows_provider_model_tokens_and_cost 1032ms
+     → Unable to find role="article" and name `/Attempt 1/`
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"space-y-6"[39m
+    [36m>[39m
+      [36m<header>[39m
+        [36m<h1[39m
+          [33mclass[39m=[32m"text-2xl font-bold"[39m
+        [36m>[39m
+          [0mSquat[0m
+          [0m: [0m
+          [0mPassed after retry[0m
+        [36m</h1>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"text-sm text-zinc-600"[39m
+        [36m>[39m
+          [0ml@virginia.edu[0m
+          [0m · [0m
+          [0m2[0m
+          [0m attempts[0m
+        [36m</p>[39m
+      [36m</header>[39m
+      [36m<section[39m
+        [33mclass[39m=[32m"space-y-2"[39m
+      [36m>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"text-lg font-semibold"[39m
+        [36m>[39m
+          [0mPer-rep measurements[0m
+        [36m</h2>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"overflow-x-auto"[39m
+        [36m>[39m
+          [36m<table[39m
+            [33mclass[39m=[32m"text-left text-xs"[39m
+          [36m>[39m
+            [36m<thead>[39m
+              [36m<tr>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mRep[0m
+                [36m</th>[39m
+              [36m</tr>[39m
+            [36m</thead>[39m
+            [36m<tbody />[39m
+          [36m</table>[39m
+        [36m</div>[39m
+      [36m</section>[39m
+      [36m<section[39m
+        [33mclass[39m=[32m"space-y-3"[39m
+      [36m>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"text-lg font-semibold"[39m
+        [36m>[39m
+          [0mLLM attempts[0m
+        [36m</h2>[39m
+        [36m<article[39m
+          [33mclass[39m=[32m"space-y-2 rounded-xl border border-zinc-200 p-3 text-sm"[39m
+        [36m>[39m
+          [36m<h3[39m
+            [33mclass[39m=[32m"font-semibold"[39m
+          [36m>[39m
+            [0mAttempt [0m
+            [0m1[0m
+            [0m: [0m
+            [0mfailed[0m
+            [0m · [0m
+            [0m2302[0m
+            [0m tokens[0m
+          [36m</h3>[39m
+          [36m<pre[39m
+            [33mclass[39m=[32m"max-h-64 overflow-auto rounded bg-zinc-100 p-2 text-xs whitespace-pre-wrap"[39m
+          [36m>[39m
+            [0m{}[0m
+          [36m</pre>[39m
+        [36m</article>[39m
+        [36m<article[39m
+          [33mclass[39m=[32m"space-y-2 rounded-xl border border-zinc-200 p-3 text-sm"[39m
+        [36m>[39m
+          [36m<h3[39m
+            [33mclass[39m=[32m"font-semibold"[39m
+          [36m>[39m
+            [0mAttempt [0m
+            [0m2[0m
+            [0m: [0m
+            [0mpassed[0m
+            [0m · [0m
+            [0m2304[0m
+            [0m tokens[0m
+          [36m</h3>[39m
+          [36m<pre[39m
+            [33mclass[39m=[32m"max-h-64 overflow-auto rounded bg-zinc-100 p-2 text-xs whitespace-pre-wrap"[39m
+          [36m>[39m
+            [0m{}[0m
+          [36m</pre>[39m
+        [36m</article>[39m
+      [36m</section>[39m
+      [36m<section[39m
+        [33mclass[39m=[32m"space-y-2"[39m
+      [36m>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"text-lg font-semibold"[39m
+        [36m>[39m
+          [0mWhat the user saw[0m
+        [36m</h2>[39m
+        [36m<pre[39m
+          [33mclass[39m=[32m"max-h-96 overflow-auto rounded bg-zinc-100 p-2 text-xs"[39m
+        [36m>[39m
+          [0mnull[0m
+        [36m</pre>[39m
+      [36m</section>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"space-y-6"[39m
+    [36m>[39m
+      [36m<header>[39m
+        [36m<h1[39m
+          [33mclass[39m=[32m"text-2xl font-bold"[39m
+        [36m>[39m
+          [0mSquat[0m
+          [0m: [0m
+          [0mPassed after retry[0m
+        [36m</h1>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"text-sm text-zinc-600"[39m
+        [36m>[39m
+          [0ml@virginia.edu[0m
+          [0m · [0m
+          [0m2[0m
+          [0m attempts[0m
+        [36m</p>[39m
+      [36m</header>[39m
+      [36m<section[39m
+        [33mclass[39m=[32m"space-y-2"[39m
+      [36m>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"text-lg font-semibold"[39m
+        [36m>[39m
+          [0mPer-rep measurements[0m
+        [36m</h2>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"overflow-x-auto"[39m
+        [36m>[39m
+          [36m<table[39m
+            [33mclass[39m=[32m"text-left text-xs"[39m
+          [36m>[39m
+            [36m<thead>[39m
+              [36m<tr>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mRep[0m
+                [36m</th>[39m
+              [36m</tr>[39m
+            [36m</thead>[39m
+            [36m<tbody />[39m
+          [36m</table>[39m
+        [36m</div>[39m
+      [36m</section>[39m
+      [36m<section[39m
+        [33mclass[39m=[32m"space-y-3"[39m
+      [36m>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"text-lg font-semibold"[39m
+        [36m>[39m
+          [0mLLM attempts[0m
+        [36m</h2>[39m
+        [36m<article[39m
+          [33mclass[39m=[32m"space-y-2 rounded-xl border border-zinc-200 p-3 text-sm"[39m
+        [36m>[39m
+          [36m<h3[39m
+            [33mclass[39m=[32m"font-semibold"[39m
+          [36m>[39m
+            [0mAttempt [0m
+            [0m1[0m
+            [0m: [0m
+            [0mfailed[0m
+            [0m · [0m
+            [0m2302[0m
+            [0m tokens[0m
+          [36m</h3>[39m
+          [36m<pre[39m
+            [33mclass[39m=[32m"max-h-64 overflow-auto rounded bg-zinc-100 p-2 text-xs whitespace-pre-wrap"[39m
+          [36m>[39m
+            [0m{}[0m
+          [36m</pre>[39m
+        [36m</article>[39m
+        [36m<article[39m
+          [33mclass[39m=[32m"space-y-2 rounded-xl border border-zinc-200 p-3 text-sm"[39m
+        [36m>[39m
+          [36m<h3[39m
+            [33mclass[39m=[32m"font-semibold"[39m
+          [36m>[39m
+            [0mAttempt [0m
+            [0m2[0m
+            [0m: [0m
+            [0mpassed[0m
+            [0m · [0m
+            [0m2304[0m
+            [0m tokens[0m
+          [36m</h3>[39m
+          [36m<pre[39m
+            [33mclass[39m=[32m"max-h-64 overflow-auto rounded bg-zinc-100 p-2 text-xs whitespace-pre-wrap"[39m
+          [36m>[39m
+            [0m{}[0m
+          [36m</pre>[39m
+        [36m</article>[39m
+      [36m</section>[39m
+      [36m<section[39m
+        [33mclass[39m=[32m"space-y-2"[39m
+      [36m>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"text-lg font-semibold"[39m
+        [36m>[39m
+          [0mWhat the user saw[0m
+        [36m</h2>[39m
+        [36m<pre[39m
+          [33mclass[39m=[32m"max-h-96 overflow-auto rounded bg-zinc-100 p-2 text-xs"[39m
+        [36m>[39m
+          [0mnull[0m
+        [36m</pre>[39m
+      [36m</section>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+   × US-26 cost on the analysis detail page > us26_the_analysis_total_shows_all_tokens_and_cost 1007ms
+     → Unable to find role="region" and name "AI usage"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"space-y-6"[39m
+    [36m>[39m
+      [36m<header>[39m
+        [36m<h1[39m
+          [33mclass[39m=[32m"text-2xl font-bold"[39m
+        [36m>[39m
+          [0mSquat[0m
+          [0m: [0m
+          [0mPassed after retry[0m
+        [36m</h1>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"text-sm text-zinc-600"[39m
+        [36m>[39m
+          [0ml@virginia.edu[0m
+          [0m · [0m
+          [0m2[0m
+          [0m attempts[0m
+        [36m</p>[39m
+      [36m</header>[39m
+      [36m<section[39m
+        [33mclass[39m=[32m"space-y-2"[39m
+      [36m>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"text-lg font-semibold"[39m
+        [36m>[39m
+          [0mPer-rep measurements[0m
+        [36m</h2>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"overflow-x-auto"[39m
+        [36m>[39m
+          [36m<table[39m
+            [33mclass[39m=[32m"text-left text-xs"[39m
+          [36m>[39m
+            [36m<thead>[39m
+              [36m<tr>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mRep[0m
+                [36m</th>[39m
+              [36m</tr>[39m
+            [36m</thead>[39m
+            [36m<tbody />[39m
+          [36m</table>[39m
+        [36m</div>[39m
+      [36m</section>[39m
+      [36m<section[39m
+        [33mclass[39m=[32m"space-y-3"[39m
+      [36m>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"text-lg font-semibold"[39m
+        [36m>[39m
+          [0mLLM attempts[0m
+        [36m</h2>[39m
+        [36m<article[39m
+          [33mclass[39m=[32m"space-y-2 rounded-xl border border-zinc-200 p-3 text-sm"[39m
+        [36m>[39m
+          [36m<h3[39m
+            [33mclass[39m=[32m"font-semibold"[39m
+          [36m>[39m
+            [0mAttempt [0m
+            [0m1[0m
+            [0m: [0m
+            [0mfailed[0m
+            [0m · [0m
+            [0m2302[0m
+            [0m tokens[0m
+          [36m</h3>[39m
+          [36m<pre[39m
+            [33mclass[39m=[32m"max-h-64 overflow-auto rounded bg-zinc-100 p-2 text-xs whitespace-pre-wrap"[39m
+          [36m>[39m
+            [0m{}[0m
+          [36m</pre>[39m
+        [36m</article>[39m
+        [36m<article[39m
+          [33mclass[39m=[32m"space-y-2 rounded-xl border border-zinc-200 p-3 text-sm"[39m
+        [36m>[39m
+          [36m<h3[39m
+            [33mclass[39m=[32m"font-semibold"[39m
+          [36m>[39m
+            [0mAttempt [0m
+            [0m2[0m
+            [0m: [0m
+            [0mpassed[0m
+            [0m · [0m
+            [0m2304[0m
+            [0m tokens[0m
+          [36m</h3>[39m
+          [36m<pre[39m
+            [33mclass[39m=[32m"max-h-64 overflow-auto rounded bg-zinc-100 p-2 text-xs whitespace-pre-wrap"[39m
+          [36m>[39m
+            [0m{}[0m
+          [36m</pre>[39m
+        [36m</article>[39m
+      [36m</section>[39m
+      [36m<section[39m
+        [33mclass[39m=[32m"space-y-2"[39m
+      [36m>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"text-lg font-semibold"[39m
+        [36m>[39m
+          [0mWhat the user saw[0m
+        [36m</h2>[39m
+        [36m<pre[39m
+          [33mclass[39m=[32m"max-h-96 overflow-auto rounded bg-zinc-100 p-2 text-xs"[39m
+        [36m>[39m
+          [0mnull[0m
+        [36m</pre>[39m
+      [36m</section>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"space-y-6"[39m
+    [36m>[39m
+      [36m<header>[39m
+        [36m<h1[39m
+          [33mclass[39m=[32m"text-2xl font-bold"[39m
+        [36m>[39m
+          [0mSquat[0m
+          [0m: [0m
+          [0mPassed after retry[0m
+        [36m</h1>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"text-sm text-zinc-600"[39m
+        [36m>[39m
+          [0ml@virginia.edu[0m
+          [0m · [0m
+          [0m2[0m
+          [0m attempts[0m
+        [36m</p>[39m
+      [36m</header>[39m
+      [36m<section[39m
+        [33mclass[39m=[32m"space-y-2"[39m
+      [36m>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"text-lg font-semibold"[39m
+        [36m>[39m
+          [0mPer-rep measurements[0m
+        [36m</h2>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"overflow-x-auto"[39m
+        [36m>[39m
+          [36m<table[39m
+            [33mclass[39m=[32m"text-left text-xs"[39m
+          [36m>[39m
+            [36m<thead>[39m
+              [36m<tr>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mRep[0m
+                [36m</th>[39m
+              [36m</tr>[39m
+            [36m</thead>[39m
+            [36m<tbody />[39m
+          [36m</table>[39m
+        [36m</div>[39m
+      [36m</section>[39m
+      [36m<section[39m
+        [33mclass[39m=[32m"space-y-3"[39m
+      [36m>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"text-lg font-semibold"[39m
+        [36m>[39m
+          [0mLLM attempts[0m
+        [36m</h2>[39m
+        [36m<article[39m
+          [33mclass[39m=[32m"space-y-2 rounded-xl border border-zinc-200 p-3 text-sm"[39m
+        [36m>[39m
+          [36m<h3[39m
+            [33mclass[39m=[32m"font-semibold"[39m
+          [36m>[39m
+            [0mAttempt [0m
+            [0m1[0m
+            [0m: [0m
+            [0mfailed[0m
+            [0m · [0m
+            [0m2302[0m
+            [0m tokens[0m
+          [36m</h3>[39m
+          [36m<pre[39m
+            [33mclass[39m=[32m"max-h-64 overflow-auto rounded bg-zinc-100 p-2 text-xs whitespace-pre-wrap"[39m
+          [36m>[39m
+            [0m{}[0m
+          [36m</pre>[39m
+        [36m</article>[39m
+        [36m<article[39m
+          [33mclass[39m=[32m"space-y-2 rounded-xl border border-zinc-200 p-3 text-sm"[39m
+        [36m>[39m
+          [36m<h3[39m
+            [33mclass[39m=[32m"font-semibold"[39m
+          [36m>[39m
+            [0mAttempt [0m
+            [0m2[0m
+            [0m: [0m
+            [0mpassed[0m
+            [0m · [0m
+            [0m2304[0m
+            [0m tokens[0m
+          [36m</h3>[39m
+          [36m<pre[39m
+            [33mclass[39m=[32m"max-h-64 overflow-auto rounded bg-zinc-100 p-2 text-xs whitespace-pre-wrap"[39m
+          [36m>[39m
+            [0m{}[0m
+          [36m</pre>[39m
+        [36m</article>[39m
+      [36m</section>[39m
+      [36m<section[39m
+        [33mclass[39m=[32m"space-y-2"[39m
+      [36m>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"text-lg font-semibold"[39m
+        [36m>[39m
+          [0mWhat the user saw[0m
+        [36m</h2>[39m
+        [36m<pre[39m
+          [33mclass[39m=[32m"max-h-96 overflow-auto rounded bg-zinc-100 p-2 text-xs"[39m
+        [36m>[39m
+          [0mnull[0m
+        [36m</pre>[39m
+      [36m</section>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+   × US-26 cost on the analysis detail page > us26_unknown_models_show_unknown_cost_instead_of_failing 1007ms
+     → Unable to find role="article" and name `/Attempt 1/`
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"space-y-6"[39m
+    [36m>[39m
+      [36m<header>[39m
+        [36m<h1[39m
+          [33mclass[39m=[32m"text-2xl font-bold"[39m
+        [36m>[39m
+          [0mSquat[0m
+          [0m: [0m
+          [0mPassed after retry[0m
+        [36m</h1>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"text-sm text-zinc-600"[39m
+        [36m>[39m
+          [0ml@virginia.edu[0m
+          [0m · [0m
+          [0m2[0m
+          [0m attempts[0m
+        [36m</p>[39m
+      [36m</header>[39m
+      [36m<section[39m
+        [33mclass[39m=[32m"space-y-2"[39m
+      [36m>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"text-lg font-semibold"[39m
+        [36m>[39m
+          [0mPer-rep measurements[0m
+        [36m</h2>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"overflow-x-auto"[39m
+        [36m>[39m
+          [36m<table[39m
+            [33mclass[39m=[32m"text-left text-xs"[39m
+          [36m>[39m
+            [36m<thead>[39m
+              [36m<tr>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mRep[0m
+                [36m</th>[39m
+              [36m</tr>[39m
+            [36m</thead>[39m
+            [36m<tbody />[39m
+          [36m</table>[39m
+        [36m</div>[39m
+      [36m</section>[39m
+      [36m<section[39m
+        [33mclass[39m=[32m"space-y-3"[39m
+      [36m>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"text-lg font-semibold"[39m
+        [36m>[39m
+          [0mLLM attempts[0m
+        [36m</h2>[39m
+        [36m<article[39m
+          [33mclass[39m=[32m"space-y-2 rounded-xl border border-zinc-200 p-3 text-sm"[39m
+        [36m>[39m
+          [36m<h3[39m
+            [33mclass[39m=[32m"font-semibold"[39m
+          [36m>[39m
+            [0mAttempt [0m
+            [0m1[0m
+            [0m: [0m
+            [0mfailed[0m
+            [0m · [0m
+            [0m2302[0m
+            [0m tokens[0m
+          [36m</h3>[39m
+          [36m<pre[39m
+            [33mclass[39m=[32m"max-h-64 overflow-auto rounded bg-zinc-100 p-2 text-xs whitespace-pre-wrap"[39m
+          [36m>[39m
+            [0m{}[0m
+          [36m</pre>[39m
+        [36m</article>[39m
+        [36m<article[39m
+          [33mclass[39m=[32m"space-y-2 rounded-xl border border-zinc-200 p-3 text-sm"[39m
+        [36m>[39m
+          [36m<h3[39m
+            [33mclass[39m=[32m"font-semibold"[39m
+          [36m>[39m
+            [0mAttempt [0m
+            [0m2[0m
+            [0m: [0m
+            [0mpassed[0m
+            [0m · [0m
+            [0m2304[0m
+            [0m tokens[0m
+          [36m</h3>[39m
+          [36m<pre[39m
+            [33mclass[39m=[32m"max-h-64 overflow-auto rounded bg-zinc-100 p-2 text-xs whitespace-pre-wrap"[39m
+          [36m>[39m
+            [0m{}[0m
+          [36m</pre>[39m
+        [36m</article>[39m
+      [36m</section>[39m
+      [36m<section[39m
+        [33mclass[39m=[32m"space-y-2"[39m
+      [36m>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"text-lg font-semibold"[39m
+        [36m>[39m
+          [0mWhat the user saw[0m
+        [36m</h2>[39m
+        [36m<pre[39m
+          [33mclass[39m=[32m"max-h-96 overflow-auto rounded bg-zinc-100 p-2 text-xs"[39m
+        [36m>[39m
+          [0mnull[0m
+        [36m</pre>[39m
+      [36m</section>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"space-y-6"[39m
+    [36m>[39m
+      [36m<header>[39m
+        [36m<h1[39m
+          [33mclass[39m=[32m"text-2xl font-bold"[39m
+        [36m>[39m
+          [0mSquat[0m
+          [0m: [0m
+          [0mPassed after retry[0m
+        [36m</h1>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"text-sm text-zinc-600"[39m
+        [36m>[39m
+          [0ml@virginia.edu[0m
+          [0m · [0m
+          [0m2[0m
+          [0m attempts[0m
+        [36m</p>[39m
+      [36m</header>[39m
+      [36m<section[39m
+        [33mclass[39m=[32m"space-y-2"[39m
+      [36m>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"text-lg font-semibold"[39m
+        [36m>[39m
+          [0mPer-rep measurements[0m
+        [36m</h2>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"overflow-x-auto"[39m
+        [36m>[39m
+          [36m<table[39m
+            [33mclass[39m=[32m"text-left text-xs"[39m
+          [36m>[39m
+            [36m<thead>[39m
+              [36m<tr>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mRep[0m
+                [36m</th>[39m
+              [36m</tr>[39m
+            [36m</thead>[39m
+            [36m<tbody />[39m
+          [36m</table>[39m
+        [36m</div>[39m
+      [36m</section>[39m
+      [36m<section[39m
+        [33mclass[39m=[32m"space-y-3"[39m
+      [36m>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"text-lg font-semibold"[39m
+        [36m>[39m
+          [0mLLM attempts[0m
+        [36m</h2>[39m
+        [36m<article[39m
+          [33mclass[39m=[32m"space-y-2 rounded-xl border border-zinc-200 p-3 text-sm"[39m
+        [36m>[39m
+          [36m<h3[39m
+            [33mclass[39m=[32m"font-semibold"[39m
+          [36m>[39m
+            [0mAttempt [0m
+            [0m1[0m
+            [0m: [0m
+            [0mfailed[0m
+            [0m · [0m
+            [0m2302[0m
+            [0m tokens[0m
+          [36m</h3>[39m
+          [36m<pre[39m
+            [33mclass[39m=[32m"max-h-64 overflow-auto rounded bg-zinc-100 p-2 text-xs whitespace-pre-wrap"[39m
+          [36m>[39m
+            [0m{}[0m
+          [36m</pre>[39m
+        [36m</article>[39m
+        [36m<article[39m
+          [33mclass[39m=[32m"space-y-2 rounded-xl border border-zinc-200 p-3 text-sm"[39m
+        [36m>[39m
+          [36m<h3[39m
+            [33mclass[39m=[32m"font-semibold"[39m
+          [36m>[39m
+            [0mAttempt [0m
+            [0m2[0m
+            [0m: [0m
+            [0mpassed[0m
+            [0m · [0m
+            [0m2304[0m
+            [0m tokens[0m
+          [36m</h3>[39m
+          [36m<pre[39m
+            [33mclass[39m=[32m"max-h-64 overflow-auto rounded bg-zinc-100 p-2 text-xs whitespace-pre-wrap"[39m
+          [36m>[39m
+            [0m{}[0m
+          [36m</pre>[39m
+        [36m</article>[39m
+      [36m</section>[39m
+      [36m<section[39m
+        [33mclass[39m=[32m"space-y-2"[39m
+      [36m>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"text-lg font-semibold"[39m
+        [36m>[39m
+          [0mWhat the user saw[0m
+        [36m</h2>[39m
+        [36m<pre[39m
+          [33mclass[39m=[32m"max-h-96 overflow-auto rounded bg-zinc-100 p-2 text-xs"[39m
+        [36m>[39m
+          [0mnull[0m
+        [36m</pre>[39m
+      [36m</section>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+   × US-26 cost summary on the admin page > us26_summary_shows_total_average_and_retry_share_for_the_range 1011ms
+     → Unable to find role="region" and name "AI cost"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"space-y-6"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"flex flex-wrap items-baseline justify-between gap-2"[39m
+      [36m>[39m
+        [36m<h1[39m
+          [33mclass[39m=[32m"text-2xl font-bold"[39m
+        [36m>[39m
+          [0mAnalyses[0m
+        [36m</h1>[39m
+        [36m<a[39m
+          [33mclass[39m=[32m"text-sm underline"[39m
+          [33mhref[39m=[32m"/admin/faults"[39m
+        [36m>[39m
+          [0mFault list[0m
+        [36m</a>[39m
+      [36m</div>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"space-y-3"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex flex-wrap gap-4 text-sm"[39m
+        [36m>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2"[39m
+          [36m>[39m
+            [0mLift[0m
+            [36m<select[39m
+              [33mclass[39m=[32m"rounded-lg border border-zinc-300 px-2 py-1"[39m
+            [36m>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"all"[39m
+              [36m>[39m
+                [0mAll[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"squat"[39m
+              [36m>[39m
+                [0mSquat[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"deadlift"[39m
+              [36m>[39m
+                [0mDeadlift[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"bench_press"[39m
+              [36m>[39m
+                [0mBench Press[0m
+              [36m</option>[39m
+            [36m</select>[39m
+          [36m</label>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2"[39m
+          [36m>[39m
+            [0mFinal status[0m
+            [36m<select[39m
+              [33mclass[39m=[32m"rounded-lg border border-zinc-300 px-2 py-1"[39m
+            [36m>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"all"[39m
+              [36m>[39m
+                [0mAll[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"passed_first_try"[39m
+              [36m>[39m
+                [0mPassed first try[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"passed_after_retry"[39m
+              [36m>[39m
+                [0mPassed after retry[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"fallback"[39m
+              [36m>[39m
+                [0mFallback[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"unanalyzable"[39m
+              [36m>[39m
+                [0mCouldn't analyze[0m
+              [36m</option>[39m
+            [36m</select>[39m
+          [36m</label>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"overflow-x-auto"[39m
+        [36m>[39m
+          [36m<table[39m
+            [33mclass[39m=[32m"w-full text-left text-sm"[39m
+          [36m>[39m
+            [36m<thead[39m
+              [33mclass[39m=[32m"text-zinc-500"[39m
+            [36m>[39m
+              [36m<tr>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"py-1 pr-3"[39m
+                [36m>[39m
+                  [0mDate[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mUser[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mLift[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mAttempts[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mFinal status[0m
+                [36m</th>[39m
+                [36m<th />[39m
+              [36m</tr>[39m
+            [36m</thead>[39m
+            [36m<tbody />[39m
+          [36m</table>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+      [36m<section[39m
+        [33mclass[39m=[32m"space-y-2"[39m
+      [36m>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"text-lg font-semibold"[39m
+        [36m>[39m
+          [0mValidator errors[0m
+        [36m</h2>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"text-sm text-zinc-600"[39m
+        [36m>[39m
+          [0mNo validator errors yet.[0m
+        [36m</p>[39m
+      [36m</section>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"space-y-6"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"flex flex-wrap items-baseline justify-between gap-2"[39m
+      [36m>[39m
+        [36m<h1[39m
+          [33mclass[39m=[32m"text-2xl font-bold"[39m
+        [36m>[39m
+          [0mAnalyses[0m
+        [36m</h1>[39m
+        [36m<a[39m
+          [33mclass[39m=[32m"text-sm underline"[39m
+          [33mhref[39m=[32m"/admin/faults"[39m
+        [36m>[39m
+          [0mFault list[0m
+        [36m</a>[39m
+      [36m</div>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"space-y-3"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex flex-wrap gap-4 text-sm"[39m
+        [36m>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2"[39m
+          [36m>[39m
+            [0mLift[0m
+            [36m<select[39m
+              [33mclass[39m=[32m"rounded-lg border border-zinc-300 px-2 py-1"[39m
+            [36m>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"all"[39m
+              [36m>[39m
+                [0mAll[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"squat"[39m
+              [36m>[39m
+                [0mSquat[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"deadlift"[39m
+              [36m>[39m
+                [0mDeadlift[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"bench_press"[39m
+              [36m>[39m
+                [0mBench Press[0m
+              [36m</option>[39m
+            [36m</select>[39m
+          [36m</label>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2"[39m
+          [36m>[39m
+            [0mFinal status[0m
+            [36m<select[39m
+              [33mclass[39m=[32m"rounded-lg border border-zinc-300 px-2 py-1"[39m
+            [36m>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"all"[39m
+              [36m>[39m
+                [0mAll[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"passed_first_try"[39m
+              [36m>[39m
+                [0mPassed first try[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"passed_after_retry"[39m
+              [36m>[39m
+                [0mPassed after retry[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"fallback"[39m
+              [36m>[39m
+                [0mFallback[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"unanalyzable"[39m
+              [36m>[39m
+                [0mCouldn't analyze[0m
+              [36m</option>[39m
+            [36m</select>[39m
+          [36m</label>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"overflow-x-auto"[39m
+        [36m>[39m
+          [36m<table[39m
+            [33mclass[39m=[32m"w-full text-left text-sm"[39m
+          [36m>[39m
+            [36m<thead[39m
+              [33mclass[39m=[32m"text-zinc-500"[39m
+            [36m>[39m
+              [36m<tr>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"py-1 pr-3"[39m
+                [36m>[39m
+                  [0mDate[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mUser[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mLift[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mAttempts[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mFinal status[0m
+                [36m</th>[39m
+                [36m<th />[39m
+              [36m</tr>[39m
+            [36m</thead>[39m
+            [36m<tbody />[39m
+          [36m</table>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+      [36m<section[39m
+        [33mclass[39m=[32m"space-y-2"[39m
+      [36m>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"text-lg font-semibold"[39m
+        [36m>[39m
+          [0mValidator errors[0m
+        [36m</h2>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"text-sm text-zinc-600"[39m
+        [36m>[39m
+          [0mNo validator errors yet.[0m
+        [36m</p>[39m
+      [36m</section>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+   × US-26 cost summary on the admin page > us26_choosing_dates_reloads_the_summary_for_that_range 1008ms
+     → Unable to find role="region" and name "AI cost"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"space-y-6"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"flex flex-wrap items-baseline justify-between gap-2"[39m
+      [36m>[39m
+        [36m<h1[39m
+          [33mclass[39m=[32m"text-2xl font-bold"[39m
+        [36m>[39m
+          [0mAnalyses[0m
+        [36m</h1>[39m
+        [36m<a[39m
+          [33mclass[39m=[32m"text-sm underline"[39m
+          [33mhref[39m=[32m"/admin/faults"[39m
+        [36m>[39m
+          [0mFault list[0m
+        [36m</a>[39m
+      [36m</div>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"space-y-3"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex flex-wrap gap-4 text-sm"[39m
+        [36m>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2"[39m
+          [36m>[39m
+            [0mLift[0m
+            [36m<select[39m
+              [33mclass[39m=[32m"rounded-lg border border-zinc-300 px-2 py-1"[39m
+            [36m>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"all"[39m
+              [36m>[39m
+                [0mAll[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"squat"[39m
+              [36m>[39m
+                [0mSquat[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"deadlift"[39m
+              [36m>[39m
+                [0mDeadlift[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"bench_press"[39m
+              [36m>[39m
+                [0mBench Press[0m
+              [36m</option>[39m
+            [36m</select>[39m
+          [36m</label>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2"[39m
+          [36m>[39m
+            [0mFinal status[0m
+            [36m<select[39m
+              [33mclass[39m=[32m"rounded-lg border border-zinc-300 px-2 py-1"[39m
+            [36m>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"all"[39m
+              [36m>[39m
+                [0mAll[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"passed_first_try"[39m
+              [36m>[39m
+                [0mPassed first try[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"passed_after_retry"[39m
+              [36m>[39m
+                [0mPassed after retry[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"fallback"[39m
+              [36m>[39m
+                [0mFallback[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"unanalyzable"[39m
+              [36m>[39m
+                [0mCouldn't analyze[0m
+              [36m</option>[39m
+            [36m</select>[39m
+          [36m</label>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"overflow-x-auto"[39m
+        [36m>[39m
+          [36m<table[39m
+            [33mclass[39m=[32m"w-full text-left text-sm"[39m
+          [36m>[39m
+            [36m<thead[39m
+              [33mclass[39m=[32m"text-zinc-500"[39m
+            [36m>[39m
+              [36m<tr>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"py-1 pr-3"[39m
+                [36m>[39m
+                  [0mDate[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mUser[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mLift[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mAttempts[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mFinal status[0m
+                [36m</th>[39m
+                [36m<th />[39m
+              [36m</tr>[39m
+            [36m</thead>[39m
+            [36m<tbody />[39m
+          [36m</table>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+      [36m<section[39m
+        [33mclass[39m=[32m"space-y-2"[39m
+      [36m>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"text-lg font-semibold"[39m
+        [36m>[39m
+          [0mValidator errors[0m
+        [36m</h2>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"text-sm text-zinc-600"[39m
+        [36m>[39m
+          [0mNo validator errors yet.[0m
+        [36m</p>[39m
+      [36m</section>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"space-y-6"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"flex flex-wrap items-baseline justify-between gap-2"[39m
+      [36m>[39m
+        [36m<h1[39m
+          [33mclass[39m=[32m"text-2xl font-bold"[39m
+        [36m>[39m
+          [0mAnalyses[0m
+        [36m</h1>[39m
+        [36m<a[39m
+          [33mclass[39m=[32m"text-sm underline"[39m
+          [33mhref[39m=[32m"/admin/faults"[39m
+        [36m>[39m
+          [0mFault list[0m
+        [36m</a>[39m
+      [36m</div>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"space-y-3"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex flex-wrap gap-4 text-sm"[39m
+        [36m>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2"[39m
+          [36m>[39m
+            [0mLift[0m
+            [36m<select[39m
+              [33mclass[39m=[32m"rounded-lg border border-zinc-300 px-2 py-1"[39m
+            [36m>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"all"[39m
+              [36m>[39m
+                [0mAll[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"squat"[39m
+              [36m>[39m
+                [0mSquat[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"deadlift"[39m
+              [36m>[39m
+                [0mDeadlift[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"bench_press"[39m
+              [36m>[39m
+                [0mBench Press[0m
+              [36m</option>[39m
+            [36m</select>[39m
+          [36m</label>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2"[39m
+          [36m>[39m
+            [0mFinal status[0m
+            [36m<select[39m
+              [33mclass[39m=[32m"rounded-lg border border-zinc-300 px-2 py-1"[39m
+            [36m>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"all"[39m
+              [36m>[39m
+                [0mAll[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"passed_first_try"[39m
+              [36m>[39m
+                [0mPassed first try[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"passed_after_retry"[39m
+              [36m>[39m
+                [0mPassed after retry[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"fallback"[39m
+              [36m>[39m
+                [0mFallback[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"unanalyzable"[39m
+              [36m>[39m
+                [0mCouldn't analyze[0m
+              [36m</option>[39m
+            [36m</select>[39m
+          [36m</label>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"overflow-x-auto"[39m
+        [36m>[39m
+          [36m<table[39m
+            [33mclass[39m=[32m"w-full text-left text-sm"[39m
+          [36m>[39m
+            [36m<thead[39m
+              [33mclass[39m=[32m"text-zinc-500"[39m
+            [36m>[39m
+              [36m<tr>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"py-1 pr-3"[39m
+                [36m>[39m
+                  [0mDate[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mUser[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mLift[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mAttempts[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mFinal status[0m
+                [36m</th>[39m
+                [36m<th />[39m
+              [36m</tr>[39m
+            [36m</thead>[39m
+            [36m<tbody />[39m
+          [36m</table>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+      [36m<section[39m
+        [33mclass[39m=[32m"space-y-2"[39m
+      [36m>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"text-lg font-semibold"[39m
+        [36m>[39m
+          [0mValidator errors[0m
+        [36m</h2>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"text-sm text-zinc-600"[39m
+        [36m>[39m
+          [0mNo validator errors yet.[0m
+        [36m</p>[39m
+      [36m</section>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+   × US-26 cost summary on the admin page > us26_a_bad_range_shows_the_reason 1008ms
+     → Unable to find role="region" and name "AI cost"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"space-y-6"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"flex flex-wrap items-baseline justify-between gap-2"[39m
+      [36m>[39m
+        [36m<h1[39m
+          [33mclass[39m=[32m"text-2xl font-bold"[39m
+        [36m>[39m
+          [0mAnalyses[0m
+        [36m</h1>[39m
+        [36m<a[39m
+          [33mclass[39m=[32m"text-sm underline"[39m
+          [33mhref[39m=[32m"/admin/faults"[39m
+        [36m>[39m
+          [0mFault list[0m
+        [36m</a>[39m
+      [36m</div>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"space-y-3"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex flex-wrap gap-4 text-sm"[39m
+        [36m>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2"[39m
+          [36m>[39m
+            [0mLift[0m
+            [36m<select[39m
+              [33mclass[39m=[32m"rounded-lg border border-zinc-300 px-2 py-1"[39m
+            [36m>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"all"[39m
+              [36m>[39m
+                [0mAll[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"squat"[39m
+              [36m>[39m
+                [0mSquat[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"deadlift"[39m
+              [36m>[39m
+                [0mDeadlift[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"bench_press"[39m
+              [36m>[39m
+                [0mBench Press[0m
+              [36m</option>[39m
+            [36m</select>[39m
+          [36m</label>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2"[39m
+          [36m>[39m
+            [0mFinal status[0m
+            [36m<select[39m
+              [33mclass[39m=[32m"rounded-lg border border-zinc-300 px-2 py-1"[39m
+            [36m>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"all"[39m
+              [36m>[39m
+                [0mAll[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"passed_first_try"[39m
+              [36m>[39m
+                [0mPassed first try[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"passed_after_retry"[39m
+              [36m>[39m
+                [0mPassed after retry[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"fallback"[39m
+              [36m>[39m
+                [0mFallback[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"unanalyzable"[39m
+              [36m>[39m
+                [0mCouldn't analyze[0m
+              [36m</option>[39m
+            [36m</select>[39m
+          [36m</label>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"overflow-x-auto"[39m
+        [36m>[39m
+          [36m<table[39m
+            [33mclass[39m=[32m"w-full text-left text-sm"[39m
+          [36m>[39m
+            [36m<thead[39m
+              [33mclass[39m=[32m"text-zinc-500"[39m
+            [36m>[39m
+              [36m<tr>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"py-1 pr-3"[39m
+                [36m>[39m
+                  [0mDate[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mUser[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mLift[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mAttempts[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mFinal status[0m
+                [36m</th>[39m
+                [36m<th />[39m
+              [36m</tr>[39m
+            [36m</thead>[39m
+            [36m<tbody />[39m
+          [36m</table>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+      [36m<section[39m
+        [33mclass[39m=[32m"space-y-2"[39m
+      [36m>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"text-lg font-semibold"[39m
+        [36m>[39m
+          [0mValidator errors[0m
+        [36m</h2>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"text-sm text-zinc-600"[39m
+        [36m>[39m
+          [0mNo validator errors yet.[0m
+        [36m</p>[39m
+      [36m</section>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"space-y-6"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"flex flex-wrap items-baseline justify-between gap-2"[39m
+      [36m>[39m
+        [36m<h1[39m
+          [33mclass[39m=[32m"text-2xl font-bold"[39m
+        [36m>[39m
+          [0mAnalyses[0m
+        [36m</h1>[39m
+        [36m<a[39m
+          [33mclass[39m=[32m"text-sm underline"[39m
+          [33mhref[39m=[32m"/admin/faults"[39m
+        [36m>[39m
+          [0mFault list[0m
+        [36m</a>[39m
+      [36m</div>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"space-y-3"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex flex-wrap gap-4 text-sm"[39m
+        [36m>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2"[39m
+          [36m>[39m
+            [0mLift[0m
+            [36m<select[39m
+              [33mclass[39m=[32m"rounded-lg border border-zinc-300 px-2 py-1"[39m
+            [36m>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"all"[39m
+              [36m>[39m
+                [0mAll[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"squat"[39m
+              [36m>[39m
+                [0mSquat[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"deadlift"[39m
+              [36m>[39m
+                [0mDeadlift[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"bench_press"[39m
+              [36m>[39m
+                [0mBench Press[0m
+              [36m</option>[39m
+            [36m</select>[39m
+          [36m</label>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2"[39m
+          [36m>[39m
+            [0mFinal status[0m
+            [36m<select[39m
+              [33mclass[39m=[32m"rounded-lg border border-zinc-300 px-2 py-1"[39m
+            [36m>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"all"[39m
+              [36m>[39m
+                [0mAll[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"passed_first_try"[39m
+              [36m>[39m
+                [0mPassed first try[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"passed_after_retry"[39m
+              [36m>[39m
+                [0mPassed after retry[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"fallback"[39m
+              [36m>[39m
+                [0mFallback[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"unanalyzable"[39m
+              [36m>[39m
+                [0mCouldn't analyze[0m
+              [36m</option>[39m
+            [36m</select>[39m
+          [36m</label>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"overflow-x-auto"[39m
+        [36m>[39m
+          [36m<table[39m
+            [33mclass[39m=[32m"w-full text-left text-sm"[39m
+          [36m>[39m
+            [36m<thead[39m
+              [33mclass[39m=[32m"text-zinc-500"[39m
+            [36m>[39m
+              [36m<tr>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"py-1 pr-3"[39m
+                [36m>[39m
+                  [0mDate[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mUser[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mLift[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mAttempts[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mFinal status[0m
+                [36m</th>[39m
+                [36m<th />[39m
+              [36m</tr>[39m
+            [36m</thead>[39m
+            [36m<tbody />[39m
+          [36m</table>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+      [36m<section[39m
+        [33mclass[39m=[32m"space-y-2"[39m
+      [36m>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"text-lg font-semibold"[39m
+        [36m>[39m
+          [0mValidator errors[0m
+        [36m</h2>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"text-sm text-zinc-600"[39m
+        [36m>[39m
+          [0mNo validator errors yet.[0m
+        [36m</p>[39m
+      [36m</section>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 9 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/lib/__tests__/us26-cost-requests.test.ts > US-26 cost requests and formatting > us26_cost_summary_is_read_for_the_chosen_dates_with_the_admin_session
+TypeError: api.adminCosts is not a function
+ ❯ src/lib/__tests__/us26-cost-requests.test.ts:15:15
+     13|     const fetch = vi.fn().mockResolvedValue(new Response(JSON.stringif…
+     14|     vi.stubGlobal("fetch", fetch);
+     15|     await api.adminCosts("2026-11-01", "2026-11-10", "admin-token");
+       |               ^
+     16|     expect(fetch).toHaveBeenCalledWith(expect.stringMatching(/\/admin\…
+     17|       expect.objectContaining({ method: "GET", headers: { Authorizatio…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/9]⎯
+
+ FAIL  src/lib/__tests__/us26-cost-requests.test.ts > US-26 cost requests and formatting > us26_cost_summary_without_dates_uses_the_server_default_range
+TypeError: api.adminCosts is not a function
+ ❯ src/lib/__tests__/us26-cost-requests.test.ts:23:15
+     21|     const fetch = vi.fn().mockResolvedValue(new Response(JSON.stringif…
+     22|     vi.stubGlobal("fetch", fetch);
+     23|     await api.adminCosts(null, null, "admin-token");
+       |               ^
+     24|     expect(fetch).toHaveBeenCalledWith(expect.stringMatching(/\/admin\…
+     25|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/9]⎯
+
+ FAIL  src/lib/__tests__/us26-cost-requests.test.ts > US-26 cost requests and formatting > us26_costs_are_shown_in_dollars_and_unknown_costs_say_so
+TypeError: formatCost is not a function
+ ❯ src/lib/__tests__/us26-cost-requests.test.ts:28:12
+     26| 
+     27|   it("us26_costs_are_shown_in_dollars_and_unknown_costs_say_so", () =>…
+     28|     expect(formatCost(null)).toBe("Unknown cost");
+       |            ^
+     29|     expect(formatCost(0)).toBe("$0.00");
+     30|     expect(formatCost(0.007012)).toBe("$0.0070");
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/9]⎯
+
+ FAIL  src/components/__tests__/us26-ai-cost.test.tsx > US-26 cost on the analysis detail page > us26_each_attempt_shows_provider_model_tokens_and_cost
+TestingLibraryElementError: Unable to find role="article" and name `/Attempt 1/`
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"space-y-6"[39m
+    [36m>[39m
+      [36m<header>[39m
+        [36m<h1[39m
+          [33mclass[39m=[32m"text-2xl font-bold"[39m
+        [36m>[39m
+          [0mSquat[0m
+          [0m: [0m
+          [0mPassed after retry[0m
+        [36m</h1>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"text-sm text-zinc-600"[39m
+        [36m>[39m
+          [0ml@virginia.edu[0m
+          [0m · [0m
+          [0m2[0m
+          [0m attempts[0m
+        [36m</p>[39m
+      [36m</header>[39m
+      [36m<section[39m
+        [33mclass[39m=[32m"space-y-2"[39m
+      [36m>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"text-lg font-semibold"[39m
+        [36m>[39m
+          [0mPer-rep measurements[0m
+        [36m</h2>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"overflow-x-auto"[39m
+        [36m>[39m
+          [36m<table[39m
+            [33mclass[39m=[32m"text-left text-xs"[39m
+          [36m>[39m
+            [36m<thead>[39m
+              [36m<tr>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mRep[0m
+                [36m</th>[39m
+              [36m</tr>[39m
+            [36m</thead>[39m
+            [36m<tbody />[39m
+          [36m</table>[39m
+        [36m</div>[39m
+      [36m</section>[39m
+      [36m<section[39m
+        [33mclass[39m=[32m"space-y-3"[39m
+      [36m>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"text-lg font-semibold"[39m
+        [36m>[39m
+          [0mLLM attempts[0m
+        [36m</h2>[39m
+        [36m<article[39m
+          [33mclass[39m=[32m"space-y-2 rounded-xl border border-zinc-200 p-3 text-sm"[39m
+        [36m>[39m
+          [36m<h3[39m
+            [33mclass[39m=[32m"font-semibold"[39m
+          [36m>[39m
+            [0mAttempt [0m
+            [0m1[0m
+            [0m: [0m
+            [0mfailed[0m
+            [0m · [0m
+            [0m2302[0m
+            [0m tokens[0m
+          [36m</h3>[39m
+          [36m<pre[39m
+            [33mclass[39m=[32m"max-h-64 overflow-auto rounded bg-zinc-100 p-2 text-xs whitespace-pre-wrap"[39m
+          [36m>[39m
+            [0m{}[0m
+          [36m</pre>[39m
+        [36m</article>[39m
+        [36m<article[39m
+          [33mclass[39m=[32m"space-y-2 rounded-xl border border-zinc-200 p-3 text-sm"[39m
+        [36m>[39m
+          [36m<h3[39m
+            [33mclass[39m=[32m"font-semibold"[39m
+          [36m>[39m
+            [0mAttempt [0m
+            [0m2[0m
+            [0m: [0m
+            [0mpassed[0m
+            [0m · [0m
+            [0m2304[0m
+            [0m tokens[0m
+          [36m</h3>[39m
+          [36m<pre[39m
+            [33mclass[39m=[32m"max-h-64 overflow-auto rounded bg-zinc-100 p-2 text-xs whitespace-pre-wrap"[39m
+          [36m>[39m
+            [0m{}[0m
+          [36m</pre>[39m
+        [36m</article>[39m
+      [36m</section>[39m
+      [36m<section[39m
+        [33mclass[39m=[32m"space-y-2"[39m
+      [36m>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"text-lg font-semibold"[39m
+        [36m>[39m
+          [0mWhat the user saw[0m
+        [36m</h2>[39m
+        [36m<pre[39m
+          [33mclass[39m=[32m"max-h-96 overflow-auto rounded bg-zinc-100 p-2 text-xs"[39m
+        [36m>[39m
+          [0mnull[0m
+        [36m</pre>[39m
+      [36m</section>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"space-y-6"[39m
+    [36m>[39m
+      [36m<header>[39m
+        [36m<h1[39m
+          [33mclass[39m=[32m"text-2xl font-bold"[39m
+        [36m>[39m
+          [0mSquat[0m
+          [0m: [0m
+          [0mPassed after retry[0m
+        [36m</h1>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"text-sm text-zinc-600"[39m
+        [36m>[39m
+          [0ml@virginia.edu[0m
+          [0m · [0m
+          [0m2[0m
+          [0m attempts[0m
+        [36m</p>[39m
+      [36m</header>[39m
+      [36m<section[39m
+        [33mclass[39m=[32m"space-y-2"[39m
+      [36m>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"text-lg font-semibold"[39m
+        [36m>[39m
+          [0mPer-rep measurements[0m
+        [36m</h2>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"overflow-x-auto"[39m
+        [36m>[39m
+          [36m<table[39m
+            [33mclass[39m=[32m"text-left text-xs"[39m
+          [36m>[39m
+            [36m<thead>[39m
+              [36m<tr>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mRep[0m
+                [36m</th>[39m
+              [36m</tr>[39m
+            [36m</thead>[39m
+            [36m<tbody />[39m
+          [36m</table>[39m
+        [36m</div>[39m
+      [36m</section>[39m
+      [36m<section[39m
+        [33mclass[39m=[32m"space-y-3"[39m
+      [36m>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"text-lg font-semibold"[39m
+        [36m>[39m
+          [0mLLM attempts[0m
+        [36m</h2>[39m
+        [36m<article[39m
+          [33mclass[39m=[32m"space-y-2 rounded-xl border border-zinc-200 p-3 text-sm"[39m
+        [36m>[39m
+          [36m<h3[39m
+            [33mclass[39m=[32m"font-semibold"[39m
+          [36m>[39m
+            [0mAttempt [0m
+            [0m1[0m
+            [0m: [0m
+            [0mfailed[0m
+            [0m · [0m
+            [0m2302[0m
+            [0m tokens[0m
+          [36m</h3>[39m
+          [36m<pre[39m
+            [33mclass[39m=[32m"max-h-64 overflow-auto rounded bg-zinc-100 p-2 text-xs whitespace-pre-wrap"[39m
+          [36m>[39m
+            [0m{}[0m
+          [36m</pre>[39m
+        [36m</article>[39m
+        [36m<article[39m
+          [33mclass[39m=[32m"space-y-2 rounded-xl border border-zinc-200 p-3 text-sm"[39m
+        [36m>[39m
+          [36m<h3[39m
+            [33mclass[39m=[32m"font-semibold"[39m
+          [36m>[39m
+            [0mAttempt [0m
+            [0m2[0m
+            [0m: [0m
+            [0mpassed[0m
+            [0m · [0m
+            [0m2304[0m
+            [0m tokens[0m
+          [36m</h3>[39m
+          [36m<pre[39m
+            [33mclass[39m=[32m"max-h-64 overflow-auto rounded bg-zinc-100 p-2 text-xs whitespace-pre-wrap"[39m
+          [36m>[39m
+            [0m{}[0m
+          [36m</pre>[39m
+        [36m</article>[39m
+      [36m</section>[39m
+      [36m<section[39m
+        [33mclass[39m=[32m"space-y-2"[39m
+      [36m>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"text-lg font-semibold"[39m
+        [36m>[39m
+          [0mWhat the user saw[0m
+        [36m</h2>[39m
+        [36m<pre[39m
+          [33mclass[39m=[32m"max-h-96 overflow-auto rounded bg-zinc-100 p-2 text-xs"[39m
+        [36m>[39m
+          [0mnull[0m
+        [36m</pre>[39m
+      [36m</section>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/components/__tests__/us26-ai-cost.test.tsx:42:32
+     40|     vi.mocked(api.adminAnalysis).mockResolvedValue(detail() as never);
+     41|     render(<AdminAnalysisPage />);
+     42|     const first = await screen.findByRole("article", { name: /Attempt …
+       |                                ^
+     43|     expect(first).toHaveTextContent("claude · claude-sonnet-5-5");
+     44|     expect(first).toHaveTextContent("2,001 in / 301 out tokens");
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/9]⎯
+
+ FAIL  src/components/__tests__/us26-ai-cost.test.tsx > US-26 cost on the analysis detail page > us26_the_analysis_total_shows_all_tokens_and_cost
+TestingLibraryElementError: Unable to find role="region" and name "AI usage"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"space-y-6"[39m
+    [36m>[39m
+      [36m<header>[39m
+        [36m<h1[39m
+          [33mclass[39m=[32m"text-2xl font-bold"[39m
+        [36m>[39m
+          [0mSquat[0m
+          [0m: [0m
+          [0mPassed after retry[0m
+        [36m</h1>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"text-sm text-zinc-600"[39m
+        [36m>[39m
+          [0ml@virginia.edu[0m
+          [0m · [0m
+          [0m2[0m
+          [0m attempts[0m
+        [36m</p>[39m
+      [36m</header>[39m
+      [36m<section[39m
+        [33mclass[39m=[32m"space-y-2"[39m
+      [36m>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"text-lg font-semibold"[39m
+        [36m>[39m
+          [0mPer-rep measurements[0m
+        [36m</h2>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"overflow-x-auto"[39m
+        [36m>[39m
+          [36m<table[39m
+            [33mclass[39m=[32m"text-left text-xs"[39m
+          [36m>[39m
+            [36m<thead>[39m
+              [36m<tr>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mRep[0m
+                [36m</th>[39m
+              [36m</tr>[39m
+            [36m</thead>[39m
+            [36m<tbody />[39m
+          [36m</table>[39m
+        [36m</div>[39m
+      [36m</section>[39m
+      [36m<section[39m
+        [33mclass[39m=[32m"space-y-3"[39m
+      [36m>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"text-lg font-semibold"[39m
+        [36m>[39m
+          [0mLLM attempts[0m
+        [36m</h2>[39m
+        [36m<article[39m
+          [33mclass[39m=[32m"space-y-2 rounded-xl border border-zinc-200 p-3 text-sm"[39m
+        [36m>[39m
+          [36m<h3[39m
+            [33mclass[39m=[32m"font-semibold"[39m
+          [36m>[39m
+            [0mAttempt [0m
+            [0m1[0m
+            [0m: [0m
+            [0mfailed[0m
+            [0m · [0m
+            [0m2302[0m
+            [0m tokens[0m
+          [36m</h3>[39m
+          [36m<pre[39m
+            [33mclass[39m=[32m"max-h-64 overflow-auto rounded bg-zinc-100 p-2 text-xs whitespace-pre-wrap"[39m
+          [36m>[39m
+            [0m{}[0m
+          [36m</pre>[39m
+        [36m</article>[39m
+        [36m<article[39m
+          [33mclass[39m=[32m"space-y-2 rounded-xl border border-zinc-200 p-3 text-sm"[39m
+        [36m>[39m
+          [36m<h3[39m
+            [33mclass[39m=[32m"font-semibold"[39m
+          [36m>[39m
+            [0mAttempt [0m
+            [0m2[0m
+            [0m: [0m
+            [0mpassed[0m
+            [0m · [0m
+            [0m2304[0m
+            [0m tokens[0m
+          [36m</h3>[39m
+          [36m<pre[39m
+            [33mclass[39m=[32m"max-h-64 overflow-auto rounded bg-zinc-100 p-2 text-xs whitespace-pre-wrap"[39m
+          [36m>[39m
+            [0m{}[0m
+          [36m</pre>[39m
+        [36m</article>[39m
+      [36m</section>[39m
+      [36m<section[39m
+        [33mclass[39m=[32m"space-y-2"[39m
+      [36m>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"text-lg font-semibold"[39m
+        [36m>[39m
+          [0mWhat the user saw[0m
+        [36m</h2>[39m
+        [36m<pre[39m
+          [33mclass[39m=[32m"max-h-96 overflow-auto rounded bg-zinc-100 p-2 text-xs"[39m
+        [36m>[39m
+          [0mnull[0m
+        [36m</pre>[39m
+      [36m</section>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"space-y-6"[39m
+    [36m>[39m
+      [36m<header>[39m
+        [36m<h1[39m
+          [33mclass[39m=[32m"text-2xl font-bold"[39m
+        [36m>[39m
+          [0mSquat[0m
+          [0m: [0m
+          [0mPassed after retry[0m
+        [36m</h1>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"text-sm text-zinc-600"[39m
+        [36m>[39m
+          [0ml@virginia.edu[0m
+          [0m · [0m
+          [0m2[0m
+          [0m attempts[0m
+        [36m</p>[39m
+      [36m</header>[39m
+      [36m<section[39m
+        [33mclass[39m=[32m"space-y-2"[39m
+      [36m>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"text-lg font-semibold"[39m
+        [36m>[39m
+          [0mPer-rep measurements[0m
+        [36m</h2>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"overflow-x-auto"[39m
+        [36m>[39m
+          [36m<table[39m
+            [33mclass[39m=[32m"text-left text-xs"[39m
+          [36m>[39m
+            [36m<thead>[39m
+              [36m<tr>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mRep[0m
+                [36m</th>[39m
+              [36m</tr>[39m
+            [36m</thead>[39m
+            [36m<tbody />[39m
+          [36m</table>[39m
+        [36m</div>[39m
+      [36m</section>[39m
+      [36m<section[39m
+        [33mclass[39m=[32m"space-y-3"[39m
+      [36m>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"text-lg font-semibold"[39m
+        [36m>[39m
+          [0mLLM attempts[0m
+        [36m</h2>[39m
+        [36m<article[39m
+          [33mclass[39m=[32m"space-y-2 rounded-xl border border-zinc-200 p-3 text-sm"[39m
+        [36m>[39m
+          [36m<h3[39m
+            [33mclass[39m=[32m"font-semibold"[39m
+          [36m>[39m
+            [0mAttempt [0m
+            [0m1[0m
+            [0m: [0m
+            [0mfailed[0m
+            [0m · [0m
+            [0m2302[0m
+            [0m tokens[0m
+          [36m</h3>[39m
+          [36m<pre[39m
+            [33mclass[39m=[32m"max-h-64 overflow-auto rounded bg-zinc-100 p-2 text-xs whitespace-pre-wrap"[39m
+          [36m>[39m
+            [0m{}[0m
+          [36m</pre>[39m
+        [36m</article>[39m
+        [36m<article[39m
+          [33mclass[39m=[32m"space-y-2 rounded-xl border border-zinc-200 p-3 text-sm"[39m
+        [36m>[39m
+          [36m<h3[39m
+            [33mclass[39m=[32m"font-semibold"[39m
+          [36m>[39m
+            [0mAttempt [0m
+            [0m2[0m
+            [0m: [0m
+            [0mpassed[0m
+            [0m · [0m
+            [0m2304[0m
+            [0m tokens[0m
+          [36m</h3>[39m
+          [36m<pre[39m
+            [33mclass[39m=[32m"max-h-64 overflow-auto rounded bg-zinc-100 p-2 text-xs whitespace-pre-wrap"[39m
+          [36m>[39m
+            [0m{}[0m
+          [36m</pre>[39m
+        [36m</article>[39m
+      [36m</section>[39m
+      [36m<section[39m
+        [33mclass[39m=[32m"space-y-2"[39m
+      [36m>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"text-lg font-semibold"[39m
+        [36m>[39m
+          [0mWhat the user saw[0m
+        [36m</h2>[39m
+        [36m<pre[39m
+          [33mclass[39m=[32m"max-h-96 overflow-auto rounded bg-zinc-100 p-2 text-xs"[39m
+        [36m>[39m
+          [0mnull[0m
+        [36m</pre>[39m
+      [36m</section>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/components/__tests__/us26-ai-cost.test.tsx:52:32
+     50|     vi.mocked(api.adminAnalysis).mockResolvedValue(detail() as never);
+     51|     render(<AdminAnalysisPage />);
+     52|     const total = await screen.findByRole("region", { name: "AI usage"…
+       |                                ^
+     53|     expect(total).toHaveTextContent("4,003 in / 603 out tokens");
+     54|     expect(total).toHaveTextContent("$0.0140");
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/9]⎯
+
+ FAIL  src/components/__tests__/us26-ai-cost.test.tsx > US-26 cost on the analysis detail page > us26_unknown_models_show_unknown_cost_instead_of_failing
+TestingLibraryElementError: Unable to find role="article" and name `/Attempt 1/`
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"space-y-6"[39m
+    [36m>[39m
+      [36m<header>[39m
+        [36m<h1[39m
+          [33mclass[39m=[32m"text-2xl font-bold"[39m
+        [36m>[39m
+          [0mSquat[0m
+          [0m: [0m
+          [0mPassed after retry[0m
+        [36m</h1>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"text-sm text-zinc-600"[39m
+        [36m>[39m
+          [0ml@virginia.edu[0m
+          [0m · [0m
+          [0m2[0m
+          [0m attempts[0m
+        [36m</p>[39m
+      [36m</header>[39m
+      [36m<section[39m
+        [33mclass[39m=[32m"space-y-2"[39m
+      [36m>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"text-lg font-semibold"[39m
+        [36m>[39m
+          [0mPer-rep measurements[0m
+        [36m</h2>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"overflow-x-auto"[39m
+        [36m>[39m
+          [36m<table[39m
+            [33mclass[39m=[32m"text-left text-xs"[39m
+          [36m>[39m
+            [36m<thead>[39m
+              [36m<tr>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mRep[0m
+                [36m</th>[39m
+              [36m</tr>[39m
+            [36m</thead>[39m
+            [36m<tbody />[39m
+          [36m</table>[39m
+        [36m</div>[39m
+      [36m</section>[39m
+      [36m<section[39m
+        [33mclass[39m=[32m"space-y-3"[39m
+      [36m>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"text-lg font-semibold"[39m
+        [36m>[39m
+          [0mLLM attempts[0m
+        [36m</h2>[39m
+        [36m<article[39m
+          [33mclass[39m=[32m"space-y-2 rounded-xl border border-zinc-200 p-3 text-sm"[39m
+        [36m>[39m
+          [36m<h3[39m
+            [33mclass[39m=[32m"font-semibold"[39m
+          [36m>[39m
+            [0mAttempt [0m
+            [0m1[0m
+            [0m: [0m
+            [0mfailed[0m
+            [0m · [0m
+            [0m2302[0m
+            [0m tokens[0m
+          [36m</h3>[39m
+          [36m<pre[39m
+            [33mclass[39m=[32m"max-h-64 overflow-auto rounded bg-zinc-100 p-2 text-xs whitespace-pre-wrap"[39m
+          [36m>[39m
+            [0m{}[0m
+          [36m</pre>[39m
+        [36m</article>[39m
+        [36m<article[39m
+          [33mclass[39m=[32m"space-y-2 rounded-xl border border-zinc-200 p-3 text-sm"[39m
+        [36m>[39m
+          [36m<h3[39m
+            [33mclass[39m=[32m"font-semibold"[39m
+          [36m>[39m
+            [0mAttempt [0m
+            [0m2[0m
+            [0m: [0m
+            [0mpassed[0m
+            [0m · [0m
+            [0m2304[0m
+            [0m tokens[0m
+          [36m</h3>[39m
+          [36m<pre[39m
+            [33mclass[39m=[32m"max-h-64 overflow-auto rounded bg-zinc-100 p-2 text-xs whitespace-pre-wrap"[39m
+          [36m>[39m
+            [0m{}[0m
+          [36m</pre>[39m
+        [36m</article>[39m
+      [36m</section>[39m
+      [36m<section[39m
+        [33mclass[39m=[32m"space-y-2"[39m
+      [36m>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"text-lg font-semibold"[39m
+        [36m>[39m
+          [0mWhat the user saw[0m
+        [36m</h2>[39m
+        [36m<pre[39m
+          [33mclass[39m=[32m"max-h-96 overflow-auto rounded bg-zinc-100 p-2 text-xs"[39m
+        [36m>[39m
+          [0mnull[0m
+        [36m</pre>[39m
+      [36m</section>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"space-y-6"[39m
+    [36m>[39m
+      [36m<header>[39m
+        [36m<h1[39m
+          [33mclass[39m=[32m"text-2xl font-bold"[39m
+        [36m>[39m
+          [0mSquat[0m
+          [0m: [0m
+          [0mPassed after retry[0m
+        [36m</h1>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"text-sm text-zinc-600"[39m
+        [36m>[39m
+          [0ml@virginia.edu[0m
+          [0m · [0m
+          [0m2[0m
+          [0m attempts[0m
+        [36m</p>[39m
+      [36m</header>[39m
+      [36m<section[39m
+        [33mclass[39m=[32m"space-y-2"[39m
+      [36m>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"text-lg font-semibold"[39m
+        [36m>[39m
+          [0mPer-rep measurements[0m
+        [36m</h2>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"overflow-x-auto"[39m
+        [36m>[39m
+          [36m<table[39m
+            [33mclass[39m=[32m"text-left text-xs"[39m
+          [36m>[39m
+            [36m<thead>[39m
+              [36m<tr>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mRep[0m
+                [36m</th>[39m
+              [36m</tr>[39m
+            [36m</thead>[39m
+            [36m<tbody />[39m
+          [36m</table>[39m
+        [36m</div>[39m
+      [36m</section>[39m
+      [36m<section[39m
+        [33mclass[39m=[32m"space-y-3"[39m
+      [36m>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"text-lg font-semibold"[39m
+        [36m>[39m
+          [0mLLM attempts[0m
+        [36m</h2>[39m
+        [36m<article[39m
+          [33mclass[39m=[32m"space-y-2 rounded-xl border border-zinc-200 p-3 text-sm"[39m
+        [36m>[39m
+          [36m<h3[39m
+            [33mclass[39m=[32m"font-semibold"[39m
+          [36m>[39m
+            [0mAttempt [0m
+            [0m1[0m
+            [0m: [0m
+            [0mfailed[0m
+            [0m · [0m
+            [0m2302[0m
+            [0m tokens[0m
+          [36m</h3>[39m
+          [36m<pre[39m
+            [33mclass[39m=[32m"max-h-64 overflow-auto rounded bg-zinc-100 p-2 text-xs whitespace-pre-wrap"[39m
+          [36m>[39m
+            [0m{}[0m
+          [36m</pre>[39m
+        [36m</article>[39m
+        [36m<article[39m
+          [33mclass[39m=[32m"space-y-2 rounded-xl border border-zinc-200 p-3 text-sm"[39m
+        [36m>[39m
+          [36m<h3[39m
+            [33mclass[39m=[32m"font-semibold"[39m
+          [36m>[39m
+            [0mAttempt [0m
+            [0m2[0m
+            [0m: [0m
+            [0mpassed[0m
+            [0m · [0m
+            [0m2304[0m
+            [0m tokens[0m
+          [36m</h3>[39m
+          [36m<pre[39m
+            [33mclass[39m=[32m"max-h-64 overflow-auto rounded bg-zinc-100 p-2 text-xs whitespace-pre-wrap"[39m
+          [36m>[39m
+            [0m{}[0m
+          [36m</pre>[39m
+        [36m</article>[39m
+      [36m</section>[39m
+      [36m<section[39m
+        [33mclass[39m=[32m"space-y-2"[39m
+      [36m>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"text-lg font-semibold"[39m
+        [36m>[39m
+          [0mWhat the user saw[0m
+        [36m</h2>[39m
+        [36m<pre[39m
+          [33mclass[39m=[32m"max-h-96 overflow-auto rounded bg-zinc-100 p-2 text-xs"[39m
+        [36m>[39m
+          [0mnull[0m
+        [36m</pre>[39m
+      [36m</section>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/components/__tests__/us26-ai-cost.test.tsx:63:32
+     61|     }) as never);
+     62|     render(<AdminAnalysisPage />);
+     63|     const first = await screen.findByRole("article", { name: /Attempt …
+       |                                ^
+     64|     expect(first).toHaveTextContent("Unknown model");
+     65|     expect(first).toHaveTextContent("Unknown cost");
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/9]⎯
+
+ FAIL  src/components/__tests__/us26-ai-cost.test.tsx > US-26 cost summary on the admin page > us26_summary_shows_total_average_and_retry_share_for_the_range
+TestingLibraryElementError: Unable to find role="region" and name "AI cost"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"space-y-6"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"flex flex-wrap items-baseline justify-between gap-2"[39m
+      [36m>[39m
+        [36m<h1[39m
+          [33mclass[39m=[32m"text-2xl font-bold"[39m
+        [36m>[39m
+          [0mAnalyses[0m
+        [36m</h1>[39m
+        [36m<a[39m
+          [33mclass[39m=[32m"text-sm underline"[39m
+          [33mhref[39m=[32m"/admin/faults"[39m
+        [36m>[39m
+          [0mFault list[0m
+        [36m</a>[39m
+      [36m</div>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"space-y-3"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex flex-wrap gap-4 text-sm"[39m
+        [36m>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2"[39m
+          [36m>[39m
+            [0mLift[0m
+            [36m<select[39m
+              [33mclass[39m=[32m"rounded-lg border border-zinc-300 px-2 py-1"[39m
+            [36m>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"all"[39m
+              [36m>[39m
+                [0mAll[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"squat"[39m
+              [36m>[39m
+                [0mSquat[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"deadlift"[39m
+              [36m>[39m
+                [0mDeadlift[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"bench_press"[39m
+              [36m>[39m
+                [0mBench Press[0m
+              [36m</option>[39m
+            [36m</select>[39m
+          [36m</label>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2"[39m
+          [36m>[39m
+            [0mFinal status[0m
+            [36m<select[39m
+              [33mclass[39m=[32m"rounded-lg border border-zinc-300 px-2 py-1"[39m
+            [36m>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"all"[39m
+              [36m>[39m
+                [0mAll[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"passed_first_try"[39m
+              [36m>[39m
+                [0mPassed first try[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"passed_after_retry"[39m
+              [36m>[39m
+                [0mPassed after retry[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"fallback"[39m
+              [36m>[39m
+                [0mFallback[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"unanalyzable"[39m
+              [36m>[39m
+                [0mCouldn't analyze[0m
+              [36m</option>[39m
+            [36m</select>[39m
+          [36m</label>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"overflow-x-auto"[39m
+        [36m>[39m
+          [36m<table[39m
+            [33mclass[39m=[32m"w-full text-left text-sm"[39m
+          [36m>[39m
+            [36m<thead[39m
+              [33mclass[39m=[32m"text-zinc-500"[39m
+            [36m>[39m
+              [36m<tr>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"py-1 pr-3"[39m
+                [36m>[39m
+                  [0mDate[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mUser[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mLift[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mAttempts[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mFinal status[0m
+                [36m</th>[39m
+                [36m<th />[39m
+              [36m</tr>[39m
+            [36m</thead>[39m
+            [36m<tbody />[39m
+          [36m</table>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+      [36m<section[39m
+        [33mclass[39m=[32m"space-y-2"[39m
+      [36m>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"text-lg font-semibold"[39m
+        [36m>[39m
+          [0mValidator errors[0m
+        [36m</h2>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"text-sm text-zinc-600"[39m
+        [36m>[39m
+          [0mNo validator errors yet.[0m
+        [36m</p>[39m
+      [36m</section>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"space-y-6"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"flex flex-wrap items-baseline justify-between gap-2"[39m
+      [36m>[39m
+        [36m<h1[39m
+          [33mclass[39m=[32m"text-2xl font-bold"[39m
+        [36m>[39m
+          [0mAnalyses[0m
+        [36m</h1>[39m
+        [36m<a[39m
+          [33mclass[39m=[32m"text-sm underline"[39m
+          [33mhref[39m=[32m"/admin/faults"[39m
+        [36m>[39m
+          [0mFault list[0m
+        [36m</a>[39m
+      [36m</div>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"space-y-3"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex flex-wrap gap-4 text-sm"[39m
+        [36m>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2"[39m
+          [36m>[39m
+            [0mLift[0m
+            [36m<select[39m
+              [33mclass[39m=[32m"rounded-lg border border-zinc-300 px-2 py-1"[39m
+            [36m>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"all"[39m
+              [36m>[39m
+                [0mAll[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"squat"[39m
+              [36m>[39m
+                [0mSquat[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"deadlift"[39m
+              [36m>[39m
+                [0mDeadlift[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"bench_press"[39m
+              [36m>[39m
+                [0mBench Press[0m
+              [36m</option>[39m
+            [36m</select>[39m
+          [36m</label>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2"[39m
+          [36m>[39m
+            [0mFinal status[0m
+            [36m<select[39m
+              [33mclass[39m=[32m"rounded-lg border border-zinc-300 px-2 py-1"[39m
+            [36m>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"all"[39m
+              [36m>[39m
+                [0mAll[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"passed_first_try"[39m
+              [36m>[39m
+                [0mPassed first try[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"passed_after_retry"[39m
+              [36m>[39m
+                [0mPassed after retry[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"fallback"[39m
+              [36m>[39m
+                [0mFallback[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"unanalyzable"[39m
+              [36m>[39m
+                [0mCouldn't analyze[0m
+              [36m</option>[39m
+            [36m</select>[39m
+          [36m</label>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"overflow-x-auto"[39m
+        [36m>[39m
+          [36m<table[39m
+            [33mclass[39m=[32m"w-full text-left text-sm"[39m
+          [36m>[39m
+            [36m<thead[39m
+              [33mclass[39m=[32m"text-zinc-500"[39m
+            [36m>[39m
+              [36m<tr>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"py-1 pr-3"[39m
+                [36m>[39m
+                  [0mDate[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mUser[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mLift[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mAttempts[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mFinal status[0m
+                [36m</th>[39m
+                [36m<th />[39m
+              [36m</tr>[39m
+            [36m</thead>[39m
+            [36m<tbody />[39m
+          [36m</table>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+      [36m<section[39m
+        [33mclass[39m=[32m"space-y-2"[39m
+      [36m>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"text-lg font-semibold"[39m
+        [36m>[39m
+          [0mValidator errors[0m
+        [36m</h2>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"text-sm text-zinc-600"[39m
+        [36m>[39m
+          [0mNo validator errors yet.[0m
+        [36m</p>[39m
+      [36m</section>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/components/__tests__/us26-ai-cost.test.tsx:77:33
+     75|     vi.mocked(api.adminCosts).mockResolvedValue(summary);
+     76|     render(<AdminPage />);
+     77|     const region = await screen.findByRole("region", { name: "AI cost"…
+       |                                 ^
+     78|     expect(await within(region).findByText("$7.00")).toBeInTheDocument…
+     79|     expect(region).toHaveTextContent("Analyses3");
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/9]⎯
+
+ FAIL  src/components/__tests__/us26-ai-cost.test.tsx > US-26 cost summary on the admin page > us26_choosing_dates_reloads_the_summary_for_that_range
+TestingLibraryElementError: Unable to find role="region" and name "AI cost"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"space-y-6"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"flex flex-wrap items-baseline justify-between gap-2"[39m
+      [36m>[39m
+        [36m<h1[39m
+          [33mclass[39m=[32m"text-2xl font-bold"[39m
+        [36m>[39m
+          [0mAnalyses[0m
+        [36m</h1>[39m
+        [36m<a[39m
+          [33mclass[39m=[32m"text-sm underline"[39m
+          [33mhref[39m=[32m"/admin/faults"[39m
+        [36m>[39m
+          [0mFault list[0m
+        [36m</a>[39m
+      [36m</div>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"space-y-3"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex flex-wrap gap-4 text-sm"[39m
+        [36m>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2"[39m
+          [36m>[39m
+            [0mLift[0m
+            [36m<select[39m
+              [33mclass[39m=[32m"rounded-lg border border-zinc-300 px-2 py-1"[39m
+            [36m>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"all"[39m
+              [36m>[39m
+                [0mAll[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"squat"[39m
+              [36m>[39m
+                [0mSquat[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"deadlift"[39m
+              [36m>[39m
+                [0mDeadlift[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"bench_press"[39m
+              [36m>[39m
+                [0mBench Press[0m
+              [36m</option>[39m
+            [36m</select>[39m
+          [36m</label>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2"[39m
+          [36m>[39m
+            [0mFinal status[0m
+            [36m<select[39m
+              [33mclass[39m=[32m"rounded-lg border border-zinc-300 px-2 py-1"[39m
+            [36m>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"all"[39m
+              [36m>[39m
+                [0mAll[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"passed_first_try"[39m
+              [36m>[39m
+                [0mPassed first try[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"passed_after_retry"[39m
+              [36m>[39m
+                [0mPassed after retry[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"fallback"[39m
+              [36m>[39m
+                [0mFallback[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"unanalyzable"[39m
+              [36m>[39m
+                [0mCouldn't analyze[0m
+              [36m</option>[39m
+            [36m</select>[39m
+          [36m</label>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"overflow-x-auto"[39m
+        [36m>[39m
+          [36m<table[39m
+            [33mclass[39m=[32m"w-full text-left text-sm"[39m
+          [36m>[39m
+            [36m<thead[39m
+              [33mclass[39m=[32m"text-zinc-500"[39m
+            [36m>[39m
+              [36m<tr>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"py-1 pr-3"[39m
+                [36m>[39m
+                  [0mDate[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mUser[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mLift[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mAttempts[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mFinal status[0m
+                [36m</th>[39m
+                [36m<th />[39m
+              [36m</tr>[39m
+            [36m</thead>[39m
+            [36m<tbody />[39m
+          [36m</table>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+      [36m<section[39m
+        [33mclass[39m=[32m"space-y-2"[39m
+      [36m>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"text-lg font-semibold"[39m
+        [36m>[39m
+          [0mValidator errors[0m
+        [36m</h2>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"text-sm text-zinc-600"[39m
+        [36m>[39m
+          [0mNo validator errors yet.[0m
+        [36m</p>[39m
+      [36m</section>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"space-y-6"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"flex flex-wrap items-baseline justify-between gap-2"[39m
+      [36m>[39m
+        [36m<h1[39m
+          [33mclass[39m=[32m"text-2xl font-bold"[39m
+        [36m>[39m
+          [0mAnalyses[0m
+        [36m</h1>[39m
+        [36m<a[39m
+          [33mclass[39m=[32m"text-sm underline"[39m
+          [33mhref[39m=[32m"/admin/faults"[39m
+        [36m>[39m
+          [0mFault list[0m
+        [36m</a>[39m
+      [36m</div>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"space-y-3"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex flex-wrap gap-4 text-sm"[39m
+        [36m>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2"[39m
+          [36m>[39m
+            [0mLift[0m
+            [36m<select[39m
+              [33mclass[39m=[32m"rounded-lg border border-zinc-300 px-2 py-1"[39m
+            [36m>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"all"[39m
+              [36m>[39m
+                [0mAll[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"squat"[39m
+              [36m>[39m
+                [0mSquat[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"deadlift"[39m
+              [36m>[39m
+                [0mDeadlift[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"bench_press"[39m
+              [36m>[39m
+                [0mBench Press[0m
+              [36m</option>[39m
+            [36m</select>[39m
+          [36m</label>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2"[39m
+          [36m>[39m
+            [0mFinal status[0m
+            [36m<select[39m
+              [33mclass[39m=[32m"rounded-lg border border-zinc-300 px-2 py-1"[39m
+            [36m>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"all"[39m
+              [36m>[39m
+                [0mAll[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"passed_first_try"[39m
+              [36m>[39m
+                [0mPassed first try[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"passed_after_retry"[39m
+              [36m>[39m
+                [0mPassed after retry[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"fallback"[39m
+              [36m>[39m
+                [0mFallback[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"unanalyzable"[39m
+              [36m>[39m
+                [0mCouldn't analyze[0m
+              [36m</option>[39m
+            [36m</select>[39m
+          [36m</label>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"overflow-x-auto"[39m
+        [36m>[39m
+          [36m<table[39m
+            [33mclass[39m=[32m"w-full text-left text-sm"[39m
+          [36m>[39m
+            [36m<thead[39m
+              [33mclass[39m=[32m"text-zinc-500"[39m
+            [36m>[39m
+              [36m<tr>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"py-1 pr-3"[39m
+                [36m>[39m
+                  [0mDate[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mUser[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mLift[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mAttempts[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mFinal status[0m
+                [36m</th>[39m
+                [36m<th />[39m
+              [36m</tr>[39m
+            [36m</thead>[39m
+            [36m<tbody />[39m
+          [36m</table>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+      [36m<section[39m
+        [33mclass[39m=[32m"space-y-2"[39m
+      [36m>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"text-lg font-semibold"[39m
+        [36m>[39m
+          [0mValidator errors[0m
+        [36m</h2>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"text-sm text-zinc-600"[39m
+        [36m>[39m
+          [0mNo validator errors yet.[0m
+        [36m</p>[39m
+      [36m</section>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/components/__tests__/us26-ai-cost.test.tsx:93:33
+     91|         total_cost: 0, average_cost: null, retry_cost: 0, retry_share:…
+     92|     render(<AdminPage />);
+     93|     const region = await screen.findByRole("region", { name: "AI cost"…
+       |                                 ^
+     94|     await within(region).findByText("$7.00");
+     95|     const from = within(region).getByLabelText("From");
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/9]⎯
+
+ FAIL  src/components/__tests__/us26-ai-cost.test.tsx > US-26 cost summary on the admin page > us26_a_bad_range_shows_the_reason
+TestingLibraryElementError: Unable to find role="region" and name "AI cost"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"space-y-6"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"flex flex-wrap items-baseline justify-between gap-2"[39m
+      [36m>[39m
+        [36m<h1[39m
+          [33mclass[39m=[32m"text-2xl font-bold"[39m
+        [36m>[39m
+          [0mAnalyses[0m
+        [36m</h1>[39m
+        [36m<a[39m
+          [33mclass[39m=[32m"text-sm underline"[39m
+          [33mhref[39m=[32m"/admin/faults"[39m
+        [36m>[39m
+          [0mFault list[0m
+        [36m</a>[39m
+      [36m</div>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"space-y-3"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex flex-wrap gap-4 text-sm"[39m
+        [36m>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2"[39m
+          [36m>[39m
+            [0mLift[0m
+            [36m<select[39m
+              [33mclass[39m=[32m"rounded-lg border border-zinc-300 px-2 py-1"[39m
+            [36m>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"all"[39m
+              [36m>[39m
+                [0mAll[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"squat"[39m
+              [36m>[39m
+                [0mSquat[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"deadlift"[39m
+              [36m>[39m
+                [0mDeadlift[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"bench_press"[39m
+              [36m>[39m
+                [0mBench Press[0m
+              [36m</option>[39m
+            [36m</select>[39m
+          [36m</label>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2"[39m
+          [36m>[39m
+            [0mFinal status[0m
+            [36m<select[39m
+              [33mclass[39m=[32m"rounded-lg border border-zinc-300 px-2 py-1"[39m
+            [36m>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"all"[39m
+              [36m>[39m
+                [0mAll[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"passed_first_try"[39m
+              [36m>[39m
+                [0mPassed first try[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"passed_after_retry"[39m
+              [36m>[39m
+                [0mPassed after retry[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"fallback"[39m
+              [36m>[39m
+                [0mFallback[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"unanalyzable"[39m
+              [36m>[39m
+                [0mCouldn't analyze[0m
+              [36m</option>[39m
+            [36m</select>[39m
+          [36m</label>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"overflow-x-auto"[39m
+        [36m>[39m
+          [36m<table[39m
+            [33mclass[39m=[32m"w-full text-left text-sm"[39m
+          [36m>[39m
+            [36m<thead[39m
+              [33mclass[39m=[32m"text-zinc-500"[39m
+            [36m>[39m
+              [36m<tr>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"py-1 pr-3"[39m
+                [36m>[39m
+                  [0mDate[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mUser[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mLift[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mAttempts[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mFinal status[0m
+                [36m</th>[39m
+                [36m<th />[39m
+              [36m</tr>[39m
+            [36m</thead>[39m
+            [36m<tbody />[39m
+          [36m</table>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+      [36m<section[39m
+        [33mclass[39m=[32m"space-y-2"[39m
+      [36m>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"text-lg font-semibold"[39m
+        [36m>[39m
+          [0mValidator errors[0m
+        [36m</h2>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"text-sm text-zinc-600"[39m
+        [36m>[39m
+          [0mNo validator errors yet.[0m
+        [36m</p>[39m
+      [36m</section>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"space-y-6"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"flex flex-wrap items-baseline justify-between gap-2"[39m
+      [36m>[39m
+        [36m<h1[39m
+          [33mclass[39m=[32m"text-2xl font-bold"[39m
+        [36m>[39m
+          [0mAnalyses[0m
+        [36m</h1>[39m
+        [36m<a[39m
+          [33mclass[39m=[32m"text-sm underline"[39m
+          [33mhref[39m=[32m"/admin/faults"[39m
+        [36m>[39m
+          [0mFault list[0m
+        [36m</a>[39m
+      [36m</div>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"space-y-3"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex flex-wrap gap-4 text-sm"[39m
+        [36m>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2"[39m
+          [36m>[39m
+            [0mLift[0m
+            [36m<select[39m
+              [33mclass[39m=[32m"rounded-lg border border-zinc-300 px-2 py-1"[39m
+            [36m>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"all"[39m
+              [36m>[39m
+                [0mAll[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"squat"[39m
+              [36m>[39m
+                [0mSquat[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"deadlift"[39m
+              [36m>[39m
+                [0mDeadlift[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"bench_press"[39m
+              [36m>[39m
+                [0mBench Press[0m
+              [36m</option>[39m
+            [36m</select>[39m
+          [36m</label>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2"[39m
+          [36m>[39m
+            [0mFinal status[0m
+            [36m<select[39m
+              [33mclass[39m=[32m"rounded-lg border border-zinc-300 px-2 py-1"[39m
+            [36m>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"all"[39m
+              [36m>[39m
+                [0mAll[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"passed_first_try"[39m
+              [36m>[39m
+                [0mPassed first try[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"passed_after_retry"[39m
+              [36m>[39m
+                [0mPassed after retry[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"fallback"[39m
+              [36m>[39m
+                [0mFallback[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"unanalyzable"[39m
+              [36m>[39m
+                [0mCouldn't analyze[0m
+              [36m</option>[39m
+            [36m</select>[39m
+          [36m</label>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"overflow-x-auto"[39m
+        [36m>[39m
+          [36m<table[39m
+            [33mclass[39m=[32m"w-full text-left text-sm"[39m
+          [36m>[39m
+            [36m<thead[39m
+              [33mclass[39m=[32m"text-zinc-500"[39m
+            [36m>[39m
+              [36m<tr>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"py-1 pr-3"[39m
+                [36m>[39m
+                  [0mDate[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mUser[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mLift[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mAttempts[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mFinal status[0m
+                [36m</th>[39m
+                [36m<th />[39m
+              [36m</tr>[39m
+            [36m</thead>[39m
+            [36m<tbody />[39m
+          [36m</table>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+      [36m<section[39m
+        [33mclass[39m=[32m"space-y-2"[39m
+      [36m>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"text-lg font-semibold"[39m
+        [36m>[39m
+          [0mValidator errors[0m
+        [36m</h2>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"text-sm text-zinc-600"[39m
+        [36m>[39m
+          [0mNo validator errors yet.[0m
+        [36m</p>[39m
+      [36m</section>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/components/__tests__/us26-ai-cost.test.tsx:111:33
+    109|       .mockRejectedValueOnce(new ApiError(422, "The start date must be…
+    110|     render(<AdminPage />);
+    111|     const region = await screen.findByRole("region", { name: "AI cost"…
+       |                                 ^
+    112|     await within(region).findByText("$7.00");
+    113|     await userEvent.click(within(region).getByRole("button", { name: "…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/9]⎯
+
+
+ Test Files  2 failed (2)
+      Tests  9 failed (9)
+   Start at  20:31:49
+   Duration  10.32s (transform 392ms, setup 477ms, collect 1.58s, tests 6.10s, environment 4.74s, prepare 279ms)
+
+
+===== Browser (Playwright) red run: npx playwright test us26 =====
+[WebServer] INFO:     Started server process [1603]
+[WebServer] INFO:     Waiting for application startup.
+[WebServer] INFO:     Application startup complete.
+[WebServer] INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+
+Running 2 tests using 1 worker
+
+  ✘  1 e2e/us26-ai-cost.spec.ts:6:5 › us26_admin_sees_cost_per_attempt_and_a_summary_including_retries (11.2s)
+  ✓  2 e2e/us26-ai-cost.spec.ts:31:5 › us26_non_admin_cannot_see_costs (369ms)
+
+
+  1) e2e/us26-ai-cost.spec.ts:6:5 › us26_admin_sees_cost_per_attempt_and_a_summary_including_retries 
+
+    Error: expect(locator).toContainText(expected) failed
+
+    Locator: getByRole('region', { name: 'AI cost' })
+    Expected substring: "Total cost"
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toContainText" getByRole('region', { name: 'AI cost' }) with timeout 10000ms
+      - waiting for getByRole('region', { name: 'AI cost' })
+
+
+      13 |   await page.goto("/admin");
+      14 |   const summary = page.getByRole("region", { name: "AI cost" });
+    > 15 |   await expect(summary).toContainText("Total cost");
+         |                         ^
+      16 |   await expect(summary).toContainText(/Total cost\$\d/);
+      17 |   await expect(summary).toContainText(/Spent on correction retries([1-9]\d?|100)%/);
+      18 |   await expect(summary).not.toContainText("unknown cost");
+        at frontend/e2e/us26-ai-cost.spec.ts:15:25
+
+    Error Context: test-results/us26-ai-cost-us26-admin-se-4e109-a-summary-including-retries/error-context.md
+
+  1 failed
+    e2e/us26-ai-cost.spec.ts:6:5 › us26_admin_sees_cost_per_attempt_and_a_summary_including_retries 
+  1 passed (43.4s)

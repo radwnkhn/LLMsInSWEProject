@@ -9,6 +9,7 @@ import os
 import re
 import tempfile
 import uuid
+from datetime import date, datetime, time, timedelta, timezone
 from typing import Literal
 
 import httpx
@@ -25,6 +26,7 @@ from app.faults import METRICS, FaultCatalog, FaultError, FaultExists, new_fault
 from app.feedback import find_previous_cue_prompt
 from app.history import history_item
 from app.lifts import LIFT_LABELS, LIFTS
+from app.pricing import AttemptUsage, summarize_costs
 from app.repository import AdminAnalysisRow
 from app.safety import MAX_NOTE_LENGTH
 from app.services import Services
@@ -43,6 +45,19 @@ EMPTY_RESULT = {
     "fallback_note": None,
 }
 CHUNK = 1024 * 1024
+COST_RANGE_DAYS = 30  # US-26: the cost summary's default range, ending today (UTC)
+ISO_DATE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
+
+
+def _iso_date(value: str | None, name: str) -> date | None:
+    if value is None:
+        return None
+    try:
+        if not ISO_DATE.match(value):
+            raise ValueError
+        return date.fromisoformat(value)
+    except ValueError:
+        raise HTTPException(422, f"{name} must be a date like 2026-11-01")
 
 
 class SignupBody(BaseModel):
@@ -396,6 +411,10 @@ def create_app(services: Services) -> FastAPI:
             raise HTTPException(404, "Analysis not found")
         attempts = services.repo.list_llm_attempts(a.id)
         owner = services.repo.get_user(a.user_id)
+        prices = services.prices
+        costs = [prices.cost(t.model, t.input_tokens, t.output_tokens) for t in attempts]
+        usage = summarize_costs([AttemptUsage(a.id, a.created_at, t.attempt_number, t.input_tokens, t.output_tokens,
+                                              t.provider, t.model) for t in attempts], prices)
         upload = services.repo.get_upload(a.upload_id)
         return {
             "analysis": admin_row_view(AdminAnalysisRow(a, len(attempts), owner.email if owner else "")),
@@ -403,9 +422,26 @@ def create_app(services: Services) -> FastAPI:
             "measurements": rep_measurements_view(services.repo.list_rep_measurements(a.id)),
             "attempts": [{"attempt_number": t.attempt_number, "output_text": t.output_text,
                           "input_tokens": t.input_tokens, "output_tokens": t.output_tokens, "passed": t.passed,
-                          "errors": [i.to_dict() for i in t.issues]} for t in attempts],
+                          "errors": [i.to_dict() for i in t.issues],
+                          "provider": t.provider, "model": t.model, "cost": cost}
+                         for t, cost in zip(attempts, costs)],
+            # US-26: the whole analysis. An unknown price makes the total unknown rather than understated.
+            "usage": {"input_tokens": usage["input_tokens"], "output_tokens": usage["output_tokens"],
+                      "cost": usage["total_cost"] if not usage["unknown_cost_attempts"] else None,
+                      "unknown_cost_attempts": usage["unknown_cost_attempts"]},
             "result": a.result,
         }
+
+    @app.get("/admin/costs")
+    def admin_costs(start: str | None = None, end: str | None = None, user: AuthUser = Depends(admin_user)):
+        """US-26: LLM cost of analyses created between start and end (inclusive UTC dates)."""
+        last = _iso_date(end, "end") or datetime.now(timezone.utc).date()
+        first = _iso_date(start, "start") or last - timedelta(days=COST_RANGE_DAYS - 1)
+        if first > last:
+            raise HTTPException(422, "The start date must be on or before the end date")
+        rows = services.repo.list_attempt_usage(datetime.combine(first, time.min, timezone.utc),
+                                                datetime.combine(last + timedelta(days=1), time.min, timezone.utc))
+        return {"start": first.isoformat(), "end": last.isoformat(), **summarize_costs(rows, services.prices)}
 
     @app.get("/admin/validator-errors")
     def admin_errors(user: AuthUser = Depends(admin_user)):

@@ -1,0 +1,50 @@
+============================= test session starts ==============================
+platform linux -- Python 3.13.18, pytest-9.2.0, pluggy-1.7.0 -- backend/.venv/bin/python
+rootdir: backend
+configfile: pyproject.toml
+plugins: anyio-4.16.0, cov-7.1.0
+collecting ... collected 41 items
+
+tests/test_us26_ai_cost.py::test_us26_claude_reply_reads_usage_and_model PASSED [  2%]
+tests/test_us26_ai_cost.py::test_us26_openai_reply_reads_usage_and_model PASSED [  4%]
+tests/test_us26_ai_cost.py::test_us26_gemini_reply_counts_thinking_tokens_as_output PASSED [  7%]
+tests/test_us26_ai_cost.py::test_us26_missing_usage_records_zero_tokens_and_configured_model[ClaudeClient-body0-claude-sonnet-5-5] PASSED [  9%]
+tests/test_us26_ai_cost.py::test_us26_missing_usage_records_zero_tokens_and_configured_model[OpenAIClient-body1-gpt-4.1-mini] PASSED [ 12%]
+tests/test_us26_ai_cost.py::test_us26_missing_usage_records_zero_tokens_and_configured_model[GeminiClient-body2-gemini-2.5-flash] PASSED [ 14%]
+tests/test_us26_ai_cost.py::test_us26_correction_loop_records_usage_for_every_attempt PASSED [ 17%]
+tests/test_us26_ai_cost.py::test_us26_failed_request_records_provider_model_and_zero_tokens PASSED [ 19%]
+tests/test_us26_ai_cost.py::test_us26_saved_attempts_keep_usage_provider_and_model PASSED [ 21%]
+tests/test_us26_ai_cost.py::test_us26_migration_adds_provider_and_model_to_llm_attempts PASSED [ 24%]
+tests/test_us26_ai_cost.py::test_us26_cost_uses_dollars_per_million_tokens PASSED [ 26%]
+tests/test_us26_ai_cost.py::test_us26_unknown_model_has_unknown_cost[not-in-the-table] PASSED [ 29%]
+tests/test_us26_ai_cost.py::test_us26_unknown_model_has_unknown_cost[None] PASSED [ 31%]
+tests/test_us26_ai_cost.py::test_us26_unknown_model_has_unknown_cost[] PASSED [ 34%]
+tests/test_us26_ai_cost.py::test_us26_dated_model_names_use_their_base_price PASSED [ 36%]
+tests/test_us26_ai_cost.py::test_us26_price_table_loads_from_a_config_file PASSED [ 39%]
+tests/test_us26_ai_cost.py::test_us26_malformed_price_file_fails_with_a_clear_error[not json] PASSED [ 41%]
+tests/test_us26_ai_cost.py::test_us26_malformed_price_file_fails_with_a_clear_error[{"models": {"m": {"input_per_million": 1}}}] PASSED [ 43%]
+tests/test_us26_ai_cost.py::test_us26_malformed_price_file_fails_with_a_clear_error[{"models": {"m": {"input_per_million": -1, "output_per_million": 1}}}] PASSED [ 46%]
+tests/test_us26_ai_cost.py::test_us26_malformed_price_file_fails_with_a_clear_error[{"models": []}] PASSED [ 48%]
+tests/test_us26_ai_cost.py::test_us26_default_price_file_covers_each_providers_default_model PASSED [ 51%]
+tests/test_us26_ai_cost.py::test_us26_price_file_location_comes_from_settings PASSED [ 53%]
+tests/test_us26_ai_cost.py::test_us26_changing_the_price_table_changes_reported_cost PASSED [ 56%]
+tests/test_us26_ai_cost.py::test_us26_admin_detail_shows_usage_and_cost_per_attempt_and_total PASSED [ 58%]
+tests/test_us26_ai_cost.py::test_us26_admin_detail_shows_unknown_cost_instead_of_failing PASSED [ 60%]
+tests/test_us26_ai_cost.py::test_us26_attempts_saved_before_us26_show_unknown_model_and_cost PASSED [ 63%]
+tests/test_us26_ai_cost.py::test_us26_summary_unit_totals_average_and_retry_share PASSED [ 65%]
+tests/test_us26_ai_cost.py::test_us26_summary_unit_with_no_attempts_has_no_average_or_share PASSED [ 68%]
+tests/test_us26_ai_cost.py::test_us26_cost_summary_counts_only_analyses_in_the_date_range PASSED [ 70%]
+tests/test_us26_ai_cost.py::test_us26_cost_summary_defaults_to_the_last_30_days PASSED [ 73%]
+tests/test_us26_ai_cost.py::test_us26_cost_summary_rejects_invalid_date_ranges[start=2026-11-10&end=2026-11-01] PASSED [ 75%]
+tests/test_us26_ai_cost.py::test_us26_cost_summary_rejects_invalid_date_ranges[start=11/01/2026&end=2026-11-10] PASSED [ 78%]
+tests/test_us26_ai_cost.py::test_us26_cost_summary_rejects_invalid_date_ranges[start=2026-02-30&end=2026-03-01] PASSED [ 80%]
+tests/test_us26_ai_cost.py::test_us26_non_admin_gets_403_on_usage_and_cost[/admin/costs] PASSED [ 82%]
+tests/test_us26_ai_cost.py::test_us26_non_admin_gets_403_on_usage_and_cost[/admin/costs?start=2026-11-01&end=2026-11-10] PASSED [ 85%]
+tests/test_us26_ai_cost.py::test_us26_non_admin_gets_403_on_usage_and_cost[/admin/analyses/00000000-0000-0000-0000-000000000000] PASSED [ 87%]
+tests/test_us26_ai_cost.py::test_us26_lifters_never_see_usage_or_cost_on_their_own_results PASSED [ 90%]
+tests/test_us26_ai_cost_repository.py::test_us26_repo_saves_provider_and_model_with_each_attempt[memory] PASSED [ 92%]
+tests/test_us26_ai_cost_repository.py::test_us26_repo_saves_provider_and_model_with_each_attempt[postgres] PASSED [ 95%]
+tests/test_us26_ai_cost_repository.py::test_us26_repo_lists_attempt_usage_for_analyses_created_in_a_range[memory] PASSED [ 97%]
+tests/test_us26_ai_cost_repository.py::test_us26_repo_lists_attempt_usage_for_analyses_created_in_a_range[postgres] PASSED [100%]
+
+============================== 41 passed in 1.33s ==============================

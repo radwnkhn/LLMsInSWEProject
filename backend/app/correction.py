@@ -19,6 +19,8 @@ class AttemptLog:
     issues: list[ValidationIssue]
     input_tokens: int
     output_tokens: int
+    provider: str | None = None  # US-26
+    model: str | None = None
 
     @property
     def passed(self) -> bool:
@@ -47,12 +49,16 @@ def run_correction_loop(llm: LLMClient, request: LLMRequest, ctx: ValidationCont
         try:
             reply = llm.complete(current)
         except Exception as err:  # network errors, rate limits, provider outages
-            attempts.append(AttemptLog(n, "", [ValidationIssue("llm_error", f"LLM request failed: {err}")], 0, 0))
+            # No reply, so no usage: record who was asked, with zero tokens.
+            attempts.append(AttemptLog(n, "", [ValidationIssue("llm_error", f"LLM request failed: {err}")], 0, 0,
+                                       getattr(llm, "provider", None) or None, getattr(llm, "model", None) or None))
             continue
         if on_stage:
             on_stage("checking")
         result = validate(reply.text, ctx)
-        attempts.append(AttemptLog(n, reply.text, result.issues, reply.input_tokens, reply.output_tokens))
+        attempts.append(AttemptLog(n, reply.text, result.issues, reply.input_tokens, reply.output_tokens,
+                                   reply.provider or getattr(llm, "provider", None) or None,
+                                   reply.model or getattr(llm, "model", None) or None))
         if result.ok:
             return CorrectionResult("passed_first_try" if n == 1 else "passed_after_retry", result.output, attempts)
         current = build_retry_request(current, reply.text, result.messages)

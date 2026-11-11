@@ -141,6 +141,26 @@ export type AdminAttempt = {
   output_tokens: number;
   passed: boolean;
   errors: { code: string; message: string }[];
+  provider: string | null; // US-26; null for attempts saved before usage tracking
+  model: string | null;
+  cost: number | null; // dollars; null when the model has no price
+};
+
+export type AnalysisUsage = { input_tokens: number; output_tokens: number; cost: number | null; unknown_cost_attempts: number };
+
+export type CostSummary = {
+  start: string;
+  end: string;
+  analysis_count: number;
+  attempt_count: number;
+  retry_attempt_count: number;
+  input_tokens: number;
+  output_tokens: number;
+  total_cost: number;
+  average_cost: number | null;
+  retry_cost: number;
+  retry_share: number | null;
+  unknown_cost_attempts: number;
 };
 
 export type AdminDetail = {
@@ -148,5 +168,6 @@ export type AdminDetail = {
   video_url: string | null;
   measurements: RepMeasurementView[];
   attempts: AdminAttempt[];
+  usage: AnalysisUsage;
   result: AnalysisResult | null;
 };

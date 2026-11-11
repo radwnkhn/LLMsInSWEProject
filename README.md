@@ -16,6 +16,8 @@ video does not support a reliable assessment, Alibi explains what could not be m
 - Browse your history and compare completed sets of the same lift.
 - Rate feedback and delete individual uploads or your account.
 - As an admin, review analyses and validation attempts and manage the lift fault catalog.
+- As an admin, see LLM token usage and estimated cost per attempt and per analysis, and a cost summary
+  for a date range that includes the share spent on correction retries.
 
 ## Application structure
 
@@ -129,6 +131,7 @@ are recorded before implementation, and coverage is reported in CI. See the
 | Backend | Render | Use [`render.yaml`](render.yaml) and [`backend/Dockerfile`](backend/Dockerfile); set backend environment variables in Render. |
 | Accounts, data, and media | Supabase | Apply the migrations and configure Auth and the private storage bucket. |
 | AI feedback | Configured LLM provider | Set `LLM_PROVIDER`, `LLM_API_KEY`, and optionally `LLM_MODEL` on the backend. |
+| AI cost estimates | Backend config | Prices per model are in [`backend/app/llm_prices.json`](backend/app/llm_prices.json) (dollars per million tokens). Check them against current provider pricing; point `LLM_PRICES_FILE` at another file to override. |
 
 The backend image includes MediaPipe's native libraries and pose model. A real inference check
 runs before the API starts accepting requests. CI also verifies inference in the finished container.
