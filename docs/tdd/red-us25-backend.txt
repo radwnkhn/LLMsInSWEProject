@@ -1,0 +1,287 @@
+FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF         [100%]
+=================================== FAILURES ===================================
+E   AssertionError: {"detail":"Not Found"}
+    assert 404 == 200
+     +  where 404 = <Response [404 Not Found]>.status_code
+backend/tests/test_us25_fault_list.py:55: AssertionError: {"detail":"Not Found"}
+E   KeyError: 'lifts'
+backend/tests/test_us25_fault_list.py:69: KeyError: 'lifts'
+E   AttributeError: module 'app.faults' has no attribute 'edit_fault'. Did you mean: 'get_fault'?
+backend/tests/test_us25_fault_list.py:79: AttributeError: module 'app.faults' has no attribute 'edit_fault'. Did you mean: 'get_fault'?
+E   AttributeError: module 'app.faults' has no attribute 'FaultError'. Did you mean: 'faults_for'?
+backend/tests/test_us25_fault_list.py:89: AttributeError: module 'app.faults' has no attribute 'FaultError'. Did you mean: 'faults_for'?
+E   AttributeError: module 'app.faults' has no attribute 'FaultError'. Did you mean: 'faults_for'?
+backend/tests/test_us25_fault_list.py:89: AttributeError: module 'app.faults' has no attribute 'FaultError'. Did you mean: 'faults_for'?
+E   AttributeError: module 'app.faults' has no attribute 'FaultError'. Did you mean: 'faults_for'?
+backend/tests/test_us25_fault_list.py:89: AttributeError: module 'app.faults' has no attribute 'FaultError'. Did you mean: 'faults_for'?
+E   AttributeError: module 'app.faults' has no attribute 'FaultError'. Did you mean: 'faults_for'?
+backend/tests/test_us25_fault_list.py:89: AttributeError: module 'app.faults' has no attribute 'FaultError'. Did you mean: 'faults_for'?
+E   AttributeError: module 'app.faults' has no attribute 'FaultError'. Did you mean: 'faults_for'?
+backend/tests/test_us25_fault_list.py:89: AttributeError: module 'app.faults' has no attribute 'FaultError'. Did you mean: 'faults_for'?
+E   AttributeError: module 'app.faults' has no attribute 'FaultError'. Did you mean: 'faults_for'?
+backend/tests/test_us25_fault_list.py:89: AttributeError: module 'app.faults' has no attribute 'FaultError'. Did you mean: 'faults_for'?
+E   AttributeError: module 'app.faults' has no attribute 'FaultError'. Did you mean: 'faults_for'?
+backend/tests/test_us25_fault_list.py:89: AttributeError: module 'app.faults' has no attribute 'FaultError'. Did you mean: 'faults_for'?
+E   AttributeError: module 'app.faults' has no attribute 'FaultError'. Did you mean: 'faults_for'?
+backend/tests/test_us25_fault_list.py:89: AttributeError: module 'app.faults' has no attribute 'FaultError'. Did you mean: 'faults_for'?
+E   AttributeError: module 'app.faults' has no attribute 'FAULT_EDITABLE_FIELDS'
+backend/tests/test_us25_fault_list.py:94: AttributeError: module 'app.faults' has no attribute 'FAULT_EDITABLE_FIELDS'
+E   AssertionError: {"detail":"Not Found"}
+    assert 404 == 200
+     +  where 404 = <Response [404 Not Found]>.status_code
+backend/tests/test_us25_fault_list.py:100: AssertionError: {"detail":"Not Found"}
+E   AssertionError: {"detail":"Not Found"}
+    assert 404 == 422
+     +  where 404 = <Response [404 Not Found]>.status_code
+backend/tests/test_us25_fault_list.py:110: AssertionError: {"detail":"Not Found"}
+E   AssertionError: {"detail":"Not Found"}
+    assert 404 == 422
+     +  where 404 = <Response [404 Not Found]>.status_code
+backend/tests/test_us25_fault_list.py:110: AssertionError: {"detail":"Not Found"}
+E   AssertionError: {"detail":"Not Found"}
+    assert 404 == 422
+     +  where 404 = <Response [404 Not Found]>.status_code
+backend/tests/test_us25_fault_list.py:110: AssertionError: {"detail":"Not Found"}
+E   AssertionError: {"detail":"Not Found"}
+    assert 404 == 422
+     +  where 404 = <Response [404 Not Found]>.status_code
+backend/tests/test_us25_fault_list.py:110: AssertionError: {"detail":"Not Found"}
+E   AssertionError: {"detail":"Not Found"}
+    assert 404 == 422
+     +  where 404 = <Response [404 Not Found]>.status_code
+backend/tests/test_us25_fault_list.py:110: AssertionError: {"detail":"Not Found"}
+E   AssertionError: {"detail":"Not Found"}
+    assert 404 == 422
+     +  where 404 = <Response [404 Not Found]>.status_code
+backend/tests/test_us25_fault_list.py:110: AssertionError: {"detail":"Not Found"}
+E   AssertionError: assert 404 == 200
+     +  where 404 = <Response [404 Not Found]>.status_code
+     +    where <Response [404 Not Found]> = patch('/admin/faults/squat/knee_cave', headers={'Authorization': 'Bearer OBrjVV0RwcRPg4baoztTiIODZYBq-KPG'}, json={'name': 'Anything'})
+     +      where patch = <starlette.testclient.TestClient object at 0x7f471b33c160>.patch
+backend/tests/test_us25_fault_list.py:117: AssertionError: assert 404 == 200
+E   AssertionError: assert 404 == 200
+     +  where 404 = <Response [404 Not Found]>.status_code
+     +    where <Response [404 Not Found]> = patch('/admin/faults/squat/knee_cave', headers={'Authorization': 'Bearer Oev3Tp-7cwlh9yGIW13fD21zj6MGLZgc'}, json={'name': 'Anything'})
+     +      where patch = <starlette.testclient.TestClient object at 0x7f471b33dbf0>.patch
+backend/tests/test_us25_fault_list.py:117: AssertionError: assert 404 == 200
+E   AssertionError: assert 'Hips rise be...our shoulders' == 'Hips shoot up first'
+      
+      - Hips shoot up first
+      + Hips rise before your shoulders
+backend/tests/test_us25_fault_list.py:126: AssertionError: assert 'Hips rise be...our shoulders' == 'Hips shoot up first'
+E   AttributeError: module 'app.faults' has no attribute 'FaultCatalog'
+backend/tests/test_us25_fault_list.py:36: AttributeError: module 'app.faults' has no attribute 'FaultCatalog'
+E   AttributeError: module 'app.faults' has no attribute 'FaultCatalog'
+backend/tests/test_us25_fault_list.py:36: AttributeError: module 'app.faults' has no attribute 'FaultCatalog'
+E   AttributeError: module 'app.faults' has no attribute 'FaultCatalog'
+backend/tests/test_us25_fault_list.py:36: AttributeError: module 'app.faults' has no attribute 'FaultCatalog'
+E   KeyError: 'enabled'
+backend/tests/test_us25_fault_list.py:180: KeyError: 'enabled'
+E   AssertionError: assert ({'fault_id': 'hips_rise_early', 'title': 'Hips rise before your shoulders', 'category': 'technique', 'safety': False, ...} is None)
+backend/tests/test_us25_fault_list.py:197: AssertionError: assert ({'fault_id': 'hips_rise_early', 'title': 'Hips rise before your shoulders', 'category': 'technique', 'safety': False, ...} is None)
+E   AssertionError: {"detail":"Not Found"}
+    assert 404 == 200
+     +  where 404 = <Response [404 Not Found]>.status_code
+backend/tests/test_us25_fault_list.py:210: AssertionError: {"detail":"Not Found"}
+E   AttributeError: module 'app.faults' has no attribute 'METRICS'
+backend/tests/test_us25_fault_list.py:225: AttributeError: module 'app.faults' has no attribute 'METRICS'
+E   AttributeError: module 'app.faults' has no attribute 'new_fault'. Did you mean: 'get_fault'?
+backend/tests/test_us25_fault_list.py:233: AttributeError: module 'app.faults' has no attribute 'new_fault'. Did you mean: 'get_fault'?
+E   AttributeError: module 'app.faults' has no attribute 'FaultError'. Did you mean: 'faults_for'?
+backend/tests/test_us25_fault_list.py:246: AttributeError: module 'app.faults' has no attribute 'FaultError'. Did you mean: 'faults_for'?
+E   AttributeError: module 'app.faults' has no attribute 'FaultError'. Did you mean: 'faults_for'?
+backend/tests/test_us25_fault_list.py:246: AttributeError: module 'app.faults' has no attribute 'FaultError'. Did you mean: 'faults_for'?
+E   AttributeError: module 'app.faults' has no attribute 'FaultError'. Did you mean: 'faults_for'?
+backend/tests/test_us25_fault_list.py:246: AttributeError: module 'app.faults' has no attribute 'FaultError'. Did you mean: 'faults_for'?
+E   AttributeError: module 'app.faults' has no attribute 'FaultError'. Did you mean: 'faults_for'?
+backend/tests/test_us25_fault_list.py:246: AttributeError: module 'app.faults' has no attribute 'FaultError'. Did you mean: 'faults_for'?
+E   AttributeError: module 'app.faults' has no attribute 'FaultError'. Did you mean: 'faults_for'?
+backend/tests/test_us25_fault_list.py:246: AttributeError: module 'app.faults' has no attribute 'FaultError'. Did you mean: 'faults_for'?
+E   AttributeError: module 'app.faults' has no attribute 'FaultError'. Did you mean: 'faults_for'?
+backend/tests/test_us25_fault_list.py:246: AttributeError: module 'app.faults' has no attribute 'FaultError'. Did you mean: 'faults_for'?
+E   AttributeError: module 'app.faults' has no attribute 'FaultError'. Did you mean: 'faults_for'?
+backend/tests/test_us25_fault_list.py:246: AttributeError: module 'app.faults' has no attribute 'FaultError'. Did you mean: 'faults_for'?
+E   AttributeError: module 'app.faults' has no attribute 'FaultError'. Did you mean: 'faults_for'?
+backend/tests/test_us25_fault_list.py:246: AttributeError: module 'app.faults' has no attribute 'FaultError'. Did you mean: 'faults_for'?
+E   AttributeError: module 'app.faults' has no attribute 'FaultError'. Did you mean: 'faults_for'?
+backend/tests/test_us25_fault_list.py:246: AttributeError: module 'app.faults' has no attribute 'FaultError'. Did you mean: 'faults_for'?
+E   AttributeError: module 'app.faults' has no attribute 'FaultError'. Did you mean: 'faults_for'?
+backend/tests/test_us25_fault_list.py:246: AttributeError: module 'app.faults' has no attribute 'FaultError'. Did you mean: 'faults_for'?
+E   AttributeError: module 'app.faults' has no attribute 'FaultError'. Did you mean: 'faults_for'?
+backend/tests/test_us25_fault_list.py:246: AttributeError: module 'app.faults' has no attribute 'FaultError'. Did you mean: 'faults_for'?
+E   AssertionError: {"detail":"Not Found"}
+    assert 404 == 201
+     +  where 404 = <Response [404 Not Found]>.status_code
+backend/tests/test_us25_fault_list.py:252: AssertionError: {"detail":"Not Found"}
+E   AssertionError: {"detail":"Not Found"}
+    assert 404 == 422
+     +  where 404 = <Response [404 Not Found]>.status_code
+backend/tests/test_us25_fault_list.py:264: AssertionError: {"detail":"Not Found"}
+E   AssertionError: {"detail":"Not Found"}
+    assert 404 == 422
+     +  where 404 = <Response [404 Not Found]>.status_code
+backend/tests/test_us25_fault_list.py:264: AssertionError: {"detail":"Not Found"}
+E   AssertionError: {"detail":"Not Found"}
+    assert 404 == 422
+     +  where 404 = <Response [404 Not Found]>.status_code
+backend/tests/test_us25_fault_list.py:264: AssertionError: {"detail":"Not Found"}
+E   AssertionError: {"detail":"Not Found"}
+    assert 404 == 409
+     +  where 404 = <Response [404 Not Found]>.status_code
+backend/tests/test_us25_fault_list.py:264: AssertionError: {"detail":"Not Found"}
+E   AssertionError: {"detail":"Not Found"}
+    assert 404 == 422
+     +  where 404 = <Response [404 Not Found]>.status_code
+backend/tests/test_us25_fault_list.py:264: AssertionError: {"detail":"Not Found"}
+E   AssertionError: {"detail":"Not Found"}
+    assert 404 == 422
+     +  where 404 = <Response [404 Not Found]>.status_code
+backend/tests/test_us25_fault_list.py:264: AssertionError: {"detail":"Not Found"}
+E   AssertionError: {"detail":"Not Found"}
+    assert 404 == 422
+     +  where 404 = <Response [404 Not Found]>.status_code
+backend/tests/test_us25_fault_list.py:264: AssertionError: {"detail":"Not Found"}
+E   AssertionError: assert 'knees_stay_bent' in ['knee_cave', 'hips_rise_early', 'insufficient_depth', 'excessive_forward_lean', 'bar_path_drift']
+backend/tests/test_us25_fault_list.py:274: AssertionError: assert 'knees_stay_bent' in ['knee_cave', 'hips_rise_early', 'insufficient_depth', 'excessive_forward_lean', 'bar_path_drift']
+E   AssertionError: assert 404 == 403
+     +  where 404 = <Response [404 Not Found]>.status_code
+     +    where <Response [404 Not Found]> = get('/admin/faults', headers={'Authorization': 'Bearer Je7bVM2VY04F5GrrX8r2jQZX-p4Qo8Fm'}, **{})
+     +      where get = getattr(<starlette.testclient.TestClient object at 0x7f471b7b0380>, 'get')
+backend/tests/test_us25_fault_list.py:291: AssertionError: assert 404 == 403
+E   AssertionError: assert 404 == 403
+     +  where 404 = <Response [404 Not Found]>.status_code
+     +    where <Response [404 Not Found]> = patch('/admin/faults/squat/knee_cave', headers={'Authorization': 'Bearer GecH4WX3VA8fuhaAejmmhwv7nninkHBL'}, **{'json': {'enabled': False}})
+     +      where patch = getattr(<starlette.testclient.TestClient object at 0x7f471b7b3570>, 'patch')
+backend/tests/test_us25_fault_list.py:291: AssertionError: assert 404 == 403
+E   AssertionError: assert 404 == 403
+     +  where 404 = <Response [404 Not Found]>.status_code
+     +    where <Response [404 Not Found]> = post('/admin/faults', headers={'Authorization': 'Bearer _lfCx6uHE7O1QwiFQc-91GS_HzLky6Cv'}, **{'json': {'lift': 'squat', 'id': 'knees_stay_bent', 'name': 'Knees stay bent at the bottom', 'short_name': 'knee bend', ...}})
+     +      where post = getattr(<starlette.testclient.TestClient object at 0x7f471c3c5f20>, 'post')
+backend/tests/test_us25_fault_list.py:291: AssertionError: assert 404 == 403
+E   AttributeError: module 'app.faults' has no attribute 'FaultCatalog'
+backend/tests/test_us25_fault_list.py:299: AttributeError: module 'app.faults' has no attribute 'FaultCatalog'
+E   AssertionError: assert 'fallback' == 'passed_first_try'
+      
+      - passed_first_try
+      + fallback
+backend/tests/test_us25_fault_list.py:317: AssertionError: assert 'fallback' == 'passed_first_try'
+E   AttributeError: 'InMemoryRepository' object has no attribute 'list_faults'
+backend/tests/test_us25_fault_repository.py:27: AttributeError: 'InMemoryRepository' object has no attribute 'list_faults'
+E   AttributeError: 'PostgresRepository' object has no attribute 'list_faults'
+backend/tests/test_us25_fault_repository.py:27: AttributeError: 'PostgresRepository' object has no attribute 'list_faults'
+E   AttributeError: 'InMemoryRepository' object has no attribute 'update_fault'
+backend/tests/test_us25_fault_repository.py:33: AttributeError: 'InMemoryRepository' object has no attribute 'update_fault'
+E   AttributeError: 'PostgresRepository' object has no attribute 'update_fault'
+backend/tests/test_us25_fault_repository.py:33: AttributeError: 'PostgresRepository' object has no attribute 'update_fault'
+E   AttributeError: 'InMemoryRepository' object has no attribute 'update_fault'
+backend/tests/test_us25_fault_repository.py:45: AttributeError: 'InMemoryRepository' object has no attribute 'update_fault'
+E   AttributeError: 'PostgresRepository' object has no attribute 'update_fault'
+backend/tests/test_us25_fault_repository.py:45: AttributeError: 'PostgresRepository' object has no attribute 'update_fault'
+E   AttributeError: module 'app.faults' has no attribute 'new_fault'. Did you mean: 'get_fault'?
+backend/tests/test_us25_fault_repository.py:52: AttributeError: module 'app.faults' has no attribute 'new_fault'. Did you mean: 'get_fault'?
+E   AttributeError: module 'app.faults' has no attribute 'new_fault'. Did you mean: 'get_fault'?
+backend/tests/test_us25_fault_repository.py:52: AttributeError: module 'app.faults' has no attribute 'new_fault'. Did you mean: 'get_fault'?
+E   assert 'create table if not exists public.faults' in "-- Alibi (FormCheck) data model: users, uploads, analyses, rep measurements, LLM attempts,\n-- validation results and...mn if not exists processing_stage text\n  check (processing_stage in ('measuring', 'writing_feedback', 'checking'));\n"
+backend/tests/test_us25_fault_repository.py:63: assert 'create table if not exists public.faults' in "-- Alibi (FormCheck) data model: users, uploads, analyses, rep measurements, LLM attempts,\n-- validation results and...mn if not exists processing_stage text\n  check (processing_stage in ('measuring', 'writing_feedback', 'checking'));\n"
+=============================== warnings summary ===============================
+tests/test_us25_fault_repository.py::test_us25_repo_saves_edits_and_enabled_state[postgres]
+  backend/.venv/lib/python3.13/site-packages/_pytest/unraisableexception.py:63: PytestUnraisableExceptionWarning: Exception ignored in: <function ConnectionPool.__del__ at 0x7f4719397420>
+  
+  Traceback (most recent call last):
+    File "backend/.venv/lib/python3.13/site-packages/psycopg_pool/pool.py", line 126, in __del__
+      gather(*workers, timeout=5.0, timeout_hint=hint)
+      ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    File "backend/.venv/lib/python3.13/site-packages/psycopg_pool/_acompat.py", line 160, in gather
+      t.join(timeout)
+      ~~~~~~^^^^^^^^^
+    File "/usr/local/lib/python3.13/threading.py", line 1088, in join
+      raise RuntimeError("cannot join current thread")
+  RuntimeError: cannot join current thread
+  
+  Enable tracemalloc to get traceback where the object was allocated.
+  See https://docs.pytest.org/en/stable/how-to/capture-warnings.html#resource-warnings for more info.
+    warnings.warn(pytest.PytestUnraisableExceptionWarning(msg))
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/test_us25_fault_list.py::test_us25_admin_fault_list_shows_every_fault_per_lift
+FAILED tests/test_us25_fault_list.py::test_us25_admin_fault_list_offers_only_measurements_the_app_computes
+FAILED tests/test_us25_fault_list.py::test_us25_edit_fault_unit_changes_only_editable_fields
+FAILED tests/test_us25_fault_list.py::test_us25_edit_fault_unit_rejects_blank_long_or_non_editable_values[fields0]
+FAILED tests/test_us25_fault_list.py::test_us25_edit_fault_unit_rejects_blank_long_or_non_editable_values[fields1]
+FAILED tests/test_us25_fault_list.py::test_us25_edit_fault_unit_rejects_blank_long_or_non_editable_values[fields2]
+FAILED tests/test_us25_fault_list.py::test_us25_edit_fault_unit_rejects_blank_long_or_non_editable_values[fields3]
+FAILED tests/test_us25_fault_list.py::test_us25_edit_fault_unit_rejects_blank_long_or_non_editable_values[fields4]
+FAILED tests/test_us25_fault_list.py::test_us25_edit_fault_unit_rejects_blank_long_or_non_editable_values[fields5]
+FAILED tests/test_us25_fault_list.py::test_us25_edit_fault_unit_rejects_blank_long_or_non_editable_values[fields6]
+FAILED tests/test_us25_fault_list.py::test_us25_edit_fault_unit_rejects_blank_long_or_non_editable_values[fields7]
+FAILED tests/test_us25_fault_list.py::test_us25_editable_fields_leave_thresholds_to_us24
+FAILED tests/test_us25_fault_list.py::test_us25_admin_edits_name_and_short_description
+FAILED tests/test_us25_fault_list.py::test_us25_admin_edit_rejects_blank_long_or_non_editable_values[body0]
+FAILED tests/test_us25_fault_list.py::test_us25_admin_edit_rejects_blank_long_or_non_editable_values[body1]
+FAILED tests/test_us25_fault_list.py::test_us25_admin_edit_rejects_blank_long_or_non_editable_values[body2]
+FAILED tests/test_us25_fault_list.py::test_us25_admin_edit_rejects_blank_long_or_non_editable_values[body3]
+FAILED tests/test_us25_fault_list.py::test_us25_admin_edit_rejects_blank_long_or_non_editable_values[body4]
+FAILED tests/test_us25_fault_list.py::test_us25_admin_edit_rejects_blank_long_or_non_editable_values[body5]
+FAILED tests/test_us25_fault_list.py::test_us25_admin_edit_of_unknown_fault_returns_404[/admin/faults/squat/elbow_flare]
+FAILED tests/test_us25_fault_list.py::test_us25_admin_edit_of_unknown_fault_returns_404[/admin/faults/curl/knee_cave]
+FAILED tests/test_us25_fault_list.py::test_us25_edited_name_appears_in_new_results
+FAILED tests/test_us25_fault_list.py::test_us25_disabled_fault_unit_is_left_out_of_prompt_schema_and_checks
+FAILED tests/test_us25_fault_list.py::test_us25_validator_unit_rejects_a_reply_that_cites_a_disabled_fault
+FAILED tests/test_us25_fault_list.py::test_us25_validator_still_reports_unknown_faults_separately
+FAILED tests/test_us25_fault_list.py::test_us25_disabled_fault_in_a_reply_starts_the_correction_loop
+FAILED tests/test_us25_fault_list.py::test_us25_disabled_then_reenabled_fault_is_reported_again
+FAILED tests/test_us25_fault_list.py::test_us25_earlier_results_still_show_a_fault_disabled_later
+FAILED tests/test_us25_fault_list.py::test_us25_metric_registry_matches_what_the_measurement_code_computes
+FAILED tests/test_us25_fault_list.py::test_us25_new_fault_unit_takes_views_joints_and_unit_from_its_measurement
+FAILED tests/test_us25_fault_list.py::test_us25_new_fault_unit_rejects_unmeasurable_or_invalid_input[change0]
+FAILED tests/test_us25_fault_list.py::test_us25_new_fault_unit_rejects_unmeasurable_or_invalid_input[change1]
+FAILED tests/test_us25_fault_list.py::test_us25_new_fault_unit_rejects_unmeasurable_or_invalid_input[change2]
+FAILED tests/test_us25_fault_list.py::test_us25_new_fault_unit_rejects_unmeasurable_or_invalid_input[change3]
+FAILED tests/test_us25_fault_list.py::test_us25_new_fault_unit_rejects_unmeasurable_or_invalid_input[change4]
+FAILED tests/test_us25_fault_list.py::test_us25_new_fault_unit_rejects_unmeasurable_or_invalid_input[change5]
+FAILED tests/test_us25_fault_list.py::test_us25_new_fault_unit_rejects_unmeasurable_or_invalid_input[change6]
+FAILED tests/test_us25_fault_list.py::test_us25_new_fault_unit_rejects_unmeasurable_or_invalid_input[change7]
+FAILED tests/test_us25_fault_list.py::test_us25_new_fault_unit_rejects_unmeasurable_or_invalid_input[change8]
+FAILED tests/test_us25_fault_list.py::test_us25_new_fault_unit_rejects_unmeasurable_or_invalid_input[change9]
+FAILED tests/test_us25_fault_list.py::test_us25_new_fault_unit_rejects_unmeasurable_or_invalid_input[change10]
+FAILED tests/test_us25_fault_list.py::test_us25_admin_adds_a_fault_on_an_existing_measurement
+FAILED tests/test_us25_fault_list.py::test_us25_admin_add_rejects_unmeasurable_unknown_or_duplicate_faults[change0-422]
+FAILED tests/test_us25_fault_list.py::test_us25_admin_add_rejects_unmeasurable_unknown_or_duplicate_faults[change1-422]
+FAILED tests/test_us25_fault_list.py::test_us25_admin_add_rejects_unmeasurable_unknown_or_duplicate_faults[change2-422]
+FAILED tests/test_us25_fault_list.py::test_us25_admin_add_rejects_unmeasurable_unknown_or_duplicate_faults[change3-409]
+FAILED tests/test_us25_fault_list.py::test_us25_admin_add_rejects_unmeasurable_unknown_or_duplicate_faults[change4-422]
+FAILED tests/test_us25_fault_list.py::test_us25_admin_add_rejects_unmeasurable_unknown_or_duplicate_faults[change5-422]
+FAILED tests/test_us25_fault_list.py::test_us25_admin_add_rejects_unmeasurable_unknown_or_duplicate_faults[change6-422]
+FAILED tests/test_us25_fault_list.py::test_us25_added_fault_is_offered_to_the_llm_and_reported
+FAILED tests/test_us25_fault_list.py::test_us25_non_admin_gets_403_on_fault_endpoints[get-/admin/faults-None]
+FAILED tests/test_us25_fault_list.py::test_us25_non_admin_gets_403_on_fault_endpoints[patch-/admin/faults/squat/knee_cave-body1]
+FAILED tests/test_us25_fault_list.py::test_us25_non_admin_gets_403_on_fault_endpoints[post-/admin/faults-body2]
+FAILED tests/test_us25_fault_list.py::test_us25_default_catalog_keeps_alpha_behavior
+FAILED tests/test_us25_fault_list.py::test_us25_analysis_uses_the_fault_list_saved_when_it_started
+FAILED tests/test_us25_fault_repository.py::test_us25_repo_starts_with_the_alpha_fault_definitions[memory]
+FAILED tests/test_us25_fault_repository.py::test_us25_repo_starts_with_the_alpha_fault_definitions[postgres]
+FAILED tests/test_us25_fault_repository.py::test_us25_repo_saves_edits_and_enabled_state[memory]
+FAILED tests/test_us25_fault_repository.py::test_us25_repo_saves_edits_and_enabled_state[postgres]
+FAILED tests/test_us25_fault_repository.py::test_us25_repo_update_accepts_only_editable_fields[memory]
+FAILED tests/test_us25_fault_repository.py::test_us25_repo_update_accepts_only_editable_fields[postgres]
+FAILED tests/test_us25_fault_repository.py::test_us25_repo_saves_new_faults_after_the_lifts_existing_ones[memory]
+FAILED tests/test_us25_fault_repository.py::test_us25_repo_saves_new_faults_after_the_lifts_existing_ones[postgres]
+FAILED tests/test_us25_fault_repository.py::test_us25_migration_seeds_every_alpha_fault
+64 failed, 1 warning in 1.43s
+
+===== Added during green: browser-test admin support, run before app/auth.py and app/services.py changed =====
+F                                                                        [100%]
+=================================== FAILURES ===================================
+________ test_us25_test_mode_makes_only_reserved_domain_signups_admins _________
+tests/test_us25_fault_list.py:331: in test_us25_test_mode_makes_only_reserved_domain_signups_admins
+    assert services.auth.sign_up("coach@admin.test", "squat1234").user.is_admin is True
+E   AssertionError: assert False is True
+E    +  where False = AuthUser(id='50789877-01f9-453e-884a-1cadaf1ccb80', email='coach@admin.test', is_admin=False).is_admin
+E    +    where AuthUser(id='50789877-01f9-453e-884a-1cadaf1ccb80', email='coach@admin.test', is_admin=False) = Session(access_token='eUMevT_gmnX0LC8EjZNPJOSRU1J6zQah', user=AuthUser(id='50789877-01f9-453e-884a-1cadaf1ccb80', email='coach@admin.test', is_admin=False)).user
+E    +      where Session(access_token='eUMevT_gmnX0LC8EjZNPJOSRU1J6zQah', user=AuthUser(id='50789877-01f9-453e-884a-1cadaf1ccb80', email='coach@admin.test', is_admin=False)) = sign_up('coach@admin.test', 'squat1234')
+E    +        where sign_up = <app.auth.InMemoryAuth object at 0x7f58231ecec0>.sign_up
+E    +          where <app.auth.InMemoryAuth object at 0x7f58231ecec0> = Services(auth=<app.auth.InMemoryAuth object at 0x7f58231ecec0>, repo=<app.repository.InMemoryRepository object at 0x7f...cenarioLLM object at 0x7f58231ed010>, max_upload_bytes=209715200, compressor=None, test_mode=True, cors_origins=('*',)).auth
+=========================== short test summary info ============================
+FAILED tests/test_us25_fault_list.py::test_us25_test_mode_makes_only_reserved_domain_signups_admins
+1 failed, 55 deselected in 0.04s

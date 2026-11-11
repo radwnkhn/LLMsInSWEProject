@@ -1,5 +1,6 @@
 import type {
-  AdminDetail, AdminRow, AnalysisComparison, AnalysisResult, FeedbackAnswer, HistoryItem, Lift, Session, TriedCue,
+  AdminDetail, AdminFault, AdminFaultLift, AdminRow, AnalysisComparison, AnalysisResult, FaultEdit, FeedbackAnswer,
+  HistoryItem, Lift, NewFault, Session, TriedCue,
 } from "@/lib/types";
 
 export const API_URL = (process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000").replace(/\/$/, "");
@@ -64,6 +65,10 @@ export const api = {
   adminAnalyses: (token: string | null) => request<{ items: AdminRow[] }>("/admin/analyses", { token }),
   adminAnalysis: (id: string, token: string | null) => request<AdminDetail>(`/admin/analyses/${encodeURIComponent(id)}`, { token }),
   adminErrors: (token: string | null) => request<{ counts: Record<string, number> }>("/admin/validator-errors", { token }),
+  adminFaults: (token: string | null) => request<{ lifts: AdminFaultLift[] }>("/admin/faults", { token }),
+  updateFault: (lift: string, id: string, edit: FaultEdit, token: string | null) => request<AdminFault>(
+    `/admin/faults/${encodeURIComponent(lift)}/${encodeURIComponent(id)}`, { method: "PATCH", body: edit, token }),
+  addFault: (fault: NewFault, token: string | null) => request<AdminFault>("/admin/faults", { method: "POST", body: fault, token }),
   health: () => request<{ status: string }>("/health"),
 };
 

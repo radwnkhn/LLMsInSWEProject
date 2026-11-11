@@ -7,7 +7,7 @@ from __future__ import annotations
 import re
 from dataclasses import dataclass, field
 
-from app.faults import get_fault
+from app.faults import DEFAULT_CATALOG, FaultCatalog
 from app.lifts import LIFT_NOUNS
 from app.llm.schema import CoachOutput, ValidationIssue, parse_coach_output, validate_output_dict
 from app.measure import RepMeasurement, SetMeasurements
@@ -34,6 +34,7 @@ class ValidationContext:
     not_measured: list[NotMeasured]
     confirmed: dict[str, list[int]]
     note_mentions_pain: bool
+    catalog: FaultCatalog = DEFAULT_CATALOG  # the fault list this analysis started with (US-25)
 
 
 @dataclass
@@ -51,10 +52,11 @@ class ValidationResult:
 
 
 def build_validation_context(m: SetMeasurements, not_measured: list[NotMeasured],
-                             confirmed: dict[str, list[int]], note: str | None) -> ValidationContext:
+                             confirmed: dict[str, list[int]], note: str | None,
+                             catalog: FaultCatalog | None = None) -> ValidationContext:
     return ValidationContext(lift=m.analysis_lift, camera_angle=m.camera_angle, rep_count=m.rep_count,
                              reps=list(m.reps), not_measured=list(not_measured), confirmed=dict(confirmed),
-                             note_mentions_pain=mentions_pain(note))
+                             note_mentions_pain=mentions_pain(note), catalog=catalog or DEFAULT_CATALOG)
 
 
 def validate(raw: str | dict, ctx: ValidationContext) -> ValidationResult:
@@ -81,9 +83,13 @@ def validate(raw: str | dict, ctx: ValidationContext) -> ValidationResult:
     unmeasured = {c.check: c for c in ctx.not_measured}
     cited_ok = []
     for fault_id, reps, supporting in citations:
-        fault = get_fault(ctx.lift, fault_id)
+        fault = ctx.catalog.get(ctx.lift, fault_id)
         if fault is None:
             add("unknown_fault", f"'{fault_id}' is not on the {LIFT_NOUNS[ctx.lift]} fault list")
+            continue
+        if not fault.enabled:
+            add("fault_disabled", f"{fault.short_name} ('{fault_id}') is disabled and can't be reported; "
+                                  f"cite only faults from fault_list")
             continue
         if fault_id in unmeasured:
             add("not_measurable", f"{fault.short_name} can't be measured: {unmeasured[fault_id].reason}")
@@ -163,9 +169,9 @@ def _check_text_numbers(out, ctx, add):
 
 
 def _check_safety_first(out, cited, ctx, add):
-    safety = [f for f in (get_fault(ctx.lift, fid) for fid in ctx.confirmed) if f and f.safety]
+    safety = [f for f in (ctx.catalog.get(ctx.lift, fid) for fid in ctx.confirmed) if f and f.safety and f.enabled]
     safety += [f for f in cited if f.safety and f not in safety]
-    top = get_fault(ctx.lift, out.top_fault_id) if out.top_fault_id else None
+    top = ctx.catalog.get(ctx.lift, out.top_fault_id) if out.top_fault_id else None
     if safety and not (top and top.safety):
         for f in safety:
             add("safety_order", f"{f.short_name} is a safety fault and must be the top fix")

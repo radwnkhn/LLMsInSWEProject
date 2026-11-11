@@ -3,7 +3,7 @@ from __future__ import annotations
 
 import math
 
-from app.faults import faults_for, get_fault
+from app.faults import DEFAULT_CATALOG, FaultCatalog
 from app.repository import AnalysisRecord
 from app.results import PASSED
 
@@ -14,14 +14,17 @@ def _measured(value) -> bool:
     return isinstance(value, (int, float)) and not isinstance(value, bool) and math.isfinite(value)
 
 
-def _blocked_metrics(a: AnalysisRecord) -> set[str]:
+def _blocked_metrics(a: AnalysisRecord, catalog: FaultCatalog) -> set[str]:
     result = a.result or {}
     skipped = {check["check"] for check in result.get("not_measured", [])}
-    return {fault.metric for fault in faults_for(a.lift)
+    return {fault.metric for fault in catalog.all_for(a.lift)
             if fault.id in skipped or a.camera_angle not in fault.views}
 
 
-def measurement_comparison(older: AnalysisRecord, newer: AnalysisRecord, older_reps, newer_reps) -> list[dict]:
+def measurement_comparison(older: AnalysisRecord, newer: AnalysisRecord, older_reps, newer_reps,
+                           catalog: FaultCatalog | None = None) -> list[dict]:
+    # Disabled faults stay in the table: earlier results can still cite them (US-25).
+    catalog = catalog or DEFAULT_CATALOG
     # Minimum/maximum describe the stored per-rep quantity; they do not score improvement.
     definitions = {}
     if older.lift in ("squat", "deadlift"):
@@ -29,11 +32,11 @@ def measurement_comparison(older: AnalysisRecord, newer: AnalysisRecord, older_r
                            hip_angle_min_deg=("Hip angle", "°", "Minimum"))
     else:
         definitions["elbow_angle_min_deg"] = ("Elbow angle", "°", "Minimum")
-    for fault in faults_for(older.lift):
+    for fault in catalog.all_for(older.lift):
         definitions[fault.metric] = (fault.metric_label.capitalize(), fault.unit or "thigh lengths",
                                      "Maximum" if fault.direction == "above" else "Minimum")
 
-    blocked_old, blocked_new = _blocked_metrics(older), _blocked_metrics(newer)
+    blocked_old, blocked_new = _blocked_metrics(older, catalog), _blocked_metrics(newer, catalog)
 
     def aggregate(metric, reps, blocked, operation):
         if metric in blocked:
@@ -50,9 +53,11 @@ def measurement_comparison(older: AnalysisRecord, newer: AnalysisRecord, older_r
     return rows
 
 
-def compare_earlier_fault(older: AnalysisRecord, newer: AnalysisRecord, newer_reps) -> dict:
+def compare_earlier_fault(older: AnalysisRecord, newer: AnalysisRecord, newer_reps,
+                          catalog: FaultCatalog | None = None) -> dict:
+    catalog = catalog or DEFAULT_CATALOG
     top = (older.result or {}).get("top_fix")
-    fault = get_fault(older.lift, top["fault_id"]) if top else None
+    fault = catalog.get(older.lift, top["fault_id"]) if top else None
     view = {"fault_id": fault.id if fault else None, "title": fault.name if fault else None,
             "status": "unavailable", "older_reps": list(top.get("reps", [])) if top else [], "newer_reps": []}
     if older.final_status not in PASSED:
@@ -61,7 +66,7 @@ def compare_earlier_fault(older: AnalysisRecord, newer: AnalysisRecord, newer_re
         return {**view, "status": "no_previous_fault"}
     if not fault:
         return view
-    if fault.metric in _blocked_metrics(newer):
+    if fault.metric in _blocked_metrics(newer, catalog):
         return {**view, "status": "not_measured"}
     values = [(r.rep, r.metrics.get(fault.metric)) for r in newer_reps]
     confirmed = [rep for rep, value in values if _measured(value) and fault.is_confirmed(value)]

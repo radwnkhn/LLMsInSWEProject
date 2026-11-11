@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 import { AdminAnalysesTable } from "@/components/AdminAnalysesTable";
@@ -22,7 +23,10 @@ export default function AdminPage() {
   if (forbidden) return <AdminForbidden />;
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-bold">Analyses</h1>
+      <div className="flex flex-wrap items-baseline justify-between gap-2">
+        <h1 className="text-2xl font-bold">Analyses</h1>
+        <Link href="/admin/faults" className="text-sm underline">Fault list</Link>
+      </div>
       {rows && <AdminAnalysesTable items={rows} />}
       <ErrorSummary counts={counts} />
     </div>

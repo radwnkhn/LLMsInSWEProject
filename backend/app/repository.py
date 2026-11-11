@@ -9,6 +9,7 @@ from dataclasses import dataclass, field, replace
 from datetime import datetime, timedelta, timezone
 from typing import ContextManager, Protocol
 
+from app.faults import FAULT_EDITABLE_FIELDS, Fault, FaultExists, default_faults, edit_fault
 from app.llm.schema import ValidationIssue
 from app.measure import RepMeasurement
 
@@ -111,6 +112,18 @@ class Repository(Protocol):
     def get_feedback(self, analysis_id: str, user_id: str) -> FeedbackRecord | None: ...
     def list_feedback(self, analysis_id: str) -> list[FeedbackRecord]: ...
     def list_admin_rows(self, lift: str | None = None, final_status: str | None = None) -> list[AdminAnalysisRow]: ...
+    # US-25: the saved fault list. Seeded with app.faults.FAULTS; faults are disabled, never deleted.
+    def list_faults(self) -> list[Fault]: ...
+    def get_fault(self, lift: str, fault_id: str) -> Fault | None: ...
+    def create_fault(self, fault: Fault) -> Fault: ...
+    def update_fault(self, lift: str, fault_id: str, **fields) -> Fault: ...
+
+
+def _check_fault_fields(fields: dict) -> None:
+    """Only FAULT_EDITABLE_FIELDS can change (US-24 adds "threshold" to that set)."""
+    unknown = set(fields) - FAULT_EDITABLE_FIELDS
+    if unknown:
+        raise ValueError(f"unknown or read-only fault fields: {sorted(unknown)}")
 
 
 class InMemoryRepository:
@@ -124,6 +137,7 @@ class InMemoryRepository:
         self.reps: dict[str, list[RepMeasurement]] = {}
         self.attempts: dict[str, list[LLMAttemptRecord]] = {}
         self.feedback: dict[tuple[str, str], FeedbackRecord] = {}
+        self.faults: list[Fault] = default_faults()
 
     @contextmanager
     def user_lock(self, user_id):
@@ -233,6 +247,28 @@ class InMemoryRepository:
         rows.sort(key=lambda a: a.created_at, reverse=True)
         return [AdminAnalysisRow(a, len(self.attempts.get(a.id, [])), self.users.get(a.user_id, UserRecord(a.user_id, "")).email)
                 for a in rows]
+
+    def list_faults(self):
+        return list(self.faults)
+
+    def get_fault(self, lift, fault_id):
+        return next((f for f in self.faults if (f.lift, f.id) == (lift, fault_id)), None)
+
+    def create_fault(self, fault):
+        with self._lock:
+            if any((f.lift, f.id) == (fault.lift, fault.id) for f in self.faults):
+                raise FaultExists(f"{fault.lift} already has a fault with ID '{fault.id}'")
+            self.faults.append(fault)
+        return fault
+
+    def update_fault(self, lift, fault_id, **fields):
+        _check_fault_fields(fields)
+        with self._lock:
+            for i, f in enumerate(self.faults):
+                if (f.lift, f.id) == (lift, fault_id):
+                    self.faults[i] = edit_fault(f, **fields)
+                    return self.faults[i]
+        raise KeyError(f"no {lift} fault '{fault_id}'")
 
 
 class PostgresRepository:
@@ -401,3 +437,45 @@ class PostgresRepository:
             "order by a.created_at desc", (lift, lift, final_status, final_status), rows=True)
         return [AdminAnalysisRow(self._analysis(r), r["attempt_count"], r["user_email"] or "") for r in rows]
 
+    # ------------------------------------------------------------------ fault list (US-25)
+
+    _VIEW_ORDER = ("side", "front", "angled")
+
+    @staticmethod
+    def _fault(r) -> Fault | None:
+        if r is None:
+            return None
+        return Fault(id=r["id"], lift=r["lift"], name=r["name"], short_name=r["short_name"], category=r["category"],
+                     metric=r["metric"], metric_label=r["metric_label"], threshold=r["threshold"],
+                     direction=r["direction"], unit=r["unit"], views=frozenset(r["views"]), joints=tuple(r["joints"]),
+                     label_format=r["label_format"], enabled=r["enabled"])
+
+    def list_faults(self):
+        return [self._fault(r) for r in self._q("select * from public.faults order by position", rows=True)]
+
+    def get_fault(self, lift, fault_id):
+        return self._fault(self._q("select * from public.faults where lift = %s and id = %s", (lift, fault_id), one=True))
+
+    def create_fault(self, fault):
+        r = self._q(
+            "insert into public.faults (lift, id, name, short_name, category, metric, metric_label, threshold, direction, "
+            "unit, views, joints, label_format, enabled, position) values (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,"
+            "(select coalesce(max(position), 0) + 1 from public.faults)) on conflict (lift, id) do nothing returning *",
+            (fault.lift, fault.id, fault.name, fault.short_name, fault.category, fault.metric, fault.metric_label,
+             fault.threshold, fault.direction, fault.unit, [v for v in self._VIEW_ORDER if v in fault.views],
+             list(fault.joints), fault.label_format, fault.enabled), one=True)
+        if r is None:
+            raise FaultExists(f"{fault.lift} already has a fault with ID '{fault.id}'")
+        return self._fault(r)
+
+    def update_fault(self, lift, fault_id, **fields):
+        _check_fault_fields(fields)
+        current = self.get_fault(lift, fault_id)
+        if current is None:
+            raise KeyError(f"no {lift} fault '{fault_id}'")
+        edited = edit_fault(current, **fields)
+        changes = {k: getattr(edited, k) for k in fields}
+        sets = ", ".join(f"{k} = %s" for k in changes)
+        r = self._q(f"update public.faults set {sets}, updated_at = now() where lift = %s and id = %s returning *",
+                    (*changes.values(), lift, fault_id), one=True)
+        return self._fault(r)

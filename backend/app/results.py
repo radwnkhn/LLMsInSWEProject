@@ -2,7 +2,6 @@
 from __future__ import annotations
 
 from app.breakdown import build_rep_breakdown
-from app.faults import get_fault
 from app.lifts import LIFT_LABELS
 from app.pipeline import AnalysisOutcome
 from app.safety import mentions_pain
@@ -45,6 +44,7 @@ def build_result_view(outcome: AnalysisOutcome, note: str | None) -> dict:
         return view
 
     unmeasured = {c.check for c in outcome.not_measured}
+    catalog = outcome.catalog  # the fault list the analysis ran with
     faults_by_rep: dict[int, list[str]] = {}
 
     def mark(fault, reps):
@@ -53,14 +53,14 @@ def build_result_view(outcome: AnalysisOutcome, note: str | None) -> dict:
 
     out = outcome.output if status in PASSED else None
     if out:
-        top = get_fault(lift, out.top_fault_id) if out.top_fault_id else None
+        top = catalog.get(lift, out.top_fault_id) if out.top_fault_id else None
         if top and top.id not in unmeasured:
             view["top_fix"] = _fault_view(top, out.fault_reps)
             view["cue"] = out.cue
             mark(top, out.fault_reps)
         view["explanation"] = out.explanation
         for c in out.other_faults:
-            fault = get_fault(lift, c.fault_id)
+            fault = catalog.get(lift, c.fault_id)
             if fault and fault.id not in unmeasured:
                 view["other_faults"].append(_fault_view(fault, c.reps))
                 mark(fault, c.reps)
@@ -70,7 +70,7 @@ def build_result_view(outcome: AnalysisOutcome, note: str | None) -> dict:
     else:
         # Fallback: no AI text, only what the measurements themselves confirm.
         for fault_id, reps in outcome.confirmed.items():
-            mark(get_fault(lift, fault_id), reps)
+            mark(catalog.get(lift, fault_id), reps)
 
     view["rep_breakdown"] = build_rep_breakdown(m.reps, faults_by_rep)
     return view
