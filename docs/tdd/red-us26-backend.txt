@@ -1,0 +1,151 @@
+FFFFFFFFEFEEEEEEEEEEEFEEEEEEEFFFFFF.EFFFF                                [100%]
+==================================== ERRORS ====================================
+___ ERROR at setup of test_us26_saved_attempts_keep_usage_provider_and_model ___
+E   ModuleNotFoundError: No module named 'app.pricing'
+_______ ERROR at setup of test_us26_cost_uses_dollars_per_million_tokens _______
+E   ModuleNotFoundError: No module named 'app.pricing'
+_ ERROR at setup of test_us26_unknown_model_has_unknown_cost[not-in-the-table] _
+E   ModuleNotFoundError: No module named 'app.pricing'
+_______ ERROR at setup of test_us26_unknown_model_has_unknown_cost[None] _______
+E   ModuleNotFoundError: No module named 'app.pricing'
+_________ ERROR at setup of test_us26_unknown_model_has_unknown_cost[] _________
+E   ModuleNotFoundError: No module named 'app.pricing'
+______ ERROR at setup of test_us26_dated_model_names_use_their_base_price ______
+E   ModuleNotFoundError: No module named 'app.pricing'
+_______ ERROR at setup of test_us26_price_table_loads_from_a_config_file _______
+E   ModuleNotFoundError: No module named 'app.pricing'
+_ ERROR at setup of test_us26_malformed_price_file_fails_with_a_clear_error[not json] _
+E   ModuleNotFoundError: No module named 'app.pricing'
+_ ERROR at setup of test_us26_malformed_price_file_fails_with_a_clear_error[{"models": {"m": {"input_per_million": 1}}}] _
+E   ModuleNotFoundError: No module named 'app.pricing'
+_ ERROR at setup of test_us26_malformed_price_file_fails_with_a_clear_error[{"models": {"m": {"input_per_million": -1, "output_per_million": 1}}}] _
+E   ModuleNotFoundError: No module named 'app.pricing'
+_ ERROR at setup of test_us26_malformed_price_file_fails_with_a_clear_error[{"models": []}] _
+E   ModuleNotFoundError: No module named 'app.pricing'
+_ ERROR at setup of test_us26_default_price_file_covers_each_providers_default_model _
+E   ModuleNotFoundError: No module named 'app.pricing'
+__ ERROR at setup of test_us26_changing_the_price_table_changes_reported_cost __
+E   ModuleNotFoundError: No module named 'app.pricing'
+_ ERROR at setup of test_us26_admin_detail_shows_usage_and_cost_per_attempt_and_total _
+E   ModuleNotFoundError: No module named 'app.pricing'
+_ ERROR at setup of test_us26_admin_detail_shows_unknown_cost_instead_of_failing _
+E   ModuleNotFoundError: No module named 'app.pricing'
+_ ERROR at setup of test_us26_attempts_saved_before_us26_show_unknown_model_and_cost _
+E   ModuleNotFoundError: No module named 'app.pricing'
+___ ERROR at setup of test_us26_summary_unit_totals_average_and_retry_share ____
+E   ModuleNotFoundError: No module named 'app.pricing'
+_ ERROR at setup of test_us26_summary_unit_with_no_attempts_has_no_average_or_share _
+E   ModuleNotFoundError: No module named 'app.pricing'
+_ ERROR at setup of test_us26_cost_summary_counts_only_analyses_in_the_date_range _
+E   ModuleNotFoundError: No module named 'app.pricing'
+_ ERROR at setup of test_us26_lifters_never_see_usage_or_cost_on_their_own_results _
+E   ModuleNotFoundError: No module named 'app.pricing'
+=================================== FAILURES ===================================
+E   AttributeError: 'LLMReply' object has no attribute 'provider'
+backend/tests/test_us26_ai_cost.py:105: AttributeError: 'LLMReply' object has no attribute 'provider'
+E   AttributeError: 'LLMReply' object has no attribute 'provider'
+backend/tests/test_us26_ai_cost.py:110: AttributeError: 'LLMReply' object has no attribute 'provider'
+E   AttributeError: 'LLMReply' object has no attribute 'provider'
+backend/tests/test_us26_ai_cost.py:116: AttributeError: 'LLMReply' object has no attribute 'provider'
+E   AttributeError: 'LLMReply' object has no attribute 'model'
+backend/tests/test_us26_ai_cost.py:128: AttributeError: 'LLMReply' object has no attribute 'model'
+E   AttributeError: 'LLMReply' object has no attribute 'model'
+backend/tests/test_us26_ai_cost.py:128: AttributeError: 'LLMReply' object has no attribute 'model'
+E   AttributeError: 'LLMReply' object has no attribute 'model'
+backend/tests/test_us26_ai_cost.py:128: AttributeError: 'LLMReply' object has no attribute 'model'
+E   AssertionError: assert 'fallback' == 'passed_after_retry'
+      
+      - passed_after_retry
+      + fallback
+backend/tests/test_us26_ai_cost.py:138: AssertionError: assert 'fallback' == 'passed_after_retry'
+E   AttributeError: 'AttemptLog' object has no attribute 'provider'
+backend/tests/test_us26_ai_cost.py:146: AttributeError: 'AttemptLog' object has no attribute 'provider'
+E   assert ('add column if not exists provider text' in "-- alibi data model: users, uploads, analyses, rep measurements, llm attempts,\n-- validation results and feedback re...front']::text[], array['wrists', 'shoulders']::text[], 'uneven {value:.2f}', 13)\non conflict (lift, id) do nothing;\n")
+backend/tests/test_us26_ai_cost.py:164: assert ('add column if not exists provider text' in "-- alibi data model: users, uploads, analyses, rep measurements, llm attempts,\n-- validation results and feedback re...front']::text[], array['wrists', 'shoulders']::text[], 'uneven {value:.2f}', 13)\non conflict (lift, id) do nothing;\n")
+E   AttributeError: 'Settings' object has no attribute 'llm_prices_file'
+backend/tests/test_us26_ai_cost.py:218: AttributeError: 'Settings' object has no attribute 'llm_prices_file'
+E   KeyError: 'start'
+backend/tests/test_us26_ai_cost.py:323: KeyError: 'start'
+E   AssertionError: assert 404 == 422
+     +  where 404 = <Response [404 Not Found]>.status_code
+     +    where <Response [404 Not Found]> = get('/admin/costs?start=2026-11-10&end=2026-11-01', headers={'Authorization': 'Bearer GLqx4Ajd75lmParePQHHHXxFOvaYmezO'})
+     +      where get = <starlette.testclient.TestClient object at 0x7f9f8df747d0>.get
+backend/tests/test_us26_ai_cost.py:330: AssertionError: assert 404 == 422
+E   AssertionError: assert 404 == 422
+     +  where 404 = <Response [404 Not Found]>.status_code
+     +    where <Response [404 Not Found]> = get('/admin/costs?start=11/01/2026&end=2026-11-10', headers={'Authorization': 'Bearer v3iQNaAZh4GMAxVTt4FP8FPQELD_Z1DS'})
+     +      where get = <starlette.testclient.TestClient object at 0x7f9f8df77b10>.get
+backend/tests/test_us26_ai_cost.py:330: AssertionError: assert 404 == 422
+E   AssertionError: assert 404 == 422
+     +  where 404 = <Response [404 Not Found]>.status_code
+     +    where <Response [404 Not Found]> = get('/admin/costs?start=2026-02-30&end=2026-03-01', headers={'Authorization': 'Bearer R9cqoUEpyIMXBrLQK8ZqAVx71UQD5IqV'})
+     +      where get = <starlette.testclient.TestClient object at 0x7f9f8db7fe10>.get
+backend/tests/test_us26_ai_cost.py:330: AssertionError: assert 404 == 422
+E   AssertionError: assert 404 == 403
+     +  where 404 = <Response [404 Not Found]>.status_code
+     +    where <Response [404 Not Found]> = get('/admin/costs', headers={'Authorization': 'Bearer V2zWYzQLZGV6G0JqZtW4q_3edqohrX0d'})
+     +      where get = <starlette.testclient.TestClient object at 0x7f9f8d7116e0>.get
+backend/tests/test_us26_ai_cost.py:339: AssertionError: assert 404 == 403
+E   AssertionError: assert 404 == 403
+     +  where 404 = <Response [404 Not Found]>.status_code
+     +    where <Response [404 Not Found]> = get('/admin/costs?start=2026-11-01&end=2026-11-10', headers={'Authorization': 'Bearer xt8vro05nUhkhW89ewrHM8uZDa5ygdOr'})
+     +      where get = <starlette.testclient.TestClient object at 0x7f9f8d7adeb0>.get
+backend/tests/test_us26_ai_cost.py:339: AssertionError: assert 404 == 403
+E   TypeError: InMemoryRepository.save_llm_attempt() got an unexpected keyword argument 'provider'
+backend/tests/test_us26_ai_cost_repository.py:12: TypeError: InMemoryRepository.save_llm_attempt() got an unexpected keyword argument 'provider'
+E   TypeError: PostgresRepository.save_llm_attempt() got an unexpected keyword argument 'provider'
+backend/tests/test_us26_ai_cost_repository.py:12: TypeError: PostgresRepository.save_llm_attempt() got an unexpected keyword argument 'provider'
+E   TypeError: InMemoryRepository.save_llm_attempt() got an unexpected keyword argument 'provider'
+backend/tests/test_us26_ai_cost_repository.py:23: TypeError: InMemoryRepository.save_llm_attempt() got an unexpected keyword argument 'provider'
+E   TypeError: PostgresRepository.save_llm_attempt() got an unexpected keyword argument 'provider'
+backend/tests/test_us26_ai_cost_repository.py:23: TypeError: PostgresRepository.save_llm_attempt() got an unexpected keyword argument 'provider'
+=========================== short test summary info ============================
+FAILED tests/test_us26_ai_cost.py::test_us26_claude_reply_reads_usage_and_model
+FAILED tests/test_us26_ai_cost.py::test_us26_openai_reply_reads_usage_and_model
+FAILED tests/test_us26_ai_cost.py::test_us26_gemini_reply_counts_thinking_tokens_as_output
+FAILED tests/test_us26_ai_cost.py::test_us26_missing_usage_records_zero_tokens_and_configured_model[ClaudeClient-body0-claude-sonnet-5-5]
+FAILED tests/test_us26_ai_cost.py::test_us26_missing_usage_records_zero_tokens_and_configured_model[OpenAIClient-body1-gpt-4.1-mini]
+FAILED tests/test_us26_ai_cost.py::test_us26_missing_usage_records_zero_tokens_and_configured_model[GeminiClient-body2-gemini-2.5-flash]
+FAILED tests/test_us26_ai_cost.py::test_us26_correction_loop_records_usage_for_every_attempt
+FAILED tests/test_us26_ai_cost.py::test_us26_failed_request_records_provider_model_and_zero_tokens
+FAILED tests/test_us26_ai_cost.py::test_us26_migration_adds_provider_and_model_to_llm_attempts
+FAILED tests/test_us26_ai_cost.py::test_us26_price_file_location_comes_from_settings
+FAILED tests/test_us26_ai_cost.py::test_us26_cost_summary_defaults_to_the_last_30_days
+FAILED tests/test_us26_ai_cost.py::test_us26_cost_summary_rejects_invalid_date_ranges[start=2026-11-10&end=2026-11-01]
+FAILED tests/test_us26_ai_cost.py::test_us26_cost_summary_rejects_invalid_date_ranges[start=11/01/2026&end=2026-11-10]
+FAILED tests/test_us26_ai_cost.py::test_us26_cost_summary_rejects_invalid_date_ranges[start=2026-02-30&end=2026-03-01]
+FAILED tests/test_us26_ai_cost.py::test_us26_non_admin_gets_403_on_usage_and_cost[/admin/costs]
+FAILED tests/test_us26_ai_cost.py::test_us26_non_admin_gets_403_on_usage_and_cost[/admin/costs?start=2026-11-01&end=2026-11-10]
+FAILED tests/test_us26_ai_cost_repository.py::test_us26_repo_saves_provider_and_model_with_each_attempt[memory]
+FAILED tests/test_us26_ai_cost_repository.py::test_us26_repo_saves_provider_and_model_with_each_attempt[postgres]
+FAILED tests/test_us26_ai_cost_repository.py::test_us26_repo_lists_attempt_usage_for_analyses_created_in_a_range[memory]
+FAILED tests/test_us26_ai_cost_repository.py::test_us26_repo_lists_attempt_usage_for_analyses_created_in_a_range[postgres]
+ERROR tests/test_us26_ai_cost.py::test_us26_saved_attempts_keep_usage_provider_and_model
+ERROR tests/test_us26_ai_cost.py::test_us26_cost_uses_dollars_per_million_tokens
+ERROR tests/test_us26_ai_cost.py::test_us26_unknown_model_has_unknown_cost[not-in-the-table]
+ERROR tests/test_us26_ai_cost.py::test_us26_unknown_model_has_unknown_cost[None]
+ERROR tests/test_us26_ai_cost.py::test_us26_unknown_model_has_unknown_cost[]
+ERROR tests/test_us26_ai_cost.py::test_us26_dated_model_names_use_their_base_price
+ERROR tests/test_us26_ai_cost.py::test_us26_price_table_loads_from_a_config_file
+ERROR tests/test_us26_ai_cost.py::test_us26_malformed_price_file_fails_with_a_clear_error[not json]
+ERROR tests/test_us26_ai_cost.py::test_us26_malformed_price_file_fails_with_a_clear_error[{"models": {"m": {"input_per_million": 1}}}]
+ERROR tests/test_us26_ai_cost.py::test_us26_malformed_price_file_fails_with_a_clear_error[{"models": {"m": {"input_per_million": -1, "output_per_million": 1}}}]
+ERROR tests/test_us26_ai_cost.py::test_us26_malformed_price_file_fails_with_a_clear_error[{"models": []}]
+ERROR tests/test_us26_ai_cost.py::test_us26_default_price_file_covers_each_providers_default_model
+ERROR tests/test_us26_ai_cost.py::test_us26_changing_the_price_table_changes_reported_cost
+ERROR tests/test_us26_ai_cost.py::test_us26_admin_detail_shows_usage_and_cost_per_attempt_and_total
+ERROR tests/test_us26_ai_cost.py::test_us26_admin_detail_shows_unknown_cost_instead_of_failing
+ERROR tests/test_us26_ai_cost.py::test_us26_attempts_saved_before_us26_show_unknown_model_and_cost
+ERROR tests/test_us26_ai_cost.py::test_us26_summary_unit_totals_average_and_retry_share
+ERROR tests/test_us26_ai_cost.py::test_us26_summary_unit_with_no_attempts_has_no_average_or_share
+ERROR tests/test_us26_ai_cost.py::test_us26_cost_summary_counts_only_analyses_in_the_date_range
+ERROR tests/test_us26_ai_cost.py::test_us26_lifters_never_see_usage_or_cost_on_their_own_results
+20 failed, 1 passed, 20 errors in 0.54s
+couldn't stop thread 'pool-2-worker-0' within 5.0 seconds
+hint: you can try to call 'close()' explicitly or to use the pool as context manager
+couldn't stop thread 'pool-2-worker-1' within 5.0 seconds
+hint: you can try to call 'close()' explicitly or to use the pool as context manager
+couldn't stop thread 'pool-2-worker-2' within 5.0 seconds
+hint: you can try to call 'close()' explicitly or to use the pool as context manager
+couldn't stop thread 'pool-2-scheduler' within 5.0 seconds
+hint: you can try to call 'close()' explicitly or to use the pool as context manager
