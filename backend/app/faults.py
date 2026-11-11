@@ -97,6 +97,30 @@ FAULTS: dict[str, tuple[Fault, ...]] = {
            "wrist_height_diff_ratio", "wrist height difference", 0.1, "above", "", FRONT,
            ("wrists", "shoulders"), "Uneven {value:.2f}"),
     ),
+    # US-28. Every threshold below is a first guess, to be tuned with trainer grading (US-22) and threshold
+    # editing (US-24); docs/tdd/us28.md gives the reasoning for each value.
+    "overhead_press": (
+        _f("overhead_press", "excessive_back_arch", "Lower back arches as you press", "back arch", "safety",
+           "torso_lean_back_max_deg", "backward lean", 15, "above", "°", SIDE, ("shoulders", "hips"),
+           "Lean back {value:.0f}°"),
+        _f("overhead_press", "bar_path_drift", "Bar drifts forward away from your head", "bar drift", "technique",
+           "bar_drift_ratio", "bar drift", 0.30, "above", "", SIDE, ("wrists", "shoulders", "hips"),
+           "Bar drift {value:.2f}"),
+        _f("overhead_press", "incomplete_lockout", "Arms don't fully lock out overhead", "incomplete lockout",
+           "technique", "lockout_elbow_angle_deg", "elbow angle at lockout", 165, "below", "°", SIDE,
+           ("shoulders", "elbows", "wrists"), "Elbow {value:.0f}°"),
+    ),
+    "romanian_deadlift": (
+        _f("romanian_deadlift", "rounded_back", "Your back rounds as you hinge", "rounded back", "safety",
+           "back_rounding_deg", "back rounding", 20, "above", "°", SIDE, ("ears", "shoulders", "hips"),
+           "Back {value:.0f}°"),
+        _f("romanian_deadlift", "knees_bend_too_much", "Knees bend too much, turning it into a deadlift", "knee bend",
+           "technique", "knee_angle_min_deg", "knee angle", 140, "below", "°", SIDE, ("hips", "knees", "ankles"),
+           "Knee {value:.0f}°"),
+        _f("romanian_deadlift", "bar_path_drift", "Bar drifts away from your legs", "bar drift", "technique",
+           "bar_drift_ratio", "bar drift", 0.15, "above", "", SIDE, ("wrists", "hips", "knees"),
+           "Bar drift {value:.2f}"),
+    ),
 }
 
 
@@ -148,6 +172,22 @@ METRICS: dict[str, dict[str, MetricSpec]] = {
             _m("bar_drift_ratio", "bar drift", "", SIDE, _BAR_LEGS, "Bar drift {value:.2f}"),
             _m("elbow_flare_deg", "elbow flare", "°", FRONT, ("shoulders", "elbows", "hips"), "Flare {value:.0f}°"),
             _m("wrist_height_diff_ratio", "wrist height difference", "", FRONT, ("wrists", "shoulders"), "Uneven {value:.2f}"),
+        ),
+        "overhead_press": (  # US-28
+            _m("elbow_angle_min_deg", "elbow angle in the rack", "°", SIDE, ("shoulders", "elbows", "wrists"),
+               "Elbow {value:.0f}°"),
+            _m("lockout_elbow_angle_deg", "elbow angle at lockout", "°", SIDE, ("shoulders", "elbows", "wrists"),
+               "Elbow {value:.0f}°"),
+            _m("torso_lean_back_max_deg", "backward lean", "°", SIDE, ("shoulders", "hips"), "Lean back {value:.0f}°"),
+            _m("bar_drift_ratio", "bar drift", "", SIDE, ("wrists", "shoulders", "hips"), "Bar drift {value:.2f}"),
+        ),
+        "romanian_deadlift": (  # US-28
+            _m("knee_angle_min_deg", "knee angle", "°", SIDE, ("hips", "knees", "ankles"), "Knee {value:.0f}°"),
+            _m("hip_angle_min_deg", "hip angle at the bottom of the hinge", "°", SIDE, ("shoulders", "hips", "knees"),
+               "Hip {value:.0f}°"),
+            _m("torso_lean_max_deg", "torso lean", "°", SIDE, ("shoulders", "hips"), "Torso {value:.0f}°"),
+            _m("back_rounding_deg", "back rounding", "°", SIDE, ("ears", "shoulders", "hips"), "Back {value:.0f}°"),
+            _m("bar_drift_ratio", "bar drift", "", SIDE, _BAR_LEGS, "Bar drift {value:.2f}"),
         ),
     }.items()
 }

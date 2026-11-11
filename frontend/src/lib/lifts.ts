@@ -4,6 +4,8 @@ export const LIFTS: { id: Lift; label: string; noun: string }[] = [
   { id: "squat", label: "Squat", noun: "squat" },
   { id: "deadlift", label: "Deadlift", noun: "deadlift" },
   { id: "bench_press", label: "Bench Press", noun: "bench press" },
+  { id: "overhead_press", label: "Overhead Press", noun: "overhead press" },
+  { id: "romanian_deadlift", label: "Romanian Deadlift", noun: "Romanian deadlift" },
 ];
 
 export function liftLabel(id: Lift): string {

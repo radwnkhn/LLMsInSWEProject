@@ -38,6 +38,9 @@ class RepSpec:
     lockout_lean: float = 0.0      # deadlift: torso lean left at the top (deg)
     bar_drift: float = 0.0         # forward bar shift at the bottom/top (normalized x)
     bench_top_y: float = 0.30      # bench: wrist y at lockout (larger = less locked out)
+    ohp_lockout: float = 178.0     # overhead press: elbow angle at lockout (deg)
+    back_lean: float = 0.0         # overhead press: torso lean back behind the hips at lockout (deg)
+    rdl_knee_flex: float = 25.0    # Romanian deadlift: knee bend at the bottom (deg; knee angle = 180 - this)
 
 
 @dataclass
@@ -148,7 +151,55 @@ def _squat_front(spec: RepSpec, phase: str, prog: float):
     return joints
 
 
-_SIDE_POSES = {"squat": _squat_side, "deadlift": _deadlift_side, "bench_press": _bench_side}
+def _two_link_elbow(shoulder, wrist, upper, fore):
+    """Elbow from two equal-ish links, bent toward +x of the shoulder-wrist line (in front of the lifter)."""
+    d = min(math.dist(shoulder, wrist), upper + fore - 1e-6)
+    a = (upper ** 2 - fore ** 2 + d ** 2) / (2 * d)
+    h = math.sqrt(max(upper ** 2 - a ** 2, 0.0))
+    ux, uy = (wrist[0] - shoulder[0]) / d, (wrist[1] - shoulder[1]) / d
+    base = (shoulder[0] + a * ux, shoulder[1] + a * uy)
+    return (base[0] - h * uy, base[1] + h * ux)
+
+
+OHP_LINK = 0.11  # upper arm and forearm, so the bar at lockout stays in frame
+
+
+def _ohp_side(spec: RepSpec, phase: str, prog: float):
+    # US-28. Standing, facing +x. p = 0 with the bar racked at the shoulders, 1 at lockout overhead.
+    p = _ease(prog) if phase == "out" else 1.0 if phase == "hold" else 1 - _ease(prog) if phase == "back" else 0.0
+    ankle, knee, hip = (0.5, 0.95), (0.5, 0.75), (0.5, 0.55)
+    lean = math.radians(spec.back_lean * p)  # backward, away from +x
+    shoulder = (hip[0] - TORSO * math.sin(lean), hip[1] - TORSO * math.cos(lean))
+    ear = (shoulder[0] - 0.07 * math.sin(lean), shoulder[1] - 0.07 * math.cos(lean))
+    # Wrists from the rack (just in front of the shoulder) to straight above it; the bar stays over the feet
+    # when the lifter leans back, so x is measured from the hip line, y from the shoulder.
+    lockout_height = 2 * OHP_LINK * math.sin(math.radians(spec.ohp_lockout) / 2)
+    wrist = (hip[0] + 0.04 * (1 - p) + spec.bar_drift * p, shoulder[1] - (0.03 + (lockout_height - 0.03) * p))
+    elbow = _two_link_elbow(shoulder, wrist, OHP_LINK, OHP_LINK)
+    return {"ankle": ankle, "knee": knee, "hip": hip, "shoulder": shoulder, "ear": ear, "elbow": elbow, "wrist": wrist}
+
+
+def _rdl_side(spec: RepSpec, phase: str, prog: float):
+    # US-28. Facing +x. p = 0 standing tall, 1 at the bottom of the hinge. Shin forward 0.4 f p, thigh back
+    # 0.6 f p (knee angle 180 - f p), torso hinged 70 p forward: hip angle 180 - (70 p + 0.6 f p).
+    p = _ease(prog) if phase == "out" else 1.0 if phase == "hold" else 1 - _ease(prog) if phase == "back" else 0.0
+    s, t = 0.4 * spec.rdl_knee_flex * p, 0.6 * spec.rdl_knee_flex * p
+    lean = 70 * p
+    ankle = (0.5, 0.9)
+    knee = (ankle[0] + SHIN * math.sin(math.radians(s)), ankle[1] - SHIN * math.cos(math.radians(s)))
+    hip = (knee[0] - THIGH * math.sin(math.radians(t)), knee[1] - THIGH * math.cos(math.radians(t)))
+    shoulder = (hip[0] + TORSO * math.sin(math.radians(lean)), hip[1] - TORSO * math.cos(math.radians(lean)))
+    head_angle = lean + spec.rounding * p
+    ear = (shoulder[0] + 0.07 * math.sin(math.radians(head_angle)), shoulder[1] - 0.07 * math.cos(math.radians(head_angle)))
+    bar_x = 0.53 + spec.bar_drift * p  # just in front of the shins, drifting forward as the lifter hinges
+    dx = bar_x - shoulder[0]
+    wrist = (bar_x, shoulder[1] + math.sqrt(max(ARM ** 2 - dx ** 2, 0.0)))
+    elbow = ((shoulder[0] + wrist[0]) / 2, (shoulder[1] + wrist[1]) / 2)
+    return {"ankle": ankle, "knee": knee, "hip": hip, "shoulder": shoulder, "ear": ear, "elbow": elbow, "wrist": wrist}
+
+
+_SIDE_POSES = {"squat": _squat_side, "deadlift": _deadlift_side, "bench_press": _bench_side,
+               "overhead_press": _ohp_side, "romanian_deadlift": _rdl_side}
 
 
 def _to_landmarks(joints: dict, view: str, conf: float, low: set[str]) -> dict[str, Landmark]:
@@ -220,6 +271,14 @@ def scenario_frames(name: str) -> list[PoseFrame]:
         return make_frames(SetSpec(low_confidence={"hips": 0.8, "knees": 0.8}))
     if "no_reps" in name:
         return standing_still()
+    if "ohp" in name or "overhead" in name:  # US-28: two reps short of lockout
+        reps = [RepSpec() for _ in range(5)]
+        reps[3].ohp_lockout = reps[4].ohp_lockout = 150.0
+        return make_frames(SetSpec(lift="overhead_press", reps=reps))
+    if "rdl" in name or "romanian" in name:  # US-28: knees bend too much on reps 2 and 3 (checked before "deadlift")
+        reps = [RepSpec() for _ in range(5)]
+        reps[1].rdl_knee_flex = reps[2].rdl_knee_flex = 55.0
+        return make_frames(SetSpec(lift="romanian_deadlift", reps=reps))
     if "deadlift" in name:
         return make_frames(SetSpec(lift="deadlift", reps=[RepSpec() for _ in range(3)]))
     if "bench" in name:

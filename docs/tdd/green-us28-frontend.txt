@@ -1,0 +1,12 @@
+
+ RUN  v3.2.7 frontend
+
+ ✓ src/components/__tests__/us28-more-lifts.test.tsx (10 tests) 351ms
+ ✓ src/components/__tests__/us02-lift-picker.test.tsx (5 tests) 519ms
+ ✓ src/components/__tests__/us03-filming-guide.test.tsx (12 tests) 560ms
+
+ Test Files  3 passed (3)
+      Tests  27 passed (27)
+   Start at  22:53:59
+   Duration  1.89s (transform 234ms, setup 529ms, collect 592ms, tests 1.43s, environment 2.06s, prepare 268ms)
+

@@ -3,7 +3,7 @@ import { expect, test, type Page } from "@playwright/test";
 import { signUp, uploadSet } from "./helpers";
 
 function faultRow(page: Page, lift: string, name: string) {
-  return page.getByRole("region", { name: `${lift} faults` }).getByRole("row").filter({ hasText: name });
+  return page.getByRole("region", { name: `${lift} faults`, exact: true }).getByRole("row").filter({ hasText: name });
 }
 
 async function openFaultList(page: Page) {
@@ -16,8 +16,9 @@ test("us25_admin_edits_disables_and_reenables_a_fault_and_new_analyses_follow", 
   await page.setViewportSize({ width: 375, height: 812 });
   await signUp(page, { admin: true });
   await openFaultList(page);
-  for (const lift of ["Squat", "Deadlift", "Bench Press"]) {
-    await expect(page.getByRole("region", { name: `${lift} faults` })).toBeVisible();
+  // Exact names: "Deadlift faults" would also match "Romanian Deadlift faults" (US-28).
+  for (const lift of ["Squat", "Deadlift", "Bench Press", "Overhead Press", "Romanian Deadlift"]) {
+    await expect(page.getByRole("region", { name: `${lift} faults`, exact: true })).toBeVisible();
   }
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
   await page.screenshot({ path: testInfo.outputPath("us25-fault-list-mobile.png"), fullPage: true });

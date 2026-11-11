@@ -10,7 +10,8 @@ video does not support a reliable assessment, Alibi explains what could not be m
 
 ## What you can do
 
-- Create an account and upload a lifting video with guidance on camera placement.
+- Create an account and upload a squat, deadlift, bench press, overhead press or Romanian deadlift
+  video with guidance on camera placement.
 - Follow analysis progress, view results, and retry a failed analysis using the saved video.
 - Review measured reps, annotated frames, and coaching feedback.
 - Browse your history and compare completed sets of the same lift.

@@ -27,7 +27,7 @@ def measurement_comparison(older: AnalysisRecord, newer: AnalysisRecord, older_r
     catalog = catalog or DEFAULT_CATALOG
     # Minimum/maximum describe the stored per-rep quantity; they do not score improvement.
     definitions = {}
-    if older.lift in ("squat", "deadlift"):
+    if older.lift in ("squat", "deadlift", "romanian_deadlift"):
         definitions.update(knee_angle_min_deg=("Knee angle", "°", "Minimum"),
                            hip_angle_min_deg=("Hip angle", "°", "Minimum"))
     else:

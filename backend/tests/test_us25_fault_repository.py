@@ -11,7 +11,8 @@ from app.faults import FAULTS
 from tests.test_setup02_database import MIGRATIONS
 from tests.test_setup02_repository import PG_URL, repo  # noqa: F401  (shared memory/postgres fixture)
 
-ALPHA_FAULTS = [f for lift in ("squat", "deadlift", "bench_press") for f in FAULTS[lift]]
+# Every seeded default fault: the Alpha lifts, plus the two US-28 lifts.
+ALPHA_FAULTS = [f for lift in FAULTS for f in FAULTS[lift]]
 
 
 @pytest.fixture

@@ -1,4 +1,5 @@
-export type Lift = "squat" | "deadlift" | "bench_press";
+// US-28 added overhead_press and romanian_deadlift.
+export type Lift = "squat" | "deadlift" | "bench_press" | "overhead_press" | "romanian_deadlift";
 export type TriedCue = "yes" | "no" | "not_yet";
 export type FinalStatus = "passed_first_try" | "passed_after_retry" | "fallback" | "unanalyzable";
 export type JobStatus = "queued" | "processing" | "done" | "failed";

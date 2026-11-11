@@ -33,4 +33,24 @@ export const FILMING_GUIDES: Record<Lift, FilmingGuide> = {
     image: "/framing/bench_press.svg",
     imageAlt: "Example of correct framing for a bench press",
   },
+  overhead_press: {
+    tips: [
+      "Film from a side view so we can see your back, arms and the bar path.",
+      "Set the phone at hip height, about 3 m (10 ft) away, so the bar at lockout still fits.",
+      "Keep your whole body and the bar in frame, feet to the bar at lockout above your head.",
+      "Stand side-on to the camera, not angled, so your lean and elbows can be measured.",
+    ],
+    image: "/framing/overhead_press.svg",
+    imageAlt: "Example of correct framing for an overhead press",
+  },
+  romanian_deadlift: {
+    tips: [
+      "Film from a side view so we can see your hips, knees, back and the bar.",
+      "Set the phone at hip height, about 3 m (10 ft) away.",
+      "Keep your whole body and the bar in frame at the bottom of every rep.",
+      "Start standing tall with the bar, so every hinge is in the video.",
+    ],
+    image: "/framing/romanian_deadlift.svg",
+    imageAlt: "Example of correct framing for a Romanian deadlift",
+  },
 };

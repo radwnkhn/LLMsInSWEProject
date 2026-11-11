@@ -302,7 +302,7 @@ def create_app(services: Services) -> FastAPI:
 
     def store_upload(background, user, file, lift, note):
         if lift not in LIFTS:
-            raise HTTPException(422, "Choose squat, deadlift or bench_press")
+            raise HTTPException(422, f"Choose one of: {', '.join(LIFTS)}")
         if note is not None and len(note) > MAX_NOTE_LENGTH:
             raise HTTPException(422, f"Notes can be at most {MAX_NOTE_LENGTH} characters")
         ext = video_extension(file.filename)

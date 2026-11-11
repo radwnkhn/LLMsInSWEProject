@@ -89,7 +89,7 @@ Labels: user story, role: gym goer, area: upload
 As a **gym goer**, I want to choose whether I'm doing a squat, deadlift or bench press, so that the feedback is specific to my lift.
 
 #### Acceptance criteria
-- [ ] [unit] The lift picker offers exactly three options: Squat, Deadlift, Bench Press.
+- [ ] [unit] The lift picker offers exactly three options: Squat, Deadlift, Bench Press. (US-28 later added Overhead Press and Romanian Deadlift.)
 - [ ] [unit] The upload button stays disabled until a lift is selected.
 - [ ] [integration] The selected lift is saved with the upload and passed to the analysis.
 - [ ] [integration] A request with any other lift value is rejected with a 422 error.
@@ -476,3 +476,24 @@ Days are UTC dates and the range defaults to the last 30 days. Removal reuses th
 so the upload's analyses, measurements, AI attempts and ratings are deleted with its media and it no
 longer counts in usage figures. The moderation log keeps only what it needs to explain the removal. An
 upload can't be removed while one of its analyses is still processing.
+
+### [US-28] More lifts
+
+GitHub issue: [#30](https://github.com/radwnkhn/LLMsInSWEProject/issues/30)
+
+As a **gym goer**, I want feedback on more lifts, such as overhead press and Romanian deadlift, so that I
+can use the app for more of my workout.
+
+#### Acceptance criteria
+- [ ] [unit] [e2e] The lift picker offers Overhead Press and Romanian Deadlift alongside the existing three lifts, and each new lift has a filming guide (camera view, phone height and distance, what must be in frame) with an example frame, fitting a 375px screen.
+- [ ] [unit] Reps are counted for each new lift on synthetic pose sequences: an overhead press rep is the wrists rising from the shoulders to lockout overhead and back, and a Romanian deadlift rep is a hip hinge (hip angle) from standing and back, since the hips barely drop.
+- [ ] [unit] Each new lift has three faults measured from the side view, checked against hand-calculated values, with one safety fault: overhead press: excessive lower-back arch (safety), bar path drifting forward, incomplete lockout; Romanian deadlift: rounded back (safety), knees bending too much, bar drifting away from the legs. Every threshold is a first guess, to be tuned with trainer grading (US-22) and threshold editing (US-24).
+- [ ] [integration] The new faults are part of the US-25 fault list: they are seeded in new and existing databases, appear on the admin fault page, and disabling one removes it from the prompt and makes the validator reject it.
+- [ ] [unit] [integration] The validator and correction loop treat the new lifts like the existing ones: a wrong rep count, an unconfirmed fault, a safety fault not put first and the wrong lift (including an overhead press uploaded as another lift) are rejected and sent back for correction.
+- [ ] [integration] [e2e] An overhead press and a Romanian deadlift upload are analyzed end to end with a top fix, a cue, an annotated frame and a rep breakdown.
+- [ ] [unit] [integration] Squat, deadlift and bench press behave exactly as before: the same measurements, faults, thresholds and results.
+
+This story adds exactly two lifts, `overhead_press` and `romanian_deadlift`, and supersedes US-02's "exactly
+three options". Both are filmed from the side, like the existing lifts. The thresholds are starting values
+from coaching guidance and synthetic data only; labeled real videos of both lifts are still needed before
+release (see `docs/tdd/us28.md`).

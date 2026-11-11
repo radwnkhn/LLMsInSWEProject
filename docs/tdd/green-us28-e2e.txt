@@ -1,0 +1,16 @@
+[WebServer] INFO:     Started server process [8339]
+[WebServer] INFO:     Waiting for application startup.
+[WebServer] INFO:     Application startup complete.
+[WebServer] INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+
+Running 7 tests using 1 worker
+
+  ✓  1 e2e/us03-guide.spec.ts:8:7 › us03_guide_fits_375px_without_sideways_scroll_squat (452ms)
+  ✓  2 e2e/us03-guide.spec.ts:8:7 › us03_guide_fits_375px_without_sideways_scroll_deadlift (337ms)
+  ✓  3 e2e/us03-guide.spec.ts:8:7 › us03_guide_fits_375px_without_sideways_scroll_bench_press (341ms)
+  ✓  4 e2e/us28-more-lifts.spec.ts:16:7 › us28_overhead_press_filming_guide_fits_375px_without_sideways_scroll (362ms)
+  ✓  5 e2e/us28-more-lifts.spec.ts:29:7 › us28_overhead_press_upload_gets_a_top_fix_cue_annotated_frame_and_rep_breakdown (746ms)
+  ✓  6 e2e/us28-more-lifts.spec.ts:16:7 › us28_romanian_deadlift_filming_guide_fits_375px_without_sideways_scroll (363ms)
+  ✓  7 e2e/us28-more-lifts.spec.ts:29:7 › us28_romanian_deadlift_upload_gets_a_top_fix_cue_annotated_frame_and_rep_breakdown (688ms)
+
+  7 passed (26.0s)
