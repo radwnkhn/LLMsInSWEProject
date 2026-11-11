@@ -1,0 +1,1251 @@
+
+ RUN  v3.2.7 frontend
+
+ ❯ src/lib/__tests__/us27-moderation-requests.test.ts (4 tests | 4 failed) 22ms
+   × US-27 moderation requests > us27_usage_is_read_for_the_chosen_dates 16ms
+     → moderation.adminUsage is not a function
+   × US-27 moderation requests > us27_upload_list_sends_only_the_filters_that_are_set 2ms
+     → moderation.adminUploads is not a function
+   × US-27 moderation requests > us27_removal_sends_explicit_confirmation_and_the_reason 2ms
+     → moderation.removeUpload is not a function
+   × US-27 moderation requests > us27_moderation_log_is_read_with_the_admin_session 1ms
+     → moderation.moderationLog is not a function
+ ❯ src/components/__tests__/us27-moderation.test.tsx (11 tests | 11 failed) 2070ms
+   × US-27 usage > us27_shows_signups_and_uploads_per_day_with_totals 15ms
+     → Cannot find module '@/app/admin/moderation/page' imported from 'frontend/src/components/__tests__/us27-moderation.test.tsx'.
+
+- If you rely on tsconfig.json's "paths" to resolve modules, please install "vite-tsconfig-paths" plugin to handle module resolution.
+- Make sure you don't have relative aliases in your Vitest config. Use absolute paths instead. Read more: https://vitest.dev/guide/common-errors
+   × US-27 usage > us27_choosing_dates_reloads_usage_and_uploads 3ms
+     → Cannot find module '@/app/admin/moderation/page' imported from 'frontend/src/components/__tests__/us27-moderation.test.tsx'.
+
+- If you rely on tsconfig.json's "paths" to resolve modules, please install "vite-tsconfig-paths" plugin to handle module resolution.
+- Make sure you don't have relative aliases in your Vitest config. Use absolute paths instead. Read more: https://vitest.dev/guide/common-errors
+   × US-27 usage > us27_admin_page_links_to_usage_and_moderation 1030ms
+     → Unable to find role="link" and name "Usage and moderation"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"space-y-6"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"flex flex-wrap items-baseline justify-between gap-2"[39m
+      [36m>[39m
+        [36m<h1[39m
+          [33mclass[39m=[32m"text-2xl font-bold"[39m
+        [36m>[39m
+          [0mAnalyses[0m
+        [36m</h1>[39m
+        [36m<a[39m
+          [33mclass[39m=[32m"text-sm underline"[39m
+          [33mhref[39m=[32m"/admin/faults"[39m
+        [36m>[39m
+          [0mFault list[0m
+        [36m</a>[39m
+      [36m</div>[39m
+      [36m<section[39m
+        [33maria-label[39m=[32m"AI cost"[39m
+        [33mclass[39m=[32m"space-y-3 rounded-xl border border-zinc-200 p-4"[39m
+      [36m>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"text-lg font-semibold"[39m
+        [36m>[39m
+          [0mAI cost[0m
+        [36m</h2>[39m
+        [36m<form[39m
+          [33mclass[39m=[32m"flex flex-wrap items-end gap-3 text-sm"[39m
+        [36m>[39m
+          [36m<div>[39m
+            [36m<label[39m
+              [33mclass[39m=[32m"block"[39m
+              [33mfor[39m=[32m"«r0»"[39m
+            [36m>[39m
+              [0mFrom[0m
+            [36m</label>[39m
+            [36m<input[39m
+              [33mclass[39m=[32m"rounded-lg border border-zinc-300 px-2 py-1"[39m
+              [33mid[39m=[32m"«r0»"[39m
+              [33mtype[39m=[32m"date"[39m
+              [33mvalue[39m=[32m""[39m
+            [36m/>[39m
+          [36m</div>[39m
+          [36m<div>[39m
+            [36m<label[39m
+              [33mclass[39m=[32m"block"[39m
+              [33mfor[39m=[32m"«r1»"[39m
+            [36m>[39m
+              [0mTo[0m
+            [36m</label>[39m
+            [36m<input[39m
+              [33mclass[39m=[32m"rounded-lg border border-zinc-300 px-2 py-1"[39m
+              [33mid[39m=[32m"«r1»"[39m
+              [33mtype[39m=[32m"date"[39m
+              [33mvalue[39m=[32m""[39m
+            [36m/>[39m
+          [36m</div>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"rounded-lg border border-zinc-300 px-3 py-1 font-medium"[39m
+            [33mtype[39m=[32m"submit"[39m
+          [36m>[39m
+            [0mShow[0m
+          [36m</button>[39m
+        [36m</form>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"text-sm text-red-700"[39m
+          [33mrole[39m=[32m"alert"[39m
+        [36m>[39m
+          [0mNetwork error[0m
+        [36m</p>[39m
+      [36m</section>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"space-y-3"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex flex-wrap gap-4 text-sm"[39m
+        [36m>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2"[39m
+          [36m>[39m
+            [0mLift[0m
+            [36m<select[39m
+              [33mclass[39m=[32m"rounded-lg border border-zinc-300 px-2 py-1"[39m
+            [36m>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"all"[39m
+              [36m>[39m
+                [0mAll[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"squat"[39m
+              [36m>[39m
+                [0mSquat[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"deadlift"[39m
+              [36m>[39m
+                [0mDeadlift[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"bench_press"[39m
+              [36m>[39m
+                [0mBench Press[0m
+              [36m</option>[39m
+            [36m</select>[39m
+          [36m</label>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2"[39m
+          [36m>[39m
+            [0mFinal status[0m
+            [36m<select[39m
+              [33mclass[39m=[32m"rounded-lg border border-zinc-300 px-2 py-1"[39m
+            [36m>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"all"[39m
+              [36m>[39m
+                [0mAll[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"passed_first_try"[39m
+              [36m>[39m
+                [0mPassed first try[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"passed_after_retry"[39m
+              [36m>[39m
+                [0mPassed after retry[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"fallback"[39m
+              [36m>[39m
+                [0mFallback[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"unanalyzable"[39m
+              [36m>[39m
+                [0mCouldn't analyze[0m
+              [36m</option>[39m
+            [36m</select>[39m
+          [36m</label>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"overflow-x-auto"[39m
+        [36m>[39m
+          [36m<table[39m
+            [33mclass[39m=[32m"w-full text-left text-sm"[39m
+          [36m>[39m
+            [36m<thead[39m
+              [33mclass[39m=[32m"text-zinc-500"[39m
+            [36m>[39m
+              [36m<tr>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"py-1 pr-3"[39m
+                [36m>[39m
+                  [0mDate[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mUser[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mLift[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mAttempts[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mFinal status[0m
+                [36m</th>[39m
+                [36m<th />[39m
+              [36m</tr>[39m
+            [36m</thead>[39m
+            [36m<tbody />[39m
+          [36m</table>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+      [36m<section[39m
+        [33mclass[39m=[32m"space-y-2"[39m
+      [36m>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"text-lg font-semibold"[39m
+        [36m>[39m
+          [0mValidator errors[0m
+        [36m</h2>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"text-sm text-zinc-600"[39m
+        [36m>[39m
+          [0mNo validator errors yet.[0m
+        [36m</p>[39m
+      [36m</section>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"space-y-6"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"flex flex-wrap items-baseline justify-between gap-2"[39m
+      [36m>[39m
+        [36m<h1[39m
+          [33mclass[39m=[32m"text-2xl font-bold"[39m
+        [36m>[39m
+          [0mAnalyses[0m
+        [36m</h1>[39m
+        [36m<a[39m
+          [33mclass[39m=[32m"text-sm underline"[39m
+          [33mhref[39m=[32m"/admin/faults"[39m
+        [36m>[39m
+          [0mFault list[0m
+        [36m</a>[39m
+      [36m</div>[39m
+      [36m<section[39m
+        [33maria-label[39m=[32m"AI cost"[39m
+        [33mclass[39m=[32m"space-y-3 rounded-xl border border-zinc-200 p-4"[39m
+      [36m>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"text-lg font-semibold"[39m
+        [36m>[39m
+          [0mAI cost[0m
+        [36m</h2>[39m
+        [36m<form[39m
+          [33mclass[39m=[32m"flex flex-wrap items-end gap-3 text-sm"[39m
+        [36m>[39m
+          [36m<div>[39m
+            [36m<label[39m
+              [33mclass[39m=[32m"block"[39m
+              [33mfor[39m=[32m"«r0»"[39m
+            [36m>[39m
+              [0mFrom[0m
+            [36m</label>[39m
+            [36m<input[39m
+              [33mclass[39m=[32m"rounded-lg border border-zinc-300 px-2 py-1"[39m
+              [33mid[39m=[32m"«r0»"[39m
+              [33mtype[39m=[32m"date"[39m
+              [33mvalue[39m=[32m""[39m
+            [36m/>[39m
+          [36m</div>[39m
+          [36m<div>[39m
+            [36m<label[39m
+              [33mclass[39m=[32m"block"[39m
+              [33mfor[39m=[32m"«r1»"[39m
+            [36m>[39m
+              [0mTo[0m
+            [36m</label>[39m
+            [36m<input[39m
+              [33mclass[39m=[32m"rounded-lg border border-zinc-300 px-2 py-1"[39m
+              [33mid[39m=[32m"«r1»"[39m
+              [33mtype[39m=[32m"date"[39m
+              [33mvalue[39m=[32m""[39m
+            [36m/>[39m
+          [36m</div>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"rounded-lg border border-zinc-300 px-3 py-1 font-medium"[39m
+            [33mtype[39m=[32m"submit"[39m
+          [36m>[39m
+            [0mShow[0m
+          [36m</button>[39m
+        [36m</form>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"text-sm text-red-700"[39m
+          [33mrole[39m=[32m"alert"[39m
+        [36m>[39m
+          [0mNetwork error[0m
+        [36m</p>[39m
+      [36m</section>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"space-y-3"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex flex-wrap gap-4 text-sm"[39m
+        [36m>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2"[39m
+          [36m>[39m
+            [0mLift[0m
+            [36m<select[39m
+              [33mclass[39m=[32m"rounded-lg border border-zinc-300 px-2 py-1"[39m
+            [36m>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"all"[39m
+              [36m>[39m
+                [0mAll[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"squat"[39m
+              [36m>[39m
+                [0mSquat[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"deadlift"[39m
+              [36m>[39m
+                [0mDeadlift[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"bench_press"[39m
+              [36m>[39m
+                [0mBench Press[0m
+              [36m</option>[39m
+            [36m</select>[39m
+          [36m</label>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2"[39m
+          [36m>[39m
+            [0mFinal status[0m
+            [36m<select[39m
+              [33mclass[39m=[32m"rounded-lg border border-zinc-300 px-2 py-1"[39m
+            [36m>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"all"[39m
+              [36m>[39m
+                [0mAll[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"passed_first_try"[39m
+              [36m>[39m
+                [0mPassed first try[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"passed_after_retry"[39m
+              [36m>[39m
+                [0mPassed after retry[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"fallback"[39m
+              [36m>[39m
+                [0mFallback[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"unanalyzable"[39m
+              [36m>[39m
+                [0mCouldn't analyze[0m
+              [36m</option>[39m
+            [36m</select>[39m
+          [36m</label>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"overflow-x-auto"[39m
+        [36m>[39m
+          [36m<table[39m
+            [33mclass[39m=[32m"w-full text-left text-sm"[39m
+          [36m>[39m
+            [36m<thead[39m
+              [33mclass[39m=[32m"text-zinc-500"[39m
+            [36m>[39m
+              [36m<tr>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"py-1 pr-3"[39m
+                [36m>[39m
+                  [0mDate[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mUser[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mLift[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mAttempts[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mFinal status[0m
+                [36m</th>[39m
+                [36m<th />[39m
+              [36m</tr>[39m
+            [36m</thead>[39m
+            [36m<tbody />[39m
+          [36m</table>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+      [36m<section[39m
+        [33mclass[39m=[32m"space-y-2"[39m
+      [36m>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"text-lg font-semibold"[39m
+        [36m>[39m
+          [0mValidator errors[0m
+        [36m</h2>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"text-sm text-zinc-600"[39m
+        [36m>[39m
+          [0mNo validator errors yet.[0m
+        [36m</p>[39m
+      [36m</section>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+   × US-27 upload list > us27_lists_uploads_with_date_lift_owner_status_and_a_link_to_the_analysis 3ms
+     → Cannot find module '@/app/admin/moderation/page' imported from 'frontend/src/components/__tests__/us27-moderation.test.tsx'.
+
+- If you rely on tsconfig.json's "paths" to resolve modules, please install "vite-tsconfig-paths" plugin to handle module resolution.
+- Make sure you don't have relative aliases in your Vitest config. Use absolute paths instead. Read more: https://vitest.dev/guide/common-errors
+   × US-27 upload list > us27_filtering_by_lift_reloads_the_list 2ms
+     → Cannot find module '@/app/admin/moderation/page' imported from 'frontend/src/components/__tests__/us27-moderation.test.tsx'.
+
+- If you rely on tsconfig.json's "paths" to resolve modules, please install "vite-tsconfig-paths" plugin to handle module resolution.
+- Make sure you don't have relative aliases in your Vitest config. Use absolute paths instead. Read more: https://vitest.dev/guide/common-errors
+   × US-27 removing an upload > us27_remove_asks_for_confirmation_and_a_reason_before_removing 1ms
+     → Cannot find module '@/app/admin/moderation/page' imported from 'frontend/src/components/__tests__/us27-moderation.test.tsx'.
+
+- If you rely on tsconfig.json's "paths" to resolve modules, please install "vite-tsconfig-paths" plugin to handle module resolution.
+- Make sure you don't have relative aliases in your Vitest config. Use absolute paths instead. Read more: https://vitest.dev/guide/common-errors
+   × US-27 removing an upload > us27_confirmed_removal_takes_the_upload_off_the_list_and_logs_it 2ms
+     → Cannot find module '@/app/admin/moderation/page' imported from 'frontend/src/components/__tests__/us27-moderation.test.tsx'.
+
+- If you rely on tsconfig.json's "paths" to resolve modules, please install "vite-tsconfig-paths" plugin to handle module resolution.
+- Make sure you don't have relative aliases in your Vitest config. Use absolute paths instead. Read more: https://vitest.dev/guide/common-errors
+   × US-27 removing an upload > us27_a_failed_removal_keeps_the_dialog_open_with_the_reason 1ms
+     → Cannot find module '@/app/admin/moderation/page' imported from 'frontend/src/components/__tests__/us27-moderation.test.tsx'.
+
+- If you rely on tsconfig.json's "paths" to resolve modules, please install "vite-tsconfig-paths" plugin to handle module resolution.
+- Make sure you don't have relative aliases in your Vitest config. Use absolute paths instead. Read more: https://vitest.dev/guide/common-errors
+   × US-27 removing an upload > us27_moderation_log_shows_who_removed_what_when_and_why 4ms
+     → Cannot find module '@/app/admin/moderation/page' imported from 'frontend/src/components/__tests__/us27-moderation.test.tsx'.
+
+- If you rely on tsconfig.json's "paths" to resolve modules, please install "vite-tsconfig-paths" plugin to handle module resolution.
+- Make sure you don't have relative aliases in your Vitest config. Use absolute paths instead. Read more: https://vitest.dev/guide/common-errors
+   × US-27 removing an upload > us27_non_admins_see_admins_only 2ms
+     → Cannot find module '@/app/admin/moderation/page' imported from 'frontend/src/components/__tests__/us27-moderation.test.tsx'.
+
+- If you rely on tsconfig.json's "paths" to resolve modules, please install "vite-tsconfig-paths" plugin to handle module resolution.
+- Make sure you don't have relative aliases in your Vitest config. Use absolute paths instead. Read more: https://vitest.dev/guide/common-errors
+   × US-27 what the owner sees > us27_owner_sees_the_upload_was_removed_by_a_moderator 1007ms
+     → Unable to find role="heading" and name "This upload was removed by a moderator"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"space-y-3 rounded-xl bg-red-50 p-4 text-red-800"[39m
+      [33mrole[39m=[32m"alert"[39m
+    [36m>[39m
+      [36m<p>[39m
+        [0mCouldn't load this result. Check your connection and try again.[0m
+      [36m</p>[39m
+      [36m<button[39m
+        [33mclass[39m=[32m"rounded-lg bg-red-800 px-4 py-2 font-semibold text-white"[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m>[39m
+        [0mRetry[0m
+      [36m</button>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"space-y-3 rounded-xl bg-red-50 p-4 text-red-800"[39m
+      [33mrole[39m=[32m"alert"[39m
+    [36m>[39m
+      [36m<p>[39m
+        [0mCouldn't load this result. Check your connection and try again.[0m
+      [36m</p>[39m
+      [36m<button[39m
+        [33mclass[39m=[32m"rounded-lg bg-red-800 px-4 py-2 font-semibold text-white"[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m>[39m
+        [0mRetry[0m
+      [36m</button>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 15 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/components/__tests__/us27-moderation.test.tsx > US-27 usage > us27_shows_signups_and_uploads_per_day_with_totals
+Error: Cannot find module '@/app/admin/moderation/page' imported from 'frontend/src/components/__tests__/us27-moderation.test.tsx'.
+
+- If you rely on tsconfig.json's "paths" to resolve modules, please install "vite-tsconfig-paths" plugin to handle module resolution.
+- Make sure you don't have relative aliases in your Vitest config. Use absolute paths instead. Read more: https://vitest.dev/guide/common-errors
+ ❯ renderModeration src/components/__tests__/us27-moderation.test.tsx:24:30
+     22| const PAGE = "@/app/admin/moderation/page";
+     23| async function renderModeration() {
+     24|   const { default: Page } = (await import(/* @vite-ignore */ PAGE)) as…
+       |                              ^
+     25|   render(<Page />);
+     26| }
+ ❯ src/components/__tests__/us27-moderation.test.tsx:51:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/15]⎯
+
+ FAIL  src/components/__tests__/us27-moderation.test.tsx > US-27 usage > us27_choosing_dates_reloads_usage_and_uploads
+Error: Cannot find module '@/app/admin/moderation/page' imported from 'frontend/src/components/__tests__/us27-moderation.test.tsx'.
+
+- If you rely on tsconfig.json's "paths" to resolve modules, please install "vite-tsconfig-paths" plugin to handle module resolution.
+- Make sure you don't have relative aliases in your Vitest config. Use absolute paths instead. Read more: https://vitest.dev/guide/common-errors
+ ❯ renderModeration src/components/__tests__/us27-moderation.test.tsx:24:30
+     22| const PAGE = "@/app/admin/moderation/page";
+     23| async function renderModeration() {
+     24|   const { default: Page } = (await import(/* @vite-ignore */ PAGE)) as…
+       |                              ^
+     25|   render(<Page />);
+     26| }
+ ❯ src/components/__tests__/us27-moderation.test.tsx:63:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/15]⎯
+
+ FAIL  src/components/__tests__/us27-moderation.test.tsx > US-27 usage > us27_admin_page_links_to_usage_and_moderation
+TestingLibraryElementError: Unable to find role="link" and name "Usage and moderation"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"space-y-6"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"flex flex-wrap items-baseline justify-between gap-2"[39m
+      [36m>[39m
+        [36m<h1[39m
+          [33mclass[39m=[32m"text-2xl font-bold"[39m
+        [36m>[39m
+          [0mAnalyses[0m
+        [36m</h1>[39m
+        [36m<a[39m
+          [33mclass[39m=[32m"text-sm underline"[39m
+          [33mhref[39m=[32m"/admin/faults"[39m
+        [36m>[39m
+          [0mFault list[0m
+        [36m</a>[39m
+      [36m</div>[39m
+      [36m<section[39m
+        [33maria-label[39m=[32m"AI cost"[39m
+        [33mclass[39m=[32m"space-y-3 rounded-xl border border-zinc-200 p-4"[39m
+      [36m>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"text-lg font-semibold"[39m
+        [36m>[39m
+          [0mAI cost[0m
+        [36m</h2>[39m
+        [36m<form[39m
+          [33mclass[39m=[32m"flex flex-wrap items-end gap-3 text-sm"[39m
+        [36m>[39m
+          [36m<div>[39m
+            [36m<label[39m
+              [33mclass[39m=[32m"block"[39m
+              [33mfor[39m=[32m"«r0»"[39m
+            [36m>[39m
+              [0mFrom[0m
+            [36m</label>[39m
+            [36m<input[39m
+              [33mclass[39m=[32m"rounded-lg border border-zinc-300 px-2 py-1"[39m
+              [33mid[39m=[32m"«r0»"[39m
+              [33mtype[39m=[32m"date"[39m
+              [33mvalue[39m=[32m""[39m
+            [36m/>[39m
+          [36m</div>[39m
+          [36m<div>[39m
+            [36m<label[39m
+              [33mclass[39m=[32m"block"[39m
+              [33mfor[39m=[32m"«r1»"[39m
+            [36m>[39m
+              [0mTo[0m
+            [36m</label>[39m
+            [36m<input[39m
+              [33mclass[39m=[32m"rounded-lg border border-zinc-300 px-2 py-1"[39m
+              [33mid[39m=[32m"«r1»"[39m
+              [33mtype[39m=[32m"date"[39m
+              [33mvalue[39m=[32m""[39m
+            [36m/>[39m
+          [36m</div>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"rounded-lg border border-zinc-300 px-3 py-1 font-medium"[39m
+            [33mtype[39m=[32m"submit"[39m
+          [36m>[39m
+            [0mShow[0m
+          [36m</button>[39m
+        [36m</form>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"text-sm text-red-700"[39m
+          [33mrole[39m=[32m"alert"[39m
+        [36m>[39m
+          [0mNetwork error[0m
+        [36m</p>[39m
+      [36m</section>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"space-y-3"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex flex-wrap gap-4 text-sm"[39m
+        [36m>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2"[39m
+          [36m>[39m
+            [0mLift[0m
+            [36m<select[39m
+              [33mclass[39m=[32m"rounded-lg border border-zinc-300 px-2 py-1"[39m
+            [36m>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"all"[39m
+              [36m>[39m
+                [0mAll[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"squat"[39m
+              [36m>[39m
+                [0mSquat[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"deadlift"[39m
+              [36m>[39m
+                [0mDeadlift[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"bench_press"[39m
+              [36m>[39m
+                [0mBench Press[0m
+              [36m</option>[39m
+            [36m</select>[39m
+          [36m</label>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2"[39m
+          [36m>[39m
+            [0mFinal status[0m
+            [36m<select[39m
+              [33mclass[39m=[32m"rounded-lg border border-zinc-300 px-2 py-1"[39m
+            [36m>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"all"[39m
+              [36m>[39m
+                [0mAll[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"passed_first_try"[39m
+              [36m>[39m
+                [0mPassed first try[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"passed_after_retry"[39m
+              [36m>[39m
+                [0mPassed after retry[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"fallback"[39m
+              [36m>[39m
+                [0mFallback[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"unanalyzable"[39m
+              [36m>[39m
+                [0mCouldn't analyze[0m
+              [36m</option>[39m
+            [36m</select>[39m
+          [36m</label>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"overflow-x-auto"[39m
+        [36m>[39m
+          [36m<table[39m
+            [33mclass[39m=[32m"w-full text-left text-sm"[39m
+          [36m>[39m
+            [36m<thead[39m
+              [33mclass[39m=[32m"text-zinc-500"[39m
+            [36m>[39m
+              [36m<tr>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"py-1 pr-3"[39m
+                [36m>[39m
+                  [0mDate[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mUser[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mLift[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mAttempts[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mFinal status[0m
+                [36m</th>[39m
+                [36m<th />[39m
+              [36m</tr>[39m
+            [36m</thead>[39m
+            [36m<tbody />[39m
+          [36m</table>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+      [36m<section[39m
+        [33mclass[39m=[32m"space-y-2"[39m
+      [36m>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"text-lg font-semibold"[39m
+        [36m>[39m
+          [0mValidator errors[0m
+        [36m</h2>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"text-sm text-zinc-600"[39m
+        [36m>[39m
+          [0mNo validator errors yet.[0m
+        [36m</p>[39m
+      [36m</section>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"space-y-6"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"flex flex-wrap items-baseline justify-between gap-2"[39m
+      [36m>[39m
+        [36m<h1[39m
+          [33mclass[39m=[32m"text-2xl font-bold"[39m
+        [36m>[39m
+          [0mAnalyses[0m
+        [36m</h1>[39m
+        [36m<a[39m
+          [33mclass[39m=[32m"text-sm underline"[39m
+          [33mhref[39m=[32m"/admin/faults"[39m
+        [36m>[39m
+          [0mFault list[0m
+        [36m</a>[39m
+      [36m</div>[39m
+      [36m<section[39m
+        [33maria-label[39m=[32m"AI cost"[39m
+        [33mclass[39m=[32m"space-y-3 rounded-xl border border-zinc-200 p-4"[39m
+      [36m>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"text-lg font-semibold"[39m
+        [36m>[39m
+          [0mAI cost[0m
+        [36m</h2>[39m
+        [36m<form[39m
+          [33mclass[39m=[32m"flex flex-wrap items-end gap-3 text-sm"[39m
+        [36m>[39m
+          [36m<div>[39m
+            [36m<label[39m
+              [33mclass[39m=[32m"block"[39m
+              [33mfor[39m=[32m"«r0»"[39m
+            [36m>[39m
+              [0mFrom[0m
+            [36m</label>[39m
+            [36m<input[39m
+              [33mclass[39m=[32m"rounded-lg border border-zinc-300 px-2 py-1"[39m
+              [33mid[39m=[32m"«r0»"[39m
+              [33mtype[39m=[32m"date"[39m
+              [33mvalue[39m=[32m""[39m
+            [36m/>[39m
+          [36m</div>[39m
+          [36m<div>[39m
+            [36m<label[39m
+              [33mclass[39m=[32m"block"[39m
+              [33mfor[39m=[32m"«r1»"[39m
+            [36m>[39m
+              [0mTo[0m
+            [36m</label>[39m
+            [36m<input[39m
+              [33mclass[39m=[32m"rounded-lg border border-zinc-300 px-2 py-1"[39m
+              [33mid[39m=[32m"«r1»"[39m
+              [33mtype[39m=[32m"date"[39m
+              [33mvalue[39m=[32m""[39m
+            [36m/>[39m
+          [36m</div>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"rounded-lg border border-zinc-300 px-3 py-1 font-medium"[39m
+            [33mtype[39m=[32m"submit"[39m
+          [36m>[39m
+            [0mShow[0m
+          [36m</button>[39m
+        [36m</form>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"text-sm text-red-700"[39m
+          [33mrole[39m=[32m"alert"[39m
+        [36m>[39m
+          [0mNetwork error[0m
+        [36m</p>[39m
+      [36m</section>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"space-y-3"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex flex-wrap gap-4 text-sm"[39m
+        [36m>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2"[39m
+          [36m>[39m
+            [0mLift[0m
+            [36m<select[39m
+              [33mclass[39m=[32m"rounded-lg border border-zinc-300 px-2 py-1"[39m
+            [36m>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"all"[39m
+              [36m>[39m
+                [0mAll[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"squat"[39m
+              [36m>[39m
+                [0mSquat[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"deadlift"[39m
+              [36m>[39m
+                [0mDeadlift[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"bench_press"[39m
+              [36m>[39m
+                [0mBench Press[0m
+              [36m</option>[39m
+            [36m</select>[39m
+          [36m</label>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2"[39m
+          [36m>[39m
+            [0mFinal status[0m
+            [36m<select[39m
+              [33mclass[39m=[32m"rounded-lg border border-zinc-300 px-2 py-1"[39m
+            [36m>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"all"[39m
+              [36m>[39m
+                [0mAll[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"passed_first_try"[39m
+              [36m>[39m
+                [0mPassed first try[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"passed_after_retry"[39m
+              [36m>[39m
+                [0mPassed after retry[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"fallback"[39m
+              [36m>[39m
+                [0mFallback[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"unanalyzable"[39m
+              [36m>[39m
+                [0mCouldn't analyze[0m
+              [36m</option>[39m
+            [36m</select>[39m
+          [36m</label>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"overflow-x-auto"[39m
+        [36m>[39m
+          [36m<table[39m
+            [33mclass[39m=[32m"w-full text-left text-sm"[39m
+          [36m>[39m
+            [36m<thead[39m
+              [33mclass[39m=[32m"text-zinc-500"[39m
+            [36m>[39m
+              [36m<tr>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"py-1 pr-3"[39m
+                [36m>[39m
+                  [0mDate[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mUser[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mLift[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mAttempts[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mFinal status[0m
+                [36m</th>[39m
+                [36m<th />[39m
+              [36m</tr>[39m
+            [36m</thead>[39m
+            [36m<tbody />[39m
+          [36m</table>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+      [36m<section[39m
+        [33mclass[39m=[32m"space-y-2"[39m
+      [36m>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"text-lg font-semibold"[39m
+        [36m>[39m
+          [0mValidator errors[0m
+        [36m</h2>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"text-sm text-zinc-600"[39m
+        [36m>[39m
+          [0mNo validator errors yet.[0m
+        [36m</p>[39m
+      [36m</section>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/components/__tests__/us27-moderation.test.tsx:76:25
+     74|   it("us27_admin_page_links_to_usage_and_moderation", async () => {
+     75|     render(<AdminPage />);
+     76|     expect(await screen.findByRole("link", { name: "Usage and moderati…
+       |                         ^
+     77|   });
+     78| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/15]⎯
+
+ FAIL  src/components/__tests__/us27-moderation.test.tsx > US-27 upload list > us27_lists_uploads_with_date_lift_owner_status_and_a_link_to_the_analysis
+Error: Cannot find module '@/app/admin/moderation/page' imported from 'frontend/src/components/__tests__/us27-moderation.test.tsx'.
+
+- If you rely on tsconfig.json's "paths" to resolve modules, please install "vite-tsconfig-paths" plugin to handle module resolution.
+- Make sure you don't have relative aliases in your Vitest config. Use absolute paths instead. Read more: https://vitest.dev/guide/common-errors
+ ❯ renderModeration src/components/__tests__/us27-moderation.test.tsx:24:30
+     22| const PAGE = "@/app/admin/moderation/page";
+     23| async function renderModeration() {
+     24|   const { default: Page } = (await import(/* @vite-ignore */ PAGE)) as…
+       |                              ^
+     25|   render(<Page />);
+     26| }
+ ❯ src/components/__tests__/us27-moderation.test.tsx:82:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/15]⎯
+
+ FAIL  src/components/__tests__/us27-moderation.test.tsx > US-27 upload list > us27_filtering_by_lift_reloads_the_list
+Error: Cannot find module '@/app/admin/moderation/page' imported from 'frontend/src/components/__tests__/us27-moderation.test.tsx'.
+
+- If you rely on tsconfig.json's "paths" to resolve modules, please install "vite-tsconfig-paths" plugin to handle module resolution.
+- Make sure you don't have relative aliases in your Vitest config. Use absolute paths instead. Read more: https://vitest.dev/guide/common-errors
+ ❯ renderModeration src/components/__tests__/us27-moderation.test.tsx:24:30
+     22| const PAGE = "@/app/admin/moderation/page";
+     23| async function renderModeration() {
+     24|   const { default: Page } = (await import(/* @vite-ignore */ PAGE)) as…
+       |                              ^
+     25|   render(<Page />);
+     26| }
+ ❯ src/components/__tests__/us27-moderation.test.tsx:93:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/15]⎯
+
+ FAIL  src/components/__tests__/us27-moderation.test.tsx > US-27 removing an upload > us27_remove_asks_for_confirmation_and_a_reason_before_removing
+Error: Cannot find module '@/app/admin/moderation/page' imported from 'frontend/src/components/__tests__/us27-moderation.test.tsx'.
+
+- If you rely on tsconfig.json's "paths" to resolve modules, please install "vite-tsconfig-paths" plugin to handle module resolution.
+- Make sure you don't have relative aliases in your Vitest config. Use absolute paths instead. Read more: https://vitest.dev/guide/common-errors
+ ❯ renderModeration src/components/__tests__/us27-moderation.test.tsx:24:30
+     22| const PAGE = "@/app/admin/moderation/page";
+     23| async function renderModeration() {
+     24|   const { default: Page } = (await import(/* @vite-ignore */ PAGE)) as…
+       |                              ^
+     25|   render(<Page />);
+     26| }
+ ❯ src/components/__tests__/us27-moderation.test.tsx:103:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/15]⎯
+
+ FAIL  src/components/__tests__/us27-moderation.test.tsx > US-27 removing an upload > us27_confirmed_removal_takes_the_upload_off_the_list_and_logs_it
+Error: Cannot find module '@/app/admin/moderation/page' imported from 'frontend/src/components/__tests__/us27-moderation.test.tsx'.
+
+- If you rely on tsconfig.json's "paths" to resolve modules, please install "vite-tsconfig-paths" plugin to handle module resolution.
+- Make sure you don't have relative aliases in your Vitest config. Use absolute paths instead. Read more: https://vitest.dev/guide/common-errors
+ ❯ renderModeration src/components/__tests__/us27-moderation.test.tsx:24:30
+     22| const PAGE = "@/app/admin/moderation/page";
+     23| async function renderModeration() {
+     24|   const { default: Page } = (await import(/* @vite-ignore */ PAGE)) as…
+       |                              ^
+     25|   render(<Page />);
+     26| }
+ ❯ src/components/__tests__/us27-moderation.test.tsx:118:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/15]⎯
+
+ FAIL  src/components/__tests__/us27-moderation.test.tsx > US-27 removing an upload > us27_a_failed_removal_keeps_the_dialog_open_with_the_reason
+Error: Cannot find module '@/app/admin/moderation/page' imported from 'frontend/src/components/__tests__/us27-moderation.test.tsx'.
+
+- If you rely on tsconfig.json's "paths" to resolve modules, please install "vite-tsconfig-paths" plugin to handle module resolution.
+- Make sure you don't have relative aliases in your Vitest config. Use absolute paths instead. Read more: https://vitest.dev/guide/common-errors
+ ❯ renderModeration src/components/__tests__/us27-moderation.test.tsx:24:30
+     22| const PAGE = "@/app/admin/moderation/page";
+     23| async function renderModeration() {
+     24|   const { default: Page } = (await import(/* @vite-ignore */ PAGE)) as…
+       |                              ^
+     25|   render(<Page />);
+     26| }
+ ❯ src/components/__tests__/us27-moderation.test.tsx:135:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/15]⎯
+
+ FAIL  src/components/__tests__/us27-moderation.test.tsx > US-27 removing an upload > us27_moderation_log_shows_who_removed_what_when_and_why
+Error: Cannot find module '@/app/admin/moderation/page' imported from 'frontend/src/components/__tests__/us27-moderation.test.tsx'.
+
+- If you rely on tsconfig.json's "paths" to resolve modules, please install "vite-tsconfig-paths" plugin to handle module resolution.
+- Make sure you don't have relative aliases in your Vitest config. Use absolute paths instead. Read more: https://vitest.dev/guide/common-errors
+ ❯ renderModeration src/components/__tests__/us27-moderation.test.tsx:24:30
+     22| const PAGE = "@/app/admin/moderation/page";
+     23| async function renderModeration() {
+     24|   const { default: Page } = (await import(/* @vite-ignore */ PAGE)) as…
+       |                              ^
+     25|   render(<Page />);
+     26| }
+ ❯ src/components/__tests__/us27-moderation.test.tsx:146:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/15]⎯
+
+ FAIL  src/components/__tests__/us27-moderation.test.tsx > US-27 removing an upload > us27_non_admins_see_admins_only
+Error: Cannot find module '@/app/admin/moderation/page' imported from 'frontend/src/components/__tests__/us27-moderation.test.tsx'.
+
+- If you rely on tsconfig.json's "paths" to resolve modules, please install "vite-tsconfig-paths" plugin to handle module resolution.
+- Make sure you don't have relative aliases in your Vitest config. Use absolute paths instead. Read more: https://vitest.dev/guide/common-errors
+ ❯ renderModeration src/components/__tests__/us27-moderation.test.tsx:24:30
+     22| const PAGE = "@/app/admin/moderation/page";
+     23| async function renderModeration() {
+     24|   const { default: Page } = (await import(/* @vite-ignore */ PAGE)) as…
+       |                              ^
+     25|   render(<Page />);
+     26| }
+ ❯ src/components/__tests__/us27-moderation.test.tsx:159:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/15]⎯
+
+ FAIL  src/components/__tests__/us27-moderation.test.tsx > US-27 what the owner sees > us27_owner_sees_the_upload_was_removed_by_a_moderator
+TestingLibraryElementError: Unable to find role="heading" and name "This upload was removed by a moderator"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"space-y-3 rounded-xl bg-red-50 p-4 text-red-800"[39m
+      [33mrole[39m=[32m"alert"[39m
+    [36m>[39m
+      [36m<p>[39m
+        [0mCouldn't load this result. Check your connection and try again.[0m
+      [36m</p>[39m
+      [36m<button[39m
+        [33mclass[39m=[32m"rounded-lg bg-red-800 px-4 py-2 font-semibold text-white"[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m>[39m
+        [0mRetry[0m
+      [36m</button>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"space-y-3 rounded-xl bg-red-50 p-4 text-red-800"[39m
+      [33mrole[39m=[32m"alert"[39m
+    [36m>[39m
+      [36m<p>[39m
+        [0mCouldn't load this result. Check your connection and try again.[0m
+      [36m</p>[39m
+      [36m<button[39m
+        [33mclass[39m=[32m"rounded-lg bg-red-800 px-4 py-2 font-semibold text-white"[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m>[39m
+        [0mRetry[0m
+      [36m</button>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/components/__tests__/us27-moderation.test.tsx:169:25
+    167|     mocked.analysis.mockRejectedValue(new ApiError(410, "This upload w…
+    168|     render(<ResultsPage />);
+    169|     expect(await screen.findByRole("heading", { name: "This upload was…
+       |                         ^
+    170|     expect(screen.getByText(/Reason: Off-topic/)).toBeInTheDocument();
+    171|     expect(screen.queryByRole("button", { name: "Retry" })).not.toBeIn…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/15]⎯
+
+ FAIL  src/lib/__tests__/us27-moderation-requests.test.ts > US-27 moderation requests > us27_usage_is_read_for_the_chosen_dates
+TypeError: moderation.adminUsage is not a function
+ ❯ src/lib/__tests__/us27-moderation-requests.test.ts:23:22
+     21|     const fetch = ok();
+     22|     vi.stubGlobal("fetch", fetch);
+     23|     await moderation.adminUsage("2026-11-01", "2026-11-03", "admin-tok…
+       |                      ^
+     24|     expect(fetch).toHaveBeenCalledWith(expect.stringMatching(/\/admin\…
+     25|       expect.objectContaining({ method: "GET", headers: { Authorizatio…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[12/15]⎯
+
+ FAIL  src/lib/__tests__/us27-moderation-requests.test.ts > US-27 moderation requests > us27_upload_list_sends_only_the_filters_that_are_set
+TypeError: moderation.adminUploads is not a function
+ ❯ src/lib/__tests__/us27-moderation-requests.test.ts:31:22
+     29|     const fetch = ok({ items: [] });
+     30|     vi.stubGlobal("fetch", fetch);
+     31|     await moderation.adminUploads({ lift: "squat", start: "2026-11-01"…
+       |                      ^
+     32|     expect(fetch).toHaveBeenCalledWith(expect.stringMatching(/\/admin\…
+     33|       expect.anything());
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[13/15]⎯
+
+ FAIL  src/lib/__tests__/us27-moderation-requests.test.ts > US-27 moderation requests > us27_removal_sends_explicit_confirmation_and_the_reason
+TypeError: moderation.removeUpload is not a function
+ ❯ src/lib/__tests__/us27-moderation-requests.test.ts:41:22
+     39|     const fetch = ok();
+     40|     vi.stubGlobal("fetch", fetch);
+     41|     await moderation.removeUpload("u/1", "other", "Not a lift", "admin…
+       |                      ^
+     42|     expect(fetch).toHaveBeenCalledWith(expect.stringMatching(/\/admin\…
+     43|       method: "POST", body: JSON.stringify({ confirmed: true, reason: …
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[14/15]⎯
+
+ FAIL  src/lib/__tests__/us27-moderation-requests.test.ts > US-27 moderation requests > us27_moderation_log_is_read_with_the_admin_session
+TypeError: moderation.moderationLog is not a function
+ ❯ src/lib/__tests__/us27-moderation-requests.test.ts:52:22
+     50|     const fetch = ok({ items: [] });
+     51|     vi.stubGlobal("fetch", fetch);
+     52|     await moderation.moderationLog("admin-token");
+       |                      ^
+     53|     expect(fetch).toHaveBeenCalledWith(expect.stringMatching(/\/admin\…
+     54|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[15/15]⎯
+
+
+ Test Files  2 failed (2)
+      Tests  15 failed (15)
+   Start at  22:07:14
+   Duration  3.44s (transform 251ms, setup 321ms, collect 363ms, tests 2.09s, environment 1.34s, prepare 126ms)
+
+
+===== Browser (Playwright) red run: npx playwright test us27 =====
+[WebServer] INFO:     Started server process [2411]
+[WebServer] INFO:     Waiting for application startup.
+[WebServer] INFO:     Application startup complete.
+[WebServer] INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+
+Running 2 tests using 1 worker
+
+  ✘  1 e2e/us27-moderation.spec.ts:13:5 › us27_admin_reviews_usage_and_removes_an_upload_and_the_owner_is_told (1.0m)
+  ✘  2 e2e/us27-moderation.spec.ts:57:5 › us27_non_admin_sees_403_on_usage_and_moderation (10.4s)
+
+
+  1) e2e/us27-moderation.spec.ts:13:5 › us27_admin_reviews_usage_and_removes_an_upload_and_the_owner_is_told 
+
+    Test timeout of 60000ms exceeded.
+
+    Error: locator.click: Test timeout of 60000ms exceeded.
+    Call log:
+      - waiting for getByRole('link', { name: 'Usage and moderation' })
+
+
+      20 |   await signUp(page, { admin: true });
+      21 |   await page.goto("/admin");
+    > 22 |   await page.getByRole("link", { name: "Usage and moderation" }).click();
+         |                                                                  ^
+      23 |   const usage = page.getByRole("region", { name: "Sign-ups and uploads" });
+      24 |   await expect(usage.getByText("Total sign-ups")).toBeVisible();
+      25 |   await expect(usage.getByText("Total uploads")).toBeVisible();
+        at frontend/e2e/us27-moderation.spec.ts:22:66
+
+    Error Context: test-results/us27-moderation-us27-admin-c68a8-pload-and-the-owner-is-told/error-context.md
+
+  2) e2e/us27-moderation.spec.ts:57:5 › us27_non_admin_sees_403_on_usage_and_moderation ────────────
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('heading', { name: '403: Admins only' })
+    Expected: visible
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('heading', { name: '403: Admins only' }) with timeout 10000ms
+      - waiting for getByRole('heading', { name: '403: Admins only' })
+
+
+      58 |   await signUp(page);
+      59 |   await page.goto("/admin/moderation");
+    > 60 |   await expect(page.getByRole("heading", { name: "403: Admins only" })).toBeVisible();
+         |                                                                         ^
+      61 | });
+      62 |
+        at frontend/e2e/us27-moderation.spec.ts:60:73
+
+    Error Context: test-results/us27-moderation-us27-non-a-7acba-403-on-usage-and-moderation/error-context.md
+
+  2 failed
+    e2e/us27-moderation.spec.ts:13:5 › us27_admin_reviews_usage_and_removes_an_upload_and_the_owner_is_told 
+    e2e/us27-moderation.spec.ts:57:5 › us27_non_admin_sees_403_on_usage_and_moderation ─────────────
