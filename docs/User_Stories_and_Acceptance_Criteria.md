@@ -437,3 +437,22 @@ change. Results and comparisons from earlier analyses still show disabled faults
 deleted, only disabled, because saved analyses refer to them. A new fault's camera angles, joints and
 unit come from the measurement it uses. Its threshold is set only when it is added: changing thresholds
 later is US-24.
+
+### [US-26] Track AI usage and cost
+
+GitHub issue: [#28](https://github.com/radwnkhn/LLMsInSWEProject/issues/28)
+
+As an **admin**, I want to see LLM token usage and cost per analysis, so that we know what the app costs
+to run.
+
+#### Acceptance criteria
+- [ ] [unit] [integration] Every LLM attempt, including correction retries and failed requests, saves its input tokens, output tokens, provider and model, read from that provider's usage field in the response.
+- [ ] [unit] Cost is computed from a per-model price table in a config file (dollars per million input and output tokens), not hardcoded in logic; a model missing from the table shows "Unknown cost" instead of failing.
+- [ ] [integration] [e2e] The admin analysis detail page shows each attempt's provider, model, tokens and cost, plus the total tokens and cost for the analysis.
+- [ ] [unit] [integration] [e2e] An admin cost summary shows, for a chosen date range, the total cost, the number of analyses, the average cost per analysis and the share of cost spent on correction retries.
+- [ ] [integration] Non-admin users get 403 on the cost summary and on every admin endpoint that returns usage or cost.
+
+Usage is read from each provider's own response (Claude `usage`, OpenAI `usage`, Gemini
+`usageMetadata`). A failed request with no response records zero tokens. Costs are estimates at the prices
+in the table and must be checked against current provider pricing. Totals count analyses with at least one
+LLM attempt, and attempts with an unknown cost are left out of the dollar totals and counted separately.
