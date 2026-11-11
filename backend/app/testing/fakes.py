@@ -7,7 +7,7 @@ from typing import Callable, Sequence
 
 import numpy as np
 
-from app.faults import faults_for, get_fault
+from app.faults import faults_for
 from app.llm.client import LLMReply, LLMRequest
 from app.pose import PoseFrame
 from app.safety import mentions_pain
@@ -25,6 +25,7 @@ CUES = {
     "elbow_flare": "Tuck your elbows slightly as you lower the bar",
     "uneven_press": "Squeeze the bar evenly with both hands",
 }
+DEFAULT_CUE = "Move with control through every rep"  # for faults an admin added (US-25)
 REFERRAL = "Please see a doctor or physical therapist about the pain before training through it."
 
 
@@ -46,12 +47,16 @@ class RuleFollowingLLM:
     def reply_for(self, request: LLMRequest) -> str:
         p = request.payload
         lift = p.get("analysis_lift") or p["lift"]
-        order = {f.id: (not f.safety, i) for i, f in enumerate(faults_for(lift))}
+        # Follows the fault list in the request, as a real model would (US-25: it may be edited).
+        offered = p.get("fault_list") or [{"id": f.id, "name": f.name, "category": f.category, "metric": f.metric}
+                                          for f in faults_for(lift)]
+        by_id = {f["id"]: f for f in offered}
+        order = {f["id"]: (f["category"] != "safety", i) for i, f in enumerate(offered)}
         confirmed = sorted((fid for fid in p["confirmed_faults"] if fid in order), key=order.get)
 
         def cite(fault_id):
             reps = p["confirmed_faults"][fault_id]
-            metric = get_fault(lift, fault_id).metric
+            metric = by_id[fault_id]["metric"]
             value = p["reps"][reps[0] - 1]["metrics"][metric]
             return reps, {"metric": metric, "rep": reps[0], "value": value}
 
@@ -63,8 +68,8 @@ class RuleFollowingLLM:
             top, *others = confirmed
             out["top_fault_id"] = top
             out["fault_reps"], out["supporting_measurement"] = cite(top)
-            out["cue"] = CUES[top]
-            out["explanation"] = f"{get_fault(lift, top).name} on the reps marked below."
+            out["cue"] = CUES.get(top, DEFAULT_CUE)
+            out["explanation"] = f"{by_id[top]['name']} on the reps marked below."
             for fid in others:
                 reps, sm = cite(fid)
                 out["other_faults"].append({"fault_id": fid, "reps": reps, "supporting_measurement": sm})

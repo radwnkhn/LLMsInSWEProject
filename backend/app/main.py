@@ -15,12 +15,13 @@ import httpx
 from fastapi import BackgroundTasks, Depends, FastAPI, File, Form, HTTPException, Query, Request, Response, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
-from pydantic import BaseModel, StrictBool, StrictInt, field_validator, model_validator
+from pydantic import BaseModel, ConfigDict, StrictBool, StrictFloat, StrictInt, field_validator, model_validator
 
 from app.admin import admin_row_view, filter_admin_rows, summarize_validation_errors
 from app.auth import AuthUser, EmailTaken, InvalidCredentials
 from app.compress import STORED_CONTENT_TYPE, STORED_EXTENSION
 from app.comparison import COMPARABLE_STATUSES, compare_earlier_fault, measurement_comparison
+from app.faults import METRICS, FaultCatalog, FaultError, FaultExists, new_fault
 from app.feedback import find_previous_cue_prompt
 from app.history import history_item
 from app.lifts import LIFT_LABELS, LIFTS
@@ -108,6 +109,38 @@ class FeedbackBody(BaseModel):
 def _session_body(session) -> dict:
     u = session.user
     return {"access_token": session.access_token, "user": {"id": u.id, "email": u.email, "is_admin": u.is_admin}}
+
+
+class FaultEditBody(BaseModel):
+    """US-25 edits. Only these fields; thresholds are changed by US-24."""
+    model_config = ConfigDict(extra="forbid")
+    name: str | None = None
+    short_name: str | None = None
+    enabled: StrictBool | None = None
+
+    @model_validator(mode="after")
+    def _something(self):
+        if not self.model_fields_set:
+            raise ValueError("Send a name, short_name or enabled")
+        return self
+
+
+class NewFaultBody(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    lift: str
+    id: str
+    name: str
+    short_name: str
+    category: str
+    metric: str
+    threshold: StrictInt | StrictFloat
+    direction: str
+
+
+def fault_view(fault) -> dict:
+    return {"lift": fault.lift, "id": fault.id, "name": fault.name, "short_name": fault.short_name,
+            "category": fault.category, "safety": fault.safety, "metric": fault.metric, "metric_label": fault.metric_label,
+            "threshold": fault.threshold, "direction": fault.direction, "unit": fault.unit, "enabled": fault.enabled}
 
 
 def create_app(services: Services) -> FastAPI:
@@ -338,11 +371,12 @@ def create_app(services: Services) -> FastAPI:
             raise HTTPException(409, "Choose two completed uploads with measurable reps")
         ordered = sorted((first, second), key=lambda a: services.repo.get_upload(a.upload_id).created_at)
         older, newer = ordered
+        catalog = FaultCatalog(services.repo.list_faults())
         old_reps = services.repo.list_rep_measurements(older.id)
         new_reps = services.repo.list_rep_measurements(newer.id)
         return {"older": analysis_view(request, older, user.id), "newer": analysis_view(request, newer, user.id),
-                "metrics": measurement_comparison(older, newer, old_reps, new_reps),
-                "fault_comparison": compare_earlier_fault(older, newer, new_reps)}
+                "metrics": measurement_comparison(older, newer, old_reps, new_reps, catalog),
+                "fault_comparison": compare_earlier_fault(older, newer, new_reps, catalog)}
 
     # ------------------------------------------------------------------ admin
 
@@ -376,6 +410,35 @@ def create_app(services: Services) -> FastAPI:
     @app.get("/admin/validator-errors")
     def admin_errors(user: AuthUser = Depends(admin_user)):
         return {"counts": summarize_validation_errors(services.repo.all_validation_issues())}
+
+    # ------------------------------------------------------------------ admin: fault list (US-25)
+
+    @app.get("/admin/faults")
+    def admin_faults(user: AuthUser = Depends(admin_user)):
+        catalog = FaultCatalog(services.repo.list_faults())
+        return {"lifts": [{"lift": lift, "lift_label": LIFT_LABELS[lift],
+                           "faults": [fault_view(f) for f in catalog.all_for(lift)],
+                           "metrics": [{"metric": m.metric, "label": m.label, "unit": m.unit} for m in METRICS[lift].values()]}
+                          for lift in LIFTS]}
+
+    @app.patch("/admin/faults/{lift}/{fault_id}")
+    def admin_edit_fault(lift: str, fault_id: str, body: FaultEditBody, user: AuthUser = Depends(admin_user)):
+        if services.repo.get_fault(lift, fault_id) is None:
+            raise HTTPException(404, "Fault not found")
+        try:
+            return fault_view(services.repo.update_fault(lift, fault_id, **body.model_dump(exclude_unset=True)))
+        except FaultError as err:
+            raise HTTPException(422, str(err))
+
+    @app.post("/admin/faults", status_code=201)
+    def admin_add_fault(body: NewFaultBody, user: AuthUser = Depends(admin_user)):
+        try:
+            fault = new_fault(**body.model_dump())
+            return fault_view(services.repo.create_fault(fault))
+        except FaultExists as err:
+            raise HTTPException(409, str(err))
+        except FaultError as err:
+            raise HTTPException(422, str(err))
 
     # ------------------------------------------------------------------ test mode only
 

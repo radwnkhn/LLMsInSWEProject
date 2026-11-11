@@ -107,6 +107,33 @@ export type AnalysisComparison = {
   };
 };
 
+// US-25: the saved fault list, managed on /admin/faults.
+export type FaultCategory = "safety" | "technique";
+export type FaultDirection = "above" | "below";
+
+export type AdminFault = {
+  lift: Lift;
+  id: string;
+  name: string;
+  short_name: string;
+  category: FaultCategory;
+  safety: boolean;
+  metric: string;
+  metric_label: string;
+  threshold: number;
+  direction: FaultDirection;
+  unit: string;
+  enabled: boolean;
+};
+
+export type FaultMetric = { metric: string; label: string; unit: string };
+
+export type AdminFaultLift = { lift: Lift; lift_label: string; faults: AdminFault[]; metrics: FaultMetric[] };
+
+export type FaultEdit = Partial<Pick<AdminFault, "name" | "short_name" | "enabled">>;
+
+export type NewFault = Pick<AdminFault, "lift" | "id" | "name" | "short_name" | "category" | "metric" | "threshold" | "direction">;
+
 export type AdminAttempt = {
   attempt_number: number;
   output_text: string;

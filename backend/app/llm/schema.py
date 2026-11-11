@@ -8,7 +8,7 @@ from typing import Literal
 
 from pydantic import BaseModel, ConfigDict, Field, ValidationError
 
-from app.faults import fault_ids
+from app.faults import FaultCatalog, fault_ids
 from app.lifts import LIFTS
 
 COACH_OUTPUT_FIELDS = ("lift", "camera_angle", "rep_count", "top_fault_id", "fault_reps",
@@ -53,9 +53,9 @@ class CoachOutput(_Strict):
     professional_recommendation: str | None = None
 
 
-def coach_output_json_schema(lift: str) -> dict:
-    """JSON Schema sent to the LLM. Fault IDs are limited to the lift's fixed list."""
-    ids = fault_ids(lift)
+def coach_output_json_schema(lift: str, catalog: FaultCatalog | None = None) -> dict:
+    """JSON Schema sent to the LLM. Fault IDs are limited to the lift's enabled faults."""
+    ids = fault_ids(lift, catalog)
     measurement = {
         "type": "object", "additionalProperties": False, "required": ["metric", "rep", "value"],
         "properties": {"metric": {"type": "string"}, "rep": {"type": "integer", "minimum": 1}, "value": {"type": "number"}},

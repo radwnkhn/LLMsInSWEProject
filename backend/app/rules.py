@@ -3,7 +3,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from app.faults import faults_for
+from app.faults import FaultCatalog, faults_for
 from app.measure import SetMeasurements
 
 VIEW_ORDER = ("side", "front", "angled")
@@ -20,9 +20,9 @@ class NotMeasured:
         return {"check": self.check, "name": self.name, "reason": self.reason}
 
 
-def not_measured_checks(m: SetMeasurements) -> list[NotMeasured]:
+def not_measured_checks(m: SetMeasurements, catalog: FaultCatalog | None = None) -> list[NotMeasured]:
     out = []
-    for fault in faults_for(m.lift):
+    for fault in faults_for(m.lift, catalog):
         if m.camera_angle not in fault.views:
             views = " or ".join(v for v in VIEW_ORDER if v in fault.views)
             out.append(NotMeasured(fault.id, fault.name, f"needs a {views} view"))
@@ -37,11 +37,12 @@ def not_measured_checks(m: SetMeasurements) -> list[NotMeasured]:
     return out
 
 
-def confirm_faults(m: SetMeasurements, not_measured: list[NotMeasured]) -> dict[str, list[int]]:
+def confirm_faults(m: SetMeasurements, not_measured: list[NotMeasured],
+                   catalog: FaultCatalog | None = None) -> dict[str, list[int]]:
     """fault id -> reps on which the measurements cross the fault's threshold (measurable faults only)."""
     skip = {c.check for c in not_measured}
     confirmed: dict[str, list[int]] = {}
-    for fault in faults_for(m.lift):
+    for fault in faults_for(m.lift, catalog):
         if fault.id in skip:
             continue
         reps = [r.rep for r in m.reps if fault.is_confirmed(r.metrics.get(fault.metric))]

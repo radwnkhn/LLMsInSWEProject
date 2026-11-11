@@ -100,9 +100,11 @@ def _hash(password: str, salt: bytes) -> bytes:
 
 
 class InMemoryAuth:
-    def __init__(self):
+    def __init__(self, admin_domain: str | None = None):
         self.users: dict[str, dict] = {}       # email -> {id, salt, hash, is_admin}
         self.tokens: dict[str, str] = {}       # token -> email
+        # Test mode only: accounts signed up at this domain are admins, so browser tests can reach admin pages.
+        self.admin_domain = admin_domain
 
     def _session(self, email: str) -> Session:
         token = secrets.token_urlsafe(24)
@@ -115,7 +117,8 @@ class InMemoryAuth:
         if email in self.users:
             raise EmailTaken(email)
         salt = secrets.token_bytes(8)
-        self.users[email] = {"id": str(uuid.uuid4()), "salt": salt, "hash": _hash(password, salt), "is_admin": False}
+        is_admin = bool(self.admin_domain) and email.endswith(f"@{self.admin_domain}")
+        self.users[email] = {"id": str(uuid.uuid4()), "salt": salt, "hash": _hash(password, salt), "is_admin": is_admin}
         return self._session(email)
 
     def sign_in(self, email, password):

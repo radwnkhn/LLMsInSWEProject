@@ -6,7 +6,7 @@ import json
 import cv2
 import numpy as np
 
-from app.faults import faults_for
+from app.faults import FaultCatalog, faults_for
 from app.lifts import LIFT_NOUNS
 from app.llm.client import KeyFrame, LLMMessage, LLMRequest
 from app.llm.schema import coach_output_json_schema
@@ -36,7 +36,8 @@ Rules:
 """
 
 
-def select_key_frames(m: SetMeasurements, confirmed: dict[str, list[int]], frame_indices: list[int]) -> list[tuple[int, int | None]]:
+def select_key_frames(m: SetMeasurements, confirmed: dict[str, list[int]], frame_indices: list[int],
+                      catalog: FaultCatalog | None = None) -> list[tuple[int, int | None]]:
     """3-5 (frame index, rep) pairs: worst moments of confirmed faults first, then the bottom of each rep."""
     picks: list[tuple[int, int | None]] = []
 
@@ -44,7 +45,7 @@ def select_key_frames(m: SetMeasurements, confirmed: dict[str, list[int]], frame
         if index not in [p[0] for p in picks] and len(picks) < MAX_KEY_FRAMES:
             picks.append((index, rep))
 
-    metric_of = {f.id: f.metric for f in faults_for(m.lift)}
+    metric_of = {f.id: f.metric for f in faults_for(m.lift, catalog)}
     for fault_id, reps in confirmed.items():
         for rep in reps:
             worst = m.reps[rep - 1].worst_frames.get(metric_of[fault_id])
@@ -74,7 +75,7 @@ def encode_jpeg(image: np.ndarray, max_width: int = 768) -> bytes:
 
 
 def build_payload(m: SetMeasurements, not_measured: list[NotMeasured], confirmed: dict[str, list[int]],
-                  note: str | None, key_frames: list[KeyFrame]) -> dict:
+                  note: str | None, key_frames: list[KeyFrame], catalog: FaultCatalog | None = None) -> dict:
     return {
         "lift": m.lift,
         "analysis_lift": m.analysis_lift,
@@ -85,18 +86,18 @@ def build_payload(m: SetMeasurements, not_measured: list[NotMeasured], confirmed
         "not_measured": [c.to_dict() for c in not_measured],
         "note": note or None,
         "fault_list": [{"id": f.id, "name": f.name, "category": f.category, "metric": f.metric,
-                        "threshold": f.threshold, "direction": f.direction} for f in faults_for(m.lift)],
+                        "threshold": f.threshold, "direction": f.direction} for f in faults_for(m.lift, catalog)],
         "key_frames": [{"frame_index": k.frame_index, "timestamp": round(k.timestamp, 2), "rep": k.rep} for k in key_frames],
     }
 
 
 def build_llm_request(m: SetMeasurements, not_measured: list[NotMeasured], confirmed: dict[str, list[int]],
-                      note: str | None, key_frames: list[KeyFrame]) -> LLMRequest:
-    payload = build_payload(m, not_measured, confirmed, note, key_frames)
+                      note: str | None, key_frames: list[KeyFrame], catalog: FaultCatalog | None = None) -> LLMRequest:
+    payload = build_payload(m, not_measured, confirmed, note, key_frames, catalog)
     text = (
         f"The lifter selected: {LIFT_NOUNS[m.lift]}. The images are the key frames listed in key_frames, in order.\n\n"
         f"MEASUREMENTS AND CHECKS (JSON):\n{json.dumps(payload)}\n\n"
-        f"Reply with JSON matching this schema:\n{json.dumps(coach_output_json_schema(m.analysis_lift))}"
+        f"Reply with JSON matching this schema:\n{json.dumps(coach_output_json_schema(m.analysis_lift, catalog))}"
     )
     return LLMRequest(system=SYSTEM_PROMPT, messages=[LLMMessage("user", text)], images=key_frames, payload=payload)
 

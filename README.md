@@ -87,6 +87,21 @@ See `docs/tdd/us21.md` for acceptance coverage and red/green evidence. To run br
 existing demo, set `E2E_API_PORT`, `E2E_WEB_PORT` and `E2E_BUILD_DIR` to unused ports and a separate build
 folder (this change was verified with ports 8766/3124 and `.next-us21-e2e`).
 
+## Manage the fault list (US-25 / #27)
+
+Admins open **Admin → Fault list** (`/admin/faults`) to see every fault per lift with its category, whether
+it is a safety fault, the measurement that confirms it and whether it is enabled. They can edit a fault's
+display name and short description, disable or re-enable it, and add a fault by choosing one of the
+measurements the app already computes for that lift. A disabled fault is left out of the LLM prompt and
+schema, and the validator rejects replies that cite it (`fault_disabled`), which starts the correction
+loop. Changes apply to analyses that start afterwards; earlier results keep the faults they reported.
+Threshold changes belong to US-24.
+
+Apply `supabase/migrations/20261111000000_us25_fault_list.sql` to an existing database. It creates
+`public.faults` and seeds it with the Alpha definitions, so behavior is unchanged until an admin edits
+the list. In test mode (`ALIBI_TEST_MODE=1`) accounts signed up at `@admin.test` are admins, so the
+browser tests can reach the page. See `docs/tdd/us25.md` for TDD evidence.
+
 ## Deploy
 
 - **Database:** run `supabase/migrations/*.sql` in the Supabase SQL editor (or `supabase db push`).

@@ -269,3 +269,19 @@ FAILED tests/test_us25_fault_repository.py::test_us25_repo_saves_new_faults_afte
 FAILED tests/test_us25_fault_repository.py::test_us25_repo_saves_new_faults_after_the_lifts_existing_ones[postgres]
 FAILED tests/test_us25_fault_repository.py::test_us25_migration_seeds_every_alpha_fault
 64 failed, 1 warning in 1.43s
+
+===== Added during green: browser-test admin support, run before app/auth.py and app/services.py changed =====
+F                                                                        [100%]
+=================================== FAILURES ===================================
+________ test_us25_test_mode_makes_only_reserved_domain_signups_admins _________
+tests/test_us25_fault_list.py:331: in test_us25_test_mode_makes_only_reserved_domain_signups_admins
+    assert services.auth.sign_up("coach@admin.test", "squat1234").user.is_admin is True
+E   AssertionError: assert False is True
+E    +  where False = AuthUser(id='50789877-01f9-453e-884a-1cadaf1ccb80', email='coach@admin.test', is_admin=False).is_admin
+E    +    where AuthUser(id='50789877-01f9-453e-884a-1cadaf1ccb80', email='coach@admin.test', is_admin=False) = Session(access_token='eUMevT_gmnX0LC8EjZNPJOSRU1J6zQah', user=AuthUser(id='50789877-01f9-453e-884a-1cadaf1ccb80', email='coach@admin.test', is_admin=False)).user
+E    +      where Session(access_token='eUMevT_gmnX0LC8EjZNPJOSRU1J6zQah', user=AuthUser(id='50789877-01f9-453e-884a-1cadaf1ccb80', email='coach@admin.test', is_admin=False)) = sign_up('coach@admin.test', 'squat1234')
+E    +        where sign_up = <app.auth.InMemoryAuth object at 0x7f58231ecec0>.sign_up
+E    +          where <app.auth.InMemoryAuth object at 0x7f58231ecec0> = Services(auth=<app.auth.InMemoryAuth object at 0x7f58231ecec0>, repo=<app.repository.InMemoryRepository object at 0x7f...cenarioLLM object at 0x7f58231ed010>, max_upload_bytes=209715200, compressor=None, test_mode=True, cors_origins=('*',)).auth
+=========================== short test summary info ============================
+FAILED tests/test_us25_fault_list.py::test_us25_test_mode_makes_only_reserved_domain_signups_admins
+1 failed, 55 deselected in 0.04s

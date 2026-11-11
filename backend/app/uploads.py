@@ -6,6 +6,7 @@ import os
 import tempfile
 from datetime import datetime, timezone
 
+from app.faults import FaultCatalog
 from app.measure import RepMeasurement
 from app.pipeline import analyze_set
 from app.results import build_result_view
@@ -35,6 +36,8 @@ def process_analysis(services, analysis_id: str) -> None:
     path = None
     try:
         repo.update_analysis(analysis_id, status="processing", processing_stage="measuring")
+        # US-25: the saved fault list as it is now; admin changes made while this runs apply to later analyses.
+        catalog = FaultCatalog(repo.list_faults())
         with tempfile.NamedTemporaryFile(suffix=os.path.splitext(upload.video_path)[1], delete=False) as f:
             f.write(storage.download(upload.video_path))
             path = f.name
@@ -42,7 +45,8 @@ def process_analysis(services, analysis_id: str) -> None:
         frames = services.video.poses(path, info, upload.filename)
         outcome = analyze_set(frames, analysis.lift, upload.note, services.llm, fps=info.fps,
                               frame_loader=lambda i: services.video.frame(path, i),
-                              on_stage=lambda stage: repo.update_analysis(analysis_id, processing_stage=stage))
+                              on_stage=lambda stage: repo.update_analysis(analysis_id, processing_stage=stage),
+                              catalog=catalog)
 
         repo.save_rep_measurements(analysis_id, outcome.measurements.reps if outcome.final_status != "unanalyzable" else [])
         if outcome.correction:

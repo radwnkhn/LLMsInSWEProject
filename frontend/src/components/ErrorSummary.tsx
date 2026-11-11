@@ -5,6 +5,7 @@ const LABELS: Record<string, string> = {
   camera_angle_mismatch: "Wrong camera angle",
   rep_count: "Wrong rep count",
   unknown_fault: "Fault not on the list",
+  fault_disabled: "Cited a disabled fault",
   not_measurable: "Fault not measurable from this video",
   fault_not_confirmed: "Fault not confirmed by measurements",
   rep_out_of_range: "Cited a rep that doesn't exist",

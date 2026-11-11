@@ -36,8 +36,9 @@ test("us25_admin_edits_disables_and_reenables_a_fault_and_new_analyses_follow", 
   await faultRow(page, "Squat", renamed).getByRole("button", { name: "Disable" }).click();
   await expect(faultRow(page, "Squat", renamed)).toContainText("Disabled");
   await uploadSet(page);
-  await expect(page.getByText("No major issues found")).toBeVisible();
-  await expect(page.getByRole("region", { name: "Top fix" })).toHaveCount(0);
+  // The same synthetic set still has other confirmed faults; the disabled one is gone from every section.
+  await expect(page.getByRole("region", { name: "Top fix" })).toBeVisible();
+  await expect(page.getByText(renamed)).toHaveCount(0);
 
   await openFaultList(page);
   await faultRow(page, "Squat", renamed).getByRole("button", { name: "Enable" }).click();
@@ -54,8 +55,8 @@ test("us25_admin_adds_a_fault_from_an_existing_measurement_and_it_is_reported", 
   await openFaultList(page);
   const form = page.getByRole("region", { name: "Add a fault" });
   await form.getByLabel("Lift").selectOption("bench_press");
-  await expect(form.getByLabel("Measurement")).toHaveJSProperty("tagName", "SELECT");
-  await form.getByLabel("Measurement").selectOption("elbow_angle_min_deg");
+  await expect(form.getByLabel("Measurement", { exact: true })).toHaveJSProperty("tagName", "SELECT");
+  await form.getByLabel("Measurement", { exact: true }).selectOption("elbow_angle_min_deg");
   const id = `bar_stops_high_${Date.now() % 100000}`;
   await form.getByLabel("Fault ID").fill(id);
   await form.getByLabel("Display name").fill("Bar stops high above your chest");

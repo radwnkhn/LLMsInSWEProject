@@ -1,0 +1,12 @@
+
+ RUN  v3.2.7 frontend
+
+ ✓ src/lib/__tests__/us25-fault-requests.test.ts (4 tests) 21ms
+ ✓ src/components/__tests__/us25-fault-list.test.tsx (9 tests) 1446ms
+   ✓ US-25 fault list page > us25_blank_or_too_long_names_are_rejected_before_saving  314ms
+
+ Test Files  2 passed (2)
+      Tests  13 passed (13)
+   Start at  02:09:06
+   Duration  2.36s (transform 205ms, setup 244ms, collect 158ms, tests 1.47s, environment 1.01s, prepare 106ms)
+

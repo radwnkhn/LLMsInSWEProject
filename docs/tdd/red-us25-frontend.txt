@@ -1,37 +1,37 @@
 
  RUN  v3.2.7 frontend
 
- ❯ src/lib/__tests__/us25-fault-requests.test.ts (4 tests | 4 failed) 22ms
-   × US-25 fault list requests > us25_fault_list_is_read_with_the_admin_session 14ms
+ ❯ src/lib/__tests__/us25-fault-requests.test.ts (4 tests | 4 failed) 18ms
+   × US-25 fault list requests > us25_fault_list_is_read_with_the_admin_session 13ms
      → api.adminFaults is not a function
-   × US-25 fault list requests > us25_edit_sends_only_the_name_and_short_description 3ms
+   × US-25 fault list requests > us25_edit_sends_only_the_name_and_short_description 2ms
      → api.updateFault is not a function
-   × US-25 fault list requests > us25_disable_sends_enabled_false 2ms
+   × US-25 fault list requests > us25_disable_sends_enabled_false 1ms
      → api.updateFault is not a function
    × US-25 fault list requests > us25_add_posts_the_new_fault_and_surfaces_the_rejection_reason 1ms
      → api.addFault is not a function
- ❯ src/components/__tests__/us25-fault-list.test.tsx (9 tests | 9 failed) 1140ms
-   × US-25 fault list page > us25_lists_every_fault_per_lift_with_category_safety_measurement_and_status 25ms
+ ❯ src/components/__tests__/us25-fault-list.test.tsx (9 tests | 9 failed) 1114ms
+   × US-25 fault list page > us25_lists_every_fault_per_lift_with_category_safety_measurement_and_status 13ms
      → Cannot find module '@/app/admin/faults/page' imported from 'frontend/src/components/__tests__/us25-fault-list.test.tsx'.
 
 - If you rely on tsconfig.json's "paths" to resolve modules, please install "vite-tsconfig-paths" plugin to handle module resolution.
 - Make sure you don't have relative aliases in your Vitest config. Use absolute paths instead. Read more: https://vitest.dev/guide/common-errors
-   × US-25 fault list page > us25_editing_saves_the_display_name_and_short_description 4ms
+   × US-25 fault list page > us25_editing_saves_the_display_name_and_short_description 3ms
      → Cannot find module '@/app/admin/faults/page' imported from 'frontend/src/components/__tests__/us25-fault-list.test.tsx'.
 
 - If you rely on tsconfig.json's "paths" to resolve modules, please install "vite-tsconfig-paths" plugin to handle module resolution.
 - Make sure you don't have relative aliases in your Vitest config. Use absolute paths instead. Read more: https://vitest.dev/guide/common-errors
-   × US-25 fault list page > us25_blank_or_too_long_names_are_rejected_before_saving 3ms
+   × US-25 fault list page > us25_blank_or_too_long_names_are_rejected_before_saving 2ms
      → Cannot find module '@/app/admin/faults/page' imported from 'frontend/src/components/__tests__/us25-fault-list.test.tsx'.
 
 - If you rely on tsconfig.json's "paths" to resolve modules, please install "vite-tsconfig-paths" plugin to handle module resolution.
 - Make sure you don't have relative aliases in your Vitest config. Use absolute paths instead. Read more: https://vitest.dev/guide/common-errors
-   × US-25 fault list page > us25_disable_and_enable_switch_the_fault_status 3ms
+   × US-25 fault list page > us25_disable_and_enable_switch_the_fault_status 2ms
      → Cannot find module '@/app/admin/faults/page' imported from 'frontend/src/components/__tests__/us25-fault-list.test.tsx'.
 
 - If you rely on tsconfig.json's "paths" to resolve modules, please install "vite-tsconfig-paths" plugin to handle module resolution.
 - Make sure you don't have relative aliases in your Vitest config. Use absolute paths instead. Read more: https://vitest.dev/guide/common-errors
-   × US-25 fault list page > us25_add_form_offers_only_measurements_the_lift_already_computes 3ms
+   × US-25 fault list page > us25_add_form_offers_only_measurements_the_lift_already_computes 2ms
      → Cannot find module '@/app/admin/faults/page' imported from 'frontend/src/components/__tests__/us25-fault-list.test.tsx'.
 
 - If you rely on tsconfig.json's "paths" to resolve modules, please install "vite-tsconfig-paths" plugin to handle module resolution.
@@ -46,12 +46,12 @@
 
 - If you rely on tsconfig.json's "paths" to resolve modules, please install "vite-tsconfig-paths" plugin to handle module resolution.
 - Make sure you don't have relative aliases in your Vitest config. Use absolute paths instead. Read more: https://vitest.dev/guide/common-errors
-   × US-25 fault list page > us25_non_admins_see_admins_only 2ms
+   × US-25 fault list page > us25_non_admins_see_admins_only 1ms
      → Cannot find module '@/app/admin/faults/page' imported from 'frontend/src/components/__tests__/us25-fault-list.test.tsx'.
 
 - If you rely on tsconfig.json's "paths" to resolve modules, please install "vite-tsconfig-paths" plugin to handle module resolution.
 - Make sure you don't have relative aliases in your Vitest config. Use absolute paths instead. Read more: https://vitest.dev/guide/common-errors
-   × US-25 fault list page > us25_admin_analyses_page_links_to_the_fault_list 1095ms
+   × US-25 fault list page > us25_admin_analyses_page_links_to_the_fault_list 1085ms
      → Unable to find role="link" and name "Fault list"
 
 Ignored nodes: comments, script, style
@@ -338,54 +338,6 @@ Ignored nodes: comments, script, style
 
 ⎯⎯⎯⎯⎯⎯ Failed Tests 13 ⎯⎯⎯⎯⎯⎯⎯
 
- FAIL  src/lib/__tests__/us25-fault-requests.test.ts > US-25 fault list requests > us25_fault_list_is_read_with_the_admin_session
-TypeError: api.adminFaults is not a function
- ❯ src/lib/__tests__/us25-fault-requests.test.ts:15:22
-     13|     const fetch = vi.fn().mockResolvedValue(json({ lifts: [] }));
-     14|     vi.stubGlobal("fetch", fetch);
-     15|     expect(await api.adminFaults("admin-token")).toEqual({ lifts: [] }…
-       |                      ^
-     16|     expect(fetch).toHaveBeenCalledWith(expect.stringMatching(/\/admin\…
-     17|       method: "GET", headers: { Authorization: "Bearer admin-token" },
-
-⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/13]⎯
-
- FAIL  src/lib/__tests__/us25-fault-requests.test.ts > US-25 fault list requests > us25_edit_sends_only_the_name_and_short_description
-TypeError: api.updateFault is not a function
- ❯ src/lib/__tests__/us25-fault-requests.test.ts:24:15
-     22|     const fetch = vi.fn().mockResolvedValue(json({ id: "knee_cave" }));
-     23|     vi.stubGlobal("fetch", fetch);
-     24|     await api.updateFault("squat", "knee_cave", { name: "Knees collaps…
-       |               ^
-     25|     expect(fetch).toHaveBeenCalledWith(expect.stringMatching(/\/admin\…
-     26|       method: "PATCH", body: JSON.stringify({ name: "Knees collapse", …
-
-⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/13]⎯
-
- FAIL  src/lib/__tests__/us25-fault-requests.test.ts > US-25 fault list requests > us25_disable_sends_enabled_false
-TypeError: api.updateFault is not a function
- ❯ src/lib/__tests__/us25-fault-requests.test.ts:33:15
-     31|     const fetch = vi.fn().mockResolvedValue(json({ id: "knee_cave", en…
-     32|     vi.stubGlobal("fetch", fetch);
-     33|     await api.updateFault("squat", "knee cave/x", { enabled: false }, …
-       |               ^
-     34|     expect(fetch).toHaveBeenCalledWith(expect.stringMatching(/\/admin\…
-     35|       expect.objectContaining({ method: "PATCH", body: JSON.stringify(…
-
-⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/13]⎯
-
- FAIL  src/lib/__tests__/us25-fault-requests.test.ts > US-25 fault list requests > us25_add_posts_the_new_fault_and_surfaces_the_rejection_reason
-TypeError: api.addFault is not a function
- ❯ src/lib/__tests__/us25-fault-requests.test.ts:43:22
-     41|     const fetch = vi.fn().mockResolvedValue(json({ detail: "squat alre…
-     42|     vi.stubGlobal("fetch", fetch);
-     43|     await expect(api.addFault(fault, "admin-token")).rejects.toMatchOb…
-       |                      ^
-     44|       status: 409, detail: "squat already has a fault with ID 'knees_s…
-     45|     expect(fetch).toHaveBeenCalledWith(expect.stringMatching(/\/admin\…
-
-⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/13]⎯
-
  FAIL  src/components/__tests__/us25-fault-list.test.tsx > US-25 fault list page > us25_lists_every_fault_per_lift_with_category_safety_measurement_and_status
 Error: Cannot find module '@/app/admin/faults/page' imported from 'frontend/src/components/__tests__/us25-fault-list.test.tsx'.
 
@@ -400,7 +352,7 @@ Error: Cannot find module '@/app/admin/faults/page' imported from 'frontend/src/
      19| }
  ❯ src/components/__tests__/us25-fault-list.test.tsx:50:5
 
-⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/13]⎯
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/13]⎯
 
  FAIL  src/components/__tests__/us25-fault-list.test.tsx > US-25 fault list page > us25_editing_saves_the_display_name_and_short_description
 Error: Cannot find module '@/app/admin/faults/page' imported from 'frontend/src/components/__tests__/us25-fault-list.test.tsx'.
@@ -416,7 +368,7 @@ Error: Cannot find module '@/app/admin/faults/page' imported from 'frontend/src/
      19| }
  ❯ src/components/__tests__/us25-fault-list.test.tsx:67:5
 
-⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/13]⎯
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/13]⎯
 
  FAIL  src/components/__tests__/us25-fault-list.test.tsx > US-25 fault list page > us25_blank_or_too_long_names_are_rejected_before_saving
 Error: Cannot find module '@/app/admin/faults/page' imported from 'frontend/src/components/__tests__/us25-fault-list.test.tsx'.
@@ -432,7 +384,7 @@ Error: Cannot find module '@/app/admin/faults/page' imported from 'frontend/src/
      19| }
  ❯ src/components/__tests__/us25-fault-list.test.tsx:84:5
 
-⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/13]⎯
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/13]⎯
 
  FAIL  src/components/__tests__/us25-fault-list.test.tsx > US-25 fault list page > us25_disable_and_enable_switch_the_fault_status
 Error: Cannot find module '@/app/admin/faults/page' imported from 'frontend/src/components/__tests__/us25-fault-list.test.tsx'.
@@ -448,7 +400,7 @@ Error: Cannot find module '@/app/admin/faults/page' imported from 'frontend/src/
      19| }
  ❯ src/components/__tests__/us25-fault-list.test.tsx:100:5
 
-⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/13]⎯
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/13]⎯
 
  FAIL  src/components/__tests__/us25-fault-list.test.tsx > US-25 fault list page > us25_add_form_offers_only_measurements_the_lift_already_computes
 Error: Cannot find module '@/app/admin/faults/page' imported from 'frontend/src/components/__tests__/us25-fault-list.test.tsx'.
@@ -464,7 +416,7 @@ Error: Cannot find module '@/app/admin/faults/page' imported from 'frontend/src/
      19| }
  ❯ src/components/__tests__/us25-fault-list.test.tsx:112:5
 
-⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/13]⎯
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/13]⎯
 
  FAIL  src/components/__tests__/us25-fault-list.test.tsx > US-25 fault list page > us25_adding_a_fault_sends_it_and_lists_it_under_its_lift
 Error: Cannot find module '@/app/admin/faults/page' imported from 'frontend/src/components/__tests__/us25-fault-list.test.tsx'.
@@ -480,7 +432,7 @@ Error: Cannot find module '@/app/admin/faults/page' imported from 'frontend/src/
      19| }
  ❯ src/components/__tests__/us25-fault-list.test.tsx:127:5
 
-⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/13]⎯
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/13]⎯
 
  FAIL  src/components/__tests__/us25-fault-list.test.tsx > US-25 fault list page > us25_rejected_additions_show_the_reason
 Error: Cannot find module '@/app/admin/faults/page' imported from 'frontend/src/components/__tests__/us25-fault-list.test.tsx'.
@@ -496,7 +448,7 @@ Error: Cannot find module '@/app/admin/faults/page' imported from 'frontend/src/
      19| }
  ❯ src/components/__tests__/us25-fault-list.test.tsx:143:5
 
-⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/13]⎯
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/13]⎯
 
  FAIL  src/components/__tests__/us25-fault-list.test.tsx > US-25 fault list page > us25_non_admins_see_admins_only
 Error: Cannot find module '@/app/admin/faults/page' imported from 'frontend/src/components/__tests__/us25-fault-list.test.tsx'.
@@ -512,7 +464,7 @@ Error: Cannot find module '@/app/admin/faults/page' imported from 'frontend/src/
      19| }
  ❯ src/components/__tests__/us25-fault-list.test.tsx:155:5
 
-⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[12/13]⎯
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/13]⎯
 
  FAIL  src/components/__tests__/us25-fault-list.test.tsx > US-25 fault list page > us25_admin_analyses_page_links_to_the_fault_list
 TestingLibraryElementError: Unable to find role="link" and name "Fault list"
@@ -798,8 +750,8 @@ Ignored nodes: comments, script, style
     [36m</div>[39m
   [36m</div>[39m
 [36m</body>[39m
- ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
- ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ waitForWrapper ../../../..frontend/node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ ../../../..frontend/node_modules/@testing-library/dom/dist/query-helpers.js:86:33
  ❯ src/components/__tests__/us25-fault-list.test.tsx:165:25
     163|     vi.spyOn(api, "adminErrors").mockResolvedValue({ counts: {} });
     164|     render(<AdminPage />);
@@ -808,14 +760,61 @@ Ignored nodes: comments, script, style
     166|   });
     167| });
 
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/13]⎯
+
+ FAIL  src/lib/__tests__/us25-fault-requests.test.ts > US-25 fault list requests > us25_fault_list_is_read_with_the_admin_session
+TypeError: api.adminFaults is not a function
+ ❯ src/lib/__tests__/us25-fault-requests.test.ts:15:22
+     13|     const fetch = vi.fn().mockResolvedValue(json({ lifts: [] }));
+     14|     vi.stubGlobal("fetch", fetch);
+     15|     expect(await api.adminFaults("admin-token")).toEqual({ lifts: [] }…
+       |                      ^
+     16|     expect(fetch).toHaveBeenCalledWith(expect.stringMatching(/\/admin\…
+     17|       method: "GET", headers: { Authorization: "Bearer admin-token" },
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/13]⎯
+
+ FAIL  src/lib/__tests__/us25-fault-requests.test.ts > US-25 fault list requests > us25_edit_sends_only_the_name_and_short_description
+TypeError: api.updateFault is not a function
+ ❯ src/lib/__tests__/us25-fault-requests.test.ts:24:15
+     22|     const fetch = vi.fn().mockResolvedValue(json({ id: "knee_cave" }));
+     23|     vi.stubGlobal("fetch", fetch);
+     24|     await api.updateFault("squat", "knee_cave", { name: "Knees collaps…
+       |               ^
+     25|     expect(fetch).toHaveBeenCalledWith(expect.stringMatching(/\/admin\…
+     26|       method: "PATCH", body: JSON.stringify({ name: "Knees collapse", …
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/13]⎯
+
+ FAIL  src/lib/__tests__/us25-fault-requests.test.ts > US-25 fault list requests > us25_disable_sends_enabled_false
+TypeError: api.updateFault is not a function
+ ❯ src/lib/__tests__/us25-fault-requests.test.ts:33:15
+     31|     const fetch = vi.fn().mockResolvedValue(json({ id: "knee_cave", en…
+     32|     vi.stubGlobal("fetch", fetch);
+     33|     await api.updateFault("squat", "knee cave/x", { enabled: false }, …
+       |               ^
+     34|     expect(fetch).toHaveBeenCalledWith(expect.stringMatching(/\/admin\…
+     35|       expect.objectContaining({ method: "PATCH", body: JSON.stringify(…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[12/13]⎯
+
+ FAIL  src/lib/__tests__/us25-fault-requests.test.ts > US-25 fault list requests > us25_add_posts_the_new_fault_and_surfaces_the_rejection_reason
+TypeError: api.addFault is not a function
+ ❯ src/lib/__tests__/us25-fault-requests.test.ts:43:22
+     41|     const fetch = vi.fn().mockResolvedValue(json({ detail: "squat alre…
+     42|     vi.stubGlobal("fetch", fetch);
+     43|     await expect(api.addFault(fault, "admin-token")).rejects.toMatchOb…
+       |                      ^
+     44|       status: 409, detail: "squat already has a fault with ID 'knees_s…
+     45|     expect(fetch).toHaveBeenCalledWith(expect.stringMatching(/\/admin\…
+
 ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[13/13]⎯
 
 
  Test Files  2 failed (2)
       Tests  13 failed (13)
-   Start at  01:53:52
-   Duration  2.09s (transform 126ms, setup 289ms, collect 122ms, tests 1.16s, environment 1.01s, prepare 125ms)
-
+   Start at  02:13:16
+   Duration  2.14s (transform 146ms, setup 237ms, collect 140ms, tests 1.13s, environment 1.08s, prepare 139ms)
 
 ===== Browser (Playwright) red run: npx playwright test us25 =====
 [WebServer] INFO:     Started server process [3651]

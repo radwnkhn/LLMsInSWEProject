@@ -194,8 +194,11 @@ def test_us25_disabled_then_reenabled_fault_is_reported_again(client, services, 
     lifter, _ = signup(client)
     client.patch("/admin/faults/squat/hips_rise_early", headers=admin, json={"enabled": False})
     disabled = _result(client, lifter, upload_ok(client, lifter))
-    assert disabled["top_fix"] is None and disabled["no_major_issues"] is True
-    assert all(not row["faults"] for row in disabled["rep_breakdown"])
+    # The same set still shows its other confirmed faults, just not the disabled one.
+    assert disabled["final_status"] == "passed_first_try"
+    cited = [disabled["top_fix"]["fault_id"], *(f["fault_id"] for f in disabled["other_faults"])]
+    assert "hips_rise_early" not in cited
+    assert all("Hips rise before your shoulders" not in row["faults"] for row in disabled["rep_breakdown"]["rows"])
 
     r = client.patch("/admin/faults/squat/hips_rise_early", headers=admin, json={"enabled": True})
     assert r.json()["enabled"] is True
@@ -317,3 +320,15 @@ def test_us25_analysis_uses_the_fault_list_saved_when_it_started(services, clien
     assert result["final_status"] == "passed_first_try"
     assert result["top_fix"]["fault_id"] == "hips_rise_early"
     assert services.repo.get_fault("squat", "hips_rise_early").enabled is False
+
+
+# ---- browser-test support: test mode needs an admin account to reach the fault list ----
+
+def test_us25_test_mode_makes_only_reserved_domain_signups_admins():
+    from app.services import services_from_env
+
+    services = services_from_env({"ALIBI_TEST_MODE": "1"})
+    assert services.auth.sign_up("coach@admin.test", "squat1234").user.is_admin is True
+    assert services.auth.sign_up("lifter@virginia.edu", "squat1234").user.is_admin is False
+    assert services.auth.sign_up("coach@admin.test.virginia.edu", "squat1234").user.is_admin is False
+    assert build_test_services().auth.sign_up("coach@admin.test", "squat1234").user.is_admin is False

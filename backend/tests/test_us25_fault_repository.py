@@ -14,13 +14,22 @@ from tests.test_setup02_repository import PG_URL, repo  # noqa: F401  (shared me
 ALPHA_FAULTS = [f for lift in ("squat", "deadlift", "bench_press") for f in FAULTS[lift]]
 
 
-def _reopen(repo):
+@pytest.fixture
+def reopen(repo):
     """A second connection to the same store, to show changes were saved rather than cached."""
-    if hasattr(repo, "pool"):
+    opened = []
+
+    def second_connection():
+        if not hasattr(repo, "pool"):
+            return repo
         from app.repository import PostgresRepository
 
-        return PostgresRepository(PG_URL)
-    return repo
+        opened.append(PostgresRepository(PG_URL))
+        return opened[-1]
+
+    yield second_connection
+    for other in opened:
+        other.pool.close()
 
 
 def test_us25_repo_starts_with_the_alpha_fault_definitions(repo):
@@ -29,15 +38,15 @@ def test_us25_repo_starts_with_the_alpha_fault_definitions(repo):
     assert repo.get_fault("squat", "elbow_flare") is None
 
 
-def test_us25_repo_saves_edits_and_enabled_state(repo):
+def test_us25_repo_saves_edits_and_enabled_state(repo, reopen):
     edited = repo.update_fault("deadlift", "rounded_back", name="Back rounds off the floor", short_name="back rounding",
                                enabled=False)
     assert (edited.name, edited.short_name, edited.enabled) == ("Back rounds off the floor", "back rounding", False)
-    saved = _reopen(repo).get_fault("deadlift", "rounded_back")
+    saved = reopen().get_fault("deadlift", "rounded_back")
     assert saved == replace(FAULTS["deadlift"][0], name="Back rounds off the floor", short_name="back rounding",
                             enabled=False)
     repo.update_fault("deadlift", "rounded_back", enabled=True)
-    assert _reopen(repo).get_fault("deadlift", "rounded_back").enabled is True
+    assert reopen().get_fault("deadlift", "rounded_back").enabled is True
 
 
 def test_us25_repo_update_accepts_only_editable_fields(repo):
@@ -48,11 +57,11 @@ def test_us25_repo_update_accepts_only_editable_fields(repo):
     assert repo.get_fault("squat", "knee_cave").threshold == 10
 
 
-def test_us25_repo_saves_new_faults_after_the_lifts_existing_ones(repo):
+def test_us25_repo_saves_new_faults_after_the_lifts_existing_ones(repo, reopen):
     fault = faults.new_fault(lift="bench_press", id="shallow_touch", name="Bar stops above your chest", short_name="short touch",
                       category="technique", metric="elbow_angle_min_deg", threshold=100, direction="above")
     repo.create_fault(fault)
-    bench = [f for f in _reopen(repo).list_faults() if f.lift == "bench_press"]
+    bench = [f for f in reopen().list_faults() if f.lift == "bench_press"]
     assert bench == [*FAULTS["bench_press"], fault]
     with pytest.raises(faults.FaultExists):
         repo.create_fault(fault)
