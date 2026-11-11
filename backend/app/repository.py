@@ -24,6 +24,7 @@ class UserRecord:
     id: str
     email: str
     is_admin: bool = False
+    created_at: datetime | None = None  # US-27: when they signed up
 
 
 @dataclass
@@ -82,6 +83,30 @@ class FeedbackRecord:
 
 
 @dataclass
+class AdminUploadRow:
+    """US-27: an upload for the moderation list, with its owner and newest analysis."""
+    upload: UploadRecord
+    user_email: str
+    analysis: AnalysisRecord | None
+
+
+@dataclass
+class ModerationEntry:
+    """US-27: one admin removal. Outlives the upload; user references become None if an account is deleted."""
+    id: str
+    upload_id: str
+    analysis_ids: list[str]
+    lift: str
+    owner_id: str | None
+    removed_by: str | None
+    reason: str
+    note: str | None
+    removed_at: datetime | None
+    owner_email: str | None = None
+    removed_by_email: str | None = None
+
+
+@dataclass
 class AdminAnalysisRow:
     analysis: AnalysisRecord
     attempt_count: int
@@ -112,6 +137,14 @@ class Repository(Protocol):
                          model: str | None = None) -> LLMAttemptRecord: ...
     # US-26: every attempt of analyses created in [start, end), for cost summaries.
     def list_attempt_usage(self, start: datetime, end: datetime) -> list[AttemptUsage]: ...
+    # US-27: usage over time and the moderation log. Ranges are [start, end).
+    def list_signup_times(self, start: datetime, end: datetime) -> list[datetime]: ...
+    def list_upload_rows(self, start: datetime, end: datetime, lift: str | None = None) -> list[AdminUploadRow]: ...
+    def create_moderation_entry(self, upload_id: str, analysis_ids: list[str], lift: str, owner_id: str,
+                                removed_by: str, reason: str, note: str | None) -> ModerationEntry: ...
+    def delete_moderation_entry(self, entry_id: str) -> None: ...
+    def list_moderation_entries(self) -> list[ModerationEntry]: ...
+    def get_removal_for_analysis(self, analysis_id: str) -> ModerationEntry | None: ...
     def list_llm_attempts(self, analysis_id: str) -> list[LLMAttemptRecord]: ...
     def all_validation_issues(self) -> list[ValidationIssue]: ...
     def upsert_feedback(self, analysis_id: str, user_id: str, rating: int | None, tried_cue: str | None) -> FeedbackRecord: ...
@@ -144,6 +177,7 @@ class InMemoryRepository:
         self.attempts: dict[str, list[LLMAttemptRecord]] = {}
         self.feedback: dict[tuple[str, str], FeedbackRecord] = {}
         self.faults: list[Fault] = default_faults()
+        self.moderation: list[ModerationEntry] = []
 
     @contextmanager
     def user_lock(self, user_id):
@@ -160,7 +194,8 @@ class InMemoryRepository:
             return self._last
 
     def ensure_user(self, id, email, is_admin=False):
-        user = UserRecord(id, email, is_admin)
+        old = self.users.get(id)
+        user = UserRecord(id, email, is_admin, old.created_at if old else self._stamp())
         self.users[id] = user
         return user
 
@@ -195,6 +230,10 @@ class InMemoryRepository:
         for key in list(self.feedback):
             if key[1] == user_id:
                 self.feedback.pop(key, None)
+        # Like the Postgres foreign keys: the moderation log stays, without the deleted account.
+        self.moderation = [replace(m, owner_id=None if m.owner_id == user_id else m.owner_id,
+                                   removed_by=None if m.removed_by == user_id else m.removed_by)
+                           for m in self.moderation]
         self.users.pop(user_id, None)
 
     def create_analysis(self, id, upload_id, user_id, lift):
@@ -233,6 +272,38 @@ class InMemoryRepository:
 
     def all_validation_issues(self):
         return [i for attempts in self.attempts.values() for a in attempts for i in a.issues]
+
+    def list_signup_times(self, start, end):
+        return [u.created_at for u in list(self.users.values()) if u.created_at and start <= u.created_at < end]
+
+    def list_upload_rows(self, start, end, lift=None):
+        rows = []
+        for u in sorted(list(self.uploads.values()), key=lambda u: u.created_at, reverse=True):
+            if not (start <= u.created_at < end) or (lift is not None and u.lift != lift):
+                continue
+            analyses = [a for a in list(self.analyses.values()) if a.upload_id == u.id]
+            newest = max(analyses, key=lambda a: a.created_at) if analyses else None
+            rows.append(AdminUploadRow(u, self.users.get(u.user_id, UserRecord(u.user_id, "")).email, newest))
+        return rows
+
+    def _with_emails(self, m):
+        email = lambda uid: self.users[uid].email if uid in self.users else None
+        return replace(m, owner_email=email(m.owner_id), removed_by_email=email(m.removed_by))
+
+    def create_moderation_entry(self, upload_id, analysis_ids, lift, owner_id, removed_by, reason, note):
+        entry = ModerationEntry(str(uuid.uuid4()), upload_id, list(analysis_ids), lift, owner_id, removed_by, reason,
+                                note, self._stamp())
+        self.moderation.append(entry)
+        return self._with_emails(entry)
+
+    def delete_moderation_entry(self, entry_id):
+        self.moderation = [m for m in self.moderation if m.id != entry_id]
+
+    def list_moderation_entries(self):
+        return [self._with_emails(m) for m in sorted(self.moderation, key=lambda m: m.removed_at, reverse=True)]
+
+    def get_removal_for_analysis(self, analysis_id):
+        return next((self._with_emails(m) for m in self.moderation if analysis_id in m.analysis_ids), None)
 
     def list_attempt_usage(self, start, end):
         rows = []
@@ -335,14 +406,14 @@ class PostgresRepository:
                               processing_stage=r["processing_stage"])
 
     def ensure_user(self, id, email, is_admin=False):
-        self._q("insert into public.users (id, email, is_admin) values (%s, %s, %s) "
-                "on conflict (id) do update set email = excluded.email, is_admin = excluded.is_admin",
-                (id, email, is_admin))
-        return UserRecord(id, email, is_admin)
+        r = self._q("insert into public.users (id, email, is_admin) values (%s, %s, %s) "
+                    "on conflict (id) do update set email = excluded.email, is_admin = excluded.is_admin "
+                    "returning created_at", (id, email, is_admin), one=True)
+        return UserRecord(id, email, is_admin, r["created_at"])
 
     def get_user(self, id):
         r = self._q("select * from public.users where id::text = %s", (id,), one=True)
-        return r and UserRecord(str(r["id"]), r["email"], r["is_admin"])
+        return r and UserRecord(str(r["id"]), r["email"], r["is_admin"], r["created_at"])
 
     def create_upload(self, id, user_id, lift, video_path, filename, note):
         r = self._q("insert into public.uploads (id, user_id, lift, video_path, filename, note) "
@@ -507,3 +578,50 @@ class PostgresRepository:
         r = self._q(f"update public.faults set {sets}, updated_at = now() where lift = %s and id = %s returning *",
                     (*changes.values(), lift, fault_id), one=True)
         return self._fault(r)
+
+    # ------------------------------------------------------------------ usage and moderation (US-27)
+
+    def list_signup_times(self, start, end):
+        rows = self._q("select created_at from public.users where created_at >= %s and created_at < %s",
+                       (start, end), rows=True)
+        return [r["created_at"] for r in rows]
+
+    def list_upload_rows(self, start, end, lift=None):
+        rows = self._q(
+            "select u.*, us.email as user_email, a.id as a_id from public.uploads u "
+            "left join public.users us on us.id = u.user_id "
+            "left join lateral (select id from public.analyses where upload_id = u.id "
+            "order by created_at desc limit 1) a on true "
+            "where u.created_at >= %s and u.created_at < %s and (%s::text is null or u.lift = %s) "
+            "order by u.created_at desc", (start, end, lift, lift), rows=True)
+        return [AdminUploadRow(UploadRecord(str(r["id"]), str(r["user_id"]), r["lift"], r["video_path"], r["filename"],
+                                            r["note"], r["created_at"]), r["user_email"] or "",
+                               self.get_analysis(str(r["a_id"])) if r["a_id"] else None) for r in rows]
+
+    _MODERATION_SELECT = ("select m.*, o.email as owner_email, a.email as removed_by_email from public.moderation_log m "
+                          "left join public.users o on o.id = m.owner_id left join public.users a on a.id = m.removed_by ")
+
+    @staticmethod
+    def _moderation(r) -> ModerationEntry | None:
+        if r is None:
+            return None
+        text = lambda v: str(v) if v is not None else None
+        return ModerationEntry(str(r["id"]), str(r["upload_id"]), [str(a) for a in r["analysis_ids"]], r["lift"],
+                               text(r["owner_id"]), text(r["removed_by"]), r["reason"], r["note"], r["removed_at"],
+                               r["owner_email"], r["removed_by_email"])
+
+    def create_moderation_entry(self, upload_id, analysis_ids, lift, owner_id, removed_by, reason, note):
+        r = self._q("insert into public.moderation_log (upload_id, analysis_ids, lift, owner_id, removed_by, reason, note) "
+                    "values (%s, %s::uuid[], %s, %s, %s, %s, %s) returning id",
+                    (upload_id, list(analysis_ids), lift, owner_id, removed_by, reason, note), one=True)
+        return self._moderation(self._q(self._MODERATION_SELECT + "where m.id = %s", (r["id"],), one=True))
+
+    def delete_moderation_entry(self, entry_id):
+        self._q("delete from public.moderation_log where id::text = %s", (entry_id,))
+
+    def list_moderation_entries(self):
+        return [self._moderation(r) for r in self._q(self._MODERATION_SELECT + "order by m.removed_at desc", rows=True)]
+
+    def get_removal_for_analysis(self, analysis_id):
+        return self._moderation(self._q(self._MODERATION_SELECT + "where %s = any(m.analysis_ids::text[]) "
+                                        "order by m.removed_at desc limit 1", (analysis_id,), one=True))

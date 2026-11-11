@@ -18,6 +18,9 @@ video does not support a reliable assessment, Alibi explains what could not be m
 - As an admin, review analyses and validation attempts and manage the lift fault catalog.
 - As an admin, see LLM token usage and estimated cost per attempt and per analysis, and a cost summary
   for a date range that includes the share spent on correction retries.
+- As an admin, see sign-ups and uploads per day, browse uploads by date and lift, and remove an
+  off-topic or inappropriate upload with a reason. Removals are logged, and the owner is told a moderator
+  removed it.
 
 ## Application structure
 

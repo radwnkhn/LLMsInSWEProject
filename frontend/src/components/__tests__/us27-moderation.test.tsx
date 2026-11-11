@@ -38,7 +38,9 @@ const entry = { id: "m1", upload_id: "u9", analysis_ids: ["a9"], lift: "squat", 
 
 beforeEach(() => {
   vi.resetAllMocks();
-  mocked.adminUsage.mockResolvedValue(usage);
+  // Like the API: echo the requested range, or report the default one.
+  mocked.adminUsage.mockImplementation(async (start: string | null, end: string | null) =>
+    ({ ...usage, start: start ?? usage.start, end: end ?? usage.end }));
   mocked.adminUploads.mockResolvedValue({ items: [row(1), row(2, { lift: "bench_press", lift_label: "Bench Press" })] });
   mocked.moderationLog.mockResolvedValue({ items: [entry] });
   mocked.adminAnalyses.mockResolvedValue({ items: [] });
@@ -52,8 +54,8 @@ describe("US-27 usage", () => {
     const region = await screen.findByRole("region", { name: "Sign-ups and uploads" });
     const rows = within(region).getAllByRole("row");
     const cells = (r: HTMLElement) => within(r).getAllByRole("cell").map((c) => c.textContent);
-    expect(cells(rows[1])).toEqual(["Nov 1, 2026", "2", "1"]);
-    expect(cells(rows[3])).toEqual(["Nov 3, 2026", "1", "3"]);
+    expect(cells(rows[1])).toEqual(["Nov 3, 2026", "1", "3"]); // newest day first
+    expect(cells(rows[3])).toEqual(["Nov 1, 2026", "2", "1"]);
     expect(within(region).getByText("Total sign-ups").nextSibling).toHaveTextContent("3");
     expect(within(region).getByText("Total uploads").nextSibling).toHaveTextContent("4");
     expect(region).toHaveTextContent("1 upload removed by moderators in this range");

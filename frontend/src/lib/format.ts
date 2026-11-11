@@ -19,6 +19,12 @@ export function formatTokens(count: number): string {
   return count.toLocaleString("en-US");
 }
 
+/** A UTC calendar day ("2026-11-01") as "Nov 1, 2026", whatever the viewer's time zone. */
+export function formatDay(isoDate: string): string {
+  return new Date(`${isoDate}T00:00:00Z`).toLocaleDateString("en-US",
+    { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" });
+}
+
 export function formatDate(iso: string): string {
   return new Date(iso).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
 }

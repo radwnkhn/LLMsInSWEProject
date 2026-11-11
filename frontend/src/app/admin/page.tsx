@@ -26,7 +26,10 @@ export default function AdminPage() {
     <div className="space-y-6">
       <div className="flex flex-wrap items-baseline justify-between gap-2">
         <h1 className="text-2xl font-bold">Analyses</h1>
-        <Link href="/admin/faults" className="text-sm underline">Fault list</Link>
+        <div className="flex gap-3 text-sm">
+          <Link href="/admin/moderation" className="underline">Usage and moderation</Link>
+          <Link href="/admin/faults" className="underline">Fault list</Link>
+        </div>
       </div>
       {rows && <CostSummary token={getToken()} />}
       {rows && <AdminAnalysesTable items={rows} />}
