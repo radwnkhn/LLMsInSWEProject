@@ -1,0 +1,903 @@
+
+ RUN  v3.2.7 frontend
+
+ ❯ src/lib/__tests__/us25-fault-requests.test.ts (4 tests | 4 failed) 22ms
+   × US-25 fault list requests > us25_fault_list_is_read_with_the_admin_session 14ms
+     → api.adminFaults is not a function
+   × US-25 fault list requests > us25_edit_sends_only_the_name_and_short_description 3ms
+     → api.updateFault is not a function
+   × US-25 fault list requests > us25_disable_sends_enabled_false 2ms
+     → api.updateFault is not a function
+   × US-25 fault list requests > us25_add_posts_the_new_fault_and_surfaces_the_rejection_reason 1ms
+     → api.addFault is not a function
+ ❯ src/components/__tests__/us25-fault-list.test.tsx (9 tests | 9 failed) 1140ms
+   × US-25 fault list page > us25_lists_every_fault_per_lift_with_category_safety_measurement_and_status 25ms
+     → Cannot find module '@/app/admin/faults/page' imported from 'frontend/src/components/__tests__/us25-fault-list.test.tsx'.
+
+- If you rely on tsconfig.json's "paths" to resolve modules, please install "vite-tsconfig-paths" plugin to handle module resolution.
+- Make sure you don't have relative aliases in your Vitest config. Use absolute paths instead. Read more: https://vitest.dev/guide/common-errors
+   × US-25 fault list page > us25_editing_saves_the_display_name_and_short_description 4ms
+     → Cannot find module '@/app/admin/faults/page' imported from 'frontend/src/components/__tests__/us25-fault-list.test.tsx'.
+
+- If you rely on tsconfig.json's "paths" to resolve modules, please install "vite-tsconfig-paths" plugin to handle module resolution.
+- Make sure you don't have relative aliases in your Vitest config. Use absolute paths instead. Read more: https://vitest.dev/guide/common-errors
+   × US-25 fault list page > us25_blank_or_too_long_names_are_rejected_before_saving 3ms
+     → Cannot find module '@/app/admin/faults/page' imported from 'frontend/src/components/__tests__/us25-fault-list.test.tsx'.
+
+- If you rely on tsconfig.json's "paths" to resolve modules, please install "vite-tsconfig-paths" plugin to handle module resolution.
+- Make sure you don't have relative aliases in your Vitest config. Use absolute paths instead. Read more: https://vitest.dev/guide/common-errors
+   × US-25 fault list page > us25_disable_and_enable_switch_the_fault_status 3ms
+     → Cannot find module '@/app/admin/faults/page' imported from 'frontend/src/components/__tests__/us25-fault-list.test.tsx'.
+
+- If you rely on tsconfig.json's "paths" to resolve modules, please install "vite-tsconfig-paths" plugin to handle module resolution.
+- Make sure you don't have relative aliases in your Vitest config. Use absolute paths instead. Read more: https://vitest.dev/guide/common-errors
+   × US-25 fault list page > us25_add_form_offers_only_measurements_the_lift_already_computes 3ms
+     → Cannot find module '@/app/admin/faults/page' imported from 'frontend/src/components/__tests__/us25-fault-list.test.tsx'.
+
+- If you rely on tsconfig.json's "paths" to resolve modules, please install "vite-tsconfig-paths" plugin to handle module resolution.
+- Make sure you don't have relative aliases in your Vitest config. Use absolute paths instead. Read more: https://vitest.dev/guide/common-errors
+   × US-25 fault list page > us25_adding_a_fault_sends_it_and_lists_it_under_its_lift 2ms
+     → Cannot find module '@/app/admin/faults/page' imported from 'frontend/src/components/__tests__/us25-fault-list.test.tsx'.
+
+- If you rely on tsconfig.json's "paths" to resolve modules, please install "vite-tsconfig-paths" plugin to handle module resolution.
+- Make sure you don't have relative aliases in your Vitest config. Use absolute paths instead. Read more: https://vitest.dev/guide/common-errors
+   × US-25 fault list page > us25_rejected_additions_show_the_reason 2ms
+     → Cannot find module '@/app/admin/faults/page' imported from 'frontend/src/components/__tests__/us25-fault-list.test.tsx'.
+
+- If you rely on tsconfig.json's "paths" to resolve modules, please install "vite-tsconfig-paths" plugin to handle module resolution.
+- Make sure you don't have relative aliases in your Vitest config. Use absolute paths instead. Read more: https://vitest.dev/guide/common-errors
+   × US-25 fault list page > us25_non_admins_see_admins_only 2ms
+     → Cannot find module '@/app/admin/faults/page' imported from 'frontend/src/components/__tests__/us25-fault-list.test.tsx'.
+
+- If you rely on tsconfig.json's "paths" to resolve modules, please install "vite-tsconfig-paths" plugin to handle module resolution.
+- Make sure you don't have relative aliases in your Vitest config. Use absolute paths instead. Read more: https://vitest.dev/guide/common-errors
+   × US-25 fault list page > us25_admin_analyses_page_links_to_the_fault_list 1095ms
+     → Unable to find role="link" and name "Fault list"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"space-y-6"[39m
+    [36m>[39m
+      [36m<h1[39m
+        [33mclass[39m=[32m"text-2xl font-bold"[39m
+      [36m>[39m
+        [0mAnalyses[0m
+      [36m</h1>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"space-y-3"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex flex-wrap gap-4 text-sm"[39m
+        [36m>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2"[39m
+          [36m>[39m
+            [0mLift[0m
+            [36m<select[39m
+              [33mclass[39m=[32m"rounded-lg border border-zinc-300 px-2 py-1"[39m
+            [36m>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"all"[39m
+              [36m>[39m
+                [0mAll[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"squat"[39m
+              [36m>[39m
+                [0mSquat[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"deadlift"[39m
+              [36m>[39m
+                [0mDeadlift[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"bench_press"[39m
+              [36m>[39m
+                [0mBench Press[0m
+              [36m</option>[39m
+            [36m</select>[39m
+          [36m</label>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2"[39m
+          [36m>[39m
+            [0mFinal status[0m
+            [36m<select[39m
+              [33mclass[39m=[32m"rounded-lg border border-zinc-300 px-2 py-1"[39m
+            [36m>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"all"[39m
+              [36m>[39m
+                [0mAll[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"passed_first_try"[39m
+              [36m>[39m
+                [0mPassed first try[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"passed_after_retry"[39m
+              [36m>[39m
+                [0mPassed after retry[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"fallback"[39m
+              [36m>[39m
+                [0mFallback[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"unanalyzable"[39m
+              [36m>[39m
+                [0mCouldn't analyze[0m
+              [36m</option>[39m
+            [36m</select>[39m
+          [36m</label>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"overflow-x-auto"[39m
+        [36m>[39m
+          [36m<table[39m
+            [33mclass[39m=[32m"w-full text-left text-sm"[39m
+          [36m>[39m
+            [36m<thead[39m
+              [33mclass[39m=[32m"text-zinc-500"[39m
+            [36m>[39m
+              [36m<tr>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"py-1 pr-3"[39m
+                [36m>[39m
+                  [0mDate[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mUser[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mLift[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mAttempts[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mFinal status[0m
+                [36m</th>[39m
+                [36m<th />[39m
+              [36m</tr>[39m
+            [36m</thead>[39m
+            [36m<tbody />[39m
+          [36m</table>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+      [36m<section[39m
+        [33mclass[39m=[32m"space-y-2"[39m
+      [36m>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"text-lg font-semibold"[39m
+        [36m>[39m
+          [0mValidator errors[0m
+        [36m</h2>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"text-sm text-zinc-600"[39m
+        [36m>[39m
+          [0mNo validator errors yet.[0m
+        [36m</p>[39m
+      [36m</section>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"space-y-6"[39m
+    [36m>[39m
+      [36m<h1[39m
+        [33mclass[39m=[32m"text-2xl font-bold"[39m
+      [36m>[39m
+        [0mAnalyses[0m
+      [36m</h1>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"space-y-3"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex flex-wrap gap-4 text-sm"[39m
+        [36m>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2"[39m
+          [36m>[39m
+            [0mLift[0m
+            [36m<select[39m
+              [33mclass[39m=[32m"rounded-lg border border-zinc-300 px-2 py-1"[39m
+            [36m>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"all"[39m
+              [36m>[39m
+                [0mAll[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"squat"[39m
+              [36m>[39m
+                [0mSquat[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"deadlift"[39m
+              [36m>[39m
+                [0mDeadlift[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"bench_press"[39m
+              [36m>[39m
+                [0mBench Press[0m
+              [36m</option>[39m
+            [36m</select>[39m
+          [36m</label>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2"[39m
+          [36m>[39m
+            [0mFinal status[0m
+            [36m<select[39m
+              [33mclass[39m=[32m"rounded-lg border border-zinc-300 px-2 py-1"[39m
+            [36m>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"all"[39m
+              [36m>[39m
+                [0mAll[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"passed_first_try"[39m
+              [36m>[39m
+                [0mPassed first try[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"passed_after_retry"[39m
+              [36m>[39m
+                [0mPassed after retry[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"fallback"[39m
+              [36m>[39m
+                [0mFallback[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"unanalyzable"[39m
+              [36m>[39m
+                [0mCouldn't analyze[0m
+              [36m</option>[39m
+            [36m</select>[39m
+          [36m</label>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"overflow-x-auto"[39m
+        [36m>[39m
+          [36m<table[39m
+            [33mclass[39m=[32m"w-full text-left text-sm"[39m
+          [36m>[39m
+            [36m<thead[39m
+              [33mclass[39m=[32m"text-zinc-500"[39m
+            [36m>[39m
+              [36m<tr>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"py-1 pr-3"[39m
+                [36m>[39m
+                  [0mDate[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mUser[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mLift[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mAttempts[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mFinal status[0m
+                [36m</th>[39m
+                [36m<th />[39m
+              [36m</tr>[39m
+            [36m</thead>[39m
+            [36m<tbody />[39m
+          [36m</table>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+      [36m<section[39m
+        [33mclass[39m=[32m"space-y-2"[39m
+      [36m>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"text-lg font-semibold"[39m
+        [36m>[39m
+          [0mValidator errors[0m
+        [36m</h2>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"text-sm text-zinc-600"[39m
+        [36m>[39m
+          [0mNo validator errors yet.[0m
+        [36m</p>[39m
+      [36m</section>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 13 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/lib/__tests__/us25-fault-requests.test.ts > US-25 fault list requests > us25_fault_list_is_read_with_the_admin_session
+TypeError: api.adminFaults is not a function
+ ❯ src/lib/__tests__/us25-fault-requests.test.ts:15:22
+     13|     const fetch = vi.fn().mockResolvedValue(json({ lifts: [] }));
+     14|     vi.stubGlobal("fetch", fetch);
+     15|     expect(await api.adminFaults("admin-token")).toEqual({ lifts: [] }…
+       |                      ^
+     16|     expect(fetch).toHaveBeenCalledWith(expect.stringMatching(/\/admin\…
+     17|       method: "GET", headers: { Authorization: "Bearer admin-token" },
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/13]⎯
+
+ FAIL  src/lib/__tests__/us25-fault-requests.test.ts > US-25 fault list requests > us25_edit_sends_only_the_name_and_short_description
+TypeError: api.updateFault is not a function
+ ❯ src/lib/__tests__/us25-fault-requests.test.ts:24:15
+     22|     const fetch = vi.fn().mockResolvedValue(json({ id: "knee_cave" }));
+     23|     vi.stubGlobal("fetch", fetch);
+     24|     await api.updateFault("squat", "knee_cave", { name: "Knees collaps…
+       |               ^
+     25|     expect(fetch).toHaveBeenCalledWith(expect.stringMatching(/\/admin\…
+     26|       method: "PATCH", body: JSON.stringify({ name: "Knees collapse", …
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/13]⎯
+
+ FAIL  src/lib/__tests__/us25-fault-requests.test.ts > US-25 fault list requests > us25_disable_sends_enabled_false
+TypeError: api.updateFault is not a function
+ ❯ src/lib/__tests__/us25-fault-requests.test.ts:33:15
+     31|     const fetch = vi.fn().mockResolvedValue(json({ id: "knee_cave", en…
+     32|     vi.stubGlobal("fetch", fetch);
+     33|     await api.updateFault("squat", "knee cave/x", { enabled: false }, …
+       |               ^
+     34|     expect(fetch).toHaveBeenCalledWith(expect.stringMatching(/\/admin\…
+     35|       expect.objectContaining({ method: "PATCH", body: JSON.stringify(…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/13]⎯
+
+ FAIL  src/lib/__tests__/us25-fault-requests.test.ts > US-25 fault list requests > us25_add_posts_the_new_fault_and_surfaces_the_rejection_reason
+TypeError: api.addFault is not a function
+ ❯ src/lib/__tests__/us25-fault-requests.test.ts:43:22
+     41|     const fetch = vi.fn().mockResolvedValue(json({ detail: "squat alre…
+     42|     vi.stubGlobal("fetch", fetch);
+     43|     await expect(api.addFault(fault, "admin-token")).rejects.toMatchOb…
+       |                      ^
+     44|       status: 409, detail: "squat already has a fault with ID 'knees_s…
+     45|     expect(fetch).toHaveBeenCalledWith(expect.stringMatching(/\/admin\…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/13]⎯
+
+ FAIL  src/components/__tests__/us25-fault-list.test.tsx > US-25 fault list page > us25_lists_every_fault_per_lift_with_category_safety_measurement_and_status
+Error: Cannot find module '@/app/admin/faults/page' imported from 'frontend/src/components/__tests__/us25-fault-list.test.tsx'.
+
+- If you rely on tsconfig.json's "paths" to resolve modules, please install "vite-tsconfig-paths" plugin to handle module resolution.
+- Make sure you don't have relative aliases in your Vitest config. Use absolute paths instead. Read more: https://vitest.dev/guide/common-errors
+ ❯ renderPage src/components/__tests__/us25-fault-list.test.tsx:17:30
+     15| const PAGE = "@/app/admin/faults/page";
+     16| async function renderPage() {
+     17|   const { default: Page } = (await import(/* @vite-ignore */ PAGE)) as…
+       |                              ^
+     18|   render(<Page />);
+     19| }
+ ❯ src/components/__tests__/us25-fault-list.test.tsx:50:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/13]⎯
+
+ FAIL  src/components/__tests__/us25-fault-list.test.tsx > US-25 fault list page > us25_editing_saves_the_display_name_and_short_description
+Error: Cannot find module '@/app/admin/faults/page' imported from 'frontend/src/components/__tests__/us25-fault-list.test.tsx'.
+
+- If you rely on tsconfig.json's "paths" to resolve modules, please install "vite-tsconfig-paths" plugin to handle module resolution.
+- Make sure you don't have relative aliases in your Vitest config. Use absolute paths instead. Read more: https://vitest.dev/guide/common-errors
+ ❯ renderPage src/components/__tests__/us25-fault-list.test.tsx:17:30
+     15| const PAGE = "@/app/admin/faults/page";
+     16| async function renderPage() {
+     17|   const { default: Page } = (await import(/* @vite-ignore */ PAGE)) as…
+       |                              ^
+     18|   render(<Page />);
+     19| }
+ ❯ src/components/__tests__/us25-fault-list.test.tsx:67:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/13]⎯
+
+ FAIL  src/components/__tests__/us25-fault-list.test.tsx > US-25 fault list page > us25_blank_or_too_long_names_are_rejected_before_saving
+Error: Cannot find module '@/app/admin/faults/page' imported from 'frontend/src/components/__tests__/us25-fault-list.test.tsx'.
+
+- If you rely on tsconfig.json's "paths" to resolve modules, please install "vite-tsconfig-paths" plugin to handle module resolution.
+- Make sure you don't have relative aliases in your Vitest config. Use absolute paths instead. Read more: https://vitest.dev/guide/common-errors
+ ❯ renderPage src/components/__tests__/us25-fault-list.test.tsx:17:30
+     15| const PAGE = "@/app/admin/faults/page";
+     16| async function renderPage() {
+     17|   const { default: Page } = (await import(/* @vite-ignore */ PAGE)) as…
+       |                              ^
+     18|   render(<Page />);
+     19| }
+ ❯ src/components/__tests__/us25-fault-list.test.tsx:84:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/13]⎯
+
+ FAIL  src/components/__tests__/us25-fault-list.test.tsx > US-25 fault list page > us25_disable_and_enable_switch_the_fault_status
+Error: Cannot find module '@/app/admin/faults/page' imported from 'frontend/src/components/__tests__/us25-fault-list.test.tsx'.
+
+- If you rely on tsconfig.json's "paths" to resolve modules, please install "vite-tsconfig-paths" plugin to handle module resolution.
+- Make sure you don't have relative aliases in your Vitest config. Use absolute paths instead. Read more: https://vitest.dev/guide/common-errors
+ ❯ renderPage src/components/__tests__/us25-fault-list.test.tsx:17:30
+     15| const PAGE = "@/app/admin/faults/page";
+     16| async function renderPage() {
+     17|   const { default: Page } = (await import(/* @vite-ignore */ PAGE)) as…
+       |                              ^
+     18|   render(<Page />);
+     19| }
+ ❯ src/components/__tests__/us25-fault-list.test.tsx:100:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/13]⎯
+
+ FAIL  src/components/__tests__/us25-fault-list.test.tsx > US-25 fault list page > us25_add_form_offers_only_measurements_the_lift_already_computes
+Error: Cannot find module '@/app/admin/faults/page' imported from 'frontend/src/components/__tests__/us25-fault-list.test.tsx'.
+
+- If you rely on tsconfig.json's "paths" to resolve modules, please install "vite-tsconfig-paths" plugin to handle module resolution.
+- Make sure you don't have relative aliases in your Vitest config. Use absolute paths instead. Read more: https://vitest.dev/guide/common-errors
+ ❯ renderPage src/components/__tests__/us25-fault-list.test.tsx:17:30
+     15| const PAGE = "@/app/admin/faults/page";
+     16| async function renderPage() {
+     17|   const { default: Page } = (await import(/* @vite-ignore */ PAGE)) as…
+       |                              ^
+     18|   render(<Page />);
+     19| }
+ ❯ src/components/__tests__/us25-fault-list.test.tsx:112:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/13]⎯
+
+ FAIL  src/components/__tests__/us25-fault-list.test.tsx > US-25 fault list page > us25_adding_a_fault_sends_it_and_lists_it_under_its_lift
+Error: Cannot find module '@/app/admin/faults/page' imported from 'frontend/src/components/__tests__/us25-fault-list.test.tsx'.
+
+- If you rely on tsconfig.json's "paths" to resolve modules, please install "vite-tsconfig-paths" plugin to handle module resolution.
+- Make sure you don't have relative aliases in your Vitest config. Use absolute paths instead. Read more: https://vitest.dev/guide/common-errors
+ ❯ renderPage src/components/__tests__/us25-fault-list.test.tsx:17:30
+     15| const PAGE = "@/app/admin/faults/page";
+     16| async function renderPage() {
+     17|   const { default: Page } = (await import(/* @vite-ignore */ PAGE)) as…
+       |                              ^
+     18|   render(<Page />);
+     19| }
+ ❯ src/components/__tests__/us25-fault-list.test.tsx:127:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/13]⎯
+
+ FAIL  src/components/__tests__/us25-fault-list.test.tsx > US-25 fault list page > us25_rejected_additions_show_the_reason
+Error: Cannot find module '@/app/admin/faults/page' imported from 'frontend/src/components/__tests__/us25-fault-list.test.tsx'.
+
+- If you rely on tsconfig.json's "paths" to resolve modules, please install "vite-tsconfig-paths" plugin to handle module resolution.
+- Make sure you don't have relative aliases in your Vitest config. Use absolute paths instead. Read more: https://vitest.dev/guide/common-errors
+ ❯ renderPage src/components/__tests__/us25-fault-list.test.tsx:17:30
+     15| const PAGE = "@/app/admin/faults/page";
+     16| async function renderPage() {
+     17|   const { default: Page } = (await import(/* @vite-ignore */ PAGE)) as…
+       |                              ^
+     18|   render(<Page />);
+     19| }
+ ❯ src/components/__tests__/us25-fault-list.test.tsx:143:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/13]⎯
+
+ FAIL  src/components/__tests__/us25-fault-list.test.tsx > US-25 fault list page > us25_non_admins_see_admins_only
+Error: Cannot find module '@/app/admin/faults/page' imported from 'frontend/src/components/__tests__/us25-fault-list.test.tsx'.
+
+- If you rely on tsconfig.json's "paths" to resolve modules, please install "vite-tsconfig-paths" plugin to handle module resolution.
+- Make sure you don't have relative aliases in your Vitest config. Use absolute paths instead. Read more: https://vitest.dev/guide/common-errors
+ ❯ renderPage src/components/__tests__/us25-fault-list.test.tsx:17:30
+     15| const PAGE = "@/app/admin/faults/page";
+     16| async function renderPage() {
+     17|   const { default: Page } = (await import(/* @vite-ignore */ PAGE)) as…
+       |                              ^
+     18|   render(<Page />);
+     19| }
+ ❯ src/components/__tests__/us25-fault-list.test.tsx:155:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[12/13]⎯
+
+ FAIL  src/components/__tests__/us25-fault-list.test.tsx > US-25 fault list page > us25_admin_analyses_page_links_to_the_fault_list
+TestingLibraryElementError: Unable to find role="link" and name "Fault list"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"space-y-6"[39m
+    [36m>[39m
+      [36m<h1[39m
+        [33mclass[39m=[32m"text-2xl font-bold"[39m
+      [36m>[39m
+        [0mAnalyses[0m
+      [36m</h1>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"space-y-3"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex flex-wrap gap-4 text-sm"[39m
+        [36m>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2"[39m
+          [36m>[39m
+            [0mLift[0m
+            [36m<select[39m
+              [33mclass[39m=[32m"rounded-lg border border-zinc-300 px-2 py-1"[39m
+            [36m>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"all"[39m
+              [36m>[39m
+                [0mAll[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"squat"[39m
+              [36m>[39m
+                [0mSquat[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"deadlift"[39m
+              [36m>[39m
+                [0mDeadlift[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"bench_press"[39m
+              [36m>[39m
+                [0mBench Press[0m
+              [36m</option>[39m
+            [36m</select>[39m
+          [36m</label>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2"[39m
+          [36m>[39m
+            [0mFinal status[0m
+            [36m<select[39m
+              [33mclass[39m=[32m"rounded-lg border border-zinc-300 px-2 py-1"[39m
+            [36m>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"all"[39m
+              [36m>[39m
+                [0mAll[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"passed_first_try"[39m
+              [36m>[39m
+                [0mPassed first try[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"passed_after_retry"[39m
+              [36m>[39m
+                [0mPassed after retry[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"fallback"[39m
+              [36m>[39m
+                [0mFallback[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"unanalyzable"[39m
+              [36m>[39m
+                [0mCouldn't analyze[0m
+              [36m</option>[39m
+            [36m</select>[39m
+          [36m</label>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"overflow-x-auto"[39m
+        [36m>[39m
+          [36m<table[39m
+            [33mclass[39m=[32m"w-full text-left text-sm"[39m
+          [36m>[39m
+            [36m<thead[39m
+              [33mclass[39m=[32m"text-zinc-500"[39m
+            [36m>[39m
+              [36m<tr>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"py-1 pr-3"[39m
+                [36m>[39m
+                  [0mDate[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mUser[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mLift[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mAttempts[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mFinal status[0m
+                [36m</th>[39m
+                [36m<th />[39m
+              [36m</tr>[39m
+            [36m</thead>[39m
+            [36m<tbody />[39m
+          [36m</table>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+      [36m<section[39m
+        [33mclass[39m=[32m"space-y-2"[39m
+      [36m>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"text-lg font-semibold"[39m
+        [36m>[39m
+          [0mValidator errors[0m
+        [36m</h2>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"text-sm text-zinc-600"[39m
+        [36m>[39m
+          [0mNo validator errors yet.[0m
+        [36m</p>[39m
+      [36m</section>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"space-y-6"[39m
+    [36m>[39m
+      [36m<h1[39m
+        [33mclass[39m=[32m"text-2xl font-bold"[39m
+      [36m>[39m
+        [0mAnalyses[0m
+      [36m</h1>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"space-y-3"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex flex-wrap gap-4 text-sm"[39m
+        [36m>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2"[39m
+          [36m>[39m
+            [0mLift[0m
+            [36m<select[39m
+              [33mclass[39m=[32m"rounded-lg border border-zinc-300 px-2 py-1"[39m
+            [36m>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"all"[39m
+              [36m>[39m
+                [0mAll[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"squat"[39m
+              [36m>[39m
+                [0mSquat[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"deadlift"[39m
+              [36m>[39m
+                [0mDeadlift[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"bench_press"[39m
+              [36m>[39m
+                [0mBench Press[0m
+              [36m</option>[39m
+            [36m</select>[39m
+          [36m</label>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2"[39m
+          [36m>[39m
+            [0mFinal status[0m
+            [36m<select[39m
+              [33mclass[39m=[32m"rounded-lg border border-zinc-300 px-2 py-1"[39m
+            [36m>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"all"[39m
+              [36m>[39m
+                [0mAll[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"passed_first_try"[39m
+              [36m>[39m
+                [0mPassed first try[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"passed_after_retry"[39m
+              [36m>[39m
+                [0mPassed after retry[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"fallback"[39m
+              [36m>[39m
+                [0mFallback[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"unanalyzable"[39m
+              [36m>[39m
+                [0mCouldn't analyze[0m
+              [36m</option>[39m
+            [36m</select>[39m
+          [36m</label>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"overflow-x-auto"[39m
+        [36m>[39m
+          [36m<table[39m
+            [33mclass[39m=[32m"w-full text-left text-sm"[39m
+          [36m>[39m
+            [36m<thead[39m
+              [33mclass[39m=[32m"text-zinc-500"[39m
+            [36m>[39m
+              [36m<tr>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"py-1 pr-3"[39m
+                [36m>[39m
+                  [0mDate[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mUser[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mLift[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mAttempts[0m
+                [36m</th>[39m
+                [36m<th[39m
+                  [33mclass[39m=[32m"pr-3"[39m
+                [36m>[39m
+                  [0mFinal status[0m
+                [36m</th>[39m
+                [36m<th />[39m
+              [36m</tr>[39m
+            [36m</thead>[39m
+            [36m<tbody />[39m
+          [36m</table>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+      [36m<section[39m
+        [33mclass[39m=[32m"space-y-2"[39m
+      [36m>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"text-lg font-semibold"[39m
+        [36m>[39m
+          [0mValidator errors[0m
+        [36m</h2>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"text-sm text-zinc-600"[39m
+        [36m>[39m
+          [0mNo validator errors yet.[0m
+        [36m</p>[39m
+      [36m</section>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/components/__tests__/us25-fault-list.test.tsx:165:25
+    163|     vi.spyOn(api, "adminErrors").mockResolvedValue({ counts: {} });
+    164|     render(<AdminPage />);
+    165|     expect(await screen.findByRole("link", { name: "Fault list" })).to…
+       |                         ^
+    166|   });
+    167| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[13/13]⎯
+
+
+ Test Files  2 failed (2)
+      Tests  13 failed (13)
+   Start at  01:53:52
+   Duration  2.09s (transform 126ms, setup 289ms, collect 122ms, tests 1.16s, environment 1.01s, prepare 125ms)
+
+
+===== Browser (Playwright) red run: npx playwright test us25 =====
+[WebServer] INFO:     Started server process [3651]
+[WebServer] INFO:     Waiting for application startup.
+[WebServer] INFO:     Application startup complete.
+[WebServer] INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+
+Running 3 tests using 1 worker
+
+  ✘  1 e2e/us25-fault-list.spec.ts:15:5 › us25_admin_edits_disables_and_reenables_a_fault_and_new_analyses_follow (1.0m)
+  ✘  2 e2e/us25-fault-list.spec.ts:52:5 › us25_admin_adds_a_fault_from_an_existing_measurement_and_it_is_reported (1.0m)
+  ✘  3 e2e/us25-fault-list.spec.ts:85:5 › us25_non_admin_sees_403_on_the_fault_list (10.4s)
+
+
+  1) e2e/us25-fault-list.spec.ts:15:5 › us25_admin_edits_disables_and_reenables_a_fault_and_new_analyses_follow 
+
+    Test timeout of 60000ms exceeded.
+
+    Error: locator.click: Test timeout of 60000ms exceeded.
+    Call log:
+      - waiting for getByRole('link', { name: 'Fault list' })
+
+
+       9 | async function openFaultList(page: Page) {
+      10 |   await page.goto("/admin");
+    > 11 |   await page.getByRole("link", { name: "Fault list" }).click();
+         |                                                        ^
+      12 |   await expect(page.getByRole("heading", { name: "Fault list" })).toBeVisible();
+      13 | }
+      14 |
+        at openFaultList (frontend/e2e/us25-fault-list.spec.ts:11:56)
+        at frontend/e2e/us25-fault-list.spec.ts:18:3
+
+    Error Context: test-results/us25-fault-list-us25-admin-afb9d-ult-and-new-analyses-follow/error-context.md
+
+  2) e2e/us25-fault-list.spec.ts:52:5 › us25_admin_adds_a_fault_from_an_existing_measurement_and_it_is_reported 
+
+    Test timeout of 60000ms exceeded.
+
+    Error: locator.click: Test timeout of 60000ms exceeded.
+    Call log:
+      - waiting for getByRole('link', { name: 'Fault list' })
+
+
+       9 | async function openFaultList(page: Page) {
+      10 |   await page.goto("/admin");
+    > 11 |   await page.getByRole("link", { name: "Fault list" }).click();
+         |                                                        ^
+      12 |   await expect(page.getByRole("heading", { name: "Fault list" })).toBeVisible();
+      13 | }
+      14 |
+        at openFaultList (frontend/e2e/us25-fault-list.spec.ts:11:56)
+        at frontend/e2e/us25-fault-list.spec.ts:54:3
+
+    Error Context: test-results/us25-fault-list-us25-admin-c3b1c-surement-and-it-is-reported/error-context.md
+
+  3) e2e/us25-fault-list.spec.ts:85:5 › us25_non_admin_sees_403_on_the_fault_list ──────────────────
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('heading', { name: '403: Admins only' })
+    Expected: visible
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('heading', { name: '403: Admins only' }) with timeout 10000ms
+      - waiting for getByRole('heading', { name: '403: Admins only' })
+
+
+      86 |   await signUp(page);
+      87 |   await page.goto("/admin/faults");
+    > 88 |   await expect(page.getByRole("heading", { name: "403: Admins only" })).toBeVisible();
+         |                                                                         ^
+      89 |   await expect(page.getByRole("region", { name: "Add a fault" })).toHaveCount(0);
+      90 | });
+      91 |
+        at frontend/e2e/us25-fault-list.spec.ts:88:73
+
+    Error Context: test-results/us25-fault-list-us25-non-admin-sees-403-on-the-fault-list/error-context.md
+
+  3 failed
+    e2e/us25-fault-list.spec.ts:15:5 › us25_admin_edits_disables_and_reenables_a_fault_and_new_analyses_follow 
+    e2e/us25-fault-list.spec.ts:52:5 › us25_admin_adds_a_fault_from_an_existing_measurement_and_it_is_reported 
+    e2e/us25-fault-list.spec.ts:85:5 › us25_non_admin_sees_403_on_the_fault_list ───────────────────

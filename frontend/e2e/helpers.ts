@@ -7,8 +7,9 @@ import { expect, type Page } from "@playwright/test";
 // synthetic pose scenario from the file name, so one clip can stand in for every scenario.
 const CLIP = readFileSync(path.join(__dirname, "fixtures", "set.mp4"));
 
-export async function signUp(page: Page) {
-  const email = `lifter-${Date.now()}-${Math.floor(Math.random() * 1e6)}@virginia.edu`;
+// In test mode the backend makes accounts at the reserved admin.test domain admins (US-25 browser tests).
+export async function signUp(page: Page, { admin = false } = {}) {
+  const email = `lifter-${Date.now()}-${Math.floor(Math.random() * 1e6)}@${admin ? "admin.test" : "virginia.edu"}`;
   await page.goto("/signup");
   await page.getByLabel("Email").fill(email);
   await page.getByLabel("Password").fill("squat1234");
