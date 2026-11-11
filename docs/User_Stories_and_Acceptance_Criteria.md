@@ -456,3 +456,23 @@ Usage is read from each provider's own response (Claude `usage`, OpenAI `usage`,
 `usageMetadata`). A failed request with no response records zero tokens. Costs are estimates at the prices
 in the table and must be checked against current provider pricing. Totals count analyses with at least one
 LLM attempt, and attempts with an unknown cost are left out of the dollar totals and counted separately.
+
+### [US-27] Usage and moderation
+
+GitHub issue: [#29](https://github.com/radwnkhn/LLMsInSWEProject/issues/29)
+
+As an **admin**, I want to see sign-ups and uploads over time and remove inappropriate uploads, so that
+the app stays healthy and on-topic.
+
+#### Acceptance criteria
+- [ ] [unit] [integration] [e2e] An admin usage page shows sign-ups and uploads per day for a chosen date range, with totals for the range.
+- [ ] [integration] [e2e] The admin upload list shows each upload's date, lift, owner and status, can be filtered by date and by lift, and links each upload to its analysis.
+- [ ] [integration] [e2e] An admin can remove an upload with a reason from a short list (off-topic, inappropriate, other): its video and frames are deleted from storage with the US-21 deletion logic, it disappears from the owner's history, and a moderation log records who removed it, when and why.
+- [ ] [integration] [e2e] When the owner opens a removed upload's results, they see "This upload was removed by a moderator" instead of a broken page.
+- [ ] [unit] [e2e] Removing an upload asks for confirmation first, and the API rejects a removal that isn't confirmed or has no valid reason.
+- [ ] [integration] Non-admin users get 403 on the usage page, the upload list, removal and the moderation log.
+
+Days are UTC dates and the range defaults to the last 30 days. Removal reuses the US-21 upload deletion,
+so the upload's analyses, measurements, AI attempts and ratings are deleted with its media and it no
+longer counts in usage figures. The moderation log keeps only what it needs to explain the removal. An
+upload can't be removed while one of its analyses is still processing.
