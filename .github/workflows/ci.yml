@@ -10,9 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      # The Dockerfile downloads the real model and runs inference. Unit tests mock
-      # MediaPipe, and an import alone misses lazily loaded native dependencies.
+      # Verify the final runtime as its unprivileged user, outside the build
+      # sandbox. An import alone misses lazily loaded native dependencies.
       - run: docker build --tag alibi-api:ci backend
+      - run: docker run --rm alibi-api:ci python scripts/check_pose_runtime.py
 
   backend:
     runs-on: ubuntu-latest
