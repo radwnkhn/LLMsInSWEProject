@@ -1,0 +1,5 @@
+
+> frontend@0.1.0 lint
+> eslint --ignore-pattern coverage/**
+
+ESLint and TypeScript checks passed.

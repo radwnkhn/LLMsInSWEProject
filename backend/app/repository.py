@@ -4,9 +4,10 @@ from __future__ import annotations
 import json
 import threading
 import uuid
+from contextlib import contextmanager, nullcontext
 from dataclasses import dataclass, field, replace
 from datetime import datetime, timedelta, timezone
-from typing import Protocol
+from typing import ContextManager, Protocol
 
 from app.llm.schema import ValidationIssue
 from app.measure import RepMeasurement
@@ -51,6 +52,7 @@ class AnalysisRecord:
     error: str | None = None
     created_at: datetime | None = None
     completed_at: datetime | None = None
+    processing_stage: str | None = None  # measuring | writing_feedback | checking
 
 
 @dataclass
@@ -83,14 +85,18 @@ class AdminAnalysisRow:
 
 
 ANALYSIS_FIELDS = {"status", "final_status", "rep_count", "camera_angle", "top_fault_id", "result",
-                   "unanalyzable_reason", "frame_path", "error", "completed_at"}
+                   "unanalyzable_reason", "frame_path", "error", "completed_at", "processing_stage"}
 
 
 class Repository(Protocol):
+    def user_lock(self, user_id: str) -> ContextManager[None]: ...
     def ensure_user(self, id: str, email: str, is_admin: bool = False) -> UserRecord: ...
     def get_user(self, id: str) -> UserRecord | None: ...
     def create_upload(self, id: str, user_id: str, lift: str, video_path: str, filename: str, note: str | None) -> UploadRecord: ...
     def get_upload(self, id: str) -> UploadRecord | None: ...
+    def list_uploads_for_user(self, user_id: str) -> list[UploadRecord]: ...
+    def delete_upload(self, upload_id: str) -> None: ...
+    def delete_user(self, user_id: str) -> None: ...
     def create_analysis(self, id: str, upload_id: str, user_id: str, lift: str) -> AnalysisRecord: ...
     def update_analysis(self, id: str, **fields) -> None: ...
     def get_analysis(self, id: str) -> AnalysisRecord | None: ...
@@ -110,6 +116,7 @@ class Repository(Protocol):
 class InMemoryRepository:
     def __init__(self):
         self._lock = threading.Lock()
+        self._user_locks: dict[str, threading.RLock] = {}
         self._last = _now()
         self.users: dict[str, UserRecord] = {}
         self.uploads: dict[str, UploadRecord] = {}
@@ -117,6 +124,13 @@ class InMemoryRepository:
         self.reps: dict[str, list[RepMeasurement]] = {}
         self.attempts: dict[str, list[LLMAttemptRecord]] = {}
         self.feedback: dict[tuple[str, str], FeedbackRecord] = {}
+
+    @contextmanager
+    def user_lock(self, user_id):
+        with self._lock:
+            guard = self._user_locks.setdefault(user_id, threading.RLock())
+        with guard:
+            yield
 
     def _stamp(self) -> datetime:
         # Strictly increasing timestamps, so "newest first" is well defined even within one clock tick.
@@ -141,6 +155,28 @@ class InMemoryRepository:
     def get_upload(self, id):
         return self.uploads.get(id)
 
+    def list_uploads_for_user(self, user_id):
+        return [u for u in list(self.uploads.values()) if u.user_id == user_id]
+
+    def delete_upload(self, upload_id):
+        analysis_ids = {a.id for a in list(self.analyses.values()) if a.upload_id == upload_id}
+        for aid in analysis_ids:
+            self.reps.pop(aid, None)
+            self.attempts.pop(aid, None)
+            self.analyses.pop(aid, None)
+        for key in list(self.feedback):
+            if key[0] in analysis_ids:
+                self.feedback.pop(key, None)
+        self.uploads.pop(upload_id, None)
+
+    def delete_user(self, user_id):
+        for upload in self.list_uploads_for_user(user_id):
+            self.delete_upload(upload.id)
+        for key in list(self.feedback):
+            if key[1] == user_id:
+                self.feedback.pop(key, None)
+        self.users.pop(user_id, None)
+
     def create_analysis(self, id, upload_id, user_id, lift):
         rec = AnalysisRecord(id=id, upload_id=upload_id, user_id=user_id, lift=lift, created_at=self._stamp())
         self.analyses[id] = rec
@@ -156,7 +192,7 @@ class InMemoryRepository:
         return self.analyses.get(id)
 
     def list_analyses_for_user(self, user_id, lift=None):
-        rows = [a for a in self.analyses.values() if a.user_id == user_id and (lift is None or a.lift == lift)]
+        rows = [a for a in list(self.analyses.values()) if a.user_id == user_id and (lift is None or a.lift == lift)]
         return sorted(rows, key=lambda a: a.created_at, reverse=True)
 
     def save_rep_measurements(self, analysis_id, reps):
@@ -206,11 +242,27 @@ class PostgresRepository:
         from psycopg_pool import ConnectionPool
 
         self.pool = ConnectionPool(dsn, min_size=1, max_size=5, kwargs={"autocommit": True}, open=True)
+        self._local = threading.local()
+
+    @contextmanager
+    def user_lock(self, user_id):
+        # Pin the connection for queries inside the guard. Waiting requests must not
+        # exhaust the pool while the lock holder needs a second connection to make progress.
+        previous = getattr(self._local, "connection", None)
+        with (nullcontext(previous) if previous is not None else self.pool.connection()) as conn:
+            conn.execute("select pg_advisory_lock(hashtextextended(%s, 0))", (user_id,))
+            self._local.connection = conn
+            try:
+                yield
+            finally:
+                self._local.connection = previous
+                conn.execute("select pg_advisory_unlock(hashtextextended(%s, 0))", (user_id,))
 
     def _q(self, sql: str, params=(), one=False, rows=False):
         from psycopg.rows import dict_row
 
-        with self.pool.connection() as conn, conn.cursor(row_factory=dict_row) as cur:
+        pinned = getattr(self._local, "connection", None)
+        with (nullcontext(pinned) if pinned is not None else self.pool.connection()) as conn, conn.cursor(row_factory=dict_row) as cur:
             cur.execute(sql, params)
             if one:
                 return cur.fetchone()
@@ -226,7 +278,8 @@ class PostgresRepository:
                               status=r["status"], final_status=r["final_status"], rep_count=r["rep_count"],
                               camera_angle=r["camera_angle"], top_fault_id=r["top_fault_id"], result=r["result"],
                               unanalyzable_reason=r["unanalyzable_reason"], frame_path=r["frame_path"],
-                              error=r["error"], created_at=r["created_at"], completed_at=r["completed_at"])
+                              error=r["error"], created_at=r["created_at"], completed_at=r["completed_at"],
+                              processing_stage=r["processing_stage"])
 
     def ensure_user(self, id, email, is_admin=False):
         self._q("insert into public.users (id, email, is_admin) values (%s, %s, %s) "
@@ -253,6 +306,18 @@ class PostgresRepository:
         r = self._q("insert into public.analyses (id, upload_id, user_id, lift) values (%s, %s, %s, %s) returning *",
                     (id, upload_id, user_id, lift), one=True)
         return self._analysis(r)
+
+    def list_uploads_for_user(self, user_id):
+        rows = self._q("select * from public.uploads where user_id = %s order by created_at", (user_id,), rows=True)
+        return [UploadRecord(str(r["id"]), str(r["user_id"]), r["lift"], r["video_path"], r["filename"],
+                             r["note"], r["created_at"]) for r in rows]
+
+    def delete_upload(self, upload_id):
+        # Existing foreign keys cascade to analyses, measurements, attempts, errors and feedback.
+        self._q("delete from public.uploads where id::text = %s", (upload_id,))
+
+    def delete_user(self, user_id):
+        self._q("delete from public.users where id::text = %s", (user_id,))
 
     def update_analysis(self, id, **fields):
         unknown = set(fields) - ANALYSIS_FIELDS

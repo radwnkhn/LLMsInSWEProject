@@ -1,0 +1,26 @@
+
+> frontend@0.1.0 e2e
+> playwright test
+
+
+Running 14 tests using 1 worker
+
+(node:26908) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  -   1 e2e\setup02-deploy.spec.ts:7:5 › setup02_deployed_frontend_reaches_backend_health
+  ok  2 e2e\setup02-deploy.spec.ts:13:5 › setup02_status_page_reports_backend_health_locally (355ms)
+  ok  3 e2e\us01-auth.spec.ts:5:5 › us01_after_logging_out_history_redirects_to_login (1.4s)
+  ok  4 e2e\us01-auth.spec.ts:15:5 › us01_wrong_password_shows_message (2.1s)
+  ok  5 e2e\us03-guide.spec.ts:8:7 › us03_guide_fits_375px_without_sideways_scroll_squat (1.6s)
+  ok  6 e2e\us03-guide.spec.ts:8:7 › us03_guide_fits_375px_without_sideways_scroll_deadlift (994ms)
+  ok  7 e2e\us03-guide.spec.ts:8:7 › us03_guide_fits_375px_without_sideways_scroll_bench_press (904ms)
+  ok  8 e2e\us05-us09-status.spec.ts:5:5 › us05_unanalyzable_message_has_refilm_button_that_opens_the_guide (2.1s)
+  ok  9 e2e\us05-us09-status.spec.ts:14:5 › us09_fallback_result_shows_the_note (3.5s)
+  ok 10 e2e\us11-us12-video.spec.ts:5:5 › us11_tapping_the_frame_plays_the_video_from_the_start_of_that_rep (3.5s)
+  ok 11 e2e\us11-us12-video.spec.ts:18:5 › us12_tapping_a_rep_row_jumps_the_video_to_that_rep (3.3s)
+  ok 12 e2e\us17-history.spec.ts:5:5 › us17_tapping_a_history_entry_opens_its_full_results (3.8s)
+  ok 13 e2e\us19-processing.spec.ts:7:5 › us19_progress_updates_without_reload_and_results_open_automatically (6.8s)
+  ok 14 e2e\us19-processing.spec.ts:42:5 › us19_failed_analysis_retries_the_saved_video (4.7s)
+
+  1 skipped
+  13 passed (38.5s)

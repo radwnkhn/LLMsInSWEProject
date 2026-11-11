@@ -363,3 +363,77 @@ As an **admin**, I want to see every analysis with its measurements, each AI att
 - **US-26 Track AI usage and cost:** As an admin, I want to see LLM token usage and cost per analysis, so that we know what the app costs to run.
 - **US-27 Usage and moderation:** As an admin, I want to see sign-ups and uploads over time and remove inappropriate uploads, so that the app stays healthy and on-topic.
 - **US-28 More lifts:** As a gym goer, I want feedback on more lifts, such as overhead press and Romanian deadlift, so that I can use the app for more of my workout.
+
+### [US-19] Show processing status while I wait
+
+GitHub issue: [#21](https://github.com/radwnkhn/LLMsInSWEProject/issues/21)
+
+As a **gym goer**, I want to see each analysis step while my video is processed, so that I know the app is working.
+
+#### Acceptance criteria
+- [ ] [integration] [e2e] Show Uploading → Measuring → Writing feedback → Checking, updating without a refresh.
+- [ ] [e2e] When analysis finishes, open the results automatically, including fallback and unanalyzable results.
+- [ ] [integration] [e2e] If analysis fails, show an error with Retry instead of an endless spinner.
+
+The current step comes from the worker's persisted progress. A correction attempt returns to Writing
+feedback before Checking again. Retry reuses the stored video, creates a fresh analysis and preserves the
+failed analysis and its logs. Status reads and retries require the upload owner's session. A failed status
+request offers Retry to reconnect; leaving the page cancels its polling and pending request.
+
+### [US-20] Compare a new upload with an older one
+
+GitHub issue: [#22](https://github.com/radwnkhn/LLMsInSWEProject/issues/22)
+
+As a **gym goer**, I want to compare a new upload with an older one of the same lift, so that I can see
+if I fixed the problem.
+
+#### Acceptance criteria
+- [ ] [integration] [e2e] Two uploads of the same lift can be shown side by side with key measurements.
+- [ ] [unit] [integration] [e2e] The comparison shows whether the earlier top fault appears in the newer upload.
+- [ ] [unit] [integration] [e2e] Uploads of different lifts can't be compared.
+
+Select two eligible uploads from History. The API orders them by upload creation time, checks ownership
+and matching lifts, and compares saved per-rep measurements using the existing fault thresholds. A fault
+is still present even if the newer coaching output no longer ranks it first. Missing measurements or
+an unsuitable camera angle do not establish that a fault was fixed. Measurements-only results remain
+comparable; an earlier fallback has no validated coaching fault to compare. Failed, unfinished and
+unanalyzable jobs and two attempts for the same upload are excluded.
+
+### [US-21] Delete my videos and account
+
+GitHub issue: [#23](https://github.com/radwnkhn/LLMsInSWEProject/issues/23)
+
+As a **gym goer**, I want to delete my videos or my whole account, so that I stay in control of my data.
+
+#### Acceptance criteria
+- [ ] [unit] [integration] [e2e] I can delete an upload after confirming, which removes its video, frames, measurements and AI output.
+- [ ] [unit] [integration] [e2e] I can delete my account and all its data from settings.
+- [ ] [integration] [e2e] Deleted data no longer appears anywhere in the app.
+
+Deletion requires a valid owner session and an explicit confirmation. Deleting an upload also removes
+all retries and ratings. Account deletion removes all owned media, records and Auth credentials and
+invalidates existing sessions. Missing/deleted results cannot be inspected or compared, including by
+admins. Other users' data is preserved. Queued/processing analyses must finish first; otherwise a
+clear message asks the user to wait and retry. Failures never produce a false success, and incomplete
+cleanup can be retried. Both dialogs explain permanence and provide Cancel; account deletion is in Settings.
+
+### [US-25] Manage the fault list
+
+GitHub issue: [#27](https://github.com/radwnkhn/LLMsInSWEProject/issues/27)
+
+As an **admin**, I want to add, edit or disable faults the AI can report, so that feedback stays within
+what we can measure as we add checks.
+
+#### Acceptance criteria
+- [ ] [integration] [e2e] An admin page lists every fault grouped by lift, showing its name, category, whether it is a safety fault, the measurement that confirms it and whether it is enabled.
+- [ ] [unit] [integration] [e2e] An admin can edit a fault's display name and short description; blank or too-long values are rejected.
+- [ ] [unit] [integration] [e2e] An admin can disable and re-enable a fault. A disabled fault is left out of the fault list in the LLM prompt, and the validator rejects a reply that cites it, which starts the correction loop.
+- [ ] [unit] [integration] [e2e] An admin can add a fault only by choosing a measurement the app already computes for that lift; unknown measurements, unknown lifts and duplicate IDs are rejected.
+- [ ] [integration] Non-admin users get 403 on the fault list page and every fault endpoint.
+- [ ] [unit] [integration] Changes are saved through the repository (Postgres in production, in memory in tests), and new analyses use the saved list. The saved list starts as the current fault definitions.
+
+The fault list is seeded with the Alpha definitions, so Alpha behavior is unchanged until an admin makes a
+change. Results and comparisons from earlier analyses still show disabled faults. Faults are never
+deleted, only disabled, because saved analyses refer to them. A new fault's camera angles, joints and
+unit come from the measurement it uses. Its threshold is set only when it is added: changing thresholds
+later is US-24.

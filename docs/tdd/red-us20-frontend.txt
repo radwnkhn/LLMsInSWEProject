@@ -1,0 +1,1940 @@
+
+> frontend@0.1.0 test
+> vitest run us20-comparison
+
+
+ RUN  v3.2.7 C:/Users/imran/LLMsInSWEProject/frontend
+
+ ❯ src/components/__tests__/us20-comparison.test.tsx (12 tests | 12 failed) 1088ms
+   × US-20 compare uploads > us20_history_selects_two_same_lift_uploads_and_opens_the_comparison 855ms
+     → Unable to find an accessible element with the role "checkbox"
+
+Here are the accessible roles:
+
+  combobox:
+
+  Name "Lift":
+  [36m<select[39m
+    [33mclass[39m=[32m"rounded-lg border border-zinc-300 px-2 py-1"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  option:
+
+  Name "All":
+  [36m<option[39m
+    [33mvalue[39m=[32m"all"[39m
+  [36m/>[39m
+
+  Name "Squat":
+  [36m<option[39m
+    [33mvalue[39m=[32m"squat"[39m
+  [36m/>[39m
+
+  Name "Deadlift":
+  [36m<option[39m
+    [33mvalue[39m=[32m"deadlift"[39m
+  [36m/>[39m
+
+  Name "Bench Press":
+  [36m<option[39m
+    [33mvalue[39m=[32m"bench_press"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  list:
+
+  Name "":
+  [36m<ul[39m
+    [33mclass[39m=[32m"divide-y divide-zinc-200 rounded-xl border border-zinc-200"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  listitem:
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  --------------------------------------------------
+  link:
+
+  Name "Nov 9, 2026AnalyzedSquat · 5 reps":
+  [36m<a[39m
+    [33mclass[39m=[32m"block px-3 py-3"[39m
+    [33mhref[39m=[32m"/results/new"[39m
+  [36m/>[39m
+
+  Name "Nov 8, 2026AnalyzedSquat · 3 repsHips rise before your shoulders":
+  [36m<a[39m
+    [33mclass[39m=[32m"block px-3 py-3"[39m
+    [33mhref[39m=[32m"/results/old"[39m
+  [36m/>[39m
+
+  Name "Nov 7, 2026AnalyzedDeadlift · 3 reps":
+  [36m<a[39m
+    [33mclass[39m=[32m"block px-3 py-3"[39m
+    [33mhref[39m=[32m"/results/deadlift"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"space-y-3"[39m
+    [36m>[39m
+      [36m<label[39m
+        [33mclass[39m=[32m"flex items-center gap-2 text-sm"[39m
+      [36m>[39m
+        [0mLift[0m
+        [36m<select[39m
+          [33mclass[39m=[32m"rounded-lg border border-zinc-300 px-2 py-1"[39m
+        [36m>[39m
+          [36m<option[39m
+            [33mvalue[39m=[32m"all"[39m
+          [36m>[39m
+            [0mAll[0m
+          [36m</option>[39m
+          [36m<option[39m
+            [33mvalue[39m=[32m"squat"[39m
+          [36m>[39m
+            [0mSquat[0m
+          [36m</option>[39m
+          [36m<option[39m
+            [33mvalue[39m=[32m"deadlift"[39m
+          [36m>[39m
+            [0mDeadlift[0m
+          [36m</option>[39m
+          [36m<option[39m
+            [33mvalue[39m=[32m"bench_press"[39m
+          [36m>[39m
+            [0mBench Press[0m
+          [36m</option>[39m
+        [36m</select>[39m
+      [36m</label>[39m
+      [36m<ul[39m
+        [33mclass[39m=[32m"divide-y divide-zinc-200 rounded-xl border border-zinc-200"[39m
+      [36m>[39m
+        [36m<li>[39m
+          [36m<a[39m
+            [33mclass[39m=[32m"block px-3 py-3"[39m
+            [33mhref[39m=[32m"/results/new"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"flex justify-between text-sm text-zinc-500"[39m
+            [36m>[39m
+              [36m<span>[39m
+                [0mNov 9, 2026[0m
+              [36m</span>[39m
+              [36m<span>[39m
+                [0mAnalyzed[0m
+              [36m</span>[39m
+            [36m</span>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"block font-medium"[39m
+            [36m>[39m
+              [0mSquat · 5 reps[0m
+            [36m</span>[39m
+          [36m</a>[39m
+        [36m</li>[39m
+        [36m<li>[39m
+          [36m<a[39m
+            [33mclass[39m=[32m"block px-3 py-3"[39m
+            [33mhref[39m=[32m"/results/old"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"flex justify-between text-sm text-zinc-500"[39m
+            [36m>[39m
+              [36m<span>[39m
+                [0mNov 8, 2026[0m
+              [36m</span>[39m
+              [36m<span>[39m
+                [0mAnalyzed[0m
+              [36m</span>[39m
+            [36m</span>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"block font-medium"[39m
+            [36m>[39m
+              [0mSquat · 3 reps[0m
+            [36m</span>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"block text-sm"[39m
+            [36m>[39m
+              [0mHips rise before your shoulders[0m
+            [36m</span>[39m
+          [36m</a>[39m
+        [36m</li>[39m
+        [36m<li>[39m
+          [36m<a[39m
+            [33mclass[39m=[32m"block px-3 py-3"[39m
+            [33mhref[39m=[32m"/results/deadlift"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"flex justify-between text-sm text-zinc-500"[39m
+            [36m>[39m
+              [36m<span>[39m
+                [0mNov 7, 2026[0m
+              [36m</span>[39m
+              [36m<span>[39m
+                [0mAnalyzed[0m
+              [36m</span>[39m
+            [36m</span>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"block font-medium"[39m
+            [36m>[39m
+              [0mDeadlift · 3 reps[0m
+            [36m</span>[39m
+          [36m</a>[39m
+        [36m</li>[39m
+      [36m</ul>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+   × US-20 compare uploads > us20_a_different_lift_is_disabled_after_the_first_selection 56ms
+     → Unable to find an accessible element with the role "checkbox"
+
+Here are the accessible roles:
+
+  combobox:
+
+  Name "Lift":
+  [36m<select[39m
+    [33mclass[39m=[32m"rounded-lg border border-zinc-300 px-2 py-1"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  option:
+
+  Name "All":
+  [36m<option[39m
+    [33mvalue[39m=[32m"all"[39m
+  [36m/>[39m
+
+  Name "Squat":
+  [36m<option[39m
+    [33mvalue[39m=[32m"squat"[39m
+  [36m/>[39m
+
+  Name "Deadlift":
+  [36m<option[39m
+    [33mvalue[39m=[32m"deadlift"[39m
+  [36m/>[39m
+
+  Name "Bench Press":
+  [36m<option[39m
+    [33mvalue[39m=[32m"bench_press"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  list:
+
+  Name "":
+  [36m<ul[39m
+    [33mclass[39m=[32m"divide-y divide-zinc-200 rounded-xl border border-zinc-200"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  listitem:
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  --------------------------------------------------
+  link:
+
+  Name "Nov 9, 2026AnalyzedSquat · 5 reps":
+  [36m<a[39m
+    [33mclass[39m=[32m"block px-3 py-3"[39m
+    [33mhref[39m=[32m"/results/new"[39m
+  [36m/>[39m
+
+  Name "Nov 8, 2026AnalyzedSquat · 3 repsHips rise before your shoulders":
+  [36m<a[39m
+    [33mclass[39m=[32m"block px-3 py-3"[39m
+    [33mhref[39m=[32m"/results/old"[39m
+  [36m/>[39m
+
+  Name "Nov 7, 2026AnalyzedDeadlift · 3 reps":
+  [36m<a[39m
+    [33mclass[39m=[32m"block px-3 py-3"[39m
+    [33mhref[39m=[32m"/results/deadlift"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"space-y-3"[39m
+    [36m>[39m
+      [36m<label[39m
+        [33mclass[39m=[32m"flex items-center gap-2 text-sm"[39m
+      [36m>[39m
+        [0mLift[0m
+        [36m<select[39m
+          [33mclass[39m=[32m"rounded-lg border border-zinc-300 px-2 py-1"[39m
+        [36m>[39m
+          [36m<option[39m
+            [33mvalue[39m=[32m"all"[39m
+          [36m>[39m
+            [0mAll[0m
+          [36m</option>[39m
+          [36m<option[39m
+            [33mvalue[39m=[32m"squat"[39m
+          [36m>[39m
+            [0mSquat[0m
+          [36m</option>[39m
+          [36m<option[39m
+            [33mvalue[39m=[32m"deadlift"[39m
+          [36m>[39m
+            [0mDeadlift[0m
+          [36m</option>[39m
+          [36m<option[39m
+            [33mvalue[39m=[32m"bench_press"[39m
+          [36m>[39m
+            [0mBench Press[0m
+          [36m</option>[39m
+        [36m</select>[39m
+      [36m</label>[39m
+      [36m<ul[39m
+        [33mclass[39m=[32m"divide-y divide-zinc-200 rounded-xl border border-zinc-200"[39m
+      [36m>[39m
+        [36m<li>[39m
+          [36m<a[39m
+            [33mclass[39m=[32m"block px-3 py-3"[39m
+            [33mhref[39m=[32m"/results/new"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"flex justify-between text-sm text-zinc-500"[39m
+            [36m>[39m
+              [36m<span>[39m
+                [0mNov 9, 2026[0m
+              [36m</span>[39m
+              [36m<span>[39m
+                [0mAnalyzed[0m
+              [36m</span>[39m
+            [36m</span>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"block font-medium"[39m
+            [36m>[39m
+              [0mSquat · 5 reps[0m
+            [36m</span>[39m
+          [36m</a>[39m
+        [36m</li>[39m
+        [36m<li>[39m
+          [36m<a[39m
+            [33mclass[39m=[32m"block px-3 py-3"[39m
+            [33mhref[39m=[32m"/results/old"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"flex justify-between text-sm text-zinc-500"[39m
+            [36m>[39m
+              [36m<span>[39m
+                [0mNov 8, 2026[0m
+              [36m</span>[39m
+              [36m<span>[39m
+                [0mAnalyzed[0m
+              [36m</span>[39m
+            [36m</span>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"block font-medium"[39m
+            [36m>[39m
+              [0mSquat · 3 reps[0m
+            [36m</span>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"block text-sm"[39m
+            [36m>[39m
+              [0mHips rise before your shoulders[0m
+            [36m</span>[39m
+          [36m</a>[39m
+        [36m</li>[39m
+        [36m<li>[39m
+          [36m<a[39m
+            [33mclass[39m=[32m"block px-3 py-3"[39m
+            [33mhref[39m=[32m"/results/deadlift"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"flex justify-between text-sm text-zinc-500"[39m
+            [36m>[39m
+              [36m<span>[39m
+                [0mNov 7, 2026[0m
+              [36m</span>[39m
+              [36m<span>[39m
+                [0mAnalyzed[0m
+              [36m</span>[39m
+            [36m</span>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"block font-medium"[39m
+            [36m>[39m
+              [0mDeadlift · 3 reps[0m
+            [36m</span>[39m
+          [36m</a>[39m
+        [36m</li>[39m
+      [36m</ul>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+   × US-20 compare uploads > us20_only_two_completed_measurable_uploads_can_be_selected 96ms
+     → Unable to find an accessible element with the role "checkbox"
+
+Here are the accessible roles:
+
+  combobox:
+
+  Name "Lift":
+  [36m<select[39m
+    [33mclass[39m=[32m"rounded-lg border border-zinc-300 px-2 py-1"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  option:
+
+  Name "All":
+  [36m<option[39m
+    [33mvalue[39m=[32m"all"[39m
+  [36m/>[39m
+
+  Name "Squat":
+  [36m<option[39m
+    [33mvalue[39m=[32m"squat"[39m
+  [36m/>[39m
+
+  Name "Deadlift":
+  [36m<option[39m
+    [33mvalue[39m=[32m"deadlift"[39m
+  [36m/>[39m
+
+  Name "Bench Press":
+  [36m<option[39m
+    [33mvalue[39m=[32m"bench_press"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  list:
+
+  Name "":
+  [36m<ul[39m
+    [33mclass[39m=[32m"divide-y divide-zinc-200 rounded-xl border border-zinc-200"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  listitem:
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  --------------------------------------------------
+  link:
+
+  Name "Nov 9, 2026AnalyzedSquat · 5 reps":
+  [36m<a[39m
+    [33mclass[39m=[32m"block px-3 py-3"[39m
+    [33mhref[39m=[32m"/results/new"[39m
+  [36m/>[39m
+
+  Name "Nov 8, 2026AnalyzedSquat · 3 repsHips rise before your shoulders":
+  [36m<a[39m
+    [33mclass[39m=[32m"block px-3 py-3"[39m
+    [33mhref[39m=[32m"/results/old"[39m
+  [36m/>[39m
+
+  Name "Nov 7, 2026AnalyzedDeadlift · 3 reps":
+  [36m<a[39m
+    [33mclass[39m=[32m"block px-3 py-3"[39m
+    [33mhref[39m=[32m"/results/deadlift"[39m
+  [36m/>[39m
+
+  Name "Nov 9, 2026AnalyzedSquat · 5 reps":
+  [36m<a[39m
+    [33mclass[39m=[32m"block px-3 py-3"[39m
+    [33mhref[39m=[32m"/results/failed"[39m
+  [36m/>[39m
+
+  Name "Nov 9, 2026AnalyzedSquat · 5 reps":
+  [36m<a[39m
+    [33mclass[39m=[32m"block px-3 py-3"[39m
+    [33mhref[39m=[32m"/results/unmeasurable"[39m
+  [36m/>[39m
+
+  Name "Nov 9, 2026AnalyzedSquat · 5 reps":
+  [36m<a[39m
+    [33mclass[39m=[32m"block px-3 py-3"[39m
+    [33mhref[39m=[32m"/results/pending"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"space-y-3"[39m
+    [36m>[39m
+      [36m<label[39m
+        [33mclass[39m=[32m"flex items-center gap-2 text-sm"[39m
+      [36m>[39m
+        [0mLift[0m
+        [36m<select[39m
+          [33mclass[39m=[32m"rounded-lg border border-zinc-300 px-2 py-1"[39m
+        [36m>[39m
+          [36m<option[39m
+            [33mvalue[39m=[32m"all"[39m
+          [36m>[39m
+            [0mAll[0m
+          [36m</option>[39m
+          [36m<option[39m
+            [33mvalue[39m=[32m"squat"[39m
+          [36m>[39m
+            [0mSquat[0m
+          [36m</option>[39m
+          [36m<option[39m
+            [33mvalue[39m=[32m"deadlift"[39m
+          [36m>[39m
+            [0mDeadlift[0m
+          [36m</option>[39m
+          [36m<option[39m
+            [33mvalue[39m=[32m"bench_press"[39m
+          [36m>[39m
+            [0mBench Press[0m
+          [36m</option>[39m
+        [36m</select>[39m
+      [36m</label>[39m
+      [36m<ul[39m
+        [33mclass[39m=[32m"divide-y divide-zinc-200 rounded-xl border border-zinc-200"[39m
+      [36m>[39m
+        [36m<li>[39m
+          [36m<a[39m
+            [33mclass[39m=[32m"block px-3 py-3"[39m
+            [33mhref[39m=[32m"/results/new"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"flex justify-between text-sm text-zinc-500"[39m
+            [36m>[39m
+              [36m<span>[39m
+                [0mNov 9, 2026[0m
+              [36m</span>[39m
+              [36m<span>[39m
+                [0mAnalyzed[0m
+              [36m</span>[39m
+            [36m</span>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"block font-medium"[39m
+            [36m>[39m
+              [0mSquat · 5 reps[0m
+            [36m</span>[39m
+          [36m</a>[39m
+        [36m</li>[39m
+        [36m<li>[39m
+          [36m<a[39m
+            [33mclass[39m=[32m"block px-3 py-3"[39m
+            [33mhref[39m=[32m"/results/old"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"flex justify-between text-sm text-zinc-500"[39m
+            [36m>[39m
+              [36m<span>[39m
+                [0mNov 8, 2026[0m
+              [36m</span>[39m
+              [36m<span>[39m
+                [0mAnalyzed[0m
+              [36m</span>[39m
+            [36m</span>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"block font-medium"[39m
+            [36m>[39m
+              [0mSquat · 3 reps[0m
+            [36m</span>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"block text-sm"[39m
+            [36m>[39m
+              [0mHips rise before your shoulders[0m
+            [36m</span>[39m
+          [36m</a>[39m
+        [36m</li>[39m
+        [36m<li>[39m
+          [36m<a[39m
+            [33mclass[39m=[32m"block px-3 py-3"[39m
+            [33mhref[39m=[32m"/results/deadlift"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"flex justify-between text-sm text-zinc-500"[39m
+            [36m>[39m
+              [36m<span>[39m
+                [0mNov 7, 2026[0m
+              [36m</span>[39m
+              [36m<span>[39m
+                [0mAnalyzed[0m
+              [36m</span>[39m
+            [36m</span>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"block font-medium"[39m
+            [36m>[39m
+              [0mDeadlift · 3 reps[0m
+            [36m</span>[39m
+          [36m</a>[39m
+        [36m</li>[39m
+        [36m<li>[39m
+          [36m<a[39m
+            [33mclass[39m=[32m"block px-3 py-3"[39m
+            [33mhref[39m=[32m"/results/failed"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"flex justify-between text-sm text-zinc-500"[39m
+            [36m>[39m
+              [36m<span>[39m
+                [0mNov 9, 2026[0m
+              [36m</span>[39m
+              [36m<span>[39m
+                [0mAnalyzed[0m
+              [36m</span>[39m
+            [36m</span>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"block font-medium"[39m
+            [36m>[39m
+              [0mSquat · 5 reps[0m
+            [36m</span>[39m
+          [36m</a>[39m
+        [36m</li>[39m
+        [36m<li>[39m
+          [36m<a[39m
+            [33mclass[39m=[32m"block px-3 py-3"[39m
+            [33mhref[39m=[32m"/results/unmeasurable"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"flex justify-between text-sm text-zinc-500"[39m
+            [36m>[39m
+              [36m<span>[39m
+                [0mNov 9, 2026[0m
+              [36m</span>[39m
+              [36m<span>[39m
+                [0mAnalyzed[0m
+              [36m</span>[39m
+            [36m</span>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"block font-medium"[39m
+            [36m>[39m
+              [0mSquat · 5 reps[0m
+            [36m</span>[39m
+          [36m</a>[39m
+        [36m</li>[39m
+        [36m<li>[39m
+          [36m<a[39m
+            [33mclass[39m=[32m"block px-3 py-3"[39m
+            [33mhref[39m=[32m"/results/pending"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"flex justify-between text-sm text-zinc-500"[39m
+            [36m>[39m
+              [36m<span>[39m
+                [0mNov 9, 2026[0m
+              [36m</span>[39m
+              [36m<span>[39m
+                [0mAnalyzed[0m
+              [36m</span>[39m
+            [36m</span>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"block font-medium"[39m
+            [36m>[39m
+              [0mSquat · 5 reps[0m
+            [36m</span>[39m
+          [36m</a>[39m
+        [36m</li>[39m
+      [36m</ul>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+   × US-20 compare uploads > us20_changing_the_history_filter_clears_hidden_selections 41ms
+     → Unable to find an accessible element with the role "checkbox"
+
+Here are the accessible roles:
+
+  combobox:
+
+  Name "Lift":
+  [36m<select[39m
+    [33mclass[39m=[32m"rounded-lg border border-zinc-300 px-2 py-1"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  option:
+
+  Name "All":
+  [36m<option[39m
+    [33mvalue[39m=[32m"all"[39m
+  [36m/>[39m
+
+  Name "Squat":
+  [36m<option[39m
+    [33mvalue[39m=[32m"squat"[39m
+  [36m/>[39m
+
+  Name "Deadlift":
+  [36m<option[39m
+    [33mvalue[39m=[32m"deadlift"[39m
+  [36m/>[39m
+
+  Name "Bench Press":
+  [36m<option[39m
+    [33mvalue[39m=[32m"bench_press"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  list:
+
+  Name "":
+  [36m<ul[39m
+    [33mclass[39m=[32m"divide-y divide-zinc-200 rounded-xl border border-zinc-200"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  listitem:
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  --------------------------------------------------
+  link:
+
+  Name "Nov 9, 2026AnalyzedSquat · 5 reps":
+  [36m<a[39m
+    [33mclass[39m=[32m"block px-3 py-3"[39m
+    [33mhref[39m=[32m"/results/new"[39m
+  [36m/>[39m
+
+  Name "Nov 8, 2026AnalyzedSquat · 3 repsHips rise before your shoulders":
+  [36m<a[39m
+    [33mclass[39m=[32m"block px-3 py-3"[39m
+    [33mhref[39m=[32m"/results/old"[39m
+  [36m/>[39m
+
+  Name "Nov 7, 2026AnalyzedDeadlift · 3 reps":
+  [36m<a[39m
+    [33mclass[39m=[32m"block px-3 py-3"[39m
+    [33mhref[39m=[32m"/results/deadlift"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"space-y-3"[39m
+    [36m>[39m
+      [36m<label[39m
+        [33mclass[39m=[32m"flex items-center gap-2 text-sm"[39m
+      [36m>[39m
+        [0mLift[0m
+        [36m<select[39m
+          [33mclass[39m=[32m"rounded-lg border border-zinc-300 px-2 py-1"[39m
+        [36m>[39m
+          [36m<option[39m
+            [33mvalue[39m=[32m"all"[39m
+          [36m>[39m
+            [0mAll[0m
+          [36m</option>[39m
+          [36m<option[39m
+            [33mvalue[39m=[32m"squat"[39m
+          [36m>[39m
+            [0mSquat[0m
+          [36m</option>[39m
+          [36m<option[39m
+            [33mvalue[39m=[32m"deadlift"[39m
+          [36m>[39m
+            [0mDeadlift[0m
+          [36m</option>[39m
+          [36m<option[39m
+            [33mvalue[39m=[32m"bench_press"[39m
+          [36m>[39m
+            [0mBench Press[0m
+          [36m</option>[39m
+        [36m</select>[39m
+      [36m</label>[39m
+      [36m<ul[39m
+        [33mclass[39m=[32m"divide-y divide-zinc-200 rounded-xl border border-zinc-200"[39m
+      [36m>[39m
+        [36m<li>[39m
+          [36m<a[39m
+            [33mclass[39m=[32m"block px-3 py-3"[39m
+            [33mhref[39m=[32m"/results/new"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"flex justify-between text-sm text-zinc-500"[39m
+            [36m>[39m
+              [36m<span>[39m
+                [0mNov 9, 2026[0m
+              [36m</span>[39m
+              [36m<span>[39m
+                [0mAnalyzed[0m
+              [36m</span>[39m
+            [36m</span>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"block font-medium"[39m
+            [36m>[39m
+              [0mSquat · 5 reps[0m
+            [36m</span>[39m
+          [36m</a>[39m
+        [36m</li>[39m
+        [36m<li>[39m
+          [36m<a[39m
+            [33mclass[39m=[32m"block px-3 py-3"[39m
+            [33mhref[39m=[32m"/results/old"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"flex justify-between text-sm text-zinc-500"[39m
+            [36m>[39m
+              [36m<span>[39m
+                [0mNov 8, 2026[0m
+              [36m</span>[39m
+              [36m<span>[39m
+                [0mAnalyzed[0m
+              [36m</span>[39m
+            [36m</span>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"block font-medium"[39m
+            [36m>[39m
+              [0mSquat · 3 reps[0m
+            [36m</span>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"block text-sm"[39m
+            [36m>[39m
+              [0mHips rise before your shoulders[0m
+            [36m</span>[39m
+          [36m</a>[39m
+        [36m</li>[39m
+        [36m<li>[39m
+          [36m<a[39m
+            [33mclass[39m=[32m"block px-3 py-3"[39m
+            [33mhref[39m=[32m"/results/deadlift"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"flex justify-between text-sm text-zinc-500"[39m
+            [36m>[39m
+              [36m<span>[39m
+                [0mNov 7, 2026[0m
+              [36m</span>[39m
+              [36m<span>[39m
+                [0mAnalyzed[0m
+              [36m</span>[39m
+            [36m</span>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"block font-medium"[39m
+            [36m>[39m
+              [0mDeadlift · 3 reps[0m
+            [36m</span>[39m
+          [36m</a>[39m
+        [36m</li>[39m
+      [36m</ul>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+   × US-20 compare uploads > us20_two_videos_and_their_measurements_are_shown_side_by_side 6ms
+     → Unable to find an accessible element with the role "region" and name "Earlier upload"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div />[39m
+[36m</body>[39m
+   × US-20 compare uploads > us20_displays_the_not_detected_outcome_without_claiming_a_cure 8ms
+     → Unable to find an accessible element with the role "region" and name "Earlier top fix"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div />[39m
+[36m</body>[39m
+   × US-20 compare uploads > us20_displays_the_still_present_outcome_without_claiming_a_cure 3ms
+     → Unable to find an accessible element with the role "region" and name "Earlier top fix"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div />[39m
+[36m</body>[39m
+   × US-20 compare uploads > us20_displays_the_not_measured_outcome_without_claiming_a_cure 3ms
+     → Unable to find an accessible element with the role "region" and name "Earlier top fix"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div />[39m
+[36m</body>[39m
+   × US-20 compare uploads > us20_displays_the_no_previous_fault_outcome_without_claiming_a_cure 3ms
+     → Unable to find an accessible element with the role "region" and name "Earlier top fix"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div />[39m
+[36m</body>[39m
+   × US-20 compare uploads > us20_displays_the_unavailable_outcome_without_claiming_a_cure 4ms
+     → Unable to find an accessible element with the role "region" and name "Earlier top fix"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div />[39m
+[36m</body>[39m
+   × US-20 compare uploads > us20_changing_camera_angles_has_context_for_interpreting_measurements 4ms
+     → Unable to find an accessible element with the role "note"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div />[39m
+[36m</body>[39m
+   × US-20 compare uploads > us20_comparison_page_requires_a_session 6ms
+     → expected false to be true // Object.is equality
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 12 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/components/__tests__/us20-comparison.test.tsx > US-20 compare uploads > us20_history_selects_two_same_lift_uploads_and_opens_the_comparison
+TestingLibraryElementError: Unable to find an accessible element with the role "checkbox"
+
+Here are the accessible roles:
+
+  combobox:
+
+  Name "Lift":
+  <select
+    class="rounded-lg border border-zinc-300 px-2 py-1"
+  />
+
+  --------------------------------------------------
+  option:
+
+  Name "All":
+  <option
+    value="all"
+  />
+
+  Name "Squat":
+  <option
+    value="squat"
+  />
+
+  Name "Deadlift":
+  <option
+    value="deadlift"
+  />
+
+  Name "Bench Press":
+  <option
+    value="bench_press"
+  />
+
+  --------------------------------------------------
+  list:
+
+  Name "":
+  <ul
+    class="divide-y divide-zinc-200 rounded-xl border border-zinc-200"
+  />
+
+  --------------------------------------------------
+  listitem:
+
+  Name "":
+  <li />
+
+  Name "":
+  <li />
+
+  Name "":
+  <li />
+
+  --------------------------------------------------
+  link:
+
+  Name "Nov 9, 2026AnalyzedSquat · 5 reps":
+  <a
+    class="block px-3 py-3"
+    href="/results/new"
+  />
+
+  Name "Nov 8, 2026AnalyzedSquat · 3 repsHips rise before your shoulders":
+  <a
+    class="block px-3 py-3"
+    href="/results/old"
+  />
+
+  Name "Nov 7, 2026AnalyzedDeadlift · 3 reps":
+  <a
+    class="block px-3 py-3"
+    href="/results/deadlift"
+  />
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <div
+      class="space-y-3"
+    >
+      <label
+        class="flex items-center gap-2 text-sm"
+      >
+        Lift
+        <select
+          class="rounded-lg border border-zinc-300 px-2 py-1"
+        >
+          <option
+            value="all"
+          >
+            All
+          </option>
+          <option
+            value="squat"
+          >
+            Squat
+          </option>
+          <option
+            value="deadlift"
+          >
+            Deadlift
+          </option>
+          <option
+            value="bench_press"
+          >
+            Bench Press
+          </option>
+        </select>
+      </label>
+      <ul
+        class="divide-y divide-zinc-200 rounded-xl border border-zinc-200"
+      >
+        <li>
+          <a
+            class="block px-3 py-3"
+            href="/results/new"
+          >
+            <span
+              class="flex justify-between text-sm text-zinc-500"
+            >
+              <span>
+                Nov 9, 2026
+              </span>
+              <span>
+                Analyzed
+              </span>
+            </span>
+            <span
+              class="block font-medium"
+            >
+              Squat · 5 reps
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            class="block px-3 py-3"
+            href="/results/old"
+          >
+            <span
+              class="flex justify-between text-sm text-zinc-500"
+            >
+              <span>
+                Nov 8, 2026
+              </span>
+              <span>
+                Analyzed
+              </span>
+            </span>
+            <span
+              class="block font-medium"
+            >
+              Squat · 3 reps
+            </span>
+            <span
+              class="block text-sm"
+            >
+              Hips rise before your shoulders
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            class="block px-3 py-3"
+            href="/results/deadlift"
+          >
+            <span
+              class="flex justify-between text-sm text-zinc-500"
+            >
+              <span>
+                Nov 7, 2026
+              </span>
+              <span>
+                Analyzed
+              </span>
+            </span>
+            <span
+              class="block font-medium"
+            >
+              Deadlift · 3 reps
+            </span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:109:15
+ ❯ src/components/__tests__/us20-comparison.test.tsx:35:28
+     33|   it("us20_history_selects_two_same_lift_uploads_and_opens_the_compari…
+     34|     render(<HistoryList items={items} />);
+     35|     const choices = screen.getAllByRole("checkbox");
+       |                            ^
+     36|     expect(screen.getByRole("button", { name: "Compare selected upload…
+     37|     await userEvent.click(choices[0]);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/12]⎯
+
+ FAIL  src/components/__tests__/us20-comparison.test.tsx > US-20 compare uploads > us20_a_different_lift_is_disabled_after_the_first_selection
+TestingLibraryElementError: Unable to find an accessible element with the role "checkbox"
+
+Here are the accessible roles:
+
+  combobox:
+
+  Name "Lift":
+  <select
+    class="rounded-lg border border-zinc-300 px-2 py-1"
+  />
+
+  --------------------------------------------------
+  option:
+
+  Name "All":
+  <option
+    value="all"
+  />
+
+  Name "Squat":
+  <option
+    value="squat"
+  />
+
+  Name "Deadlift":
+  <option
+    value="deadlift"
+  />
+
+  Name "Bench Press":
+  <option
+    value="bench_press"
+  />
+
+  --------------------------------------------------
+  list:
+
+  Name "":
+  <ul
+    class="divide-y divide-zinc-200 rounded-xl border border-zinc-200"
+  />
+
+  --------------------------------------------------
+  listitem:
+
+  Name "":
+  <li />
+
+  Name "":
+  <li />
+
+  Name "":
+  <li />
+
+  --------------------------------------------------
+  link:
+
+  Name "Nov 9, 2026AnalyzedSquat · 5 reps":
+  <a
+    class="block px-3 py-3"
+    href="/results/new"
+  />
+
+  Name "Nov 8, 2026AnalyzedSquat · 3 repsHips rise before your shoulders":
+  <a
+    class="block px-3 py-3"
+    href="/results/old"
+  />
+
+  Name "Nov 7, 2026AnalyzedDeadlift · 3 reps":
+  <a
+    class="block px-3 py-3"
+    href="/results/deadlift"
+  />
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <div
+      class="space-y-3"
+    >
+      <label
+        class="flex items-center gap-2 text-sm"
+      >
+        Lift
+        <select
+          class="rounded-lg border border-zinc-300 px-2 py-1"
+        >
+          <option
+            value="all"
+          >
+            All
+          </option>
+          <option
+            value="squat"
+          >
+            Squat
+          </option>
+          <option
+            value="deadlift"
+          >
+            Deadlift
+          </option>
+          <option
+            value="bench_press"
+          >
+            Bench Press
+          </option>
+        </select>
+      </label>
+      <ul
+        class="divide-y divide-zinc-200 rounded-xl border border-zinc-200"
+      >
+        <li>
+          <a
+            class="block px-3 py-3"
+            href="/results/new"
+          >
+            <span
+              class="flex justify-between text-sm text-zinc-500"
+            >
+              <span>
+                Nov 9, 2026
+              </span>
+              <span>
+                Analyzed
+              </span>
+            </span>
+            <span
+              class="block font-medium"
+            >
+              Squat · 5 reps
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            class="block px-3 py-3"
+            href="/results/old"
+          >
+            <span
+              class="flex justify-between text-sm text-zinc-500"
+            >
+              <span>
+                Nov 8, 2026
+              </span>
+              <span>
+                Analyzed
+              </span>
+            </span>
+            <span
+              class="block font-medium"
+            >
+              Squat · 3 reps
+            </span>
+            <span
+              class="block text-sm"
+            >
+              Hips rise before your shoulders
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            class="block px-3 py-3"
+            href="/results/deadlift"
+          >
+            <span
+              class="flex justify-between text-sm text-zinc-500"
+            >
+              <span>
+                Nov 7, 2026
+              </span>
+              <span>
+                Analyzed
+              </span>
+            </span>
+            <span
+              class="block font-medium"
+            >
+              Deadlift · 3 reps
+            </span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:109:15
+ ❯ src/components/__tests__/us20-comparison.test.tsx:44:28
+     42|   it("us20_a_different_lift_is_disabled_after_the_first_selection", as…
+     43|     render(<HistoryList items={items} />);
+     44|     const choices = screen.getAllByRole("checkbox");
+       |                            ^
+     45|     await userEvent.click(choices[0]);
+     46|     expect(choices[2]).toBeDisabled();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/12]⎯
+
+ FAIL  src/components/__tests__/us20-comparison.test.tsx > US-20 compare uploads > us20_only_two_completed_measurable_uploads_can_be_selected
+TestingLibraryElementError: Unable to find an accessible element with the role "checkbox"
+
+Here are the accessible roles:
+
+  combobox:
+
+  Name "Lift":
+  <select
+    class="rounded-lg border border-zinc-300 px-2 py-1"
+  />
+
+  --------------------------------------------------
+  option:
+
+  Name "All":
+  <option
+    value="all"
+  />
+
+  Name "Squat":
+  <option
+    value="squat"
+  />
+
+  Name "Deadlift":
+  <option
+    value="deadlift"
+  />
+
+  Name "Bench Press":
+  <option
+    value="bench_press"
+  />
+
+  --------------------------------------------------
+  list:
+
+  Name "":
+  <ul
+    class="divide-y divide-zinc-200 rounded-xl border border-zinc-200"
+  />
+
+  --------------------------------------------------
+  listitem:
+
+  Name "":
+  <li />
+
+  Name "":
+  <li />
+
+  Name "":
+  <li />
+
+  Name "":
+  <li />
+
+  Name "":
+  <li />
+
+  Name "":
+  <li />
+
+  --------------------------------------------------
+  link:
+
+  Name "Nov 9, 2026AnalyzedSquat · 5 reps":
+  <a
+    class="block px-3 py-3"
+    href="/results/new"
+  />
+
+  Name "Nov 8, 2026AnalyzedSquat · 3 repsHips rise before your shoulders":
+  <a
+    class="block px-3 py-3"
+    href="/results/old"
+  />
+
+  Name "Nov 7, 2026AnalyzedDeadlift · 3 reps":
+  <a
+    class="block px-3 py-3"
+    href="/results/deadlift"
+  />
+
+  Name "Nov 9, 2026AnalyzedSquat · 5 reps":
+  <a
+    class="block px-3 py-3"
+    href="/results/failed"
+  />
+
+  Name "Nov 9, 2026AnalyzedSquat · 5 reps":
+  <a
+    class="block px-3 py-3"
+    href="/results/unmeasurable"
+  />
+
+  Name "Nov 9, 2026AnalyzedSquat · 5 reps":
+  <a
+    class="block px-3 py-3"
+    href="/results/pending"
+  />
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <div
+      class="space-y-3"
+    >
+      <label
+        class="flex items-center gap-2 text-sm"
+      >
+        Lift
+        <select
+          class="rounded-lg border border-zinc-300 px-2 py-1"
+        >
+          <option
+            value="all"
+          >
+            All
+          </option>
+          <option
+            value="squat"
+          >
+            Squat
+          </option>
+          <option
+            value="deadlift"
+          >
+            Deadlift
+          </option>
+          <option
+            value="bench_press"
+          >
+            Bench Press
+          </option>
+        </select>
+      </label>
+      <ul
+        class="divide-y divide-zinc-200 rounded-xl border border-zinc-200"
+      >
+        <li>
+          <a
+            class="block px-3 py-3"
+            href="/results/new"
+          >
+            <span
+              class="flex justify-between text-sm text-zinc-500"
+            >
+              <span>
+                Nov 9, 2026
+              </span>
+              <span>
+                Analyzed
+              </span>
+            </span>
+            <span
+              class="block font-medium"
+            >
+              Squat · 5 reps
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            class="block px-3 py-3"
+            href="/results/old"
+          >
+            <span
+              class="flex justify-between text-sm text-zinc-500"
+            >
+              <span>
+                Nov 8, 2026
+              </span>
+              <span>
+                Analyzed
+              </span>
+            </span>
+            <span
+              class="block font-medium"
+            >
+              Squat · 3 reps
+            </span>
+            <span
+              class="block text-sm"
+            >
+              Hips rise before your shoulders
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            class="block px-3 py-3"
+            href="/results/deadlift"
+          >
+            <span
+              class="flex justify-between text-sm text-zinc-500"
+            >
+              <span>
+                Nov 7, 2026
+              </span>
+              <span>
+                Analyzed
+              </span>
+            </span>
+            <span
+              class="block font-medium"
+            >
+              Deadlift · 3 reps
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            class="block px-3 py-3"
+            href="/results/failed"
+          >
+            <span
+              class="flex justify-between text-sm text-zinc-500"
+            >
+              <span>
+                Nov 9, 2026
+              </span>
+              <span>
+                Analyzed
+              </span>
+            </span>
+            <span
+              class="block font-medium"
+            >
+              Squat · 5 reps
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            class="block px-3 py-3"
+            href="/results/unmeasurable"
+          >
+            <span
+              class="flex justify-between text-sm text-zinc-500"
+            >
+              <span>
+                Nov 9, 2026
+              </span>
+              <span>
+                Analyzed
+              </span>
+            </span>
+            <span
+              class="block font-medium"
+            >
+              Squat · 5 reps
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            class="block px-3 py-3"
+            href="/results/pending"
+          >
+            <span
+              class="flex justify-between text-sm text-zinc-500"
+            >
+              <span>
+                Nov 9, 2026
+              </span>
+              <span>
+                Analyzed
+              </span>
+            </span>
+            <span
+              class="block font-medium"
+            >
+              Squat · 5 reps
+            </span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:109:15
+ ❯ src/components/__tests__/us20-comparison.test.tsx:56:28
+     54|       { ...items[0], analysis_id: "unmeasurable", final_status: "unana…
+     55|       { ...items[0], analysis_id: "pending", status: "processing" }]} …
+     56|     const choices = screen.getAllByRole("checkbox");
+       |                            ^
+     57|     for (const index of [3, 4, 5]) expect(choices[index]).toBeDisabled…
+     58|     await userEvent.click(choices[0]);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/12]⎯
+
+ FAIL  src/components/__tests__/us20-comparison.test.tsx > US-20 compare uploads > us20_changing_the_history_filter_clears_hidden_selections
+TestingLibraryElementError: Unable to find an accessible element with the role "checkbox"
+
+Here are the accessible roles:
+
+  combobox:
+
+  Name "Lift":
+  <select
+    class="rounded-lg border border-zinc-300 px-2 py-1"
+  />
+
+  --------------------------------------------------
+  option:
+
+  Name "All":
+  <option
+    value="all"
+  />
+
+  Name "Squat":
+  <option
+    value="squat"
+  />
+
+  Name "Deadlift":
+  <option
+    value="deadlift"
+  />
+
+  Name "Bench Press":
+  <option
+    value="bench_press"
+  />
+
+  --------------------------------------------------
+  list:
+
+  Name "":
+  <ul
+    class="divide-y divide-zinc-200 rounded-xl border border-zinc-200"
+  />
+
+  --------------------------------------------------
+  listitem:
+
+  Name "":
+  <li />
+
+  Name "":
+  <li />
+
+  Name "":
+  <li />
+
+  --------------------------------------------------
+  link:
+
+  Name "Nov 9, 2026AnalyzedSquat · 5 reps":
+  <a
+    class="block px-3 py-3"
+    href="/results/new"
+  />
+
+  Name "Nov 8, 2026AnalyzedSquat · 3 repsHips rise before your shoulders":
+  <a
+    class="block px-3 py-3"
+    href="/results/old"
+  />
+
+  Name "Nov 7, 2026AnalyzedDeadlift · 3 reps":
+  <a
+    class="block px-3 py-3"
+    href="/results/deadlift"
+  />
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <div
+      class="space-y-3"
+    >
+      <label
+        class="flex items-center gap-2 text-sm"
+      >
+        Lift
+        <select
+          class="rounded-lg border border-zinc-300 px-2 py-1"
+        >
+          <option
+            value="all"
+          >
+            All
+          </option>
+          <option
+            value="squat"
+          >
+            Squat
+          </option>
+          <option
+            value="deadlift"
+          >
+            Deadlift
+          </option>
+          <option
+            value="bench_press"
+          >
+            Bench Press
+          </option>
+        </select>
+      </label>
+      <ul
+        class="divide-y divide-zinc-200 rounded-xl border border-zinc-200"
+      >
+        <li>
+          <a
+            class="block px-3 py-3"
+            href="/results/new"
+          >
+            <span
+              class="flex justify-between text-sm text-zinc-500"
+            >
+              <span>
+                Nov 9, 2026
+              </span>
+              <span>
+                Analyzed
+              </span>
+            </span>
+            <span
+              class="block font-medium"
+            >
+              Squat · 5 reps
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            class="block px-3 py-3"
+            href="/results/old"
+          >
+            <span
+              class="flex justify-between text-sm text-zinc-500"
+            >
+              <span>
+                Nov 8, 2026
+              </span>
+              <span>
+                Analyzed
+              </span>
+            </span>
+            <span
+              class="block font-medium"
+            >
+              Squat · 3 reps
+            </span>
+            <span
+              class="block text-sm"
+            >
+              Hips rise before your shoulders
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            class="block px-3 py-3"
+            href="/results/deadlift"
+          >
+            <span
+              class="flex justify-between text-sm text-zinc-500"
+            >
+              <span>
+                Nov 7, 2026
+              </span>
+              <span>
+                Analyzed
+              </span>
+            </span>
+            <span
+              class="block font-medium"
+            >
+              Deadlift · 3 reps
+            </span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:109:15
+ ❯ src/components/__tests__/us20-comparison.test.tsx:65:34
+     63|   it("us20_changing_the_history_filter_clears_hidden_selections", asyn…
+     64|     render(<HistoryList items={items} />);
+     65|     await userEvent.click(screen.getAllByRole("checkbox")[0]);
+       |                                  ^
+     66|     await userEvent.selectOptions(screen.getByLabelText("Lift"), "dead…
+     67|     expect(screen.getByRole("checkbox")).not.toBeChecked();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/12]⎯
+
+ FAIL  src/components/__tests__/us20-comparison.test.tsx > US-20 compare uploads > us20_two_videos_and_their_measurements_are_shown_side_by_side
+TestingLibraryElementError: Unable to find an accessible element with the role "region" and name "Earlier upload"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/components/__tests__/us20-comparison.test.tsx:73:28
+     71|   it("us20_two_videos_and_their_measurements_are_shown_side_by_side", …
+     72|     render(<ComparisonView comparison={comparison()} />);
+     73|     const earlier = screen.getByRole("region", { name: "Earlier upload…
+       |                            ^
+     74|     const newer = screen.getByRole("region", { name: "Newer upload" });
+     75|     expect(within(earlier).getByText("3 reps")).toBeInTheDocument();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/12]⎯
+
+ FAIL  src/components/__tests__/us20-comparison.test.tsx > US-20 compare uploads > us20_displays_the_not_detected_outcome_without_claiming_a_cure
+ FAIL  src/components/__tests__/us20-comparison.test.tsx > US-20 compare uploads > us20_displays_the_still_present_outcome_without_claiming_a_cure
+ FAIL  src/components/__tests__/us20-comparison.test.tsx > US-20 compare uploads > us20_displays_the_not_measured_outcome_without_claiming_a_cure
+ FAIL  src/components/__tests__/us20-comparison.test.tsx > US-20 compare uploads > us20_displays_the_no_previous_fault_outcome_without_claiming_a_cure
+ FAIL  src/components/__tests__/us20-comparison.test.tsx > US-20 compare uploads > us20_displays_the_unavailable_outcome_without_claiming_a_cure
+TestingLibraryElementError: Unable to find an accessible element with the role "region" and name "Earlier top fix"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/components/__tests__/us20-comparison.test.tsx:93:19
+     91|   ] as const)("us20_displays_the_%s_outcome_without_claiming_a_cure", …
+     92|     render(<ComparisonView comparison={comparison(status)} />);
+     93|     expect(screen.getByRole("region", { name: "Earlier top fix" })).to…
+       |                   ^
+     94|     if (status === "still_present") expect(screen.getByText("Reps 4, 5…
+     95|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/12]⎯
+
+ FAIL  src/components/__tests__/us20-comparison.test.tsx > US-20 compare uploads > us20_changing_camera_angles_has_context_for_interpreting_measurements
+TestingLibraryElementError: Unable to find an accessible element with the role "note"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/components/__tests__/us20-comparison.test.tsx:101:19
+     99|     data.newer.camera_angle = "front";
+    100|     render(<ComparisonView comparison={data} />);
+    101|     expect(screen.getByRole("note")).toHaveTextContent("different came…
+       |                   ^
+    102|   });
+    103| 
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/12]⎯
+
+ FAIL  src/components/__tests__/us20-comparison.test.tsx > US-20 compare uploads > us20_comparison_page_requires_a_session
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ src/components/__tests__/us20-comparison.test.tsx:105:41
+    103| 
+    104|   it("us20_comparison_page_requires_a_session", () => {
+    105|     expect(isProtectedPath("/compare")).toBe(true);
+       |                                         ^
+    106|   });
+    107| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/12]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  12 failed (12)
+   Start at  16:40:12
+   Duration  18.56s (transform 233ms, setup 3.11s, collect 1.27s, tests 1.09s, environment 11.19s, prepare 1.21s)
+

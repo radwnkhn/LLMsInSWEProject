@@ -41,7 +41,7 @@ def build_test_services(**overrides) -> Services:
 
 def build_services(settings: Settings) -> Services:
     return Services(
-        auth=SupabaseAuth(settings.supabase_url, settings.supabase_anon_key),
+        auth=SupabaseAuth(settings.supabase_url, settings.supabase_anon_key, service_key=settings.supabase_service_role_key),
         repo=PostgresRepository(settings.database_url),
         storage=SupabaseStorage(settings.supabase_url, settings.supabase_service_role_key, settings.storage_bucket),
         video=OpenCVMediaPipeBackend(model_path=settings.pose_model_path),
@@ -56,8 +56,8 @@ def services_from_env(env: Mapping[str, str] | None = None) -> Services:
     otherwise every setting must be present."""
     env = os.environ if env is None else env
     if env.get("ALIBI_TEST_MODE") == "1":
-        from app.testing.fakes import FakeVideoBackend, ScenarioLLM
+        from app.testing.fakes import ScenarioLLM, ScenarioVideoBackend
 
         origins = tuple(o.strip() for o in (env.get("CORS_ORIGINS") or "*").split(",") if o.strip())
-        return build_test_services(video=FakeVideoBackend(probe_files=True), llm=ScenarioLLM(), cors_origins=origins)
+        return build_test_services(video=ScenarioVideoBackend(), llm=ScenarioLLM(), cors_origins=origins)
     return build_services(load_settings(env))

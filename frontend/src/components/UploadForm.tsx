@@ -3,6 +3,7 @@
 import { useId, useState, type FormEvent } from "react";
 
 import { FilmingGuide } from "@/components/FilmingGuide";
+import { AnalysisProgress } from "@/components/AnalysisProgress";
 import { LiftPicker } from "@/components/LiftPicker";
 import { ApiError } from "@/lib/api";
 import type { Lift } from "@/lib/types";
@@ -123,6 +124,7 @@ export function UploadForm({ upload, readDuration = getVideoDuration, onUploaded
 
       {uploading && (
         <div className="space-y-1">
+          <AnalysisProgress stage="uploading" />
           <div role="progressbar" aria-label="Upload progress" aria-valuemin={0} aria-valuemax={100} aria-valuenow={progress}
             className="h-2 overflow-hidden rounded-full bg-zinc-200">
             <div className="h-full bg-zinc-900 transition-all" style={{ width: `${progress}%` }} />

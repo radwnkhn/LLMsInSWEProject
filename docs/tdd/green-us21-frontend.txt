@@ -1,0 +1,18 @@
+
+> frontend@0.1.0 test
+> vitest run us21
+
+
+ RUN  v3.2.7 C:/Users/imran/LLMsInSWEProject/frontend
+
+ ✓ src/lib/__tests__/us21-delete-request.test.ts (2 tests) 34ms
+ ✓ src/components/__tests__/us21-pages.test.tsx (2 tests) 661ms
+   ✓ US-21 deletion pages > us21_history_removes_every_analysis_of_the_deleted_upload  540ms
+ ✓ src/components/__tests__/us21-deletion.test.tsx (10 tests) 1870ms
+   ✓ US-21 upload deletion > us21_upload_delete_requires_confirmation_and_cancel_preserves_the_upload  496ms
+   ✓ US-21 upload deletion > us21_pending_deletion_blocks_duplicate_confirmation  445ms
+
+ Test Files  3 passed (3)
+      Tests  14 passed (14)
+   Start at  17:45:16
+   Duration  24.23s (transform 416ms, setup 11.31s, collect 3.22s, tests 2.57s, environment 44.06s, prepare 4.09s)

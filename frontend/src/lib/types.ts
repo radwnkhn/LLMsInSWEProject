@@ -2,6 +2,7 @@ export type Lift = "squat" | "deadlift" | "bench_press";
 export type TriedCue = "yes" | "no" | "not_yet";
 export type FinalStatus = "passed_first_try" | "passed_after_retry" | "fallback" | "unanalyzable";
 export type JobStatus = "queued" | "processing" | "done" | "failed";
+export type ProcessingStage = "measuring" | "writing_feedback" | "checking";
 
 export type Session = { access_token: string; user: { id: string; email: string; is_admin: boolean } };
 
@@ -44,6 +45,7 @@ export type AnalysisResult = {
   analysis_id: string;
   created_at: string;
   status: JobStatus;
+  processing_stage: ProcessingStage | null;
   final_status: FinalStatus | null;
   lift: Lift;
   lift_label: string;
@@ -69,6 +71,7 @@ export type AnalysisResult = {
 
 export type HistoryItem = {
   analysis_id: string;
+  upload_id?: string;
   created_at: string;
   lift: Lift;
   lift_label: string;
@@ -88,6 +91,20 @@ export type AdminRow = {
   attempt_count: number;
   final_status: FinalStatus | null;
   final_status_label: string;
+};
+
+export type AnalysisComparison = {
+  older: AnalysisResult;
+  newer: AnalysisResult;
+  metrics: {
+    metric: string; label: string; unit: string; aggregation: "Minimum" | "Maximum" | "Count";
+    older: number | null; newer: number | null;
+  }[];
+  fault_comparison: {
+    fault_id: string | null; title: string | null;
+    status: "still_present" | "not_detected" | "not_measured" | "no_previous_fault" | "unavailable";
+    older_reps: number[]; newer_reps: number[];
+  };
 };
 
 export type AdminAttempt = {

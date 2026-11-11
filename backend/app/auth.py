@@ -4,6 +4,7 @@ from __future__ import annotations
 import hashlib
 import secrets
 import uuid
+from urllib.parse import quote
 from dataclasses import dataclass
 from typing import Protocol
 
@@ -36,14 +37,16 @@ class AuthProvider(Protocol):
     def sign_in(self, email: str, password: str) -> Session: ...
     def sign_out(self, token: str) -> None: ...
     def get_user(self, token: str) -> AuthUser | None: ...
+    def delete_user(self, user_id: str) -> None: ...
 
 
 class SupabaseAuth:
     """Supabase Auth (GoTrue) REST API. Admins have app_metadata.role = "admin" (set in the Supabase dashboard)."""
 
-    def __init__(self, url: str, anon_key: str, http: httpx.Client | None = None):
+    def __init__(self, url: str, anon_key: str, http: httpx.Client | None = None, service_key: str | None = None):
         self.base = f"{url.rstrip('/')}/auth/v1"
         self.anon_key = anon_key
+        self.service_key = service_key
         self.http = http or httpx.Client(timeout=httpx.Timeout(15.0))
 
     @staticmethod
@@ -81,6 +84,15 @@ class SupabaseAuth:
         except httpx.HTTPError:
             return None
         return self._user(r.json()) if r.status_code == 200 else None
+
+    def delete_user(self, user_id):
+        if not self.service_key:
+            raise RuntimeError("Supabase service role key is required to delete an account")
+        response = self.http.request("DELETE", f"{self.base}/admin/users/{quote(user_id, safe='')}",
+                                     headers={"apikey": self.service_key, "Authorization": f"Bearer {self.service_key}"},
+                                     json={"should_soft_delete": False})
+        if response.status_code != 404:
+            response.raise_for_status()
 
 
 def _hash(password: str, salt: bytes) -> bytes:
@@ -120,8 +132,18 @@ class InMemoryAuth:
         email = self.tokens.get(token)
         if not email:
             return None
-        u = self.users[email]
+        u = self.users.get(email)
+        if u is None:
+            return None
         return AuthUser(u["id"], email, u["is_admin"])
+
+    def delete_user(self, user_id):
+        emails = {email for email, user in list(self.users.items()) if user["id"] == user_id}
+        for token, email in list(self.tokens.items()):
+            if email in emails:
+                self.tokens.pop(token, None)
+        for email in emails:
+            self.users.pop(email, None)
 
     def make_admin(self, user_id: str) -> None:
         for u in self.users.values():

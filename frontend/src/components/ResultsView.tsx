@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useId, useRef, useState } from "react";
 
 import { AnnotatedFrame } from "@/components/AnnotatedFrame";
+import { AnalysisProgress } from "@/components/AnalysisProgress";
 import { FeedbackForm } from "@/components/FeedbackForm";
 import { NotMeasured } from "@/components/NotMeasured";
 import { PreviousCuePrompt } from "@/components/PreviousCuePrompt";
@@ -14,7 +15,39 @@ type Props = {
   result: AnalysisResult;
   onFeedback: (answer: FeedbackAnswer) => Promise<void>;
   onPreviousCueAnswer?: (analysisId: string, tried: TriedCue) => Promise<void>;
+  onRetry?: () => Promise<void>;
 };
+
+function FailedAnalysis({ onRetry }: { onRetry?: () => Promise<void> }) {
+  const [retrying, setRetrying] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  async function retry() {
+    if (!onRetry || retrying) return;
+    setRetrying(true);
+    setError(null);
+    try {
+      await onRetry();
+    } catch {
+      setError("Couldn't restart this analysis. Check your connection and try again.");
+    } finally {
+      setRetrying(false);
+    }
+  }
+
+  return (
+    <div role="alert" className="space-y-2 rounded-xl bg-red-50 p-4 text-red-800">
+      <p>Something went wrong analyzing this video.</p>
+      {error && <p>{error}</p>}
+      {onRetry ? (
+        <button type="button" disabled={retrying} onClick={() => void retry()}
+          className="rounded-lg bg-red-800 px-4 py-2 font-semibold text-white disabled:opacity-40">
+          {retrying ? "Retrying…" : "Retry"}
+        </button>
+      ) : <Link href="/upload" className="font-semibold underline">Upload again</Link>}
+    </div>
+  );
+}
 
 function SafetyLabel() {
   return <span className="rounded-full bg-red-100 px-2 py-0.5 text-xs font-semibold text-red-800">Safety issue</span>;
@@ -59,19 +92,14 @@ function SeeMore({ faults }: { faults: FaultView[] }) {
   );
 }
 
-export function ResultsView({ result, onFeedback, onPreviousCueAnswer }: Props) {
+export function ResultsView({ result, onFeedback, onPreviousCueAnswer, onRetry }: Props) {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   if (result.status === "queued" || result.status === "processing") {
-    return <p role="status" className="animate-pulse text-zinc-600">Analyzing your set… this usually takes under a minute.</p>;
+    return <AnalysisProgress stage={result.processing_stage} />;
   }
   if (result.status === "failed") {
-    return (
-      <div role="alert" className="space-y-2 rounded-xl bg-red-50 p-4 text-red-800">
-        <p>Something went wrong analyzing this video. Please try uploading it again.</p>
-        <Link href="/upload" className="font-semibold underline">Upload again</Link>
-      </div>
-    );
+    return <FailedAnalysis onRetry={onRetry} />;
   }
 
   function seek(seconds: number, play: boolean) {
@@ -89,6 +117,7 @@ export function ResultsView({ result, onFeedback, onPreviousCueAnswer }: Props) 
         <h1 className="text-2xl font-bold">{result.lift_label}</h1>
         {!unanalyzable && result.rep_count !== null && <p className="text-sm text-zinc-600">{result.rep_count} reps</p>}
       </header>
+      {!unanalyzable && <Link href="/history" className="inline-block text-sm font-medium underline">Compare with a past upload</Link>}
 
       {result.professional_message && (
         <aside role="note" aria-label="See a professional" className="rounded-xl bg-amber-50 p-4 text-sm text-amber-900">

@@ -1,0 +1,57 @@
+
+> frontend@0.1.0 e2e
+> playwright test us19 us20 us21
+
+
+Running 8 tests using 1 worker
+
+(node:26604) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 e2e\us19-processing.spec.ts:7:5 › us19_progress_updates_without_reload_and_results_open_automatically (8.7s)
+  ok 2 e2e\us19-processing.spec.ts:42:5 › us19_failed_analysis_retries_the_saved_video (5.3s)
+  x  3 e2e\us19-us20-us21-flow.spec.ts:5:5 › us19_us20_us21_retry_compare_delete_upload_and_account (18.2s)
+(node:13392) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 4 e2e\us20-comparison.spec.ts:5:5 › us20_history_opens_two_uploads_with_measurements_and_a_resolved_previous_fault (6.9s)
+  ok 5 e2e\us20-comparison.spec.ts:22:5 › us20_comparison_shows_the_earlier_fault_is_still_present (6.9s)
+  ok 6 e2e\us20-comparison.spec.ts:33:5 › us20_different_lifts_are_blocked_in_history_and_in_direct_comparison_urls (5.2s)
+  ok 7 e2e\us21-deletion.spec.ts:5:5 › us21_confirmed_upload_deletion_removes_it_from_history_results_and_comparison (6.6s)
+  ok 8 e2e\us21-deletion.spec.ts:27:5 › us21_settings_deletes_account_and_protects_old_pages (4.5s)
+
+
+  1) e2e\us19-us20-us21-flow.spec.ts:5:5 › us19_us20_us21_retry_compare_delete_upload_and_account ──
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('heading', { name: 'Top fix' })
+    Expected: visible
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('heading', { name: 'Top fix' }) with timeout 10000ms
+      - waiting for getByRole('heading', { name: 'Top fix' })
+
+
+      55 |   await expect(page.locator("video")).toHaveCount(0);
+      56 |   await page.goto(keptUrl);
+    > 57 |   await expect(page.getByRole("heading", { name: "Top fix" })).toBeVisible();
+         |                                                                ^
+      58 |
+      59 |   // Account deletion removes the remaining upload and prevents reuse of its session/credentials.
+      60 |   await page.getByRole("link", { name: "Settings", exact: true }).click();
+        at C:\Users\imran\LLMsInSWEProject\frontend\e2e\us19-us20-us21-flow.spec.ts:57:64
+
+    Error Context: test-results\us19-us20-us21-flow-us19-u-bc824-e-delete-upload-and-account\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\us19-us20-us21-flow-us19-u-bc824-e-delete-upload-and-account\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\us19-us20-us21-flow-us19-u-bc824-e-delete-upload-and-account\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    e2e\us19-us20-us21-flow.spec.ts:5:5 › us19_us20_us21_retry_compare_delete_upload_and_account ───
+  7 passed (1.1m)

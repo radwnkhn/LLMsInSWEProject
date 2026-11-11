@@ -1,5 +1,5 @@
 import type {
-  AdminDetail, AdminRow, AnalysisResult, FeedbackAnswer, HistoryItem, Lift, Session, TriedCue,
+  AdminDetail, AdminRow, AnalysisComparison, AnalysisResult, FeedbackAnswer, HistoryItem, Lift, Session, TriedCue,
 } from "@/lib/types";
 
 export const API_URL = (process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000").replace(/\/$/, "");
@@ -19,11 +19,14 @@ function detailText(detail: Detail, fallback: string): string {
   return fallback;
 }
 
-async function request<T>(path: string, { method = "GET", body, token }: { method?: string; body?: unknown; token?: string | null } = {}): Promise<T> {
+async function request<T>(path: string, { method = "GET", body, token, signal }: {
+  method?: string; body?: unknown; token?: string | null; signal?: AbortSignal;
+} = {}): Promise<T> {
   let res: Response;
   try {
     res = await fetch(`${API_URL}${path}`, {
       method,
+      signal,
       headers: {
         ...(body !== undefined ? { "Content-Type": "application/json" } : {}),
         ...(token ? { Authorization: `Bearer ${token}` } : {}),
@@ -43,7 +46,9 @@ export const api = {
   signup: (email: string, password: string) => request<Session>("/auth/signup", { method: "POST", body: { email, password } }),
   login: (email: string, password: string) => request<Session>("/auth/login", { method: "POST", body: { email, password } }),
   logout: (token: string) => request<void>("/auth/logout", { method: "POST", token }),
-  analysis: (id: string, token: string | null) => request<AnalysisResult>(`/analyses/${encodeURIComponent(id)}`, { token }),
+  analysis: (id: string, token: string | null, signal?: AbortSignal) => request<AnalysisResult>(`/analyses/${encodeURIComponent(id)}`, { token, signal }),
+  retryAnalysis: (id: string, token: string | null) => request<{ analysis_id: string; status: "queued" }>(
+    `/analyses/${encodeURIComponent(id)}/retry`, { method: "POST", token }),
   sendFeedback: (id: string, answer: Partial<FeedbackAnswer>, token: string | null) => {
     const body: { rating?: number; tried_cue?: TriedCue } = {};
     if (answer.rating != null) body.rating = answer.rating;
@@ -51,6 +56,11 @@ export const api = {
     return request<FeedbackAnswer>(`/analyses/${encodeURIComponent(id)}/feedback`, { method: "POST", body, token });
   },
   history: (token: string | null) => request<{ items: HistoryItem[] }>("/history", { token }),
+  deleteUpload: (uploadId: string, token: string | null) => request<void>(`/uploads/${encodeURIComponent(uploadId)}`,
+    { method: "DELETE", token, body: { confirmed: true } }),
+  deleteAccount: (token: string | null) => request<void>("/account", { method: "DELETE", token, body: { confirmed: true } }),
+  comparison: (firstId: string, secondId: string, token: string | null, signal?: AbortSignal) => request<AnalysisComparison>(
+    `/comparisons?${new URLSearchParams({ first_id: firstId, second_id: secondId })}`, { token, signal }),
   adminAnalyses: (token: string | null) => request<{ items: AdminRow[] }>("/admin/analyses", { token }),
   adminAnalysis: (id: string, token: string | null) => request<AdminDetail>(`/admin/analyses/${encodeURIComponent(id)}`, { token }),
   adminErrors: (token: string | null) => request<{ counts: Record<string, number> }>("/admin/validator-errors", { token }),

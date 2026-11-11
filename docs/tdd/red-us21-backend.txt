@@ -1,0 +1,191 @@
+FFFFF.FFFFFFFFFFFFFFFFFFFFFsFsFsFs                                       [100%]
+================================== FAILURES ===================================
+_ test_us21_delete_upload_removes_media_results_measurements_attempts_and_feedback _
+tests\test_us21_deletion.py:28: in test_us21_delete_upload_removes_media_results_measurements_attempts_and_feedback
+    assert response.status_code == 204 and not response.content
+E   assert (404 == 204)
+E    +  where 404 = <Response [404 Not Found]>.status_code
+_______ test_us21_deleting_one_upload_keeps_the_other_users_and_uploads _______
+tests\test_us21_deletion.py:46: in test_us21_deleting_one_upload_keeps_the_other_users_and_uploads
+    assert remove(client, f"/uploads/{upload_id}", headers).status_code == 204
+E   AssertionError: assert 404 == 204
+E    +  where 404 = <Response [404 Not Found]>.status_code
+E    +    where <Response [404 Not Found]> = remove(<starlette.testclient.TestClient object at 0x00000208D5E2BD90>, '/uploads/2e3c7cf2-6fbc-4ce0-a1b1-295550cb01c7', {'Authorization': 'Bearer 0cZe-I3TtPBeSpr4lVRqUGPStVZavYdZ'})
+_______ test_us21_deletion_also_removes_all_retries_and_partial_frames ________
+tests\test_us21_deletion.py:60: in test_us21_deletion_also_removes_all_retries_and_partial_frames
+    assert remove(client, f"/uploads/{upload_id}", headers).status_code == 204
+E   AssertionError: assert 404 == 204
+E    +  where 404 = <Response [404 Not Found]>.status_code
+E    +    where <Response [404 Not Found]> = remove(<starlette.testclient.TestClient object at 0x00000208D5FB0550>, '/uploads/814a4d17-2c19-4391-b19f-b9de7bb06d31', {'Authorization': 'Bearer faln9Nwxu6-9yCbK_M2gPIUcwCHqPCDY'})
+________ test_us21_deletion_requires_a_valid_session[/uploads/missing] ________
+tests\test_us21_deletion.py:67: in test_us21_deletion_requires_a_valid_session
+    assert remove(client, path).status_code == 401
+E   AssertionError: assert 404 == 401
+E    +  where 404 = <Response [404 Not Found]>.status_code
+E    +    where <Response [404 Not Found]> = remove(<starlette.testclient.TestClient object at 0x00000208D6024510>, '/uploads/missing')
+____________ test_us21_deletion_requires_a_valid_session[/account] ____________
+tests\test_us21_deletion.py:67: in test_us21_deletion_requires_a_valid_session
+    assert remove(client, path).status_code == 401
+E   AssertionError: assert 404 == 401
+E    +  where 404 = <Response [404 Not Found]>.status_code
+E    +    where <Response [404 Not Found]> = remove(<starlette.testclient.TestClient object at 0x00000208D6026EA0>, '/account')
+_ test_us21_api_requires_explicit_boolean_confirmation_before_any_delete[body0] _
+tests\test_us21_deletion.py:84: in test_us21_api_requires_explicit_boolean_confirmation_before_any_delete
+    assert remove(client, path, headers, body).status_code == 422
+E   AssertionError: assert 404 == 422
+E    +  where 404 = <Response [404 Not Found]>.status_code
+E    +    where <Response [404 Not Found]> = remove(<starlette.testclient.TestClient object at 0x00000208D611DF20>, '/uploads/99b406c8-b861-425b-9472-80e217d25e16', {'Authorization': 'Bearer oGC50clPaoJb1Y0Aa_cm0HoSnJZ0fA1w'}, {})
+_ test_us21_api_requires_explicit_boolean_confirmation_before_any_delete[body1] _
+tests\test_us21_deletion.py:84: in test_us21_api_requires_explicit_boolean_confirmation_before_any_delete
+    assert remove(client, path, headers, body).status_code == 422
+E   AssertionError: assert 404 == 422
+E    +  where 404 = <Response [404 Not Found]>.status_code
+E    +    where <Response [404 Not Found]> = remove(<starlette.testclient.TestClient object at 0x00000208D5E306B0>, '/uploads/dc24f5e4-da9a-448f-acef-01e2dc82585c', {'Authorization': 'Bearer DRVKvbTA60T-8iD7enDmiF4IHivfGUE5'}, {'confirmed': False})
+_ test_us21_api_requires_explicit_boolean_confirmation_before_any_delete[body2] _
+tests\test_us21_deletion.py:84: in test_us21_api_requires_explicit_boolean_confirmation_before_any_delete
+    assert remove(client, path, headers, body).status_code == 422
+E   AssertionError: assert 404 == 422
+E    +  where 404 = <Response [404 Not Found]>.status_code
+E    +    where <Response [404 Not Found]> = remove(<starlette.testclient.TestClient object at 0x00000208D5D80D10>, '/uploads/0f29a7b6-9973-4765-9353-1b75b4fca5a0', {'Authorization': 'Bearer n-r8TzOxjcgMt7RmxOTCIjqeW4SG5jnt'}, {'confirmed': 'true'})
+_ test_us21_api_requires_explicit_boolean_confirmation_before_any_delete[body3] _
+tests\test_us21_deletion.py:84: in test_us21_api_requires_explicit_boolean_confirmation_before_any_delete
+    assert remove(client, path, headers, body).status_code == 422
+E   AssertionError: assert 404 == 422
+E    +  where 404 = <Response [404 Not Found]>.status_code
+E    +    where <Response [404 Not Found]> = remove(<starlette.testclient.TestClient object at 0x00000208D5D81D00>, '/uploads/9300a186-6368-4669-b90c-5b86b99b770a', {'Authorization': 'Bearer d1XC1nhdT7k_FodJyolEcKpdYqUJlcc9'}, {'confirmed': 1})
+__ test_us21_processing_must_finish_before_upload_or_account_cleanup[queued] __
+tests\test_us21_deletion.py:96: in test_us21_processing_must_finish_before_upload_or_account_cleanup
+    assert response.status_code == 409 and "finish" in response.json()["detail"].lower()
+E   assert (404 == 409)
+E    +  where 404 = <Response [404 Not Found]>.status_code
+_ test_us21_processing_must_finish_before_upload_or_account_cleanup[processing] _
+tests\test_us21_deletion.py:96: in test_us21_processing_must_finish_before_upload_or_account_cleanup
+    assert response.status_code == 409 and "finish" in response.json()["detail"].lower()
+E   assert (404 == 409)
+E    +  where 404 = <Response [404 Not Found]>.status_code
+______ test_us21_storage_failure_retains_records_for_a_successful_retry _______
+tests\test_us21_deletion.py:110: in test_us21_storage_failure_retains_records_for_a_successful_retry
+    assert response.status_code == 502 and "private credentials" not in response.text
+E   assert (404 == 502)
+E    +  where 404 = <Response [404 Not Found]>.status_code
+_ test_us21_deleted_upload_is_absent_from_admin_inspection_and_error_summaries _
+tests\test_us21_deletion.py:121: in test_us21_deleted_upload_is_absent_from_admin_inspection_and_error_summaries
+    assert remove(client, f"/uploads/{upload_id}", headers).status_code == 204
+E   AssertionError: assert 404 == 204
+E    +  where 404 = <Response [404 Not Found]>.status_code
+E    +    where <Response [404 Not Found]> = remove(<starlette.testclient.TestClient object at 0x00000208D6164490>, '/uploads/9a2c1d8f-91e2-4568-82bb-6220d462bb5a', {'Authorization': 'Bearer Lp7-IYt2zgViQi0p81b3TnFDXtBEHX_f'})
+__ test_us21_delete_account_removes_all_owned_data_orphans_and_every_session __
+tests\test_us21_deletion.py:136: in test_us21_delete_account_removes_all_owned_data_orphans_and_every_session
+    assert response.status_code == 204
+E   assert 404 == 204
+E    +  where 404 = <Response [404 Not Found]>.status_code
+______________ test_us21_account_with_no_uploads_can_be_deleted _______________
+tests\test_us21_deletion.py:151: in test_us21_account_with_no_uploads_can_be_deleted
+    assert remove(client, "/account", headers).status_code == 204
+E   AssertionError: assert 404 == 204
+E    +  where 404 = <Response [404 Not Found]>.status_code
+E    +    where <Response [404 Not Found]> = remove(<starlette.testclient.TestClient object at 0x00000208D6166030>, '/account', {'Authorization': 'Bearer dSYC3Hgvg4OAsu9QBtMTTzoQSJhVMawA'})
+_ test_us21_account_storage_failure_does_not_revoke_the_session_or_erase_records _
+tests\test_us21_deletion.py:159: in test_us21_account_storage_failure_does_not_revoke_the_session_or_erase_records
+    assert remove(client, "/account", headers).status_code == 502
+E   AssertionError: assert 404 == 502
+E    +  where 404 = <Response [404 Not Found]>.status_code
+E    +    where <Response [404 Not Found]> = remove(<starlette.testclient.TestClient object at 0x00000208D5D818C0>, '/account', {'Authorization': 'Bearer eUsuHlfMs1f41oKe4W8adwLHe18g_kup'})
+_____ test_us21_auth_service_failure_returns_an_error_and_can_be_retried ______
+tests\test_us21_deletion.py:168: in test_us21_auth_service_failure_returns_an_error_and_can_be_retried
+    assert remove(client, "/account", headers).status_code == 502
+E   AssertionError: assert 404 == 502
+E    +  where 404 = <Response [404 Not Found]>.status_code
+E    +    where <Response [404 Not Found]> = remove(<starlette.testclient.TestClient object at 0x00000208D6167CE0>, '/account', {'Authorization': 'Bearer AAMJKjb0aKyXhmEjgv9zP1skg_WOJV_9'})
+_____ test_us21_history_exposes_upload_id_for_deleting_the_entire_upload ______
+tests\test_us21_deletion.py:177: in test_us21_history_exposes_upload_id_for_deleting_the_entire_upload
+    assert client.get("/history", headers=headers).json()["items"][0]["upload_id"] == upload_id
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   KeyError: 'upload_id'
+___ test_us21_concurrent_retry_cannot_recreate_a_deleted_account_or_upload ____
+tests\test_us21_deletion.py:199: in test_us21_concurrent_retry_cannot_recreate_a_deleted_account_or_upload
+    assert entered.wait(3), "Deletion never reached storage cleanup"
+E   AssertionError: Deletion never reached storage cleanup
+E   assert False
+E    +  where False = wait(3)
+E    +    where wait = <threading.Event at 0x208d628de50: unset>.wait
+__ test_us21_storage_removes_files_via_the_storage_api_in_idempotent_batches __
+tests\test_us21_adapters.py:19: in test_us21_storage_removes_files_via_the_storage_api_in_idempotent_batches
+    storage.delete(paths)
+    ^^^^^^^^^^^^^^
+E   AttributeError: 'SupabaseStorage' object has no attribute 'delete'
+______ test_us21_storage_lists_every_page_under_the_exact_account_prefix ______
+tests\test_us21_adapters.py:36: in test_us21_storage_lists_every_page_under_the_exact_account_prefix
+    assert len(storage.list_paths("user/")) == 1001
+               ^^^^^^^^^^^^^^^^^^
+E   AttributeError: 'SupabaseStorage' object has no attribute 'list_paths'
+________ test_us21_storage_deletion_failure_is_not_reported_as_success ________
+tests\test_us21_adapters.py:45: in test_us21_storage_deletion_failure_is_not_reported_as_success
+    storage.delete(["u/a.mp4"])
+    ^^^^^^^^^^^^^^
+E   AttributeError: 'SupabaseStorage' object has no attribute 'delete'
+____ test_us21_in_memory_storage_deletion_is_idempotent_and_prefix_bounded ____
+tests\test_us21_adapters.py:52: in test_us21_in_memory_storage_deletion_is_idempotent_and_prefix_bounded
+    assert storage.list_paths("user/") == ["user/a.mp4"]
+           ^^^^^^^^^^^^^^^^^^
+E   AttributeError: 'InMemoryStorage' object has no attribute 'list_paths'
+______ test_us21_supabase_hard_deletes_auth_user_with_server_service_key ______
+tests\test_us21_adapters.py:63: in test_us21_supabase_hard_deletes_auth_user_with_server_service_key
+    auth = SupabaseAuth("https://example.supabase.co", "anon", service_key="secret-service-key",
+E   TypeError: SupabaseAuth.__init__() got an unexpected keyword argument 'service_key'
+______ test_us21_missing_service_key_cannot_silently_delete_an_auth_user ______
+tests\test_us21_adapters.py:75: in test_us21_missing_service_key_cannot_silently_delete_an_auth_user
+    auth.delete_user("user-id")
+    ^^^^^^^^^^^^^^^^
+E   AttributeError: 'SupabaseAuth' object has no attribute 'delete_user'
+_ test_us21_repo_upload_delete_cascades_all_analyses_measurements_and_logs[memory] _
+tests\test_setup02_repository.py:150: in test_us21_repo_upload_delete_cascades_all_analyses_measurements_and_logs
+    repo.delete_upload(upload_id)
+    ^^^^^^^^^^^^^^^^^^
+E   AttributeError: 'InMemoryRepository' object has no attribute 'delete_upload'. Did you mean: 'create_upload'?
+_______ test_us21_repo_user_delete_removes_only_the_users_data[memory] ________
+tests\test_setup02_repository.py:162: in test_us21_repo_user_delete_removes_only_the_users_data
+    repo.delete_user(uid)
+    ^^^^^^^^^^^^^^^^
+E   AttributeError: 'InMemoryRepository' object has no attribute 'delete_user'
+___ test_us21_repo_lists_owned_uploads_for_complete_account_cleanup[memory] ___
+tests\test_setup02_repository.py:171: in test_us21_repo_lists_owned_uploads_for_complete_account_cleanup
+    rows = repo.list_uploads_for_user(uid)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AttributeError: 'InMemoryRepository' object has no attribute 'list_uploads_for_user'. Did you mean: 'list_analyses_for_user'?
+____ test_us21_repo_user_lock_allows_nested_repository_operations[memory] _____
+tests\test_setup02_repository.py:177: in test_us21_repo_user_lock_allows_nested_repository_operations
+    with repo.user_lock(uid):
+         ^^^^^^^^^^^^^^
+E   AttributeError: 'InMemoryRepository' object has no attribute 'user_lock'
+=========================== short test summary info ===========================
+FAILED tests/test_us21_deletion.py::test_us21_delete_upload_removes_media_results_measurements_attempts_and_feedback
+FAILED tests/test_us21_deletion.py::test_us21_deleting_one_upload_keeps_the_other_users_and_uploads
+FAILED tests/test_us21_deletion.py::test_us21_deletion_also_removes_all_retries_and_partial_frames
+FAILED tests/test_us21_deletion.py::test_us21_deletion_requires_a_valid_session[/uploads/missing]
+FAILED tests/test_us21_deletion.py::test_us21_deletion_requires_a_valid_session[/account]
+FAILED tests/test_us21_deletion.py::test_us21_api_requires_explicit_boolean_confirmation_before_any_delete[body0]
+FAILED tests/test_us21_deletion.py::test_us21_api_requires_explicit_boolean_confirmation_before_any_delete[body1]
+FAILED tests/test_us21_deletion.py::test_us21_api_requires_explicit_boolean_confirmation_before_any_delete[body2]
+FAILED tests/test_us21_deletion.py::test_us21_api_requires_explicit_boolean_confirmation_before_any_delete[body3]
+FAILED tests/test_us21_deletion.py::test_us21_processing_must_finish_before_upload_or_account_cleanup[queued]
+FAILED tests/test_us21_deletion.py::test_us21_processing_must_finish_before_upload_or_account_cleanup[processing]
+FAILED tests/test_us21_deletion.py::test_us21_storage_failure_retains_records_for_a_successful_retry
+FAILED tests/test_us21_deletion.py::test_us21_deleted_upload_is_absent_from_admin_inspection_and_error_summaries
+FAILED tests/test_us21_deletion.py::test_us21_delete_account_removes_all_owned_data_orphans_and_every_session
+FAILED tests/test_us21_deletion.py::test_us21_account_with_no_uploads_can_be_deleted
+FAILED tests/test_us21_deletion.py::test_us21_account_storage_failure_does_not_revoke_the_session_or_erase_records
+FAILED tests/test_us21_deletion.py::test_us21_auth_service_failure_returns_an_error_and_can_be_retried
+FAILED tests/test_us21_deletion.py::test_us21_history_exposes_upload_id_for_deleting_the_entire_upload
+FAILED tests/test_us21_deletion.py::test_us21_concurrent_retry_cannot_recreate_a_deleted_account_or_upload
+FAILED tests/test_us21_adapters.py::test_us21_storage_removes_files_via_the_storage_api_in_idempotent_batches
+FAILED tests/test_us21_adapters.py::test_us21_storage_lists_every_page_under_the_exact_account_prefix
+FAILED tests/test_us21_adapters.py::test_us21_storage_deletion_failure_is_not_reported_as_success
+FAILED tests/test_us21_adapters.py::test_us21_in_memory_storage_deletion_is_idempotent_and_prefix_bounded
+FAILED tests/test_us21_adapters.py::test_us21_supabase_hard_deletes_auth_user_with_server_service_key
+FAILED tests/test_us21_adapters.py::test_us21_missing_service_key_cannot_silently_delete_an_auth_user
+FAILED tests/test_setup02_repository.py::test_us21_repo_upload_delete_cascades_all_analyses_measurements_and_logs[memory]
+FAILED tests/test_setup02_repository.py::test_us21_repo_user_delete_removes_only_the_users_data[memory]
+FAILED tests/test_setup02_repository.py::test_us21_repo_lists_owned_uploads_for_complete_account_cleanup[memory]
+FAILED tests/test_setup02_repository.py::test_us21_repo_user_lock_allows_nested_repository_operations[memory]
+29 failed, 1 passed, 4 skipped, 16 deselected in 9.37s

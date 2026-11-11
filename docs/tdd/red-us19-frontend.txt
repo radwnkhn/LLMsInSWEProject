@@ -1,0 +1,1774 @@
+
+> frontend@0.1.0 test
+> vitest run us19-processing
+
+
+ RUN  v3.2.7 C:/Users/imran/LLMsInSWEProject/frontend
+
+ ❯ src/components/__tests__/us19-processing.test.tsx (11 tests | 10 failed) 3949ms
+   × US-19 live processing status > us19_uploading_shows_all_steps_in_order_and_preserves_byte_progress 612ms
+     → Unable to find an accessible element with the role "list" and name "Analysis progress"
+
+Here are the accessible roles:
+
+  group:
+
+  Name "Which lift?":
+  [36m<fieldset />[39m
+
+  --------------------------------------------------
+  radio:
+
+  Name "Squat":
+  [36m<input[39m
+    [33mclass[39m=[32m"accent-zinc-900"[39m
+    [33mname[39m=[32m"lift"[39m
+    [33mtype[39m=[32m"radio"[39m
+    [33mvalue[39m=[32m"squat"[39m
+  [36m/>[39m
+
+  Name "Deadlift":
+  [36m<input[39m
+    [33mclass[39m=[32m"accent-zinc-900"[39m
+    [33mname[39m=[32m"lift"[39m
+    [33mtype[39m=[32m"radio"[39m
+    [33mvalue[39m=[32m"deadlift"[39m
+  [36m/>[39m
+
+  Name "Bench Press":
+  [36m<input[39m
+    [33mclass[39m=[32m"accent-zinc-900"[39m
+    [33mname[39m=[32m"lift"[39m
+    [33mtype[39m=[32m"radio"[39m
+    [33mvalue[39m=[32m"bench_press"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  button:
+
+  Name "Filming tips":
+  [36m<button[39m
+    [33mclass[39m=[32m"text-sm font-medium text-zinc-700 underline disabled:no-underline disabled:opacity-40"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Upload":
+  [36m<button[39m
+    [33mclass[39m=[32m"w-full rounded-lg bg-zinc-900 px-4 py-3 font-semibold text-white disabled:opacity-40"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtype[39m=[32m"submit"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  paragraph:
+
+  Name "":
+  [36m<p[39m
+    [33mclass[39m=[32m"mt-1 text-xs text-zinc-500"[39m
+    [33mid[39m=[32m"«r0»"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<p[39m
+    [33mclass[39m=[32m"text-right text-xs text-zinc-500"[39m
+    [33mid[39m=[32m"«r1»"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<p[39m
+    [33mclass[39m=[32m"text-sm"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  textbox:
+
+  Name "Anything we should know? (optional)":
+  [36m<textarea[39m
+    [33maria-describedby[39m=[32m"«r1»"[39m
+    [33mclass[39m=[32m"mt-1 w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm"[39m
+    [33mmaxlength[39m=[32m"300"[39m
+    [33mplaceholder[39m=[32m"e.g. last two reps felt slow"[39m
+    [33mrows[39m=[32m"2"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  progressbar:
+
+  Name "Upload progress":
+  [36m<div[39m
+    [33maria-label[39m=[32m"Upload progress"[39m
+    [33maria-valuemax[39m=[32m"100"[39m
+    [33maria-valuemin[39m=[32m"0"[39m
+    [33maria-valuenow[39m=[32m"0"[39m
+    [33mclass[39m=[32m"h-2 overflow-hidden rounded-full bg-zinc-200"[39m
+    [33mrole[39m=[32m"progressbar"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<form[39m
+      [33mclass[39m=[32m"space-y-5"[39m
+    [36m>[39m
+      [36m<fieldset>[39m
+        [36m<legend[39m
+          [33mclass[39m=[32m"mb-2 text-sm font-medium"[39m
+        [36m>[39m
+          [0mWhich lift?[0m
+        [36m</legend>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"grid grid-cols-3 gap-2"[39m
+        [36m>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-900 bg-zinc-100"[39m
+          [36m>[39m
+            [36m<input[39m
+              [33mclass[39m=[32m"accent-zinc-900"[39m
+              [33mname[39m=[32m"lift"[39m
+              [33mtype[39m=[32m"radio"[39m
+              [33mvalue[39m=[32m"squat"[39m
+            [36m/>[39m
+            [0mSquat[0m
+          [36m</label>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-300"[39m
+          [36m>[39m
+            [36m<input[39m
+              [33mclass[39m=[32m"accent-zinc-900"[39m
+              [33mname[39m=[32m"lift"[39m
+              [33mtype[39m=[32m"radio"[39m
+              [33mvalue[39m=[32m"deadlift"[39m
+            [36m/>[39m
+            [0mDeadlift[0m
+          [36m</label>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-300"[39m
+          [36m>[39m
+            [36m<input[39m
+              [33mclass[39m=[32m"accent-zinc-900"[39m
+              [33mname[39m=[32m"lift"[39m
+              [33mtype[39m=[32m"radio"[39m
+              [33mvalue[39m=[32m"bench_press"[39m
+            [36m/>[39m
+            [0mBench Press[0m
+          [36m</label>[39m
+        [36m</div>[39m
+      [36m</fieldset>[39m
+      [36m<button[39m
+        [33mclass[39m=[32m"text-sm font-medium text-zinc-700 underline disabled:no-underline disabled:opacity-40"[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m>[39m
+        [0mFilming tips[0m
+      [36m</button>[39m
+      [36m<div>[39m
+        [36m<label[39m
+          [33mclass[39m=[32m"block"[39m
+        [36m>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"text-sm font-medium"[39m
+          [36m>[39m
+            [0mVideo of your set[0m
+          [36m</span>[39m
+          [36m<input[39m
+            [33maccept[39m=[32m"video/mp4,video/quicktime,.mp4,.mov"[39m
+            [33maria-describedby[39m=[32m"«r0»"[39m
+            [33mclass[39m=[32m"mt-1 block w-full text-sm file:mr-3 file:rounded-lg file:border-0 file:bg-zinc-100 file:px-3 file:py-2"[39m
+            [33mtype[39m=[32m"file"[39m
+          [36m/>[39m
+        [36m</label>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"mt-1 text-xs text-zinc-500"[39m
+          [33mid[39m=[32m"«r0»"[39m
+        [36m>[39m
+          [0mMP4 or MOV, up to 60 seconds and 200 MB.[0m
+        [36m</p>[39m
+      [36m</div>[39m
+      [36m<div>[39m
+        [36m<label[39m
+          [33mclass[39m=[32m"block"[39m
+        [36m>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"text-sm font-medium"[39m
+          [36m>[39m
+            [0mAnything we should know? (optional)[0m
+          [36m</span>[39m
+          [36m<textarea[39m
+            [33maria-describedby[39m=[32m"«r1»"[39m
+            [33mclass[39m=[32m"mt-1 w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm"[39m
+            [33mmaxlength[39m=[32m"300"[39m
+            [33mplaceholder[39m=[32m"e.g. last two reps felt slow"[39m
+            [33mrows[39m=[32m"2"[39m
+          [36m/>[39m
+        [36m</label>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"text-right text-xs text-zinc-500"[39m
+          [33mid[39m=[32m"«r1»"[39m
+        [36m>[39m
+          [0m0[0m
+          [0m/[0m
+          [0m300[0m
+        [36m</p>[39m
+      [36m</div>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"space-y-1"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33maria-label[39m=[32m"Upload progress"[39m
+          [33maria-valuemax[39m=[32m"100"[39m
+          [33maria-valuemin[39m=[32m"0"[39m
+          [33maria-valuenow[39m=[32m"0"[39m
+          [33mclass[39m=[32m"h-2 overflow-hidden rounded-full bg-zinc-200"[39m
+          [33mrole[39m=[32m"progressbar"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"h-full bg-zinc-900 transition-all"[39m
+            [33mstyle[39m=[32m"width: 0%;"[39m
+          [36m/>[39m
+        [36m</div>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"text-sm"[39m
+        [36m>[39m
+          [0m0[0m
+          [0m%[0m
+        [36m</p>[39m
+      [36m</div>[39m
+      [36m<button[39m
+        [33mclass[39m=[32m"w-full rounded-lg bg-zinc-900 px-4 py-3 font-semibold text-white disabled:opacity-40"[39m
+        [33mdisabled[39m=[32m""[39m
+        [33mtype[39m=[32m"submit"[39m
+      [36m>[39m
+        [0mUpload[0m
+      [36m</button>[39m
+    [36m</form>[39m
+  [36m</div>[39m
+[36m</body>[39m
+   × US-19 live processing status > us19_highlights_the_actual_measuring_step 10ms
+     → Unable to find an accessible element with the role "list" and name "Analysis progress"
+
+Here are the accessible roles:
+
+  status:
+
+  Name "":
+  [36m<p[39m
+    [33mclass[39m=[32m"animate-pulse text-zinc-600"[39m
+    [33mrole[39m=[32m"status"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<p[39m
+      [33mclass[39m=[32m"animate-pulse text-zinc-600"[39m
+      [33mrole[39m=[32m"status"[39m
+    [36m>[39m
+      [0mAnalyzing your set… this usually takes under a minute.[0m
+    [36m</p>[39m
+  [36m</div>[39m
+[36m</body>[39m
+   × US-19 live processing status > us19_highlights_the_actual_writing_feedback_step 6ms
+     → Unable to find an accessible element with the role "list" and name "Analysis progress"
+
+Here are the accessible roles:
+
+  status:
+
+  Name "":
+  [36m<p[39m
+    [33mclass[39m=[32m"animate-pulse text-zinc-600"[39m
+    [33mrole[39m=[32m"status"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<p[39m
+      [33mclass[39m=[32m"animate-pulse text-zinc-600"[39m
+      [33mrole[39m=[32m"status"[39m
+    [36m>[39m
+      [0mAnalyzing your set… this usually takes under a minute.[0m
+    [36m</p>[39m
+  [36m</div>[39m
+[36m</body>[39m
+   × US-19 live processing status > us19_highlights_the_actual_checking_step 6ms
+     → Unable to find an accessible element with the role "list" and name "Analysis progress"
+
+Here are the accessible roles:
+
+  status:
+
+  Name "":
+  [36m<p[39m
+    [33mclass[39m=[32m"animate-pulse text-zinc-600"[39m
+    [33mrole[39m=[32m"status"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<p[39m
+      [33mclass[39m=[32m"animate-pulse text-zinc-600"[39m
+      [33mrole[39m=[32m"status"[39m
+    [36m>[39m
+      [0mAnalyzing your set… this usually takes under a minute.[0m
+    [36m</p>[39m
+  [36m</div>[39m
+[36m</body>[39m
+   × US-19 live processing status > us19_polls_without_refresh_then_opens_results_and_stops_polling 19ms
+     → expect(element).toHaveTextContent()
+
+Expected element to have text content:
+  Measuring
+Received:
+  Analyzing your set… this usually takes under a minute.
+   × US-19 live processing status > us19_failed_analysis_has_retry_and_no_endless_status_indicator 1022ms
+     → Unable to find role="alert"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<p[39m
+      [33mclass[39m=[32m"animate-pulse text-zinc-600"[39m
+      [33mrole[39m=[32m"status"[39m
+    [36m>[39m
+      [0mAnalyzing your set… this usually takes under a minute.[0m
+    [36m</p>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<p[39m
+      [33mclass[39m=[32m"animate-pulse text-zinc-600"[39m
+      [33mrole[39m=[32m"status"[39m
+    [36m>[39m
+      [0mAnalyzing your set… this usually takes under a minute.[0m
+    [36m</p>[39m
+  [36m</div>[39m
+[36m</body>[39m
+   × US-19 live processing status > us19_a_failed_retry_keeps_an_actionable_error 1011ms
+     → Unable to find role="button" and name "Retry"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<p[39m
+      [33mclass[39m=[32m"animate-pulse text-zinc-600"[39m
+      [33mrole[39m=[32m"status"[39m
+    [36m>[39m
+      [0mAnalyzing your set… this usually takes under a minute.[0m
+    [36m</p>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<p[39m
+      [33mclass[39m=[32m"animate-pulse text-zinc-600"[39m
+      [33mrole[39m=[32m"status"[39m
+    [36m>[39m
+      [0mAnalyzing your set… this usually takes under a minute.[0m
+    [36m</p>[39m
+  [36m</div>[39m
+[36m</body>[39m
+   × US-19 live processing status > us19_disables_retry_while_the_request_is_pending 1025ms
+     → Unable to find role="button" and name "Retry"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"space-y-2 rounded-xl bg-red-50 p-4 text-red-800"[39m
+      [33mrole[39m=[32m"alert"[39m
+    [36m>[39m
+      [36m<p>[39m
+        [0mSomething went wrong analyzing this video. Please try uploading it again.[0m
+      [36m</p>[39m
+      [36m<a[39m
+        [33mclass[39m=[32m"font-semibold underline"[39m
+        [33mhref[39m=[32m"/upload"[39m
+      [36m>[39m
+        [0mUpload again[0m
+      [36m</a>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"space-y-2 rounded-xl bg-red-50 p-4 text-red-800"[39m
+      [33mrole[39m=[32m"alert"[39m
+    [36m>[39m
+      [36m<p>[39m
+        [0mSomething went wrong analyzing this video. Please try uploading it again.[0m
+      [36m</p>[39m
+      [36m<a[39m
+        [33mclass[39m=[32m"font-semibold underline"[39m
+        [33mhref[39m=[32m"/upload"[39m
+      [36m>[39m
+        [0mUpload again[0m
+      [36m</a>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+   × US-19 live processing status > us19_polling_network_failure_offers_retry_and_resumes_polling 18ms
+     → Unable to find an accessible element with the role "button" and name "Retry"
+
+Here are the accessible roles:
+
+  alert:
+
+  Name "":
+  [36m<p[39m
+    [33mrole[39m=[32m"alert"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<p[39m
+      [33mrole[39m=[32m"alert"[39m
+    [36m>[39m
+      [0mCouldn't load this result.[0m
+    [36m</p>[39m
+  [36m</div>[39m
+[36m</body>[39m
+   ✓ US-19 live processing status > us19_cancels_scheduled_polling_when_leaving_the_page 5ms
+   × US-19 live processing status > us19_route_changes_discard_late_responses_from_the_previous_analysis 212ms
+     → Unable to find an element with the text: No major issues found. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"space-y-6"[39m
+    [36m>[39m
+      [36m<header>[39m
+        [36m<h1[39m
+          [33mclass[39m=[32m"text-2xl font-bold"[39m
+        [36m>[39m
+          [0mSquat[0m
+        [36m</h1>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"text-sm text-zinc-600"[39m
+        [36m>[39m
+          [0m5[0m
+          [0m reps[0m
+        [36m</p>[39m
+      [36m</header>[39m
+      [36m<section[39m
+        [33maria-labelledby[39m=[32m"«r6»"[39m
+        [33mclass[39m=[32m"space-y-2 rounded-xl border-2 border-zinc-900 p-4"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex items-center gap-2"[39m
+        [36m>[39m
+          [36m<h2[39m
+            [33mclass[39m=[32m"text-sm font-semibold uppercase tracking-wide text-zinc-500"[39m
+            [33mid[39m=[32m"«r6»"[39m
+          [36m>[39m
+            [0mTop fix[0m
+          [36m</h2>[39m
+        [36m</div>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"text-xl font-bold"[39m
+        [36m>[39m
+          [0mHips rise before your shoulders[0m
+        [36m</p>[39m
+        [36m<p[39m
+          [33maria-label[39m=[32m"Cue for your next set"[39m
+          [33mclass[39m=[32m"rounded-lg bg-zinc-900 px-3 py-2 font-medium text-white"[39m
+        [36m>[39m
+          [0mDrive your chest up with your hips[0m
+        [36m</p>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"text-sm text-zinc-700"[39m
+        [36m>[39m
+          [0mOn reps 4 and 5 your torso tipped forward as you stood up.[0m
+        [36m</p>[39m
+      [36m</section>[39m
+      [36m<div>[39m
+        [36m<button[39m
+          [33maria-controls[39m=[32m"«r3»"[39m
+          [33maria-expanded[39m=[32m"false"[39m
+          [33mclass[39m=[32m"text-sm font-medium underline"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mSee more[0m
+        [36m</button>[39m
+      [36m</div>[39m
+      [36m<video[39m
+        [33mclass[39m=[32m"w-full rounded-xl bg-black"[39m
+        [33mcontrols[39m=[32m""[39m
+        [33mplaysinline[39m=[32m""[39m
+        [33mpreload[39m=[32m"metadata"[39m
+        [33msrc[39m=[32m"https://storage.test/video.mp4?token=abc"[39m
+      [36m/>[39m
+      [36m<figure[39m
+        [33mclass[39m=[32m"space-y-2"[39m
+      [36m>[39m
+        [36m<button[39m
+          [33maria-label[39m=[32m"Play rep 4 from the start"[39m
+          [33mclass[39m=[32m"block w-full overflow-hidden rounded-xl border border-zinc-200"[39m
+          [33mdata-rep-start[39m=[32m"5.53"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [36m<img[39m
+            [33malt[39m=[32m"Rep 4 at 0:06.7 with the measurement Torso +14°"[39m
+            [33mclass[39m=[32m"h-auto w-full"[39m
+            [33msrc[39m=[32m"https://storage.test/frame.png?token=abc"[39m
+          [36m/>[39m
+        [36m</button>[39m
+        [36m<figcaption[39m
+          [33mclass[39m=[32m"text-sm text-zinc-600"[39m
+        [36m>[39m
+          [0mRep 4 · 0:06.7 · Torso +14°[0m
+        [36m</figcaption>[39m
+      [36m</figure>[39m
+      [36m<section[39m
+        [33maria-labelledby[39m=[32m"«r4»"[39m
+        [33mclass[39m=[32m"space-y-2"[39m
+      [36m>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"text-lg font-semibold"[39m
+          [33mid[39m=[32m"«r4»"[39m
+        [36m>[39m
+          [0mRep by rep[0m
+        [36m</h2>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-900"[39m
+        [36m>[39m
+          [0mForm broke down late in the set, likely from fatigue.[0m
+        [36m</p>[39m
+        [36m<ol[39m
+          [33mclass[39m=[32m"divide-y divide-zinc-200 rounded-xl border border-zinc-200"[39m
+        [36m>[39m
+          [36m<li[39m
+            [33maria-label[39m=[32m"Rep 1"[39m
+          [36m>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"flex w-full items-start justify-between gap-3 px-3 py-2.5 text-left text-sm"[39m
+              [33mdata-rep-start[39m=[32m"0"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"font-medium"[39m
+              [36m>[39m
+                [0mRep [0m
+                [0m1[0m
+                [0m [0m
+                [36m<span[39m
+                  [33mclass[39m=[32m"font-normal text-zinc-500"[39m
+                [36m>[39m
+                  [0m0:00.0[0m
+                [36m</span>[39m
+              [36m</span>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"text-right"[39m
+              [36m>[39m
+                [36m<span[39m
+                  [33mclass[39m=[32m"text-emerald-700"[39m
+                [36m>[39m
+                  [0mClean[0m
+                [36m</span>[39m
+              [36m</span>[39m
+            [36m</button>[39m
+          [36m</li>[39m
+          [36m<li[39m
+            [33maria-label[39m=[32m"Rep 2"[39m
+          [36m>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"flex w-full items-start justify-between gap-3 px-3 py-2.5 text-left text-sm"[39m
+              [33mdata-rep-start[39m=[32m"1.73"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"font-medium"[39m
+              [36m>[39m
+                [0mRep [0m
+                [0m2[0m
+                [0m [0m
+                [36m<span[39m
+                  [33mclass[39m=[32m"font-normal text-zinc-500"[39m
+                [36m>[39m
+                  [0m0:01.7[0m
+                [36m</span>[39m
+              [36m</span>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"text-right"[39m
+              [36m>[39m
+                [36m<span[39m
+                  [33mclass[39m=[32m"text-emerald-700"[39m
+                [36m>[39m
+                  [0mClean[0m
+                [36m</span>[39m
+              [36m</span>[39m
+            [36m</button>[39m
+          [36m</li>[39m
+          [36m<li[39m
+            [33maria-label[39m=[32m"Rep 3"[39m
+          [36m>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"flex w-full items-start justify-between gap-3 px-3 py-2.5 text-left text-sm"[39m
+              [33mdata-rep-start[39m=[32m"3.46"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"font-medium"[39m
+              [36m>[39m
+                [0mRep [0m
+                [0m3[0m
+                [0m [0m
+                [36m<span[39m
+                  [33mclass[39m=[32m"font-normal text-zinc-500"[39m
+                [36m>[39m
+                  [0m0:03.5[0m
+                [36m</span>[39m
+              [36m</span>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"text-right"[39m
+              [36m>[39m
+                [36m<span[39m
+                  [33mclass[39m=[32m"text-emerald-700"[39m
+                [36m>[39m
+                  [0mClean[0m
+                [36m</span>[39m
+              [36m</span>[39m
+            [36m</button>[39m
+          [36m</li>[39m
+          [36m<li[39m
+            [33maria-label[39m=[32m"Rep 4"[39m
+          [36m>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"flex w-full items-start justify-between gap-3 px-3 py-2.5 text-left text-sm"[39m
+              [33mdata-rep-start[39m=[32m"5.1899999999999995"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"font-medium"[39m
+              [36m>[39m
+                [0mRep [0m
+                [0m4[0m
+                [0m [0m
+                [36m<span[39m
+                  [33mclass[39m=[32m"font-normal text-zinc-500"[39m
+                [36m>[39m
+                  [0m0:05.2[0m
+                [36m</span>[39m
+              [36m</span>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"text-right"[39m
+              [36m>[39m
+                [36m<span[39m
+                  [33mclass[39m=[32m"block text-red-700"[39m
+                [36m>[39m
+                  [0mHips rise before your shoulders[0m
+                [36m</span>[39m
+              [36m</span>[39m
+            [36m</button>[39m
+          [36m</li>[39m
+          [36m<li[39m
+            [33maria-label[39m=[32m"Rep 5"[39m
+          [36m>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"flex w-full items-start justify-between gap-3 px-3 py-2.5 text-left text-sm"[39m
+              [33mdata-rep-start[39m=[32m"6.92"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"font-medium"[39m
+              [36m>[39m
+                [0mRep [0m
+                [0m5[0m
+                [0m [0m
+                [36m<span[39m
+                  [33mclass[39m=[32m"font-normal text-zinc-500"[39m
+                [36m>[39m
+                  [0m0:06.9[0m
+                [36m</span>[39m
+              [36m</span>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"text-right"[39m
+              [36m>[39m
+                [36m<span[39m
+                  [33mclass[39m=[32m"block text-red-700"[39m
+                [36m>[39m
+                  [0mHips rise before your shoulders[0m
+                [36m</span>[39m
+              [36m</span>[39m
+            [36m</button>[39m
+          [36m</li>[39m
+        [36m</ol>[39m
+      [36m</section>[39m
+      [36m<section[39m
+        [33maria-labelledby[39m=[32m"«r5»"[39m
+        [33mclass[39m=[32m"space-y-1"[39m
+      [36m>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"text-lg font-semibold"[39m
+          [33mid[39m=[32m"«r5»"[39m
+        [36m>[39m
+          [0mNot measured[0m
+        [36m</h2>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"text-sm text-zinc-600"[39m
+        [36m>[39m
+          [0mWe don't guess. These checks couldn't be measured from this video:[0m
+        [36m</p>[39m
+        [36m<ul[39m
+          [33mclass[39m=[32m"list-disc space-y-1 pl-5 text-sm"[39m
+        [36m>[39m
+          [36m<li>[39m
+            [0mKnees cave inward: needs a front view[0m
+          [36m</li>[39m
+        [36m</ul>[39m
+      [36m</section>[39m
+      [36m<form[39m
+        [33mclass[39m=[32m"space-y-3 rounded-xl border border-zinc-200 p-4"[39m
+      [36m>[39m
+        [36m<fieldset[39m
+          [33maria-label[39m=[32m"How helpful was this feedback?"[39m
+          [33mrole[39m=[32m"radiogroup"[39m
+        [36m>[39m
+          [36m<legend[39m
+            [33mclass[39m=[32m"text-sm font-medium"[39m
+          [36m>[39m
+            [0mHow helpful was this feedback?[0m
+          [36m</legend>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"mt-2 flex gap-2"[39m
+          [36m>[39m
+            [36m<label[39m
+              [33mclass[39m=[32m"flex items-center gap-1 text-sm"[39m
+            [36m>[39m
+              [36m<input[39m
+                [33mname[39m=[32m"rating"[39m
+                [33mtype[39m=[32m"radio"[39m
+                [33mvalue[39m=[32m"1"[39m
+              [36m/>[39m
+              [0m1[0m
+            [36m</label>[39m
+            [36m<label[39m
+              [33mclass[39m=[32m"flex items-center gap-1 text-sm"[39m
+            [36m>[39m
+              [36m<input[39m
+                [33mname[39m=[32m"rating"[39m
+                [33mtype[39m=[32m"radio"[39m
+                [33mvalue[39m=[32m"2"[39m
+              [36m/>[39m
+              [0m2[0m
+            [36m</label>[39m
+            [36m<label[39m
+              [33mclass[39m=[32m"flex items-center gap-1 text-sm"[39m
+            [36m>[39m
+              [36m<input[39m
+                [33mname[39m=[32m"rating"[39m
+                [33mtype[39m=[32m"radio"[39m
+                [33mvalue[39m=[32m"3"[39m
+              [36m/>[39m
+              [0m3[0m
+            [36m</label>[39m
+            [36m<label[39m
+              [33mclass[39m=[32m"flex items-center gap-1 text-sm"[39m
+            [36m>[39m
+              [36m<input[39m
+                [33mname[39m=[32m"rating"[39m
+                [33mtype[39m=[32m"radio"[39m
+                [33mvalue[39m=[32m"4"[39m
+              [36m/>[39m
+              [0m4[0m
+            [36m</label>[39m
+            [36m<label[39m
+              [33mclass[39m=[32m"flex items-center gap-1 text-sm"[39m
+            [36m>[39m
+              [36m<input[39m
+                [33mname[39m=[32m"rating"[39m
+                [33mtype[39m=[32m"radio"[39m
+                [33mvalue[39m=[32m"5"[39m
+              [36m/>[39m
+              [0m5[0m
+            [36m</label>[39m
+          [36m</div>[39m
+        [36m</fieldset>[39m
+        [36m<fieldset[39m
+          [33maria-label[39m=[32m"Did you try the cue?"[39m
+          [33mrole[39m=[32m"radiogroup"[39m
+        [36m>[39m
+          [36m<legend[39m
+            [33mclass[39m=[32m"text-sm font-medium"[39m
+          [36m>[39m
+            [0mDid you try the cue?[0m
+          [36m</legend>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"mt-2 flex gap-3"[39m
+          [36m>[39m
+            [36m<label[39m
+              [33mclass[39m=[32m"flex items-center gap-1 text-sm"[39m
+            [36m>[39m
+              [36m<input[39m
+                [33mname[39m=[32m"tried_cue"[39m
+                [33mtype[39m=[32m"radio"[39m
+                [33mvalue[39m=[32m"yes"[39m
+              [36m/>[39m
+              [0mYes[0m
+            [36m</label>[39m
+            [36m<label[39m
+              [33mclass[39m=[32m"flex items-center gap-1 text-sm"[39m
+            [36m>[39m
+              [36m<input[39m
+                [33mname[39m=[32m"tried_cue"[39m
+                [33mtype[39m=[32m"radio"[39m
+                [33mvalue[39m=[32m"no"[39m
+              [36m/>[39m
+              [0mNo[0m
+            [36m</label>[39m
+            [36m<label[39m
+              [33mclass[39m=[32m"flex items-center gap-1 text-sm"[39m
+            [36m>[39m
+              [36m<input[39m
+                [33mname[39m=[32m"tried_cue"[39m
+                [33mtype[39m=[32m"radio"[39m
+                [33mvalue[39m=[32m"not_yet"[39m
+              [36m/>[39m
+              [0mNot yet[0m
+            [36m</label>[39m
+          [36m</div>[39m
+        [36m</fieldset>[39m
+        [36m<button[39m
+          [33mclass[39m=[32m"rounded-lg bg-zinc-900 px-4 py-2 text-sm font-semibold text-white disabled:opacity-40"[39m
+          [33mdisabled[39m=[32m""[39m
+          [33mtype[39m=[32m"submit"[39m
+        [36m>[39m
+          [0mSend feedback[0m
+        [36m</button>[39m
+      [36m</form>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 10 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/components/__tests__/us19-processing.test.tsx > US-19 live processing status > us19_uploading_shows_all_steps_in_order_and_preserves_byte_progress
+TestingLibraryElementError: Unable to find an accessible element with the role "list" and name "Analysis progress"
+
+Here are the accessible roles:
+
+  group:
+
+  Name "Which lift?":
+  <fieldset />
+
+  --------------------------------------------------
+  radio:
+
+  Name "Squat":
+  <input
+    class="accent-zinc-900"
+    name="lift"
+    type="radio"
+    value="squat"
+  />
+
+  Name "Deadlift":
+  <input
+    class="accent-zinc-900"
+    name="lift"
+    type="radio"
+    value="deadlift"
+  />
+
+  Name "Bench Press":
+  <input
+    class="accent-zinc-900"
+    name="lift"
+    type="radio"
+    value="bench_press"
+  />
+
+  --------------------------------------------------
+  button:
+
+  Name "Filming tips":
+  <button
+    class="text-sm font-medium text-zinc-700 underline disabled:no-underline disabled:opacity-40"
+    type="button"
+  />
+
+  Name "Upload":
+  <button
+    class="w-full rounded-lg bg-zinc-900 px-4 py-3 font-semibold text-white disabled:opacity-40"
+    disabled=""
+    type="submit"
+  />
+
+  --------------------------------------------------
+  paragraph:
+
+  Name "":
+  <p
+    class="mt-1 text-xs text-zinc-500"
+    id="«r0»"
+  />
+
+  Name "":
+  <p
+    class="text-right text-xs text-zinc-500"
+    id="«r1»"
+  />
+
+  Name "":
+  <p
+    class="text-sm"
+  />
+
+  --------------------------------------------------
+  textbox:
+
+  Name "Anything we should know? (optional)":
+  <textarea
+    aria-describedby="«r1»"
+    class="mt-1 w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm"
+    maxlength="300"
+    placeholder="e.g. last two reps felt slow"
+    rows="2"
+  />
+
+  --------------------------------------------------
+  progressbar:
+
+  Name "Upload progress":
+  <div
+    aria-label="Upload progress"
+    aria-valuemax="100"
+    aria-valuemin="0"
+    aria-valuenow="0"
+    class="h-2 overflow-hidden rounded-full bg-zinc-200"
+    role="progressbar"
+  />
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <form
+      class="space-y-5"
+    >
+      <fieldset>
+        <legend
+          class="mb-2 text-sm font-medium"
+        >
+          Which lift?
+        </legend>
+        <div
+          class="grid grid-cols-3 gap-2"
+        >
+          <label
+            class="flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-900 bg-zinc-100"
+          >
+            <input
+              class="accent-zinc-900"
+              name="lift"
+              type="radio"
+              value="squat"
+            />
+            Squat
+          </label>
+          <label
+            class="flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-300"
+          >
+            <input
+              class="accent-zinc-900"
+              name="lift"
+              type="radio"
+              value="deadlift"
+            />
+            Deadlift
+          </label>
+          <label
+            class="flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-300"
+          >
+            <input
+              class="accent-zinc-900"
+              name="lift"
+              type="radio"
+              value="bench_press"
+            />
+            Bench Press
+          </label>
+        </div>
+      </fieldset>
+      <button
+        class="text-sm font-medium text-zinc-700 underline disabled:no-underline disabled:opacity-40"
+        type="button"
+      >
+        Filming tips
+      </button>
+      <div>
+        <label
+          class="block"
+        >
+          <span
+            class="text-sm font-medium"
+          >
+            Video of your set
+          </span>
+          <input
+            accept="video/mp4,video/quicktime,.mp4,.mov"
+            aria-describedby="«r0»"
+            class="mt-1 block w-full text-sm file:mr-3 file:rounded-lg file:border-0 file:bg-zinc-100 file:px-3 file:py-2"
+            type="file"
+          />
+        </label>
+        <p
+          class="mt-1 text-xs text-zinc-500"
+          id="«r0»"
+        >
+          MP4 or MOV, up to 60 seconds and 200 MB.
+        </p>
+      </div>
+      <div>
+        <label
+          class="block"
+        >
+          <span
+            class="text-sm font-medium"
+          >
+            Anything we should know? (optional)
+          </span>
+          <textarea
+            aria-describedby="«r1»"
+            class="mt-1 w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm"
+            maxlength="300"
+            placeholder="e.g. last two reps felt slow"
+            rows="2"
+          />
+        </label>
+        <p
+          class="text-right text-xs text-zinc-500"
+          id="«r1»"
+        >
+          0
+          /
+          300
+        </p>
+      </div>
+      <div
+        class="space-y-1"
+      >
+        <div
+          aria-label="Upload progress"
+          aria-valuemax="100"
+          aria-valuemin="0"
+          aria-valuenow="0"
+          class="h-2 overflow-hidden rounded-full bg-zinc-200"
+          role="progressbar"
+        >
+          <div
+            class="h-full bg-zinc-900 transition-all"
+            style="width: 0%;"
+          />
+        </div>
+        <p
+          class="text-sm"
+        >
+          0
+          %
+        </p>
+      </div>
+      <button
+        class="w-full rounded-lg bg-zinc-900 px-4 py-3 font-semibold text-white disabled:opacity-40"
+        disabled=""
+        type="submit"
+      >
+        Upload
+      </button>
+    </form>
+  </div>
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/components/__tests__/us19-processing.test.tsx:39:25
+     37|     await userEvent.upload(screen.getByLabelText("Video of your set"),…
+     38|     await userEvent.click(screen.getByRole("button", { name: "Upload" …
+     39|     const list = screen.getByRole("list", { name: "Analysis progress" …
+       |                         ^
+     40|     expect(within(list).getAllByRole("listitem").map((item) => item.te…
+     41|     expect(within(list).getByText("Uploading")).toHaveAttribute("aria-…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/10]⎯
+
+ FAIL  src/components/__tests__/us19-processing.test.tsx > US-19 live processing status > us19_highlights_the_actual_measuring_step
+ FAIL  src/components/__tests__/us19-processing.test.tsx > US-19 live processing status > us19_highlights_the_actual_writing_feedback_step
+ FAIL  src/components/__tests__/us19-processing.test.tsx > US-19 live processing status > us19_highlights_the_actual_checking_step
+TestingLibraryElementError: Unable to find an accessible element with the role "list" and name "Analysis progress"
+
+Here are the accessible roles:
+
+  status:
+
+  Name "":
+  <p
+    class="animate-pulse text-zinc-600"
+    role="status"
+  />
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <p
+      class="animate-pulse text-zinc-600"
+      role="status"
+    >
+      Analyzing your set… this usually takes under a minute.
+    </p>
+  </div>
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/components/__tests__/us19-processing.test.tsx:48:25
+     46|   it.each(["measuring", "writing_feedback", "checking"] as const)("us1…
+     47|     render(<ResultsView result={passedResult({ status: "processing", p…
+     48|     const list = screen.getByRole("list", { name: "Analysis progress" …
+       |                         ^
+     49|     expect(within(list).getAllByRole("listitem").map((item) => item.te…
+     50|     const label = { measuring: "Measuring", writing_feedback: "Writing…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/10]⎯
+
+ FAIL  src/components/__tests__/us19-processing.test.tsx > US-19 live processing status > us19_polls_without_refresh_then_opens_results_and_stops_polling
+Error: expect(element).toHaveTextContent()
+
+Expected element to have text content:
+  Measuring
+Received:
+  Analyzing your set… this usually takes under a minute.
+ ❯ src/components/__tests__/us19-processing.test.tsx:68:42
+     66|     for (const label of ["Measuring", "Writing feedback", "Checking"])…
+     67|       await act(async () => { await vi.advanceTimersByTimeAsync(1500);…
+     68|       expect(screen.getByRole("status")).toHaveTextContent(label);
+       |                                          ^
+     69|     }
+     70|     await act(async () => { await vi.advanceTimersByTimeAsync(1500); }…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/10]⎯
+
+ FAIL  src/components/__tests__/us19-processing.test.tsx > US-19 live processing status > us19_failed_analysis_has_retry_and_no_endless_status_indicator
+TestingLibraryElementError: Unable to find role="alert"
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <p
+      class="animate-pulse text-zinc-600"
+      role="status"
+    >
+      Analyzing your set… this usually takes under a minute.
+    </p>
+  </div>
+</body>
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <p
+      class="animate-pulse text-zinc-600"
+      role="status"
+    >
+      Analyzing your set… this usually takes under a minute.
+    </p>
+  </div>
+</body>
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/components/__tests__/us19-processing.test.tsx:81:25
+     79|     vi.mocked(api.retryAnalysis).mockResolvedValue({ analysis_id: "a2"…
+     80|     render(<ResultsPage />);
+     81|     expect(await screen.findByRole("alert")).toHaveTextContent("Someth…
+       |                         ^
+     82|     expect(screen.queryByRole("status")).not.toBeInTheDocument();
+     83|     await userEvent.click(screen.getByRole("button", { name: "Retry" }…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/10]⎯
+
+ FAIL  src/components/__tests__/us19-processing.test.tsx > US-19 live processing status > us19_a_failed_retry_keeps_an_actionable_error
+TestingLibraryElementError: Unable to find role="button" and name "Retry"
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <p
+      class="animate-pulse text-zinc-600"
+      role="status"
+    >
+      Analyzing your set… this usually takes under a minute.
+    </p>
+  </div>
+</body>
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <p
+      class="animate-pulse text-zinc-600"
+      role="status"
+    >
+      Analyzing your set… this usually takes under a minute.
+    </p>
+  </div>
+</body>
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/components/__tests__/us19-processing.test.tsx:92:40
+     90|     vi.mocked(api.retryAnalysis).mockRejectedValue(new ApiError(503, "…
+     91|     render(<ResultsPage />);
+     92|     await userEvent.click(await screen.findByRole("button", { name: "R…
+       |                                        ^
+     93|     expect(screen.getByRole("alert")).toHaveTextContent("Couldn't rest…
+     94|     expect(screen.getByRole("button", { name: "Retry" })).toBeEnabled(…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/10]⎯
+
+ FAIL  src/components/__tests__/us19-processing.test.tsx > US-19 live processing status > us19_disables_retry_while_the_request_is_pending
+TestingLibraryElementError: Unable to find role="button" and name "Retry"
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <div
+      class="space-y-2 rounded-xl bg-red-50 p-4 text-red-800"
+      role="alert"
+    >
+      <p>
+        Something went wrong analyzing this video. Please try uploading it again.
+      </p>
+      <a
+        class="font-semibold underline"
+        href="/upload"
+      >
+        Upload again
+      </a>
+    </div>
+  </div>
+</body>
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <div
+      class="space-y-2 rounded-xl bg-red-50 p-4 text-red-800"
+      role="alert"
+    >
+      <p>
+        Something went wrong analyzing this video. Please try uploading it again.
+      </p>
+      <a
+        class="font-semibold underline"
+        href="/upload"
+      >
+        Upload again
+      </a>
+    </div>
+  </div>
+</body>
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/components/__tests__/us19-processing.test.tsx:101:40
+     99|     vi.mocked(api.retryAnalysis).mockReturnValue(new Promise(() => {})…
+    100|     render(<ResultsPage />);
+    101|     await userEvent.click(await screen.findByRole("button", { name: "R…
+       |                                        ^
+    102|     expect(screen.getByRole("button", { name: "Retrying…" })).toBeDisa…
+    103|     expect(api.retryAnalysis).toHaveBeenCalledTimes(1);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/10]⎯
+
+ FAIL  src/components/__tests__/us19-processing.test.tsx > US-19 live processing status > us19_polling_network_failure_offers_retry_and_resumes_polling
+TestingLibraryElementError: Unable to find an accessible element with the role "button" and name "Retry"
+
+Here are the accessible roles:
+
+  alert:
+
+  Name "":
+  <p
+    role="alert"
+  />
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <p
+      role="alert"
+    >
+      Couldn't load this result.
+    </p>
+  </div>
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/components/__tests__/us19-processing.test.tsx:110:34
+    108|     render(<ResultsPage />);
+    109|     expect(await screen.findByRole("alert")).toHaveTextContent("Couldn…
+    110|     await userEvent.click(screen.getByRole("button", { name: "Retry" }…
+       |                                  ^
+    111|     expect(await screen.findByRole("heading", { name: "Top fix" })).to…
+    112|     expect(screen.queryByRole("alert")).not.toBeInTheDocument();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/10]⎯
+
+ FAIL  src/components/__tests__/us19-processing.test.tsx > US-19 live processing status > us19_route_changes_discard_late_responses_from_the_previous_analysis
+TestingLibraryElementError: Unable to find an element with the text: No major issues found. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <div
+      class="space-y-6"
+    >
+      <header>
+        <h1
+          class="text-2xl font-bold"
+        >
+          Squat
+        </h1>
+        <p
+          class="text-sm text-zinc-600"
+        >
+          5
+           reps
+        </p>
+      </header>
+      <section
+        aria-labelledby="«r6»"
+        class="space-y-2 rounded-xl border-2 border-zinc-900 p-4"
+      >
+        <div
+          class="flex items-center gap-2"
+        >
+          <h2
+            class="text-sm font-semibold uppercase tracking-wide text-zinc-500"
+            id="«r6»"
+          >
+            Top fix
+          </h2>
+        </div>
+        <p
+          class="text-xl font-bold"
+        >
+          Hips rise before your shoulders
+        </p>
+        <p
+          aria-label="Cue for your next set"
+          class="rounded-lg bg-zinc-900 px-3 py-2 font-medium text-white"
+        >
+          Drive your chest up with your hips
+        </p>
+        <p
+          class="text-sm text-zinc-700"
+        >
+          On reps 4 and 5 your torso tipped forward as you stood up.
+        </p>
+      </section>
+      <div>
+        <button
+          aria-controls="«r3»"
+          aria-expanded="false"
+          class="text-sm font-medium underline"
+          type="button"
+        >
+          See more
+        </button>
+      </div>
+      <video
+        class="w-full rounded-xl bg-black"
+        controls=""
+        playsinline=""
+        preload="metadata"
+        src="https://storage.test/video.mp4?token=abc"
+      />
+      <figure
+        class="space-y-2"
+      >
+        <button
+          aria-label="Play rep 4 from the start"
+          class="block w-full overflow-hidden rounded-xl border border-zinc-200"
+          data-rep-start="5.53"
+          type="button"
+        >
+          <img
+            alt="Rep 4 at 0:06.7 with the measurement Torso +14°"
+            class="h-auto w-full"
+            src="https://storage.test/frame.png?token=abc"
+          />
+        </button>
+        <figcaption
+          class="text-sm text-zinc-600"
+        >
+          Rep 4 · 0:06.7 · Torso +14°
+        </figcaption>
+      </figure>
+      <section
+        aria-labelledby="«r4»"
+        class="space-y-2"
+      >
+        <h2
+          class="text-lg font-semibold"
+          id="«r4»"
+        >
+          Rep by rep
+        </h2>
+        <p
+          class="rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-900"
+        >
+          Form broke down late in the set, likely from fatigue.
+        </p>
+        <ol
+          class="divide-y divide-zinc-200 rounded-xl border border-zinc-200"
+        >
+          <li
+            aria-label="Rep 1"
+          >
+            <button
+              class="flex w-full items-start justify-between gap-3 px-3 py-2.5 text-left text-sm"
+              data-rep-start="0"
+              type="button"
+            >
+              <span
+                class="font-medium"
+              >
+                Rep 
+                1
+                 
+                <span
+                  class="font-normal text-zinc-500"
+                >
+                  0:00.0
+                </span>
+              </span>
+              <span
+                class="text-right"
+              >
+                <span
+                  class="text-emerald-700"
+                >
+                  Clean
+                </span>
+              </span>
+            </button>
+          </li>
+          <li
+            aria-label="Rep 2"
+          >
+            <button
+              class="flex w-full items-start justify-between gap-3 px-3 py-2.5 text-left text-sm"
+              data-rep-start="1.73"
+              type="button"
+            >
+              <span
+                class="font-medium"
+              >
+                Rep 
+                2
+                 
+                <span
+                  class="font-normal text-zinc-500"
+                >
+                  0:01.7
+                </span>
+              </span>
+              <span
+                class="text-right"
+              >
+                <span
+                  class="text-emerald-700"
+                >
+                  Clean
+                </span>
+              </span>
+            </button>
+          </li>
+          <li
+            aria-label="Rep 3"
+          >
+            <button
+              class="flex w-full items-start justify-between gap-3 px-3 py-2.5 text-left text-sm"
+              data-rep-start="3.46"
+              type="button"
+            >
+              <span
+                class="font-medium"
+              >
+                Rep 
+                3
+                 
+                <span
+                  class="font-normal text-zinc-500"
+                >
+                  0:03.5
+                </span>
+              </span>
+              <span
+                class="text-right"
+              >
+                <span
+                  class="text-emerald-700"
+                >
+                  Clean
+                </span>
+              </span>
+            </button>
+          </li>
+          <li
+            aria-label="Rep 4"
+          >
+            <button
+              class="flex w-full items-start justify-between gap-3 px-3 py-2.5 text-left text-sm"
+              data-rep-start="5.1899999999999995"
+              type="button"
+            >
+              <span
+                class="font-medium"
+              >
+                Rep 
+                4
+                 
+                <span
+                  class="font-normal text-zinc-500"
+                >
+                  0:05.2
+                </span>
+              </span>
+              <span
+                class="text-right"
+              >
+                <span
+                  class="block text-red-700"
+                >
+                  Hips rise before your shoulders
+                </span>
+              </span>
+            </button>
+          </li>
+          <li
+            aria-label="Rep 5"
+          >
+            <button
+              class="flex w-full items-start justify-between gap-3 px-3 py-2.5 text-left text-sm"
+              data-rep-start="6.92"
+              type="button"
+            >
+              <span
+                class="font-medium"
+              >
+                Rep 
+                5
+                 
+                <span
+                  class="font-normal text-zinc-500"
+                >
+                  0:06.9
+                </span>
+              </span>
+              <span
+                class="text-right"
+              >
+                <span
+                  class="block text-red-700"
+                >
+                  Hips rise before your shoulders
+                </span>
+              </span>
+            </button>
+          </li>
+        </ol>
+      </section>
+      <section
+        aria-labelledby="«r5»"
+        class="space-y-1"
+      >
+        <h2
+          class="text-lg font-semibold"
+          id="«r5»"
+        >
+          Not measured
+        </h2>
+        <p
+          class="text-sm text-zinc-600"
+        >
+          We don't guess. These checks couldn't be measured from this video:
+        </p>
+        <ul
+          class="list-disc space-y-1 pl-5 text-sm"
+        >
+          <li>
+            Knees cave inward: needs a front view
+          </li>
+        </ul>
+      </section>
+      <form
+        class="space-y-3 rounded-xl border border-zinc-200 p-4"
+      >
+        <fieldset
+          aria-label="How helpful was this feedback?"
+          role="radiogroup"
+        >
+          <legend
+            class="text-sm font-medium"
+          >
+            How helpful was this feedback?
+          </legend>
+          <div
+            class="mt-2 flex gap-2"
+          >
+            <label
+              class="flex items-center gap-1 text-sm"
+            >
+              <input
+                name="rating"
+                type="radio"
+                value="1"
+              />
+              1
+            </label>
+            <label
+              class="flex items-center gap-1 text-sm"
+            >
+              <input
+                name="rating"
+                type="radio"
+                value="2"
+              />
+              2
+            </label>
+            <label
+              class="flex items-center gap-1 text-sm"
+            >
+              <input
+                name="rating"
+                type="radio"
+                value="3"
+              />
+              3
+            </label>
+            <label
+              class="flex items-center gap-1 text-sm"
+            >
+              <input
+                name="rating"
+                type="radio"
+                value="4"
+              />
+              4
+            </label>
+            <label
+              class="flex items-center gap-1 text-sm"
+            >
+              <input
+                name="rating"
+                type="radio"
+                value="5"
+              />
+              5
+            </label>
+          </div>
+        </fieldset>
+        <fieldset
+          aria-label="Did you try the cue?"
+          role="radiogroup"
+        >
+          <legend
+            class="text-sm font-medium"
+          >
+            Did you try the cue?
+          </legend>
+          <div
+            class="mt-2 flex gap-3"
+          >
+            <label
+              class="flex items-center gap-1 text-sm"
+            >
+              <input
+                name="tried_cue"
+                type="radio"
+                value="yes"
+              />
+              Yes
+            </label>
+            <label
+              class="flex items-center gap-1 text-sm"
+            >
+              <input
+                name="tried_cue"
+                type="radio"
+                value="no"
+              />
+              No
+            </label>
+            <label
+              class="flex items-center gap-1 text-sm"
+            >
+              <input
+                name="tried_cue"
+                type="radio"
+                value="not_yet"
+              />
+              Not yet
+            </label>
+          </div>
+        </fieldset>
+        <button
+          class="rounded-lg bg-zinc-900 px-4 py-2 text-sm font-semibold text-white disabled:opacity-40"
+          disabled=""
+          type="submit"
+        >
+          Send feedback
+        </button>
+      </form>
+    </div>
+  </div>
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/components/__tests__/us19-processing.test.tsx:135:19
+    133|     expect(await screen.findByText("No major issues found")).toBeInThe…
+    134|     await act(async () => { finishOld(passedResult()); });
+    135|     expect(screen.getByText("No major issues found")).toBeInTheDocumen…
+       |                   ^
+    136|     expect(screen.queryByRole("heading", { name: "Top fix" })).not.toB…
+    137|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/10]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  10 failed | 1 passed (11)
+   Start at  16:09:40
+   Duration  21.00s (transform 619ms, setup 2.70s, collect 1.69s, tests 3.95s, environment 10.44s, prepare 893ms)
+

@@ -40,7 +40,8 @@ class AnalysisOutcome:
 
 
 def analyze_set(frames: Sequence[PoseFrame], lift: str, note: str | None, llm: LLMClient, fps: float,
-                frame_loader: FrameLoader | None = None) -> AnalysisOutcome:
+                frame_loader: FrameLoader | None = None,
+                on_stage: Callable[[str], None] | None = None) -> AnalysisOutcome:
     frames = list(frames)
     load = frame_loader or _blank
     m = measure_set(frames, lift, fps)
@@ -54,7 +55,8 @@ def analyze_set(frames: Sequence[PoseFrame], lift: str, note: str | None, llm: L
     by_index = {f.index: f for f in frames}
     picks = select_key_frames(m, confirmed, [f.index for f in frames])
     key_frames = [KeyFrame(i, by_index[i].timestamp, rep, encode_jpeg(load(i))) for i, rep in picks]
-    correction = run_correction_loop(llm, build_llm_request(m, not_measured, confirmed, note, key_frames), ctx)
+    correction = run_correction_loop(llm, build_llm_request(m, not_measured, confirmed, note, key_frames), ctx,
+                                     on_stage=on_stage)
 
     outcome = AnalysisOutcome(final_status=correction.status, measurements=m, not_measured=not_measured,
                               confirmed=confirmed, correction=correction, output=correction.output,

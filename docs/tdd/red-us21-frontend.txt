@@ -1,0 +1,2561 @@
+
+> frontend@0.1.0 test
+> vitest run us21
+
+
+ RUN  v3.2.7 C:/Users/imran/LLMsInSWEProject/frontend
+
+ ❯ src/lib/__tests__/us21-delete-request.test.ts (2 tests | 2 failed) 41ms
+   × US-21 deletion requests > us21_upload_delete_sends_authenticated_explicit_confirmation 35ms
+     → api.deleteUpload is not a function
+   × US-21 deletion requests > us21_account_delete_targets_the_current_account_only 4ms
+     → api.deleteAccount is not a function
+ ❯ src/components/__tests__/us21-pages.test.tsx (2 tests | 2 failed) 1139ms
+   × US-21 deletion pages > us21_history_removes_every_analysis_of_the_deleted_upload 1116ms
+     → Unable to find role="button" and name "Delete upload"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"space-y-4"[39m
+    [36m>[39m
+      [36m<h1[39m
+        [33mclass[39m=[32m"text-2xl font-bold"[39m
+      [36m>[39m
+        [0mYour uploads[0m
+      [36m</h1>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"space-y-3"[39m
+      [36m>[39m
+        [36m<label[39m
+          [33mclass[39m=[32m"flex items-center gap-2 text-sm"[39m
+        [36m>[39m
+          [0mLift[0m
+          [36m<select[39m
+            [33mclass[39m=[32m"rounded-lg border border-zinc-300 px-2 py-1"[39m
+          [36m>[39m
+            [36m<option[39m
+              [33mvalue[39m=[32m"all"[39m
+            [36m>[39m
+              [0mAll[0m
+            [36m</option>[39m
+            [36m<option[39m
+              [33mvalue[39m=[32m"squat"[39m
+            [36m>[39m
+              [0mSquat[0m
+            [36m</option>[39m
+            [36m<option[39m
+              [33mvalue[39m=[32m"deadlift"[39m
+            [36m>[39m
+              [0mDeadlift[0m
+            [36m</option>[39m
+            [36m<option[39m
+              [33mvalue[39m=[32m"bench_press"[39m
+            [36m>[39m
+              [0mBench Press[0m
+            [36m</option>[39m
+          [36m</select>[39m
+        [36m</label>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"text-sm text-zinc-600"[39m
+        [36m>[39m
+          [0mSelect two completed uploads of the same lift to compare.[0m
+        [36m</p>[39m
+        [36m<ul[39m
+          [33mclass[39m=[32m"divide-y divide-zinc-200 rounded-xl border border-zinc-200"[39m
+        [36m>[39m
+          [36m<li>[39m
+            [36m<a[39m
+              [33mclass[39m=[32m"block px-3 py-3"[39m
+              [33mhref[39m=[32m"/results/a1"[39m
+            [36m>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"flex justify-between text-sm text-zinc-500"[39m
+              [36m>[39m
+                [36m<span>[39m
+                  [0mNov 9, 2026[0m
+                [36m</span>[39m
+                [36m<span>[39m
+                  [0mAnalyzed[0m
+                [36m</span>[39m
+              [36m</span>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"block font-medium"[39m
+              [36m>[39m
+                [0mSquat · 5 reps[0m
+              [36m</span>[39m
+            [36m</a>[39m
+            [36m<label[39m
+              [33mclass[39m=[32m"mb-3 ml-3 flex w-fit items-center gap-2 text-sm text-zinc-700"[39m
+            [36m>[39m
+              [36m<input[39m
+                [33maria-label[39m=[32m"Select Squat upload from Nov 9, 2026 for comparison"[39m
+                [33mclass[39m=[32m"accent-zinc-900 disabled:opacity-40"[39m
+                [33mtype[39m=[32m"checkbox"[39m
+              [36m/>[39m
+              [0mCompare this upload[0m
+            [36m</label>[39m
+          [36m</li>[39m
+          [36m<li>[39m
+            [36m<a[39m
+              [33mclass[39m=[32m"block px-3 py-3"[39m
+              [33mhref[39m=[32m"/results/a2"[39m
+            [36m>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"flex justify-between text-sm text-zinc-500"[39m
+              [36m>[39m
+                [36m<span>[39m
+                  [0mNov 9, 2026[0m
+                [36m</span>[39m
+                [36m<span>[39m
+                  [0mAnalyzed[0m
+                [36m</span>[39m
+              [36m</span>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"block font-medium"[39m
+              [36m>[39m
+                [0mSquat · 5 reps[0m
+              [36m</span>[39m
+            [36m</a>[39m
+            [36m<label[39m
+              [33mclass[39m=[32m"mb-3 ml-3 flex w-fit items-center gap-2 text-sm text-zinc-700"[39m
+            [36m>[39m
+              [36m<input[39m
+                [33maria-label[39m=[32m"Select Squat upload from Nov 9, 2026 for comparison"[39m
+                [33mclass[39m=[32m"accent-zinc-900 disabled:opacity-40"[39m
+                [33mtype[39m=[32m"checkbox"[39m
+              [36m/>[39m
+              [0mCompare this upload[0m
+            [36m</label>[39m
+          [36m</li>[39m
+        [36m</ul>[39m
+        [36m<button[39m
+          [33mclass[39m=[32m"rounded-lg bg-zinc-900 px-4 py-2 text-sm font-semibold text-white opacity-40"[39m
+          [33mdisabled[39m=[32m""[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mCompare selected uploads[0m
+        [36m</button>[39m
+      [36m</div>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"space-y-4"[39m
+    [36m>[39m
+      [36m<h1[39m
+        [33mclass[39m=[32m"text-2xl font-bold"[39m
+      [36m>[39m
+        [0mYour uploads[0m
+      [36m</h1>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"space-y-3"[39m
+      [36m>[39m
+        [36m<label[39m
+          [33mclass[39m=[32m"flex items-center gap-2 text-sm"[39m
+        [36m>[39m
+          [0mLift[0m
+          [36m<select[39m
+            [33mclass[39m=[32m"rounded-lg border border-zinc-300 px-2 py-1"[39m
+          [36m>[39m
+            [36m<option[39m
+              [33mvalue[39m=[32m"all"[39m
+            [36m>[39m
+              [0mAll[0m
+            [36m</option>[39m
+            [36m<option[39m
+              [33mvalue[39m=[32m"squat"[39m
+            [36m>[39m
+              [0mSquat[0m
+            [36m</option>[39m
+            [36m<option[39m
+              [33mvalue[39m=[32m"deadlift"[39m
+            [36m>[39m
+              [0mDeadlift[0m
+            [36m</option>[39m
+            [36m<option[39m
+              [33mvalue[39m=[32m"bench_press"[39m
+            [36m>[39m
+              [0mBench Press[0m
+            [36m</option>[39m
+          [36m</select>[39m
+        [36m</label>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"text-sm text-zinc-600"[39m
+        [36m>[39m
+          [0mSelect two completed uploads of the same lift to compare.[0m
+        [36m</p>[39m
+        [36m<ul[39m
+          [33mclass[39m=[32m"divide-y divide-zinc-200 rounded-xl border border-zinc-200"[39m
+        [36m>[39m
+          [36m<li>[39m
+            [36m<a[39m
+              [33mclass[39m=[32m"block px-3 py-3"[39m
+              [33mhref[39m=[32m"/results/a1"[39m
+            [36m>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"flex justify-between text-sm text-zinc-500"[39m
+              [36m>[39m
+                [36m<span>[39m
+                  [0mNov 9, 2026[0m
+                [36m</span>[39m
+                [36m<span>[39m
+                  [0mAnalyzed[0m
+                [36m</span>[39m
+              [36m</span>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"block font-medium"[39m
+              [36m>[39m
+                [0mSquat · 5 reps[0m
+              [36m</span>[39m
+            [36m</a>[39m
+            [36m<label[39m
+              [33mclass[39m=[32m"mb-3 ml-3 flex w-fit items-center gap-2 text-sm text-zinc-700"[39m
+            [36m>[39m
+              [36m<input[39m
+                [33maria-label[39m=[32m"Select Squat upload from Nov 9, 2026 for comparison"[39m
+                [33mclass[39m=[32m"accent-zinc-900 disabled:opacity-40"[39m
+                [33mtype[39m=[32m"checkbox"[39m
+              [36m/>[39m
+              [0mCompare this upload[0m
+            [36m</label>[39m
+          [36m</li>[39m
+          [36m<li>[39m
+            [36m<a[39m
+              [33mclass[39m=[32m"block px-3 py-3"[39m
+              [33mhref[39m=[32m"/results/a2"[39m
+            [36m>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"flex justify-between text-sm text-zinc-500"[39m
+              [36m>[39m
+                [36m<span>[39m
+                  [0mNov 9, 2026[0m
+                [36m</span>[39m
+                [36m<span>[39m
+                  [0mAnalyzed[0m
+                [36m</span>[39m
+              [36m</span>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"block font-medium"[39m
+              [36m>[39m
+                [0mSquat · 5 reps[0m
+              [36m</span>[39m
+            [36m</a>[39m
+            [36m<label[39m
+              [33mclass[39m=[32m"mb-3 ml-3 flex w-fit items-center gap-2 text-sm text-zinc-700"[39m
+            [36m>[39m
+              [36m<input[39m
+                [33maria-label[39m=[32m"Select Squat upload from Nov 9, 2026 for comparison"[39m
+                [33mclass[39m=[32m"accent-zinc-900 disabled:opacity-40"[39m
+                [33mtype[39m=[32m"checkbox"[39m
+              [36m/>[39m
+              [0mCompare this upload[0m
+            [36m</label>[39m
+          [36m</li>[39m
+        [36m</ul>[39m
+        [36m<button[39m
+          [33mclass[39m=[32m"rounded-lg bg-zinc-900 px-4 py-2 text-sm font-semibold text-white opacity-40"[39m
+          [33mdisabled[39m=[32m""[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mCompare selected uploads[0m
+        [36m</button>[39m
+      [36m</div>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+   × US-21 deletion pages > us21_settings_deletes_the_account_clears_its_cookie_and_returns_to_login 21ms
+     → Unable to find an accessible element with the role "button" and name "Delete account"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div />[39m
+[36m</body>[39m
+ ❯ src/components/__tests__/us21-deletion.test.tsx (10 tests | 10 failed) 1329ms
+   × US-21 upload deletion > us21_upload_delete_requires_confirmation_and_cancel_preserves_the_upload 513ms
+     → Unable to find an accessible element with the role "button" and name "Delete upload"
+
+Here are the accessible roles:
+
+  combobox:
+
+  Name "Lift":
+  [36m<select[39m
+    [33mclass[39m=[32m"rounded-lg border border-zinc-300 px-2 py-1"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  option:
+
+  Name "All":
+  [36m<option[39m
+    [33mvalue[39m=[32m"all"[39m
+  [36m/>[39m
+
+  Name "Squat":
+  [36m<option[39m
+    [33mvalue[39m=[32m"squat"[39m
+  [36m/>[39m
+
+  Name "Deadlift":
+  [36m<option[39m
+    [33mvalue[39m=[32m"deadlift"[39m
+  [36m/>[39m
+
+  Name "Bench Press":
+  [36m<option[39m
+    [33mvalue[39m=[32m"bench_press"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  paragraph:
+
+  Name "":
+  [36m<p[39m
+    [33mclass[39m=[32m"text-sm text-zinc-600"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  list:
+
+  Name "":
+  [36m<ul[39m
+    [33mclass[39m=[32m"divide-y divide-zinc-200 rounded-xl border border-zinc-200"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  listitem:
+
+  Name "":
+  [36m<li />[39m
+
+  --------------------------------------------------
+  link:
+
+  Name "Nov 9, 2026AnalyzedSquat · 5 reps":
+  [36m<a[39m
+    [33mclass[39m=[32m"block px-3 py-3"[39m
+    [33mhref[39m=[32m"/results/analysis-1"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  checkbox:
+
+  Name "Select Squat upload from Nov 9, 2026 for comparison":
+  [36m<input[39m
+    [33maria-label[39m=[32m"Select Squat upload from Nov 9, 2026 for comparison"[39m
+    [33mclass[39m=[32m"accent-zinc-900 disabled:opacity-40"[39m
+    [33mtype[39m=[32m"checkbox"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  button:
+
+  Name "Compare selected uploads":
+  [36m<button[39m
+    [33mclass[39m=[32m"rounded-lg bg-zinc-900 px-4 py-2 text-sm font-semibold text-white opacity-40"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"space-y-3"[39m
+    [36m>[39m
+      [36m<label[39m
+        [33mclass[39m=[32m"flex items-center gap-2 text-sm"[39m
+      [36m>[39m
+        [0mLift[0m
+        [36m<select[39m
+          [33mclass[39m=[32m"rounded-lg border border-zinc-300 px-2 py-1"[39m
+        [36m>[39m
+          [36m<option[39m
+            [33mvalue[39m=[32m"all"[39m
+          [36m>[39m
+            [0mAll[0m
+          [36m</option>[39m
+          [36m<option[39m
+            [33mvalue[39m=[32m"squat"[39m
+          [36m>[39m
+            [0mSquat[0m
+          [36m</option>[39m
+          [36m<option[39m
+            [33mvalue[39m=[32m"deadlift"[39m
+          [36m>[39m
+            [0mDeadlift[0m
+          [36m</option>[39m
+          [36m<option[39m
+            [33mvalue[39m=[32m"bench_press"[39m
+          [36m>[39m
+            [0mBench Press[0m
+          [36m</option>[39m
+        [36m</select>[39m
+      [36m</label>[39m
+      [36m<p[39m
+        [33mclass[39m=[32m"text-sm text-zinc-600"[39m
+      [36m>[39m
+        [0mSelect two completed uploads of the same lift to compare.[0m
+      [36m</p>[39m
+      [36m<ul[39m
+        [33mclass[39m=[32m"divide-y divide-zinc-200 rounded-xl border border-zinc-200"[39m
+      [36m>[39m
+        [36m<li>[39m
+          [36m<a[39m
+            [33mclass[39m=[32m"block px-3 py-3"[39m
+            [33mhref[39m=[32m"/results/analysis-1"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"flex justify-between text-sm text-zinc-500"[39m
+            [36m>[39m
+              [36m<span>[39m
+                [0mNov 9, 2026[0m
+              [36m</span>[39m
+              [36m<span>[39m
+                [0mAnalyzed[0m
+              [36m</span>[39m
+            [36m</span>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"block font-medium"[39m
+            [36m>[39m
+              [0mSquat · 5 reps[0m
+            [36m</span>[39m
+          [36m</a>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"mb-3 ml-3 flex w-fit items-center gap-2 text-sm text-zinc-700"[39m
+          [36m>[39m
+            [36m<input[39m
+              [33maria-label[39m=[32m"Select Squat upload from Nov 9, 2026 for comparison"[39m
+              [33mclass[39m=[32m"accent-zinc-900 disabled:opacity-40"[39m
+              [33mtype[39m=[32m"checkbox"[39m
+            [36m/>[39m
+            [0mCompare this upload[0m
+          [36m</label>[39m
+        [36m</li>[39m
+      [36m</ul>[39m
+      [36m<button[39m
+        [33mclass[39m=[32m"rounded-lg bg-zinc-900 px-4 py-2 text-sm font-semibold text-white opacity-40"[39m
+        [33mdisabled[39m=[32m""[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m>[39m
+        [0mCompare selected uploads[0m
+      [36m</button>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+   × US-21 upload deletion > us21_confirmation_deletes_the_upload_id_including_its_analysis_retries 62ms
+     → Unable to find an accessible element with the role "button" and name "Delete upload"
+
+Here are the accessible roles:
+
+  combobox:
+
+  Name "Lift":
+  [36m<select[39m
+    [33mclass[39m=[32m"rounded-lg border border-zinc-300 px-2 py-1"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  option:
+
+  Name "All":
+  [36m<option[39m
+    [33mvalue[39m=[32m"all"[39m
+  [36m/>[39m
+
+  Name "Squat":
+  [36m<option[39m
+    [33mvalue[39m=[32m"squat"[39m
+  [36m/>[39m
+
+  Name "Deadlift":
+  [36m<option[39m
+    [33mvalue[39m=[32m"deadlift"[39m
+  [36m/>[39m
+
+  Name "Bench Press":
+  [36m<option[39m
+    [33mvalue[39m=[32m"bench_press"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  paragraph:
+
+  Name "":
+  [36m<p[39m
+    [33mclass[39m=[32m"text-sm text-zinc-600"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  list:
+
+  Name "":
+  [36m<ul[39m
+    [33mclass[39m=[32m"divide-y divide-zinc-200 rounded-xl border border-zinc-200"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  listitem:
+
+  Name "":
+  [36m<li />[39m
+
+  --------------------------------------------------
+  link:
+
+  Name "Nov 9, 2026AnalyzedSquat · 5 reps":
+  [36m<a[39m
+    [33mclass[39m=[32m"block px-3 py-3"[39m
+    [33mhref[39m=[32m"/results/analysis-1"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  checkbox:
+
+  Name "Select Squat upload from Nov 9, 2026 for comparison":
+  [36m<input[39m
+    [33maria-label[39m=[32m"Select Squat upload from Nov 9, 2026 for comparison"[39m
+    [33mclass[39m=[32m"accent-zinc-900 disabled:opacity-40"[39m
+    [33mtype[39m=[32m"checkbox"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  button:
+
+  Name "Compare selected uploads":
+  [36m<button[39m
+    [33mclass[39m=[32m"rounded-lg bg-zinc-900 px-4 py-2 text-sm font-semibold text-white opacity-40"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"space-y-3"[39m
+    [36m>[39m
+      [36m<label[39m
+        [33mclass[39m=[32m"flex items-center gap-2 text-sm"[39m
+      [36m>[39m
+        [0mLift[0m
+        [36m<select[39m
+          [33mclass[39m=[32m"rounded-lg border border-zinc-300 px-2 py-1"[39m
+        [36m>[39m
+          [36m<option[39m
+            [33mvalue[39m=[32m"all"[39m
+          [36m>[39m
+            [0mAll[0m
+          [36m</option>[39m
+          [36m<option[39m
+            [33mvalue[39m=[32m"squat"[39m
+          [36m>[39m
+            [0mSquat[0m
+          [36m</option>[39m
+          [36m<option[39m
+            [33mvalue[39m=[32m"deadlift"[39m
+          [36m>[39m
+            [0mDeadlift[0m
+          [36m</option>[39m
+          [36m<option[39m
+            [33mvalue[39m=[32m"bench_press"[39m
+          [36m>[39m
+            [0mBench Press[0m
+          [36m</option>[39m
+        [36m</select>[39m
+      [36m</label>[39m
+      [36m<p[39m
+        [33mclass[39m=[32m"text-sm text-zinc-600"[39m
+      [36m>[39m
+        [0mSelect two completed uploads of the same lift to compare.[0m
+      [36m</p>[39m
+      [36m<ul[39m
+        [33mclass[39m=[32m"divide-y divide-zinc-200 rounded-xl border border-zinc-200"[39m
+      [36m>[39m
+        [36m<li>[39m
+          [36m<a[39m
+            [33mclass[39m=[32m"block px-3 py-3"[39m
+            [33mhref[39m=[32m"/results/analysis-1"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"flex justify-between text-sm text-zinc-500"[39m
+            [36m>[39m
+              [36m<span>[39m
+                [0mNov 9, 2026[0m
+              [36m</span>[39m
+              [36m<span>[39m
+                [0mAnalyzed[0m
+              [36m</span>[39m
+            [36m</span>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"block font-medium"[39m
+            [36m>[39m
+              [0mSquat · 5 reps[0m
+            [36m</span>[39m
+          [36m</a>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"mb-3 ml-3 flex w-fit items-center gap-2 text-sm text-zinc-700"[39m
+          [36m>[39m
+            [36m<input[39m
+              [33maria-label[39m=[32m"Select Squat upload from Nov 9, 2026 for comparison"[39m
+              [33mclass[39m=[32m"accent-zinc-900 disabled:opacity-40"[39m
+              [33mtype[39m=[32m"checkbox"[39m
+            [36m/>[39m
+            [0mCompare this upload[0m
+          [36m</label>[39m
+        [36m</li>[39m
+      [36m</ul>[39m
+      [36m<button[39m
+        [33mclass[39m=[32m"rounded-lg bg-zinc-900 px-4 py-2 text-sm font-semibold text-white opacity-40"[39m
+        [33mdisabled[39m=[32m""[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m>[39m
+        [0mCompare selected uploads[0m
+      [36m</button>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+   × US-21 upload deletion > us21_escape_cancels_and_returns_focus_to_the_delete_trigger 66ms
+     → Unable to find an accessible element with the role "button" and name "Delete upload"
+
+Here are the accessible roles:
+
+  combobox:
+
+  Name "Lift":
+  [36m<select[39m
+    [33mclass[39m=[32m"rounded-lg border border-zinc-300 px-2 py-1"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  option:
+
+  Name "All":
+  [36m<option[39m
+    [33mvalue[39m=[32m"all"[39m
+  [36m/>[39m
+
+  Name "Squat":
+  [36m<option[39m
+    [33mvalue[39m=[32m"squat"[39m
+  [36m/>[39m
+
+  Name "Deadlift":
+  [36m<option[39m
+    [33mvalue[39m=[32m"deadlift"[39m
+  [36m/>[39m
+
+  Name "Bench Press":
+  [36m<option[39m
+    [33mvalue[39m=[32m"bench_press"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  paragraph:
+
+  Name "":
+  [36m<p[39m
+    [33mclass[39m=[32m"text-sm text-zinc-600"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  list:
+
+  Name "":
+  [36m<ul[39m
+    [33mclass[39m=[32m"divide-y divide-zinc-200 rounded-xl border border-zinc-200"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  listitem:
+
+  Name "":
+  [36m<li />[39m
+
+  --------------------------------------------------
+  link:
+
+  Name "Nov 9, 2026AnalyzedSquat · 5 reps":
+  [36m<a[39m
+    [33mclass[39m=[32m"block px-3 py-3"[39m
+    [33mhref[39m=[32m"/results/analysis-1"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  checkbox:
+
+  Name "Select Squat upload from Nov 9, 2026 for comparison":
+  [36m<input[39m
+    [33maria-label[39m=[32m"Select Squat upload from Nov 9, 2026 for comparison"[39m
+    [33mclass[39m=[32m"accent-zinc-900 disabled:opacity-40"[39m
+    [33mtype[39m=[32m"checkbox"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  button:
+
+  Name "Compare selected uploads":
+  [36m<button[39m
+    [33mclass[39m=[32m"rounded-lg bg-zinc-900 px-4 py-2 text-sm font-semibold text-white opacity-40"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"space-y-3"[39m
+    [36m>[39m
+      [36m<label[39m
+        [33mclass[39m=[32m"flex items-center gap-2 text-sm"[39m
+      [36m>[39m
+        [0mLift[0m
+        [36m<select[39m
+          [33mclass[39m=[32m"rounded-lg border border-zinc-300 px-2 py-1"[39m
+        [36m>[39m
+          [36m<option[39m
+            [33mvalue[39m=[32m"all"[39m
+          [36m>[39m
+            [0mAll[0m
+          [36m</option>[39m
+          [36m<option[39m
+            [33mvalue[39m=[32m"squat"[39m
+          [36m>[39m
+            [0mSquat[0m
+          [36m</option>[39m
+          [36m<option[39m
+            [33mvalue[39m=[32m"deadlift"[39m
+          [36m>[39m
+            [0mDeadlift[0m
+          [36m</option>[39m
+          [36m<option[39m
+            [33mvalue[39m=[32m"bench_press"[39m
+          [36m>[39m
+            [0mBench Press[0m
+          [36m</option>[39m
+        [36m</select>[39m
+      [36m</label>[39m
+      [36m<p[39m
+        [33mclass[39m=[32m"text-sm text-zinc-600"[39m
+      [36m>[39m
+        [0mSelect two completed uploads of the same lift to compare.[0m
+      [36m</p>[39m
+      [36m<ul[39m
+        [33mclass[39m=[32m"divide-y divide-zinc-200 rounded-xl border border-zinc-200"[39m
+      [36m>[39m
+        [36m<li>[39m
+          [36m<a[39m
+            [33mclass[39m=[32m"block px-3 py-3"[39m
+            [33mhref[39m=[32m"/results/analysis-1"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"flex justify-between text-sm text-zinc-500"[39m
+            [36m>[39m
+              [36m<span>[39m
+                [0mNov 9, 2026[0m
+              [36m</span>[39m
+              [36m<span>[39m
+                [0mAnalyzed[0m
+              [36m</span>[39m
+            [36m</span>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"block font-medium"[39m
+            [36m>[39m
+              [0mSquat · 5 reps[0m
+            [36m</span>[39m
+          [36m</a>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"mb-3 ml-3 flex w-fit items-center gap-2 text-sm text-zinc-700"[39m
+          [36m>[39m
+            [36m<input[39m
+              [33maria-label[39m=[32m"Select Squat upload from Nov 9, 2026 for comparison"[39m
+              [33mclass[39m=[32m"accent-zinc-900 disabled:opacity-40"[39m
+              [33mtype[39m=[32m"checkbox"[39m
+            [36m/>[39m
+            [0mCompare this upload[0m
+          [36m</label>[39m
+        [36m</li>[39m
+      [36m</ul>[39m
+      [36m<button[39m
+        [33mclass[39m=[32m"rounded-lg bg-zinc-900 px-4 py-2 text-sm font-semibold text-white opacity-40"[39m
+        [33mdisabled[39m=[32m""[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m>[39m
+        [0mCompare selected uploads[0m
+      [36m</button>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+   × US-21 upload deletion > us21_pending_deletion_blocks_duplicate_confirmation 53ms
+     → Unable to find an accessible element with the role "button" and name "Delete upload"
+
+Here are the accessible roles:
+
+  combobox:
+
+  Name "Lift":
+  [36m<select[39m
+    [33mclass[39m=[32m"rounded-lg border border-zinc-300 px-2 py-1"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  option:
+
+  Name "All":
+  [36m<option[39m
+    [33mvalue[39m=[32m"all"[39m
+  [36m/>[39m
+
+  Name "Squat":
+  [36m<option[39m
+    [33mvalue[39m=[32m"squat"[39m
+  [36m/>[39m
+
+  Name "Deadlift":
+  [36m<option[39m
+    [33mvalue[39m=[32m"deadlift"[39m
+  [36m/>[39m
+
+  Name "Bench Press":
+  [36m<option[39m
+    [33mvalue[39m=[32m"bench_press"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  paragraph:
+
+  Name "":
+  [36m<p[39m
+    [33mclass[39m=[32m"text-sm text-zinc-600"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  list:
+
+  Name "":
+  [36m<ul[39m
+    [33mclass[39m=[32m"divide-y divide-zinc-200 rounded-xl border border-zinc-200"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  listitem:
+
+  Name "":
+  [36m<li />[39m
+
+  --------------------------------------------------
+  link:
+
+  Name "Nov 9, 2026AnalyzedSquat · 5 reps":
+  [36m<a[39m
+    [33mclass[39m=[32m"block px-3 py-3"[39m
+    [33mhref[39m=[32m"/results/analysis-1"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  checkbox:
+
+  Name "Select Squat upload from Nov 9, 2026 for comparison":
+  [36m<input[39m
+    [33maria-label[39m=[32m"Select Squat upload from Nov 9, 2026 for comparison"[39m
+    [33mclass[39m=[32m"accent-zinc-900 disabled:opacity-40"[39m
+    [33mtype[39m=[32m"checkbox"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  button:
+
+  Name "Compare selected uploads":
+  [36m<button[39m
+    [33mclass[39m=[32m"rounded-lg bg-zinc-900 px-4 py-2 text-sm font-semibold text-white opacity-40"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"space-y-3"[39m
+    [36m>[39m
+      [36m<label[39m
+        [33mclass[39m=[32m"flex items-center gap-2 text-sm"[39m
+      [36m>[39m
+        [0mLift[0m
+        [36m<select[39m
+          [33mclass[39m=[32m"rounded-lg border border-zinc-300 px-2 py-1"[39m
+        [36m>[39m
+          [36m<option[39m
+            [33mvalue[39m=[32m"all"[39m
+          [36m>[39m
+            [0mAll[0m
+          [36m</option>[39m
+          [36m<option[39m
+            [33mvalue[39m=[32m"squat"[39m
+          [36m>[39m
+            [0mSquat[0m
+          [36m</option>[39m
+          [36m<option[39m
+            [33mvalue[39m=[32m"deadlift"[39m
+          [36m>[39m
+            [0mDeadlift[0m
+          [36m</option>[39m
+          [36m<option[39m
+            [33mvalue[39m=[32m"bench_press"[39m
+          [36m>[39m
+            [0mBench Press[0m
+          [36m</option>[39m
+        [36m</select>[39m
+      [36m</label>[39m
+      [36m<p[39m
+        [33mclass[39m=[32m"text-sm text-zinc-600"[39m
+      [36m>[39m
+        [0mSelect two completed uploads of the same lift to compare.[0m
+      [36m</p>[39m
+      [36m<ul[39m
+        [33mclass[39m=[32m"divide-y divide-zinc-200 rounded-xl border border-zinc-200"[39m
+      [36m>[39m
+        [36m<li>[39m
+          [36m<a[39m
+            [33mclass[39m=[32m"block px-3 py-3"[39m
+            [33mhref[39m=[32m"/results/analysis-1"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"flex justify-between text-sm text-zinc-500"[39m
+            [36m>[39m
+              [36m<span>[39m
+                [0mNov 9, 2026[0m
+              [36m</span>[39m
+              [36m<span>[39m
+                [0mAnalyzed[0m
+              [36m</span>[39m
+            [36m</span>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"block font-medium"[39m
+            [36m>[39m
+              [0mSquat · 5 reps[0m
+            [36m</span>[39m
+          [36m</a>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"mb-3 ml-3 flex w-fit items-center gap-2 text-sm text-zinc-700"[39m
+          [36m>[39m
+            [36m<input[39m
+              [33maria-label[39m=[32m"Select Squat upload from Nov 9, 2026 for comparison"[39m
+              [33mclass[39m=[32m"accent-zinc-900 disabled:opacity-40"[39m
+              [33mtype[39m=[32m"checkbox"[39m
+            [36m/>[39m
+            [0mCompare this upload[0m
+          [36m</label>[39m
+        [36m</li>[39m
+      [36m</ul>[39m
+      [36m<button[39m
+        [33mclass[39m=[32m"rounded-lg bg-zinc-900 px-4 py-2 text-sm font-semibold text-white opacity-40"[39m
+        [33mdisabled[39m=[32m""[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m>[39m
+        [0mCompare selected uploads[0m
+      [36m</button>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+   × US-21 upload deletion > us21_failed_cleanup_remains_retryable_without_claiming_success 395ms
+     → Unable to find an accessible element with the role "button" and name "Delete upload"
+
+Here are the accessible roles:
+
+  combobox:
+
+  Name "Lift":
+  [36m<select[39m
+    [33mclass[39m=[32m"rounded-lg border border-zinc-300 px-2 py-1"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  option:
+
+  Name "All":
+  [36m<option[39m
+    [33mvalue[39m=[32m"all"[39m
+  [36m/>[39m
+
+  Name "Squat":
+  [36m<option[39m
+    [33mvalue[39m=[32m"squat"[39m
+  [36m/>[39m
+
+  Name "Deadlift":
+  [36m<option[39m
+    [33mvalue[39m=[32m"deadlift"[39m
+  [36m/>[39m
+
+  Name "Bench Press":
+  [36m<option[39m
+    [33mvalue[39m=[32m"bench_press"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  paragraph:
+
+  Name "":
+  [36m<p[39m
+    [33mclass[39m=[32m"text-sm text-zinc-600"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  list:
+
+  Name "":
+  [36m<ul[39m
+    [33mclass[39m=[32m"divide-y divide-zinc-200 rounded-xl border border-zinc-200"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  listitem:
+
+  Name "":
+  [36m<li />[39m
+
+  --------------------------------------------------
+  link:
+
+  Name "Nov 9, 2026AnalyzedSquat · 5 reps":
+  [36m<a[39m
+    [33mclass[39m=[32m"block px-3 py-3"[39m
+    [33mhref[39m=[32m"/results/analysis-1"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  checkbox:
+
+  Name "Select Squat upload from Nov 9, 2026 for comparison":
+  [36m<input[39m
+    [33maria-label[39m=[32m"Select Squat upload from Nov 9, 2026 for comparison"[39m
+    [33mclass[39m=[32m"accent-zinc-900 disabled:opacity-40"[39m
+    [33mtype[39m=[32m"checkbox"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  button:
+
+  Name "Compare selected uploads":
+  [36m<button[39m
+    [33mclass[39m=[32m"rounded-lg bg-zinc-900 px-4 py-2 text-sm font-semibold text-white opacity-40"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"space-y-3"[39m
+    [36m>[39m
+      [36m<label[39m
+        [33mclass[39m=[32m"flex items-center gap-2 text-sm"[39m
+      [36m>[39m
+        [0mLift[0m
+        [36m<select[39m
+          [33mclass[39m=[32m"rounded-lg border border-zinc-300 px-2 py-1"[39m
+        [36m>[39m
+          [36m<option[39m
+            [33mvalue[39m=[32m"all"[39m
+          [36m>[39m
+            [0mAll[0m
+          [36m</option>[39m
+          [36m<option[39m
+            [33mvalue[39m=[32m"squat"[39m
+          [36m>[39m
+            [0mSquat[0m
+          [36m</option>[39m
+          [36m<option[39m
+            [33mvalue[39m=[32m"deadlift"[39m
+          [36m>[39m
+            [0mDeadlift[0m
+          [36m</option>[39m
+          [36m<option[39m
+            [33mvalue[39m=[32m"bench_press"[39m
+          [36m>[39m
+            [0mBench Press[0m
+          [36m</option>[39m
+        [36m</select>[39m
+      [36m</label>[39m
+      [36m<p[39m
+        [33mclass[39m=[32m"text-sm text-zinc-600"[39m
+      [36m>[39m
+        [0mSelect two completed uploads of the same lift to compare.[0m
+      [36m</p>[39m
+      [36m<ul[39m
+        [33mclass[39m=[32m"divide-y divide-zinc-200 rounded-xl border border-zinc-200"[39m
+      [36m>[39m
+        [36m<li>[39m
+          [36m<a[39m
+            [33mclass[39m=[32m"block px-3 py-3"[39m
+            [33mhref[39m=[32m"/results/analysis-1"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"flex justify-between text-sm text-zinc-500"[39m
+            [36m>[39m
+              [36m<span>[39m
+                [0mNov 9, 2026[0m
+              [36m</span>[39m
+              [36m<span>[39m
+                [0mAnalyzed[0m
+              [36m</span>[39m
+            [36m</span>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"block font-medium"[39m
+            [36m>[39m
+              [0mSquat · 5 reps[0m
+            [36m</span>[39m
+          [36m</a>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"mb-3 ml-3 flex w-fit items-center gap-2 text-sm text-zinc-700"[39m
+          [36m>[39m
+            [36m<input[39m
+              [33maria-label[39m=[32m"Select Squat upload from Nov 9, 2026 for comparison"[39m
+              [33mclass[39m=[32m"accent-zinc-900 disabled:opacity-40"[39m
+              [33mtype[39m=[32m"checkbox"[39m
+            [36m/>[39m
+            [0mCompare this upload[0m
+          [36m</label>[39m
+        [36m</li>[39m
+      [36m</ul>[39m
+      [36m<button[39m
+        [33mclass[39m=[32m"rounded-lg bg-zinc-900 px-4 py-2 text-sm font-semibold text-white opacity-40"[39m
+        [33mdisabled[39m=[32m""[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m>[39m
+        [0mCompare selected uploads[0m
+      [36m</button>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+   × US-21 upload deletion > us21_deleted_entries_cannot_remain_selected_for_comparison 201ms
+     → expect(element).not.toBeInTheDocument()
+
+expected document not to contain element, found <a
+  class="inline-block rounded-lg bg-zinc-900 px-4 py-2 text-sm font-semibold text-white"
+  href="/compare?first=analysis-1&second=analysis-2"
+>
+  Compare selected uploads
+</a> instead
+   × US-21 account deletion > us21_account_delete_has_a_separate_confirmation_explaining_what_is_removed 8ms
+     → Unable to find an accessible element with the role "button" and name "Delete account"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div />[39m
+[36m</body>[39m
+   × US-21 account deletion > us21_the_session_is_cleared_only_after_successful_account_deletion 9ms
+     → Unable to find an accessible element with the role "button" and name "Delete account"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div />[39m
+[36m</body>[39m
+   × US-21 account deletion > us21_account_deletion_failure_does_not_sign_the_user_out 8ms
+     → Unable to find an accessible element with the role "button" and name "Delete account"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div />[39m
+[36m</body>[39m
+   × US-21 account deletion > us21_settings_requires_a_session 10ms
+     → expected false to be true // Object.is equality
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 14 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/lib/__tests__/us21-delete-request.test.ts > US-21 deletion requests > us21_upload_delete_sends_authenticated_explicit_confirmation
+TypeError: api.deleteUpload is not a function
+ ❯ src/lib/__tests__/us21-delete-request.test.ts:11:15
+      9|     const fetch = vi.fn().mockResolvedValue(new Response(null, { statu…
+     10|     vi.stubGlobal("fetch", fetch);
+     11|     await api.deleteUpload("u/1", "session-token");
+       |               ^
+     12|     expect(fetch).toHaveBeenCalledWith(expect.stringContaining("/uploa…
+     13|       method: "DELETE", body: JSON.stringify({ confirmed: true }),
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/14]⎯
+
+ FAIL  src/lib/__tests__/us21-delete-request.test.ts > US-21 deletion requests > us21_account_delete_targets_the_current_account_only
+TypeError: api.deleteAccount is not a function
+ ❯ src/lib/__tests__/us21-delete-request.test.ts:21:15
+     19|     const fetch = vi.fn().mockResolvedValue(new Response(null, { statu…
+     20|     vi.stubGlobal("fetch", fetch);
+     21|     await api.deleteAccount("session-token");
+       |               ^
+     22|     expect(fetch).toHaveBeenCalledWith(expect.stringContaining("/accou…
+     23|       method: "DELETE", body: JSON.stringify({ confirmed: true }),
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/14]⎯
+
+ FAIL  src/components/__tests__/us21-deletion.test.tsx > US-21 upload deletion > us21_upload_delete_requires_confirmation_and_cancel_preserves_the_upload
+TestingLibraryElementError: Unable to find an accessible element with the role "button" and name "Delete upload"
+
+Here are the accessible roles:
+
+  combobox:
+
+  Name "Lift":
+  <select
+    class="rounded-lg border border-zinc-300 px-2 py-1"
+  />
+
+  --------------------------------------------------
+  option:
+
+  Name "All":
+  <option
+    value="all"
+  />
+
+  Name "Squat":
+  <option
+    value="squat"
+  />
+
+  Name "Deadlift":
+  <option
+    value="deadlift"
+  />
+
+  Name "Bench Press":
+  <option
+    value="bench_press"
+  />
+
+  --------------------------------------------------
+  paragraph:
+
+  Name "":
+  <p
+    class="text-sm text-zinc-600"
+  />
+
+  --------------------------------------------------
+  list:
+
+  Name "":
+  <ul
+    class="divide-y divide-zinc-200 rounded-xl border border-zinc-200"
+  />
+
+  --------------------------------------------------
+  listitem:
+
+  Name "":
+  <li />
+
+  --------------------------------------------------
+  link:
+
+  Name "Nov 9, 2026AnalyzedSquat · 5 reps":
+  <a
+    class="block px-3 py-3"
+    href="/results/analysis-1"
+  />
+
+  --------------------------------------------------
+  checkbox:
+
+  Name "Select Squat upload from Nov 9, 2026 for comparison":
+  <input
+    aria-label="Select Squat upload from Nov 9, 2026 for comparison"
+    class="accent-zinc-900 disabled:opacity-40"
+    type="checkbox"
+  />
+
+  --------------------------------------------------
+  button:
+
+  Name "Compare selected uploads":
+  <button
+    class="rounded-lg bg-zinc-900 px-4 py-2 text-sm font-semibold text-white opacity-40"
+    disabled=""
+    type="button"
+  />
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <div
+      class="space-y-3"
+    >
+      <label
+        class="flex items-center gap-2 text-sm"
+      >
+        Lift
+        <select
+          class="rounded-lg border border-zinc-300 px-2 py-1"
+        >
+          <option
+            value="all"
+          >
+            All
+          </option>
+          <option
+            value="squat"
+          >
+            Squat
+          </option>
+          <option
+            value="deadlift"
+          >
+            Deadlift
+          </option>
+          <option
+            value="bench_press"
+          >
+            Bench Press
+          </option>
+        </select>
+      </label>
+      <p
+        class="text-sm text-zinc-600"
+      >
+        Select two completed uploads of the same lift to compare.
+      </p>
+      <ul
+        class="divide-y divide-zinc-200 rounded-xl border border-zinc-200"
+      >
+        <li>
+          <a
+            class="block px-3 py-3"
+            href="/results/analysis-1"
+          >
+            <span
+              class="flex justify-between text-sm text-zinc-500"
+            >
+              <span>
+                Nov 9, 2026
+              </span>
+              <span>
+                Analyzed
+              </span>
+            </span>
+            <span
+              class="block font-medium"
+            >
+              Squat · 5 reps
+            </span>
+          </a>
+          <label
+            class="mb-3 ml-3 flex w-fit items-center gap-2 text-sm text-zinc-700"
+          >
+            <input
+              aria-label="Select Squat upload from Nov 9, 2026 for comparison"
+              class="accent-zinc-900 disabled:opacity-40"
+              type="checkbox"
+            />
+            Compare this upload
+          </label>
+        </li>
+      </ul>
+      <button
+        class="rounded-lg bg-zinc-900 px-4 py-2 text-sm font-semibold text-white opacity-40"
+        disabled=""
+        type="button"
+      >
+        Compare selected uploads
+      </button>
+    </div>
+  </div>
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/components/__tests__/us21-deletion.test.tsx:19:34
+     17|     const onDelete = vi.fn();
+     18|     render(<HistoryList items={[item]} onDelete={onDelete} />);
+     19|     await userEvent.click(screen.getByRole("button", { name: "Delete u…
+       |                                  ^
+     20|     const dialog = screen.getByRole("dialog", { name: "Delete this upl…
+     21|     expect(dialog).toHaveTextContent("video, frames, measurements and …
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/14]⎯
+
+ FAIL  src/components/__tests__/us21-deletion.test.tsx > US-21 upload deletion > us21_confirmation_deletes_the_upload_id_including_its_analysis_retries
+TestingLibraryElementError: Unable to find an accessible element with the role "button" and name "Delete upload"
+
+Here are the accessible roles:
+
+  combobox:
+
+  Name "Lift":
+  <select
+    class="rounded-lg border border-zinc-300 px-2 py-1"
+  />
+
+  --------------------------------------------------
+  option:
+
+  Name "All":
+  <option
+    value="all"
+  />
+
+  Name "Squat":
+  <option
+    value="squat"
+  />
+
+  Name "Deadlift":
+  <option
+    value="deadlift"
+  />
+
+  Name "Bench Press":
+  <option
+    value="bench_press"
+  />
+
+  --------------------------------------------------
+  paragraph:
+
+  Name "":
+  <p
+    class="text-sm text-zinc-600"
+  />
+
+  --------------------------------------------------
+  list:
+
+  Name "":
+  <ul
+    class="divide-y divide-zinc-200 rounded-xl border border-zinc-200"
+  />
+
+  --------------------------------------------------
+  listitem:
+
+  Name "":
+  <li />
+
+  --------------------------------------------------
+  link:
+
+  Name "Nov 9, 2026AnalyzedSquat · 5 reps":
+  <a
+    class="block px-3 py-3"
+    href="/results/analysis-1"
+  />
+
+  --------------------------------------------------
+  checkbox:
+
+  Name "Select Squat upload from Nov 9, 2026 for comparison":
+  <input
+    aria-label="Select Squat upload from Nov 9, 2026 for comparison"
+    class="accent-zinc-900 disabled:opacity-40"
+    type="checkbox"
+  />
+
+  --------------------------------------------------
+  button:
+
+  Name "Compare selected uploads":
+  <button
+    class="rounded-lg bg-zinc-900 px-4 py-2 text-sm font-semibold text-white opacity-40"
+    disabled=""
+    type="button"
+  />
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <div
+      class="space-y-3"
+    >
+      <label
+        class="flex items-center gap-2 text-sm"
+      >
+        Lift
+        <select
+          class="rounded-lg border border-zinc-300 px-2 py-1"
+        >
+          <option
+            value="all"
+          >
+            All
+          </option>
+          <option
+            value="squat"
+          >
+            Squat
+          </option>
+          <option
+            value="deadlift"
+          >
+            Deadlift
+          </option>
+          <option
+            value="bench_press"
+          >
+            Bench Press
+          </option>
+        </select>
+      </label>
+      <p
+        class="text-sm text-zinc-600"
+      >
+        Select two completed uploads of the same lift to compare.
+      </p>
+      <ul
+        class="divide-y divide-zinc-200 rounded-xl border border-zinc-200"
+      >
+        <li>
+          <a
+            class="block px-3 py-3"
+            href="/results/analysis-1"
+          >
+            <span
+              class="flex justify-between text-sm text-zinc-500"
+            >
+              <span>
+                Nov 9, 2026
+              </span>
+              <span>
+                Analyzed
+              </span>
+            </span>
+            <span
+              class="block font-medium"
+            >
+              Squat · 5 reps
+            </span>
+          </a>
+          <label
+            class="mb-3 ml-3 flex w-fit items-center gap-2 text-sm text-zinc-700"
+          >
+            <input
+              aria-label="Select Squat upload from Nov 9, 2026 for comparison"
+              class="accent-zinc-900 disabled:opacity-40"
+              type="checkbox"
+            />
+            Compare this upload
+          </label>
+        </li>
+      </ul>
+      <button
+        class="rounded-lg bg-zinc-900 px-4 py-2 text-sm font-semibold text-white opacity-40"
+        disabled=""
+        type="button"
+      >
+        Compare selected uploads
+      </button>
+    </div>
+  </div>
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/components/__tests__/us21-deletion.test.tsx:31:34
+     29|     const onDelete = vi.fn().mockResolvedValue(undefined);
+     30|     render(<HistoryList items={[item]} onDelete={onDelete} />);
+     31|     await userEvent.click(screen.getByRole("button", { name: "Delete u…
+       |                                  ^
+     32|     await userEvent.click(within(screen.getByRole("dialog")).getByRole…
+     33|     expect(onDelete).toHaveBeenCalledWith("upload-1");
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/14]⎯
+
+ FAIL  src/components/__tests__/us21-deletion.test.tsx > US-21 upload deletion > us21_escape_cancels_and_returns_focus_to_the_delete_trigger
+TestingLibraryElementError: Unable to find an accessible element with the role "button" and name "Delete upload"
+
+Here are the accessible roles:
+
+  combobox:
+
+  Name "Lift":
+  <select
+    class="rounded-lg border border-zinc-300 px-2 py-1"
+  />
+
+  --------------------------------------------------
+  option:
+
+  Name "All":
+  <option
+    value="all"
+  />
+
+  Name "Squat":
+  <option
+    value="squat"
+  />
+
+  Name "Deadlift":
+  <option
+    value="deadlift"
+  />
+
+  Name "Bench Press":
+  <option
+    value="bench_press"
+  />
+
+  --------------------------------------------------
+  paragraph:
+
+  Name "":
+  <p
+    class="text-sm text-zinc-600"
+  />
+
+  --------------------------------------------------
+  list:
+
+  Name "":
+  <ul
+    class="divide-y divide-zinc-200 rounded-xl border border-zinc-200"
+  />
+
+  --------------------------------------------------
+  listitem:
+
+  Name "":
+  <li />
+
+  --------------------------------------------------
+  link:
+
+  Name "Nov 9, 2026AnalyzedSquat · 5 reps":
+  <a
+    class="block px-3 py-3"
+    href="/results/analysis-1"
+  />
+
+  --------------------------------------------------
+  checkbox:
+
+  Name "Select Squat upload from Nov 9, 2026 for comparison":
+  <input
+    aria-label="Select Squat upload from Nov 9, 2026 for comparison"
+    class="accent-zinc-900 disabled:opacity-40"
+    type="checkbox"
+  />
+
+  --------------------------------------------------
+  button:
+
+  Name "Compare selected uploads":
+  <button
+    class="rounded-lg bg-zinc-900 px-4 py-2 text-sm font-semibold text-white opacity-40"
+    disabled=""
+    type="button"
+  />
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <div
+      class="space-y-3"
+    >
+      <label
+        class="flex items-center gap-2 text-sm"
+      >
+        Lift
+        <select
+          class="rounded-lg border border-zinc-300 px-2 py-1"
+        >
+          <option
+            value="all"
+          >
+            All
+          </option>
+          <option
+            value="squat"
+          >
+            Squat
+          </option>
+          <option
+            value="deadlift"
+          >
+            Deadlift
+          </option>
+          <option
+            value="bench_press"
+          >
+            Bench Press
+          </option>
+        </select>
+      </label>
+      <p
+        class="text-sm text-zinc-600"
+      >
+        Select two completed uploads of the same lift to compare.
+      </p>
+      <ul
+        class="divide-y divide-zinc-200 rounded-xl border border-zinc-200"
+      >
+        <li>
+          <a
+            class="block px-3 py-3"
+            href="/results/analysis-1"
+          >
+            <span
+              class="flex justify-between text-sm text-zinc-500"
+            >
+              <span>
+                Nov 9, 2026
+              </span>
+              <span>
+                Analyzed
+              </span>
+            </span>
+            <span
+              class="block font-medium"
+            >
+              Squat · 5 reps
+            </span>
+          </a>
+          <label
+            class="mb-3 ml-3 flex w-fit items-center gap-2 text-sm text-zinc-700"
+          >
+            <input
+              aria-label="Select Squat upload from Nov 9, 2026 for comparison"
+              class="accent-zinc-900 disabled:opacity-40"
+              type="checkbox"
+            />
+            Compare this upload
+          </label>
+        </li>
+      </ul>
+      <button
+        class="rounded-lg bg-zinc-900 px-4 py-2 text-sm font-semibold text-white opacity-40"
+        disabled=""
+        type="button"
+      >
+        Compare selected uploads
+      </button>
+    </div>
+  </div>
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/components/__tests__/us21-deletion.test.tsx:38:28
+     36|   it("us21_escape_cancels_and_returns_focus_to_the_delete_trigger", as…
+     37|     render(<HistoryList items={[item]} onDelete={vi.fn()} />);
+     38|     const trigger = screen.getByRole("button", { name: "Delete upload"…
+       |                            ^
+     39|     await userEvent.click(trigger);
+     40|     expect(within(screen.getByRole("dialog")).getByRole("button", { na…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/14]⎯
+
+ FAIL  src/components/__tests__/us21-deletion.test.tsx > US-21 upload deletion > us21_pending_deletion_blocks_duplicate_confirmation
+TestingLibraryElementError: Unable to find an accessible element with the role "button" and name "Delete upload"
+
+Here are the accessible roles:
+
+  combobox:
+
+  Name "Lift":
+  <select
+    class="rounded-lg border border-zinc-300 px-2 py-1"
+  />
+
+  --------------------------------------------------
+  option:
+
+  Name "All":
+  <option
+    value="all"
+  />
+
+  Name "Squat":
+  <option
+    value="squat"
+  />
+
+  Name "Deadlift":
+  <option
+    value="deadlift"
+  />
+
+  Name "Bench Press":
+  <option
+    value="bench_press"
+  />
+
+  --------------------------------------------------
+  paragraph:
+
+  Name "":
+  <p
+    class="text-sm text-zinc-600"
+  />
+
+  --------------------------------------------------
+  list:
+
+  Name "":
+  <ul
+    class="divide-y divide-zinc-200 rounded-xl border border-zinc-200"
+  />
+
+  --------------------------------------------------
+  listitem:
+
+  Name "":
+  <li />
+
+  --------------------------------------------------
+  link:
+
+  Name "Nov 9, 2026AnalyzedSquat · 5 reps":
+  <a
+    class="block px-3 py-3"
+    href="/results/analysis-1"
+  />
+
+  --------------------------------------------------
+  checkbox:
+
+  Name "Select Squat upload from Nov 9, 2026 for comparison":
+  <input
+    aria-label="Select Squat upload from Nov 9, 2026 for comparison"
+    class="accent-zinc-900 disabled:opacity-40"
+    type="checkbox"
+  />
+
+  --------------------------------------------------
+  button:
+
+  Name "Compare selected uploads":
+  <button
+    class="rounded-lg bg-zinc-900 px-4 py-2 text-sm font-semibold text-white opacity-40"
+    disabled=""
+    type="button"
+  />
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <div
+      class="space-y-3"
+    >
+      <label
+        class="flex items-center gap-2 text-sm"
+      >
+        Lift
+        <select
+          class="rounded-lg border border-zinc-300 px-2 py-1"
+        >
+          <option
+            value="all"
+          >
+            All
+          </option>
+          <option
+            value="squat"
+          >
+            Squat
+          </option>
+          <option
+            value="deadlift"
+          >
+            Deadlift
+          </option>
+          <option
+            value="bench_press"
+          >
+            Bench Press
+          </option>
+        </select>
+      </label>
+      <p
+        class="text-sm text-zinc-600"
+      >
+        Select two completed uploads of the same lift to compare.
+      </p>
+      <ul
+        class="divide-y divide-zinc-200 rounded-xl border border-zinc-200"
+      >
+        <li>
+          <a
+            class="block px-3 py-3"
+            href="/results/analysis-1"
+          >
+            <span
+              class="flex justify-between text-sm text-zinc-500"
+            >
+              <span>
+                Nov 9, 2026
+              </span>
+              <span>
+                Analyzed
+              </span>
+            </span>
+            <span
+              class="block font-medium"
+            >
+              Squat · 5 reps
+            </span>
+          </a>
+          <label
+            class="mb-3 ml-3 flex w-fit items-center gap-2 text-sm text-zinc-700"
+          >
+            <input
+              aria-label="Select Squat upload from Nov 9, 2026 for comparison"
+              class="accent-zinc-900 disabled:opacity-40"
+              type="checkbox"
+            />
+            Compare this upload
+          </label>
+        </li>
+      </ul>
+      <button
+        class="rounded-lg bg-zinc-900 px-4 py-2 text-sm font-semibold text-white opacity-40"
+        disabled=""
+        type="button"
+      >
+        Compare selected uploads
+      </button>
+    </div>
+  </div>
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/components/__tests__/us21-deletion.test.tsx:49:34
+     47|     const onDelete = vi.fn().mockReturnValue(new Promise(() => {}));
+     48|     render(<HistoryList items={[item]} onDelete={onDelete} />);
+     49|     await userEvent.click(screen.getByRole("button", { name: "Delete u…
+       |                                  ^
+     50|     await userEvent.click(within(screen.getByRole("dialog")).getByRole…
+     51|     expect(screen.getByRole("button", { name: "Deleting…" })).toBeDisa…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/14]⎯
+
+ FAIL  src/components/__tests__/us21-deletion.test.tsx > US-21 upload deletion > us21_failed_cleanup_remains_retryable_without_claiming_success
+TestingLibraryElementError: Unable to find an accessible element with the role "button" and name "Delete upload"
+
+Here are the accessible roles:
+
+  combobox:
+
+  Name "Lift":
+  <select
+    class="rounded-lg border border-zinc-300 px-2 py-1"
+  />
+
+  --------------------------------------------------
+  option:
+
+  Name "All":
+  <option
+    value="all"
+  />
+
+  Name "Squat":
+  <option
+    value="squat"
+  />
+
+  Name "Deadlift":
+  <option
+    value="deadlift"
+  />
+
+  Name "Bench Press":
+  <option
+    value="bench_press"
+  />
+
+  --------------------------------------------------
+  paragraph:
+
+  Name "":
+  <p
+    class="text-sm text-zinc-600"
+  />
+
+  --------------------------------------------------
+  list:
+
+  Name "":
+  <ul
+    class="divide-y divide-zinc-200 rounded-xl border border-zinc-200"
+  />
+
+  --------------------------------------------------
+  listitem:
+
+  Name "":
+  <li />
+
+  --------------------------------------------------
+  link:
+
+  Name "Nov 9, 2026AnalyzedSquat · 5 reps":
+  <a
+    class="block px-3 py-3"
+    href="/results/analysis-1"
+  />
+
+  --------------------------------------------------
+  checkbox:
+
+  Name "Select Squat upload from Nov 9, 2026 for comparison":
+  <input
+    aria-label="Select Squat upload from Nov 9, 2026 for comparison"
+    class="accent-zinc-900 disabled:opacity-40"
+    type="checkbox"
+  />
+
+  --------------------------------------------------
+  button:
+
+  Name "Compare selected uploads":
+  <button
+    class="rounded-lg bg-zinc-900 px-4 py-2 text-sm font-semibold text-white opacity-40"
+    disabled=""
+    type="button"
+  />
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <div
+      class="space-y-3"
+    >
+      <label
+        class="flex items-center gap-2 text-sm"
+      >
+        Lift
+        <select
+          class="rounded-lg border border-zinc-300 px-2 py-1"
+        >
+          <option
+            value="all"
+          >
+            All
+          </option>
+          <option
+            value="squat"
+          >
+            Squat
+          </option>
+          <option
+            value="deadlift"
+          >
+            Deadlift
+          </option>
+          <option
+            value="bench_press"
+          >
+            Bench Press
+          </option>
+        </select>
+      </label>
+      <p
+        class="text-sm text-zinc-600"
+      >
+        Select two completed uploads of the same lift to compare.
+      </p>
+      <ul
+        class="divide-y divide-zinc-200 rounded-xl border border-zinc-200"
+      >
+        <li>
+          <a
+            class="block px-3 py-3"
+            href="/results/analysis-1"
+          >
+            <span
+              class="flex justify-between text-sm text-zinc-500"
+            >
+              <span>
+                Nov 9, 2026
+              </span>
+              <span>
+                Analyzed
+              </span>
+            </span>
+            <span
+              class="block font-medium"
+            >
+              Squat · 5 reps
+            </span>
+          </a>
+          <label
+            class="mb-3 ml-3 flex w-fit items-center gap-2 text-sm text-zinc-700"
+          >
+            <input
+              aria-label="Select Squat upload from Nov 9, 2026 for comparison"
+              class="accent-zinc-900 disabled:opacity-40"
+              type="checkbox"
+            />
+            Compare this upload
+          </label>
+        </li>
+      </ul>
+      <button
+        class="rounded-lg bg-zinc-900 px-4 py-2 text-sm font-semibold text-white opacity-40"
+        disabled=""
+        type="button"
+      >
+        Compare selected uploads
+      </button>
+    </div>
+  </div>
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/components/__tests__/us21-deletion.test.tsx:59:34
+     57|     const onDelete = vi.fn().mockRejectedValueOnce(new ApiError(502, "…
+     58|     render(<HistoryList items={[item]} onDelete={onDelete} />);
+     59|     await userEvent.click(screen.getByRole("button", { name: "Delete u…
+       |                                  ^
+     60|     const dialog = screen.getByRole("dialog");
+     61|     await userEvent.click(within(dialog).getByRole("button", { name: "…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/14]⎯
+
+ FAIL  src/components/__tests__/us21-deletion.test.tsx > US-21 upload deletion > us21_deleted_entries_cannot_remain_selected_for_comparison
+Error: expect(element).not.toBeInTheDocument()
+
+expected document not to contain element, found <a
+  class="inline-block rounded-lg bg-zinc-900 px-4 py-2 text-sm font-semibold text-white"
+  href="/compare?first=analysis-1&second=analysis-2"
+>
+  Compare selected uploads
+</a> instead
+ ❯ src/components/__tests__/us21-deletion.test.tsx:73:82
+     71|     await userEvent.click(screen.getAllByRole("checkbox")[1]);
+     72|     rerender(<HistoryList items={[second]} onDelete={vi.fn()} />);
+     73|     expect(screen.queryByRole("link", { name: "Compare selected upload…
+       |                                                                                  ^
+     74|     expect(screen.getByRole("button", { name: "Compare selected upload…
+     75|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/14]⎯
+
+ FAIL  src/components/__tests__/us21-deletion.test.tsx > US-21 account deletion > us21_account_delete_has_a_separate_confirmation_explaining_what_is_removed
+TestingLibraryElementError: Unable to find an accessible element with the role "button" and name "Delete account"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/components/__tests__/us21-deletion.test.tsx:82:34
+     80|     const remove = vi.fn();
+     81|     render(<DeleteAccountForm deleteAccount={remove} onDeleted={vi.fn(…
+     82|     await userEvent.click(screen.getByRole("button", { name: "Delete a…
+       |                                  ^
+     83|     const dialog = screen.getByRole("dialog", { name: "Delete your acc…
+     84|     expect(dialog).toHaveTextContent("all your uploads");
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/14]⎯
+
+ FAIL  src/components/__tests__/us21-deletion.test.tsx > US-21 account deletion > us21_the_session_is_cleared_only_after_successful_account_deletion
+TestingLibraryElementError: Unable to find an accessible element with the role "button" and name "Delete account"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/components/__tests__/us21-deletion.test.tsx:95:34
+     93|     const onDeleted = vi.fn();
+     94|     render(<DeleteAccountForm deleteAccount={remove} onDeleted={onDele…
+     95|     await userEvent.click(screen.getByRole("button", { name: "Delete a…
+       |                                  ^
+     96|     await userEvent.click(within(screen.getByRole("dialog")).getByRole…
+     97|     expect(onDeleted).not.toHaveBeenCalled();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/14]⎯
+
+ FAIL  src/components/__tests__/us21-deletion.test.tsx > US-21 account deletion > us21_account_deletion_failure_does_not_sign_the_user_out
+TestingLibraryElementError: Unable to find an accessible element with the role "button" and name "Delete account"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/components/__tests__/us21-deletion.test.tsx:105:34
+    103|     const onDeleted = vi.fn();
+    104|     render(<DeleteAccountForm deleteAccount={vi.fn().mockRejectedValue…
+    105|     await userEvent.click(screen.getByRole("button", { name: "Delete a…
+       |                                  ^
+    106|     await userEvent.click(within(screen.getByRole("dialog")).getByRole…
+    107|     expect(screen.getByRole("alert")).toHaveTextContent("Wait for anal…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/14]⎯
+
+ FAIL  src/components/__tests__/us21-deletion.test.tsx > US-21 account deletion > us21_settings_requires_a_session
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ src/components/__tests__/us21-deletion.test.tsx:112:42
+    110|
+    111|   it("us21_settings_requires_a_session", () => {
+    112|     expect(isProtectedPath("/settings")).toBe(true);
+       |                                          ^
+    113|   });
+    114| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[12/14]⎯
+
+ FAIL  src/components/__tests__/us21-pages.test.tsx > US-21 deletion pages > us21_history_removes_every_analysis_of_the_deleted_upload
+TestingLibraryElementError: Unable to find role="button" and name "Delete upload"
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <div
+      class="space-y-4"
+    >
+      <h1
+        class="text-2xl font-bold"
+      >
+        Your uploads
+      </h1>
+      <div
+        class="space-y-3"
+      >
+        <label
+          class="flex items-center gap-2 text-sm"
+        >
+          Lift
+          <select
+            class="rounded-lg border border-zinc-300 px-2 py-1"
+          >
+            <option
+              value="all"
+            >
+              All
+            </option>
+            <option
+              value="squat"
+            >
+              Squat
+            </option>
+            <option
+              value="deadlift"
+            >
+              Deadlift
+            </option>
+            <option
+              value="bench_press"
+            >
+              Bench Press
+            </option>
+          </select>
+        </label>
+        <p
+          class="text-sm text-zinc-600"
+        >
+          Select two completed uploads of the same lift to compare.
+        </p>
+        <ul
+          class="divide-y divide-zinc-200 rounded-xl border border-zinc-200"
+        >
+          <li>
+            <a
+              class="block px-3 py-3"
+              href="/results/a1"
+            >
+              <span
+                class="flex justify-between text-sm text-zinc-500"
+              >
+                <span>
+                  Nov 9, 2026
+                </span>
+                <span>
+                  Analyzed
+                </span>
+              </span>
+              <span
+                class="block font-medium"
+              >
+                Squat · 5 reps
+              </span>
+            </a>
+            <label
+              class="mb-3 ml-3 flex w-fit items-center gap-2 text-sm text-zinc-700"
+            >
+              <input
+                aria-label="Select Squat upload from Nov 9, 2026 for comparison"
+                class="accent-zinc-900 disabled:opacity-40"
+                type="checkbox"
+              />
+              Compare this upload
+            </label>
+          </li>
+          <li>
+            <a
+              class="block px-3 py-3"
+              href="/results/a2"
+            >
+              <span
+                class="flex justify-between text-sm text-zinc-500"
+              >
+                <span>
+                  Nov 9, 2026
+                </span>
+                <span>
+                  Analyzed
+                </span>
+              </span>
+              <span
+                class="block font-medium"
+              >
+                Squat · 5 reps
+              </span>
+            </a>
+            <label
+              class="mb-3 ml-3 flex w-fit items-center gap-2 text-sm text-zinc-700"
+            >
+              <input
+                aria-label="Select Squat upload from Nov 9, 2026 for comparison"
+                class="accent-zinc-900 disabled:opacity-40"
+                type="checkbox"
+              />
+              Compare this upload
+            </label>
+          </li>
+        </ul>
+        <button
+          class="rounded-lg bg-zinc-900 px-4 py-2 text-sm font-semibold text-white opacity-40"
+          disabled=""
+          type="button"
+        >
+          Compare selected uploads
+        </button>
+      </div>
+    </div>
+  </div>
+</body>
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <div
+      class="space-y-4"
+    >
+      <h1
+        class="text-2xl font-bold"
+      >
+        Your uploads
+      </h1>
+      <div
+        class="space-y-3"
+      >
+        <label
+          class="flex items-center gap-2 text-sm"
+        >
+          Lift
+          <select
+            class="rounded-lg border border-zinc-300 px-2 py-1"
+          >
+            <option
+              value="all"
+            >
+              All
+            </option>
+            <option
+              value="squat"
+            >
+              Squat
+            </option>
+            <option
+              value="deadlift"
+            >
+              Deadlift
+            </option>
+            <option
+              value="bench_press"
+            >
+              Bench Press
+            </option>
+          </select>
+        </label>
+        <p
+          class="text-sm text-zinc-600"
+        >
+          Select two completed uploads of the same lift to compare.
+        </p>
+        <ul
+          class="divide-y divide-zinc-200 rounded-xl border border-zinc-200"
+        >
+          <li>
+            <a
+              class="block px-3 py-3"
+              href="/results/a1"
+            >
+              <span
+                class="flex justify-between text-sm text-zinc-500"
+              >
+                <span>
+                  Nov 9, 2026
+                </span>
+                <span>
+                  Analyzed
+                </span>
+              </span>
+              <span
+                class="block font-medium"
+              >
+                Squat · 5 reps
+              </span>
+            </a>
+            <label
+              class="mb-3 ml-3 flex w-fit items-center gap-2 text-sm text-zinc-700"
+            >
+              <input
+                aria-label="Select Squat upload from Nov 9, 2026 for comparison"
+                class="accent-zinc-900 disabled:opacity-40"
+                type="checkbox"
+              />
+              Compare this upload
+            </label>
+          </li>
+          <li>
+            <a
+              class="block px-3 py-3"
+              href="/results/a2"
+            >
+              <span
+                class="flex justify-between text-sm text-zinc-500"
+              >
+                <span>
+                  Nov 9, 2026
+                </span>
+                <span>
+                  Analyzed
+                </span>
+              </span>
+              <span
+                class="block font-medium"
+              >
+                Squat · 5 reps
+              </span>
+            </a>
+            <label
+              class="mb-3 ml-3 flex w-fit items-center gap-2 text-sm text-zinc-700"
+            >
+              <input
+                aria-label="Select Squat upload from Nov 9, 2026 for comparison"
+                class="accent-zinc-900 disabled:opacity-40"
+                type="checkbox"
+              />
+              Compare this upload
+            </label>
+          </li>
+        </ul>
+        <button
+          class="rounded-lg bg-zinc-900 px-4 py-2 text-sm font-semibold text-white opacity-40"
+          disabled=""
+          type="button"
+        >
+          Compare selected uploads
+        </button>
+      </div>
+    </div>
+  </div>
+</body>
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/components/__tests__/us21-pages.test.tsx:27:41
+     25|     vi.mocked(api.deleteUpload).mockResolvedValue(undefined);
+     26|     render(<HistoryPage />);
+     27|     await userEvent.click((await screen.findAllByRole("button", { name…
+       |                                         ^
+     28|     await userEvent.click(within(screen.getByRole("dialog")).getByRole…
+     29|     expect(api.deleteUpload).toHaveBeenCalledWith("u1", null);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[13/14]⎯
+
+ FAIL  src/components/__tests__/us21-pages.test.tsx > US-21 deletion pages > us21_settings_deletes_the_account_clears_its_cookie_and_returns_to_login
+TestingLibraryElementError: Unable to find an accessible element with the role "button" and name "Delete account"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+<body>
+  <div />
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/components/__tests__/us21-pages.test.tsx:37:34
+     35|     vi.mocked(api.deleteAccount).mockResolvedValue(undefined);
+     36|     render(<SettingsPage />);
+     37|     await userEvent.click(screen.getByRole("button", { name: "Delete a…
+       |                                  ^
+     38|     await userEvent.click(within(screen.getByRole("dialog")).getByRole…
+     39|     expect(api.deleteAccount).toHaveBeenCalledWith("test-session");
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[14/14]⎯
+
+
+ Test Files  3 failed (3)
+      Tests  14 failed (14)
+   Start at  17:32:50
+   Duration  23.15s (transform 422ms, setup 13.06s, collect 3.30s, tests 2.51s, environment 41.99s, prepare 1.86s)

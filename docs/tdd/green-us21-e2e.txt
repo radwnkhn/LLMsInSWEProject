@@ -1,0 +1,94 @@
+
+> frontend@0.1.0 e2e
+> playwright test
+
+[WebServer] INFO:     Started server process [26920]
+[WebServer] INFO:     Waiting for application startup.
+[WebServer] INFO:     Application startup complete.
+[WebServer] INFO:     Uvicorn running on http://127.0.0.1:8766 (Press CTRL+C to quit)
+[WebServer] (node:32416) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:29296) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:19504) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:12628) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:19720) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:29132) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:24164) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:13528) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:20888) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:31464) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:12408) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:20760) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:25632) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:31592) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:29588) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:31088) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:12948) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:24076) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:12000) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:9600) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:32448) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:20592) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:30148) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:21740) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:20688) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:29280) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 19 tests using 1 worker
+
+(node:12540) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  -   1 e2e\setup02-deploy.spec.ts:7:5 › setup02_deployed_frontend_reaches_backend_health
+  ok  2 e2e\setup02-deploy.spec.ts:13:5 › setup02_status_page_reports_backend_health_locally (595ms)
+  ok  3 e2e\us01-auth.spec.ts:5:5 › us01_after_logging_out_history_redirects_to_login (1.1s)
+  ok  4 e2e\us01-auth.spec.ts:15:5 › us01_wrong_password_shows_message (1.1s)
+  ok  5 e2e\us03-guide.spec.ts:8:7 › us03_guide_fits_375px_without_sideways_scroll_squat (876ms)
+  ok  6 e2e\us03-guide.spec.ts:8:7 › us03_guide_fits_375px_without_sideways_scroll_deadlift (778ms)
+  ok  7 e2e\us03-guide.spec.ts:8:7 › us03_guide_fits_375px_without_sideways_scroll_bench_press (892ms)
+  ok  8 e2e\us05-us09-status.spec.ts:5:5 › us05_unanalyzable_message_has_refilm_button_that_opens_the_guide (1.4s)
+  ok  9 e2e\us05-us09-status.spec.ts:14:5 › us09_fallback_result_shows_the_note (3.3s)
+  ok 10 e2e\us11-us12-video.spec.ts:5:5 › us11_tapping_the_frame_plays_the_video_from_the_start_of_that_rep (3.2s)
+  ok 11 e2e\us11-us12-video.spec.ts:18:5 › us12_tapping_a_rep_row_jumps_the_video_to_that_rep (3.1s)
+  ok 12 e2e\us17-history.spec.ts:5:5 › us17_tapping_a_history_entry_opens_its_full_results (4.0s)
+  ok 13 e2e\us19-processing.spec.ts:7:5 › us19_progress_updates_without_reload_and_results_open_automatically (6.8s)
+[WebServer] analysis 0bec4a36-a775-49a0-83cc-187843a6dbb2 failed
+[WebServer] Traceback (most recent call last):
+[WebServer]   File "C:\Users\imran\LLMsInSWEProject\backend\app\uploads.py", line 42, in process_analysis
+[WebServer]     frames = services.video.poses(path, info, upload.filename)
+[WebServer]   File "C:\Users\imran\LLMsInSWEProject\backend\app\testing\fakes.py", line 174, in poses
+[WebServer]     raise RuntimeError("Simulated transient pose failure")
+[WebServer] RuntimeError: Simulated transient pose failure
+  ok 14 e2e\us19-processing.spec.ts:42:5 › us19_failed_analysis_retries_the_saved_video (5.4s)
+  ok 15 e2e\us20-comparison.spec.ts:5:5 › us20_history_opens_two_uploads_with_measurements_and_a_resolved_previous_fault (5.7s)
+  ok 16 e2e\us20-comparison.spec.ts:22:5 › us20_comparison_shows_the_earlier_fault_is_still_present (5.8s)
+  ok 17 e2e\us20-comparison.spec.ts:33:5 › us20_different_lifts_are_blocked_in_history_and_in_direct_comparison_urls (5.5s)
+  ok 18 e2e\us21-deletion.spec.ts:5:5 › us21_confirmed_upload_deletion_removes_it_from_history_results_and_comparison (6.4s)
+  ok 19 e2e\us21-deletion.spec.ts:27:5 › us21_settings_deletes_account_and_protects_old_pages (4.3s)
+
+  1 skipped
+  18 passed (2.7m)

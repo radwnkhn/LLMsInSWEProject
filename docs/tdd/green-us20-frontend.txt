@@ -1,0 +1,18 @@
+
+> frontend@0.1.0 test
+> vitest run us20-comparison
+
+
+ RUN  v3.2.7 C:/Users/imran/LLMsInSWEProject/frontend
+
+ ✓ src/components/__tests__/us20-comparison-page.test.tsx (8 tests) 527ms
+   ✓ US-20 comparison page > us20_fetches_the_selected_uploads_and_displays_the_comparison  314ms
+ ✓ src/components/__tests__/us20-comparison.test.tsx (12 tests) 1296ms
+   ✓ US-20 compare uploads > us20_history_selects_two_same_lift_uploads_and_opens_the_comparison  480ms
+   ✓ US-20 compare uploads > us20_changing_the_history_filter_clears_hidden_selections  305ms
+
+ Test Files  2 passed (2)
+      Tests  20 passed (20)
+   Start at  16:44:49
+   Duration  18.48s (transform 276ms, setup 5.26s, collect 2.20s, tests 1.82s, environment 21.21s, prepare 1.65s)
+

@@ -3,8 +3,8 @@ import { defineConfig, devices } from "@playwright/test";
 // The e2e suite runs the real frontend against the real backend in test mode
 // (ALIBI_TEST_MODE=1): in-memory database and storage, synthetic pose data picked from the
 // uploaded file name, and a mocked LLM. No external service is called.
-const API_PORT = 8765;
-const WEB_PORT = 3123;
+const API_PORT = Number(process.env.E2E_API_PORT ?? 8765);
+const WEB_PORT = Number(process.env.E2E_WEB_PORT ?? 3123);
 const PYTHON = process.env.PYTHON ?? ".venv/bin/python";
 
 export default defineConfig({
@@ -32,7 +32,7 @@ export default defineConfig({
     {
       // A production build: no on-demand compiling, so timings match what users get.
       command: `npx next build && npx next start -p ${WEB_PORT} -H 127.0.0.1`,
-      env: { NEXT_PUBLIC_API_URL: `http://127.0.0.1:${API_PORT}` },
+      env: { NEXT_PUBLIC_API_URL: `http://127.0.0.1:${API_PORT}`, NEXT_BUILD_DIR: process.env.E2E_BUILD_DIR ?? ".next-e2e" },
       url: `http://127.0.0.1:${WEB_PORT}/login`,
       reuseExistingServer: !process.env.CI,
       timeout: 240_000,
