@@ -14,7 +14,7 @@ describe("US-21 returning to a protected page after account deletion", () => {
   });
 
   it("us21_redirect_preserves_a_production_origin", () => {
-    const request = new NextRequest("https://formcheck.example/settings", { headers: { host: "formcheck.example" } });
-    expect(new URL(middleware(request).headers.get("location")!).origin).toBe("https://formcheck.example");
+    const request = new NextRequest("https://alibi.example/settings", { headers: { host: "alibi.example" } });
+    expect(new URL(middleware(request).headers.get("location")!).origin).toBe("https://alibi.example");
   });
 });

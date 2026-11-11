@@ -1,4 +1,4 @@
--- Alibi (FormCheck) data model: users, uploads, analyses, rep measurements, LLM attempts,
+-- Alibi data model: users, uploads, analyses, rep measurements, LLM attempts,
 -- validation results and feedback responses, with row-level security and a private video bucket.
 
 create extension if not exists pgcrypto;

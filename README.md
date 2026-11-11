@@ -1,121 +1,137 @@
-# Alibi (FormCheck)
+# Alibi
 
-Upload a video of a squat, deadlift or bench set and get one top fix, one cue for the next set,
-an annotated frame showing where the fault happened, and a rep-by-rep breakdown. Every critique is
-checked against measurements from the video before you see it.
+Alibi is a web application that helps lifters review their squat, deadlift, and bench press
+technique. Upload a video of a set to get a prioritized form correction, a cue for the next set,
+an annotated frame, and a rep-by-rep breakdown.
 
-| Part | Stack | Folder |
-| --- | --- | --- |
-| Web app | Next.js, React, Tailwind CSS | `frontend/` |
-| API and analysis | Python, FastAPI, MediaPipe, NumPy | `backend/` |
-| Database and storage | Supabase (Postgres + Storage) | `supabase/migrations/` |
+The application combines pose estimation, measured movement data, and AI coaching. Generated
+feedback is checked against the video's measurements before it reaches the lifter. When the
+video does not support a reliable assessment, Alibi explains what could not be measured.
 
-## Run it
+## What you can do
 
-One-time setup (Python 3.13 and Node 22):
+- Create an account and upload a lifting video with guidance on camera placement.
+- Follow analysis progress, view results, and retry a failed analysis using the saved video.
+- Review measured reps, annotated frames, and coaching feedback.
+- Browse your history and compare completed sets of the same lift.
+- Rate feedback and delete individual uploads or your account.
+- As an admin, review analyses and validation attempts and manage the lift fault catalog.
+
+## Application structure
+
+```mermaid
+flowchart LR
+    Web["Web app<br/>Next.js / React<br/>frontend/"] <--> API["API and analysis<br/>FastAPI / MediaPipe / NumPy<br/>backend/"]
+    API <--> Data["Supabase<br/>Auth / Postgres / Storage<br/>supabase/migrations/"]
+    API <--> AI["LLM provider<br/>Claude / Gemini / OpenAI"]
+```
+
+The frontend handles the upload and review experience. The backend authenticates requests,
+coordinates video analysis, validates AI output, and saves results. Supabase provides accounts,
+relational data, and private media storage. LLM credentials are used only by the backend.
+
+```text
+frontend/             Next.js pages, shared components, and browser tests
+backend/app/          FastAPI routes, pose analysis, measurements, and feedback validation
+backend/tests/        Backend unit and integration tests
+backend/scripts/      Pose model download and runtime checks
+supabase/migrations/  Database schema, access policies, and seed data
+docs/                 User stories, acceptance criteria, and TDD evidence
+issues/               GitHub issue definitions and creation scripts
+render.yaml           Backend deployment configuration
+```
+
+## How analysis works
+
+1. The lifter uploads an MP4 or MOV video and selects a lift.
+2. OpenCV reads the video, and MediaPipe estimates body landmarks for sampled frames.
+3. The measurement code calculates reps, joint angles, movement metrics, and camera visibility.
+4. The configured LLM receives measurements and selected frames and returns structured feedback.
+5. A deterministic validator checks the response's schema, cited reps, faults, and measurements.
+6. Invalid feedback goes through a correction loop, with at most three attempts. If it still
+   fails validation, the application returns verified measurements and the rep breakdown.
+
+Videos with insufficient visibility or usable movement receive an explanation instead of a
+coaching result. Completed analyses, their measurements, and validation attempts are saved for
+later review.
+
+## Run locally
+
+Prerequisites: Python 3.13, Node.js 22, and npm. The Makefile commands below use a Bash-compatible
+environment such as Linux, macOS, or WSL. The real-video setup also uses Docker.
+
+Install dependencies:
 
 ```bash
 make setup
 ```
 
-Then each part starts with one command:
+To explore the application without external credentials, start the API in test mode:
 
 ```bash
-make backend    # API on http://localhost:8000 (needs backend/.env, see backend/.env.example)
-make frontend   # web app on http://localhost:3000
+make backend-test-mode
 ```
 
-No Supabase project or LLM key yet? `make backend-test-mode` runs the same API with an in-memory
-database, synthetic pose data and a mocked LLM.
-
-For real videos, download the pose model once with `backend/scripts/download_pose_model.sh` and set
-`POSE_MODEL_PATH` in `backend/.env`.
-
-## Tests
+In another terminal, start the frontend:
 
 ```bash
-make test                         # backend (pytest) + frontend (Vitest), with line coverage
-cd frontend && npm run e2e        # Playwright end-to-end tests against the API in test mode
+make frontend
 ```
 
-- Tests are named after their issue (`test_us08_rejects_wrong_rep_count`, `us02_...`), so tests per
-  issue can be counted with `grep`.
-- The LLM is always mocked. CI never calls a real provider.
-- The Postgres migration and row-level security tests run when `TEST_DATABASE_URL` points at a
-  disposable Postgres database (CI provides one).
-- Tests refined or added by hand are marked `# manual` (Python) or `// manual` (TypeScript).
-- `docs/tdd/` holds the output of the failing (red) run for each suite.
+Open [localhost:3000](http://localhost:3000). The API runs on
+[localhost:8000](http://localhost:8000). Test mode uses in-memory data, synthetic poses, and
+mocked AI responses.
 
-## Processing status (US-19 / #21)
+For real video analysis:
 
-Uploads show Uploading → Measuring → Writing feedback → Checking. The results page polls the API every
-1.5 seconds while a job is queued or processing and opens the result automatically when it finishes.
-Worker failures offer Retry using the saved video; each retry creates an analysis and keeps the failed
-attempt for inspection. Network failures offer Retry to reconnect.
+1. Copy [`backend/.env.example`](backend/.env.example) to `backend/.env` and configure Supabase,
+   the database connection, and your LLM provider and key. Keep the real file out of Git.
+2. Apply [`supabase/migrations/`](supabase/migrations/) in filename order. The Alpha signup flow
+   expects email confirmation to be disabled in Supabase Auth.
+3. Stop the test-mode API, then build and start the backend with its model and native libraries:
 
-Apply `supabase/migrations/20261109000000_us19_processing_stage.sql` to an existing Alpha database before
-running the updated backend. Fresh databases should apply all migrations in order as usual.
+   ```bash
+   docker build -t alibi-api backend
+   docker run --rm --env-file backend/.env -e PORT=10000 -p 8000:10000 alibi-api
+   ```
 
-The acceptance criteria, red/green evidence and test commands are in `docs/tdd/us19.md`.
+For native backend development, install the system libraries listed in
+[`backend/Dockerfile`](backend/Dockerfile), run `bash backend/scripts/download_pose_model.sh`,
+set `POSE_MODEL_PATH=models/pose_landmarker_full.task` in `backend/.env`, and use `make backend`.
 
-## Compare uploads (US-20 / #22)
+The frontend uses `http://localhost:8000` by default. Set `NEXT_PUBLIC_API_URL` in
+`frontend/.env.local` if the API is hosted elsewhere, and include the frontend origin in the
+backend's `CORS_ORIGINS`.
 
-In **History**, select two completed uploads of the same lift and choose **Compare selected uploads**.
-The comparison shows the earlier and newer videos side by side, their rep counts and key measurements,
-and whether measurements in the newer set still confirm the earlier top fault. It reports when that
-fault cannot be measured instead of implying that it was fixed. Measurements-only results are supported.
+## Tests and development
 
-Different lifts, another user's uploads, unfinished analyses and two analyses of the same upload cannot
-be compared. No new LLM call or database migration is needed. See `docs/tdd/us20.md` for TDD evidence.
+```bash
+make test                             # Backend and frontend tests with coverage
+npm --prefix frontend run e2e          # Playwright browser tests
+docker build -t alibi-api backend      # Build the backend runtime image
+docker run --rm alibi-api python scripts/check_pose_runtime.py
+```
 
-Browser tests use `.next-e2e/` for their build so a local development server can keep its own `.next/` files.
+Automated application tests mock the LLM; CI does not call a real provider. Database migration
+and access-policy tests require `TEST_DATABASE_URL` pointing to a disposable Postgres database.
+The container check runs real pose inference without application credentials.
 
-## Delete uploads or your account (US-21 / #23)
+Development follows test-driven development: acceptance criteria map to tests, failing tests
+are recorded before implementation, and coverage is reported in CI. See the
+[user stories and acceptance criteria](docs/User_Stories_and_Acceptance_Criteria.md) and
+[TDD evidence](docs/tdd/README.md) for implementation details.
 
-In **History**, choose **Delete upload** and confirm to remove that video, all of its analysis attempts,
-frames, measurements, AI output and ratings. In **Settings**, choose **Delete account** and confirm to
-remove your account and all its data. Successful account deletion signs you out and prevents old
-sessions from accessing the API. Both confirmation dialogs support Cancel and Escape.
+## Deployment
 
-Wait for queued or processing analyses to finish before deleting. Cleanup failures show an error and
-allow another attempt. The backend coordinates deletion with uploads/retries, removes files through
-the Storage API, and uses the existing database cascades for related records. Account deletion also
-cleans orphaned media under that user's private folders. The existing backend-only Supabase service
-role key is used for Auth account deletion; no new migration or environment variable is needed.
+| Component | Host | Configuration |
+| --- | --- | --- |
+| Frontend | Vercel | Use `frontend/` as the project root and set `NEXT_PUBLIC_API_URL` to the API URL. |
+| Backend | Render | Use [`render.yaml`](render.yaml) and [`backend/Dockerfile`](backend/Dockerfile); set backend environment variables in Render. |
+| Accounts, data, and media | Supabase | Apply the migrations and configure Auth and the private storage bucket. |
+| AI feedback | Configured LLM provider | Set `LLM_PROVIDER`, `LLM_API_KEY`, and optionally `LLM_MODEL` on the backend. |
 
-See `docs/tdd/us21.md` for acceptance coverage and red/green evidence. To run browser tests alongside an
-existing demo, set `E2E_API_PORT`, `E2E_WEB_PORT` and `E2E_BUILD_DIR` to unused ports and a separate build
-folder (this change was verified with ports 8766/3124 and `.next-us21-e2e`).
+The backend image includes MediaPipe's native libraries and pose model. A real inference check
+runs before the API starts accepting requests. CI also verifies inference in the finished container.
 
-## Manage the fault list (US-25 / #27)
-
-Admins open **Admin → Fault list** (`/admin/faults`) to see every fault per lift with its category, whether
-it is a safety fault, the measurement that confirms it and whether it is enabled. They can edit a fault's
-display name and short description, disable or re-enable it, and add a fault by choosing one of the
-measurements the app already computes for that lift. A disabled fault is left out of the LLM prompt and
-schema, and the validator rejects replies that cite it (`fault_disabled`), which starts the correction
-loop. Changes apply to analyses that start afterwards; earlier results keep the faults they reported.
-Threshold changes belong to US-24.
-
-Apply `supabase/migrations/20261111000000_us25_fault_list.sql` to an existing database. It creates
-`public.faults` and seeds it with the Alpha definitions, so behavior is unchanged until an admin edits
-the list. In test mode (`ALIBI_TEST_MODE=1`) accounts signed up at `@admin.test` are admins, so the
-browser tests can reach the page. See `docs/tdd/us25.md` for TDD evidence.
-
-## Deploy
-
-- **Database:** run `supabase/migrations/*.sql` in the Supabase SQL editor (or `supabase db push`).
-  In Supabase Auth, turn off "Confirm email" for the Alpha. Make someone an admin by setting their
-  `app_metadata` to `{"role": "admin"}`.
-- **Backend (Render):** `render.yaml` defines a Docker web service on the free plan in Virginia.
-  Set the variables from `backend/.env.example` in Render, keeping real credentials out of Git.
-  The image includes MediaPipe's EGL/GLES system libraries and downloads the pose model.
-  CI runs real inference in the finished container as its unprivileged user. Startup repeats
-  that check before opening the API port; build sandboxes may hide CPU topology that MediaPipe
-  requires. An import check alone does not load all native dependencies.
-  To verify the same image locally, run `docker build -t alibi-api backend`, then
-  `docker run --rm --env-file backend/.env -e PORT=10000 -p 10000:10000 alibi-api`.
-  For an existing native Python service, sync the Docker configuration to that service rather
-  than creating another API. Verify `/health` and a real upload after it becomes live.
-- **Frontend (Vercel):** import the repo with `frontend` as the root directory and set
-  `NEXT_PUBLIC_API_URL` to the Render URL. `/status` shows whether the frontend can reach the backend.
+After deploying, check the API's `/health` endpoint and the frontend's `/status` page, then verify
+an upload through the complete analysis flow. Configure `CORS_ORIGINS` for the deployed frontend.

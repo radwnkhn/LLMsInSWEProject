@@ -1,4 +1,4 @@
-# Alibi (FormCheck): project guide for Claude
+# Alibi: project guide for Claude
 
 ## What we're building
 A mobile-first web app. A lifter uploads a video of a squat, deadlift or bench set and gets:

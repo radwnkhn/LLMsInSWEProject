@@ -1,16 +1,16 @@
-# FormCheck: AI feedback on your lifting form
+# Alibi: AI feedback on your lifting form
 
 **Reference category:** Camera-based fitness apps (e.g., Kemtai, Onyx)
 
 ## Overview
 
-FormCheck lets lifters upload a video of a set and get specific feedback on their form: what to fix first and a cue to try on the next set. Every critique is backed by measurements taken from the video.
+Alibi lets lifters upload a video of a set and get specific feedback on their form: what to fix first and a cue to try on the next set. Every critique is backed by measurements taken from the video.
 
 **Target Audience:** Beginner and intermediate lifters, especially college students who train without a coach.
 
 ## 1. Solves One Problem Extremely Well
 
-Most people who lift alone don't know if their form is right, and trainers are expensive. FormCheck answers one question: "What should I fix on this lift?" It starts with the squat, deadlift, and bench press.
+Most people who lift alone don't know if their form is right, and trainers are expensive. Alibi answers one question: "What should I fix on this lift?" It starts with the squat, deadlift, and bench press.
 
 ## 2. Customer Access
 
@@ -68,4 +68,4 @@ The corrected output is validated again. After three failed attempts, the user g
 
 ## Conclusion
 
-FormCheck gives lifters who train alone a coach's eye: the generative model diagnoses and coaches, and the validator ensures every critique is backed by the video.
+Alibi gives lifters who train alone a coach's eye: the generative model diagnoses and coaches, and the validator ensures every critique is backed by the video.
