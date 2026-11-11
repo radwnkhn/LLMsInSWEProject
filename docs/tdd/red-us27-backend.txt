@@ -1,0 +1,201 @@
+EEFFFFFFFFFFFFFFFFFFFFFEFFFFFFFFFFFFFFFFF                                [100%]
+==================================== ERRORS ====================================
+_ ERROR at setup of test_us27_daily_usage_unit_counts_each_utc_day_including_empty_days _
+E   ModuleNotFoundError: No module named 'app.moderation'
+_ ERROR at setup of test_us27_daily_usage_unit_ignores_times_outside_the_range _
+E   ModuleNotFoundError: No module named 'app.moderation'
+_______ ERROR at setup of test_us27_reasons_unit_are_a_short_fixed_list ________
+E   ModuleNotFoundError: No module named 'app.moderation'
+=================================== FAILURES ===================================
+E   TypeError: UserRecord.__init__() got an unexpected keyword argument 'created_at'
+/usr/local/lib/python3.13/dataclasses.py:1679: TypeError: UserRecord.__init__() got an unexpected keyword argument 'created_at'
+E   KeyError: 'start'
+backend/tests/test_us27_moderation.py:104: KeyError: 'start'
+E   AssertionError: assert 404 == 422
+     +  where 404 = <Response [404 Not Found]>.status_code
+     +    where <Response [404 Not Found]> = get('/admin/usage?start=2026-11-10&end=2026-11-01', headers={'Authorization': 'Bearer tqthfWbU1cFUFx271SJwYcS-brS43yJv'})
+     +      where get = <starlette.testclient.TestClient object at 0x7f3ca79d51d0>.get
+backend/tests/test_us27_moderation.py:112: AssertionError: assert 404 == 422
+E   AssertionError: assert 404 == 422
+     +  where 404 = <Response [404 Not Found]>.status_code
+     +    where <Response [404 Not Found]> = get('/admin/usage?start=Nov 1&end=2026-11-10', headers={'Authorization': 'Bearer VhQGn8cWx9VArSAj1xg7C_Xmo7qTAqFC'})
+     +      where get = <starlette.testclient.TestClient object at 0x7f3ca753d940>.get
+backend/tests/test_us27_moderation.py:112: AssertionError: assert 404 == 422
+E   AssertionError: assert 404 == 422
+     +  where 404 = <Response [404 Not Found]>.status_code
+     +    where <Response [404 Not Found]> = get('/admin/usage?start=2026-11-01&end=2026-13-01', headers={'Authorization': 'Bearer QunrVSufgrL0tf8kRRJzsQogJIQ154DO'})
+     +      where get = <starlette.testclient.TestClient object at 0x7f3ca753f100>.get
+backend/tests/test_us27_moderation.py:112: AssertionError: assert 404 == 422
+E   KeyError: 'items'
+backend/tests/test_us27_moderation.py:121: KeyError: 'items'
+E   KeyError: 'items'
+------------------------------ Captured log call -------------------------------
+ERROR    app.uploads:uploads.py:70 analysis 93a62d41-14d8-48b9-a2a4-2b3bc0f4424e failed
+Traceback (most recent call last):
+  File "backend/app/uploads.py", line 45, in process_analysis
+    frames = services.video.poses(path, info, upload.filename)
+  File "backend/app/testing/fakes.py", line 175, in poses
+    raise RuntimeError("pose estimation crashed")
+RuntimeError: pose estimation crashed
+backend/tests/test_us27_moderation.py:136: KeyError: 'items'
+E   KeyError: 'items'
+backend/tests/test_us27_moderation.py:145: KeyError: 'items'
+E   AssertionError: {"detail":"Not Found"}
+    assert 404 == 200
+     +  where 404 = <Response [404 Not Found]>.status_code
+backend/tests/test_us27_moderation.py:164: AssertionError: {"detail":"Not Found"}
+E   KeyError: 'analysis_ids'
+------------------------------ Captured log call -------------------------------
+ERROR    app.uploads:uploads.py:70 analysis 2b5a8973-0952-4efb-804b-e90bca8cd668 failed
+Traceback (most recent call last):
+  File "backend/app/uploads.py", line 45, in process_analysis
+    frames = services.video.poses(path, info, upload.filename)
+  File "backend/app/testing/fakes.py", line 175, in poses
+    raise RuntimeError("pose estimation crashed")
+RuntimeError: pose estimation crashed
+backend/tests/test_us27_moderation.py:189: KeyError: 'analysis_ids'
+E   AttributeError: module 'app.main' has no attribute 'delete_upload_with_media'
+backend/tests/test_us27_moderation.py:198: AttributeError: module 'app.main' has no attribute 'delete_upload_with_media'
+E   KeyError: 'reason_label'
+backend/tests/test_us27_moderation.py:217: KeyError: 'reason_label'
+E   assert 404 == 409
+     +  where 404 = <Response [404 Not Found]>.status_code
+backend/tests/test_us27_moderation.py:226: assert 404 == 409
+E   AssertionError: assert 404 == 502
+     +  where 404 = <Response [404 Not Found]>.status_code
+     +    where <Response [404 Not Found]> = _remove(<starlette.testclient.TestClient object at 0x7f3ca9585040>, {'Authorization': 'Bearer gNKT9SpjqZBtTVPNHO3LadhXt2qpnywr'}, '7d0bfcdb-7077-41eb-97dd-6e97bc044bf0')
+backend/tests/test_us27_moderation.py:239: AssertionError: assert 404 == 502
+E   AssertionError: assert 404 == 200
+     +  where 404 = <Response [404 Not Found]>.status_code
+     +    where <Response [404 Not Found]> = _remove(<starlette.testclient.TestClient object at 0x7f3ca81b2030>, {'Authorization': 'Bearer gWgB0ws1JvRHm-JPD83z1YFuTP8ufpeL'}, '0be97a35-cbcd-48ee-b36e-a30f6e9d800f')
+     +      where '0be97a35-cbcd-48ee-b36e-a30f6e9d800f' = _upload_id(Services(auth=<app.auth.InMemoryAuth object at 0x7f3ca79921a0>, repo=<app.repository.InMemoryRepository object at 0x7f...=209715200, compressor=None, test_mode=True, cors_origins=(), prices=<app.pricing.PriceTable object at 0x7f3ca95aa760>), '23ef8cdc-1a8b-4de6-a22d-4975795acb19')
+     +        where '23ef8cdc-1a8b-4de6-a22d-4975795acb19' = upload_ok(<starlette.testclient.TestClient object at 0x7f3ca81b2030>, {'Authorization': 'Bearer 6m6UKTF8GdP6swBXUfZKknstMyG8MPp2'})
+backend/tests/test_us27_moderation.py:246: AssertionError: assert 404 == 200
+E   KeyError: 'totals'
+backend/tests/test_us27_moderation.py:255: KeyError: 'totals'
+E   KeyError: 'items'
+backend/tests/test_us27_moderation.py:263: KeyError: 'items'
+E   assert 'create table if not exists public.moderation_log' in "-- alibi data model: users, uploads, analyses, rep measurements, llm attempts,\n-- validation results and feedback re... by their analysis's creation time.\ncreate index if not exists analyses_created_at on public.analyses (created_at);\n"
+backend/tests/test_us27_moderation.py:271: assert 'create table if not exists public.moderation_log' in "-- alibi data model: users, uploads, analyses, rep measurements, llm attempts,\n-- validation results and feedback re... by their analysis's creation time.\ncreate index if not exists analyses_created_at on public.analyses (created_at);\n"
+E   assert 200 == 410
+     +  where 200 = <Response [200 OK]>.status_code
+backend/tests/test_us27_moderation.py:283: assert 200 == 410
+E   AssertionError: assert 404 == 200
+     +  where 404 = <Response [404 Not Found]>.status_code
+     +    where <Response [404 Not Found]> = _remove(<starlette.testclient.TestClient object at 0x7f3ca718e250>, {'Authorization': 'Bearer oZhlytC3HqEXMP-JUJs3duM0PgQ49mZz'}, 'dbe59cb6-de65-45a0-8d6f-cfb2ab6e0b50')
+     +      where 'dbe59cb6-de65-45a0-8d6f-cfb2ab6e0b50' = _upload_id(Services(auth=<app.auth.InMemoryAuth object at 0x7f3ca7523490>, repo=<app.repository.InMemoryRepository object at 0x7f...=209715200, compressor=None, test_mode=True, cors_origins=(), prices=<app.pricing.PriceTable object at 0x7f3ca75b5720>), 'b40cfcda-b22e-4ecb-8729-559b7b91b43d')
+backend/tests/test_us27_moderation.py:291: AssertionError: assert 404 == 200
+E   assert (200 == 410)
+     +  where 200 = <Response [200 OK]>.status_code
+backend/tests/test_us27_moderation.py:301: assert (200 == 410)
+E   AssertionError: {"detail":"Not Found"}
+    assert 404 == 422
+     +  where 404 = <Response [404 Not Found]>.status_code
+backend/tests/test_us27_moderation.py:318: AssertionError: {"detail":"Not Found"}
+E   AssertionError: {"detail":"Not Found"}
+    assert 404 == 422
+     +  where 404 = <Response [404 Not Found]>.status_code
+backend/tests/test_us27_moderation.py:318: AssertionError: {"detail":"Not Found"}
+E   AssertionError: {"detail":"Not Found"}
+    assert 404 == 422
+     +  where 404 = <Response [404 Not Found]>.status_code
+backend/tests/test_us27_moderation.py:318: AssertionError: {"detail":"Not Found"}
+E   AssertionError: {"detail":"Not Found"}
+    assert 404 == 422
+     +  where 404 = <Response [404 Not Found]>.status_code
+backend/tests/test_us27_moderation.py:318: AssertionError: {"detail":"Not Found"}
+E   AssertionError: {"detail":"Not Found"}
+    assert 404 == 422
+     +  where 404 = <Response [404 Not Found]>.status_code
+backend/tests/test_us27_moderation.py:318: AssertionError: {"detail":"Not Found"}
+E   AssertionError: {"detail":"Not Found"}
+    assert 404 == 422
+     +  where 404 = <Response [404 Not Found]>.status_code
+backend/tests/test_us27_moderation.py:318: AssertionError: {"detail":"Not Found"}
+E   AssertionError: {"detail":"Not Found"}
+    assert 404 == 422
+     +  where 404 = <Response [404 Not Found]>.status_code
+backend/tests/test_us27_moderation.py:318: AssertionError: {"detail":"Not Found"}
+E   AssertionError: assert 404 == 403
+     +  where 404 = <Response [404 Not Found]>.status_code
+     +    where <Response [404 Not Found]> = get('/admin/usage', headers={'Authorization': 'Bearer Qvqo1kZb6Y5RsJuMA7kfHycvaoB_t1M3'}, **{})
+     +      where get = getattr(<starlette.testclient.TestClient object at 0x7f3ca5161f20>, 'get')
+backend/tests/test_us27_moderation.py:332: AssertionError: assert 404 == 403
+E   AssertionError: assert 404 == 403
+     +  where 404 = <Response [404 Not Found]>.status_code
+     +    where <Response [404 Not Found]> = get('/admin/uploads', headers={'Authorization': 'Bearer Ne3XWt56Q2uLK7-K80f8qcPkv8ZSu_mY'}, **{})
+     +      where get = getattr(<starlette.testclient.TestClient object at 0x7f3ca6dc6470>, 'get')
+backend/tests/test_us27_moderation.py:332: AssertionError: assert 404 == 403
+E   AssertionError: assert 404 == 403
+     +  where 404 = <Response [404 Not Found]>.status_code
+     +    where <Response [404 Not Found]> = get('/admin/moderation-log', headers={'Authorization': 'Bearer SloSRY17UpR-iI-lRlu2CkV0Ln9_Q-L3'}, **{})
+     +      where get = getattr(<starlette.testclient.TestClient object at 0x7f3ca5163f00>, 'get')
+backend/tests/test_us27_moderation.py:332: AssertionError: assert 404 == 403
+E   AssertionError: assert 404 == 403
+     +  where 404 = <Response [404 Not Found]>.status_code
+     +    where <Response [404 Not Found]> = post('/admin/uploads/c40ced74-d65d-4083-9886-cc97a944d69d/remove', headers={'Authorization': 'Bearer E_087rz4qjCRUra6I1Ea1r0AAx83WUkA'}, **{'json': {'confirmed': True, 'reason': 'off_topic'}})
+     +      where post = getattr(<starlette.testclient.TestClient object at 0x7f3ca718e250>, 'post')
+backend/tests/test_us27_moderation.py:332: AssertionError: assert 404 == 403
+E   AttributeError: 'UserRecord' object has no attribute 'created_at'
+backend/tests/test_us27_moderation_repository.py:18: AttributeError: 'UserRecord' object has no attribute 'created_at'
+E   AttributeError: 'UserRecord' object has no attribute 'created_at'
+backend/tests/test_us27_moderation_repository.py:18: AttributeError: 'UserRecord' object has no attribute 'created_at'
+E   AttributeError: 'InMemoryRepository' object has no attribute 'list_upload_rows'
+backend/tests/test_us27_moderation_repository.py:33: AttributeError: 'InMemoryRepository' object has no attribute 'list_upload_rows'
+E   AttributeError: 'PostgresRepository' object has no attribute 'list_upload_rows'
+backend/tests/test_us27_moderation_repository.py:33: AttributeError: 'PostgresRepository' object has no attribute 'list_upload_rows'
+E   AttributeError: 'InMemoryRepository' object has no attribute 'create_moderation_entry'
+backend/tests/test_us27_moderation_repository.py:45: AttributeError: 'InMemoryRepository' object has no attribute 'create_moderation_entry'
+E   AttributeError: 'PostgresRepository' object has no attribute 'create_moderation_entry'
+backend/tests/test_us27_moderation_repository.py:45: AttributeError: 'PostgresRepository' object has no attribute 'create_moderation_entry'
+=========================== short test summary info ============================
+FAILED tests/test_us27_moderation.py::test_us27_admin_usage_reports_signups_and_uploads_per_day
+FAILED tests/test_us27_moderation.py::test_us27_admin_usage_defaults_to_the_last_30_days
+FAILED tests/test_us27_moderation.py::test_us27_admin_usage_rejects_invalid_ranges[start=2026-11-10&end=2026-11-01]
+FAILED tests/test_us27_moderation.py::test_us27_admin_usage_rejects_invalid_ranges[start=Nov 1&end=2026-11-10]
+FAILED tests/test_us27_moderation.py::test_us27_admin_usage_rejects_invalid_ranges[start=2026-11-01&end=2026-13-01]
+FAILED tests/test_us27_moderation.py::test_us27_upload_list_shows_date_lift_owner_status_and_its_analysis
+FAILED tests/test_us27_moderation.py::test_us27_upload_list_links_to_the_latest_analysis_after_a_retry
+FAILED tests/test_us27_moderation.py::test_us27_upload_list_filters_by_lift_and_date
+FAILED tests/test_us27_moderation.py::test_us27_removal_deletes_media_hides_history_and_logs_who_when_why
+FAILED tests/test_us27_moderation.py::test_us27_removal_deletes_every_retry_and_its_frames
+FAILED tests/test_us27_moderation.py::test_us27_removal_and_owner_deletion_share_the_us21_deletion_logic
+FAILED tests/test_us27_moderation.py::test_us27_other_reason_keeps_an_optional_short_note
+FAILED tests/test_us27_moderation.py::test_us27_uploads_still_processing_cannot_be_removed_yet
+FAILED tests/test_us27_moderation.py::test_us27_failed_media_deletion_leaves_no_log_entry
+FAILED tests/test_us27_moderation.py::test_us27_removing_an_unknown_upload_returns_404
+FAILED tests/test_us27_moderation.py::test_us27_removed_uploads_leave_usage_and_count_as_removals
+FAILED tests/test_us27_moderation.py::test_us27_moderation_log_survives_the_owner_deleting_their_account
+FAILED tests/test_us27_moderation.py::test_us27_migration_creates_the_moderation_log
+FAILED tests/test_us27_moderation.py::test_us27_owner_sees_removed_by_a_moderator_instead_of_a_broken_page
+FAILED tests/test_us27_moderation.py::test_us27_others_still_get_not_found_for_a_removed_upload
+FAILED tests/test_us27_moderation.py::test_us27_comparing_with_a_removed_upload_explains_the_removal
+FAILED tests/test_us27_moderation.py::test_us27_removal_needs_confirmation_and_a_valid_reason[body0]
+FAILED tests/test_us27_moderation.py::test_us27_removal_needs_confirmation_and_a_valid_reason[body1]
+FAILED tests/test_us27_moderation.py::test_us27_removal_needs_confirmation_and_a_valid_reason[body2]
+FAILED tests/test_us27_moderation.py::test_us27_removal_needs_confirmation_and_a_valid_reason[body3]
+FAILED tests/test_us27_moderation.py::test_us27_removal_needs_confirmation_and_a_valid_reason[body4]
+FAILED tests/test_us27_moderation.py::test_us27_removal_needs_confirmation_and_a_valid_reason[body5]
+FAILED tests/test_us27_moderation.py::test_us27_removal_needs_confirmation_and_a_valid_reason[body6]
+FAILED tests/test_us27_moderation.py::test_us27_non_admin_gets_403[get-/admin/usage]
+FAILED tests/test_us27_moderation.py::test_us27_non_admin_gets_403[get-/admin/uploads]
+FAILED tests/test_us27_moderation.py::test_us27_non_admin_gets_403[get-/admin/moderation-log]
+FAILED tests/test_us27_moderation.py::test_us27_non_admin_gets_403[post-remove]
+FAILED tests/test_us27_moderation_repository.py::test_us27_repo_records_when_each_user_signed_up[memory]
+FAILED tests/test_us27_moderation_repository.py::test_us27_repo_records_when_each_user_signed_up[postgres]
+FAILED tests/test_us27_moderation_repository.py::test_us27_repo_lists_uploads_with_owner_and_latest_analysis[memory]
+FAILED tests/test_us27_moderation_repository.py::test_us27_repo_lists_uploads_with_owner_and_latest_analysis[postgres]
+FAILED tests/test_us27_moderation_repository.py::test_us27_repo_moderation_log_round_trip_and_lookup_by_analysis[memory]
+FAILED tests/test_us27_moderation_repository.py::test_us27_repo_moderation_log_round_trip_and_lookup_by_analysis[postgres]
+ERROR tests/test_us27_moderation.py::test_us27_daily_usage_unit_counts_each_utc_day_including_empty_days
+ERROR tests/test_us27_moderation.py::test_us27_daily_usage_unit_ignores_times_outside_the_range
+ERROR tests/test_us27_moderation.py::test_us27_reasons_unit_are_a_short_fixed_list
+38 failed, 3 errors in 2.68s
+couldn't stop thread 'pool-3-worker-0' within 5.0 seconds
+hint: you can try to call 'close()' explicitly or to use the pool as context manager
+couldn't stop thread 'pool-3-worker-1' within 5.0 seconds
+hint: you can try to call 'close()' explicitly or to use the pool as context manager
+couldn't stop thread 'pool-3-worker-2' within 5.0 seconds
+hint: you can try to call 'close()' explicitly or to use the pool as context manager
+couldn't stop thread 'pool-3-scheduler' within 5.0 seconds
+hint: you can try to call 'close()' explicitly or to use the pool as context manager

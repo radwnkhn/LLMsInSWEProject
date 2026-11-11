@@ -163,6 +163,43 @@ export type CostSummary = {
   unknown_cost_attempts: number;
 };
 
+// US-27: usage over time and moderation.
+export type UsageReport = {
+  start: string;
+  end: string;
+  days: { date: string; signups: number; uploads: number }[];
+  totals: { signups: number; uploads: number };
+  removals: number;
+};
+
+export type AdminUpload = {
+  upload_id: string;
+  analysis_id: string | null;
+  created_at: string;
+  lift: Lift;
+  lift_label: string;
+  user_email: string;
+  filename: string;
+  status_label: string;
+};
+
+export type UploadFilters = { start?: string; end?: string; lift?: string };
+
+export type RemovalReason = "off_topic" | "inappropriate" | "other";
+
+export type ModerationEntry = {
+  id: string;
+  upload_id: string;
+  analysis_ids: string[];
+  lift: Lift;
+  owner_email: string | null;
+  removed_by_email: string | null;
+  reason: RemovalReason;
+  reason_label: string;
+  note: string | null;
+  removed_at: string;
+};
+
 export type AdminDetail = {
   analysis: AdminRow;
   video_url: string | null;

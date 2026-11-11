@@ -1,12 +1,24 @@
 "use client";
 
-import { useEffect, useId, useRef, useState, type KeyboardEvent } from "react";
+import { useEffect, useId, useRef, useState, type KeyboardEvent, type ReactNode } from "react";
 
 import { ApiError } from "@/lib/api";
 
-type Props = { kind: "upload" | "account"; onConfirm: () => Promise<void>; onClose: () => void };
+type Props = {
+  kind: "upload" | "account";
+  onConfirm: () => Promise<void>;
+  onClose: () => void;
+  // US-27 moderation reuses this dialog with its own wording and a reason picker.
+  title?: string;
+  description?: string;
+  confirmLabel?: string;
+  pendingLabel?: string;
+  confirmDisabled?: boolean;
+  children?: ReactNode;
+};
 
-export function DeleteConfirmation({ kind, onConfirm, onClose }: Props) {
+export function DeleteConfirmation({ kind, onConfirm, onClose, title, description, confirmLabel, pendingLabel,
+  confirmDisabled = false, children }: Props) {
   const [pending, setPending] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const cancel = useRef<HTMLButtonElement>(null);
@@ -20,7 +32,7 @@ export function DeleteConfirmation({ kind, onConfirm, onClose }: Props) {
   }, []);
 
   async function confirm() {
-    if (pending) return;
+    if (pending || confirmDisabled) return;
     setPending(true);
     setError(null);
     try {
@@ -50,19 +62,22 @@ export function DeleteConfirmation({ kind, onConfirm, onClose }: Props) {
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4">
       <div role="dialog" aria-modal="true" aria-labelledby={titleId} aria-describedby={descriptionId}
         onKeyDown={onKeyDown} className="w-full max-w-md space-y-4 rounded-xl bg-white p-5 shadow-xl">
-        <h2 id={titleId} className="text-xl font-bold">{kind === "account" ? "Delete your account?" : "Delete this upload?"}</h2>
+        <h2 id={titleId} className="text-xl font-bold">
+          {title ?? (kind === "account" ? "Delete your account?" : "Delete this upload?")}
+        </h2>
         <p id={descriptionId} className="text-sm text-zinc-700">
-          {kind === "account"
+          {description ?? (kind === "account"
             ? "This permanently removes your account and all your uploads, videos, frames, measurements and AI feedback. This cannot be undone."
-            : "This permanently removes this video, frames, measurements and AI feedback, including any retried analyses. This cannot be undone."}
+            : "This permanently removes this video, frames, measurements and AI feedback, including any retried analyses. This cannot be undone.")}
         </p>
+        {children}
         {error && <p role="alert" className="rounded-lg bg-red-50 p-3 text-sm text-red-800">{error}</p>}
         <div className="flex flex-wrap justify-end gap-3">
           <button ref={cancel} type="button" disabled={pending} onClick={onClose}
             className="rounded-lg border border-zinc-300 px-4 py-2 text-sm font-semibold disabled:opacity-40">Cancel</button>
-          <button type="button" disabled={pending} onClick={() => void confirm()}
+          <button type="button" disabled={pending || confirmDisabled} onClick={() => void confirm()}
             className="rounded-lg bg-red-700 px-4 py-2 text-sm font-semibold text-white disabled:opacity-40">
-            {pending ? "Deleting…" : kind === "account" ? "Delete account" : "Delete upload"}
+            {pending ? (pendingLabel ?? "Deleting…") : (confirmLabel ?? (kind === "account" ? "Delete account" : "Delete upload"))}
           </button>
         </div>
       </div>

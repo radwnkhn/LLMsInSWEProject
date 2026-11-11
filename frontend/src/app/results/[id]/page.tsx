@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -11,7 +12,8 @@ import type { AnalysisResult } from "@/lib/types";
 const POLL_MS = 1500;
 const REQUEST_TIMEOUT_MS = 30_000;
 
-type PageState = { id: string; result: AnalysisResult | null; error: string | null };
+// removed: the API's explanation when a moderator removed this upload (US-27).
+type PageState = { id: string; result: AnalysisResult | null; error: string | null; removed?: string };
 
 export default function ResultsPage() {
   const { id } = useParams<{ id: string }>();
@@ -36,6 +38,7 @@ export default function ResultsPage() {
       } catch (err) {
         if (stopped) return;
         if (err instanceof ApiError && err.status === 401) router.push(`/login?next=/results/${id}`);
+        else if (err instanceof ApiError && err.status === 410) setState({ id, result: null, error: null, removed: err.detail });
         else setState({ id, result: null, error: err instanceof ApiError && err.status === 404
           ? "We couldn't find that result." : "Couldn't load this result. Check your connection and try again." });
       } finally {
@@ -51,7 +54,14 @@ export default function ResultsPage() {
     };
   }, [id, router, reload]);
 
-  const { result, error } = state.id === id ? state : { result: null, error: null };
+  const { result, error, removed } = state.id === id ? state : { result: null, error: null, removed: undefined };
+  if (removed) return (
+    <div className="space-y-3 rounded-xl bg-zinc-100 p-4">
+      <h1 className="text-lg font-semibold">This upload was removed by a moderator</h1>
+      <p className="text-zinc-700">{removed.replace(/^This upload was removed by a moderator\.?\s*/, "")}</p>
+      <Link href="/history" className="inline-block underline">Back to history</Link>
+    </div>
+  );
   if (error) return (
     <div role="alert" className="space-y-3 rounded-xl bg-red-50 p-4 text-red-800">
       <p>{error}</p>

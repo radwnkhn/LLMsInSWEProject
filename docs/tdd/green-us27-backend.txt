@@ -1,0 +1,50 @@
+============================= test session starts ==============================
+platform linux -- Python 3.13.18, pytest-9.2.0, pluggy-1.7.0 -- backend/.venv/bin/python
+rootdir: backend
+configfile: pyproject.toml
+plugins: anyio-4.16.0, cov-7.1.0
+collecting ... collected 41 items
+
+tests/test_us27_moderation.py::test_us27_daily_usage_unit_counts_each_utc_day_including_empty_days PASSED [  2%]
+tests/test_us27_moderation.py::test_us27_daily_usage_unit_ignores_times_outside_the_range PASSED [  4%]
+tests/test_us27_moderation.py::test_us27_admin_usage_reports_signups_and_uploads_per_day PASSED [  7%]
+tests/test_us27_moderation.py::test_us27_admin_usage_defaults_to_the_last_30_days PASSED [  9%]
+tests/test_us27_moderation.py::test_us27_admin_usage_rejects_invalid_ranges[start=2026-11-10&end=2026-11-01] PASSED [ 12%]
+tests/test_us27_moderation.py::test_us27_admin_usage_rejects_invalid_ranges[start=Nov 1&end=2026-11-10] PASSED [ 14%]
+tests/test_us27_moderation.py::test_us27_admin_usage_rejects_invalid_ranges[start=2026-11-01&end=2026-13-01] PASSED [ 17%]
+tests/test_us27_moderation.py::test_us27_upload_list_shows_date_lift_owner_status_and_its_analysis PASSED [ 19%]
+tests/test_us27_moderation.py::test_us27_upload_list_links_to_the_latest_analysis_after_a_retry PASSED [ 21%]
+tests/test_us27_moderation.py::test_us27_upload_list_filters_by_lift_and_date PASSED [ 24%]
+tests/test_us27_moderation.py::test_us27_removal_deletes_media_hides_history_and_logs_who_when_why PASSED [ 26%]
+tests/test_us27_moderation.py::test_us27_removal_deletes_every_retry_and_its_frames PASSED [ 29%]
+tests/test_us27_moderation.py::test_us27_removal_and_owner_deletion_share_the_us21_deletion_logic PASSED [ 31%]
+tests/test_us27_moderation.py::test_us27_other_reason_keeps_an_optional_short_note PASSED [ 34%]
+tests/test_us27_moderation.py::test_us27_uploads_still_processing_cannot_be_removed_yet PASSED [ 36%]
+tests/test_us27_moderation.py::test_us27_failed_media_deletion_leaves_no_log_entry PASSED [ 39%]
+tests/test_us27_moderation.py::test_us27_removing_an_unknown_upload_returns_404 PASSED [ 41%]
+tests/test_us27_moderation.py::test_us27_removed_uploads_leave_usage_and_count_as_removals PASSED [ 43%]
+tests/test_us27_moderation.py::test_us27_moderation_log_survives_the_owner_deleting_their_account PASSED [ 46%]
+tests/test_us27_moderation.py::test_us27_migration_creates_the_moderation_log PASSED [ 48%]
+tests/test_us27_moderation.py::test_us27_owner_sees_removed_by_a_moderator_instead_of_a_broken_page PASSED [ 51%]
+tests/test_us27_moderation.py::test_us27_others_still_get_not_found_for_a_removed_upload PASSED [ 53%]
+tests/test_us27_moderation.py::test_us27_comparing_with_a_removed_upload_explains_the_removal PASSED [ 56%]
+tests/test_us27_moderation.py::test_us27_reasons_unit_are_a_short_fixed_list PASSED [ 58%]
+tests/test_us27_moderation.py::test_us27_removal_needs_confirmation_and_a_valid_reason[body0] PASSED [ 60%]
+tests/test_us27_moderation.py::test_us27_removal_needs_confirmation_and_a_valid_reason[body1] PASSED [ 63%]
+tests/test_us27_moderation.py::test_us27_removal_needs_confirmation_and_a_valid_reason[body2] PASSED [ 65%]
+tests/test_us27_moderation.py::test_us27_removal_needs_confirmation_and_a_valid_reason[body3] PASSED [ 68%]
+tests/test_us27_moderation.py::test_us27_removal_needs_confirmation_and_a_valid_reason[body4] PASSED [ 70%]
+tests/test_us27_moderation.py::test_us27_removal_needs_confirmation_and_a_valid_reason[body5] PASSED [ 73%]
+tests/test_us27_moderation.py::test_us27_removal_needs_confirmation_and_a_valid_reason[body6] PASSED [ 75%]
+tests/test_us27_moderation.py::test_us27_non_admin_gets_403[get-/admin/usage] PASSED [ 78%]
+tests/test_us27_moderation.py::test_us27_non_admin_gets_403[get-/admin/uploads] PASSED [ 80%]
+tests/test_us27_moderation.py::test_us27_non_admin_gets_403[get-/admin/moderation-log] PASSED [ 82%]
+tests/test_us27_moderation.py::test_us27_non_admin_gets_403[post-remove] PASSED [ 85%]
+tests/test_us27_moderation_repository.py::test_us27_repo_records_when_each_user_signed_up[memory] PASSED [ 87%]
+tests/test_us27_moderation_repository.py::test_us27_repo_records_when_each_user_signed_up[postgres] PASSED [ 90%]
+tests/test_us27_moderation_repository.py::test_us27_repo_lists_uploads_with_owner_and_latest_analysis[memory] PASSED [ 92%]
+tests/test_us27_moderation_repository.py::test_us27_repo_lists_uploads_with_owner_and_latest_analysis[postgres] PASSED [ 95%]
+tests/test_us27_moderation_repository.py::test_us27_repo_moderation_log_round_trip_and_lookup_by_analysis[memory] PASSED [ 97%]
+tests/test_us27_moderation_repository.py::test_us27_repo_moderation_log_round_trip_and_lookup_by_analysis[postgres] PASSED [100%]
+
+============================== 41 passed in 3.36s ==============================

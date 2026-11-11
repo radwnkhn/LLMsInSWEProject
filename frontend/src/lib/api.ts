@@ -1,6 +1,7 @@
 import type {
-  AdminDetail, AdminFault, AdminFaultLift, AdminRow, AnalysisComparison, AnalysisResult, CostSummary, FaultEdit,
-  FeedbackAnswer, HistoryItem, Lift, NewFault, Session, TriedCue,
+  AdminDetail, AdminFault, AdminFaultLift, AdminRow, AdminUpload, AnalysisComparison, AnalysisResult, CostSummary,
+  FaultEdit, FeedbackAnswer, HistoryItem, Lift, ModerationEntry, NewFault, RemovalReason, Session, TriedCue,
+  UploadFilters, UsageReport,
 } from "@/lib/types";
 
 export const API_URL = (process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000").replace(/\/$/, "");
@@ -43,6 +44,14 @@ async function request<T>(path: string, { method = "GET", body, token, signal }:
   return data as T;
 }
 
+/** "?a=1&b=2" from the values that are set, or "" when none are. */
+function query(params: Record<string, string | null | undefined>): string {
+  const search = new URLSearchParams();
+  for (const [key, value] of Object.entries(params)) if (value) search.set(key, value);
+  const text = search.toString();
+  return text ? `?${text}` : "";
+}
+
 export const api = {
   signup: (email: string, password: string) => request<Session>("/auth/signup", { method: "POST", body: { email, password } }),
   login: (email: string, password: string) => request<Session>("/auth/login", { method: "POST", body: { email, password } }),
@@ -64,13 +73,17 @@ export const api = {
     `/comparisons?${new URLSearchParams({ first_id: firstId, second_id: secondId })}`, { token, signal }),
   adminAnalyses: (token: string | null) => request<{ items: AdminRow[] }>("/admin/analyses", { token }),
   adminAnalysis: (id: string, token: string | null) => request<AdminDetail>(`/admin/analyses/${encodeURIComponent(id)}`, { token }),
-  adminCosts: (start: string | null, end: string | null, token: string | null) => {
-    const range = new URLSearchParams();
-    if (start) range.set("start", start);
-    if (end) range.set("end", end);
-    const query = range.toString();
-    return request<CostSummary>(`/admin/costs${query ? `?${query}` : ""}`, { token });
-  },
+  adminCosts: (start: string | null, end: string | null, token: string | null) =>
+    request<CostSummary>(`/admin/costs${query({ start, end })}`, { token }),
+  adminUsage: (start: string | null, end: string | null, token: string | null) =>
+    request<UsageReport>(`/admin/usage${query({ start, end })}`, { token }),
+  adminUploads: (filters: UploadFilters, token: string | null) =>
+    request<{ items: AdminUpload[] }>(`/admin/uploads${query({ start: filters.start, end: filters.end, lift: filters.lift })}`,
+      { token }),
+  removeUpload: (uploadId: string, reason: RemovalReason | string, note: string | null, token: string | null) =>
+    request<ModerationEntry>(`/admin/uploads/${encodeURIComponent(uploadId)}/remove`, {
+      method: "POST", token, body: note ? { confirmed: true, reason, note } : { confirmed: true, reason } }),
+  moderationLog: (token: string | null) => request<{ items: ModerationEntry[] }>("/admin/moderation-log", { token }),
   adminErrors: (token: string | null) => request<{ counts: Record<string, number> }>("/admin/validator-errors", { token }),
   adminFaults: (token: string | null) => request<{ lifts: AdminFaultLift[] }>("/admin/faults", { token }),
   updateFault: (lift: string, id: string, edit: FaultEdit, token: string | null) => request<AdminFault>(

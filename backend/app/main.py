@@ -24,8 +24,10 @@ from app.compress import STORED_CONTENT_TYPE, STORED_EXTENSION
 from app.comparison import COMPARABLE_STATUSES, compare_earlier_fault, measurement_comparison
 from app.faults import METRICS, FaultCatalog, FaultError, FaultExists, new_fault
 from app.feedback import find_previous_cue_prompt
-from app.history import history_item
+from app.deletion import delete_upload_with_media
+from app.history import history_item, status_label
 from app.lifts import LIFT_LABELS, LIFTS
+from app.moderation import MAX_REMOVAL_NOTE_LENGTH, REMOVAL_REASONS, daily_usage, removed_detail
 from app.pricing import AttemptUsage, summarize_costs
 from app.repository import AdminAnalysisRow
 from app.safety import MAX_NOTE_LENGTH
@@ -45,7 +47,7 @@ EMPTY_RESULT = {
     "fallback_note": None,
 }
 CHUNK = 1024 * 1024
-COST_RANGE_DAYS = 30  # US-26: the cost summary's default range, ending today (UTC)
+COST_RANGE_DAYS = 30  # US-26/US-27: the default report range, ending today (UTC)
 ISO_DATE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 
 
@@ -58,6 +60,21 @@ def _iso_date(value: str | None, name: str) -> date | None:
         return date.fromisoformat(value)
     except ValueError:
         raise HTTPException(422, f"{name} must be a date like 2026-11-01")
+
+
+def _report_range(start: str | None, end: str | None, default_days: int | None = COST_RANGE_DAYS):
+    """Inclusive UTC dates -> (first, last, start of first, start of the day after last).
+    With default_days=None and no dates, the range is unbounded."""
+    last = _iso_date(end, "end")
+    first = _iso_date(start, "start")
+    if default_days is None and first is None and last is None:
+        return None, None, datetime.min.replace(tzinfo=timezone.utc), datetime.max.replace(tzinfo=timezone.utc)
+    last = last or datetime.now(timezone.utc).date()
+    first = first or (last - timedelta(days=(default_days or COST_RANGE_DAYS) - 1))
+    if first > last:
+        raise HTTPException(422, "The start date must be on or before the end date")
+    return (first, last, datetime.combine(first, time.min, timezone.utc),
+            datetime.combine(last + timedelta(days=1), time.min, timezone.utc))
 
 
 class SignupBody(BaseModel):
@@ -94,6 +111,36 @@ class DeleteBody(BaseModel):
         if not value:
             raise ValueError("Confirm deletion before continuing")
         return value
+
+
+class RemoveBody(BaseModel):
+    """US-27: an admin removal. Like DeleteBody it must be explicitly confirmed."""
+    model_config = ConfigDict(extra="forbid")
+    confirmed: StrictBool
+    reason: Literal["off_topic", "inappropriate", "other"]
+    note: str | None = None
+
+    @field_validator("confirmed")
+    @classmethod
+    def _confirmed(cls, value):
+        if not value:
+            raise ValueError("Confirm the removal before continuing")
+        return value
+
+    @field_validator("note")
+    @classmethod
+    def _note(cls, value):
+        value = (value or "").strip()
+        if len(value) > MAX_REMOVAL_NOTE_LENGTH:
+            raise ValueError(f"Notes can be at most {MAX_REMOVAL_NOTE_LENGTH} characters")
+        return value or None
+
+
+def moderation_view(m) -> dict:
+    return {"id": m.id, "upload_id": m.upload_id, "analysis_ids": m.analysis_ids, "lift": m.lift,
+            "owner_email": m.owner_email, "removed_by_email": m.removed_by_email, "reason": m.reason,
+            "reason_label": REMOVAL_REASONS[m.reason], "note": m.note,
+            "removed_at": m.removed_at.isoformat() if m.removed_at else None}
 
 
 class FeedbackBody(BaseModel):
@@ -188,6 +235,10 @@ def create_app(services: Services) -> FastAPI:
     def own_analysis(analysis_id: str, user: AuthUser):
         a = services.repo.get_analysis(analysis_id)
         if a is None or a.user_id != user.id:
+            # US-27: tell the owner (only the owner) that a moderator removed it, instead of "not found".
+            removal = services.repo.get_removal_for_analysis(analysis_id) if a is None else None
+            if removal is not None and removal.owner_id == user.id:
+                raise HTTPException(410, removed_detail(removal.reason))
             raise HTTPException(404, "Analysis not found")
         return a
 
@@ -333,14 +384,8 @@ def create_app(services: Services) -> FastAPI:
                 raise HTTPException(404, "Upload not found")
             analyses = [a for a in services.repo.list_analyses_for_user(user.id) if a.upload_id == upload_id]
             finished_before_deletion(analyses)
-            paths = {upload.video_path}
-            for a in analyses:
-                paths.add(f"frames/{user.id}/{a.id}.png")  # includes frames from a partially failed attempt
-                if a.frame_path:
-                    paths.add(a.frame_path)
             try:
-                services.storage.delete(sorted(paths))
-                services.repo.delete_upload(upload_id)
+                delete_upload_with_media(services.repo, services.storage, upload, analyses)
             except Exception:
                 log.exception("deleting upload %s failed", upload_id)
                 raise HTTPException(502, "Couldn't delete the video completely. Please try again.")
@@ -435,13 +480,60 @@ def create_app(services: Services) -> FastAPI:
     @app.get("/admin/costs")
     def admin_costs(start: str | None = None, end: str | None = None, user: AuthUser = Depends(admin_user)):
         """US-26: LLM cost of analyses created between start and end (inclusive UTC dates)."""
-        last = _iso_date(end, "end") or datetime.now(timezone.utc).date()
-        first = _iso_date(start, "start") or last - timedelta(days=COST_RANGE_DAYS - 1)
-        if first > last:
-            raise HTTPException(422, "The start date must be on or before the end date")
-        rows = services.repo.list_attempt_usage(datetime.combine(first, time.min, timezone.utc),
-                                                datetime.combine(last + timedelta(days=1), time.min, timezone.utc))
+        first, last, since, until = _report_range(start, end)
+        rows = services.repo.list_attempt_usage(since, until)
         return {"start": first.isoformat(), "end": last.isoformat(), **summarize_costs(rows, services.prices)}
+
+    # ------------------------------------------------------------------ admin: usage and moderation (US-27)
+
+    @app.get("/admin/usage")
+    def admin_usage(start: str | None = None, end: str | None = None, user: AuthUser = Depends(admin_user)):
+        first, last, since, until = _report_range(start, end)
+        report = daily_usage(services.repo.list_signup_times(since, until),
+                             [r.upload.created_at for r in services.repo.list_upload_rows(since, until)], first, last)
+        removals = sum(1 for m in services.repo.list_moderation_entries()
+                       if m.removed_at and since <= m.removed_at < until)
+        return {"start": first.isoformat(), "end": last.isoformat(), **report, "removals": removals}
+
+    @app.get("/admin/uploads")
+    def admin_uploads(start: str | None = None, end: str | None = None, lift: str | None = None,
+                      user: AuthUser = Depends(admin_user)):
+        if lift is not None and lift not in LIFTS:
+            raise HTTPException(422, "Unknown lift")
+        _, _, since, until = _report_range(start, end, default_days=None)  # no dates: every upload
+        return {"items": [{
+            "upload_id": r.upload.id, "created_at": r.upload.created_at.isoformat() if r.upload.created_at else None,
+            "lift": r.upload.lift, "lift_label": LIFT_LABELS[r.upload.lift], "user_email": r.user_email,
+            "filename": r.upload.filename, "analysis_id": r.analysis.id if r.analysis else None,
+            "status_label": status_label(r.analysis) if r.analysis else "No analysis",
+        } for r in services.repo.list_upload_rows(since, until, lift=lift)]}
+
+    @app.post("/admin/uploads/{upload_id}/remove")
+    def admin_remove_upload(upload_id: str, body: RemoveBody, user: AuthUser = Depends(admin_user)):
+        upload = services.repo.get_upload(upload_id)
+        if upload is None:
+            raise HTTPException(404, "Upload not found")
+        with services.repo.user_lock(upload.user_id):  # the owner's lock, as in US-21 deletion
+            upload = services.repo.get_upload(upload_id)
+            if upload is None:
+                raise HTTPException(404, "Upload not found")
+            analyses = [a for a in services.repo.list_analyses_for_user(upload.user_id) if a.upload_id == upload_id]
+            finished_before_deletion(analyses)
+            # Log first, so a removal is never done without a record; undo the record if deletion fails.
+            entry = services.repo.create_moderation_entry(upload_id=upload.id, analysis_ids=[a.id for a in analyses],
+                                                          lift=upload.lift, owner_id=upload.user_id,
+                                                          removed_by=user.id, reason=body.reason, note=body.note)
+            try:
+                delete_upload_with_media(services.repo, services.storage, upload, analyses)
+            except Exception:
+                log.exception("removing upload %s failed", upload_id)
+                services.repo.delete_moderation_entry(entry.id)
+                raise HTTPException(502, "Couldn't remove the upload completely. Please try again.")
+        return moderation_view(entry)
+
+    @app.get("/admin/moderation-log")
+    def admin_moderation_log(user: AuthUser = Depends(admin_user)):
+        return {"items": [moderation_view(m) for m in services.repo.list_moderation_entries()]}
 
     @app.get("/admin/validator-errors")
     def admin_errors(user: AuthUser = Depends(admin_user)):

@@ -1,0 +1,11 @@
+[WebServer] INFO:     Started server process [7462]
+[WebServer] INFO:     Waiting for application startup.
+[WebServer] INFO:     Application startup complete.
+[WebServer] INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+
+Running 2 tests using 1 worker
+
+  ✓  1 e2e/us27-moderation.spec.ts:13:5 › us27_admin_reviews_usage_and_removes_an_upload_and_the_owner_is_told (1.9s)
+  ✓  2 e2e/us27-moderation.spec.ts:57:5 › us27_non_admin_sees_403_on_usage_and_moderation (381ms)
+
+  2 passed (26.8s)
