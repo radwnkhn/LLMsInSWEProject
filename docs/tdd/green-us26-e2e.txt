@@ -1,0 +1,11 @@
+[WebServer] INFO:     Started server process [10622]
+[WebServer] INFO:     Waiting for application startup.
+[WebServer] INFO:     Application startup complete.
+[WebServer] INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+
+Running 2 tests using 1 worker
+
+  ✓  1 e2e/us26-ai-cost.spec.ts:6:5 › us26_admin_sees_cost_per_attempt_and_a_summary_including_retries (1.4s)
+  ✓  2 e2e/us26-ai-cost.spec.ts:32:5 › us26_non_admin_cannot_see_costs (350ms)
+
+  2 passed (23.4s)

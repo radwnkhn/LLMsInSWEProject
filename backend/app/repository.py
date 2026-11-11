@@ -11,6 +11,7 @@ from typing import ContextManager, Protocol
 
 from app.faults import FAULT_EDITABLE_FIELDS, Fault, FaultExists, default_faults, edit_fault
 from app.llm.schema import ValidationIssue
+from app.pricing import AttemptUsage
 from app.measure import RepMeasurement
 
 
@@ -67,6 +68,8 @@ class LLMAttemptRecord:
     issues: list[ValidationIssue] = field(default_factory=list)
     passed: bool = False
     created_at: datetime | None = None
+    provider: str | None = None  # US-26; None for attempts saved before usage tracking
+    model: str | None = None
 
 
 @dataclass
@@ -105,7 +108,10 @@ class Repository(Protocol):
     def save_rep_measurements(self, analysis_id: str, reps: list[RepMeasurement]) -> None: ...
     def list_rep_measurements(self, analysis_id: str) -> list[RepMeasurement]: ...
     def save_llm_attempt(self, analysis_id: str, attempt_number: int, output_text: str, input_tokens: int,
-                         output_tokens: int, issues: list[ValidationIssue]) -> LLMAttemptRecord: ...
+                         output_tokens: int, issues: list[ValidationIssue], provider: str | None = None,
+                         model: str | None = None) -> LLMAttemptRecord: ...
+    # US-26: every attempt of analyses created in [start, end), for cost summaries.
+    def list_attempt_usage(self, start: datetime, end: datetime) -> list[AttemptUsage]: ...
     def list_llm_attempts(self, analysis_id: str) -> list[LLMAttemptRecord]: ...
     def all_validation_issues(self) -> list[ValidationIssue]: ...
     def upsert_feedback(self, analysis_id: str, user_id: str, rating: int | None, tried_cue: str | None) -> FeedbackRecord: ...
@@ -215,9 +221,10 @@ class InMemoryRepository:
     def list_rep_measurements(self, analysis_id):
         return list(self.reps.get(analysis_id, []))
 
-    def save_llm_attempt(self, analysis_id, attempt_number, output_text, input_tokens, output_tokens, issues):
+    def save_llm_attempt(self, analysis_id, attempt_number, output_text, input_tokens, output_tokens, issues,
+                         provider=None, model=None):
         rec = LLMAttemptRecord(str(uuid.uuid4()), analysis_id, attempt_number, output_text, input_tokens,
-                               output_tokens, list(issues), not issues, self._stamp())
+                               output_tokens, list(issues), not issues, self._stamp(), provider, model)
         self.attempts.setdefault(analysis_id, []).append(rec)
         return rec
 
@@ -226,6 +233,16 @@ class InMemoryRepository:
 
     def all_validation_issues(self):
         return [i for attempts in self.attempts.values() for a in attempts for i in a.issues]
+
+    def list_attempt_usage(self, start, end):
+        rows = []
+        for analysis_id, attempts in list(self.attempts.items()):
+            analysis = self.analyses.get(analysis_id)
+            if analysis is None or not (start <= analysis.created_at < end):
+                continue
+            rows += [AttemptUsage(analysis_id, analysis.created_at, a.attempt_number, a.input_tokens, a.output_tokens,
+                                  a.provider, a.model) for a in attempts]
+        return rows
 
     def upsert_feedback(self, analysis_id, user_id, rating, tried_cue):
         old = self.feedback.get((analysis_id, user_id))
@@ -385,15 +402,17 @@ class PostgresRepository:
                        (analysis_id,), rows=True)
         return [RepMeasurement.from_dict(r) for r in rows]
 
-    def save_llm_attempt(self, analysis_id, attempt_number, output_text, input_tokens, output_tokens, issues):
+    def save_llm_attempt(self, analysis_id, attempt_number, output_text, input_tokens, output_tokens, issues,
+                         provider=None, model=None):
         r = self._q("insert into public.llm_attempts (analysis_id, attempt_number, output_text, input_tokens, "
-                    "output_tokens, passed) values (%s,%s,%s,%s,%s,%s) returning id, created_at",
-                    (analysis_id, attempt_number, output_text, input_tokens, output_tokens, not issues), one=True)
+                    "output_tokens, passed, provider, model) values (%s,%s,%s,%s,%s,%s,%s,%s) returning id, created_at",
+                    (analysis_id, attempt_number, output_text, input_tokens, output_tokens, not issues, provider, model),
+                    one=True)
         for issue in issues:
             self._q("insert into public.validation_results (attempt_id, analysis_id, code, message) values (%s,%s,%s,%s)",
                     (r["id"], analysis_id, issue.code, issue.message))
         return LLMAttemptRecord(str(r["id"]), analysis_id, attempt_number, output_text, input_tokens, output_tokens,
-                                list(issues), not issues, r["created_at"])
+                                list(issues), not issues, r["created_at"], provider, model)
 
     def list_llm_attempts(self, analysis_id):
         rows = self._q("select * from public.llm_attempts where analysis_id::text = %s order by attempt_number",
@@ -405,11 +424,20 @@ class PostgresRepository:
             by_attempt.setdefault(i["attempt_id"], []).append(ValidationIssue(i["code"], i["message"]))
         return [LLMAttemptRecord(str(r["id"]), str(r["analysis_id"]), r["attempt_number"], r["output_text"],
                                  r["input_tokens"], r["output_tokens"], by_attempt.get(r["id"], []), r["passed"],
-                                 r["created_at"]) for r in rows]
+                                 r["created_at"], r["provider"], r["model"]) for r in rows]
 
     def all_validation_issues(self):
         return [ValidationIssue(r["code"], r["message"])
                 for r in self._q("select code, message from public.validation_results", rows=True)]
+
+    def list_attempt_usage(self, start, end):
+        rows = self._q(
+            "select t.analysis_id, a.created_at as analysis_created_at, t.attempt_number, t.input_tokens, "
+            "t.output_tokens, t.provider, t.model from public.llm_attempts t "
+            "join public.analyses a on a.id = t.analysis_id where a.created_at >= %s and a.created_at < %s "
+            "order by a.created_at, t.attempt_number", (start, end), rows=True)
+        return [AttemptUsage(str(r["analysis_id"]), r["analysis_created_at"], r["attempt_number"], r["input_tokens"],
+                             r["output_tokens"], r["provider"], r["model"]) for r in rows]
 
     def upsert_feedback(self, analysis_id, user_id, rating, tried_cue):
         r = self._q("insert into public.feedback_responses (analysis_id, user_id, rating, tried_cue) "

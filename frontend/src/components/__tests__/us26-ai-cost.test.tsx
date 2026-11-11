@@ -85,6 +85,13 @@ describe("US-26 cost summary on the admin page", () => {
     expect(within(region).getByLabelText("To")).toHaveValue("2026-11-10");
   });
 
+  it("us26_a_small_but_real_retry_share_is_not_shown_as_zero", async () => {
+    vi.mocked(api.adminCosts).mockResolvedValue({ ...summary, retry_share: 0.004, unknown_cost_attempts: 0 });
+    render(<AdminPage />);
+    const region = await screen.findByRole("region", { name: "AI cost" });
+    expect(await within(region).findByText("<1%")).toBeInTheDocument();
+  });
+
   it("us26_choosing_dates_reloads_the_summary_for_that_range", async () => {
     vi.mocked(api.adminCosts).mockResolvedValueOnce(summary)
       .mockResolvedValueOnce({ ...summary, start: "2026-11-01", end: "2026-11-05", analysis_count: 0, attempt_count: 0,

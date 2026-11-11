@@ -51,7 +51,8 @@ def process_analysis(services, analysis_id: str) -> None:
         repo.save_rep_measurements(analysis_id, outcome.measurements.reps if outcome.final_status != "unanalyzable" else [])
         if outcome.correction:
             for a in outcome.correction.attempts:
-                repo.save_llm_attempt(analysis_id, a.attempt_number, a.output_text, a.input_tokens, a.output_tokens, a.issues)
+                repo.save_llm_attempt(analysis_id, a.attempt_number, a.output_text, a.input_tokens, a.output_tokens,
+                                      a.issues, provider=a.provider, model=a.model)
         frame_path = None
         if outcome.annotated_png:
             frame_path = f"frames/{analysis.user_id}/{analysis_id}.png"

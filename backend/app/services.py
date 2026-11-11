@@ -9,6 +9,7 @@ from app.auth import AuthProvider, InMemoryAuth, SupabaseAuth
 from app.compress import FfmpegCompressor, VideoCompressor
 from app.config import Settings, load_settings
 from app.llm.client import LLMClient, make_llm_client
+from app.pricing import DEFAULT_PRICES_PATH, ModelPrice, PriceTable, load_price_table
 from app.repository import InMemoryRepository, PostgresRepository, Repository
 from app.storage import InMemoryStorage, Storage, SupabaseStorage
 from app.uploads import MAX_UPLOAD_BYTES
@@ -30,6 +31,11 @@ class Services:
     compressor: VideoCompressor | None = None  # None stores the upload as is (tests and test mode)
     test_mode: bool = False
     cors_origins: tuple[str, ...] = field(default_factory=tuple)
+    prices: PriceTable = field(default_factory=load_price_table)  # US-26: LLM prices per model
+
+
+# The mocked LLMs report this model. It is priced only in tests and test mode, never in llm_prices.json.
+MOCK_MODEL_PRICE = {"mock-coach": ModelPrice(input_per_million=1.0, output_per_million=5.0)}
 
 
 def build_test_services(**overrides) -> Services:
@@ -37,7 +43,8 @@ def build_test_services(**overrides) -> Services:
     from app.testing.fakes import FakeVideoBackend, RuleFollowingLLM
 
     services = Services(auth=InMemoryAuth(), repo=InMemoryRepository(), storage=InMemoryStorage(),
-                        video=FakeVideoBackend(), llm=RuleFollowingLLM(), test_mode=True)
+                        video=FakeVideoBackend(), llm=RuleFollowingLLM(), test_mode=True,
+                        prices=load_price_table(DEFAULT_PRICES_PATH).with_prices(MOCK_MODEL_PRICE))
     for name, value in overrides.items():
         setattr(services, name, value)
     return services
@@ -52,6 +59,7 @@ def build_services(settings: Settings) -> Services:
         llm=make_llm_client(settings),
         compressor=FfmpegCompressor(),
         cors_origins=settings.cors_origins,
+        prices=load_price_table(settings.llm_prices_file or DEFAULT_PRICES_PATH),
     )
 
 

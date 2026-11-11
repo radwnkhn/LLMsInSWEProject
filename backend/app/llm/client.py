@@ -34,9 +34,14 @@ class LLMReply:
     text: str
     input_tokens: int
     output_tokens: int
+    provider: str = ""  # US-26: who served the reply ("claude" | "gemini" | "openai"; "mock" in tests)
+    model: str = ""     # the model the provider reports it used (falls back to the configured model)
 
 
 class LLMClient(Protocol):
+    provider: str  # US-26: also recorded for attempts whose request fails before any reply
+    model: str
+
     def complete(self, request: LLMRequest) -> LLMReply: ...
 
 

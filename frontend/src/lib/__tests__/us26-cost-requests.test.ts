@@ -28,6 +28,7 @@ describe("US-26 cost requests and formatting", () => {
     expect(formatCost(null)).toBe("Unknown cost");
     expect(formatCost(0)).toBe("$0.00");
     expect(formatCost(0.007012)).toBe("$0.0070");
+    expect(formatCost(0.000035)).toBe("<$0.0001"); // a real but tiny cost must not look free
     expect(formatCost(7)).toBe("$7.00");
     expect(formatCost(1234.5)).toBe("$1,234.50");
     expect(formatTokens(4003)).toBe("4,003");

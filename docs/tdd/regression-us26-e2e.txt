@@ -1,0 +1,49 @@
+[WebServer] INFO:     Started server process [10946]
+[WebServer] INFO:     Waiting for application startup.
+[WebServer] INFO:     Application startup complete.
+[WebServer] INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+
+Running 25 tests using 1 worker
+
+  -   1 e2e/setup02-deploy.spec.ts:7:5 › setup02_deployed_frontend_reaches_backend_health
+  ✓   2 e2e/setup02-deploy.spec.ts:13:5 › setup02_status_page_reports_backend_health_locally (196ms)
+  ✓   3 e2e/us01-auth.spec.ts:5:5 › us01_after_logging_out_history_redirects_to_login (571ms)
+  ✓   4 e2e/us01-auth.spec.ts:15:5 › us01_wrong_password_shows_message (421ms)
+  ✓   5 e2e/us03-guide.spec.ts:8:7 › us03_guide_fits_375px_without_sideways_scroll_squat (358ms)
+  ✓   6 e2e/us03-guide.spec.ts:8:7 › us03_guide_fits_375px_without_sideways_scroll_deadlift (372ms)
+  ✓   7 e2e/us03-guide.spec.ts:8:7 › us03_guide_fits_375px_without_sideways_scroll_bench_press (371ms)
+  ✓   8 e2e/us05-us09-status.spec.ts:5:5 › us05_unanalyzable_message_has_refilm_button_that_opens_the_guide (649ms)
+  ✓   9 e2e/us05-us09-status.spec.ts:14:5 › us09_fallback_result_shows_the_note (2.3s)
+  ✓  10 e2e/us11-us12-video.spec.ts:5:5 › us11_tapping_the_frame_plays_the_video_from_the_start_of_that_rep (611ms)
+  ✓  11 e2e/us11-us12-video.spec.ts:18:5 › us12_tapping_a_rep_row_jumps_the_video_to_that_rep (2.4s)
+  ✓  12 e2e/us17-history.spec.ts:5:5 › us17_tapping_a_history_entry_opens_its_full_results (2.5s)
+  ✓  13 e2e/us19-processing.spec.ts:7:5 › us19_progress_updates_without_reload_and_results_open_automatically (5.5s)
+[WebServer] analysis 2c6ed23f-21cf-4e41-aab3-66bba9b020cb failed
+[WebServer] Traceback (most recent call last):
+[WebServer]   File "backend/app/uploads.py", line 45, in process_analysis
+[WebServer]     frames = services.video.poses(path, info, upload.filename)
+[WebServer]   File "backend/app/testing/fakes.py", line 192, in poses
+[WebServer]     raise RuntimeError("Simulated transient pose failure")
+[WebServer] RuntimeError: Simulated transient pose failure
+  ✓  14 e2e/us19-processing.spec.ts:42:5 › us19_failed_analysis_retries_the_saved_video (618ms)
+[WebServer] analysis 13003faf-1800-4998-b58b-421f4258a5f4 failed
+[WebServer] Traceback (most recent call last):
+[WebServer]   File "backend/app/uploads.py", line 45, in process_analysis
+[WebServer]     frames = services.video.poses(path, info, upload.filename)
+[WebServer]   File "backend/app/testing/fakes.py", line 192, in poses
+[WebServer]     raise RuntimeError("Simulated transient pose failure")
+[WebServer] RuntimeError: Simulated transient pose failure
+  ✓  15 e2e/us19-us20-us21-flow.spec.ts:5:5 › us19_us20_us21_retry_compare_delete_upload_and_account (4.0s)
+  ✓  16 e2e/us20-comparison.spec.ts:5:5 › us20_history_opens_two_uploads_with_measurements_and_a_resolved_previous_fault (1.1s)
+  ✓  17 e2e/us20-comparison.spec.ts:22:5 › us20_comparison_shows_the_earlier_fault_is_still_present (4.4s)
+  ✓  18 e2e/us20-comparison.spec.ts:33:5 › us20_different_lifts_are_blocked_in_history_and_in_direct_comparison_urls (2.7s)
+  ✓  19 e2e/us21-deletion.spec.ts:5:5 › us21_confirmed_upload_deletion_removes_it_from_history_results_and_comparison (1.1s)
+  ✓  20 e2e/us21-deletion.spec.ts:27:5 › us21_settings_deletes_account_and_protects_old_pages (3.0s)
+  ✓  21 e2e/us25-fault-list.spec.ts:15:5 › us25_admin_edits_disables_and_reenables_a_fault_and_new_analyses_follow (5.7s)
+  ✓  22 e2e/us25-fault-list.spec.ts:53:5 › us25_admin_adds_a_fault_from_an_existing_measurement_and_it_is_reported (3.0s)
+  ✓  23 e2e/us25-fault-list.spec.ts:86:5 › us25_non_admin_sees_403_on_the_fault_list (337ms)
+  ✓  24 e2e/us26-ai-cost.spec.ts:6:5 › us26_admin_sees_cost_per_attempt_and_a_summary_including_retries (1.2s)
+  ✓  25 e2e/us26-ai-cost.spec.ts:32:5 › us26_non_admin_cannot_see_costs (383ms)
+
+  1 skipped
+  24 passed (1.1m)

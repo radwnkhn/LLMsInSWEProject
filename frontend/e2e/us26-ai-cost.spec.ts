@@ -14,7 +14,8 @@ test("us26_admin_sees_cost_per_attempt_and_a_summary_including_retries", async (
   const summary = page.getByRole("region", { name: "AI cost" });
   await expect(summary).toContainText("Total cost");
   await expect(summary).toContainText(/Total cost\$\d/);
-  await expect(summary).toContainText(/Spent on correction retries([1-9]\d?|100)%/);
+  // The range also holds other browser tests' analyses, so the share can be small, but never zero here.
+  await expect(summary).toContainText(/Spent on correction retries(<1|[1-9]\d?|100)%/);
   await expect(summary).not.toContainText("unknown cost");
 
   await page.goto(`/admin/analyses/${fallback}`);

@@ -14,7 +14,13 @@ def _b64(data: bytes) -> str:
     return base64.b64encode(data).decode("ascii")
 
 
+def _count(usage: dict, *keys: str) -> int:
+    """Sum of the given usage counters; missing or null counters count as zero."""
+    return sum(int(usage.get(k) or 0) for k in keys)
+
+
 class _HTTPClient:
+    provider = ""
     default_model = ""
 
     def __init__(self, api_key: str, model: str | None = None, http: httpx.Client | None = None):
@@ -29,6 +35,7 @@ class _HTTPClient:
 
 
 class ClaudeClient(_HTTPClient):
+    provider = "claude"
     default_model = "claude-sonnet-5-5"
 
     def complete(self, request: LLMRequest) -> LLMReply:
@@ -45,11 +52,13 @@ class ClaudeClient(_HTTPClient):
             {"model": self.model, "max_tokens": 2048, "system": request.system, "messages": messages},
         )
         text = "".join(b.get("text", "") for b in data.get("content", []) if b.get("type") == "text")
-        usage = data.get("usage", {})
-        return LLMReply(text, usage.get("input_tokens", 0), usage.get("output_tokens", 0))
+        usage = data.get("usage") or {}
+        return LLMReply(text, _count(usage, "input_tokens"), _count(usage, "output_tokens"),
+                        provider=self.provider, model=data.get("model") or self.model)
 
 
 class OpenAIClient(_HTTPClient):
+    provider = "openai"
     default_model = "gpt-4.1-mini"
 
     def complete(self, request: LLMRequest) -> LLMReply:
@@ -67,12 +76,15 @@ class OpenAIClient(_HTTPClient):
             {"Authorization": f"Bearer {self.api_key}"},
             {"model": self.model, "messages": messages, "response_format": {"type": "json_object"}},
         )
-        usage = data.get("usage", {})
+        usage = data.get("usage") or {}
+        # completion_tokens already includes any reasoning tokens.
         return LLMReply(data["choices"][0]["message"]["content"] or "",
-                        usage.get("prompt_tokens", 0), usage.get("completion_tokens", 0))
+                        _count(usage, "prompt_tokens"), _count(usage, "completion_tokens"),
+                        provider=self.provider, model=data.get("model") or self.model)
 
 
 class GeminiClient(_HTTPClient):
+    provider = "gemini"
     default_model = "gemini-2.5-flash"
 
     def complete(self, request: LLMRequest) -> LLMReply:
@@ -89,9 +101,11 @@ class GeminiClient(_HTTPClient):
              "generationConfig": {"responseMimeType": "application/json"}},
         )
         parts = data["candidates"][0]["content"]["parts"]
-        usage = data.get("usageMetadata", {})
+        usage = data.get("usageMetadata") or {}
+        # Gemini bills thinking tokens as output, but reports them apart from candidatesTokenCount.
         return LLMReply("".join(p.get("text", "") for p in parts),
-                        usage.get("promptTokenCount", 0), usage.get("candidatesTokenCount", 0))
+                        _count(usage, "promptTokenCount"), _count(usage, "candidatesTokenCount", "thoughtsTokenCount"),
+                        provider=self.provider, model=data.get("modelVersion") or self.model)
 
 
 PROVIDERS = {"claude": ClaudeClient, "gemini": GeminiClient, "openai": OpenAIClient}

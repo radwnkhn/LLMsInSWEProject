@@ -209,6 +209,10 @@ def test_us26_default_price_file_covers_each_providers_default_model(pricing):
         assert table.cost(cls.default_model, 1000, 1000) is not None, cls.default_model
     raw = json.loads(pricing.DEFAULT_PRICES_PATH.read_text())
     assert raw["checked"] and raw["source"]
+    # backend/Dockerfile copies only app/ and scripts/, so the default table must live inside app/.
+    import app
+
+    assert pricing.DEFAULT_PRICES_PATH.parent == pricing.Path(app.__file__).resolve().parent
 
 
 def test_us26_price_file_location_comes_from_settings(tmp_path):
@@ -284,7 +288,8 @@ def test_us26_summary_unit_totals_average_and_retry_share(pricing, prices):
     assert s["retry_cost"] == pytest.approx(4.0)
     assert s["retry_share"] == pytest.approx(4.0 / 7.0)
     assert s["unknown_cost_attempts"] == 1
-    assert s["input_tokens"] == 3_000_000 and s["output_tokens"] == 100_000
+    # Tokens count every attempt; only the dollars of the unpriced attempt are left out.
+    assert s["input_tokens"] == 4_000_000 and s["output_tokens"] == 100_000
 
 
 def test_us26_summary_unit_with_no_attempts_has_no_average_or_share(pricing, prices):
@@ -296,7 +301,8 @@ def test_us26_cost_summary_counts_only_analyses_in_the_date_range(prices):
     services, client = _services(prices)
     admin, _ = make_admin(client, services)
     lifter, _ = signup(client, "l@virginia.edu")
-    old, recent = upload_ok(client, lifter), upload_ok(client, lifter)
+    # The shared mocked LLM fails only its first reply, so the first upload is the one with a retry.
+    recent, old = upload_ok(client, lifter), upload_ok(client, lifter)
     a = services.repo.analyses[old]
     services.repo.analyses[old] = replace(a, created_at=datetime(2026, 1, 15, 12, tzinfo=timezone.utc))
     today = datetime.now(timezone.utc).date()
@@ -311,7 +317,7 @@ def test_us26_cost_summary_counts_only_analyses_in_the_date_range(prices):
     assert s["retry_share"] == pytest.approx((2002 * 2e-6 + 302 * 10e-6) / per_analysis)
 
     january = client.get("/admin/costs?start=2026-01-15&end=2026-01-15", headers=admin).json()
-    assert january["analysis_count"] == 1
+    assert january["analysis_count"] == 1 and january["retry_share"] == 0
     assert client.get("/admin/costs?start=2025-01-01&end=2025-12-31", headers=admin).json()["analysis_count"] == 0
     assert recent
 
