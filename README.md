@@ -109,8 +109,10 @@ browser tests can reach the page. See `docs/tdd/us25.md` for TDD evidence.
   `app_metadata` to `{"role": "admin"}`.
 - **Backend (Render):** `render.yaml` defines a Docker web service on the free plan in Virginia.
   Set the variables from `backend/.env.example` in Render, keeping real credentials out of Git.
-  The image includes MediaPipe's EGL/GLES system libraries, downloads the pose model and runs
-  real inference during the build. An import check alone does not load all native dependencies.
+  The image includes MediaPipe's EGL/GLES system libraries and downloads the pose model.
+  CI runs real inference in the finished container as its unprivileged user. Startup repeats
+  that check before opening the API port; build sandboxes may hide CPU topology that MediaPipe
+  requires. An import check alone does not load all native dependencies.
   To verify the same image locally, run `docker build -t alibi-api backend`, then
   `docker run --rm --env-file backend/.env -e PORT=10000 -p 10000:10000 alibi-api`.
   For an existing native Python service, sync the Docker configuration to that service rather
