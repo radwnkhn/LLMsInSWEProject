@@ -8,7 +8,7 @@ import re
 from dataclasses import dataclass, field
 
 from app.faults import DEFAULT_CATALOG, FaultCatalog
-from app.lifts import LIFT_NOUNS
+from app.lifts import LIFT_NOUNS, with_article
 from app.llm.schema import CoachOutput, ValidationIssue, parse_coach_output, validate_output_dict
 from app.measure import RepMeasurement, SetMeasurements
 from app.rules import NotMeasured
@@ -69,7 +69,7 @@ def validate(raw: str | dict, ctx: ValidationContext) -> ValidationResult:
         issues.append(ValidationIssue(code, message))
 
     if out.lift != ctx.lift:
-        add("lift_mismatch", f"feedback says {LIFT_NOUNS[out.lift]} but the video shows a {LIFT_NOUNS[ctx.lift]}")
+        add("lift_mismatch", f"feedback says {LIFT_NOUNS[out.lift]} but the video shows {with_article(LIFT_NOUNS[ctx.lift])}")
     if out.camera_angle != ctx.camera_angle:
         add("camera_angle_mismatch",
             f"feedback says the camera angle is {out.camera_angle} but it was measured as {ctx.camera_angle}")

@@ -1,0 +1,62 @@
+$ npx tsc --noEmit
+passed
+
+$ npm run lint
+
+> frontend@0.1.0 lint
+> eslint
+
+
+frontend/coverage/lcov-report/block-navigation.js
+  1:1  warning  Unused eslint-disable directive (no problems were reported)
+
+✖ 1 problem (0 errors, 1 warning)
+  0 errors and 1 warning potentially fixable with the `--fix` option.
+
+exit 0
+
+$ npm run build
+   ▲ Next.js 15.5.29
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully in 2.3s
+   Linting and checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/15) ...
+   Generating static pages (3/15) 
+   Generating static pages (7/15) 
+   Generating static pages (11/15) 
+ ✓ Generating static pages (15/15)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                                 Size  First Load JS
+┌ ○ /                                      123 B         103 kB
+├ ○ /_not-found                            994 B         104 kB
+├ ○ /admin                               4.51 kB         111 kB
+├ ƒ /admin/analyses/[id]                 3.35 kB         106 kB
+├ ○ /admin/faults                        4.51 kB         111 kB
+├ ○ /admin/moderation                    5.47 kB         112 kB
+├ ○ /compare                             4.01 kB         110 kB
+├ ○ /history                              4.3 kB         110 kB
+├ ○ /login                               2.79 kB         109 kB
+├ ƒ /results/[id]                        6.12 kB         112 kB
+├ ○ /settings                            3.15 kB         106 kB
+├ ○ /signup                              2.79 kB         109 kB
+├ ○ /status                              1.78 kB         105 kB
+└ ○ /upload                              5.07 kB         108 kB
++ First Load JS shared by all             103 kB
+  ├ chunks/255-73938ce8a8eac1ad.js       46.6 kB
+  ├ chunks/4bd1b696-c023c6e3521b1417.js  54.2 kB
+  └ other shared chunks (total)          1.92 kB
+
+
+ƒ Middleware                             34.4 kB
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+
+exit 0
+
+$ git diff --check
+passed

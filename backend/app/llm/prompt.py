@@ -15,7 +15,8 @@ from app.rules import NotMeasured
 
 MIN_KEY_FRAMES, MAX_KEY_FRAMES = 3, 5
 
-SYSTEM_PROMPT = """You are an experienced strength coach reviewing one set of a squat, deadlift or bench press.
+SYSTEM_PROMPT = """You are an experienced strength coach reviewing one set of a squat, deadlift, bench press, overhead press or
+Romanian deadlift.
 You get measurements computed from the video, the faults those measurements confirm, the checks that
 couldn't be measured, a few key frames and the lifter's optional note.
 

@@ -49,7 +49,8 @@ describe("US-28 more lifts", () => {
     expect(existsSync(path.join(process.cwd(), "public", guide.image))).toBe(true);
     render(<FilmingGuide lift={id as Lift} onClose={vi.fn()} />);
     expect(screen.getByRole("heading", { name: `Filming tips: ${label}` })).toBeInTheDocument();
-    expect(screen.getByRole("img")).toHaveAttribute("alt", `Example of correct framing for a ${label.toLowerCase()}`);
+    const alt = screen.getByRole("img").getAttribute("alt") ?? "";
+    expect(alt.toLowerCase()).toMatch(new RegExp(`^example of correct framing for an? ${label.toLowerCase()}$`));
   });
 
   it("us28_new_lift_tips_differ_from_the_existing_lifts", () => {

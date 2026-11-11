@@ -24,6 +24,8 @@ CUES = {
     "incomplete_lockout": "Finish tall at the top of every rep",
     "elbow_flare": "Tuck your elbows slightly as you lower the bar",
     "uneven_press": "Squeeze the bar evenly with both hands",
+    "excessive_back_arch": "Squeeze your glutes and keep your ribs down",  # US-28
+    "knees_bend_too_much": "Keep a soft knee and push your hips back",     # US-28
 }
 DEFAULT_CUE = "Move with control through every rep"  # for faults an admin added (US-25)
 REFERRAL = "Please see a doctor or physical therapist about the pain before training through it."

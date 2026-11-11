@@ -25,8 +25,14 @@ GROUPS = {
     "ears": ("left_ear", "right_ear"),
 }
 KEY_GROUPS = ("hips", "knees", "ankles", "shoulders")
-# Which way the height signal sits between reps: squat and bench start at the top, deadlift on the floor.
-REST_POSITION = {"squat": "high", "deadlift": "low", "bench_press": "high"}
+# Which way the rep signal sits between reps: squat and bench start at the top, deadlift on the floor.
+# US-28: the overhead press rests with the bar racked at the shoulders (low); the Romanian deadlift's hinge
+# signal rests standing tall (high).
+REST_POSITION = {"squat": "high", "deadlift": "low", "bench_press": "high", "overhead_press": "low",
+                 "romanian_deadlift": "high"}
+OVERHEAD_WRISTS = -1.5      # detect_lift: wrists this many torso lengths above the hips (0.5 above the shoulders)
+OVERHEAD_SHARE = 0.10       # ... on at least this share of frames reads as pressing overhead
+RDL_MIN_HINGE_DEG = 20.0    # count_reps: a Romanian deadlift rep must hinge at least this much at the hip
 
 Point = tuple[float, float]
 
@@ -90,6 +96,10 @@ class SetMeasurements:
         (goblet, front and bodyweight squats hold the hands low), so the selection wins there."""
         d = self.detected_lift
         if d is not None and (d == "bench_press") != (self.lift == "bench_press"):
+            return d
+        # US-28: arms locked out overhead is unmistakable, so it wins over another standing lift. Romanian vs
+        # conventional deadlift can't be told apart from pose alone, so the selection wins there too.
+        if d == "overhead_press" and self.lift != "overhead_press":
             return d
         return self.lift
 
@@ -196,7 +206,7 @@ def height_signal(frames: Sequence[PoseFrame], lift: str) -> np.ndarray:
     just before it, so that's tolerated.) When the reference joints are hidden on most frames (feet out of shot),
     falls back to height in the frame (1 - y). NaN where unseen.
     """
-    group, reference = ("wrists", "shoulders") if lift == "bench_press" else ("hips", "ankles")
+    group, reference = ("wrists", "shoulders") if lift in ("bench_press", "overhead_press") else ("hips", "ankles")
 
     def seen(f, g):
         return group_confidence(f, g) >= CONFIDENCE_THRESHOLD
@@ -321,7 +331,8 @@ def hands_at_shoulders(frames: Sequence[PoseFrame]) -> bool:
 
 
 def detect_lift(frames: Sequence[PoseFrame]) -> str | None:
-    """Which lift the movement looks like: lying down -> bench; bar at the shoulders -> squat; else deadlift."""
+    """Which lift the movement looks like: lying down -> bench; wrists locked out overhead -> overhead press;
+    bar at the shoulders -> squat; else deadlift (Romanian or conventional: pose alone can't tell them apart)."""
     leans, wrist_pos = [], []
     for f in frames:
         if not f.landmarks:
@@ -336,6 +347,8 @@ def detect_lift(frames: Sequence[PoseFrame]) -> str | None:
         return None
     if np.median(leans) > 60:
         return "bench_press"
+    if np.mean(np.asarray(wrist_pos) < OVERHEAD_WRISTS) >= OVERHEAD_SHARE:
+        return "overhead_press"
     return "squat" if np.median(wrist_pos) < -0.5 else "deadlift"
 
 
@@ -367,6 +380,21 @@ def _wrist_diff(f: PoseFrame) -> float | None:
     return abs(lm["left_wrist"].y - lm["right_wrist"].y) / width if width > 1e-6 else None
 
 
+def _lean_back_series(frames: Sequence[PoseFrame]) -> np.ndarray:
+    """US-28: how far the hip-to-shoulder line tilts back behind the hips, in degrees (negative = forward).
+
+    "Back" is away from where the lifter faces, taken from where the bar sits: in front of the shoulders in the
+    rack and at the start of every press. A pose has no spine points, so this stands in for lower-back arch."""
+    ahead = _series(frames, lambda f: _mid(f, "wrists")[0] - _mid(f, "shoulders")[0])
+    facing = 1.0 if not np.isfinite(ahead).any() or np.nanmedian(ahead) >= 0 else -1.0
+
+    def lean_back(f):
+        shoulder, hip = _mid(f, "shoulders"), _mid(f, "hips")
+        return math.degrees(math.atan2((hip[0] - shoulder[0]) * facing, hip[1] - shoulder[1]))
+
+    return _series(frames, lean_back)
+
+
 def _r(v) -> float | None:
     return None if v is None or not np.isfinite(v) else round(float(v), 2)
 
@@ -394,8 +422,13 @@ def measure_set(frames: Sequence[PoseFrame], lift: str, fps: float) -> SetMeasur
     flare = _series(frames, _elbow_flare) if front else None
     wrist_diff = _series(frames, _wrist_diff) if front else None
 
-    segments = count_reps(height_signal(frames, lift), rest=REST_POSITION[lift],
-                          min_amplitude=max(0.02, 0.25 * (thigh or 0)))
+    if lift == "romanian_deadlift":
+        # US-28: the hips move back, not down, so reps come from the hinge (shoulder-hip-knee angle).
+        segments = count_reps(hip, rest=REST_POSITION[lift], min_amplitude=RDL_MIN_HINGE_DEG)
+    else:
+        segments = count_reps(height_signal(frames, lift), rest=REST_POSITION[lift],
+                              min_amplitude=max(0.02, 0.25 * (thigh or 0)))
+    lean_back = _lean_back_series(frames) if lift == "overhead_press" else None
     reps = []
     for n, seg in enumerate(segments, start=1):
         span = np.arange(seg.start, seg.end + 1)
@@ -432,6 +465,15 @@ def measure_set(frames: Sequence[PoseFrame], lift: str, fps: float) -> SetMeasur
             increase("torso_lean_increase_deg", pull, seg.start)
             extreme("back_rounding_deg", back, span, "max")
             extreme("lockout_hip_angle_deg", hip, span, "max")
+        elif lift == "overhead_press":  # US-28
+            extreme("elbow_angle_min_deg", elbow, span, "min")
+            extreme("lockout_elbow_angle_deg", elbow, span, "max")
+            extreme("torso_lean_back_max_deg", lean_back, span, "max")
+        elif lift == "romanian_deadlift":  # US-28
+            extreme("knee_angle_min_deg", knee, span, "min")
+            extreme("hip_angle_min_deg", hip, span, "min")
+            extreme("torso_lean_max_deg", lean, span, "max")
+            extreme("back_rounding_deg", back, span, "max")
         else:
             extreme("elbow_angle_min_deg", elbow, span, "min")
             extreme("lockout_elbow_angle_deg", elbow, span, "max")

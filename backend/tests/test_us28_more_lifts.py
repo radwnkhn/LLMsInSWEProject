@@ -10,9 +10,10 @@ Acceptance criteria (#30):
 7. [unit] [integration] Squat, deadlift and bench press are unchanged.
 
 Synthetic side-view geometry (app/testing/synthetic.py), facing +x, so the expected values can be worked by hand:
-- Overhead press: legs straight under the hip, torso TORSO=0.3, arm links 0.15 + 0.15. Wrist offset from the
-  shoulder goes from the rack (+0.04, -0.03) to lockout (0, -D), D = 2 * 0.15 * sin(lockout / 2); the elbow comes
-  from the two links, so the elbow angle is 2 * asin(d / 0.3) for shoulder-wrist distance d.
+- Overhead press: legs straight under the hip, torso TORSO=0.3, arm links 0.11 + 0.11 (so the bar stays in frame
+  at lockout). Wrist offset from the shoulder goes from the rack (+0.04, -0.03) to lockout (0, -D),
+  D = 2 * 0.11 * sin(lockout / 2); the elbow comes from the two links, so the elbow angle is 2 * asin(d / 0.22)
+  for shoulder-wrist distance d.
 - Romanian deadlift: shin forward 0.4 f p, thigh back 0.6 f p (knee angle 180 - f p for knee flexion f), torso
   hinged 70 p forward, so the shoulder-hip-knee angle is 180 - (70 + 0.6 f) at the bottom.
 """
@@ -83,17 +84,17 @@ def test_us28_overhead_press_reps_counted_from_the_wrists_above_the_shoulders(n)
 
 
 def test_us28_overhead_press_height_signal_runs_from_the_rack_to_lockout():
-    # Rack: wrist 0.03 above the shoulder. Lockout (178°): D = 0.3 sin 89° = 0.2999 above it.
+    # Rack: wrist 0.03 above the shoulder. Lockout (178°): D = 0.22 sin 89° = 0.2200 above it.
     signal = height_signal(_set(OHP, 1), OHP)
     assert min(signal) == pytest.approx(0.03, abs=0.005)
-    assert max(signal) == pytest.approx(0.2999, abs=0.005)
+    assert max(signal) == pytest.approx(0.2200, abs=0.005)
 
 
 def test_us28_overhead_press_rep_turns_at_lockout():
     frames = _set(OHP, 2)
     for rep in measure_set(frames, OHP, fps=30).reps:
         top = frames[rep.turn_frame].landmarks
-        assert top["left_shoulder"].y - top["left_wrist"].y == pytest.approx(0.2999, abs=0.01)
+        assert top["left_shoulder"].y - top["left_wrist"].y == pytest.approx(0.2200, abs=0.01)
 
 
 @pytest.mark.parametrize("n", [1, 3, 6])
@@ -124,11 +125,11 @@ def test_us28_a_final_rep_that_never_finishes_is_not_counted(lift):
 # ---- 3. [unit] faults measured from the side view ----
 
 def test_us28_overhead_press_lockout_and_rack_elbow_angles_match_hand_calculation():
-    # Lockout 150° gives D = 0.3 sin 75° = 0.2898 and the elbow back at 150°. Rack d = 0.05: 2 asin(0.05/0.3) = 19.2°.
+    # Lockout 150° gives D = 0.22 sin 75° = 0.2125 and the elbow back at 150°. Rack d = 0.05: 2 asin(0.05/0.22) = 26.3°.
     reps = measure_set(_set(OHP, 2, ohp_lockout={2: 150.0}), OHP, fps=30).reps
     assert reps[0].metrics["lockout_elbow_angle_deg"] == pytest.approx(178.0, abs=1.0)
     assert reps[1].metrics["lockout_elbow_angle_deg"] == pytest.approx(150.0, abs=1.0)
-    assert reps[0].metrics["elbow_angle_min_deg"] == pytest.approx(19.2, abs=1.0)
+    assert reps[0].metrics["elbow_angle_min_deg"] == pytest.approx(26.3, abs=1.0)
 
 
 def test_us28_overhead_press_backward_lean_matches_hand_calculation():

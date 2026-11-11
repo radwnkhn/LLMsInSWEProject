@@ -9,7 +9,7 @@ from typing import Literal
 from pydantic import BaseModel, ConfigDict, Field, ValidationError
 
 from app.faults import FaultCatalog, fault_ids
-from app.lifts import LIFTS
+from app.lifts import LIFTS, Lift
 
 COACH_OUTPUT_FIELDS = ("lift", "camera_angle", "rep_count", "top_fault_id", "fault_reps",
                        "supporting_measurement", "other_faults", "cue", "explanation")
@@ -41,7 +41,7 @@ class FaultCitation(_Strict):
 
 
 class CoachOutput(_Strict):
-    lift: Literal["squat", "deadlift", "bench_press"]
+    lift: Lift
     camera_angle: Literal["side", "front", "angled"]
     rep_count: int = Field(ge=0)
     top_fault_id: str | None

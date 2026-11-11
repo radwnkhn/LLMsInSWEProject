@@ -89,7 +89,7 @@ Labels: user story, role: gym goer, area: upload
 As a **gym goer**, I want to choose whether I'm doing a squat, deadlift or bench press, so that the feedback is specific to my lift.
 
 #### Acceptance criteria
-- [ ] [unit] The lift picker offers exactly three options: Squat, Deadlift, Bench Press.
+- [ ] [unit] The lift picker offers exactly three options: Squat, Deadlift, Bench Press. (US-28 later added Overhead Press and Romanian Deadlift.)
 - [ ] [unit] The upload button stays disabled until a lift is selected.
 - [ ] [integration] The selected lift is saved with the upload and passed to the analysis.
 - [ ] [integration] A request with any other lift value is rejected with a 422 error.
