@@ -1,0 +1,454 @@
+
+ RUN  v3.2.7 frontend
+
+ ❯ src/components/__tests__/us28-more-lifts.test.tsx (10 tests | 10 failed) 238ms
+   × US-28 more lifts > us28_picker_offers_the_two_new_lifts_after_the_existing_three 201ms
+     → expected [ 'Squat', 'Deadlift', 'Bench Press' ] to deeply equal [ 'Squat', 'Deadlift', …(3) ]
+   × US-28 more lifts > us28_picking_overhead_press_reports_its_id 16ms
+     → Unable to find a label with the text of: Overhead Press
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<fieldset>[39m
+      [36m<legend[39m
+        [33mclass[39m=[32m"mb-2 text-sm font-medium"[39m
+      [36m>[39m
+        [0mWhich lift?[0m
+      [36m</legend>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"grid grid-cols-3 gap-2"[39m
+      [36m>[39m
+        [36m<label[39m
+          [33mclass[39m=[32m"flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-300"[39m
+        [36m>[39m
+          [36m<input[39m
+            [33mclass[39m=[32m"accent-zinc-900"[39m
+            [33mname[39m=[32m"lift"[39m
+            [33mtype[39m=[32m"radio"[39m
+            [33mvalue[39m=[32m"squat"[39m
+          [36m/>[39m
+          [0mSquat[0m
+        [36m</label>[39m
+        [36m<label[39m
+          [33mclass[39m=[32m"flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-300"[39m
+        [36m>[39m
+          [36m<input[39m
+            [33mclass[39m=[32m"accent-zinc-900"[39m
+            [33mname[39m=[32m"lift"[39m
+            [33mtype[39m=[32m"radio"[39m
+            [33mvalue[39m=[32m"deadlift"[39m
+          [36m/>[39m
+          [0mDeadlift[0m
+        [36m</label>[39m
+        [36m<label[39m
+          [33mclass[39m=[32m"flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-300"[39m
+        [36m>[39m
+          [36m<input[39m
+            [33mclass[39m=[32m"accent-zinc-900"[39m
+            [33mname[39m=[32m"lift"[39m
+            [33mtype[39m=[32m"radio"[39m
+            [33mvalue[39m=[32m"bench_press"[39m
+          [36m/>[39m
+          [0mBench Press[0m
+        [36m</label>[39m
+      [36m</div>[39m
+    [36m</fieldset>[39m
+  [36m</div>[39m
+[36m</body>[39m
+   × US-28 more lifts > us28_picking_romanian_deadlift_reports_its_id 8ms
+     → Unable to find a label with the text of: Romanian Deadlift
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<fieldset>[39m
+      [36m<legend[39m
+        [33mclass[39m=[32m"mb-2 text-sm font-medium"[39m
+      [36m>[39m
+        [0mWhich lift?[0m
+      [36m</legend>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"grid grid-cols-3 gap-2"[39m
+      [36m>[39m
+        [36m<label[39m
+          [33mclass[39m=[32m"flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-300"[39m
+        [36m>[39m
+          [36m<input[39m
+            [33mclass[39m=[32m"accent-zinc-900"[39m
+            [33mname[39m=[32m"lift"[39m
+            [33mtype[39m=[32m"radio"[39m
+            [33mvalue[39m=[32m"squat"[39m
+          [36m/>[39m
+          [0mSquat[0m
+        [36m</label>[39m
+        [36m<label[39m
+          [33mclass[39m=[32m"flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-300"[39m
+        [36m>[39m
+          [36m<input[39m
+            [33mclass[39m=[32m"accent-zinc-900"[39m
+            [33mname[39m=[32m"lift"[39m
+            [33mtype[39m=[32m"radio"[39m
+            [33mvalue[39m=[32m"deadlift"[39m
+          [36m/>[39m
+          [0mDeadlift[0m
+        [36m</label>[39m
+        [36m<label[39m
+          [33mclass[39m=[32m"flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-300"[39m
+        [36m>[39m
+          [36m<input[39m
+            [33mclass[39m=[32m"accent-zinc-900"[39m
+            [33mname[39m=[32m"lift"[39m
+            [33mtype[39m=[32m"radio"[39m
+            [33mvalue[39m=[32m"bench_press"[39m
+          [36m/>[39m
+          [0mBench Press[0m
+        [36m</label>[39m
+      [36m</div>[39m
+    [36m</fieldset>[39m
+  [36m</div>[39m
+[36m</body>[39m
+   × US-28 more lifts > us28_overhead_press_has_a_label_and_noun 2ms
+     → expected false to be true // Object.is equality
+   × US-28 more lifts > us28_romanian_deadlift_has_a_label_and_noun 1ms
+     → expected false to be true // Object.is equality
+   × US-28 more lifts > us28_overhead_press_filming_guide_covers_view_phone_height_distance_and_framing 4ms
+     → Cannot read properties of undefined (reading 'tips')
+   × US-28 more lifts > us28_romanian_deadlift_filming_guide_covers_view_phone_height_distance_and_framing 2ms
+     → Cannot read properties of undefined (reading 'tips')
+   × US-28 more lifts > us28_overhead_press_filming_guide_has_its_own_example_frame 1ms
+     → Cannot read properties of undefined (reading 'image')
+   × US-28 more lifts > us28_romanian_deadlift_filming_guide_has_its_own_example_frame 1ms
+     → Cannot read properties of undefined (reading 'image')
+   × US-28 more lifts > us28_new_lift_tips_differ_from_the_existing_lifts 1ms
+     → Cannot read properties of undefined (reading 'tips')
+ ✓ src/components/__tests__/us02-lift-picker.test.tsx (5 tests) 437ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 10 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/components/__tests__/us28-more-lifts.test.tsx > US-28 more lifts > us28_picker_offers_the_two_new_lifts_after_the_existing_three
+AssertionError: expected [ 'Squat', 'Deadlift', 'Bench Press' ] to deeply equal [ 'Squat', 'Deadlift', …(3) ]
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[2m  [[22m
+[2m    "Squat",[22m
+[2m    "Deadlift",[22m
+[2m    "Bench Press",[22m
+[32m-   "Overhead Press",[39m
+[32m-   "Romanian Deadlift",[39m
+[2m  ][22m
+
+ ❯ src/components/__tests__/us28-more-lifts.test.tsx:21:8
+     19|     render(<LiftPicker value={null} onChange={vi.fn()} />);
+     20|     expect(screen.getAllByRole("radio").map((o) => o.closest("label")?…
+     21|       .toEqual(["Squat", "Deadlift", "Bench Press", "Overhead Press", …
+       |        ^
+     22|   });
+     23| 
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/10]⎯
+
+ FAIL  src/components/__tests__/us28-more-lifts.test.tsx > US-28 more lifts > us28_picking_overhead_press_reports_its_id
+TestingLibraryElementError: Unable to find a label with the text of: Overhead Press
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<fieldset>[39m
+      [36m<legend[39m
+        [33mclass[39m=[32m"mb-2 text-sm font-medium"[39m
+      [36m>[39m
+        [0mWhich lift?[0m
+      [36m</legend>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"grid grid-cols-3 gap-2"[39m
+      [36m>[39m
+        [36m<label[39m
+          [33mclass[39m=[32m"flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-300"[39m
+        [36m>[39m
+          [36m<input[39m
+            [33mclass[39m=[32m"accent-zinc-900"[39m
+            [33mname[39m=[32m"lift"[39m
+            [33mtype[39m=[32m"radio"[39m
+            [33mvalue[39m=[32m"squat"[39m
+          [36m/>[39m
+          [0mSquat[0m
+        [36m</label>[39m
+        [36m<label[39m
+          [33mclass[39m=[32m"flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-300"[39m
+        [36m>[39m
+          [36m<input[39m
+            [33mclass[39m=[32m"accent-zinc-900"[39m
+            [33mname[39m=[32m"lift"[39m
+            [33mtype[39m=[32m"radio"[39m
+            [33mvalue[39m=[32m"deadlift"[39m
+          [36m/>[39m
+          [0mDeadlift[0m
+        [36m</label>[39m
+        [36m<label[39m
+          [33mclass[39m=[32m"flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-300"[39m
+        [36m>[39m
+          [36m<input[39m
+            [33mclass[39m=[32m"accent-zinc-900"[39m
+            [33mname[39m=[32m"lift"[39m
+            [33mtype[39m=[32m"radio"[39m
+            [33mvalue[39m=[32m"bench_press"[39m
+          [36m/>[39m
+          [0mBench Press[0m
+        [36m</label>[39m
+      [36m</div>[39m
+    [36m</fieldset>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ getAllByLabelText node_modules/@testing-library/dom/dist/queries/label-text.js:111:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/components/__tests__/us28-more-lifts.test.tsx:27:34
+     25|     const onChange = vi.fn();
+     26|     render(<LiftPicker value={null} onChange={onChange} />);
+     27|     await userEvent.click(screen.getByLabelText(label));
+       |                                  ^
+     28|     expect(onChange).toHaveBeenCalledWith(id);
+     29|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/10]⎯
+
+ FAIL  src/components/__tests__/us28-more-lifts.test.tsx > US-28 more lifts > us28_picking_romanian_deadlift_reports_its_id
+TestingLibraryElementError: Unable to find a label with the text of: Romanian Deadlift
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<fieldset>[39m
+      [36m<legend[39m
+        [33mclass[39m=[32m"mb-2 text-sm font-medium"[39m
+      [36m>[39m
+        [0mWhich lift?[0m
+      [36m</legend>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"grid grid-cols-3 gap-2"[39m
+      [36m>[39m
+        [36m<label[39m
+          [33mclass[39m=[32m"flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-300"[39m
+        [36m>[39m
+          [36m<input[39m
+            [33mclass[39m=[32m"accent-zinc-900"[39m
+            [33mname[39m=[32m"lift"[39m
+            [33mtype[39m=[32m"radio"[39m
+            [33mvalue[39m=[32m"squat"[39m
+          [36m/>[39m
+          [0mSquat[0m
+        [36m</label>[39m
+        [36m<label[39m
+          [33mclass[39m=[32m"flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-300"[39m
+        [36m>[39m
+          [36m<input[39m
+            [33mclass[39m=[32m"accent-zinc-900"[39m
+            [33mname[39m=[32m"lift"[39m
+            [33mtype[39m=[32m"radio"[39m
+            [33mvalue[39m=[32m"deadlift"[39m
+          [36m/>[39m
+          [0mDeadlift[0m
+        [36m</label>[39m
+        [36m<label[39m
+          [33mclass[39m=[32m"flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-300"[39m
+        [36m>[39m
+          [36m<input[39m
+            [33mclass[39m=[32m"accent-zinc-900"[39m
+            [33mname[39m=[32m"lift"[39m
+            [33mtype[39m=[32m"radio"[39m
+            [33mvalue[39m=[32m"bench_press"[39m
+          [36m/>[39m
+          [0mBench Press[0m
+        [36m</label>[39m
+      [36m</div>[39m
+    [36m</fieldset>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ getAllByLabelText node_modules/@testing-library/dom/dist/queries/label-text.js:111:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/components/__tests__/us28-more-lifts.test.tsx:27:34
+     25|     const onChange = vi.fn();
+     26|     render(<LiftPicker value={null} onChange={onChange} />);
+     27|     await userEvent.click(screen.getByLabelText(label));
+       |                                  ^
+     28|     expect(onChange).toHaveBeenCalledWith(id);
+     29|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/10]⎯
+
+ FAIL  src/components/__tests__/us28-more-lifts.test.tsx > US-28 more lifts > us28_overhead_press_has_a_label_and_noun
+ FAIL  src/components/__tests__/us28-more-lifts.test.tsx > US-28 more lifts > us28_romanian_deadlift_has_a_label_and_noun
+AssertionError: expected false to be true // Object.is equality
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[32m- true[39m
+[31m+ false[39m
+
+ ❯ src/components/__tests__/us28-more-lifts.test.tsx:32:24
+     30| 
+     31|   it.each(NEW_LIFTS)("us28_%s_has_a_label_and_noun", (id, label, noun)…
+     32|     expect(isLift(id)).toBe(true);
+       |                        ^
+     33|     expect(liftLabel(id as Lift)).toBe(label);
+     34|     expect(liftNoun(id as Lift)).toBe(noun);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/10]⎯
+
+ FAIL  src/components/__tests__/us28-more-lifts.test.tsx > US-28 more lifts > us28_overhead_press_filming_guide_covers_view_phone_height_distance_and_framing
+ FAIL  src/components/__tests__/us28-more-lifts.test.tsx > US-28 more lifts > us28_romanian_deadlift_filming_guide_covers_view_phone_height_distance_and_framing
+TypeError: Cannot read properties of undefined (reading 'tips')
+ ❯ src/components/__tests__/us28-more-lifts.test.tsx:39:77
+     37| 
+     38|   it.each(NEW_LIFTS)("us28_%s_filming_guide_covers_view_phone_height_d…
+     39|     const tips = (FILMING_GUIDES as Record<string, { tips: string[] }>…
+       |                                                                             ^
+     40|     expect(tips).toMatch(/side view/i);
+     41|     expect(tips).toMatch(/height/i);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/10]⎯
+
+ FAIL  src/components/__tests__/us28-more-lifts.test.tsx > US-28 more lifts > us28_overhead_press_filming_guide_has_its_own_example_frame
+ FAIL  src/components/__tests__/us28-more-lifts.test.tsx > US-28 more lifts > us28_romanian_deadlift_filming_guide_has_its_own_example_frame
+TypeError: Cannot read properties of undefined (reading 'image')
+ ❯ src/components/__tests__/us28-more-lifts.test.tsx:48:18
+     46|   it.each(NEW_LIFTS)("us28_%s_filming_guide_has_its_own_example_frame"…
+     47|     const guide = (FILMING_GUIDES as Record<string, { image: string; i…
+     48|     expect(guide.image).toBe(`/framing/${id}.svg`);
+       |                  ^
+     49|     expect(existsSync(path.join(process.cwd(), "public", guide.image))…
+     50|     render(<FilmingGuide lift={id as Lift} onClose={vi.fn()} />);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/10]⎯
+
+ FAIL  src/components/__tests__/us28-more-lifts.test.tsx > US-28 more lifts > us28_new_lift_tips_differ_from_the_existing_lifts
+TypeError: Cannot read properties of undefined (reading 'tips')
+ ❯ src/components/__tests__/us28-more-lifts.test.tsx:57:34
+     55|   it("us28_new_lift_tips_differ_from_the_existing_lifts", () => {
+     56|     const guides = FILMING_GUIDES as Record<string, { tips: string[] }…
+     57|     expect(guides.overhead_press.tips).not.toEqual(guides.bench_press.…
+       |                                  ^
+     58|     expect(guides.romanian_deadlift.tips).not.toEqual(guides.deadlift.…
+     59|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/10]⎯
+
+
+ Test Files  1 failed | 1 passed (2)
+      Tests  10 failed | 5 passed (15)
+   Start at  22:41:57
+   Duration  2.06s (transform 231ms, setup 456ms, collect 357ms, tests 675ms, environment 1.80s, prepare 166ms)
+
+
+===== Browser (Playwright) red run: npx playwright test us28 =====
+[WebServer] INFO:     Started server process [1992]
+[WebServer] INFO:     Waiting for application startup.
+[WebServer] INFO:     Application startup complete.
+[WebServer] INFO:     Uvicorn running on http://127.0.0.1:8765 (Press CTRL+C to quit)
+
+Running 4 tests using 1 worker
+
+  ✘  1 e2e/us28-more-lifts.spec.ts:16:7 › us28_overhead_press_filming_guide_fits_375px_without_sideways_scroll (1.0m)
+  ✘  2 e2e/us28-more-lifts.spec.ts:29:7 › us28_overhead_press_upload_gets_a_top_fix_cue_annotated_frame_and_rep_breakdown (1.0m)
+  ✘  3 e2e/us28-more-lifts.spec.ts:16:7 › us28_romanian_deadlift_filming_guide_fits_375px_without_sideways_scroll (1.0m)
+  ✘  4 e2e/us28-more-lifts.spec.ts:29:7 › us28_romanian_deadlift_upload_gets_a_top_fix_cue_annotated_frame_and_rep_breakdown (1.0m)
+
+
+  1) e2e/us28-more-lifts.spec.ts:16:7 › us28_overhead_press_filming_guide_fits_375px_without_sideways_scroll 
+
+    Test timeout of 60000ms exceeded.
+
+    Error: locator.check: Test timeout of 60000ms exceeded.
+    Call log:
+      - waiting for getByLabel('Overhead Press', { exact: true })
+
+
+      16 |   test(`us28_${slug}_filming_guide_fits_375px_without_sideways_scroll`, async ({ page }) => {
+      17 |     await signUp(page);
+    > 18 |     await page.getByLabel(lift.label, { exact: true }).check();
+         |                                                        ^
+      19 |     const guide = page.getByRole("dialog", { name: `Filming tips: ${lift.label}` });
+      20 |     await expect(guide).toBeVisible();
+      21 |     await expect(guide.getByRole("img")).toBeVisible();
+        at frontend/e2e/us28-more-lifts.spec.ts:18:56
+
+    Error Context: test-results/us28-more-lifts-us28-overh-2be54-5px-without-sideways-scroll/error-context.md
+
+  2) e2e/us28-more-lifts.spec.ts:29:7 › us28_overhead_press_upload_gets_a_top_fix_cue_annotated_frame_and_rep_breakdown 
+
+    Test timeout of 60000ms exceeded.
+
+    Error: locator.check: Test timeout of 60000ms exceeded.
+    Call log:
+      - waiting for getByLabel('Overhead Press', { exact: true })
+
+
+       at helpers.ts:23
+
+      21 | export async function uploadSet(page: Page, { filename = "set.mp4", lift = "Squat", note = "" } = {}) {
+      22 |   await page.goto("/upload");
+    > 23 |   await page.getByLabel(lift, { exact: true }).check();
+         |                                                ^
+      24 |   await page.getByRole("button", { name: "Got it" }).click();
+      25 |   if (note) await page.getByLabel("Anything we should know? (optional)").fill(note);
+      26 |   await page.getByLabel("Video of your set").setInputFiles({ name: filename, mimeType: "video/mp4", buffer: CLIP });
+        at uploadSet (frontend/e2e/helpers.ts:23:48)
+        at frontend/e2e/us28-more-lifts.spec.ts:31:5
+
+    Error Context: test-results/us28-more-lifts-us28-overh-52c2c-ted-frame-and-rep-breakdown/error-context.md
+
+  3) e2e/us28-more-lifts.spec.ts:16:7 › us28_romanian_deadlift_filming_guide_fits_375px_without_sideways_scroll 
+
+    Test timeout of 60000ms exceeded.
+
+    Error: locator.check: Test timeout of 60000ms exceeded.
+    Call log:
+      - waiting for getByLabel('Romanian Deadlift', { exact: true })
+
+
+      16 |   test(`us28_${slug}_filming_guide_fits_375px_without_sideways_scroll`, async ({ page }) => {
+      17 |     await signUp(page);
+    > 18 |     await page.getByLabel(lift.label, { exact: true }).check();
+         |                                                        ^
+      19 |     const guide = page.getByRole("dialog", { name: `Filming tips: ${lift.label}` });
+      20 |     await expect(guide).toBeVisible();
+      21 |     await expect(guide.getByRole("img")).toBeVisible();
+        at frontend/e2e/us28-more-lifts.spec.ts:18:56
+
+    Error Context: test-results/us28-more-lifts-us28-roman-fedea-5px-without-sideways-scroll/error-context.md
+
+  4) e2e/us28-more-lifts.spec.ts:29:7 › us28_romanian_deadlift_upload_gets_a_top_fix_cue_annotated_frame_and_rep_breakdown 
+
+    Test timeout of 60000ms exceeded.
+
+    Error: locator.check: Test timeout of 60000ms exceeded.
+    Call log:
+      - waiting for getByLabel('Romanian Deadlift', { exact: true })
+
+
+       at helpers.ts:23
+
+      21 | export async function uploadSet(page: Page, { filename = "set.mp4", lift = "Squat", note = "" } = {}) {
+      22 |   await page.goto("/upload");
+    > 23 |   await page.getByLabel(lift, { exact: true }).check();
+         |                                                ^
+      24 |   await page.getByRole("button", { name: "Got it" }).click();
+      25 |   if (note) await page.getByLabel("Anything we should know? (optional)").fill(note);
+      26 |   await page.getByLabel("Video of your set").setInputFiles({ name: filename, mimeType: "video/mp4", buffer: CLIP });
+        at uploadSet (frontend/e2e/helpers.ts:23:48)
+        at frontend/e2e/us28-more-lifts.spec.ts:31:5
+
+    Error Context: test-results/us28-more-lifts-us28-roman-25091-ted-frame-and-rep-breakdown/error-context.md
+
+  4 failed
+    e2e/us28-more-lifts.spec.ts:16:7 › us28_overhead_press_filming_guide_fits_375px_without_sideways_scroll 
+    e2e/us28-more-lifts.spec.ts:29:7 › us28_overhead_press_upload_gets_a_top_fix_cue_annotated_frame_and_rep_breakdown 
+    e2e/us28-more-lifts.spec.ts:16:7 › us28_romanian_deadlift_filming_guide_fits_375px_without_sideways_scroll 
+    e2e/us28-more-lifts.spec.ts:29:7 › us28_romanian_deadlift_upload_gets_a_top_fix_cue_annotated_frame_and_rep_breakdown 

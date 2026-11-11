@@ -1,0 +1,211 @@
+FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF......FFFF........... [ 52%]
+.................................................................        [100%]
+=================================== FAILURES ===================================
+E   AssertionError: assert ('squat', 'de...'bench_press') == ('squat', 'de...ian_deadlift')
+      
+      Right contains 2 more items, first extra item: 'overhead_press'
+      Use -v to get more diff
+backend/tests/test_us28_more_lifts.py:64: AssertionError: assert ('squat', 'de...'bench_press') == ('squat', 'de...ian_deadlift')
+E   AssertionError: {"detail":"Choose squat, deadlift or bench_press"}
+backend/tests/helpers.py:33: AssertionError: {"detail":"Choose squat, deadlift or bench_press"}
+E   AssertionError: {"detail":"Choose squat, deadlift or bench_press"}
+backend/tests/helpers.py:33: AssertionError: {"detail":"Choose squat, deadlift or bench_press"}
+E   KeyError: 'overhead_press'
+backend/app/testing/synthetic.py:179: KeyError: 'overhead_press'
+E   KeyError: 'overhead_press'
+backend/app/testing/synthetic.py:179: KeyError: 'overhead_press'
+E   KeyError: 'overhead_press'
+backend/app/testing/synthetic.py:179: KeyError: 'overhead_press'
+E   KeyError: 'overhead_press'
+backend/app/testing/synthetic.py:179: KeyError: 'overhead_press'
+E   KeyError: 'overhead_press'
+backend/app/testing/synthetic.py:179: KeyError: 'overhead_press'
+E   KeyError: 'romanian_deadlift'
+backend/app/testing/synthetic.py:179: KeyError: 'romanian_deadlift'
+E   KeyError: 'romanian_deadlift'
+backend/app/testing/synthetic.py:179: KeyError: 'romanian_deadlift'
+E   KeyError: 'romanian_deadlift'
+backend/app/testing/synthetic.py:179: KeyError: 'romanian_deadlift'
+E   KeyError: 'romanian_deadlift'
+backend/app/testing/synthetic.py:179: KeyError: 'romanian_deadlift'
+E   KeyError: 'romanian_deadlift'
+backend/app/testing/synthetic.py:179: KeyError: 'romanian_deadlift'
+E   KeyError: 'overhead_press'
+backend/app/testing/synthetic.py:179: KeyError: 'overhead_press'
+E   KeyError: 'romanian_deadlift'
+backend/app/testing/synthetic.py:179: KeyError: 'romanian_deadlift'
+E   KeyError: 'overhead_press'
+backend/app/testing/synthetic.py:179: KeyError: 'overhead_press'
+E   KeyError: 'overhead_press'
+backend/app/testing/synthetic.py:179: KeyError: 'overhead_press'
+E   KeyError: 'overhead_press'
+backend/app/testing/synthetic.py:179: KeyError: 'overhead_press'
+E   KeyError: 'romanian_deadlift'
+backend/app/testing/synthetic.py:179: KeyError: 'romanian_deadlift'
+E   KeyError: 'romanian_deadlift'
+backend/app/testing/synthetic.py:179: KeyError: 'romanian_deadlift'
+E   KeyError: 'overhead_press'
+backend/tests/test_us28_more_lifts.py:174: KeyError: 'overhead_press'
+E   KeyError: 'romanian_deadlift'
+backend/tests/test_us28_more_lifts.py:174: KeyError: 'romanian_deadlift'
+E   KeyError: 'overhead_press'
+backend/app/testing/synthetic.py:179: KeyError: 'overhead_press'
+E   KeyError: 'overhead_press'
+backend/app/testing/synthetic.py:179: KeyError: 'overhead_press'
+E   KeyError: 'overhead_press'
+backend/app/testing/synthetic.py:179: KeyError: 'overhead_press'
+E   KeyError: 'romanian_deadlift'
+backend/app/testing/synthetic.py:179: KeyError: 'romanian_deadlift'
+E   KeyError: 'romanian_deadlift'
+backend/app/testing/synthetic.py:179: KeyError: 'romanian_deadlift'
+E   KeyError: 'romanian_deadlift'
+backend/app/testing/synthetic.py:179: KeyError: 'romanian_deadlift'
+E   KeyError: 'overhead_press'
+backend/app/testing/synthetic.py:179: KeyError: 'overhead_press'
+E   KeyError: 'romanian_deadlift'
+backend/app/testing/synthetic.py:179: KeyError: 'romanian_deadlift'
+E   KeyError: 'overhead_press'
+backend/app/testing/synthetic.py:179: KeyError: 'overhead_press'
+E   KeyError: 'romanian_deadlift'
+backend/app/testing/synthetic.py:179: KeyError: 'romanian_deadlift'
+E   KeyError: 'overhead_press'
+backend/app/testing/synthetic.py:179: KeyError: 'overhead_press'
+E   KeyError: 'romanian_deadlift'
+backend/app/testing/synthetic.py:179: KeyError: 'romanian_deadlift'
+E   AssertionError: assert {'back_roundi...ngle_min_deg'} <= {'elbow_angle..., 'rep_count'}
+      
+      Extra items in the left set:
+      'hip_angle_min_deg'
+      'back_rounding_deg'
+      'knee_angle_min_deg'
+backend/tests/test_us28_more_lifts.py:217: AssertionError: assert {'back_roundi...ngle_min_deg'} <= {'elbow_angle..., 'rep_count'}
+E   KeyError: 'overhead_press'
+backend/tests/test_us28_more_lifts.py:228: KeyError: 'overhead_press'
+E   AssertionError: assert 404 == 200
+     +  where 404 = <Response [404 Not Found]>.status_code
+     +    where <Response [404 Not Found]> = patch('/admin/faults/romanian_deadlift/knees_bend_too_much', headers={'Authorization': 'Bearer ayzBGnq92dM46kmp1OWNeRMVyuXE_HzH'}, json={'enabled': False})
+     +      where patch = <starlette.testclient.TestClient object at 0x7f913bb17490>.patch
+backend/tests/test_us28_more_lifts.py:237: AssertionError: assert 404 == 200
+E   KeyError: 'overhead_press'
+backend/tests/test_us28_more_lifts.py:260: KeyError: 'overhead_press'
+E   KeyError: 'overhead_press'
+backend/app/testing/synthetic.py:179: KeyError: 'overhead_press'
+E   KeyError: 'romanian_deadlift'
+backend/app/testing/synthetic.py:179: KeyError: 'romanian_deadlift'
+E   KeyError: 'overhead_press'
+backend/app/testing/synthetic.py:179: KeyError: 'overhead_press'
+E   KeyError: 'romanian_deadlift'
+backend/app/testing/synthetic.py:179: KeyError: 'romanian_deadlift'
+E   KeyError: 'overhead_press'
+backend/app/testing/synthetic.py:179: KeyError: 'overhead_press'
+E   KeyError: 'overhead_press'
+backend/app/testing/synthetic.py:179: KeyError: 'overhead_press'
+E   KeyError: 'overhead_press'
+backend/app/testing/synthetic.py:179: KeyError: 'overhead_press'
+E   KeyError: 'overhead_press'
+backend/app/testing/synthetic.py:179: KeyError: 'overhead_press'
+E   KeyError: 'romanian_deadlift'
+backend/app/measure.py:397: KeyError: 'romanian_deadlift'
+E   KeyError: 'romanian_deadlift'
+backend/app/testing/synthetic.py:179: KeyError: 'romanian_deadlift'
+E   AssertionError: {"detail":"Choose squat, deadlift or bench_press"}
+backend/tests/helpers.py:33: AssertionError: {"detail":"Choose squat, deadlift or bench_press"}
+E   AssertionError: {"detail":"Choose squat, deadlift or bench_press"}
+backend/tests/helpers.py:33: AssertionError: {"detail":"Choose squat, deadlift or bench_press"}
+E   AssertionError: {"detail":"Choose squat, deadlift or bench_press"}
+backend/tests/helpers.py:33: AssertionError: {"detail":"Choose squat, deadlift or bench_press"}
+E   psycopg.errors.CheckViolation: new row for relation "uploads" violates check constraint "uploads_lift_check"
+    DETAIL:  Failing row contains (e541af41-3bc3-451b-a164-d413ab9736bb, 7c96d65e-bf98-460b-8bc2-bddaa4999cc5, overhead_press, null, 7c96d65e-bf98-460b-8bc2-bddaa4999cc5/e541af41-3bc3-451b-a164-d41..., set.mp4, 2026-11-11 22:41:07.539669+00).
+backend/.venv/lib/python3.13/site-packages/psycopg/cursor.py:117: psycopg.errors.CheckViolation: new row for relation "uploads" violates check constraint "uploads_lift_check"
+E   AssertionError: assert ['deadlift', ...'bench_press'] == ['overhead_pr...ian_deadlift']
+      
+      At index 0 diff: 'deadlift' != 'overhead_press'
+      Use -v to get more diff
+backend/tests/test_us28_more_lifts_repository.py:20: AssertionError: assert ['deadlift', ...'bench_press'] == ['overhead_pr...ian_deadlift']
+E   AssertionError: assert ['deadlift', ...'bench_press'] == ['overhead_pr...ian_deadlift']
+      
+      At index 0 diff: 'deadlift' != 'overhead_press'
+      Use -v to get more diff
+backend/tests/test_us28_more_lifts_repository.py:20: AssertionError: assert ['deadlift', ...'bench_press'] == ['overhead_pr...ian_deadlift']
+E   AssertionError: assert ['Squat', 'De...'Bench Press'] == ['Squat', 'De...ian Deadlift']
+      
+      Right contains 2 more items, first extra item: 'Overhead Press'
+      Use -v to get more diff
+backend/tests/test_us02_lift.py:11: AssertionError: assert ['Squat', 'De...'Bench Press'] == ['Squat', 'De...ian Deadlift']
+=============================== warnings summary ===============================
+tests/test_us25_fault_repository.py::test_us25_repo_saves_new_faults_after_the_lifts_existing_ones[postgres]
+  backend/.venv/lib/python3.13/site-packages/_pytest/unraisableexception.py:63: PytestUnraisableExceptionWarning: Exception ignored in: <function ConnectionPool.__del__ at 0x7f913939a0c0>
+  
+  Traceback (most recent call last):
+    File "backend/.venv/lib/python3.13/site-packages/psycopg_pool/pool.py", line 126, in __del__
+      gather(*workers, timeout=5.0, timeout_hint=hint)
+      ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    File "backend/.venv/lib/python3.13/site-packages/psycopg_pool/_acompat.py", line 160, in gather
+      t.join(timeout)
+      ~~~~~~^^^^^^^^^
+    File "/usr/local/lib/python3.13/threading.py", line 1088, in join
+      raise RuntimeError("cannot join current thread")
+  RuntimeError: cannot join current thread
+  
+  Enable tracemalloc to get traceback where the object was allocated.
+  See https://docs.pytest.org/en/stable/how-to/capture-warnings.html#resource-warnings for more info.
+    warnings.warn(pytest.PytestUnraisableExceptionWarning(msg))
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/test_us28_more_lifts.py::test_us28_backend_knows_the_two_new_lifts_after_the_existing_three
+FAILED tests/test_us28_more_lifts.py::test_us28_uploads_of_the_new_lifts_are_saved_and_analyzed_as_that_lift[overhead_press-ohp.mp4]
+FAILED tests/test_us28_more_lifts.py::test_us28_uploads_of_the_new_lifts_are_saved_and_analyzed_as_that_lift[romanian_deadlift-rdl.mp4]
+FAILED tests/test_us28_more_lifts.py::test_us28_overhead_press_reps_counted_from_the_wrists_above_the_shoulders[1]
+FAILED tests/test_us28_more_lifts.py::test_us28_overhead_press_reps_counted_from_the_wrists_above_the_shoulders[3]
+FAILED tests/test_us28_more_lifts.py::test_us28_overhead_press_reps_counted_from_the_wrists_above_the_shoulders[6]
+FAILED tests/test_us28_more_lifts.py::test_us28_overhead_press_height_signal_runs_from_the_rack_to_lockout
+FAILED tests/test_us28_more_lifts.py::test_us28_overhead_press_rep_turns_at_lockout
+FAILED tests/test_us28_more_lifts.py::test_us28_rdl_reps_counted_from_the_hip_hinge[1]
+FAILED tests/test_us28_more_lifts.py::test_us28_rdl_reps_counted_from_the_hip_hinge[3]
+FAILED tests/test_us28_more_lifts.py::test_us28_rdl_reps_counted_from_the_hip_hinge[6]
+FAILED tests/test_us28_more_lifts.py::test_us28_rdl_hips_barely_drop_so_hip_height_alone_finds_no_reps
+FAILED tests/test_us28_more_lifts.py::test_us28_rdl_rep_turns_at_the_bottom_of_the_hinge
+FAILED tests/test_us28_more_lifts.py::test_us28_a_final_rep_that_never_finishes_is_not_counted[overhead_press]
+FAILED tests/test_us28_more_lifts.py::test_us28_a_final_rep_that_never_finishes_is_not_counted[romanian_deadlift]
+FAILED tests/test_us28_more_lifts.py::test_us28_overhead_press_lockout_and_rack_elbow_angles_match_hand_calculation
+FAILED tests/test_us28_more_lifts.py::test_us28_overhead_press_backward_lean_matches_hand_calculation
+FAILED tests/test_us28_more_lifts.py::test_us28_overhead_press_bar_drift_matches_hand_calculation
+FAILED tests/test_us28_more_lifts.py::test_us28_rdl_knee_angle_matches_hand_calculation
+FAILED tests/test_us28_more_lifts.py::test_us28_rdl_back_rounding_and_bar_drift_match_hand_calculation
+FAILED tests/test_us28_more_lifts.py::test_us28_each_new_lift_has_three_side_view_faults_with_one_safety_fault_first[overhead_press]
+FAILED tests/test_us28_more_lifts.py::test_us28_each_new_lift_has_three_side_view_faults_with_one_safety_fault_first[romanian_deadlift]
+FAILED tests/test_us28_more_lifts.py::test_us28_faults_are_confirmed_only_on_the_reps_that_cross_the_threshold[overhead_press-faulty0-expected0]
+FAILED tests/test_us28_more_lifts.py::test_us28_faults_are_confirmed_only_on_the_reps_that_cross_the_threshold[overhead_press-faulty1-expected1]
+FAILED tests/test_us28_more_lifts.py::test_us28_faults_are_confirmed_only_on_the_reps_that_cross_the_threshold[overhead_press-faulty2-expected2]
+FAILED tests/test_us28_more_lifts.py::test_us28_faults_are_confirmed_only_on_the_reps_that_cross_the_threshold[romanian_deadlift-faulty3-expected3]
+FAILED tests/test_us28_more_lifts.py::test_us28_faults_are_confirmed_only_on_the_reps_that_cross_the_threshold[romanian_deadlift-faulty4-expected4]
+FAILED tests/test_us28_more_lifts.py::test_us28_faults_are_confirmed_only_on_the_reps_that_cross_the_threshold[romanian_deadlift-faulty5-expected5]
+FAILED tests/test_us28_more_lifts.py::test_us28_faults_are_confirmed_only_on_the_reps_that_cross_the_threshold[overhead_press-faulty6-expected6]
+FAILED tests/test_us28_more_lifts.py::test_us28_faults_are_confirmed_only_on_the_reps_that_cross_the_threshold[romanian_deadlift-faulty7-expected7]
+FAILED tests/test_us28_more_lifts.py::test_us28_new_lift_faults_need_a_side_view[overhead_press]
+FAILED tests/test_us28_more_lifts.py::test_us28_new_lift_faults_need_a_side_view[romanian_deadlift]
+FAILED tests/test_us28_more_lifts.py::test_us28_metric_registry_matches_the_measurements_of_the_new_lifts[overhead_press]
+FAILED tests/test_us28_more_lifts.py::test_us28_metric_registry_matches_the_measurements_of_the_new_lifts[romanian_deadlift]
+FAILED tests/test_us28_more_lifts.py::test_us28_comparisons_show_leg_angles_for_the_rdl_and_the_elbow_for_the_press
+FAILED tests/test_us28_more_lifts.py::test_us28_admin_fault_list_shows_the_new_lifts_and_their_faults
+FAILED tests/test_us28_more_lifts.py::test_us28_disabling_a_new_fault_removes_it_from_the_prompt_and_the_validator_rejects_it
+FAILED tests/test_us28_more_lifts.py::test_us28_migration_seeds_the_new_faults_and_allows_the_new_lifts
+FAILED tests/test_us28_more_lifts.py::test_us28_validator_accepts_a_correct_reply_and_rejects_a_wrong_rep_count_for_each_new_lift
+FAILED tests/test_us28_more_lifts.py::test_us28_validator_rejects_a_new_lift_fault_on_a_rep_where_it_wasnt_measured
+FAILED tests/test_us28_more_lifts.py::test_us28_validator_puts_the_new_safety_faults_first
+FAILED tests/test_us28_more_lifts.py::test_us28_validator_rejects_feedback_that_names_the_wrong_lift
+FAILED tests/test_us28_more_lifts.py::test_us28_an_overhead_press_uploaded_as_another_lift_is_analyzed_as_an_overhead_press[squat]
+FAILED tests/test_us28_more_lifts.py::test_us28_an_overhead_press_uploaded_as_another_lift_is_analyzed_as_an_overhead_press[deadlift]
+FAILED tests/test_us28_more_lifts.py::test_us28_an_overhead_press_uploaded_as_another_lift_is_analyzed_as_an_overhead_press[bench_press]
+FAILED tests/test_us28_more_lifts.py::test_us28_an_overhead_press_uploaded_as_another_lift_is_analyzed_as_an_overhead_press[romanian_deadlift]
+FAILED tests/test_us28_more_lifts.py::test_us28_rdl_and_deadlift_keep_the_selected_lift_because_pose_alone_cant_tell_them_apart[romanian_deadlift-deadlift]
+FAILED tests/test_us28_more_lifts.py::test_us28_rdl_and_deadlift_keep_the_selected_lift_because_pose_alone_cant_tell_them_apart[deadlift-romanian_deadlift]
+FAILED tests/test_us28_more_lifts.py::test_us28_correction_loop_fixes_a_wrong_lift_reply_for_a_new_lift
+FAILED tests/test_us28_more_lifts.py::test_us28_new_lifts_get_a_top_fix_cue_annotated_frame_and_rep_breakdown[overhead_press-ohp.mp4-incomplete_lockout-Elbow 150\xb0-reps0]
+FAILED tests/test_us28_more_lifts.py::test_us28_new_lifts_get_a_top_fix_cue_annotated_frame_and_rep_breakdown[romanian_deadlift-rdl.mp4-knees_bend_too_much-Knee 125\xb0-reps1]
+FAILED tests/test_us28_more_lifts_repository.py::test_us28_repo_stores_uploads_analyses_and_removals_of_the_new_lifts[postgres]
+FAILED tests/test_us28_more_lifts_repository.py::test_us28_repo_seeds_the_new_faults_after_the_existing_ones[memory]
+FAILED tests/test_us28_more_lifts_repository.py::test_us28_repo_seeds_the_new_faults_after_the_existing_ones[postgres]
+FAILED tests/test_us02_lift.py::test_us02_backend_knows_the_supported_lifts
+55 failed, 82 passed, 1 warning in 3.04s

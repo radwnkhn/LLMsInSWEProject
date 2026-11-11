@@ -5,9 +5,10 @@ from app.lifts import LIFT_LABELS, LIFTS
 from tests.helpers import signup, upload, upload_ok
 
 
-def test_us02_backend_knows_exactly_three_lifts():
-    assert LIFTS == ("squat", "deadlift", "bench_press")
-    assert [LIFT_LABELS[l] for l in LIFTS] == ["Squat", "Deadlift", "Bench Press"]
+def test_us02_backend_knows_the_supported_lifts():
+    # US-28 added overhead press and Romanian deadlift after the original three ("exactly three" before US-28).
+    assert LIFTS[:3] == ("squat", "deadlift", "bench_press")
+    assert [LIFT_LABELS[l] for l in LIFTS] == ["Squat", "Deadlift", "Bench Press", "Overhead Press", "Romanian Deadlift"]
 
 
 # ---- [integration] the selected lift is saved with the upload and passed to the analysis ----
@@ -25,7 +26,7 @@ def test_us02_selected_lift_saved_and_passed_to_analysis(client, services, lift,
 
 # ---- [integration] any other lift value is rejected with 422 ----
 
-@pytest.mark.parametrize("lift", ["overhead_press", "", "Squat", "SQUAT", "bench", "squat "])
+@pytest.mark.parametrize("lift", ["front_squat", "", "Squat", "SQUAT", "bench", "squat ", "Overhead Press"])
 def test_us02_other_lift_values_rejected(client, services, lift):
     headers, _ = signup(client)
     r = upload(client, headers, lift=lift)

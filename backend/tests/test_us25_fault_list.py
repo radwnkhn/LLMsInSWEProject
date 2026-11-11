@@ -16,6 +16,7 @@ from fastapi.testclient import TestClient
 
 from app import faults
 from app.faults import FAULTS
+from app.lifts import LIFTS
 from app.llm.prompt import build_payload
 from app.llm.schema import coach_output_json_schema
 from app.main import create_app
@@ -27,7 +28,8 @@ from app.testing.fakes import RuleFollowingLLM, ScriptedLLM
 from app.validator import build_validation_context, validate
 from tests.helpers import coach_output, make_admin, signup, upload_ok
 
-ALPHA_FAULTS = [f for lift in ("squat", "deadlift", "bench_press") for f in FAULTS[lift]]
+# Every seeded default fault: the Alpha lifts, plus the two US-28 lifts.
+ALPHA_FAULTS = [f for lift in FAULTS for f in FAULTS[lift]]
 NEW_FAULT = {"lift": "squat", "id": "knees_stay_bent", "name": "Knees stay bent at the bottom", "short_name": "knee bend",
              "category": "technique", "metric": "knee_angle_min_deg", "threshold": 179, "direction": "below"}
 
@@ -54,7 +56,7 @@ def test_us25_admin_fault_list_shows_every_fault_per_lift(client, admin):
     r = client.get("/admin/faults", headers=admin)
     assert r.status_code == 200, r.text
     lifts = {group["lift"]: group for group in r.json()["lifts"]}
-    assert list(lifts) == ["squat", "deadlift", "bench_press"]
+    assert list(lifts) == list(LIFTS)  # every lift, including the US-28 lifts
     assert lifts["bench_press"]["lift_label"] == "Bench Press"
     for lift, group in lifts.items():
         assert [f["id"] for f in group["faults"]] == [f.id for f in FAULTS[lift]]

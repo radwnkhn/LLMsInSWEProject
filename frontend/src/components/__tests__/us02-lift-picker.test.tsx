@@ -9,11 +9,11 @@ import { videoFile } from "@/test/fixtures";
 const okUpload = () => vi.fn().mockResolvedValue({ analysis_id: "a1" });
 
 describe("US-02 choose the lift before uploading", () => {
-  it("us02_lift_picker_offers_exactly_three_options", () => {
+  it("us02_lift_picker_offers_the_supported_lifts", () => {
+    // US-28 added Overhead Press and Romanian Deadlift after the original three ("exactly three" before US-28).
     render(<LiftPicker value={null} onChange={vi.fn()} />);
     const options = screen.getAllByRole("radio");
-    expect(options).toHaveLength(3);
-    expect(options.map((o) => o.closest("label")?.textContent?.trim())).toEqual(["Squat", "Deadlift", "Bench Press"]);
+    expect(options.map((o) => o.closest("label")?.textContent?.trim()).slice(0, 3)).toEqual(["Squat", "Deadlift", "Bench Press"]);
   });
 
   it("us02_lift_picker_reports_the_lift_id", async () => {
