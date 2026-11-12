@@ -1,0 +1,25 @@
+$ npx vitest run src/components/__tests__/us24-thresholds.test.tsx src/components/__tests__/us25-fault-list.test.tsx
+ ✓ src/components/__tests__/us25-fault-list.test.tsx (9 tests) 836ms
+   × US-24 threshold editing > us24_edit_form_shows_the_current_threshold_with_its_unit_and_allowed_range 145ms
+   × US-24 threshold editing > us24_saving_sends_the_new_threshold_and_shows_the_new_rule 25ms
+   × US-24 threshold editing > us24_saving_without_changing_the_threshold_does_not_send_it 23ms
+   × US-24 threshold editing > us24_invalid_threshold__is_rejected_before_saving 22ms
+   × US-24 threshold editing > us24_invalid_threshold_181_is_rejected_before_saving 23ms
+   × US-24 threshold editing > us24_invalid_threshold_-1_is_rejected_before_saving 18ms
+   × US-24 threshold editing > us24_ratio_thresholds_use_their_own_range 19ms
+   × US-24 threshold editing > us24_a_threshold_the_api_rejects_shows_its_reason 17ms
+   × US-24 threshold change log > us24_change_log_lists_who_changed_what_when_from_and_to 1007ms
+   × US-24 threshold change log > us24_change_log_says_when_there_are_no_changes 1018ms
+   × US-24 threshold change log > us24_saving_a_threshold_refreshes_the_change_log 35ms
+   × US-24 threshold change log > us24_ratio_changes_are_shown_without_a_degree_sign 1014ms
+⎯⎯⎯⎯⎯⎯ Failed Tests 12 ⎯⎯⎯⎯⎯⎯⎯
+ Test Files  1 failed | 1 passed (2)
+      Tests  12 failed | 9 passed (21)
+$ npx playwright test e2e/us24-thresholds.spec.ts
+  ✘  1 e2e/us24-thresholds.spec.ts:25:5 › us24_admin_changes_a_threshold_it_is_logged_and_only_new_analyses_use_it (1.0m)
+  1) e2e/us24-thresholds.spec.ts:25:5 › us24_admin_changes_a_threshold_it_is_logged_and_only_new_analyses_use_it 
+    Error: locator.fill: Test timeout of 60000ms exceeded.
+      - waiting for getByRole('region', { name: 'Squat faults', exact: true }).getByLabel(/^Threshold/)
+    Error Context: test-results/us24-thresholds-us24-admin-98ba6-nd-only-new-analyses-use-it/error-context.md
+  1 failed
+    e2e/us24-thresholds.spec.ts:25:5 › us24_admin_changes_a_threshold_it_is_logged_and_only_new_analyses_use_it 
