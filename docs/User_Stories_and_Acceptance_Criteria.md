@@ -417,6 +417,27 @@ admins. Other users' data is preserved. Queued/processing analyses must finish f
 clear message asks the user to wait and retry. Failures never produce a false success, and incomplete
 cleanup can be retried. Both dialogs explain permanence and provide Cancel; account deletion is in Settings.
 
+### [US-24] Adjust fault thresholds
+
+GitHub issue: [#26](https://github.com/radwnkhn/LLMsInSWEProject/issues/26)
+
+As an **admin**, I want to change fault thresholds (such as degrees of knee cave) without changing code, so
+that we can tune accuracy based on trainer feedback.
+
+#### Acceptance criteria
+- [ ] [unit] [integration] [e2e] An admin can change a fault's threshold on the admin fault list page, and the new value is saved in the fault list in the database (Postgres in production, in memory in tests).
+- [ ] [unit] [integration] A changed threshold applies only to analyses started after the change: earlier results keep the faults they reported, and the next analysis confirms faults against the new value.
+- [ ] [integration] [e2e] Every threshold change is logged with who made it, when, and the old and new values, and the log is shown on the fault list page.
+- [ ] [unit] [integration] [e2e] Invalid values are rejected and nothing is saved or logged: a missing or non-numeric value, a value that isn't finite, and a value outside the measurement's range (0 to 180 for angles, -1 to 1 for hip depth, 0 to 2 for other ratios).
+- [ ] [integration] Non-admin users get 403 when changing a threshold and on the threshold change log.
+
+Thresholds live in the `threshold` column of the US-25 fault list, so this story adds editing and a change
+log rather than new storage. Each analysis already takes a snapshot of the fault list when it starts, so a
+change made while an analysis runs applies from the next one. Saving the current value again changes nothing
+and isn't logged. The same range check applies when an admin adds a fault (US-25). Comparisons (US-20) judge
+both uploads against today's thresholds, so the two uploads are measured by the same rule; saved results are
+never recomputed.
+
 ### [US-25] Manage the fault list
 
 GitHub issue: [#27](https://github.com/radwnkhn/LLMsInSWEProject/issues/27)
