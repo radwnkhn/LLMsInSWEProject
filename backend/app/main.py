@@ -30,6 +30,7 @@ from app.grading import (MAX_SAMPLE, NO_FAULT, STATUS_LABELS, VERDICTS, assignme
                          fault_choice, our_feedback, our_top_fault, sample_for_grading)
 from app.history import history_item, status_label
 from app.lifts import LIFT_LABELS, LIFTS
+from app.metrics import build_metrics, seven_day_return
 from app.moderation import MAX_REMOVAL_NOTE_LENGTH, REMOVAL_REASONS, daily_usage, removed_detail
 from app.pricing import AttemptUsage, summarize_costs
 from app.repository import AdminAnalysisRow
@@ -541,6 +542,19 @@ def create_app(services: Services) -> FastAPI:
         removals = sum(1 for m in services.repo.list_moderation_entries()
                        if m.removed_at and since <= m.removed_at < until)
         return {"start": first.isoformat(), "end": last.isoformat(), **report, "removals": removals}
+
+    @app.get("/admin/metrics")
+    def admin_metrics(start: str | None = None, end: str | None = None, user: AuthUser = Depends(admin_user)):
+        """US-23: the hypothesis metrics for analyses (and first uploads) between start and end (inclusive UTC dates)."""
+        first, last, since, until = _report_range(start, end)
+        feedback = services.repo.list_feedback_between(since, until)
+        uploads = services.repo.list_upload_times()
+        now = datetime.now(timezone.utc)
+        items = build_metrics(verdicts=services.repo.list_graded_verdicts(since, until),
+                              ratings=[f.rating for f in feedback], tried=[f.tried_cue for f in feedback],
+                              uploads=uploads, since=since, until=until, now=now)
+        return {"start": first.isoformat(), "end": last.isoformat(), "metrics": items,
+                "pending_returns": seven_day_return(uploads, since, until, now)[2]}
 
     @app.get("/admin/uploads")
     def admin_uploads(start: str | None = None, end: str | None = None, lift: str | None = None,

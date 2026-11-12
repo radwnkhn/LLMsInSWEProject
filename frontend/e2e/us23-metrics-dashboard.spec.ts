@@ -18,7 +18,7 @@ test("us23_admin_sees_the_four_metrics_with_targets_counts_and_a_date_filter", a
   for (const name of METRICS) {
     const card = page.getByRole("region", { name });
     await expect(card).toContainText("Target:");
-    await expect(card).toContainText("Based on");
+    await expect(card).toContainText(/Based on \d+|No data yet/);   // the count, or no data yet on a fresh server
   }
   await expect(page.getByRole("region", { name: "Helpful ratings (4–5)" })).not.toContainText("No data");
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
@@ -31,5 +31,5 @@ test("us23_admin_sees_the_four_metrics_with_targets_counts_and_a_date_filter", a
 
   await page.getByLabel("From").fill("2020-02-01");
   await page.getByRole("button", { name: "Show" }).click();
-  await expect(page.getByRole("alert")).toContainText("on or before the end date");
+  await expect(page.getByRole("main").getByRole("alert")).toContainText("on or before the end date");
 });

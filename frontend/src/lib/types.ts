@@ -265,3 +265,22 @@ export type TrainerAssignment = Omit<TrainerAssignmentItem, "assigned_at"> & {
   verdict: Verdict | null;
   verdict_label: string | null;
 };
+
+// US-23: the hypothesis metrics dashboard.
+export type MetricKey = "trainer_agreement" | "helpful_ratings" | "cue_tried" | "seven_day_return";
+export type MetricStatus = "on_target" | "below_target" | "failing" | "no_data";
+
+export type HypothesisMetric = {
+  key: MetricKey;
+  label: string;
+  value: number | null; // a share from 0 to 1; null with no data
+  hits: number;
+  count: number;
+  basis: string; // e.g. "3 graded sets"
+  target: number;
+  fail_below: number;
+  status: MetricStatus;
+  status_label: string;
+};
+
+export type MetricsReport = { start: string; end: string; metrics: HypothesisMetric[]; pending_returns: number };

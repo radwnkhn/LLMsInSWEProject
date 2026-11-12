@@ -70,7 +70,7 @@ describe("US-23 hypothesis metrics dashboard", () => {
     await renderPage();
     const ret = await card("7-day return");
     expect(ret).toHaveTextContent("—");
-    expect(ret).not.toHaveTextContent("0%");
+    expect(within(ret).queryByText("0%")).not.toBeInTheDocument();   // exact: "50%" in the target line is fine
     expect(ret).toHaveTextContent("No data yet");
   });
 
