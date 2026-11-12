@@ -1,0 +1,1 @@
+  ✓  21 e2e/us22-trainer-grading.spec.ts:5:5 › us22_admin_assigns_a_sample_and_a_trainer_grades_it_blind (1.2s)

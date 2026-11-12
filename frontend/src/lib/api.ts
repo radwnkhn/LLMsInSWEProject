@@ -1,7 +1,8 @@
 import type {
-  AdminDetail, AdminFault, AdminFaultLift, AdminRow, AdminUpload, AnalysisComparison, AnalysisResult, CostSummary,
-  FaultEdit, FeedbackAnswer, HistoryItem, Lift, ModerationEntry, NewFault, RemovalReason, Session, TriedCue,
-  UploadFilters, UsageReport,
+  AdminDetail, AdminFault, AdminFaultLift, AdminGradingAssignment, AdminRow, AdminUpload, AnalysisComparison,
+  AnalysisResult, CostSummary, FaultEdit, FeedbackAnswer, GradingAssignResult, HistoryItem, Lift, ModerationEntry,
+  MetricsReport, NewFault, RemovalReason, Session, Trainer, TrainerAssignment, TrainerAssignmentItem, TriedCue, UploadFilters,
+  UsageReport, Verdict,
 } from "@/lib/types";
 
 export const API_URL = (process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000").replace(/\/$/, "");
@@ -89,6 +90,22 @@ export const api = {
   updateFault: (lift: string, id: string, edit: FaultEdit, token: string | null) => request<AdminFault>(
     `/admin/faults/${encodeURIComponent(lift)}/${encodeURIComponent(id)}`, { method: "PATCH", body: edit, token }),
   addFault: (fault: NewFault, token: string | null) => request<AdminFault>("/admin/faults", { method: "POST", body: fault, token }),
+  adminMetrics: (start: string | null, end: string | null, token: string | null) =>
+    request<MetricsReport>(`/admin/metrics${query({ start, end })}`, { token }),
+  // US-22: blind trainer grading.
+  adminTrainers: (token: string | null) => request<{ items: Trainer[] }>("/admin/trainers", { token }),
+  assignGrading: (trainerId: string, count: number, lift: string | null, token: string | null) =>
+    request<GradingAssignResult>("/admin/grading/assignments", { method: "POST", token,
+      body: lift ? { trainer_id: trainerId, count, lift } : { trainer_id: trainerId, count } }),
+  gradingAssignments: (token: string | null) =>
+    request<{ items: AdminGradingAssignment[] }>("/admin/grading/assignments", { token }),
+  trainerAssignments: (token: string | null) => request<{ items: TrainerAssignmentItem[] }>("/trainer/assignments", { token }),
+  trainerAssignment: (id: string, token: string | null) =>
+    request<TrainerAssignment>(`/trainer/assignments/${encodeURIComponent(id)}`, { token }),
+  answerAssignment: (id: string, faultId: string | null, token: string | null) => request<TrainerAssignment>(
+    `/trainer/assignments/${encodeURIComponent(id)}/answer`, { method: "POST", token, body: { fault_id: faultId } }),
+  gradeAssignment: (id: string, verdict: Verdict, token: string | null) => request<TrainerAssignment>(
+    `/trainer/assignments/${encodeURIComponent(id)}/verdict`, { method: "POST", token, body: { verdict } }),
   health: () => request<{ status: string }>("/health"),
 };
 

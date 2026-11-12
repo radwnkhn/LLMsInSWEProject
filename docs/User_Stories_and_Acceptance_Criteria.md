@@ -417,6 +417,46 @@ admins. Other users' data is preserved. Queued/processing analyses must finish f
 clear message asks the user to wait and retry. Failures never produce a false success, and incomplete
 cleanup can be retried. Both dialogs explain permanence and provide Cancel; account deletion is in Settings.
 
+### [US-22] Blind trainer grading
+
+GitHub issue: [#24](https://github.com/radwnkhn/LLMsInSWEProject/issues/24)
+
+As an **admin**, I want to send a sample of analyzed videos to trainers who grade them before seeing our
+feedback, so that we can measure accuracy without bias.
+
+#### Acceptance criteria
+- [ ] [unit] [integration] [e2e] An admin can assign a random sample of N analyses (1 to 50) to a trainer account, optionally for one lift. Only finished analyses with validated coaching feedback are sampled, never one the trainer already has or the trainer's own upload. If fewer are available, all of them are assigned; if none are, the admin is told.
+- [ ] [integration] [e2e] A trainer sees each assigned video without our feedback and records their own top fault first, chosen from the lift's fault list or "No major issue". Only then is our feedback shown, and the trainer marks it correct, partly correct or wrong. The trainer's own answer can't be changed once our feedback has been shown.
+- [ ] [integration] [e2e] Trainers can't see users' names or emails: trainer pages and endpoints never include the lifter's email, note or file name.
+- [ ] [integration] [e2e] The admin grading page lists every assignment with its trainer, status, the trainer's top fault, our top fault and the grade.
+- [ ] [integration] Only trainers can use the trainer endpoints, and only for their own assignments (another trainer's gets 404). Non-admins get 403 on assigning, the trainer list and the admin grading list.
+
+Trainer accounts are marked like admins: `app_metadata.role = "trainer"` in Supabase (in test mode, sign-ups
+at `@trainer.test`). A trainer shows up in the admin's trainer list once they have signed in. Only analyses
+that passed validation (first try or after a retry) are sampled, because fallback and unanalyzable results
+have no coaching feedback to grade. "Our feedback" is exactly what the lifter was shown. The trainer picks
+from the lift's enabled faults. Deleting or removing an upload also deletes its assignments.
+
+### [US-23] Hypothesis metrics dashboard
+
+GitHub issue: [#25](https://github.com/radwnkhn/LLMsInSWEProject/issues/25)
+
+As an **admin**, I want a dashboard showing accuracy, helpfulness, cue adoption and 7-day return rate against
+their targets, so that we can tell if our hypothesis is holding up.
+
+#### Acceptance criteria
+- [ ] [unit] [integration] [e2e] An admin dashboard shows four hypothesis metrics, each against its target and fail line: trainer agreement, the share of graded sets that trainers marked correct (target 80% or more, fails below 60%); helpful ratings, the share of ratings that are 4 or 5 (70%, below 50%); cue tried, the share of yes answers among lifters who said whether they tried the cue (60%, below 40%); and 7-day return, the share of lifters who uploaded again within 7 days of their first upload (50%, below 30%).
+- [ ] [unit] Each metric is labeled On target, Below target or Failing from its value, or No data when there is nothing to count yet.
+- [ ] [unit] [integration] [e2e] Each metric shows how many data points it is based on.
+- [ ] [unit] [integration] [e2e] The metrics can be filtered by a date range (inclusive UTC dates, the last 30 days by default); an invalid or reversed range is rejected.
+- [ ] [integration] Non-admin users get 403 on the dashboard's endpoint and see "Admins only" on its page.
+
+Trainer agreement comes from US-22 grades. "Partly correct" doesn't count as agreeing. Ratings and cue answers
+come from US-16 feedback; "not yet" isn't counted as an answer about the cue. Grades, ratings and cue answers
+are counted for analyses created in the range. A lifter counts toward 7-day return when their first upload
+falls in the range and is at least 7 days old. Lifters whose first upload is more recent are still waiting
+and are reported separately. Uploads a user or moderator deleted aren't counted.
+
 ### [US-25] Manage the fault list
 
 GitHub issue: [#27](https://github.com/radwnkhn/LLMsInSWEProject/issues/27)
