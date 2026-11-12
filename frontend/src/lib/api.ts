@@ -1,7 +1,7 @@
 import type {
   AdminDetail, AdminFault, AdminFaultLift, AdminGradingAssignment, AdminRow, AdminUpload, AnalysisComparison,
   AnalysisResult, CostSummary, FaultEdit, FeedbackAnswer, GradingAssignResult, HistoryItem, Lift, ModerationEntry,
-  NewFault, RemovalReason, Session, Trainer, TrainerAssignment, TrainerAssignmentItem, TriedCue, UploadFilters,
+  MetricsReport, NewFault, RemovalReason, Session, Trainer, TrainerAssignment, TrainerAssignmentItem, TriedCue, UploadFilters,
   UsageReport, Verdict,
 } from "@/lib/types";
 
@@ -90,6 +90,8 @@ export const api = {
   updateFault: (lift: string, id: string, edit: FaultEdit, token: string | null) => request<AdminFault>(
     `/admin/faults/${encodeURIComponent(lift)}/${encodeURIComponent(id)}`, { method: "PATCH", body: edit, token }),
   addFault: (fault: NewFault, token: string | null) => request<AdminFault>("/admin/faults", { method: "POST", body: fault, token }),
+  adminMetrics: (start: string | null, end: string | null, token: string | null) =>
+    request<MetricsReport>(`/admin/metrics${query({ start, end })}`, { token }),
   // US-22: blind trainer grading.
   adminTrainers: (token: string | null) => request<{ items: Trainer[] }>("/admin/trainers", { token }),
   assignGrading: (trainerId: string, count: number, lift: string | null, token: string | null) =>

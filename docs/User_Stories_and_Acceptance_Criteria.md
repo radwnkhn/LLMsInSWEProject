@@ -437,6 +437,26 @@ that passed validation (first try or after a retry) are sampled, because fallbac
 have no coaching feedback to grade. "Our feedback" is exactly what the lifter was shown. The trainer picks
 from the lift's enabled faults. Deleting or removing an upload also deletes its assignments.
 
+### [US-23] Hypothesis metrics dashboard
+
+GitHub issue: [#25](https://github.com/radwnkhn/LLMsInSWEProject/issues/25)
+
+As an **admin**, I want a dashboard showing accuracy, helpfulness, cue adoption and 7-day return rate against
+their targets, so that we can tell if our hypothesis is holding up.
+
+#### Acceptance criteria
+- [ ] [unit] [integration] [e2e] An admin dashboard shows four hypothesis metrics, each against its target and fail line: trainer agreement, the share of graded sets that trainers marked correct (target 80% or more, fails below 60%); helpful ratings, the share of ratings that are 4 or 5 (70%, below 50%); cue tried, the share of yes answers among lifters who said whether they tried the cue (60%, below 40%); and 7-day return, the share of lifters who uploaded again within 7 days of their first upload (50%, below 30%).
+- [ ] [unit] Each metric is labeled On target, Below target or Failing from its value, or No data when there is nothing to count yet.
+- [ ] [unit] [integration] [e2e] Each metric shows how many data points it is based on.
+- [ ] [unit] [integration] [e2e] The metrics can be filtered by a date range (inclusive UTC dates, the last 30 days by default); an invalid or reversed range is rejected.
+- [ ] [integration] Non-admin users get 403 on the dashboard's endpoint and see "Admins only" on its page.
+
+Trainer agreement comes from US-22 grades. "Partly correct" doesn't count as agreeing. Ratings and cue answers
+come from US-16 feedback; "not yet" isn't counted as an answer about the cue. Grades, ratings and cue answers
+are counted for analyses created in the range. A lifter counts toward 7-day return when their first upload
+falls in the range and is at least 7 days old. Lifters whose first upload is more recent are still waiting
+and are reported separately. Uploads a user or moderator deleted aren't counted.
+
 ### [US-25] Manage the fault list
 
 GitHub issue: [#27](https://github.com/radwnkhn/LLMsInSWEProject/issues/27)

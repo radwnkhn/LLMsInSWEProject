@@ -144,6 +144,10 @@ class Repository(Protocol):
     def get_assignment(self, id: str) -> GradingAssignment | None: ...
     def save_trainer_answer(self, id: str, fault_id: str | None) -> GradingAssignment | None: ...
     def save_verdict(self, id: str, verdict: str) -> GradingAssignment | None: ...
+    # US-23: the data points behind the hypothesis metrics. Ranges are [start, end) of analysis creation.
+    def list_feedback_between(self, start: datetime, end: datetime) -> list[FeedbackRecord]: ...
+    def list_graded_verdicts(self, start: datetime, end: datetime) -> list[str]: ...
+    def list_upload_times(self) -> list[tuple[str, datetime]]: ...
     def create_upload(self, id: str, user_id: str, lift: str, video_path: str, filename: str, note: str | None) -> UploadRecord: ...
     def get_upload(self, id: str) -> UploadRecord | None: ...
     def list_uploads_for_user(self, user_id: str) -> list[UploadRecord]: ...
@@ -408,6 +412,21 @@ class InMemoryRepository:
             self.assignments[id] = replace(a, verdict=verdict, graded_at=stamp)
         return self.get_assignment(id)
 
+    def list_feedback_between(self, start, end):
+        created = {a.id: a.created_at for a in list(self.analyses.values())}
+        return [f for (aid, _), f in list(self.feedback.items()) if aid in created and start <= created[aid] < end]
+
+    def list_graded_verdicts(self, start, end):
+        rows = []
+        for g in sorted(list(self.assignments.values()), key=lambda g: g.assigned_at):
+            a = self.analyses.get(g.analysis_id)
+            if g.verdict is not None and a is not None and start <= a.created_at < end:
+                rows.append(g.verdict)
+        return rows
+
+    def list_upload_times(self):
+        return [(u.user_id, u.created_at) for u in list(self.uploads.values())]
+
     def list_faults(self):
         return list(self.faults)
 
@@ -532,6 +551,24 @@ class PostgresRepository:
         r = self._q("update public.grading_assignments set verdict = %s, graded_at = now() "
                     "where id::text = %s and answered_at is not null returning id", (verdict, id), one=True)
         return self.get_assignment(id) if r else None
+
+    # ------------------------------------------------------------------ hypothesis metrics (US-23)
+
+    def list_feedback_between(self, start, end):
+        rows = self._q("select f.* from public.feedback_responses f join public.analyses a on a.id = f.analysis_id "
+                       "where a.created_at >= %s and a.created_at < %s", (start, end), rows=True)
+        return [FeedbackRecord(str(r["analysis_id"]), str(r["user_id"]), r["rating"], r["tried_cue"], r["updated_at"])
+                for r in rows]
+
+    def list_graded_verdicts(self, start, end):
+        rows = self._q("select g.verdict from public.grading_assignments g join public.analyses a on a.id = g.analysis_id "
+                       "where g.verdict is not null and a.created_at >= %s and a.created_at < %s order by g.assigned_at",
+                       (start, end), rows=True)
+        return [r["verdict"] for r in rows]
+
+    def list_upload_times(self):
+        return [(str(r["user_id"]), r["created_at"])
+                for r in self._q("select user_id, created_at from public.uploads", rows=True)]
 
     def create_upload(self, id, user_id, lift, video_path, filename, note):
         r = self._q("insert into public.uploads (id, user_id, lift, video_path, filename, note) "

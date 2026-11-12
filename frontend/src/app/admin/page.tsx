@@ -30,6 +30,7 @@ export default function AdminPage() {
           <Link href="/admin/moderation" className="underline">Usage and moderation</Link>
           <Link href="/admin/faults" className="underline">Fault list</Link>
           <Link href="/admin/grading" className="underline">Trainer grading</Link>
+          <Link href="/admin/metrics" className="underline">Hypothesis metrics</Link>
         </div>
       </div>
       {rows && <CostSummary token={getToken()} />}
