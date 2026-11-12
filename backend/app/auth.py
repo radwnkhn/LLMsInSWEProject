@@ -24,6 +24,7 @@ class AuthUser:
     id: str
     email: str
     is_admin: bool = False
+    is_trainer: bool = False  # US-22: grades sampled analyses blind
 
 
 @dataclass(frozen=True)
@@ -41,7 +42,8 @@ class AuthProvider(Protocol):
 
 
 class SupabaseAuth:
-    """Supabase Auth (GoTrue) REST API. Admins have app_metadata.role = "admin" (set in the Supabase dashboard)."""
+    """Supabase Auth (GoTrue) REST API. Admins have app_metadata.role = "admin" and trainers (US-22)
+    app_metadata.role = "trainer", both set in the Supabase dashboard."""
 
     def __init__(self, url: str, anon_key: str, http: httpx.Client | None = None, service_key: str | None = None):
         self.base = f"{url.rstrip('/')}/auth/v1"
@@ -52,7 +54,7 @@ class SupabaseAuth:
     @staticmethod
     def _user(data: dict) -> AuthUser:
         role = (data.get("app_metadata") or {}).get("role")
-        return AuthUser(id=data["id"], email=data.get("email", ""), is_admin=role == "admin")
+        return AuthUser(id=data["id"], email=data.get("email", ""), is_admin=role == "admin", is_trainer=role == "trainer")
 
     def sign_up(self, email, password):
         r = self.http.post(f"{self.base}/signup", headers={"apikey": self.anon_key},
@@ -100,17 +102,19 @@ def _hash(password: str, salt: bytes) -> bytes:
 
 
 class InMemoryAuth:
-    def __init__(self, admin_domain: str | None = None):
-        self.users: dict[str, dict] = {}       # email -> {id, salt, hash, is_admin}
+    def __init__(self, admin_domain: str | None = None, trainer_domain: str | None = None):
+        self.users: dict[str, dict] = {}       # email -> {id, salt, hash, is_admin, is_trainer}
         self.tokens: dict[str, str] = {}       # token -> email
-        # Test mode only: accounts signed up at this domain are admins, so browser tests can reach admin pages.
+        # Test mode only: accounts signed up at these domains are admins or trainers (US-22), so browser
+        # tests can reach those pages.
         self.admin_domain = admin_domain
+        self.trainer_domain = trainer_domain
 
     def _session(self, email: str) -> Session:
         token = secrets.token_urlsafe(24)
         self.tokens[token] = email
         u = self.users[email]
-        return Session(token, AuthUser(u["id"], email, u["is_admin"]))
+        return Session(token, AuthUser(u["id"], email, u["is_admin"], u["is_trainer"]))
 
     def sign_up(self, email, password):
         email = email.lower()
@@ -118,7 +122,9 @@ class InMemoryAuth:
             raise EmailTaken(email)
         salt = secrets.token_bytes(8)
         is_admin = bool(self.admin_domain) and email.endswith(f"@{self.admin_domain}")
-        self.users[email] = {"id": str(uuid.uuid4()), "salt": salt, "hash": _hash(password, salt), "is_admin": is_admin}
+        is_trainer = bool(self.trainer_domain) and email.endswith(f"@{self.trainer_domain}")
+        self.users[email] = {"id": str(uuid.uuid4()), "salt": salt, "hash": _hash(password, salt), "is_admin": is_admin,
+                             "is_trainer": is_trainer}
         return self._session(email)
 
     def sign_in(self, email, password):
@@ -138,7 +144,7 @@ class InMemoryAuth:
         u = self.users.get(email)
         if u is None:
             return None
-        return AuthUser(u["id"], email, u["is_admin"])
+        return AuthUser(u["id"], email, u["is_admin"], u["is_trainer"])
 
     def delete_user(self, user_id):
         emails = {email for email, user in list(self.users.items()) if user["id"] == user_id}
@@ -152,3 +158,8 @@ class InMemoryAuth:
         for u in self.users.values():
             if u["id"] == user_id:
                 u["is_admin"] = True
+
+    def make_trainer(self, user_id: str) -> None:
+        for u in self.users.values():
+            if u["id"] == user_id:
+                u["is_trainer"] = True

@@ -25,6 +25,7 @@ class UserRecord:
     email: str
     is_admin: bool = False
     created_at: datetime | None = None  # US-27: when they signed up
+    is_trainer: bool = False             # US-22
 
 
 @dataclass
@@ -107,6 +108,21 @@ class ModerationEntry:
 
 
 @dataclass
+class GradingAssignment:
+    """US-22: one analysis sent to a trainer. trainer_fault_id None with answered_at set means "No major issue"."""
+    id: str
+    analysis_id: str
+    trainer_id: str
+    assigned_by: str | None
+    assigned_at: datetime | None
+    trainer_fault_id: str | None = None
+    answered_at: datetime | None = None
+    verdict: str | None = None           # correct | partly_correct | wrong
+    graded_at: datetime | None = None
+    trainer_email: str | None = None
+
+
+@dataclass
 class AdminAnalysisRow:
     analysis: AnalysisRecord
     attempt_count: int
@@ -119,8 +135,15 @@ ANALYSIS_FIELDS = {"status", "final_status", "rep_count", "camera_angle", "top_f
 
 class Repository(Protocol):
     def user_lock(self, user_id: str) -> ContextManager[None]: ...
-    def ensure_user(self, id: str, email: str, is_admin: bool = False) -> UserRecord: ...
+    def ensure_user(self, id: str, email: str, is_admin: bool = False, is_trainer: bool = False) -> UserRecord: ...
     def get_user(self, id: str) -> UserRecord | None: ...
+    # US-22: trainers and their grading assignments. Answers and verdicts return None when not allowed yet.
+    def list_trainers(self) -> list[UserRecord]: ...
+    def create_assignments(self, trainer_id: str, analysis_ids: list[str], assigned_by: str | None) -> list[GradingAssignment]: ...
+    def list_assignments(self, trainer_id: str | None = None) -> list[GradingAssignment]: ...
+    def get_assignment(self, id: str) -> GradingAssignment | None: ...
+    def save_trainer_answer(self, id: str, fault_id: str | None) -> GradingAssignment | None: ...
+    def save_verdict(self, id: str, verdict: str) -> GradingAssignment | None: ...
     def create_upload(self, id: str, user_id: str, lift: str, video_path: str, filename: str, note: str | None) -> UploadRecord: ...
     def get_upload(self, id: str) -> UploadRecord | None: ...
     def list_uploads_for_user(self, user_id: str) -> list[UploadRecord]: ...
@@ -178,6 +201,7 @@ class InMemoryRepository:
         self.feedback: dict[tuple[str, str], FeedbackRecord] = {}
         self.faults: list[Fault] = default_faults()
         self.moderation: list[ModerationEntry] = []
+        self.assignments: dict[str, GradingAssignment] = {}
 
     @contextmanager
     def user_lock(self, user_id):
@@ -193,9 +217,9 @@ class InMemoryRepository:
             self._last = now if now > self._last else self._last + timedelta(microseconds=1)
             return self._last
 
-    def ensure_user(self, id, email, is_admin=False):
+    def ensure_user(self, id, email, is_admin=False, is_trainer=False):
         old = self.users.get(id)
-        user = UserRecord(id, email, is_admin, old.created_at if old else self._stamp())
+        user = UserRecord(id, email, is_admin, old.created_at if old else self._stamp(), is_trainer)
         self.users[id] = user
         return user
 
@@ -222,6 +246,9 @@ class InMemoryRepository:
         for key in list(self.feedback):
             if key[0] in analysis_ids:
                 self.feedback.pop(key, None)
+        for key, a in list(self.assignments.items()):
+            if a.analysis_id in analysis_ids:
+                self.assignments.pop(key, None)
         self.uploads.pop(upload_id, None)
 
     def delete_user(self, user_id):
@@ -234,6 +261,9 @@ class InMemoryRepository:
         self.moderation = [replace(m, owner_id=None if m.owner_id == user_id else m.owner_id,
                                    removed_by=None if m.removed_by == user_id else m.removed_by)
                            for m in self.moderation]
+        # Like the Postgres foreign keys: a trainer's assignments go with them; who assigned them is forgotten.
+        self.assignments = {k: replace(a, assigned_by=None if a.assigned_by == user_id else a.assigned_by)
+                            for k, a in self.assignments.items() if a.trainer_id != user_id}
         self.users.pop(user_id, None)
 
     def create_analysis(self, id, upload_id, user_id, lift):
@@ -336,6 +366,48 @@ class InMemoryRepository:
         return [AdminAnalysisRow(a, len(self.attempts.get(a.id, [])), self.users.get(a.user_id, UserRecord(a.user_id, "")).email)
                 for a in rows]
 
+    def list_trainers(self):
+        return sorted((u for u in list(self.users.values()) if u.is_trainer), key=lambda u: u.email)
+
+    def create_assignments(self, trainer_id, analysis_ids, assigned_by):
+        made = []
+        for analysis_id in analysis_ids:
+            if any((a.analysis_id, a.trainer_id) == (analysis_id, trainer_id) for a in list(self.assignments.values())):
+                continue
+            rec = GradingAssignment(str(uuid.uuid4()), analysis_id, trainer_id, assigned_by, self._stamp())
+            self.assignments[rec.id] = rec
+            made.append(self._with_trainer(rec))
+        return made
+
+    def _with_trainer(self, a):
+        return replace(a, trainer_email=self.users[a.trainer_id].email if a.trainer_id in self.users else None)
+
+    def list_assignments(self, trainer_id=None):
+        rows = [a for a in list(self.assignments.values()) if trainer_id is None or a.trainer_id == trainer_id]
+        return [self._with_trainer(a) for a in sorted(rows, key=lambda a: a.assigned_at, reverse=True)]
+
+    def get_assignment(self, id):
+        a = self.assignments.get(id)
+        return self._with_trainer(a) if a else None
+
+    def save_trainer_answer(self, id, fault_id):
+        stamp = self._stamp()
+        with self._lock:
+            a = self.assignments.get(id)
+            if a is None or a.answered_at is not None:
+                return None
+            self.assignments[id] = replace(a, trainer_fault_id=fault_id, answered_at=stamp)
+        return self.get_assignment(id)
+
+    def save_verdict(self, id, verdict):
+        stamp = self._stamp()
+        with self._lock:
+            a = self.assignments.get(id)
+            if a is None or a.answered_at is None:
+                return None
+            self.assignments[id] = replace(a, verdict=verdict, graded_at=stamp)
+        return self.get_assignment(id)
+
     def list_faults(self):
         return list(self.faults)
 
@@ -405,15 +477,61 @@ class PostgresRepository:
                               error=r["error"], created_at=r["created_at"], completed_at=r["completed_at"],
                               processing_stage=r["processing_stage"])
 
-    def ensure_user(self, id, email, is_admin=False):
-        r = self._q("insert into public.users (id, email, is_admin) values (%s, %s, %s) "
-                    "on conflict (id) do update set email = excluded.email, is_admin = excluded.is_admin "
-                    "returning created_at", (id, email, is_admin), one=True)
-        return UserRecord(id, email, is_admin, r["created_at"])
+    def ensure_user(self, id, email, is_admin=False, is_trainer=False):
+        r = self._q("insert into public.users (id, email, is_admin, is_trainer) values (%s, %s, %s, %s) "
+                    "on conflict (id) do update set email = excluded.email, is_admin = excluded.is_admin, "
+                    "is_trainer = excluded.is_trainer returning created_at", (id, email, is_admin, is_trainer), one=True)
+        return UserRecord(id, email, is_admin, r["created_at"], is_trainer)
 
     def get_user(self, id):
         r = self._q("select * from public.users where id::text = %s", (id,), one=True)
-        return r and UserRecord(str(r["id"]), r["email"], r["is_admin"], r["created_at"])
+        return r and UserRecord(str(r["id"]), r["email"], r["is_admin"], r["created_at"], r["is_trainer"])
+
+    # ------------------------------------------------------------------ trainer grading (US-22)
+
+    def list_trainers(self):
+        rows = self._q("select * from public.users where is_trainer order by email", rows=True)
+        return [UserRecord(str(r["id"]), r["email"], r["is_admin"], r["created_at"], r["is_trainer"]) for r in rows]
+
+    _ASSIGNMENT_SELECT = ("select g.*, u.email as trainer_email from public.grading_assignments g "
+                          "left join public.users u on u.id = g.trainer_id ")
+
+    @staticmethod
+    def _assignment(r) -> GradingAssignment | None:
+        if r is None:
+            return None
+        return GradingAssignment(str(r["id"]), str(r["analysis_id"]), str(r["trainer_id"]),
+                                 str(r["assigned_by"]) if r["assigned_by"] else None, r["assigned_at"],
+                                 r["trainer_fault_id"], r["answered_at"], r["verdict"], r["graded_at"], r["trainer_email"])
+
+    def create_assignments(self, trainer_id, analysis_ids, assigned_by):
+        made = []
+        for analysis_id in analysis_ids:
+            r = self._q("insert into public.grading_assignments (analysis_id, trainer_id, assigned_by) values (%s, %s, %s) "
+                        "on conflict (analysis_id, trainer_id) do nothing returning id",
+                        (analysis_id, trainer_id, assigned_by), one=True)
+            if r:
+                made.append(self.get_assignment(str(r["id"])))
+        return made
+
+    def list_assignments(self, trainer_id=None):
+        rows = self._q(self._ASSIGNMENT_SELECT + "where (%s::text is null or g.trainer_id::text = %s) "
+                       "order by g.assigned_at desc, g.id desc", (trainer_id, trainer_id), rows=True)
+        return [self._assignment(r) for r in rows]
+
+    def get_assignment(self, id):
+        return self._assignment(self._q(self._ASSIGNMENT_SELECT + "where g.id::text = %s", (id,), one=True))
+
+    def save_trainer_answer(self, id, fault_id):
+        # Only once: after the answer our feedback is shown, so changing it would no longer be blind.
+        r = self._q("update public.grading_assignments set trainer_fault_id = %s, answered_at = now() "
+                    "where id::text = %s and answered_at is null returning id", (fault_id, id), one=True)
+        return self.get_assignment(id) if r else None
+
+    def save_verdict(self, id, verdict):
+        r = self._q("update public.grading_assignments set verdict = %s, graded_at = now() "
+                    "where id::text = %s and answered_at is not null returning id", (verdict, id), one=True)
+        return self.get_assignment(id) if r else None
 
     def create_upload(self, id, user_id, lift, video_path, filename, note):
         r = self._q("insert into public.uploads (id, user_id, lift, video_path, filename, note) "

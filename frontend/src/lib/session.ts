@@ -18,5 +18,5 @@ export function clearSession(): void {
 
 /** Pages that need a logged-in user. */
 export function isProtectedPath(path: string): boolean {
-  return /^\/(upload|history|results|admin|compare|settings)(\/|$)/.test(path);
+  return /^\/(upload|history|results|admin|compare|settings|grading)(\/|$)/.test(path);
 }

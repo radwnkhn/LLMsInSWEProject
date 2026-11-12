@@ -17,4 +17,5 @@ export function middleware(request: NextRequest) {
   return NextResponse.next();
 }
 
-export const config = { matcher: ["/upload/:path*", "/history/:path*", "/results/:path*", "/admin/:path*", "/compare/:path*", "/settings/:path*"] };
+export const config = { matcher: ["/upload/:path*", "/history/:path*", "/results/:path*", "/admin/:path*", "/compare/:path*", "/settings/:path*",
+  "/grading/:path*"] };
