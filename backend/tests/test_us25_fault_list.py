@@ -85,7 +85,7 @@ def test_us25_edit_fault_unit_changes_only_editable_fields():
 
 
 @pytest.mark.parametrize("fields", [{"name": ""}, {"name": "   "}, {"name": "x" * 81}, {"short_name": ""},
-                                    {"short_name": "x" * 41}, {"threshold": 5}, {"metric": "depth_margin"},
+                                    {"short_name": "x" * 41}, {"metric": "depth_margin"},
                                     {"category": "safety"}])
 def test_us25_edit_fault_unit_rejects_blank_long_or_non_editable_values(fields):
     with pytest.raises(faults.FaultError):
@@ -93,7 +93,8 @@ def test_us25_edit_fault_unit_rejects_blank_long_or_non_editable_values(fields):
 
 
 def test_us25_editable_fields_leave_thresholds_to_us24():
-    assert faults.FAULT_EDITABLE_FIELDS == {"name", "short_name", "enabled"}
+    # US-24 made thresholds editable too; US-25's own fields are unchanged.
+    assert faults.FAULT_EDITABLE_FIELDS == {"name", "short_name", "enabled", "threshold"}
 
 
 def test_us25_admin_edits_name_and_short_description(client, admin):
@@ -105,7 +106,7 @@ def test_us25_admin_edits_name_and_short_description(client, admin):
     assert (squat[0]["name"], squat[0]["short_name"]) == ("Knees collapse inward", "knee collapse")
 
 
-@pytest.mark.parametrize("body", [{"name": ""}, {"short_name": " "}, {"name": "x" * 81}, {"threshold": 3},
+@pytest.mark.parametrize("body", [{"name": ""}, {"short_name": " "}, {"name": "x" * 81},
                                   {"metric": "depth_margin"}, {}])
 def test_us25_admin_edit_rejects_blank_long_or_non_editable_values(client, admin, body):
     r = client.patch("/admin/faults/squat/knee_cave", headers=admin, json=body)

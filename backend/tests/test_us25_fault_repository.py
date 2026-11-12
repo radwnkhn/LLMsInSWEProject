@@ -52,7 +52,7 @@ def test_us25_repo_saves_edits_and_enabled_state(repo, reopen):
 
 def test_us25_repo_update_accepts_only_editable_fields(repo):
     with pytest.raises(ValueError):
-        repo.update_fault("squat", "knee_cave", threshold=3)
+        repo.update_fault("squat", "knee_cave", metric="depth_margin")
     with pytest.raises(KeyError):
         repo.update_fault("squat", "no_such_fault", name="x")
     assert repo.get_fault("squat", "knee_cave").threshold == 10

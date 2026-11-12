@@ -108,6 +108,18 @@ class ModerationEntry:
 
 
 @dataclass
+class ThresholdChange:
+    """US-24: one change to a fault's threshold. The admin reference becomes None if their account is deleted."""
+    lift: str
+    fault_id: str
+    old_threshold: float
+    new_threshold: float
+    changed_by: str | None
+    changed_at: datetime | None
+    changed_by_email: str | None = None
+
+
+@dataclass
 class GradingAssignment:
     """US-22: one analysis sent to a trainer. trainer_fault_id None with answered_at set means "No major issue"."""
     id: str
@@ -182,11 +194,13 @@ class Repository(Protocol):
     def list_faults(self) -> list[Fault]: ...
     def get_fault(self, lift: str, fault_id: str) -> Fault | None: ...
     def create_fault(self, fault: Fault) -> Fault: ...
-    def update_fault(self, lift: str, fault_id: str, **fields) -> Fault: ...
+    # US-24: a threshold change is logged with changed_by; other edits and unchanged values aren't.
+    def update_fault(self, lift: str, fault_id: str, changed_by: str | None = None, **fields) -> Fault: ...
+    def list_threshold_changes(self) -> list[ThresholdChange]: ...
 
 
 def _check_fault_fields(fields: dict) -> None:
-    """Only FAULT_EDITABLE_FIELDS can change (US-24 adds "threshold" to that set)."""
+    """Only FAULT_EDITABLE_FIELDS can change."""
     unknown = set(fields) - FAULT_EDITABLE_FIELDS
     if unknown:
         raise ValueError(f"unknown or read-only fault fields: {sorted(unknown)}")
@@ -205,6 +219,7 @@ class InMemoryRepository:
         self.feedback: dict[tuple[str, str], FeedbackRecord] = {}
         self.faults: list[Fault] = default_faults()
         self.moderation: list[ModerationEntry] = []
+        self.threshold_changes: list[ThresholdChange] = []
         self.assignments: dict[str, GradingAssignment] = {}
 
     @contextmanager
@@ -265,6 +280,8 @@ class InMemoryRepository:
         self.moderation = [replace(m, owner_id=None if m.owner_id == user_id else m.owner_id,
                                    removed_by=None if m.removed_by == user_id else m.removed_by)
                            for m in self.moderation]
+        self.threshold_changes = [replace(c, changed_by=None) if c.changed_by == user_id else c
+                                  for c in self.threshold_changes]
         # Like the Postgres foreign keys: a trainer's assignments go with them; who assigned them is forgotten.
         self.assignments = {k: replace(a, assigned_by=None if a.assigned_by == user_id else a.assigned_by)
                             for k, a in self.assignments.items() if a.trainer_id != user_id}
@@ -440,14 +457,23 @@ class InMemoryRepository:
             self.faults.append(fault)
         return fault
 
-    def update_fault(self, lift, fault_id, **fields):
+    def update_fault(self, lift, fault_id, changed_by=None, **fields):
         _check_fault_fields(fields)
+        stamp = self._stamp()  # taken first: _stamp() uses the same lock
         with self._lock:
             for i, f in enumerate(self.faults):
                 if (f.lift, f.id) == (lift, fault_id):
                     self.faults[i] = edit_fault(f, **fields)
+                    if self.faults[i].threshold != f.threshold:
+                        self.threshold_changes.append(ThresholdChange(lift, fault_id, f.threshold,
+                                                                      self.faults[i].threshold, changed_by, stamp))
                     return self.faults[i]
         raise KeyError(f"no {lift} fault '{fault_id}'")
+
+    def list_threshold_changes(self):
+        email = lambda uid: self.users[uid].email if uid in self.users else None
+        return [replace(c, changed_by_email=email(c.changed_by))
+                for c in sorted(self.threshold_changes, key=lambda c: c.changed_at, reverse=True)]
 
 
 class PostgresRepository:
@@ -722,17 +748,34 @@ class PostgresRepository:
             raise FaultExists(f"{fault.lift} already has a fault with ID '{fault.id}'")
         return self._fault(r)
 
-    def update_fault(self, lift, fault_id, **fields):
+    def update_fault(self, lift, fault_id, changed_by=None, **fields):
+        from psycopg.rows import dict_row
+
         _check_fault_fields(fields)
-        current = self.get_fault(lift, fault_id)
-        if current is None:
-            raise KeyError(f"no {lift} fault '{fault_id}'")
-        edited = edit_fault(current, **fields)
-        changes = {k: getattr(edited, k) for k in fields}
-        sets = ", ".join(f"{k} = %s" for k in changes)
-        r = self._q(f"update public.faults set {sets}, updated_at = now() where lift = %s and id = %s returning *",
-                    (*changes.values(), lift, fault_id), one=True)
-        return self._fault(r)
+        # One transaction, with the row locked, so a threshold change and its log entry are saved together.
+        with self.pool.connection() as conn, conn.transaction(), conn.cursor(row_factory=dict_row) as cur:
+            cur.execute("select * from public.faults where lift = %s and id = %s for update", (lift, fault_id))
+            current = self._fault(cur.fetchone())
+            if current is None:
+                raise KeyError(f"no {lift} fault '{fault_id}'")
+            edited = edit_fault(current, **fields)
+            changes = {k: getattr(edited, k) for k in fields}
+            sets = ", ".join(f"{k} = %s" for k in changes)
+            cur.execute(f"update public.faults set {sets}, updated_at = now() where lift = %s and id = %s returning *",
+                        (*changes.values(), lift, fault_id))
+            saved = self._fault(cur.fetchone())
+            if edited.threshold != current.threshold:
+                cur.execute("insert into public.fault_threshold_changes (lift, fault_id, old_threshold, new_threshold, "
+                            "changed_by) values (%s, %s, %s, %s, %s)",
+                            (lift, fault_id, current.threshold, edited.threshold, changed_by))
+        return saved
+
+    def list_threshold_changes(self):
+        rows = self._q("select c.*, u.email as changed_by_email from public.fault_threshold_changes c "
+                       "left join public.users u on u.id = c.changed_by order by c.changed_at desc, c.id desc", rows=True)
+        return [ThresholdChange(r["lift"], r["fault_id"], r["old_threshold"], r["new_threshold"],
+                                str(r["changed_by"]) if r["changed_by"] else None, r["changed_at"], r["changed_by_email"])
+                for r in rows]
 
     # ------------------------------------------------------------------ usage and moderation (US-27)
 

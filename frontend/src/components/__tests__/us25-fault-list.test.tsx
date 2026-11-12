@@ -8,7 +8,9 @@ import type { AdminFault, AdminFaultLift } from "@/lib/types";
 
 vi.mock("@/lib/api", async (importOriginal) => {
   const original = await importOriginal<typeof import("@/lib/api")>();
-  return { ...original, api: { ...original.api, adminFaults: vi.fn(), updateFault: vi.fn(), addFault: vi.fn() } };
+  // US-24 added the threshold change log to this page; it is stubbed here and tested in us24-thresholds.test.tsx.
+  return { ...original, api: { ...original.api, adminFaults: vi.fn(), updateFault: vi.fn(), addFault: vi.fn(),
+    thresholdChanges: vi.fn() } };
 });
 
 // Loaded at run time so each test reports its own failure while the page doesn't exist yet.
@@ -43,6 +45,7 @@ function region(name: string) {
 beforeEach(() => {
   vi.resetAllMocks();
   vi.mocked(api.adminFaults).mockResolvedValue({ lifts: structuredClone(LIFTS) });
+  vi.mocked(api.thresholdChanges).mockResolvedValue({ items: [] });
 });
 
 describe("US-25 fault list page", () => {

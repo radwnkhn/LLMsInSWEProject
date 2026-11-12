@@ -1,9 +1,11 @@
 "use client";
 
-import { useId, useState, type FormEvent, type ReactElement } from "react";
+import { useEffect, useId, useState, type FormEvent, type ReactElement } from "react";
 
 import { ApiError, api } from "@/lib/api";
-import type { AdminFault, AdminFaultLift, FaultCategory, FaultDirection, FaultEdit, Lift, NewFault } from "@/lib/types";
+import type {
+  AdminFault, AdminFaultLift, FaultCategory, FaultDirection, FaultEdit, Lift, NewFault, ThresholdChange,
+} from "@/lib/types";
 
 // The same limits the API enforces (backend/app/faults.py), checked here first for a quicker message.
 const LIMITS = { name: ["Display name", 80], short_name: ["Short description", 40] } as const;
@@ -19,9 +21,21 @@ function message(err: unknown): string {
   return err instanceof ApiError ? err.detail : "Something went wrong. Please try again.";
 }
 
+function withUnit(value: number, unit: string): string {
+  return unit === "°" ? `${value}°` : String(value);
+}
+
 function rule(f: AdminFault): string {
-  const value = f.unit === "°" ? `${f.threshold}°` : String(f.threshold);
-  return `${f.direction} ${value}`;
+  return `${f.direction} ${withUnit(f.threshold, f.unit)}`;
+}
+
+// US-24: the same range check the API makes (backend/app/faults.py threshold_range), for a quicker message.
+function thresholdError(fault: AdminFault, value: string): string | null {
+  const n = Number(value);
+  if (value.trim() === "" || !Number.isFinite(n)) return "Threshold must be a number";
+  const { threshold_min: min, threshold_max: max } = fault;
+  if (min != null && max != null && (n < min || n > max)) return `Threshold must be between ${min} and ${max}`;
+  return null;
 }
 
 const input = "w-full rounded-lg border border-zinc-300 px-2 py-1";
@@ -41,20 +55,26 @@ function Field({ label, className = "text-sm", children }: {
 const button = "rounded-lg border border-zinc-300 px-2 py-1 text-sm font-medium";
 
 function EditFault({ fault, token, onSaved, onCancel }: {
-  fault: AdminFault; token: string | null; onSaved: (f: AdminFault) => void; onCancel: () => void;
+  fault: AdminFault; token: string | null; onSaved: (f: AdminFault, thresholdChanged: boolean) => void; onCancel: () => void;
 }) {
   const [name, setName] = useState(fault.name);
   const [shortName, setShortName] = useState(fault.short_name);
+  const [threshold, setThreshold] = useState(String(fault.threshold));
   const [error, setError] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
+  const rangeId = useId();
+  const hasRange = fault.threshold_min != null && fault.threshold_max != null;
 
   async function save(e: FormEvent) {
     e.preventDefault();
-    const problem = textError("name", name) ?? textError("short_name", shortName);
+    const problem = textError("name", name) ?? textError("short_name", shortName) ?? thresholdError(fault, threshold);
     if (problem) return setError(problem);
+    // Only a changed threshold is sent, so saving a name never adds an entry to the threshold log.
+    const changed = Number(threshold) !== fault.threshold;
+    const edit: FaultEdit = { name: name.trim(), short_name: shortName.trim(), ...(changed ? { threshold: Number(threshold) } : {}) };
     setSaving(true);
     try {
-      onSaved(await api.updateFault(fault.lift, fault.id, { name: name.trim(), short_name: shortName.trim() }, token));
+      onSaved(await api.updateFault(fault.lift, fault.id, edit, token), changed);
     } catch (err) {
       setError(message(err));
       setSaving(false);
@@ -69,6 +89,17 @@ function EditFault({ fault, token, onSaved, onCancel }: {
       <Field label="Short description">{(id) => (
         <input id={id} className={input} value={shortName} onChange={(e) => setShortName(e.target.value)} />
       )}</Field>
+      <Field label="Threshold">{(id) => (
+        <>
+          <input id={id} className={input} type="number" step="any" inputMode="decimal" value={threshold}
+            aria-describedby={hasRange ? rangeId : undefined} onChange={(e) => setThreshold(e.target.value)} />
+          {hasRange && (
+            <p id={rangeId} className="text-xs text-zinc-500">
+              Allowed: {fault.threshold_min} to {withUnit(fault.threshold_max as number, fault.unit)}
+            </p>
+          )}
+        </>
+      )}</Field>
       {error && <p role="alert" className="text-sm text-red-700">{error}</p>}
       <div className="flex gap-2">
         <button type="submit" disabled={saving} className={`${button} bg-zinc-900 text-white`}>Save</button>
@@ -78,7 +109,9 @@ function EditFault({ fault, token, onSaved, onCancel }: {
   );
 }
 
-function FaultRow({ fault, token, onChange }: { fault: AdminFault; token: string | null; onChange: (f: AdminFault) => void }) {
+function FaultRow({ fault, token, onChange }: {
+  fault: AdminFault; token: string | null; onChange: (f: AdminFault, thresholdChanged?: boolean) => void;
+}) {
   const [editing, setEditing] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
@@ -100,7 +133,7 @@ function FaultRow({ fault, token, onChange }: { fault: AdminFault; token: string
       <td className="space-y-2 py-2 pr-3">
         {editing ? (
           <EditFault fault={fault} token={token} onCancel={() => setEditing(false)}
-            onSaved={(f) => { setEditing(false); onChange(f); }} />
+            onSaved={(f, thresholdChanged) => { setEditing(false); onChange(f, thresholdChanged); }} />
         ) : (
           <div>
             <p className="font-medium">{fault.name}</p>
@@ -130,7 +163,7 @@ function FaultRow({ fault, token, onChange }: { fault: AdminFault; token: string
 }
 
 function LiftFaults({ group, token, onChange }: {
-  group: AdminFaultLift; token: string | null; onChange: (f: AdminFault) => void;
+  group: AdminFaultLift; token: string | null; onChange: (f: AdminFault, thresholdChanged?: boolean) => void;
 }) {
   return (
     <section aria-label={`${group.lift_label} faults`} className="space-y-2">
@@ -241,12 +274,61 @@ function AddFault({ lifts, token, onAdded }: { lifts: AdminFaultLift[]; token: s
   );
 }
 
+/** US-24: every threshold change, newest first. `version` changes after each saved threshold, to reload it. */
+function ThresholdLog({ token, version }: { token: string | null; version: number }) {
+  const [items, setItems] = useState<ThresholdChange[] | null>(null);
+  const [failed, setFailed] = useState(false);
+  useEffect(() => {
+    let live = true;
+    api.thresholdChanges(token)
+      .then((r) => { if (live) { setItems(r.items); setFailed(false); } })
+      .catch(() => { if (live) setFailed(true); });
+    return () => { live = false; };
+  }, [token, version]);
+
+  return (
+    <section aria-label="Threshold changes" className="space-y-2">
+      <h2 className="text-lg font-semibold">Threshold changes</h2>
+      {failed && <p className="text-sm text-red-700">Couldn&apos;t load the threshold changes. Please refresh to try again.</p>}
+      {items && items.length === 0 && <p className="text-sm text-zinc-600">No threshold changes yet.</p>}
+      {items && items.length > 0 && (
+        <div className="overflow-x-auto">
+          <table className="w-full text-left text-sm">
+            <thead className="text-zinc-500">
+              <tr><th className="py-1 pr-3">Fault</th><th className="pr-3">Change</th><th>Who and when</th></tr>
+            </thead>
+            <tbody>
+              {items.map((c, i) => (
+                <tr key={`${c.changed_at}-${i}`} className="border-t border-zinc-200 align-top">
+                  <td className="py-2 pr-3">
+                    <p className="font-medium">{c.fault_name}</p>
+                    <p className="text-xs text-zinc-500">{c.lift_label}</p>
+                  </td>
+                  <td className="py-2 pr-3 whitespace-nowrap">
+                    {`${withUnit(c.old_threshold, c.unit)} → ${withUnit(c.new_threshold, c.unit)}`}
+                  </td>
+                  <td className="py-2">
+                    <p className="break-all">{c.changed_by_email ?? "Deleted account"}</p>
+                    <p className="text-xs text-zinc-500">{`${c.changed_at.slice(0, 10)} ${c.changed_at.slice(11, 16)} UTC`}</p>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+    </section>
+  );
+}
+
 export function AdminFaultList({ initial, token }: { initial: AdminFaultLift[]; token: string | null }) {
   const [lifts, setLifts] = useState(initial);
+  const [logVersion, setLogVersion] = useState(0);
 
-  function replaceFault(updated: AdminFault) {
+  function replaceFault(updated: AdminFault, thresholdChanged = false) {
     setLifts((groups) => groups.map((g) => g.lift !== updated.lift ? g
       : { ...g, faults: g.faults.map((f) => (f.id === updated.id ? updated : f)) }));
+    if (thresholdChanged) setLogVersion((v) => v + 1);
   }
 
   function addFault(added: AdminFault) {
@@ -257,10 +339,11 @@ export function AdminFaultList({ initial, token }: { initial: AdminFaultLift[]; 
     <div className="space-y-6">
       <p className="text-sm text-zinc-600">
         Disabled faults are no longer offered to the AI, and replies that cite them are sent back for correction.
-        Changes apply to new analyses; earlier results keep the faults they reported.
+        Changes, including new thresholds, apply to new analyses; earlier results keep the faults they reported.
       </p>
       {lifts.map((g) => <LiftFaults key={g.lift} group={g} token={token} onChange={replaceFault} />)}
       <AddFault lifts={lifts} token={token} onAdded={addFault} />
+      <ThresholdLog token={token} version={logVersion} />
     </div>
   );
 }

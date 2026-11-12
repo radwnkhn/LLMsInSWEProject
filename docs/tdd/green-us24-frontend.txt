@@ -1,0 +1,4 @@
+ ✓ src/components/__tests__/us24-thresholds.test.tsx (12 tests) 523ms
+ ✓ src/components/__tests__/us25-fault-list.test.tsx (9 tests) 778ms
+ Test Files  2 passed (2)
+      Tests  21 passed (21)

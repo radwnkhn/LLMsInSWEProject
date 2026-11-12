@@ -1,0 +1,14 @@
+$ npx tsc --noEmit
+passed
+
+$ npm run lint
+
+✖ 1 problem (0 errors, 1 warning)
+  0 errors and 1 warning potentially fixable with the `--fix` option.
+
+
+$ git diff --check main
+docs/tdd/red-us24-frontend.txt:20: trailing whitespace.
++  1) e2e/us24-thresholds.spec.ts:25:5 › us24_admin_changes_a_threshold_it_is_logged_and_only_new_analyses_use_it
+docs/tdd/red-us24-frontend.txt:25: trailing whitespace.
++    e2e/us24-thresholds.spec.ts:25:5 › us24_admin_changes_a_threshold_it_is_logged_and_only_new_analyses_use_it
