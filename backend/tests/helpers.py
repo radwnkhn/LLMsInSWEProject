@@ -19,6 +19,14 @@ def make_admin(client, services, email="coach@virginia.edu"):
     return headers, user_id
 
 
+def make_trainer(client, services, email="trainer@virginia.edu"):
+    """US-22: a trainer account. The /auth/me call saves the role, so the admin's trainer list includes it."""
+    headers, user_id = signup(client, email)
+    services.auth.make_trainer(user_id)
+    assert client.get("/auth/me", headers=headers).status_code == 200
+    return headers, user_id
+
+
 def upload(client, headers, lift="squat", filename="set.mp4", note=None,
            content=b"fake video bytes", content_type="video/mp4"):
     data = {"lift": lift}
