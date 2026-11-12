@@ -1,0 +1,30 @@
+$ npx vitest run src/components/__tests__/us22-grading.test.tsx
+   × US-22 admin grading page > us22_admin_assigns_a_sample_to_a_trainer_with_a_count_and_optional_lift 8ms
+   × US-22 admin grading page > us22_all_lifts_sends_no_lift 3ms
+   × US-22 admin grading page > us22_count_0_is_rejected_before_assigning 1ms
+   × US-22 admin grading page > us22_count_51_is_rejected_before_assigning 0ms
+   × US-22 admin grading page > us22_count__is_rejected_before_assigning 0ms
+   × US-22 admin grading page > us22_nothing_left_to_assign_is_explained 0ms
+   × US-22 admin grading page > us22_without_trainer_accounts_the_page_says_how_to_add_one 0ms
+   × US-22 admin grading page > us22_admin_list_shows_trainer_status_both_faults_and_grade 0ms
+   × US-22 admin grading page > us22_non_admins_see_admins_only 0ms
+   × US-22 admin grading page > us22_admin_analyses_page_links_to_trainer_grading 1066ms
+   × US-22 trainer pages > us22_trainer_list_links_each_assignment_with_lift_and_status 4ms
+   × US-22 trainer pages > us22_trainer_list_says_when_there_is_nothing_to_grade 1ms
+   × US-22 trainer pages > us22_non_trainers_see_trainers_only 1ms
+   × US-22 trainer pages > us22_before_answering_the_trainer_sees_the_video_but_not_our_feedback 1ms
+   × US-22 trainer pages > us22_answer_needs_a_choice_then_reveals_our_feedback 1ms
+   × US-22 trainer pages > us22_no_major_issue_is_sent_as_no_fault 1ms
+   × US-22 trainer pages > us22_trainer_marks_our_feedback_correct_partly_correct_or_wrong 1ms
+   × US-22 trainer pages > us22_clean_feedback_is_shown_as_no_major_issues 1ms
+   × US-22 trainer pages > us22_grade_page_never_shows_lifter_details 1ms
+   × US-22 sign-in > us22_grading_pages_need_a_signed_in_user 4ms
+⎯⎯⎯⎯⎯⎯ Failed Tests 20 ⎯⎯⎯⎯⎯⎯⎯
+ Test Files  1 failed (1)
+      Tests  20 failed (20)
+
+$ npx playwright test e2e/us22-trainer-grading.spec.ts
+  ✘  1 e2e/us22-trainer-grading.spec.ts:5:5 › us22_admin_assigns_a_sample_and_a_trainer_grades_it_blind (1.0m)
+    Error: locator.click: Test ended.
+      - waiting for getByRole('link', { name: 'Trainer grading' })
+  1 failed

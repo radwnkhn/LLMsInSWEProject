@@ -6,6 +6,7 @@ import hmac
 import logging
 import mimetypes
 import os
+import random
 import re
 import tempfile
 import uuid
@@ -16,7 +17,7 @@ import httpx
 from fastapi import BackgroundTasks, Depends, FastAPI, File, Form, HTTPException, Query, Request, Response, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
-from pydantic import BaseModel, ConfigDict, StrictBool, StrictFloat, StrictInt, field_validator, model_validator
+from pydantic import BaseModel, ConfigDict, StrictBool, StrictFloat, StrictInt, StrictStr, field_validator, model_validator
 
 from app.admin import admin_row_view, filter_admin_rows, summarize_validation_errors
 from app.auth import AuthUser, EmailTaken, InvalidCredentials
@@ -25,8 +26,11 @@ from app.comparison import COMPARABLE_STATUSES, compare_earlier_fault, measureme
 from app.faults import METRICS, FaultCatalog, FaultError, FaultExists, new_fault, threshold_range
 from app.feedback import find_previous_cue_prompt
 from app.deletion import delete_upload_with_media
+from app.grading import (MAX_SAMPLE, NO_FAULT, STATUS_LABELS, VERDICTS, assignment_status, eligible_for_grading,
+                         fault_choice, our_feedback, our_top_fault, sample_for_grading)
 from app.history import history_item, status_label
 from app.lifts import LIFT_LABELS, LIFTS
+from app.metrics import build_metrics, seven_day_return
 from app.moderation import MAX_REMOVAL_NOTE_LENGTH, REMOVAL_REASONS, daily_usage, removed_detail
 from app.pricing import AttemptUsage, summarize_costs
 from app.repository import AdminAnalysisRow
@@ -47,6 +51,7 @@ EMPTY_RESULT = {
     "fallback_note": None,
 }
 CHUNK = 1024 * 1024
+_GRADING_RNG = random.SystemRandom()  # US-22: which analyses a trainer is sent
 COST_RANGE_DAYS = 30  # US-26/US-27: the default report range, ending today (UTC)
 ISO_DATE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 
@@ -170,7 +175,41 @@ class FeedbackBody(BaseModel):
 
 def _session_body(session) -> dict:
     u = session.user
-    return {"access_token": session.access_token, "user": {"id": u.id, "email": u.email, "is_admin": u.is_admin}}
+    return {"access_token": session.access_token,
+            "user": {"id": u.id, "email": u.email, "is_admin": u.is_admin, "is_trainer": u.is_trainer}}
+
+
+class AssignBody(BaseModel):
+    """US-22: a random sample of `count` analyses for a trainer, optionally of one lift."""
+    model_config = ConfigDict(extra="forbid")
+    trainer_id: StrictStr
+    count: StrictInt
+    lift: str | None = None
+
+    @field_validator("count")
+    @classmethod
+    def _count(cls, value):
+        if not 1 <= value <= MAX_SAMPLE:
+            raise ValueError(f"Choose a number from 1 to {MAX_SAMPLE}")
+        return value
+
+    @field_validator("lift")
+    @classmethod
+    def _lift(cls, value):
+        if value is not None and value not in LIFTS:
+            raise ValueError("Unknown lift")
+        return value
+
+
+class AnswerBody(BaseModel):
+    """US-22: the trainer's own top fault; null is "No major issue". Required, so a missing answer is a 422."""
+    model_config = ConfigDict(extra="forbid")
+    fault_id: StrictStr | None
+
+
+class VerdictBody(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    verdict: Literal["correct", "partly_correct", "wrong"]
 
 
 class FaultEditBody(BaseModel):
@@ -212,6 +251,10 @@ def _utc_iso(when: datetime | None) -> str | None:
     return when.astimezone(timezone.utc).isoformat() if when else None
 
 
+def _utc_iso(when: datetime | None) -> str | None:
+    return when.astimezone(timezone.utc).isoformat() if when else None
+
+
 def create_app(services: Services) -> FastAPI:
     app = FastAPI(title="Alibi API")
     app.state.services = services
@@ -228,12 +271,17 @@ def create_app(services: Services) -> FastAPI:
             # A request may have authenticated just before account deletion acquired its lock.
             if services.repo.get_user(user.id) is None and services.auth.get_user(creds.credentials) is None:
                 raise HTTPException(401, "Please log in")
-            services.repo.ensure_user(user.id, user.email, user.is_admin)
+            services.repo.ensure_user(user.id, user.email, user.is_admin, user.is_trainer)
         return user
 
     def admin_user(user: AuthUser = Depends(current_user)) -> AuthUser:
         if not user.is_admin:
             raise HTTPException(403, "Admins only")
+        return user
+
+    def trainer_user(user: AuthUser = Depends(current_user)) -> AuthUser:
+        if not user.is_trainer:
+            raise HTTPException(403, "Trainers only")
         return user
 
     def absolute(request: Request, url: str) -> str:
@@ -277,7 +325,7 @@ def create_app(services: Services) -> FastAPI:
             session = services.auth.sign_up(body.email, body.password)
         except EmailTaken:
             raise HTTPException(409, "An account with this email already exists")
-        services.repo.ensure_user(session.user.id, session.user.email, session.user.is_admin)
+        services.repo.ensure_user(session.user.id, session.user.email, session.user.is_admin, session.user.is_trainer)
         return _session_body(session)
 
     @app.post("/auth/login")
@@ -295,7 +343,7 @@ def create_app(services: Services) -> FastAPI:
 
     @app.get("/auth/me")
     def me(user: AuthUser = Depends(current_user)):
-        return {"id": user.id, "email": user.email, "is_admin": user.is_admin}
+        return {"id": user.id, "email": user.email, "is_admin": user.is_admin, "is_trainer": user.is_trainer}
 
     # ------------------------------------------------------------------ uploads and results
 
@@ -502,6 +550,19 @@ def create_app(services: Services) -> FastAPI:
                        if m.removed_at and since <= m.removed_at < until)
         return {"start": first.isoformat(), "end": last.isoformat(), **report, "removals": removals}
 
+    @app.get("/admin/metrics")
+    def admin_metrics(start: str | None = None, end: str | None = None, user: AuthUser = Depends(admin_user)):
+        """US-23: the hypothesis metrics for analyses (and first uploads) between start and end (inclusive UTC dates)."""
+        first, last, since, until = _report_range(start, end)
+        feedback = services.repo.list_feedback_between(since, until)
+        uploads = services.repo.list_upload_times()
+        now = datetime.now(timezone.utc)
+        items = build_metrics(verdicts=services.repo.list_graded_verdicts(since, until),
+                              ratings=[f.rating for f in feedback], tried=[f.tried_cue for f in feedback],
+                              uploads=uploads, since=since, until=until, now=now)
+        return {"start": first.isoformat(), "end": last.isoformat(), "metrics": items,
+                "pending_returns": seven_day_return(uploads, since, until, now)[2]}
+
     @app.get("/admin/uploads")
     def admin_uploads(start: str | None = None, end: str | None = None, lift: str | None = None,
                       user: AuthUser = Depends(admin_user)):
@@ -588,6 +649,96 @@ def create_app(services: Services) -> FastAPI:
             raise HTTPException(409, str(err))
         except FaultError as err:
             raise HTTPException(422, str(err))
+
+    # ------------------------------------------------------------------ trainer grading (US-22)
+
+    def admin_assignment_view(g, catalog) -> dict:
+        a = services.repo.get_analysis(g.analysis_id)
+        status = assignment_status(g)
+        return {"assignment_id": g.id, "analysis_id": g.analysis_id, "lift": a.lift, "lift_label": LIFT_LABELS[a.lift],
+                "trainer_email": g.trainer_email, "assigned_at": _utc_iso(g.assigned_at), "graded_at": _utc_iso(g.graded_at),
+                "status": status, "status_label": STATUS_LABELS[status],
+                "trainer_answer": fault_choice(g.trainer_fault_id, a.lift, catalog) if g.answered_at else None,
+                "our_fault": our_top_fault(a.result), "verdict": g.verdict, "verdict_label": VERDICTS.get(g.verdict)}
+
+    def trainer_list_item(g) -> dict:
+        a = services.repo.get_analysis(g.analysis_id)
+        status = assignment_status(g)
+        return {"assignment_id": g.id, "lift": a.lift, "lift_label": LIFT_LABELS[a.lift],
+                "assigned_at": _utc_iso(g.assigned_at), "status": status, "status_label": STATUS_LABELS[status]}
+
+    def trainer_detail(request: Request, g) -> dict:
+        """Blind until answered: the video and the lift's faults, never the lifter, and our feedback only afterwards."""
+        a = services.repo.get_analysis(g.analysis_id)
+        upload = services.repo.get_upload(a.upload_id)
+        catalog = FaultCatalog(services.repo.list_faults())
+        answered = g.answered_at is not None
+        return {**trainer_list_item(g),
+                "video_url": absolute(request, services.storage.signed_url(upload.video_path)),
+                "fault_options": [{"fault_id": f.id, "name": f.name} for f in catalog.faults_for(a.lift)]
+                + [{"fault_id": None, "name": NO_FAULT}],
+                "trainer_answer": fault_choice(g.trainer_fault_id, a.lift, catalog) if answered else None,
+                "our_feedback": our_feedback(a.result) if answered else None,
+                "verdict": g.verdict, "verdict_label": VERDICTS.get(g.verdict)}
+
+    def own_assignment(assignment_id: str, user: AuthUser):
+        g = services.repo.get_assignment(assignment_id)
+        if g is None or g.trainer_id != user.id:
+            raise HTTPException(404, "Assignment not found")
+        return g
+
+    @app.get("/admin/trainers")
+    def admin_trainers(user: AuthUser = Depends(admin_user)):
+        return {"items": [{"id": t.id, "email": t.email} for t in services.repo.list_trainers()]}
+
+    @app.post("/admin/grading/assignments", status_code=201)
+    def admin_assign(body: AssignBody, user: AuthUser = Depends(admin_user)):
+        trainer = services.repo.get_user(body.trainer_id)
+        if trainer is None or not trainer.is_trainer:
+            raise HTTPException(422, "Choose a trainer account")
+        already = {g.analysis_id for g in services.repo.list_assignments(trainer_id=trainer.id)}
+        candidates = eligible_for_grading([r.analysis for r in services.repo.list_admin_rows()], trainer.id, already,
+                                          lift=body.lift)
+        if not candidates:
+            raise HTTPException(409, "No analyses are left to assign to this trainer")
+        picked = sample_for_grading(candidates, body.count, _GRADING_RNG)
+        made = services.repo.create_assignments(trainer.id, [a.id for a in picked], assigned_by=user.id)
+        catalog = FaultCatalog(services.repo.list_faults())
+        return {"requested": body.count, "assigned": len(made), "items": [admin_assignment_view(g, catalog) for g in made]}
+
+    @app.get("/admin/grading/assignments")
+    def admin_assignments(user: AuthUser = Depends(admin_user)):
+        catalog = FaultCatalog(services.repo.list_faults())
+        return {"items": [admin_assignment_view(g, catalog) for g in services.repo.list_assignments()]}
+
+    @app.get("/trainer/assignments")
+    def trainer_assignments(user: AuthUser = Depends(trainer_user)):
+        return {"items": [trainer_list_item(g) for g in services.repo.list_assignments(trainer_id=user.id)]}
+
+    @app.get("/trainer/assignments/{assignment_id}")
+    def trainer_assignment(assignment_id: str, request: Request, user: AuthUser = Depends(trainer_user)):
+        return trainer_detail(request, own_assignment(assignment_id, user))
+
+    @app.post("/trainer/assignments/{assignment_id}/answer")
+    def trainer_answer(assignment_id: str, body: AnswerBody, request: Request, user: AuthUser = Depends(trainer_user)):
+        g = own_assignment(assignment_id, user)
+        if g.answered_at is not None:
+            raise HTTPException(409, "Your answer is saved and can't be changed once our feedback is shown")
+        lift = services.repo.get_analysis(g.analysis_id).lift
+        if body.fault_id is not None and body.fault_id not in FaultCatalog(services.repo.list_faults()).fault_ids(lift):
+            raise HTTPException(422, "Choose one of this lift's faults or No major issue")
+        saved = services.repo.save_trainer_answer(g.id, body.fault_id)
+        if saved is None:  # answered in another tab meanwhile
+            raise HTTPException(409, "Your answer is saved and can't be changed once our feedback is shown")
+        return trainer_detail(request, saved)
+
+    @app.post("/trainer/assignments/{assignment_id}/verdict")
+    def trainer_verdict(assignment_id: str, body: VerdictBody, request: Request, user: AuthUser = Depends(trainer_user)):
+        g = own_assignment(assignment_id, user)
+        saved = services.repo.save_verdict(g.id, body.verdict)
+        if saved is None:
+            raise HTTPException(409, "Record your own top fault first")
+        return trainer_detail(request, saved)
 
     # ------------------------------------------------------------------ test mode only
 

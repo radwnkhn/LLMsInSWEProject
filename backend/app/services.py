@@ -16,8 +16,10 @@ from app.uploads import MAX_UPLOAD_BYTES
 from app.video import OpenCVMediaPipeBackend, VideoBackend
 
 
-# ALIBI_TEST_MODE only: sign-ups at this reserved domain (RFC 2606 ".test") become admins (US-25 browser tests).
+# ALIBI_TEST_MODE only: sign-ups at these reserved domains (RFC 2606 ".test") become admins (US-25 browser tests)
+# or trainers (US-22).
 TEST_ADMIN_DOMAIN = "admin.test"
+TEST_TRAINER_DOMAIN = "trainer.test"
 
 
 @dataclass
@@ -71,6 +73,7 @@ def services_from_env(env: Mapping[str, str] | None = None) -> Services:
         from app.testing.fakes import ScenarioLLM, ScenarioVideoBackend
 
         origins = tuple(o.strip() for o in (env.get("CORS_ORIGINS") or "*").split(",") if o.strip())
-        return build_test_services(auth=InMemoryAuth(admin_domain=TEST_ADMIN_DOMAIN), video=ScenarioVideoBackend(),
+        return build_test_services(auth=InMemoryAuth(admin_domain=TEST_ADMIN_DOMAIN, trainer_domain=TEST_TRAINER_DOMAIN),
+                                   video=ScenarioVideoBackend(),
                                    llm=ScenarioLLM(), cors_origins=origins)
     return build_services(load_settings(env))

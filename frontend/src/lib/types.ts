@@ -5,7 +5,7 @@ export type FinalStatus = "passed_first_try" | "passed_after_retry" | "fallback"
 export type JobStatus = "queued" | "processing" | "done" | "failed";
 export type ProcessingStage = "measuring" | "writing_feedback" | "checking";
 
-export type Session = { access_token: string; user: { id: string; email: string; is_admin: boolean } };
+export type Session = { access_token: string; user: { id: string; email: string; is_admin: boolean; is_trainer?: boolean } };
 
 export type FaultView = {
   fault_id: string;
@@ -224,3 +224,78 @@ export type AdminDetail = {
   usage: AnalysisUsage;
   result: AnalysisResult | null;
 };
+
+// US-22: blind trainer grading.
+export type Verdict = "correct" | "partly_correct" | "wrong";
+export type GradingStatus = "waiting" | "answered" | "graded";
+/** A fault picked by a trainer or reported by us; fault_id null is "No major issue". */
+export type FaultChoice = { fault_id: string | null; name: string };
+
+export type Trainer = { id: string; email: string };
+
+export type AdminGradingAssignment = {
+  assignment_id: string;
+  analysis_id: string;
+  lift: Lift;
+  lift_label: string;
+  trainer_email: string | null;
+  assigned_at: string;
+  graded_at: string | null;
+  status: GradingStatus;
+  status_label: string;
+  trainer_answer: FaultChoice | null;
+  our_fault: FaultChoice;
+  verdict: Verdict | null;
+  verdict_label: string | null;
+};
+
+export type GradingAssignResult = { requested: number; assigned: number; items: AdminGradingAssignment[] };
+
+export type TrainerAssignmentItem = {
+  assignment_id: string;
+  lift: Lift;
+  lift_label: string;
+  assigned_at: string;
+  status: GradingStatus;
+  status_label: string;
+};
+
+type GradedFault = { fault_id: string; title: string; reps: number[] };
+
+/** The coaching the lifter was shown; trainers only get it after recording their own top fault. */
+export type OurFeedback = {
+  top_fix: GradedFault | null;
+  cue: string | null;
+  explanation: string | null;
+  other_faults: GradedFault[];
+  no_major_issues: boolean;
+};
+
+export type TrainerAssignment = Omit<TrainerAssignmentItem, "assigned_at"> & {
+  assigned_at?: string;
+  video_url: string;
+  fault_options: FaultChoice[];
+  trainer_answer: FaultChoice | null;
+  our_feedback: OurFeedback | null;
+  verdict: Verdict | null;
+  verdict_label: string | null;
+};
+
+// US-23: the hypothesis metrics dashboard.
+export type MetricKey = "trainer_agreement" | "helpful_ratings" | "cue_tried" | "seven_day_return";
+export type MetricStatus = "on_target" | "below_target" | "failing" | "no_data";
+
+export type HypothesisMetric = {
+  key: MetricKey;
+  label: string;
+  value: number | null; // a share from 0 to 1; null with no data
+  hits: number;
+  count: number;
+  basis: string; // e.g. "3 graded sets"
+  target: number;
+  fail_below: number;
+  status: MetricStatus;
+  status_label: string;
+};
+
+export type MetricsReport = { start: string; end: string; metrics: HypothesisMetric[]; pending_returns: number };
