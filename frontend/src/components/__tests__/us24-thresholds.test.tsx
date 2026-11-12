@@ -117,7 +117,7 @@ describe("US-24 threshold change log", () => {
     vi.mocked(api.thresholdChanges).mockResolvedValue({ items: [CHANGE] });
     await renderPage();
     const log = await region("Threshold changes");
-    const [row] = within(log).getAllByRole("row").slice(1);
+    const [row] = (await within(log).findAllByRole("row")).slice(1);
     expect(row).toHaveTextContent("Knees cave inward");
     expect(row).toHaveTextContent("Squat");
     expect(row).toHaveTextContent("10° → 12°");
@@ -128,7 +128,7 @@ describe("US-24 threshold change log", () => {
   it("us24_change_log_says_when_there_are_no_changes", async () => {
     await renderPage();
     const log = await region("Threshold changes");
-    expect(within(log).getByText("No threshold changes yet.")).toBeInTheDocument();
+    expect(await within(log).findByText("No threshold changes yet.")).toBeInTheDocument();
   });
 
   it("us24_saving_a_threshold_refreshes_the_change_log", async () => {

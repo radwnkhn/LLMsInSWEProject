@@ -194,9 +194,9 @@ METRICS: dict[str, dict[str, MetricSpec]] = {
 
 # ---------------------------------------------------------------- admin changes (US-25)
 
-# Fields an admin may change on a saved fault. US-24 (adjust thresholds) adds "threshold" here,
-# plus its own audit log; the repository and API already route every edit through this set.
-FAULT_EDITABLE_FIELDS = frozenset({"name", "short_name", "enabled"})
+# Fields an admin may change on a saved fault. US-24 added "threshold"; the repository logs each
+# threshold change (who, when, old and new value).
+FAULT_EDITABLE_FIELDS = frozenset({"name", "short_name", "enabled", "threshold"})
 CATEGORIES = ("safety", "technique")
 DIRECTIONS = ("above", "below")
 MAX_NAME, MAX_SHORT_NAME = 80, 40
@@ -209,6 +209,27 @@ class FaultError(ValueError):
 
 class FaultExists(FaultError):
     """The lift already has a fault with this ID."""
+
+
+# US-24: the values a threshold may take, by the kind of measurement it is compared with.
+ANGLE_RANGE, DEPTH_RANGE, RATIO_RANGE = (0, 180), (-1, 1), (0, 2)
+
+
+def threshold_range(fault: Fault | MetricSpec) -> tuple[int, int]:
+    """Lowest and highest allowed threshold for a fault (or the measurement a new fault would use).
+    Hip depth is signed (hips above or below the knee, in thigh lengths); other ratios can't be negative."""
+    if fault.metric == "depth_margin":
+        return DEPTH_RANGE
+    return ANGLE_RANGE if fault.unit == "°" else RATIO_RANGE
+
+
+def _threshold(value, fault: Fault | MetricSpec) -> float:
+    if isinstance(value, bool) or not isinstance(value, (int, float)) or not math.isfinite(value):
+        raise FaultError("Threshold must be a number")
+    low, high = threshold_range(fault)
+    if not low <= value <= high:
+        raise FaultError(f"Threshold must be between {low} and {high}")
+    return float(value)
 
 
 def _text(value, label: str, limit: int) -> str:
@@ -231,6 +252,8 @@ def edit_fault(fault: Fault, **fields) -> Fault:
         fields["short_name"] = _text(fields["short_name"], "Short description", MAX_SHORT_NAME)
     if "enabled" in fields and not isinstance(fields["enabled"], bool):
         raise FaultError("enabled must be true or false")
+    if "threshold" in fields:
+        fields["threshold"] = _threshold(fields["threshold"], fault)
     return replace(fault, **fields)
 
 
@@ -239,7 +262,7 @@ def new_fault(lift: str, id: str, name: str, short_name: str, category: str, met
     """A new fault built on a measurement the app already computes for the lift.
 
     Camera angles, joints, unit and frame label come from that measurement, never from free text,
-    so every reportable fault stays measurable. The threshold is set once here; changing it later is US-24."""
+    so every reportable fault stays measurable. The threshold gets the same range check as US-24 edits."""
     if lift not in METRICS:
         raise FaultError(f"unknown lift '{lift}'")
     spec = METRICS[lift].get(metric)
@@ -251,11 +274,10 @@ def new_fault(lift: str, id: str, name: str, short_name: str, category: str, met
         raise FaultError("category must be safety or technique")
     if direction not in DIRECTIONS:
         raise FaultError("direction must be above or below")
-    if isinstance(threshold, bool) or not isinstance(threshold, (int, float)) or not math.isfinite(threshold):
-        raise FaultError("threshold must be a number")
+    threshold = _threshold(threshold, spec)
     return Fault(id=id, lift=lift, name=_text(name, "Display name", MAX_NAME),
                  short_name=_text(short_name, "Short description", MAX_SHORT_NAME), category=category, metric=metric,
-                 metric_label=spec.label, threshold=float(threshold), direction=direction, unit=spec.unit,
+                 metric_label=spec.label, threshold=threshold, direction=direction, unit=spec.unit,
                  views=spec.views, joints=spec.joints, label_format=spec.label_format)
 
 

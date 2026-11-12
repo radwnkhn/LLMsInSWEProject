@@ -22,7 +22,7 @@ from app.admin import admin_row_view, filter_admin_rows, summarize_validation_er
 from app.auth import AuthUser, EmailTaken, InvalidCredentials
 from app.compress import STORED_CONTENT_TYPE, STORED_EXTENSION
 from app.comparison import COMPARABLE_STATUSES, compare_earlier_fault, measurement_comparison
-from app.faults import METRICS, FaultCatalog, FaultError, FaultExists, new_fault
+from app.faults import METRICS, FaultCatalog, FaultError, FaultExists, new_fault, threshold_range
 from app.feedback import find_previous_cue_prompt
 from app.deletion import delete_upload_with_media
 from app.history import history_item, status_label
@@ -174,16 +174,17 @@ def _session_body(session) -> dict:
 
 
 class FaultEditBody(BaseModel):
-    """US-25 edits. Only these fields; thresholds are changed by US-24."""
+    """US-25 edits (name, short description, enabled) and US-24 threshold changes. Only these fields."""
     model_config = ConfigDict(extra="forbid")
     name: str | None = None
     short_name: str | None = None
     enabled: StrictBool | None = None
+    threshold: StrictInt | StrictFloat | None = None  # range-checked in app.faults.edit_fault
 
     @model_validator(mode="after")
     def _something(self):
         if not self.model_fields_set:
-            raise ValueError("Send a name, short_name or enabled")
+            raise ValueError("Send a name, short_name, enabled or threshold")
         return self
 
 
@@ -200,9 +201,15 @@ class NewFaultBody(BaseModel):
 
 
 def fault_view(fault) -> dict:
+    low, high = threshold_range(fault)
     return {"lift": fault.lift, "id": fault.id, "name": fault.name, "short_name": fault.short_name,
             "category": fault.category, "safety": fault.safety, "metric": fault.metric, "metric_label": fault.metric_label,
-            "threshold": fault.threshold, "direction": fault.direction, "unit": fault.unit, "enabled": fault.enabled}
+            "threshold": fault.threshold, "direction": fault.direction, "unit": fault.unit, "enabled": fault.enabled,
+            "threshold_min": low, "threshold_max": high}
+
+
+def _utc_iso(when: datetime | None) -> str | None:
+    return when.astimezone(timezone.utc).isoformat() if when else None
 
 
 def create_app(services: Services) -> FastAPI:
@@ -554,9 +561,23 @@ def create_app(services: Services) -> FastAPI:
         if services.repo.get_fault(lift, fault_id) is None:
             raise HTTPException(404, "Fault not found")
         try:
-            return fault_view(services.repo.update_fault(lift, fault_id, **body.model_dump(exclude_unset=True)))
+            return fault_view(services.repo.update_fault(lift, fault_id, changed_by=user.id,
+                                                         **body.model_dump(exclude_unset=True)))
         except FaultError as err:
             raise HTTPException(422, str(err))
+
+    @app.get("/admin/faults/threshold-changes")
+    def admin_threshold_changes(user: AuthUser = Depends(admin_user)):
+        """US-24: every threshold change, newest first."""
+        catalog = FaultCatalog(services.repo.list_faults())
+        items = []
+        for c in services.repo.list_threshold_changes():
+            fault = catalog.get(c.lift, c.fault_id)
+            items.append({"lift": c.lift, "lift_label": LIFT_LABELS[c.lift], "fault_id": c.fault_id,
+                          "fault_name": fault.name if fault else c.fault_id, "unit": fault.unit if fault else "",
+                          "old_threshold": c.old_threshold, "new_threshold": c.new_threshold,
+                          "changed_by_email": c.changed_by_email, "changed_at": _utc_iso(c.changed_at)})
+        return {"items": items}
 
     @app.post("/admin/faults", status_code=201)
     def admin_add_fault(body: NewFaultBody, user: AuthUser = Depends(admin_user)):

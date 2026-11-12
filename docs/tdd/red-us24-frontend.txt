@@ -17,9 +17,9 @@ $ npx vitest run src/components/__tests__/us24-thresholds.test.tsx src/component
       Tests  12 failed | 9 passed (21)
 $ npx playwright test e2e/us24-thresholds.spec.ts
   ✘  1 e2e/us24-thresholds.spec.ts:25:5 › us24_admin_changes_a_threshold_it_is_logged_and_only_new_analyses_use_it (1.0m)
-  1) e2e/us24-thresholds.spec.ts:25:5 › us24_admin_changes_a_threshold_it_is_logged_and_only_new_analyses_use_it 
+  1) e2e/us24-thresholds.spec.ts:25:5 › us24_admin_changes_a_threshold_it_is_logged_and_only_new_analyses_use_it
     Error: locator.fill: Test timeout of 60000ms exceeded.
       - waiting for getByRole('region', { name: 'Squat faults', exact: true }).getByLabel(/^Threshold/)
     Error Context: test-results/us24-thresholds-us24-admin-98ba6-nd-only-new-analyses-use-it/error-context.md
   1 failed
-    e2e/us24-thresholds.spec.ts:25:5 › us24_admin_changes_a_threshold_it_is_logged_and_only_new_analyses_use_it 
+    e2e/us24-thresholds.spec.ts:25:5 › us24_admin_changes_a_threshold_it_is_logged_and_only_new_analyses_use_it

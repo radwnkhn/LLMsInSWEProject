@@ -1,7 +1,7 @@
 import type {
   AdminDetail, AdminFault, AdminFaultLift, AdminRow, AdminUpload, AnalysisComparison, AnalysisResult, CostSummary,
-  FaultEdit, FeedbackAnswer, HistoryItem, Lift, ModerationEntry, NewFault, RemovalReason, Session, TriedCue,
-  UploadFilters, UsageReport,
+  FaultEdit, FeedbackAnswer, HistoryItem, Lift, ModerationEntry, NewFault, RemovalReason, Session, ThresholdChange,
+  TriedCue, UploadFilters, UsageReport,
 } from "@/lib/types";
 
 export const API_URL = (process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000").replace(/\/$/, "");
@@ -89,6 +89,7 @@ export const api = {
   updateFault: (lift: string, id: string, edit: FaultEdit, token: string | null) => request<AdminFault>(
     `/admin/faults/${encodeURIComponent(lift)}/${encodeURIComponent(id)}`, { method: "PATCH", body: edit, token }),
   addFault: (fault: NewFault, token: string | null) => request<AdminFault>("/admin/faults", { method: "POST", body: fault, token }),
+  thresholdChanges: (token: string | null) => request<{ items: ThresholdChange[] }>("/admin/faults/threshold-changes", { token }),
   health: () => request<{ status: string }>("/health"),
 };
 

@@ -125,13 +125,28 @@ export type AdminFault = {
   direction: FaultDirection;
   unit: string;
   enabled: boolean;
+  threshold_min?: number; // US-24: the allowed range for this fault's threshold
+  threshold_max?: number;
 };
 
 export type FaultMetric = { metric: string; label: string; unit: string };
 
 export type AdminFaultLift = { lift: Lift; lift_label: string; faults: AdminFault[]; metrics: FaultMetric[] };
 
-export type FaultEdit = Partial<Pick<AdminFault, "name" | "short_name" | "enabled">>;
+export type FaultEdit = Partial<Pick<AdminFault, "name" | "short_name" | "enabled" | "threshold">>;
+
+// US-24: one logged threshold change, newest first on /admin/faults.
+export type ThresholdChange = {
+  lift: Lift;
+  lift_label: string;
+  fault_id: string;
+  fault_name: string;
+  unit: string;
+  old_threshold: number;
+  new_threshold: number;
+  changed_by_email: string | null; // null once the admin's account is deleted
+  changed_at: string;
+};
 
 export type NewFault = Pick<AdminFault, "lift" | "id" | "name" | "short_name" | "category" | "metric" | "threshold" | "direction">;
 
