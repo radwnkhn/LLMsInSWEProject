@@ -1,0 +1,34 @@
+$ TEST_DATABASE_URL=<local throwaway Postgres 18> python -m pytest tests/test_us23_metrics.py tests/test_us23_metrics_repository.py -q -rfE
+FAILED tests/test_us23_metrics.py::test_us23_dashboard_lists_the_four_metrics_in_order_with_targets
+FAILED tests/test_us23_metrics.py::test_us23_trainer_agreement_comes_from_graded_assignments
+FAILED tests/test_us23_metrics.py::test_us23_helpful_ratings_and_cue_tried_come_from_lifter_feedback
+FAILED tests/test_us23_metrics.py::test_us23_seven_day_return_counts_lifters_whose_first_week_is_over
+FAILED tests/test_us23_metrics.py::test_us23_default_range_is_the_last_30_days
+FAILED tests/test_us23_metrics.py::test_us23_range_counts_only_analyses_created_in_it
+FAILED tests/test_us23_metrics.py::test_us23_invalid_or_reversed_ranges_are_rejected[params0]
+FAILED tests/test_us23_metrics.py::test_us23_invalid_or_reversed_ranges_are_rejected[params1]
+FAILED tests/test_us23_metrics.py::test_us23_invalid_or_reversed_ranges_are_rejected[params2]
+FAILED tests/test_us23_metrics.py::test_us23_non_admins_get_403 - AssertionEr...
+FAILED tests/test_us23_metrics_repository.py::test_us23_repo_lists_feedback_for_analyses_created_in_a_range[memory]
+FAILED tests/test_us23_metrics_repository.py::test_us23_repo_lists_feedback_for_analyses_created_in_a_range[postgres]
+FAILED tests/test_us23_metrics_repository.py::test_us23_repo_lists_verdicts_of_graded_assignments_in_a_range[memory]
+FAILED tests/test_us23_metrics_repository.py::test_us23_repo_lists_verdicts_of_graded_assignments_in_a_range[postgres]
+FAILED tests/test_us23_metrics_repository.py::test_us23_repo_lists_every_upload_time_by_user[memory]
+FAILED tests/test_us23_metrics_repository.py::test_us23_repo_lists_every_upload_time_by_user[postgres]
+ERROR tests/test_us23_metrics.py::test_us23_unit_targets_and_fail_lines - Mod...
+ERROR tests/test_us23_metrics.py::test_us23_unit_status_from_value_target_and_fail_line[None-no_data]
+ERROR tests/test_us23_metrics.py::test_us23_unit_status_from_value_target_and_fail_line[0.8-on_target]
+ERROR tests/test_us23_metrics.py::test_us23_unit_status_from_value_target_and_fail_line[1.0-on_target]
+ERROR tests/test_us23_metrics.py::test_us23_unit_status_from_value_target_and_fail_line[0.79-below_target]
+ERROR tests/test_us23_metrics.py::test_us23_unit_status_from_value_target_and_fail_line[0.6-below_target]
+ERROR tests/test_us23_metrics.py::test_us23_unit_status_from_value_target_and_fail_line[0.59-failing]
+ERROR tests/test_us23_metrics.py::test_us23_unit_status_from_value_target_and_fail_line[0.0-failing]
+ERROR tests/test_us23_metrics.py::test_us23_unit_status_labels - ModuleNotFou...
+ERROR tests/test_us23_metrics.py::test_us23_unit_trainer_agreement_counts_correct_of_graded
+ERROR tests/test_us23_metrics.py::test_us23_unit_helpful_ratings_counts_4_and_5
+ERROR tests/test_us23_metrics.py::test_us23_unit_cue_tried_counts_yes_of_yes_and_no
+ERROR tests/test_us23_metrics.py::test_us23_unit_seven_day_return - ModuleNot...
+ERROR tests/test_us23_metrics.py::test_us23_unit_share_and_basis - ModuleNotF...
+ERROR tests/test_us23_metrics.py::test_us23_unit_no_data_has_no_value_and_a_zero_count
+ERROR tests/test_us23_metrics.py::test_us23_unit_basis_uses_singular_for_one
+16 failed, 16 errors in 1.20s
