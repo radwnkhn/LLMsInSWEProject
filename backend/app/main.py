@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import copy
 import hmac
+import math
 import logging
 import mimetypes
 import os
@@ -349,13 +350,14 @@ def create_app(services: Services) -> FastAPI:
 
     @app.post("/uploads", status_code=201)
     def create_upload(background: BackgroundTasks, user: AuthUser = Depends(current_user),
-                      file: UploadFile = File(...), lift: str = Form(...), note: str | None = Form(None)):
+                      file: UploadFile = File(...), lift: str = Form(...), note: str | None = Form(None),
+                      trim_start: float | None = Form(None), trim_end: float | None = Form(None)):
         with services.repo.user_lock(user.id):
             if services.repo.get_user(user.id) is None:
                 raise HTTPException(401, "Please log in")
-            return store_upload(background, user, file, lift, note)
+            return store_upload(background, user, file, lift, note, trim_start, trim_end)
 
-    def store_upload(background, user, file, lift, note):
+    def store_upload(background, user, file, lift, note, trim_start, trim_end):
         if lift not in LIFTS:
             raise HTTPException(422, f"Choose one of: {', '.join(LIFTS)}")
         if note is not None and len(note) > MAX_NOTE_LENGTH:
@@ -381,6 +383,12 @@ def create_app(services: Services) -> FastAPI:
                 raise HTTPException(422, UNREADABLE_MESSAGE)
             if info.duration > MAX_DURATION_SECONDS:
                 raise HTTPException(422, DURATION_MESSAGE)
+            if (trim_start is not None or trim_end is not None) and not (
+                trim_start is not None and trim_end is not None
+                and math.isfinite(trim_start) and math.isfinite(trim_end)
+                and 0 <= trim_start < trim_end <= info.duration
+            ):
+                raise HTTPException(422, "Choose a start and end within the video, with the end after the start.")
             stored, stored_ext, content_type = tmp.name, ext, VIDEO_TYPES[ext]
             if services.compressor is not None:
                 stored, stored_ext, content_type = compressed, STORED_EXTENSION, STORED_CONTENT_TYPE
@@ -402,7 +410,8 @@ def create_app(services: Services) -> FastAPI:
                 if os.path.exists(leftover):
                     os.unlink(leftover)
 
-        services.repo.create_upload(upload_id, user.id, lift, path, file.filename, note or None)
+        services.repo.create_upload(upload_id, user.id, lift, path, file.filename, note or None,
+                                    trim_start=trim_start, trim_end=trim_end)
         services.repo.create_analysis(analysis_id, upload_id, user.id, lift)
         background.add_task(process_analysis, services, analysis_id)
         return {"upload_id": upload_id, "analysis_id": analysis_id, "status": "queued"}

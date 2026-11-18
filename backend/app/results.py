@@ -27,6 +27,11 @@ def build_result_view(outcome: AnalysisOutcome, note: str | None) -> dict:
         "lift_label": LIFT_LABELS[m.lift],
         "camera_angle": m.camera_angle if status != "unanalyzable" else None,
         "rep_count": m.rep_count,
+        "measurement_quality": {
+            "source": "pose_estimate", "independently_verified": False,
+            "segmentation_reliable": m.segmentation_reliable,
+            "notes": list(m.segmentation_notes),
+        },
         "unanalyzable_reason": outcome.unanalyzable_reason,
         "top_fix": None,
         "cue": None,

@@ -16,7 +16,7 @@ from app.llm.schema import CoachOutput
 from app.measure import SetMeasurements, measure_set
 from app.pose import PoseFrame
 from app.rules import NotMeasured, confirm_faults, not_measured_checks
-from app.validator import build_validation_context
+from app.validator import build_validation_context, measurement_issues
 
 FrameLoader = Callable[[int], np.ndarray]
 
@@ -50,6 +50,8 @@ def analyze_set(frames: Sequence[PoseFrame], lift: str, note: str | None, llm: L
     load = frame_loader or _blank
     m = measure_set(frames, lift, fps)
     reason = check_analyzable(frames, m.rep_count)
+    if not reason and (problems := measurement_issues(m)):
+        reason = "We couldn't reliably separate the repetitions. " + " ".join(problems)
     if reason:
         return AnalysisOutcome(final_status="unanalyzable", measurements=m, unanalyzable_reason=reason, catalog=catalog)
 

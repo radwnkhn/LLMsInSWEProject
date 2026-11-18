@@ -69,6 +69,14 @@ def test_setup02_repo_uploads_and_analyses_round_trip(repo):
     assert repo.get_analysis("not-a-uuid") is None
 
 
+def test_us04_repo_trim_boundaries_survive_reads_and_history_listing(repo):
+    uid = _user(repo)
+    up = str(uuid.uuid4())
+    repo.create_upload(up, uid, "squat", f"{uid}/{up}.mp4", "set.mp4", None, trim_start=2.25, trim_end=8.5)
+    for upload in (repo.get_upload(up), repo.list_uploads_for_user(uid)[0]):
+        assert (upload.trim_start, upload.trim_end) == (2.25, 8.5)
+
+
 def test_setup02_repo_rejects_unknown_analysis_fields(repo):
     uid = _user(repo)
     with pytest.raises(ValueError):

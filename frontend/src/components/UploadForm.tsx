@@ -1,15 +1,16 @@
 "use client";
 
-import { useId, useState, type FormEvent } from "react";
+import { useId, useRef, useState, type FormEvent } from "react";
 
 import { FilmingGuide } from "@/components/FilmingGuide";
 import { AnalysisProgress } from "@/components/AnalysisProgress";
+import { VideoTrimmer, validTrim, type TrimRange } from "@/components/VideoTrimmer";
 import { LiftPicker } from "@/components/LiftPicker";
 import { ApiError } from "@/lib/api";
 import type { Lift } from "@/lib/types";
 import { ACCEPT, getVideoDuration, validateVideoFile } from "@/lib/videoFile";
 
-export type UploadArgs = { file: File; lift: Lift; note: string; onProgress: (percent: number) => void };
+export type UploadArgs = { file: File; lift: Lift; note: string; trim?: TrimRange; onProgress: (percent: number) => void };
 
 type Props = {
   upload: (args: UploadArgs) => Promise<{ analysis_id: string }>;
@@ -30,6 +31,9 @@ export function UploadForm({ upload, readDuration = getVideoDuration, onUploaded
   const [guideOpen, setGuideOpen] = useState(Boolean(initialLift && initialGuideOpen));
   const [guideSeen, setGuideSeen] = useState(Boolean(initialLift && initialGuideOpen));
   const [file, setFile] = useState<File | null>(null);
+  const [duration, setDuration] = useState<number | null>(null);
+  const [trim, setTrim] = useState<TrimRange | null>(null);
+  const fileChoice = useRef(0);
   const [fileError, setFileError] = useState<string | null>(null);
   const [checking, setChecking] = useState(false);
   const [note, setNote] = useState("");
@@ -48,7 +52,11 @@ export function UploadForm({ upload, readDuration = getVideoDuration, onUploaded
   }
 
   async function chooseFile(picked: File | undefined) {
+    const choice = ++fileChoice.current;
     setFile(null);
+    setDuration(null);
+    setTrim(null);
+    setChecking(false);
     setFileError(null);
     setUploadError(null);
     if (!picked) return;
@@ -64,19 +72,21 @@ export function UploadForm({ upload, readDuration = getVideoDuration, onUploaded
     } catch {
       duration = null; // the server checks the length too
     }
+    if (choice !== fileChoice.current) return;
     setChecking(false);
+    setDuration(duration !== null && Number.isFinite(duration) ? duration : null);
     const error = validateVideoFile(picked, duration);
     if (error) setFileError(error);
     else setFile(picked);
   }
 
   async function start() {
-    if (!file || !lift) return;
+    if (!file || !lift || !validTrim(trim, duration)) return;
     setUploading(true);
     setUploadError(null);
     setProgress(0);
     try {
-      const res = await upload({ file, lift, note, onProgress: setProgress });
+      const res = await upload({ file, lift, note, ...(trim ? { trim } : {}), onProgress: setProgress });
       onUploaded?.(res.analysis_id);
     } catch (err) {
       const retryable = isRetryable(err);
@@ -106,12 +116,14 @@ export function UploadForm({ upload, readDuration = getVideoDuration, onUploaded
       <div>
         <label className="block">
           <span className="text-sm font-medium">Video of your set</span>
-          <input type="file" accept={ACCEPT} aria-describedby={fileHintId} onChange={(e) => void chooseFile(e.target.files?.[0])}
+          <input type="file" disabled={uploading} accept={ACCEPT} aria-describedby={fileHintId} onChange={(e) => void chooseFile(e.target.files?.[0])}
             className="mt-1 block w-full text-sm file:mr-3 file:rounded-lg file:border-0 file:bg-zinc-100 file:px-3 file:py-2" />
         </label>
         <p id={fileHintId} className="mt-1 text-xs text-zinc-500">MP4 or MOV, up to 60 seconds and 200 MB.</p>
       </div>
       {fileError && <p role="alert" className="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700">{fileError}</p>}
+
+      {file && <VideoTrimmer key={fileChoice.current} file={file} duration={duration} trim={trim} onChange={setTrim} disabled={uploading} />}
 
       <div>
         <label className="block">
@@ -143,7 +155,7 @@ export function UploadForm({ upload, readDuration = getVideoDuration, onUploaded
         </div>
       )}
 
-      <button type="submit" disabled={!lift || !file || checking || uploading}
+      <button type="submit" disabled={!lift || !file || checking || uploading || !validTrim(trim, duration)}
         className="w-full rounded-lg bg-zinc-900 px-4 py-3 font-semibold text-white disabled:opacity-40">
         Upload
       </button>

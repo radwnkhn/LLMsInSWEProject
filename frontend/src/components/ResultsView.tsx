@@ -116,6 +116,8 @@ export function ResultsView({ result, onFeedback, onPreviousCueAnswer, onRetry }
       <header>
         <h1 className="text-2xl font-bold">{result.lift_label}</h1>
         {!unanalyzable && result.rep_count !== null && <p className="text-sm text-zinc-600">{result.rep_count} reps</p>}
+        {!unanalyzable && result.measurement_quality && <p className="text-xs text-zinc-500">Rep count and form measurements are estimates from video pose tracking.</p>}
+        {!unanalyzable && result.measurement_quality?.notes.map((note) => <p key={note} className="text-sm text-amber-800">{note}</p>)}
       </header>
       {!unanalyzable && <Link href="/history" className="inline-block text-sm font-medium underline">Compare with a past upload</Link>}
 
@@ -157,7 +159,11 @@ export function ResultsView({ result, onFeedback, onPreviousCueAnswer, onRetry }
       {result.other_faults.length > 0 && <SeeMore faults={result.other_faults} />}
 
       {result.video_url && !unanalyzable && (
-        <video ref={videoRef} src={result.video_url} controls playsInline preload="metadata" className="w-full rounded-xl bg-black" />
+        <div className="space-y-2">
+          {result.analysis_range && <p className="text-sm text-zinc-600">Analyzed {result.analysis_range.start_time.toFixed(1)}–{result.analysis_range.end_time.toFixed(1)}s. Feedback times refer to your full video.</p>}
+          <video ref={videoRef} src={result.video_url} controls playsInline preload="metadata" className="w-full rounded-xl bg-black"
+            onLoadedMetadata={() => { if (videoRef.current && result.analysis_range) videoRef.current.currentTime = result.analysis_range.start_time; }} />
+        </div>
       )}
       {result.annotated_frame && <AnnotatedFrame frame={result.annotated_frame} onPlayFrom={(t) => seek(t, true)} />}
       {result.rep_breakdown && <RepBreakdown breakdown={result.rep_breakdown} onSeek={(t) => seek(t, false)} />}

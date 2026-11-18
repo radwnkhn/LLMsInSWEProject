@@ -1,0 +1,198 @@
+
+> frontend@0.1.0 test:coverage
+> vitest run --coverage --maxWorkers=2
+
+
+ RUN  v3.2.7 C:/Users/imran/LLMsInSWEProject/backend/.pytest_cache/video-trimming-rep-segmentation/frontend
+      Coverage enabled with v8
+
+ ✓ src/components/__tests__/us24-thresholds.test.tsx (12 tests) 7989ms
+   ✓ US-24 threshold editing > us24_edit_form_shows_the_current_threshold_with_its_unit_and_allowed_range  2540ms
+   ✓ US-24 threshold editing > us24_saving_sends_the_new_threshold_and_shows_the_new_rule  705ms
+   ✓ US-24 threshold editing > us24_saving_without_changing_the_threshold_does_not_send_it  503ms
+   ✓ US-24 threshold editing > us24_invalid_threshold__is_rejected_before_saving  761ms
+   ✓ US-24 threshold editing > us24_invalid_threshold_181_is_rejected_before_saving  885ms
+   ✓ US-24 threshold editing > us24_invalid_threshold_-1_is_rejected_before_saving  497ms
+   ✓ US-24 threshold editing > us24_ratio_thresholds_use_their_own_range  566ms
+   ✓ US-24 threshold editing > us24_a_threshold_the_api_rejects_shows_its_reason  543ms
+   ✓ US-24 threshold change log > us24_saving_a_threshold_refreshes_the_change_log  735ms
+ ✓ src/components/__tests__/us25-fault-list.test.tsx (9 tests) 10164ms
+   ✓ US-25 fault list page > us25_lists_every_fault_per_lift_with_category_safety_measurement_and_status  2309ms
+   ✓ US-25 fault list page > us25_editing_saves_the_display_name_and_short_description  1668ms
+   ✓ US-25 fault list page > us25_blank_or_too_long_names_are_rejected_before_saving  2578ms
+   ✓ US-25 fault list page > us25_disable_and_enable_switch_the_fault_status  464ms
+   ✓ US-25 fault list page > us25_adding_a_fault_sends_it_and_lists_it_under_its_lift  1474ms
+   ✓ US-25 fault list page > us25_rejected_additions_show_the_reason  1025ms
+   ✓ US-25 fault list page > us25_admin_analyses_page_links_to_the_fault_list  314ms
+ ✓ src/components/__tests__/us22-grading.test.tsx (20 tests) 4218ms
+   ✓ US-22 admin grading page > us22_admin_assigns_a_sample_to_a_trainer_with_a_count_and_optional_lift  1415ms
+ ✓ src/components/__tests__/us27-moderation.test.tsx (11 tests) 4596ms
+   ✓ US-27 usage > us27_shows_signups_and_uploads_per_day_with_totals  900ms
+   ✓ US-27 usage > us27_choosing_dates_reloads_usage_and_uploads  502ms
+   ✓ US-27 removing an upload > us27_remove_asks_for_confirmation_and_a_reason_before_removing  529ms
+   ✓ US-27 removing an upload > us27_confirmed_removal_takes_the_upload_off_the_list_and_logs_it  780ms
+   ✓ US-27 removing an upload > us27_a_failed_removal_keeps_the_dialog_open_with_the_reason  796ms
+ ✓ src/components/__tests__/us01-auth.test.tsx (6 tests) 2806ms
+   ✓ US-01 sign up and log in > us01_signup_submits_email_and_password_and_reports_success  1301ms
+   ✓ US-01 sign up and log in > us01_wrong_password_shows_message_and_does_not_log_in  800ms
+   ✓ US-01 sign up and log in > us01_network_failure_shows_a_generic_error  666ms
+ ✓ src/components/__tests__/us04-upload-form.test.tsx (9 tests) 4372ms
+   ✓ US-04 upload a set video from my phone > us04_wrong_type_rejected_before_uploading  1092ms
+   ✓ US-04 upload a set video from my phone > us04_too_long_video_rejected_with_the_limit  337ms
+   ✓ US-04 upload a set video from my phone > us04_too_large_video_rejected_with_the_limit  403ms
+   ✓ US-04 upload a set video from my phone > us04_unreadable_duration_is_left_to_the_server  351ms
+   ✓ US-04 upload a set video from my phone > us04_progress_is_shown_as_a_percentage  481ms
+   ✓ US-04 upload a set video from my phone > us04_success_hands_back_the_analysis_id  528ms
+   ✓ US-04 upload a set video from my phone > us04_failed_upload_shows_error_with_retry_that_reuses_the_file  587ms
+   ✓ US-04 upload a set video from my phone > us04_server_rejection_message_is_shown  413ms
+ ✓ src/components/__tests__/us21-deletion.test.tsx (10 tests) 5759ms
+   ✓ US-21 upload deletion > us21_upload_delete_requires_confirmation_and_cancel_preserves_the_upload  1734ms
+   ✓ US-21 upload deletion > us21_confirmation_deletes_the_upload_id_including_its_analysis_retries  348ms
+   ✓ US-21 upload deletion > us21_escape_cancels_and_returns_focus_to_the_delete_trigger  760ms
+   ✓ US-21 upload deletion > us21_pending_deletion_blocks_duplicate_confirmation  424ms
+   ✓ US-21 upload deletion > us21_failed_cleanup_remains_retryable_without_claiming_success  594ms
+   ✓ US-21 upload deletion > us21_deleted_entries_cannot_remain_selected_for_comparison  1164ms
+ ✓ src/components/__tests__/us13-us14-us15-results.test.tsx (11 tests) 6400ms
+   ✓ US-13 say what couldn't be measured > us13_not_measured_checks_listed_with_reasons  1133ms
+   ✓ US-14 safety issues come first > us14_safety_faults_under_see_more_are_labeled_too  1009ms
+   ✓ US-15 recommend a professional if I mention pain > us15_note_field_is_optional_and_limited_to_300_characters  2142ms
+   ✓ US-15 recommend a professional if I mention pain > us15_note_counter_and_text_are_sent  908ms
+ ✓ src/components/__tests__/us23-metrics.test.tsx (10 tests) 3977ms
+   ✓ US-23 hypothesis metrics dashboard > us23_shows_the_four_metrics_with_value_target_fail_line_and_status  1122ms
+   ✓ US-23 hypothesis metrics dashboard > us23_filtering_by_date_range_reloads_the_metrics  1303ms
+   ✓ US-23 hypothesis metrics dashboard > us23_admin_analyses_page_links_to_the_metrics  349ms
+ ✓ src/components/__tests__/us20-comparison.test.tsx (12 tests) 3892ms
+   ✓ US-20 compare uploads > us20_history_selects_two_same_lift_uploads_and_opens_the_comparison  1454ms
+   ✓ US-20 compare uploads > us20_a_different_lift_is_disabled_after_the_first_selection  341ms
+   ✓ US-20 compare uploads > us20_only_two_completed_measurable_uploads_can_be_selected  438ms
+   ✓ US-20 compare uploads > us20_changing_the_history_filter_clears_hidden_selections  561ms
+   ✓ US-20 compare uploads > us20_two_videos_and_their_measurements_are_shown_side_by_side  326ms
+ ✓ src/components/__tests__/us03-filming-guide.test.tsx (12 tests) 2224ms
+   ✓ US-03 filming guidance before recording > us03_guide_shows_the_core_tips_for_Squat  558ms
+   ✓ US-03 filming guidance before recording > us03_guide_opens_after_choosing_a_lift  463ms
+   ✓ US-03 filming guidance before recording > us03_guide_does_not_reopen_on_its_own_when_changing_lift  355ms
+ ✓ src/components/__tests__/us10-top-fix.test.tsx (8 tests) 1689ms
+   ✓ US-10 show one top fix and one cue > us10_shows_exactly_one_top_fix_in_plain_language  1013ms
+ ✓ src/components/__tests__/us02-lift-picker.test.tsx (5 tests) 1488ms
+   ✓ US-02 choose the lift before uploading > us02_lift_picker_offers_the_supported_lifts  503ms
+   ✓ US-02 choose the lift before uploading > us02_upload_button_disabled_until_lift_selected  365ms
+   ✓ US-02 choose the lift before uploading > us02_selected_lift_is_sent_with_the_upload  352ms
+ ✓ src/components/__tests__/us19-processing.test.tsx (12 tests) 1692ms
+   ✓ US-19 live processing status > us19_uploading_shows_all_steps_in_order_and_preserves_byte_progress  947ms
+ ✓ src/components/__tests__/us26-ai-cost.test.tsx (7 tests) 1664ms
+   ✓ US-26 cost on the analysis detail page > us26_each_attempt_shows_provider_model_tokens_and_cost  475ms
+   ✓ US-26 cost summary on the admin page > us26_choosing_dates_reloads_the_summary_for_that_range  734ms
+ ✓ src/components/__tests__/us04-video-trimmer.test.tsx (4 tests) 2269ms
+   ✓ us04_full_video_is_the_default_without_automatic_cuts  685ms
+   ✓ us04_start_and_end_controls_preview_and_upload_only_the_chosen_range  524ms
+   ✓ us04_reset_restores_full_video_and_changing_files_discards_the_selection  543ms
+   ✓ us04_invalid_bounds_block_upload_and_retry_preserves_valid_bounds  514ms
+ ✓ src/components/__tests__/us16-feedback.test.tsx (8 tests) 1364ms
+   ✓ US-16 rate the feedback and say if I tried the cue > us16_asks_for_a_1_to_5_rating_and_whether_the_cue_was_tried  566ms
+   ✓ US-16 rate the feedback and say if I tried the cue > us16_submits_the_answers  342ms
+ ✓ src/components/__tests__/us17-us18-lists.test.tsx (9 tests) 1445ms
+   ✓ US-17 upload history > us17_lists_entries_with_date_lift_reps_and_top_fix  482ms
+   ✓ US-17 upload history > us17_history_can_be_filtered_by_lift  408ms
+ ✓ src/components/__tests__/us28-more-lifts.test.tsx (10 tests) 878ms
+   ✓ US-28 more lifts > us28_picker_offers_the_two_new_lifts_after_the_existing_three  529ms
+ ✓ src/components/__tests__/us21-pages.test.tsx (2 tests) 814ms
+   ✓ US-21 deletion pages > us21_history_removes_every_analysis_of_the_deleted_upload  690ms
+ ✓ src/components/__tests__/us20-comparison-page.test.tsx (8 tests) 840ms
+   ✓ US-20 comparison page > us20_fetches_the_selected_uploads_and_displays_the_comparison  508ms
+ ✓ src/components/__tests__/us11-us12-frame-and-reps.test.tsx (7 tests) 778ms
+   ✓ US-11 annotated frame > us11_frame_image_and_caption_match_the_stored_values  409ms
+ ✓ src/lib/__tests__/us04-video-file.test.ts (13 tests) 49ms
+ ✓ src/components/__tests__/us05-us09-status.test.tsx (4 tests) 634ms
+   ✓ US-05 tell me when a video can't be analyzed > us05_unanalyzable_result_shows_the_reason_and_a_refilm_link  442ms
+ ✓ src/lib/__tests__/us26-cost-requests.test.ts (3 tests) 114ms
+ ✓ src/lib/__tests__/us27-moderation-requests.test.ts (4 tests) 63ms
+ ✓ src/lib/__tests__/us25-fault-requests.test.ts (4 tests) 61ms
+ ✓ src/lib/__tests__/us21-session-redirect.test.ts (2 tests) 59ms
+ ✓ src/lib/__tests__/us04-upload-request.test.ts (5 tests) 51ms
+ ✓ src/lib/__tests__/us21-delete-request.test.ts (2 tests) 47ms
+
+ Test Files  30 passed (30)
+      Tests  239 passed (239)
+   Start at  20:26:11
+   Duration  192.50s (transform 2.97s, setup 59.54s, collect 18.31s, tests 72.40s, environment 198.21s, prepare 10.81s)
+
+ % Coverage report from v8
+-------------------|---------|----------|---------|---------|-------------------
+File               | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s
+-------------------|---------|----------|---------|---------|-------------------
+All files          |   93.57 |    88.59 |   85.22 |   93.57 |
+ src               |    87.5 |       60 |     100 |    87.5 |
+  middleware.ts    |    87.5 |       60 |     100 |    87.5 | 17-18
+ src/app           |       0 |        0 |       0 |       0 |
+  page.tsx         |       0 |        0 |       0 |       0 | 1-5
+ src/app/admin     |     100 |    83.33 |     100 |     100 |
+  page.tsx         |     100 |    83.33 |     100 |     100 | 24
+ .../analyses/[id] |   97.36 |    58.82 |     100 |   97.36 |
+  page.tsx         |   97.36 |    58.82 |     100 |   97.36 | 43,75
+ ...p/admin/faults |   96.87 |    77.77 |     100 |   96.87 |
+  page.tsx         |   96.87 |    77.77 |     100 |   96.87 | 24
+ .../admin/grading |     100 |      100 |     100 |     100 |
+  page.tsx         |     100 |      100 |     100 |     100 |
+ .../admin/metrics |     100 |      100 |     100 |     100 |
+  page.tsx         |     100 |      100 |     100 |     100 |
+ ...min/moderation |   95.52 |    68.96 |     100 |   95.52 |
+  page.tsx         |   95.52 |    68.96 |     100 |   95.52 | 29,56-57
+ src/app/compare   |     100 |    91.66 |     100 |     100 |
+  page.tsx         |     100 |    91.66 |     100 |     100 | 28,37
+ src/app/grading   |     100 |    84.61 |     100 |     100 |
+  page.tsx         |     100 |    84.61 |     100 |     100 | 18,27
+ ...p/grading/[id] |     100 |       60 |     100 |     100 |
+  page.tsx         |     100 |       60 |     100 |     100 | 23-24
+ src/app/history   |     100 |    77.77 |     100 |     100 |
+  page.tsx         |     100 |    77.77 |     100 |     100 | 19,22
+ src/app/login     |       0 |        0 |       0 |       0 |
+  page.tsx         |       0 |        0 |       0 |       0 | 1-7
+ ...p/results/[id] |     100 |     87.5 |   66.66 |     100 |
+  page.tsx         |     100 |     87.5 |   66.66 |     100 | 39-40,42,82
+ src/app/settings  |     100 |      100 |     100 |     100 |
+  page.tsx         |     100 |      100 |     100 |     100 |
+ src/app/signup    |       0 |        0 |       0 |       0 |
+  page.tsx         |       0 |        0 |       0 |       0 | 1-7
+ src/app/status    |       0 |      100 |     100 |       0 |
+  page.tsx         |       0 |      100 |     100 |       0 | 3-19
+ src/app/upload    |       0 |      100 |     100 |       0 |
+  page.tsx         |       0 |      100 |     100 |       0 | 3-30
+ src/components    |   95.79 |    90.81 |   93.14 |   95.79 |
+  ...ysesTable.tsx |     100 |      100 |     100 |     100 |
+  ...FaultList.tsx |   99.65 |     90.4 |   93.02 |   99.65 | 125
+  ...Forbidden.tsx |     100 |      100 |     100 |     100 |
+  AdminGrading.tsx |    99.2 |    88.09 |     100 |    99.2 | 125
+  ...sProgress.tsx |     100 |      100 |     100 |     100 |
+  ...atedFrame.tsx |     100 |      100 |     100 |     100 |
+  AuthForm.tsx     |     100 |      100 |     100 |     100 |
+  AuthPage.tsx     |       0 |      100 |     100 |       0 | 3-34
+  ...risonView.tsx |     100 |    92.85 |     100 |     100 | 19
+  CostSummary.tsx  |   98.61 |    79.16 |     100 |   98.61 | 18
+  ...countForm.tsx |     100 |      100 |     100 |     100 |
+  ...firmation.tsx |     100 |    90.32 |     100 |     100 | 35,42,55
+  ...oadButton.tsx |     100 |      100 |     100 |     100 |
+  ErrorSummary.tsx |     100 |    83.33 |     100 |     100 | 32
+  FeedbackForm.tsx |   96.15 |    84.21 |     100 |   96.15 | 30-31
+  FilmingGuide.tsx |     100 |      100 |     100 |     100 |
+  ...ssignment.tsx |   94.69 |    86.66 |    90.9 |   94.69 | 16-18,36-38,110
+  HistoryList.tsx  |     100 |    96.87 |     100 |     100 | 41
+  LiftPicker.tsx   |     100 |      100 |     100 |     100 |
+  ...Dashboard.tsx |     100 |    83.33 |     100 |     100 | 40,66,74
+  Moderation.tsx   |     100 |    87.17 |   92.85 |     100 | ...29,164,173-174
+  NavBar.tsx       |       0 |      100 |     100 |       0 | 3-38
+  NotMeasured.tsx  |     100 |      100 |     100 |     100 |
+  ...CuePrompt.tsx |     100 |      100 |     100 |     100 |
+  RepBreakdown.tsx |     100 |      100 |     100 |     100 |
+  ResultsView.tsx  |   95.52 |    93.47 |   61.53 |   95.52 | 106-111
+  ...Forbidden.tsx |     100 |      100 |     100 |     100 |
+  UploadForm.tsx   |     100 |    94.11 |     100 |     100 | 62,75,84
+  VideoTrimmer.tsx |   96.51 |    83.87 |   84.61 |   96.51 | 41-43
+ src/lib           |   87.87 |     92.3 |      60 |   87.87 |
+  api.ts           |   86.29 |    91.48 |   46.15 |   86.29 | ...05,107,109,132
+  filming.ts       |     100 |      100 |     100 |     100 |
+  format.ts        |     100 |      100 |     100 |     100 |
+  lifts.ts         |     100 |       75 |     100 |     100 | 12,16
+  session.ts       |     100 |    88.88 |     100 |     100 | 9
+  types.ts         |       0 |        0 |       0 |       0 |
+  videoFile.ts     |   53.12 |      100 |   66.66 |   53.12 | 24-38
+-------------------|---------|----------|---------|---------|-------------------

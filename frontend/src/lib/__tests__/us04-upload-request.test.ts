@@ -25,6 +25,19 @@ class FakeXHR {
 afterEach(() => vi.unstubAllGlobals());
 
 describe("US-04 upload request", () => {
+  it("us04_optional_selection_sends_original_video_and_both_boundaries", async () => {
+    vi.stubGlobal("XMLHttpRequest", FakeXHR);
+    const file = videoFile();
+    const promise = uploadVideo({ file, lift: "squat", note: "", token: "tok", trim: { start: 2.25, end: 8.5 }, onProgress: () => {} });
+    const xhr = FakeXHR.last;
+    expect(xhr.body!.get("file")).toBe(file);
+    expect(xhr.body!.get("trim_start")).toBe("2.25");
+    expect(xhr.body!.get("trim_end")).toBe("8.5");
+    xhr.status = 201;
+    xhr.responseText = JSON.stringify({ analysis_id: "a1" });
+    xhr.onload!();
+    await promise;
+  });
   it("us04_upload_reports_progress_as_a_percentage", async () => {
     vi.stubGlobal("XMLHttpRequest", FakeXHR);
     const progress: number[] = [];
@@ -51,6 +64,8 @@ describe("US-04 upload request", () => {
     expect(xhr.body!.get("lift")).toBe("bench_press");
     expect(xhr.body!.get("note")).toBe("felt good");
     expect(xhr.body!.get("file")).toBe(file);
+    expect(xhr.body!.has("trim_start")).toBe(false);
+    expect(xhr.body!.has("trim_end")).toBe(false);
     xhr.status = 201;
     xhr.responseText = JSON.stringify({ analysis_id: "a1" });
     xhr.onload!();

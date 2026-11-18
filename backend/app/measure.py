@@ -11,6 +11,7 @@ from typing import Sequence
 import numpy as np
 
 from app.pose import Landmark, PoseFrame
+from app.segmentation import SquatSegmentation, segment_squats
 
 CONFIDENCE_THRESHOLD = 0.5
 HANDS_AT_SHOULDERS = 0.5  # hands_at_shoulders, in torso lengths (a bar on the back measures about 0.1-0.3)
@@ -85,6 +86,9 @@ class SetMeasurements:
     thigh_length: float | None
     holds_bar: bool = True  # squat: hands at the shoulders, as with a bar on the back (see hands_at_shoulders)
 
+    segmentation_reliable: bool = True
+    segmentation_notes: list[str] = field(default_factory=list)
+
     @property
     def rep_count(self) -> int:
         return len(self.reps)
@@ -107,6 +111,8 @@ class SetMeasurements:
 # ---------------------------------------------------------------- geometry
 
 def _xy(p) -> Point:
+    if p is None:
+        return (float("nan"), float("nan"))
     return (p.x, p.y) if isinstance(p, Landmark) else (float(p[0]), float(p[1]))
 
 
@@ -117,7 +123,7 @@ def joint_angle(a, b, c) -> float:
     cx, cy = _xy(c)
     v1, v2 = (ax - bx, ay - by), (cx - bx, cy - by)
     n1, n2 = math.hypot(*v1), math.hypot(*v2)
-    if n1 < 1e-12 or n2 < 1e-12:
+    if not math.isfinite(n1 + n2) or n1 < 1e-12 or n2 < 1e-12:
         return float("nan")
     cos = (v1[0] * v2[0] + v1[1] * v2[1]) / (n1 * n2)
     return math.degrees(math.acos(max(-1.0, min(1.0, cos))))
@@ -150,7 +156,9 @@ def group_confidence(frame: PoseFrame, group: str) -> float:
     if not frame.landmarks:
         return 0.0
     left, right = GROUPS[group]
-    return max(frame.landmarks[left].confidence, frame.landmarks[right].confidence)
+    return max((p.confidence for name in (left, right)
+                if (p := frame.landmarks.get(name)) is not None
+                and all(math.isfinite(v) for v in (p.x, p.y, p.confidence))), default=0.0)
 
 
 def low_confidence_groups(frames: Sequence[PoseFrame]) -> frozenset[str]:
@@ -168,15 +176,20 @@ def low_confidence_groups(frames: Sequence[PoseFrame]) -> frozenset[str]:
 def _mid(frame: PoseFrame, group: str) -> Point | None:
     if not frame.landmarks:
         return None
-    left, right = (frame.landmarks[n] for n in GROUPS[group])
-    return ((left.x + right.x) / 2, (left.y + right.y) / 2)
+    points = [p for n in GROUPS[group] if (p := frame.landmarks.get(n)) is not None
+              and _usable(p)]
+    if not points:
+        return (float("nan"), float("nan"))
+    return (sum(p.x for p in points) / len(points), sum(p.y for p in points) / len(points))
 
 
-def _side_point(frame: PoseFrame, side: str, joint: str) -> Point | None:
-    if not frame.landmarks:
-        return None
-    lm = frame.landmarks[f"{side}_{joint}"]
-    return (lm.x, lm.y)
+def _usable(p: Landmark) -> bool:
+    return p.confidence >= CONFIDENCE_THRESHOLD and all(math.isfinite(v) for v in (p.x, p.y, p.confidence))
+
+
+def _side_point(frame: PoseFrame, side: str, joint: str) -> Point:
+    lm = (frame.landmarks or {}).get(f"{side}_{joint}")
+    return (lm.x, lm.y) if lm is not None and _usable(lm) else (float("nan"), float("nan"))
 
 
 def _visible_side(frames: Sequence[PoseFrame]) -> str:
@@ -184,7 +197,7 @@ def _visible_side(frames: Sequence[PoseFrame]) -> str:
     for f in frames:
         if f.landmarks:
             for side in totals:
-                totals[side] += sum(f.landmarks[f"{side}_{j}"].confidence for j in ("shoulder", "hip", "knee", "ankle"))
+                totals[side] += sum(group.confidence if (group := f.landmarks.get(f"{side}_{j}")) is not None and _usable(group) else 0 for j in ("shoulder", "hip", "knee", "ankle"))
     return "right" if totals["right"] > totals["left"] else "left"
 
 
@@ -193,7 +206,7 @@ def _series(frames: Sequence[PoseFrame], fn) -> np.ndarray:
     for i, f in enumerate(frames):
         if f.landmarks:
             v = fn(f)
-            if v is not None:
+            if v is not None and np.isfinite(v):
                 out[i] = v
     return out
 
@@ -248,12 +261,12 @@ def _smooth(s: np.ndarray, window: int = 5) -> np.ndarray:
 
 
 def count_reps(signal: Sequence[float], rest: str = "high", min_amplitude: float = 0.02) -> list[RepSegment]:
-    """Splits a height signal into complete reps (rest -> turn -> rest) using hysteresis thresholds.
+    """Legacy one-dimensional counter for lifts other than the squat (and diagnostic candidates).
 
     rest="high": the signal sits high between reps (squat, bench). rest="low": it sits low (deadlift).
     Movements smaller than `min_amplitude` are ignored; a final rep that never returns to rest isn't counted.
-    Each rep is judged against the rest height just before it rather than one level for the whole set, so a
-    slow drift (the camera tilting, the lifter moving nearer or farther) doesn't hide reps.
+    The rest height is local, but the amplitude thresholds use the whole clip's range. Squats instead use
+    segment_squats so an unrelated movement cannot set their detection thresholds.
     """
     filled = _fill_gaps(np.asarray(signal, dtype=float))
     if filled is None:
@@ -264,8 +277,7 @@ def count_reps(signal: Sequence[float], rest: str = "high", min_amplitude: float
     amp = np.percentile(s, 98) - np.percentile(s, 2)
     if amp < min_amplitude:
         return []
-    # A rep must drop half the set's range below the rest height it left, so a shallow rep among deep ones still
-    # counts, and must come back to within a fifth of the range of that height.
+    # Drop half the clip's range, then return to within a fifth of that range of the local rest height.
     down_by, back_within = 0.5 * amp, 0.2 * amp
     eps = 1e-6 * amp
     reps: list[RepSegment] = []
@@ -301,11 +313,11 @@ def classify_camera_angle(frames: Sequence[PoseFrame]) -> str:
         if not f.landmarks or min(group_confidence(f, "shoulders"), group_confidence(f, "hips")) < CONFIDENCE_THRESHOLD:
             continue
         lm = f.landmarks
-        sw = math.dist(_xy(lm["left_shoulder"]), _xy(lm["right_shoulder"]))
-        hw = math.dist(_xy(lm["left_hip"]), _xy(lm["right_hip"]))
+        widths = [math.dist(_xy(lm[a]), _xy(lm[b])) for a, b in (GROUPS["shoulders"], GROUPS["hips"])
+                  if a in lm and b in lm and _usable(lm[a]) and _usable(lm[b])]
         torso = math.dist(_mid(f, "shoulders"), _mid(f, "hips"))
-        if torso > 1e-6:
-            ratios.append((sw + hw) / 2 / torso)
+        if widths and torso > 1e-6:
+            ratios.append(float(np.mean(widths)) / torso)
     if not ratios:
         return "angled"
     r = float(np.median(ratios))
@@ -356,6 +368,8 @@ def detect_lift(frames: Sequence[PoseFrame]) -> str | None:
 
 def _valgus(f: PoseFrame) -> float | None:
     lm = f.landmarks
+    if not all(n in lm and _usable(lm[n]) for g in ("hips", "knees", "ankles") for n in GROUPS[g]):
+        return None
     mid_x = (lm["left_hip"].x + lm["right_hip"].x) / 2
     worst = None
     for side in ("left", "right"):
@@ -371,11 +385,15 @@ def _valgus(f: PoseFrame) -> float | None:
 
 def _elbow_flare(f: PoseFrame) -> float | None:
     lm = f.landmarks
+    if not all(n in lm and _usable(lm[n]) for g in ("elbows", "shoulders", "hips") for n in GROUPS[g]):
+        return None
     return max(joint_angle(lm[f"{s}_elbow"], lm[f"{s}_shoulder"], lm[f"{s}_hip"]) for s in ("left", "right"))
 
 
 def _wrist_diff(f: PoseFrame) -> float | None:
     lm = f.landmarks
+    if not all(n in lm and _usable(lm[n]) for g in ("shoulders", "wrists") for n in GROUPS[g]):
+        return None
     width = math.dist(_xy(lm["left_shoulder"]), _xy(lm["right_shoulder"]))
     return abs(lm["left_wrist"].y - lm["right_wrist"].y) / width if width > 1e-6 else None
 
@@ -422,7 +440,21 @@ def measure_set(frames: Sequence[PoseFrame], lift: str, fps: float) -> SetMeasur
     flare = _series(frames, _elbow_flare) if front else None
     wrist_diff = _series(frames, _wrist_diff) if front else None
 
-    if lift == "romanian_deadlift":
+    segmentation = SquatSegmentation()
+    if lift == "squat":
+        torso = _series(frames, lambda f: math.dist(pt("shoulder")(f), pt("hip")(f)))
+        relative_height = _series(frames, lambda f: pt("ankle")(f)[1] - pt("hip")(f)[1])
+        shin = _series(frames, lambda f: pt("ankle")(f)[1] - pt("knee")(f)[1])
+        with np.errstate(invalid="ignore", divide="ignore"):
+            segmentation = segment_squats(relative_height / torso, knee, hip, torso, shin / torso,
+                                          [f.timestamp for f in frames], front=front)
+        segments = [RepSegment(*bounds) for bounds in segmentation.segments]
+        # Keep diagnostic candidates for out-of-shot legacy measurements, but never coach them.
+        # Confidence gates below suppress unavailable metrics; pipeline rejects this entire set.
+        if not np.isfinite(knee).any():
+            segments = count_reps(height_signal(frames, lift), min_amplitude=max(0.02, 0.25 * (thigh or 0)))
+            segmentation.reject("The knees or ankles could not be tracked to verify squat phases.")
+    elif lift == "romanian_deadlift":
         # US-28: the hips move back, not down, so reps come from the hinge (shoulder-hip-knee angle).
         segments = count_reps(hip, rest=REST_POSITION[lift], min_amplitude=RDL_MIN_HINGE_DEG)
     else:
@@ -478,7 +510,8 @@ def measure_set(frames: Sequence[PoseFrame], lift: str, fps: float) -> SetMeasur
             extreme("elbow_angle_min_deg", elbow, span, "min")
             extreme("lockout_elbow_angle_deg", elbow, span, "max")
 
-        metrics["bar_drift_ratio"] = _r(bar_drift_ratio(bar[span], thigh)) if thigh else None
+        metrics["bar_drift_ratio"] = (_r(bar_drift_ratio(bar[span], thigh))
+                                      if thigh and np.isfinite(bar[span]).any() else None)
         worst["bar_drift_ratio"] = frames[seg.turn].index
         if lift == "squat":
             if front:
@@ -505,4 +538,5 @@ def measure_set(frames: Sequence[PoseFrame], lift: str, fps: float) -> SetMeasur
 
     return SetMeasurements(lift=lift, detected_lift=detect_lift(frames), camera_angle=camera, fps=fps, reps=reps,
                            low_confidence_groups=low_confidence_groups(frames), frame_count=len(frames),
-                           thigh_length=thigh, holds_bar=lift != "squat" or hands_at_shoulders(frames))
+                           thigh_length=thigh, holds_bar=lift != "squat" or hands_at_shoulders(frames),
+                           segmentation_reliable=segmentation.reliable, segmentation_notes=segmentation.notes)

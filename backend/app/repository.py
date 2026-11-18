@@ -37,6 +37,8 @@ class UploadRecord:
     filename: str
     note: str | None = None
     created_at: datetime | None = None
+    trim_start: float | None = None
+    trim_end: float | None = None
 
 
 @dataclass
@@ -160,7 +162,8 @@ class Repository(Protocol):
     def list_feedback_between(self, start: datetime, end: datetime) -> list[FeedbackRecord]: ...
     def list_graded_verdicts(self, start: datetime, end: datetime) -> list[str]: ...
     def list_upload_times(self) -> list[tuple[str, datetime]]: ...
-    def create_upload(self, id: str, user_id: str, lift: str, video_path: str, filename: str, note: str | None) -> UploadRecord: ...
+    def create_upload(self, id: str, user_id: str, lift: str, video_path: str, filename: str, note: str | None,
+                      trim_start: float | None = None, trim_end: float | None = None) -> UploadRecord: ...
     def get_upload(self, id: str) -> UploadRecord | None: ...
     def list_uploads_for_user(self, user_id: str) -> list[UploadRecord]: ...
     def delete_upload(self, upload_id: str) -> None: ...
@@ -245,8 +248,8 @@ class InMemoryRepository:
     def get_user(self, id):
         return self.users.get(id)
 
-    def create_upload(self, id, user_id, lift, video_path, filename, note):
-        rec = UploadRecord(id, user_id, lift, video_path, filename, note, self._stamp())
+    def create_upload(self, id, user_id, lift, video_path, filename, note, trim_start=None, trim_end=None):
+        rec = UploadRecord(id, user_id, lift, video_path, filename, note, self._stamp(), trim_start, trim_end)
         self.uploads[id] = rec
         return rec
 
@@ -596,16 +599,16 @@ class PostgresRepository:
         return [(str(r["user_id"]), r["created_at"])
                 for r in self._q("select user_id, created_at from public.uploads", rows=True)]
 
-    def create_upload(self, id, user_id, lift, video_path, filename, note):
-        r = self._q("insert into public.uploads (id, user_id, lift, video_path, filename, note) "
-                    "values (%s, %s, %s, %s, %s, %s) returning created_at",
-                    (id, user_id, lift, video_path, filename, note), one=True)
-        return UploadRecord(id, user_id, lift, video_path, filename, note, r["created_at"])
+    def create_upload(self, id, user_id, lift, video_path, filename, note, trim_start=None, trim_end=None):
+        r = self._q("insert into public.uploads (id, user_id, lift, video_path, filename, note, trim_start, trim_end) "
+                    "values (%s, %s, %s, %s, %s, %s, %s, %s) returning created_at",
+                    (id, user_id, lift, video_path, filename, note, trim_start, trim_end), one=True)
+        return UploadRecord(id, user_id, lift, video_path, filename, note, r["created_at"], trim_start, trim_end)
 
     def get_upload(self, id):
         r = self._q("select * from public.uploads where id::text = %s", (id,), one=True)
         return r and UploadRecord(str(r["id"]), str(r["user_id"]), r["lift"], r["video_path"], r["filename"],
-                                  r["note"], r["created_at"])
+                                  r["note"], r["created_at"], r["trim_start"], r["trim_end"])
 
     def create_analysis(self, id, upload_id, user_id, lift):
         r = self._q("insert into public.analyses (id, upload_id, user_id, lift) values (%s, %s, %s, %s) returning *",
@@ -615,7 +618,7 @@ class PostgresRepository:
     def list_uploads_for_user(self, user_id):
         rows = self._q("select * from public.uploads where user_id = %s order by created_at", (user_id,), rows=True)
         return [UploadRecord(str(r["id"]), str(r["user_id"]), r["lift"], r["video_path"], r["filename"],
-                             r["note"], r["created_at"]) for r in rows]
+                             r["note"], r["created_at"], r["trim_start"], r["trim_end"]) for r in rows]
 
     def delete_upload(self, upload_id):
         # Existing foreign keys cascade to analyses, measurements, attempts, errors and feedback.
@@ -793,7 +796,7 @@ class PostgresRepository:
             "where u.created_at >= %s and u.created_at < %s and (%s::text is null or u.lift = %s) "
             "order by u.created_at desc", (start, end, lift, lift), rows=True)
         return [AdminUploadRow(UploadRecord(str(r["id"]), str(r["user_id"]), r["lift"], r["video_path"], r["filename"],
-                                            r["note"], r["created_at"]), r["user_email"] or "",
+                                            r["note"], r["created_at"], r["trim_start"], r["trim_end"]), r["user_email"] or "",
                                self.get_analysis(str(r["a_id"])) if r["a_id"] else None) for r in rows]
 
     _MODERATION_SELECT = ("select m.*, o.email as owner_email, a.email as removed_by_email from public.moderation_log m "

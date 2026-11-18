@@ -1,0 +1,2294 @@
+
+ RUN  v3.2.7 C:/Users/imran/LLMsInSWEProject/backend/.pytest_cache/video-trimming-rep-segmentation/frontend
+
+ ❯ src/components/__tests__/us04-video-trimmer.test.tsx (4 tests | 4 failed) 4785ms
+   × us04_full_video_is_the_default_without_automatic_cuts 1497ms
+     → Unable to find role="button" and name "Choose a segment"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<form[39m
+      [33mclass[39m=[32m"space-y-5"[39m
+    [36m>[39m
+      [36m<fieldset>[39m
+        [36m<legend[39m
+          [33mclass[39m=[32m"mb-2 text-sm font-medium"[39m
+        [36m>[39m
+          [0mWhich lift?[0m
+        [36m</legend>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"grid grid-cols-2 gap-2 sm:grid-cols-3"[39m
+        [36m>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-900 bg-zinc-100"[39m
+          [36m>[39m
+            [36m<input[39m
+              [33mchecked[39m=[32m""[39m
+              [33mclass[39m=[32m"accent-zinc-900"[39m
+              [33mname[39m=[32m"lift"[39m
+              [33mtype[39m=[32m"radio"[39m
+              [33mvalue[39m=[32m"squat"[39m
+            [36m/>[39m
+            [0mSquat[0m
+          [36m</label>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-300"[39m
+          [36m>[39m
+            [36m<input[39m
+              [33mclass[39m=[32m"accent-zinc-900"[39m
+              [33mname[39m=[32m"lift"[39m
+              [33mtype[39m=[32m"radio"[39m
+              [33mvalue[39m=[32m"deadlift"[39m
+            [36m/>[39m
+            [0mDeadlift[0m
+          [36m</label>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-300"[39m
+          [36m>[39m
+            [36m<input[39m
+              [33mclass[39m=[32m"accent-zinc-900"[39m
+              [33mname[39m=[32m"lift"[39m
+              [33mtype[39m=[32m"radio"[39m
+              [33mvalue[39m=[32m"bench_press"[39m
+            [36m/>[39m
+            [0mBench Press[0m
+          [36m</label>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-300"[39m
+          [36m>[39m
+            [36m<input[39m
+              [33mclass[39m=[32m"accent-zinc-900"[39m
+              [33mname[39m=[32m"lift"[39m
+              [33mtype[39m=[32m"radio"[39m
+              [33mvalue[39m=[32m"overhead_press"[39m
+            [36m/>[39m
+            [0mOverhead Press[0m
+          [36m</label>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-300"[39m
+          [36m>[39m
+            [36m<input[39m
+              [33mclass[39m=[32m"accent-zinc-900"[39m
+              [33mname[39m=[32m"lift"[39m
+              [33mtype[39m=[32m"radio"[39m
+              [33mvalue[39m=[32m"romanian_deadlift"[39m
+            [36m/>[39m
+            [0mRomanian Deadlift[0m
+          [36m</label>[39m
+        [36m</div>[39m
+      [36m</fieldset>[39m
+      [36m<button[39m
+        [33mclass[39m=[32m"text-sm font-medium text-zinc-700 underline disabled:no-underline disabled:opacity-40"[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m>[39m
+        [0mFilming tips[0m
+      [36m</button>[39m
+      [36m<div>[39m
+        [36m<label[39m
+          [33mclass[39m=[32m"block"[39m
+        [36m>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"text-sm font-medium"[39m
+          [36m>[39m
+            [0mVideo of your set[0m
+          [36m</span>[39m
+          [36m<input[39m
+            [33maccept[39m=[32m"video/mp4,video/quicktime,.mp4,.mov"[39m
+            [33maria-describedby[39m=[32m"«r0»"[39m
+            [33mclass[39m=[32m"mt-1 block w-full text-sm file:mr-3 file:rounded-lg file:border-0 file:bg-zinc-100 file:px-3 file:py-2"[39m
+            [33mtype[39m=[32m"file"[39m
+          [36m/>[39m
+        [36m</label>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"mt-1 text-xs text-zinc-500"[39m
+          [33mid[39m=[32m"«r0»"[39m
+        [36m>[39m
+          [0mMP4 or MOV, up to 60 seconds and 200 MB.[0m
+        [36m</p>[39m
+      [36m</div>[39m
+      [36m<div>[39m
+        [36m<label[39m
+          [33mclass[39m=[32m"block"[39m
+        [36m>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"text-sm font-medium"[39m
+          [36m>[39m
+            [0mAnything we should know? (optional)[0m
+          [36m</span>[39m
+          [36m<textarea[39m
+            [33maria-describedby[39m=[32m"«r1»"[39m
+            [33mclass[39m=[32m"mt-1 w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm"[39m
+            [33mmaxlength[39m=[32m"300"[39m
+            [33mplaceholder[39m=[32m"e.g. last two reps felt slow"[39m
+            [33mrows[39m=[32m"2"[39m
+          [36m/>[39m
+        [36m</label>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"text-right text-xs text-zinc-500"[39m
+          [33mid[39m=[32m"«r1»"[39m
+        [36m>[39m
+          [0m0[0m
+          [0m/[0m
+          [0m300[0m
+        [36m</p>[39m
+      [36m</div>[39m
+      [36m<button[39m
+        [33mclass[39m=[32m"w-full rounded-lg bg-zinc-900 px-4 py-3 font-semibold text-white disabled:opacity-40"[39m
+        [33mtype[39m=[32m"submit"[39m
+      [36m>[39m
+        [0mUpload[0m
+      [36m</button>[39m
+    [36m</form>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<form[39m
+      [33mclass[39m=[32m"space-y-5"[39m
+    [36m>[39m
+      [36m<fieldset>[39m
+        [36m<legend[39m
+          [33mclass[39m=[32m"mb-2 text-sm font-medium"[39m
+        [36m>[39m
+          [0mWhich lift?[0m
+        [36m</legend>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"grid grid-cols-2 gap-2 sm:grid-cols-3"[39m
+        [36m>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-900 bg-zinc-100"[39m
+          [36m>[39m
+            [36m<input[39m
+              [33mchecked[39m=[32m""[39m
+              [33mclass[39m=[32m"accent-zinc-900"[39m
+              [33mname[39m=[32m"lift"[39m
+              [33mtype[39m=[32m"radio"[39m
+              [33mvalue[39m=[32m"squat"[39m
+            [36m/>[39m
+            [0mSquat[0m
+          [36m</label>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-300"[39m
+          [36m>[39m
+            [36m<input[39m
+              [33mclass[39m=[32m"accent-zinc-900"[39m
+              [33mname[39m=[32m"lift"[39m
+              [33mtype[39m=[32m"radio"[39m
+              [33mvalue[39m=[32m"deadlift"[39m
+            [36m/>[39m
+            [0mDeadlift[0m
+          [36m</label>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-300"[39m
+          [36m>[39m
+            [36m<input[39m
+              [33mclass[39m=[32m"accent-zinc-900"[39m
+              [33mname[39m=[32m"lift"[39m
+              [33mtype[39m=[32m"radio"[39m
+              [33mvalue[39m=[32m"bench_press"[39m
+            [36m/>[39m
+            [0mBench Press[0m
+          [36m</label>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-300"[39m
+          [36m>[39m
+            [36m<input[39m
+              [33mclass[39m=[32m"accent-zinc-900"[39m
+              [33mname[39m=[32m"lift"[39m
+              [33mtype[39m=[32m"radio"[39m
+              [33mvalue[39m=[32m"overhead_press"[39m
+            [36m/>[39m
+            [0mOverhead Press[0m
+          [36m</label>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-300"[39m
+          [36m>[39m
+            [36m<input[39m
+              [33mclass[39m=[32m"accent-zinc-900"[39m
+              [33mname[39m=[32m"lift"[39m
+              [33mtype[39m=[32m"radio"[39m
+              [33mvalue[39m=[32m"romanian_deadlift"[39m
+            [36m/>[39m
+            [0mRomanian Deadlift[0m
+          [36m</label>[39m
+        [36m</div>[39m
+      [36m</fieldset>[39m
+      [36m<button[39m
+        [33mclass[39m=[32m"text-sm font-medium text-zinc-700 underline disabled:no-underline disabled:opacity-40"[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m>[39m
+        [0mFilming tips[0m
+      [36m</button>[39m
+      [36m<div>[39m
+        [36m<label[39m
+          [33mclass[39m=[32m"block"[39m
+        [36m>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"text-sm font-medium"[39m
+          [36m>[39m
+            [0mVideo of your set[0m
+          [36m</span>[39m
+          [36m<input[39m
+            [33maccept[39m=[32m"video/mp4,video/quicktime,.mp4,.mov"[39m
+            [33maria-describedby[39m=[32m"«r0»"[39m
+            [33mclass[39m=[32m"mt-1 block w-full text-sm file:mr-3 file:rounded-lg file:border-0 file:bg-zinc-100 file:px-3 file:py-2"[39m
+            [33mtype[39m=[32m"file"[39m
+          [36m/>[39m
+        [36m</label>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"mt-1 text-xs text-zinc-500"[39m
+          [33mid[39m=[32m"«r0»"[39m
+        [36m>[39m
+          [0mMP4 or MOV, up to 60 seconds and 200 MB.[0m
+        [36m</p>[39m
+      [36m</div>[39m
+      [36m<div>[39m
+        [36m<label[39m
+          [33mclass[39m=[32m"block"[39m
+        [36m>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"text-sm font-medium"[39m
+          [36m>[39m
+            [0mAnything we should know? (optional)[0m
+          [36m</span>[39m
+          [36m<textarea[39m
+            [33maria-describedby[39m=[32m"«r1»"[39m
+            [33mclass[39m=[32m"mt-1 w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm"[39m
+            [33mmaxlength[39m=[32m"300"[39m
+            [33mplaceholder[39m=[32m"e.g. last two reps felt slow"[39m
+            [33mrows[39m=[32m"2"[39m
+          [36m/>[39m
+        [36m</label>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"text-right text-xs text-zinc-500"[39m
+          [33mid[39m=[32m"«r1»"[39m
+        [36m>[39m
+          [0m0[0m
+          [0m/[0m
+          [0m300[0m
+        [36m</p>[39m
+      [36m</div>[39m
+      [36m<button[39m
+        [33mclass[39m=[32m"w-full rounded-lg bg-zinc-900 px-4 py-3 font-semibold text-white disabled:opacity-40"[39m
+        [33mtype[39m=[32m"submit"[39m
+      [36m>[39m
+        [0mUpload[0m
+      [36m</button>[39m
+    [36m</form>[39m
+  [36m</div>[39m
+[36m</body>[39m
+   × us04_start_and_end_controls_preview_and_upload_only_the_chosen_range 1110ms
+     → Unable to find role="button" and name "Choose a segment"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<form[39m
+      [33mclass[39m=[32m"space-y-5"[39m
+    [36m>[39m
+      [36m<fieldset>[39m
+        [36m<legend[39m
+          [33mclass[39m=[32m"mb-2 text-sm font-medium"[39m
+        [36m>[39m
+          [0mWhich lift?[0m
+        [36m</legend>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"grid grid-cols-2 gap-2 sm:grid-cols-3"[39m
+        [36m>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-900 bg-zinc-100"[39m
+          [36m>[39m
+            [36m<input[39m
+              [33mchecked[39m=[32m""[39m
+              [33mclass[39m=[32m"accent-zinc-900"[39m
+              [33mname[39m=[32m"lift"[39m
+              [33mtype[39m=[32m"radio"[39m
+              [33mvalue[39m=[32m"squat"[39m
+            [36m/>[39m
+            [0mSquat[0m
+          [36m</label>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-300"[39m
+          [36m>[39m
+            [36m<input[39m
+              [33mclass[39m=[32m"accent-zinc-900"[39m
+              [33mname[39m=[32m"lift"[39m
+              [33mtype[39m=[32m"radio"[39m
+              [33mvalue[39m=[32m"deadlift"[39m
+            [36m/>[39m
+            [0mDeadlift[0m
+          [36m</label>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-300"[39m
+          [36m>[39m
+            [36m<input[39m
+              [33mclass[39m=[32m"accent-zinc-900"[39m
+              [33mname[39m=[32m"lift"[39m
+              [33mtype[39m=[32m"radio"[39m
+              [33mvalue[39m=[32m"bench_press"[39m
+            [36m/>[39m
+            [0mBench Press[0m
+          [36m</label>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-300"[39m
+          [36m>[39m
+            [36m<input[39m
+              [33mclass[39m=[32m"accent-zinc-900"[39m
+              [33mname[39m=[32m"lift"[39m
+              [33mtype[39m=[32m"radio"[39m
+              [33mvalue[39m=[32m"overhead_press"[39m
+            [36m/>[39m
+            [0mOverhead Press[0m
+          [36m</label>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-300"[39m
+          [36m>[39m
+            [36m<input[39m
+              [33mclass[39m=[32m"accent-zinc-900"[39m
+              [33mname[39m=[32m"lift"[39m
+              [33mtype[39m=[32m"radio"[39m
+              [33mvalue[39m=[32m"romanian_deadlift"[39m
+            [36m/>[39m
+            [0mRomanian Deadlift[0m
+          [36m</label>[39m
+        [36m</div>[39m
+      [36m</fieldset>[39m
+      [36m<button[39m
+        [33mclass[39m=[32m"text-sm font-medium text-zinc-700 underline disabled:no-underline disabled:opacity-40"[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m>[39m
+        [0mFilming tips[0m
+      [36m</button>[39m
+      [36m<div>[39m
+        [36m<label[39m
+          [33mclass[39m=[32m"block"[39m
+        [36m>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"text-sm font-medium"[39m
+          [36m>[39m
+            [0mVideo of your set[0m
+          [36m</span>[39m
+          [36m<input[39m
+            [33maccept[39m=[32m"video/mp4,video/quicktime,.mp4,.mov"[39m
+            [33maria-describedby[39m=[32m"«r2»"[39m
+            [33mclass[39m=[32m"mt-1 block w-full text-sm file:mr-3 file:rounded-lg file:border-0 file:bg-zinc-100 file:px-3 file:py-2"[39m
+            [33mtype[39m=[32m"file"[39m
+          [36m/>[39m
+        [36m</label>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"mt-1 text-xs text-zinc-500"[39m
+          [33mid[39m=[32m"«r2»"[39m
+        [36m>[39m
+          [0mMP4 or MOV, up to 60 seconds and 200 MB.[0m
+        [36m</p>[39m
+      [36m</div>[39m
+      [36m<div>[39m
+        [36m<label[39m
+          [33mclass[39m=[32m"block"[39m
+        [36m>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"text-sm font-medium"[39m
+          [36m>[39m
+            [0mAnything we should know? (optional)[0m
+          [36m</span>[39m
+          [36m<textarea[39m
+            [33maria-describedby[39m=[32m"«r3»"[39m
+            [33mclass[39m=[32m"mt-1 w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm"[39m
+            [33mmaxlength[39m=[32m"300"[39m
+            [33mplaceholder[39m=[32m"e.g. last two reps felt slow"[39m
+            [33mrows[39m=[32m"2"[39m
+          [36m/>[39m
+        [36m</label>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"text-right text-xs text-zinc-500"[39m
+          [33mid[39m=[32m"«r3»"[39m
+        [36m>[39m
+          [0m0[0m
+          [0m/[0m
+          [0m300[0m
+        [36m</p>[39m
+      [36m</div>[39m
+      [36m<button[39m
+        [33mclass[39m=[32m"w-full rounded-lg bg-zinc-900 px-4 py-3 font-semibold text-white disabled:opacity-40"[39m
+        [33mtype[39m=[32m"submit"[39m
+      [36m>[39m
+        [0mUpload[0m
+      [36m</button>[39m
+    [36m</form>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<form[39m
+      [33mclass[39m=[32m"space-y-5"[39m
+    [36m>[39m
+      [36m<fieldset>[39m
+        [36m<legend[39m
+          [33mclass[39m=[32m"mb-2 text-sm font-medium"[39m
+        [36m>[39m
+          [0mWhich lift?[0m
+        [36m</legend>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"grid grid-cols-2 gap-2 sm:grid-cols-3"[39m
+        [36m>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-900 bg-zinc-100"[39m
+          [36m>[39m
+            [36m<input[39m
+              [33mchecked[39m=[32m""[39m
+              [33mclass[39m=[32m"accent-zinc-900"[39m
+              [33mname[39m=[32m"lift"[39m
+              [33mtype[39m=[32m"radio"[39m
+              [33mvalue[39m=[32m"squat"[39m
+            [36m/>[39m
+            [0mSquat[0m
+          [36m</label>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-300"[39m
+          [36m>[39m
+            [36m<input[39m
+              [33mclass[39m=[32m"accent-zinc-900"[39m
+              [33mname[39m=[32m"lift"[39m
+              [33mtype[39m=[32m"radio"[39m
+              [33mvalue[39m=[32m"deadlift"[39m
+            [36m/>[39m
+            [0mDeadlift[0m
+          [36m</label>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-300"[39m
+          [36m>[39m
+            [36m<input[39m
+              [33mclass[39m=[32m"accent-zinc-900"[39m
+              [33mname[39m=[32m"lift"[39m
+              [33mtype[39m=[32m"radio"[39m
+              [33mvalue[39m=[32m"bench_press"[39m
+            [36m/>[39m
+            [0mBench Press[0m
+          [36m</label>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-300"[39m
+          [36m>[39m
+            [36m<input[39m
+              [33mclass[39m=[32m"accent-zinc-900"[39m
+              [33mname[39m=[32m"lift"[39m
+              [33mtype[39m=[32m"radio"[39m
+              [33mvalue[39m=[32m"overhead_press"[39m
+            [36m/>[39m
+            [0mOverhead Press[0m
+          [36m</label>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-300"[39m
+          [36m>[39m
+            [36m<input[39m
+              [33mclass[39m=[32m"accent-zinc-900"[39m
+              [33mname[39m=[32m"lift"[39m
+              [33mtype[39m=[32m"radio"[39m
+              [33mvalue[39m=[32m"romanian_deadlift"[39m
+            [36m/>[39m
+            [0mRomanian Deadlift[0m
+          [36m</label>[39m
+        [36m</div>[39m
+      [36m</fieldset>[39m
+      [36m<button[39m
+        [33mclass[39m=[32m"text-sm font-medium text-zinc-700 underline disabled:no-underline disabled:opacity-40"[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m>[39m
+        [0mFilming tips[0m
+      [36m</button>[39m
+      [36m<div>[39m
+        [36m<label[39m
+          [33mclass[39m=[32m"block"[39m
+        [36m>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"text-sm font-medium"[39m
+          [36m>[39m
+            [0mVideo of your set[0m
+          [36m</span>[39m
+          [36m<input[39m
+            [33maccept[39m=[32m"video/mp4,video/quicktime,.mp4,.mov"[39m
+            [33maria-describedby[39m=[32m"«r2»"[39m
+            [33mclass[39m=[32m"mt-1 block w-full text-sm file:mr-3 file:rounded-lg file:border-0 file:bg-zinc-100 file:px-3 file:py-2"[39m
+            [33mtype[39m=[32m"file"[39m
+          [36m/>[39m
+        [36m</label>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"mt-1 text-xs text-zinc-500"[39m
+          [33mid[39m=[32m"«r2»"[39m
+        [36m>[39m
+          [0mMP4 or MOV, up to 60 seconds and 200 MB.[0m
+        [36m</p>[39m
+      [36m</div>[39m
+      [36m<div>[39m
+        [36m<label[39m
+          [33mclass[39m=[32m"block"[39m
+        [36m>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"text-sm font-medium"[39m
+          [36m>[39m
+            [0mAnything we should know? (optional)[0m
+          [36m</span>[39m
+          [36m<textarea[39m
+            [33maria-describedby[39m=[32m"«r3»"[39m
+            [33mclass[39m=[32m"mt-1 w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm"[39m
+            [33mmaxlength[39m=[32m"300"[39m
+            [33mplaceholder[39m=[32m"e.g. last two reps felt slow"[39m
+            [33mrows[39m=[32m"2"[39m
+          [36m/>[39m
+        [36m</label>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"text-right text-xs text-zinc-500"[39m
+          [33mid[39m=[32m"«r3»"[39m
+        [36m>[39m
+          [0m0[0m
+          [0m/[0m
+          [0m300[0m
+        [36m</p>[39m
+      [36m</div>[39m
+      [36m<button[39m
+        [33mclass[39m=[32m"w-full rounded-lg bg-zinc-900 px-4 py-3 font-semibold text-white disabled:opacity-40"[39m
+        [33mtype[39m=[32m"submit"[39m
+      [36m>[39m
+        [0mUpload[0m
+      [36m</button>[39m
+    [36m</form>[39m
+  [36m</div>[39m
+[36m</body>[39m
+   × us04_reset_restores_full_video_and_changing_files_discards_the_selection 1090ms
+     → Unable to find role="button" and name "Choose a segment"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<form[39m
+      [33mclass[39m=[32m"space-y-5"[39m
+    [36m>[39m
+      [36m<fieldset>[39m
+        [36m<legend[39m
+          [33mclass[39m=[32m"mb-2 text-sm font-medium"[39m
+        [36m>[39m
+          [0mWhich lift?[0m
+        [36m</legend>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"grid grid-cols-2 gap-2 sm:grid-cols-3"[39m
+        [36m>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-900 bg-zinc-100"[39m
+          [36m>[39m
+            [36m<input[39m
+              [33mchecked[39m=[32m""[39m
+              [33mclass[39m=[32m"accent-zinc-900"[39m
+              [33mname[39m=[32m"lift"[39m
+              [33mtype[39m=[32m"radio"[39m
+              [33mvalue[39m=[32m"squat"[39m
+            [36m/>[39m
+            [0mSquat[0m
+          [36m</label>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-300"[39m
+          [36m>[39m
+            [36m<input[39m
+              [33mclass[39m=[32m"accent-zinc-900"[39m
+              [33mname[39m=[32m"lift"[39m
+              [33mtype[39m=[32m"radio"[39m
+              [33mvalue[39m=[32m"deadlift"[39m
+            [36m/>[39m
+            [0mDeadlift[0m
+          [36m</label>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-300"[39m
+          [36m>[39m
+            [36m<input[39m
+              [33mclass[39m=[32m"accent-zinc-900"[39m
+              [33mname[39m=[32m"lift"[39m
+              [33mtype[39m=[32m"radio"[39m
+              [33mvalue[39m=[32m"bench_press"[39m
+            [36m/>[39m
+            [0mBench Press[0m
+          [36m</label>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-300"[39m
+          [36m>[39m
+            [36m<input[39m
+              [33mclass[39m=[32m"accent-zinc-900"[39m
+              [33mname[39m=[32m"lift"[39m
+              [33mtype[39m=[32m"radio"[39m
+              [33mvalue[39m=[32m"overhead_press"[39m
+            [36m/>[39m
+            [0mOverhead Press[0m
+          [36m</label>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-300"[39m
+          [36m>[39m
+            [36m<input[39m
+              [33mclass[39m=[32m"accent-zinc-900"[39m
+              [33mname[39m=[32m"lift"[39m
+              [33mtype[39m=[32m"radio"[39m
+              [33mvalue[39m=[32m"romanian_deadlift"[39m
+            [36m/>[39m
+            [0mRomanian Deadlift[0m
+          [36m</label>[39m
+        [36m</div>[39m
+      [36m</fieldset>[39m
+      [36m<button[39m
+        [33mclass[39m=[32m"text-sm font-medium text-zinc-700 underline disabled:no-underline disabled:opacity-40"[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m>[39m
+        [0mFilming tips[0m
+      [36m</button>[39m
+      [36m<div>[39m
+        [36m<label[39m
+          [33mclass[39m=[32m"block"[39m
+        [36m>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"text-sm font-medium"[39m
+          [36m>[39m
+            [0mVideo of your set[0m
+          [36m</span>[39m
+          [36m<input[39m
+            [33maccept[39m=[32m"video/mp4,video/quicktime,.mp4,.mov"[39m
+            [33maria-describedby[39m=[32m"«r4»"[39m
+            [33mclass[39m=[32m"mt-1 block w-full text-sm file:mr-3 file:rounded-lg file:border-0 file:bg-zinc-100 file:px-3 file:py-2"[39m
+            [33mtype[39m=[32m"file"[39m
+          [36m/>[39m
+        [36m</label>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"mt-1 text-xs text-zinc-500"[39m
+          [33mid[39m=[32m"«r4»"[39m
+        [36m>[39m
+          [0mMP4 or MOV, up to 60 seconds and 200 MB.[0m
+        [36m</p>[39m
+      [36m</div>[39m
+      [36m<div>[39m
+        [36m<label[39m
+          [33mclass[39m=[32m"block"[39m
+        [36m>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"text-sm font-medium"[39m
+          [36m>[39m
+            [0mAnything we should know? (optional)[0m
+          [36m</span>[39m
+          [36m<textarea[39m
+            [33maria-describedby[39m=[32m"«r5»"[39m
+            [33mclass[39m=[32m"mt-1 w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm"[39m
+            [33mmaxlength[39m=[32m"300"[39m
+            [33mplaceholder[39m=[32m"e.g. last two reps felt slow"[39m
+            [33mrows[39m=[32m"2"[39m
+          [36m/>[39m
+        [36m</label>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"text-right text-xs text-zinc-500"[39m
+          [33mid[39m=[32m"«r5»"[39m
+        [36m>[39m
+          [0m0[0m
+          [0m/[0m
+          [0m300[0m
+        [36m</p>[39m
+      [36m</div>[39m
+      [36m<button[39m
+        [33mclass[39m=[32m"w-full rounded-lg bg-zinc-900 px-4 py-3 font-semibold text-white disabled:opacity-40"[39m
+        [33mtype[39m=[32m"submit"[39m
+      [36m>[39m
+        [0mUpload[0m
+      [36m</button>[39m
+    [36m</form>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<form[39m
+      [33mclass[39m=[32m"space-y-5"[39m
+    [36m>[39m
+      [36m<fieldset>[39m
+        [36m<legend[39m
+          [33mclass[39m=[32m"mb-2 text-sm font-medium"[39m
+        [36m>[39m
+          [0mWhich lift?[0m
+        [36m</legend>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"grid grid-cols-2 gap-2 sm:grid-cols-3"[39m
+        [36m>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-900 bg-zinc-100"[39m
+          [36m>[39m
+            [36m<input[39m
+              [33mchecked[39m=[32m""[39m
+              [33mclass[39m=[32m"accent-zinc-900"[39m
+              [33mname[39m=[32m"lift"[39m
+              [33mtype[39m=[32m"radio"[39m
+              [33mvalue[39m=[32m"squat"[39m
+            [36m/>[39m
+            [0mSquat[0m
+          [36m</label>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-300"[39m
+          [36m>[39m
+            [36m<input[39m
+              [33mclass[39m=[32m"accent-zinc-900"[39m
+              [33mname[39m=[32m"lift"[39m
+              [33mtype[39m=[32m"radio"[39m
+              [33mvalue[39m=[32m"deadlift"[39m
+            [36m/>[39m
+            [0mDeadlift[0m
+          [36m</label>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-300"[39m
+          [36m>[39m
+            [36m<input[39m
+              [33mclass[39m=[32m"accent-zinc-900"[39m
+              [33mname[39m=[32m"lift"[39m
+              [33mtype[39m=[32m"radio"[39m
+              [33mvalue[39m=[32m"bench_press"[39m
+            [36m/>[39m
+            [0mBench Press[0m
+          [36m</label>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-300"[39m
+          [36m>[39m
+            [36m<input[39m
+              [33mclass[39m=[32m"accent-zinc-900"[39m
+              [33mname[39m=[32m"lift"[39m
+              [33mtype[39m=[32m"radio"[39m
+              [33mvalue[39m=[32m"overhead_press"[39m
+            [36m/>[39m
+            [0mOverhead Press[0m
+          [36m</label>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-300"[39m
+          [36m>[39m
+            [36m<input[39m
+              [33mclass[39m=[32m"accent-zinc-900"[39m
+              [33mname[39m=[32m"lift"[39m
+              [33mtype[39m=[32m"radio"[39m
+              [33mvalue[39m=[32m"romanian_deadlift"[39m
+            [36m/>[39m
+            [0mRomanian Deadlift[0m
+          [36m</label>[39m
+        [36m</div>[39m
+      [36m</fieldset>[39m
+      [36m<button[39m
+        [33mclass[39m=[32m"text-sm font-medium text-zinc-700 underline disabled:no-underline disabled:opacity-40"[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m>[39m
+        [0mFilming tips[0m
+      [36m</button>[39m
+      [36m<div>[39m
+        [36m<label[39m
+          [33mclass[39m=[32m"block"[39m
+        [36m>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"text-sm font-medium"[39m
+          [36m>[39m
+            [0mVideo of your set[0m
+          [36m</span>[39m
+          [36m<input[39m
+            [33maccept[39m=[32m"video/mp4,video/quicktime,.mp4,.mov"[39m
+            [33maria-describedby[39m=[32m"«r4»"[39m
+            [33mclass[39m=[32m"mt-1 block w-full text-sm file:mr-3 file:rounded-lg file:border-0 file:bg-zinc-100 file:px-3 file:py-2"[39m
+            [33mtype[39m=[32m"file"[39m
+          [36m/>[39m
+        [36m</label>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"mt-1 text-xs text-zinc-500"[39m
+          [33mid[39m=[32m"«r4»"[39m
+        [36m>[39m
+          [0mMP4 or MOV, up to 60 seconds and 200 MB.[0m
+        [36m</p>[39m
+      [36m</div>[39m
+      [36m<div>[39m
+        [36m<label[39m
+          [33mclass[39m=[32m"block"[39m
+        [36m>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"text-sm font-medium"[39m
+          [36m>[39m
+            [0mAnything we should know? (optional)[0m
+          [36m</span>[39m
+          [36m<textarea[39m
+            [33maria-describedby[39m=[32m"«r5»"[39m
+            [33mclass[39m=[32m"mt-1 w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm"[39m
+            [33mmaxlength[39m=[32m"300"[39m
+            [33mplaceholder[39m=[32m"e.g. last two reps felt slow"[39m
+            [33mrows[39m=[32m"2"[39m
+          [36m/>[39m
+        [36m</label>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"text-right text-xs text-zinc-500"[39m
+          [33mid[39m=[32m"«r5»"[39m
+        [36m>[39m
+          [0m0[0m
+          [0m/[0m
+          [0m300[0m
+        [36m</p>[39m
+      [36m</div>[39m
+      [36m<button[39m
+        [33mclass[39m=[32m"w-full rounded-lg bg-zinc-900 px-4 py-3 font-semibold text-white disabled:opacity-40"[39m
+        [33mtype[39m=[32m"submit"[39m
+      [36m>[39m
+        [0mUpload[0m
+      [36m</button>[39m
+    [36m</form>[39m
+  [36m</div>[39m
+[36m</body>[39m
+   × us04_invalid_bounds_block_upload_and_retry_preserves_valid_bounds 1085ms
+     → Unable to find role="button" and name "Choose a segment"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<form[39m
+      [33mclass[39m=[32m"space-y-5"[39m
+    [36m>[39m
+      [36m<fieldset>[39m
+        [36m<legend[39m
+          [33mclass[39m=[32m"mb-2 text-sm font-medium"[39m
+        [36m>[39m
+          [0mWhich lift?[0m
+        [36m</legend>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"grid grid-cols-2 gap-2 sm:grid-cols-3"[39m
+        [36m>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-900 bg-zinc-100"[39m
+          [36m>[39m
+            [36m<input[39m
+              [33mchecked[39m=[32m""[39m
+              [33mclass[39m=[32m"accent-zinc-900"[39m
+              [33mname[39m=[32m"lift"[39m
+              [33mtype[39m=[32m"radio"[39m
+              [33mvalue[39m=[32m"squat"[39m
+            [36m/>[39m
+            [0mSquat[0m
+          [36m</label>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-300"[39m
+          [36m>[39m
+            [36m<input[39m
+              [33mclass[39m=[32m"accent-zinc-900"[39m
+              [33mname[39m=[32m"lift"[39m
+              [33mtype[39m=[32m"radio"[39m
+              [33mvalue[39m=[32m"deadlift"[39m
+            [36m/>[39m
+            [0mDeadlift[0m
+          [36m</label>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-300"[39m
+          [36m>[39m
+            [36m<input[39m
+              [33mclass[39m=[32m"accent-zinc-900"[39m
+              [33mname[39m=[32m"lift"[39m
+              [33mtype[39m=[32m"radio"[39m
+              [33mvalue[39m=[32m"bench_press"[39m
+            [36m/>[39m
+            [0mBench Press[0m
+          [36m</label>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-300"[39m
+          [36m>[39m
+            [36m<input[39m
+              [33mclass[39m=[32m"accent-zinc-900"[39m
+              [33mname[39m=[32m"lift"[39m
+              [33mtype[39m=[32m"radio"[39m
+              [33mvalue[39m=[32m"overhead_press"[39m
+            [36m/>[39m
+            [0mOverhead Press[0m
+          [36m</label>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-300"[39m
+          [36m>[39m
+            [36m<input[39m
+              [33mclass[39m=[32m"accent-zinc-900"[39m
+              [33mname[39m=[32m"lift"[39m
+              [33mtype[39m=[32m"radio"[39m
+              [33mvalue[39m=[32m"romanian_deadlift"[39m
+            [36m/>[39m
+            [0mRomanian Deadlift[0m
+          [36m</label>[39m
+        [36m</div>[39m
+      [36m</fieldset>[39m
+      [36m<button[39m
+        [33mclass[39m=[32m"text-sm font-medium text-zinc-700 underline disabled:no-underline disabled:opacity-40"[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m>[39m
+        [0mFilming tips[0m
+      [36m</button>[39m
+      [36m<div>[39m
+        [36m<label[39m
+          [33mclass[39m=[32m"block"[39m
+        [36m>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"text-sm font-medium"[39m
+          [36m>[39m
+            [0mVideo of your set[0m
+          [36m</span>[39m
+          [36m<input[39m
+            [33maccept[39m=[32m"video/mp4,video/quicktime,.mp4,.mov"[39m
+            [33maria-describedby[39m=[32m"«r6»"[39m
+            [33mclass[39m=[32m"mt-1 block w-full text-sm file:mr-3 file:rounded-lg file:border-0 file:bg-zinc-100 file:px-3 file:py-2"[39m
+            [33mtype[39m=[32m"file"[39m
+          [36m/>[39m
+        [36m</label>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"mt-1 text-xs text-zinc-500"[39m
+          [33mid[39m=[32m"«r6»"[39m
+        [36m>[39m
+          [0mMP4 or MOV, up to 60 seconds and 200 MB.[0m
+        [36m</p>[39m
+      [36m</div>[39m
+      [36m<div>[39m
+        [36m<label[39m
+          [33mclass[39m=[32m"block"[39m
+        [36m>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"text-sm font-medium"[39m
+          [36m>[39m
+            [0mAnything we should know? (optional)[0m
+          [36m</span>[39m
+          [36m<textarea[39m
+            [33maria-describedby[39m=[32m"«r7»"[39m
+            [33mclass[39m=[32m"mt-1 w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm"[39m
+            [33mmaxlength[39m=[32m"300"[39m
+            [33mplaceholder[39m=[32m"e.g. last two reps felt slow"[39m
+            [33mrows[39m=[32m"2"[39m
+          [36m/>[39m
+        [36m</label>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"text-right text-xs text-zinc-500"[39m
+          [33mid[39m=[32m"«r7»"[39m
+        [36m>[39m
+          [0m0[0m
+          [0m/[0m
+          [0m300[0m
+        [36m</p>[39m
+      [36m</div>[39m
+      [36m<button[39m
+        [33mclass[39m=[32m"w-full rounded-lg bg-zinc-900 px-4 py-3 font-semibold text-white disabled:opacity-40"[39m
+        [33mtype[39m=[32m"submit"[39m
+      [36m>[39m
+        [0mUpload[0m
+      [36m</button>[39m
+    [36m</form>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<form[39m
+      [33mclass[39m=[32m"space-y-5"[39m
+    [36m>[39m
+      [36m<fieldset>[39m
+        [36m<legend[39m
+          [33mclass[39m=[32m"mb-2 text-sm font-medium"[39m
+        [36m>[39m
+          [0mWhich lift?[0m
+        [36m</legend>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"grid grid-cols-2 gap-2 sm:grid-cols-3"[39m
+        [36m>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-900 bg-zinc-100"[39m
+          [36m>[39m
+            [36m<input[39m
+              [33mchecked[39m=[32m""[39m
+              [33mclass[39m=[32m"accent-zinc-900"[39m
+              [33mname[39m=[32m"lift"[39m
+              [33mtype[39m=[32m"radio"[39m
+              [33mvalue[39m=[32m"squat"[39m
+            [36m/>[39m
+            [0mSquat[0m
+          [36m</label>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-300"[39m
+          [36m>[39m
+            [36m<input[39m
+              [33mclass[39m=[32m"accent-zinc-900"[39m
+              [33mname[39m=[32m"lift"[39m
+              [33mtype[39m=[32m"radio"[39m
+              [33mvalue[39m=[32m"deadlift"[39m
+            [36m/>[39m
+            [0mDeadlift[0m
+          [36m</label>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-300"[39m
+          [36m>[39m
+            [36m<input[39m
+              [33mclass[39m=[32m"accent-zinc-900"[39m
+              [33mname[39m=[32m"lift"[39m
+              [33mtype[39m=[32m"radio"[39m
+              [33mvalue[39m=[32m"bench_press"[39m
+            [36m/>[39m
+            [0mBench Press[0m
+          [36m</label>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-300"[39m
+          [36m>[39m
+            [36m<input[39m
+              [33mclass[39m=[32m"accent-zinc-900"[39m
+              [33mname[39m=[32m"lift"[39m
+              [33mtype[39m=[32m"radio"[39m
+              [33mvalue[39m=[32m"overhead_press"[39m
+            [36m/>[39m
+            [0mOverhead Press[0m
+          [36m</label>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-300"[39m
+          [36m>[39m
+            [36m<input[39m
+              [33mclass[39m=[32m"accent-zinc-900"[39m
+              [33mname[39m=[32m"lift"[39m
+              [33mtype[39m=[32m"radio"[39m
+              [33mvalue[39m=[32m"romanian_deadlift"[39m
+            [36m/>[39m
+            [0mRomanian Deadlift[0m
+          [36m</label>[39m
+        [36m</div>[39m
+      [36m</fieldset>[39m
+      [36m<button[39m
+        [33mclass[39m=[32m"text-sm font-medium text-zinc-700 underline disabled:no-underline disabled:opacity-40"[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m>[39m
+        [0mFilming tips[0m
+      [36m</button>[39m
+      [36m<div>[39m
+        [36m<label[39m
+          [33mclass[39m=[32m"block"[39m
+        [36m>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"text-sm font-medium"[39m
+          [36m>[39m
+            [0mVideo of your set[0m
+          [36m</span>[39m
+          [36m<input[39m
+            [33maccept[39m=[32m"video/mp4,video/quicktime,.mp4,.mov"[39m
+            [33maria-describedby[39m=[32m"«r6»"[39m
+            [33mclass[39m=[32m"mt-1 block w-full text-sm file:mr-3 file:rounded-lg file:border-0 file:bg-zinc-100 file:px-3 file:py-2"[39m
+            [33mtype[39m=[32m"file"[39m
+          [36m/>[39m
+        [36m</label>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"mt-1 text-xs text-zinc-500"[39m
+          [33mid[39m=[32m"«r6»"[39m
+        [36m>[39m
+          [0mMP4 or MOV, up to 60 seconds and 200 MB.[0m
+        [36m</p>[39m
+      [36m</div>[39m
+      [36m<div>[39m
+        [36m<label[39m
+          [33mclass[39m=[32m"block"[39m
+        [36m>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"text-sm font-medium"[39m
+          [36m>[39m
+            [0mAnything we should know? (optional)[0m
+          [36m</span>[39m
+          [36m<textarea[39m
+            [33maria-describedby[39m=[32m"«r7»"[39m
+            [33mclass[39m=[32m"mt-1 w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm"[39m
+            [33mmaxlength[39m=[32m"300"[39m
+            [33mplaceholder[39m=[32m"e.g. last two reps felt slow"[39m
+            [33mrows[39m=[32m"2"[39m
+          [36m/>[39m
+        [36m</label>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"text-right text-xs text-zinc-500"[39m
+          [33mid[39m=[32m"«r7»"[39m
+        [36m>[39m
+          [0m0[0m
+          [0m/[0m
+          [0m300[0m
+        [36m</p>[39m
+      [36m</div>[39m
+      [36m<button[39m
+        [33mclass[39m=[32m"w-full rounded-lg bg-zinc-900 px-4 py-3 font-semibold text-white disabled:opacity-40"[39m
+        [33mtype[39m=[32m"submit"[39m
+      [36m>[39m
+        [0mUpload[0m
+      [36m</button>[39m
+    [36m</form>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 4 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/components/__tests__/us04-video-trimmer.test.tsx > us04_full_video_is_the_default_without_automatic_cuts
+TestingLibraryElementError: Unable to find role="button" and name "Choose a segment"
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <form
+      class="space-y-5"
+    >
+      <fieldset>
+        <legend
+          class="mb-2 text-sm font-medium"
+        >
+          Which lift?
+        </legend>
+        <div
+          class="grid grid-cols-2 gap-2 sm:grid-cols-3"
+        >
+          <label
+            class="flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-900 bg-zinc-100"
+          >
+            <input
+              checked=""
+              class="accent-zinc-900"
+              name="lift"
+              type="radio"
+              value="squat"
+            />
+            Squat
+          </label>
+          <label
+            class="flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-300"
+          >
+            <input
+              class="accent-zinc-900"
+              name="lift"
+              type="radio"
+              value="deadlift"
+            />
+            Deadlift
+          </label>
+          <label
+            class="flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-300"
+          >
+            <input
+              class="accent-zinc-900"
+              name="lift"
+              type="radio"
+              value="bench_press"
+            />
+            Bench Press
+          </label>
+          <label
+            class="flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-300"
+          >
+            <input
+              class="accent-zinc-900"
+              name="lift"
+              type="radio"
+              value="overhead_press"
+            />
+            Overhead Press
+          </label>
+          <label
+            class="flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-300"
+          >
+            <input
+              class="accent-zinc-900"
+              name="lift"
+              type="radio"
+              value="romanian_deadlift"
+            />
+            Romanian Deadlift
+          </label>
+        </div>
+      </fieldset>
+      <button
+        class="text-sm font-medium text-zinc-700 underline disabled:no-underline disabled:opacity-40"
+        type="button"
+      >
+        Filming tips
+      </button>
+      <div>
+        <label
+          class="block"
+        >
+          <span
+            class="text-sm font-medium"
+          >
+            Video of your set
+          </span>
+          <input
+            accept="video/mp4,video/quicktime,.mp4,.mov"
+            aria-describedby="«r0»"
+            class="mt-1 block w-full text-sm file:mr-3 file:rounded-lg file:border-0 file:bg-zinc-100 file:px-3 file:py-2"
+            type="file"
+          />
+        </label>
+        <p
+          class="mt-1 text-xs text-zinc-500"
+          id="«r0»"
+        >
+          MP4 or MOV, up to 60 seconds and 200 MB.
+        </p>
+      </div>
+      <div>
+        <label
+          class="block"
+        >
+          <span
+            class="text-sm font-medium"
+          >
+            Anything we should know? (optional)
+          </span>
+          <textarea
+            aria-describedby="«r1»"
+            class="mt-1 w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm"
+            maxlength="300"
+            placeholder="e.g. last two reps felt slow"
+            rows="2"
+          />
+        </label>
+        <p
+          class="text-right text-xs text-zinc-500"
+          id="«r1»"
+        >
+          0
+          /
+          300
+        </p>
+      </div>
+      <button
+        class="w-full rounded-lg bg-zinc-900 px-4 py-3 font-semibold text-white disabled:opacity-40"
+        type="submit"
+      >
+        Upload
+      </button>
+    </form>
+  </div>
+</body>
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <form
+      class="space-y-5"
+    >
+      <fieldset>
+        <legend
+          class="mb-2 text-sm font-medium"
+        >
+          Which lift?
+        </legend>
+        <div
+          class="grid grid-cols-2 gap-2 sm:grid-cols-3"
+        >
+          <label
+            class="flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-900 bg-zinc-100"
+          >
+            <input
+              checked=""
+              class="accent-zinc-900"
+              name="lift"
+              type="radio"
+              value="squat"
+            />
+            Squat
+          </label>
+          <label
+            class="flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-300"
+          >
+            <input
+              class="accent-zinc-900"
+              name="lift"
+              type="radio"
+              value="deadlift"
+            />
+            Deadlift
+          </label>
+          <label
+            class="flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-300"
+          >
+            <input
+              class="accent-zinc-900"
+              name="lift"
+              type="radio"
+              value="bench_press"
+            />
+            Bench Press
+          </label>
+          <label
+            class="flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-300"
+          >
+            <input
+              class="accent-zinc-900"
+              name="lift"
+              type="radio"
+              value="overhead_press"
+            />
+            Overhead Press
+          </label>
+          <label
+            class="flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-300"
+          >
+            <input
+              class="accent-zinc-900"
+              name="lift"
+              type="radio"
+              value="romanian_deadlift"
+            />
+            Romanian Deadlift
+          </label>
+        </div>
+      </fieldset>
+      <button
+        class="text-sm font-medium text-zinc-700 underline disabled:no-underline disabled:opacity-40"
+        type="button"
+      >
+        Filming tips
+      </button>
+      <div>
+        <label
+          class="block"
+        >
+          <span
+            class="text-sm font-medium"
+          >
+            Video of your set
+          </span>
+          <input
+            accept="video/mp4,video/quicktime,.mp4,.mov"
+            aria-describedby="«r0»"
+            class="mt-1 block w-full text-sm file:mr-3 file:rounded-lg file:border-0 file:bg-zinc-100 file:px-3 file:py-2"
+            type="file"
+          />
+        </label>
+        <p
+          class="mt-1 text-xs text-zinc-500"
+          id="«r0»"
+        >
+          MP4 or MOV, up to 60 seconds and 200 MB.
+        </p>
+      </div>
+      <div>
+        <label
+          class="block"
+        >
+          <span
+            class="text-sm font-medium"
+          >
+            Anything we should know? (optional)
+          </span>
+          <textarea
+            aria-describedby="«r1»"
+            class="mt-1 w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm"
+            maxlength="300"
+            placeholder="e.g. last two reps felt slow"
+            rows="2"
+          />
+        </label>
+        <p
+          class="text-right text-xs text-zinc-500"
+          id="«r1»"
+        >
+          0
+          /
+          300
+        </p>
+      </div>
+      <button
+        class="w-full rounded-lg bg-zinc-900 px-4 py-3 font-semibold text-white disabled:opacity-40"
+        type="submit"
+      >
+        Upload
+      </button>
+    </form>
+  </div>
+</body>
+ ❯ waitForWrapper ../../../../frontend/node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ ../../../../frontend/node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ prepare src/components/__tests__/us04-video-trimmer.test.tsx:18:16
+     16|   render(<UploadForm upload={upload} readDuration={async () => 10} ini…
+     17|   await userEvent.upload(screen.getByLabelText("Video of your set"), v…
+     18|   await screen.findByRole("button", { name: "Choose a segment" });
+       |                ^
+     19|   return upload;
+     20| }
+ ❯ src/components/__tests__/us04-video-trimmer.test.tsx:23:18
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/4]⎯
+
+ FAIL  src/components/__tests__/us04-video-trimmer.test.tsx > us04_start_and_end_controls_preview_and_upload_only_the_chosen_range
+TestingLibraryElementError: Unable to find role="button" and name "Choose a segment"
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <form
+      class="space-y-5"
+    >
+      <fieldset>
+        <legend
+          class="mb-2 text-sm font-medium"
+        >
+          Which lift?
+        </legend>
+        <div
+          class="grid grid-cols-2 gap-2 sm:grid-cols-3"
+        >
+          <label
+            class="flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-900 bg-zinc-100"
+          >
+            <input
+              checked=""
+              class="accent-zinc-900"
+              name="lift"
+              type="radio"
+              value="squat"
+            />
+            Squat
+          </label>
+          <label
+            class="flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-300"
+          >
+            <input
+              class="accent-zinc-900"
+              name="lift"
+              type="radio"
+              value="deadlift"
+            />
+            Deadlift
+          </label>
+          <label
+            class="flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-300"
+          >
+            <input
+              class="accent-zinc-900"
+              name="lift"
+              type="radio"
+              value="bench_press"
+            />
+            Bench Press
+          </label>
+          <label
+            class="flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-300"
+          >
+            <input
+              class="accent-zinc-900"
+              name="lift"
+              type="radio"
+              value="overhead_press"
+            />
+            Overhead Press
+          </label>
+          <label
+            class="flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-300"
+          >
+            <input
+              class="accent-zinc-900"
+              name="lift"
+              type="radio"
+              value="romanian_deadlift"
+            />
+            Romanian Deadlift
+          </label>
+        </div>
+      </fieldset>
+      <button
+        class="text-sm font-medium text-zinc-700 underline disabled:no-underline disabled:opacity-40"
+        type="button"
+      >
+        Filming tips
+      </button>
+      <div>
+        <label
+          class="block"
+        >
+          <span
+            class="text-sm font-medium"
+          >
+            Video of your set
+          </span>
+          <input
+            accept="video/mp4,video/quicktime,.mp4,.mov"
+            aria-describedby="«r2»"
+            class="mt-1 block w-full text-sm file:mr-3 file:rounded-lg file:border-0 file:bg-zinc-100 file:px-3 file:py-2"
+            type="file"
+          />
+        </label>
+        <p
+          class="mt-1 text-xs text-zinc-500"
+          id="«r2»"
+        >
+          MP4 or MOV, up to 60 seconds and 200 MB.
+        </p>
+      </div>
+      <div>
+        <label
+          class="block"
+        >
+          <span
+            class="text-sm font-medium"
+          >
+            Anything we should know? (optional)
+          </span>
+          <textarea
+            aria-describedby="«r3»"
+            class="mt-1 w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm"
+            maxlength="300"
+            placeholder="e.g. last two reps felt slow"
+            rows="2"
+          />
+        </label>
+        <p
+          class="text-right text-xs text-zinc-500"
+          id="«r3»"
+        >
+          0
+          /
+          300
+        </p>
+      </div>
+      <button
+        class="w-full rounded-lg bg-zinc-900 px-4 py-3 font-semibold text-white disabled:opacity-40"
+        type="submit"
+      >
+        Upload
+      </button>
+    </form>
+  </div>
+</body>
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <form
+      class="space-y-5"
+    >
+      <fieldset>
+        <legend
+          class="mb-2 text-sm font-medium"
+        >
+          Which lift?
+        </legend>
+        <div
+          class="grid grid-cols-2 gap-2 sm:grid-cols-3"
+        >
+          <label
+            class="flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-900 bg-zinc-100"
+          >
+            <input
+              checked=""
+              class="accent-zinc-900"
+              name="lift"
+              type="radio"
+              value="squat"
+            />
+            Squat
+          </label>
+          <label
+            class="flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-300"
+          >
+            <input
+              class="accent-zinc-900"
+              name="lift"
+              type="radio"
+              value="deadlift"
+            />
+            Deadlift
+          </label>
+          <label
+            class="flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-300"
+          >
+            <input
+              class="accent-zinc-900"
+              name="lift"
+              type="radio"
+              value="bench_press"
+            />
+            Bench Press
+          </label>
+          <label
+            class="flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-300"
+          >
+            <input
+              class="accent-zinc-900"
+              name="lift"
+              type="radio"
+              value="overhead_press"
+            />
+            Overhead Press
+          </label>
+          <label
+            class="flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-300"
+          >
+            <input
+              class="accent-zinc-900"
+              name="lift"
+              type="radio"
+              value="romanian_deadlift"
+            />
+            Romanian Deadlift
+          </label>
+        </div>
+      </fieldset>
+      <button
+        class="text-sm font-medium text-zinc-700 underline disabled:no-underline disabled:opacity-40"
+        type="button"
+      >
+        Filming tips
+      </button>
+      <div>
+        <label
+          class="block"
+        >
+          <span
+            class="text-sm font-medium"
+          >
+            Video of your set
+          </span>
+          <input
+            accept="video/mp4,video/quicktime,.mp4,.mov"
+            aria-describedby="«r2»"
+            class="mt-1 block w-full text-sm file:mr-3 file:rounded-lg file:border-0 file:bg-zinc-100 file:px-3 file:py-2"
+            type="file"
+          />
+        </label>
+        <p
+          class="mt-1 text-xs text-zinc-500"
+          id="«r2»"
+        >
+          MP4 or MOV, up to 60 seconds and 200 MB.
+        </p>
+      </div>
+      <div>
+        <label
+          class="block"
+        >
+          <span
+            class="text-sm font-medium"
+          >
+            Anything we should know? (optional)
+          </span>
+          <textarea
+            aria-describedby="«r3»"
+            class="mt-1 w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm"
+            maxlength="300"
+            placeholder="e.g. last two reps felt slow"
+            rows="2"
+          />
+        </label>
+        <p
+          class="text-right text-xs text-zinc-500"
+          id="«r3»"
+        >
+          0
+          /
+          300
+        </p>
+      </div>
+      <button
+        class="w-full rounded-lg bg-zinc-900 px-4 py-3 font-semibold text-white disabled:opacity-40"
+        type="submit"
+      >
+        Upload
+      </button>
+    </form>
+  </div>
+</body>
+ ❯ waitForWrapper ../../../../frontend/node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ ../../../../frontend/node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ prepare src/components/__tests__/us04-video-trimmer.test.tsx:18:16
+     16|   render(<UploadForm upload={upload} readDuration={async () => 10} ini…
+     17|   await userEvent.upload(screen.getByLabelText("Video of your set"), v…
+     18|   await screen.findByRole("button", { name: "Choose a segment" });
+       |                ^
+     19|   return upload;
+     20| }
+ ❯ src/components/__tests__/us04-video-trimmer.test.tsx:30:18
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/4]⎯
+
+ FAIL  src/components/__tests__/us04-video-trimmer.test.tsx > us04_reset_restores_full_video_and_changing_files_discards_the_selection
+TestingLibraryElementError: Unable to find role="button" and name "Choose a segment"
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <form
+      class="space-y-5"
+    >
+      <fieldset>
+        <legend
+          class="mb-2 text-sm font-medium"
+        >
+          Which lift?
+        </legend>
+        <div
+          class="grid grid-cols-2 gap-2 sm:grid-cols-3"
+        >
+          <label
+            class="flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-900 bg-zinc-100"
+          >
+            <input
+              checked=""
+              class="accent-zinc-900"
+              name="lift"
+              type="radio"
+              value="squat"
+            />
+            Squat
+          </label>
+          <label
+            class="flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-300"
+          >
+            <input
+              class="accent-zinc-900"
+              name="lift"
+              type="radio"
+              value="deadlift"
+            />
+            Deadlift
+          </label>
+          <label
+            class="flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-300"
+          >
+            <input
+              class="accent-zinc-900"
+              name="lift"
+              type="radio"
+              value="bench_press"
+            />
+            Bench Press
+          </label>
+          <label
+            class="flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-300"
+          >
+            <input
+              class="accent-zinc-900"
+              name="lift"
+              type="radio"
+              value="overhead_press"
+            />
+            Overhead Press
+          </label>
+          <label
+            class="flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-300"
+          >
+            <input
+              class="accent-zinc-900"
+              name="lift"
+              type="radio"
+              value="romanian_deadlift"
+            />
+            Romanian Deadlift
+          </label>
+        </div>
+      </fieldset>
+      <button
+        class="text-sm font-medium text-zinc-700 underline disabled:no-underline disabled:opacity-40"
+        type="button"
+      >
+        Filming tips
+      </button>
+      <div>
+        <label
+          class="block"
+        >
+          <span
+            class="text-sm font-medium"
+          >
+            Video of your set
+          </span>
+          <input
+            accept="video/mp4,video/quicktime,.mp4,.mov"
+            aria-describedby="«r4»"
+            class="mt-1 block w-full text-sm file:mr-3 file:rounded-lg file:border-0 file:bg-zinc-100 file:px-3 file:py-2"
+            type="file"
+          />
+        </label>
+        <p
+          class="mt-1 text-xs text-zinc-500"
+          id="«r4»"
+        >
+          MP4 or MOV, up to 60 seconds and 200 MB.
+        </p>
+      </div>
+      <div>
+        <label
+          class="block"
+        >
+          <span
+            class="text-sm font-medium"
+          >
+            Anything we should know? (optional)
+          </span>
+          <textarea
+            aria-describedby="«r5»"
+            class="mt-1 w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm"
+            maxlength="300"
+            placeholder="e.g. last two reps felt slow"
+            rows="2"
+          />
+        </label>
+        <p
+          class="text-right text-xs text-zinc-500"
+          id="«r5»"
+        >
+          0
+          /
+          300
+        </p>
+      </div>
+      <button
+        class="w-full rounded-lg bg-zinc-900 px-4 py-3 font-semibold text-white disabled:opacity-40"
+        type="submit"
+      >
+        Upload
+      </button>
+    </form>
+  </div>
+</body>
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <form
+      class="space-y-5"
+    >
+      <fieldset>
+        <legend
+          class="mb-2 text-sm font-medium"
+        >
+          Which lift?
+        </legend>
+        <div
+          class="grid grid-cols-2 gap-2 sm:grid-cols-3"
+        >
+          <label
+            class="flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-900 bg-zinc-100"
+          >
+            <input
+              checked=""
+              class="accent-zinc-900"
+              name="lift"
+              type="radio"
+              value="squat"
+            />
+            Squat
+          </label>
+          <label
+            class="flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-300"
+          >
+            <input
+              class="accent-zinc-900"
+              name="lift"
+              type="radio"
+              value="deadlift"
+            />
+            Deadlift
+          </label>
+          <label
+            class="flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-300"
+          >
+            <input
+              class="accent-zinc-900"
+              name="lift"
+              type="radio"
+              value="bench_press"
+            />
+            Bench Press
+          </label>
+          <label
+            class="flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-300"
+          >
+            <input
+              class="accent-zinc-900"
+              name="lift"
+              type="radio"
+              value="overhead_press"
+            />
+            Overhead Press
+          </label>
+          <label
+            class="flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-300"
+          >
+            <input
+              class="accent-zinc-900"
+              name="lift"
+              type="radio"
+              value="romanian_deadlift"
+            />
+            Romanian Deadlift
+          </label>
+        </div>
+      </fieldset>
+      <button
+        class="text-sm font-medium text-zinc-700 underline disabled:no-underline disabled:opacity-40"
+        type="button"
+      >
+        Filming tips
+      </button>
+      <div>
+        <label
+          class="block"
+        >
+          <span
+            class="text-sm font-medium"
+          >
+            Video of your set
+          </span>
+          <input
+            accept="video/mp4,video/quicktime,.mp4,.mov"
+            aria-describedby="«r4»"
+            class="mt-1 block w-full text-sm file:mr-3 file:rounded-lg file:border-0 file:bg-zinc-100 file:px-3 file:py-2"
+            type="file"
+          />
+        </label>
+        <p
+          class="mt-1 text-xs text-zinc-500"
+          id="«r4»"
+        >
+          MP4 or MOV, up to 60 seconds and 200 MB.
+        </p>
+      </div>
+      <div>
+        <label
+          class="block"
+        >
+          <span
+            class="text-sm font-medium"
+          >
+            Anything we should know? (optional)
+          </span>
+          <textarea
+            aria-describedby="«r5»"
+            class="mt-1 w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm"
+            maxlength="300"
+            placeholder="e.g. last two reps felt slow"
+            rows="2"
+          />
+        </label>
+        <p
+          class="text-right text-xs text-zinc-500"
+          id="«r5»"
+        >
+          0
+          /
+          300
+        </p>
+      </div>
+      <button
+        class="w-full rounded-lg bg-zinc-900 px-4 py-3 font-semibold text-white disabled:opacity-40"
+        type="submit"
+      >
+        Upload
+      </button>
+    </form>
+  </div>
+</body>
+ ❯ waitForWrapper ../../../../frontend/node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ ../../../../frontend/node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ prepare src/components/__tests__/us04-video-trimmer.test.tsx:18:16
+     16|   render(<UploadForm upload={upload} readDuration={async () => 10} ini…
+     17|   await userEvent.upload(screen.getByLabelText("Video of your set"), v…
+     18|   await screen.findByRole("button", { name: "Choose a segment" });
+       |                ^
+     19|   return upload;
+     20| }
+ ❯ src/components/__tests__/us04-video-trimmer.test.tsx:47:18
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/4]⎯
+
+ FAIL  src/components/__tests__/us04-video-trimmer.test.tsx > us04_invalid_bounds_block_upload_and_retry_preserves_valid_bounds
+TestingLibraryElementError: Unable to find role="button" and name "Choose a segment"
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <form
+      class="space-y-5"
+    >
+      <fieldset>
+        <legend
+          class="mb-2 text-sm font-medium"
+        >
+          Which lift?
+        </legend>
+        <div
+          class="grid grid-cols-2 gap-2 sm:grid-cols-3"
+        >
+          <label
+            class="flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-900 bg-zinc-100"
+          >
+            <input
+              checked=""
+              class="accent-zinc-900"
+              name="lift"
+              type="radio"
+              value="squat"
+            />
+            Squat
+          </label>
+          <label
+            class="flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-300"
+          >
+            <input
+              class="accent-zinc-900"
+              name="lift"
+              type="radio"
+              value="deadlift"
+            />
+            Deadlift
+          </label>
+          <label
+            class="flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-300"
+          >
+            <input
+              class="accent-zinc-900"
+              name="lift"
+              type="radio"
+              value="bench_press"
+            />
+            Bench Press
+          </label>
+          <label
+            class="flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-300"
+          >
+            <input
+              class="accent-zinc-900"
+              name="lift"
+              type="radio"
+              value="overhead_press"
+            />
+            Overhead Press
+          </label>
+          <label
+            class="flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-300"
+          >
+            <input
+              class="accent-zinc-900"
+              name="lift"
+              type="radio"
+              value="romanian_deadlift"
+            />
+            Romanian Deadlift
+          </label>
+        </div>
+      </fieldset>
+      <button
+        class="text-sm font-medium text-zinc-700 underline disabled:no-underline disabled:opacity-40"
+        type="button"
+      >
+        Filming tips
+      </button>
+      <div>
+        <label
+          class="block"
+        >
+          <span
+            class="text-sm font-medium"
+          >
+            Video of your set
+          </span>
+          <input
+            accept="video/mp4,video/quicktime,.mp4,.mov"
+            aria-describedby="«r6»"
+            class="mt-1 block w-full text-sm file:mr-3 file:rounded-lg file:border-0 file:bg-zinc-100 file:px-3 file:py-2"
+            type="file"
+          />
+        </label>
+        <p
+          class="mt-1 text-xs text-zinc-500"
+          id="«r6»"
+        >
+          MP4 or MOV, up to 60 seconds and 200 MB.
+        </p>
+      </div>
+      <div>
+        <label
+          class="block"
+        >
+          <span
+            class="text-sm font-medium"
+          >
+            Anything we should know? (optional)
+          </span>
+          <textarea
+            aria-describedby="«r7»"
+            class="mt-1 w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm"
+            maxlength="300"
+            placeholder="e.g. last two reps felt slow"
+            rows="2"
+          />
+        </label>
+        <p
+          class="text-right text-xs text-zinc-500"
+          id="«r7»"
+        >
+          0
+          /
+          300
+        </p>
+      </div>
+      <button
+        class="w-full rounded-lg bg-zinc-900 px-4 py-3 font-semibold text-white disabled:opacity-40"
+        type="submit"
+      >
+        Upload
+      </button>
+    </form>
+  </div>
+</body>
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <form
+      class="space-y-5"
+    >
+      <fieldset>
+        <legend
+          class="mb-2 text-sm font-medium"
+        >
+          Which lift?
+        </legend>
+        <div
+          class="grid grid-cols-2 gap-2 sm:grid-cols-3"
+        >
+          <label
+            class="flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-900 bg-zinc-100"
+          >
+            <input
+              checked=""
+              class="accent-zinc-900"
+              name="lift"
+              type="radio"
+              value="squat"
+            />
+            Squat
+          </label>
+          <label
+            class="flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-300"
+          >
+            <input
+              class="accent-zinc-900"
+              name="lift"
+              type="radio"
+              value="deadlift"
+            />
+            Deadlift
+          </label>
+          <label
+            class="flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-300"
+          >
+            <input
+              class="accent-zinc-900"
+              name="lift"
+              type="radio"
+              value="bench_press"
+            />
+            Bench Press
+          </label>
+          <label
+            class="flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-300"
+          >
+            <input
+              class="accent-zinc-900"
+              name="lift"
+              type="radio"
+              value="overhead_press"
+            />
+            Overhead Press
+          </label>
+          <label
+            class="flex items-center gap-2 rounded-lg border px-3 py-2 text-sm border-zinc-300"
+          >
+            <input
+              class="accent-zinc-900"
+              name="lift"
+              type="radio"
+              value="romanian_deadlift"
+            />
+            Romanian Deadlift
+          </label>
+        </div>
+      </fieldset>
+      <button
+        class="text-sm font-medium text-zinc-700 underline disabled:no-underline disabled:opacity-40"
+        type="button"
+      >
+        Filming tips
+      </button>
+      <div>
+        <label
+          class="block"
+        >
+          <span
+            class="text-sm font-medium"
+          >
+            Video of your set
+          </span>
+          <input
+            accept="video/mp4,video/quicktime,.mp4,.mov"
+            aria-describedby="«r6»"
+            class="mt-1 block w-full text-sm file:mr-3 file:rounded-lg file:border-0 file:bg-zinc-100 file:px-3 file:py-2"
+            type="file"
+          />
+        </label>
+        <p
+          class="mt-1 text-xs text-zinc-500"
+          id="«r6»"
+        >
+          MP4 or MOV, up to 60 seconds and 200 MB.
+        </p>
+      </div>
+      <div>
+        <label
+          class="block"
+        >
+          <span
+            class="text-sm font-medium"
+          >
+            Anything we should know? (optional)
+          </span>
+          <textarea
+            aria-describedby="«r7»"
+            class="mt-1 w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm"
+            maxlength="300"
+            placeholder="e.g. last two reps felt slow"
+            rows="2"
+          />
+        </label>
+        <p
+          class="text-right text-xs text-zinc-500"
+          id="«r7»"
+        >
+          0
+          /
+          300
+        </p>
+      </div>
+      <button
+        class="w-full rounded-lg bg-zinc-900 px-4 py-3 font-semibold text-white disabled:opacity-40"
+        type="submit"
+      >
+        Upload
+      </button>
+    </form>
+  </div>
+</body>
+ ❯ waitForWrapper ../../../../frontend/node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ ../../../../frontend/node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ prepare src/components/__tests__/us04-video-trimmer.test.tsx:18:16
+     16|   render(<UploadForm upload={upload} readDuration={async () => 10} ini…
+     17|   await userEvent.upload(screen.getByLabelText("Video of your set"), v…
+     18|   await screen.findByRole("button", { name: "Choose a segment" });
+       |                ^
+     19|   return upload;
+     20| }
+ ❯ src/components/__tests__/us04-video-trimmer.test.tsx:61:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/4]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  4 failed (4)
+   Start at  20:18:21
+   Duration  31.97s (transform 529ms, setup 4.14s, collect 1.28s, tests 4.79s, environment 19.28s, prepare 1.53s)
+
+npm notice
+npm notice New minor version of npm available! 11.6.2 -> 11.21.3
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.21.3
+npm notice To update run: npm install -g npm@11.21.3
+npm notice

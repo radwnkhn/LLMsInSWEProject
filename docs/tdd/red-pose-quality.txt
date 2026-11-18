@@ -1,0 +1,68 @@
+FF...........F.........                                                  [100%]
+================================== FAILURES ===================================
+________ test_us06_nonfinite_mediapipe_coordinates_are_marked_unusable ________
+
+    def test_us06_nonfinite_mediapipe_coordinates_are_marked_unusable():
+        class Landmarker:
+            def detect_for_video(self, image, timestamp):
+                return SimpleNamespace(pose_landmarks=[[SimpleNamespace(x=float('nan'), y=.2, visibility=.99, presence=.99)]])
+        frames = MediaPipePoseEstimator(landmarker=Landmarker(), image_factory=lambda x: x).estimate([np.zeros((2, 2, 3))], 30)
+        point = frames[0].landmarks['nose']
+>       assert point.confidence == 0
+E       assert 0.99 == 0
+E        +  where 0.99 = Landmark(x=nan, y=0.2, confidence=0.99).confidence
+
+tests\test_us06_pose_quality.py:14: AssertionError
+_ test_us06_pose_estimation_accepts_source_timestamps_for_variable_frame_rate _
+
+    def test_us06_pose_estimation_accepts_source_timestamps_for_variable_frame_rate():
+        times = []
+        class Landmarker:
+            def detect_for_video(self, image, timestamp):
+                times.append(timestamp)
+                return SimpleNamespace(pose_landmarks=[])
+>       frames = MediaPipePoseEstimator(landmarker=Landmarker(), image_factory=lambda x: x).estimate(
+            [np.zeros((2, 2, 3)) for _ in range(3)], 30, timestamps=[2, 2.05, 2.12])
+E       TypeError: MediaPipePoseEstimator.estimate() got an unexpected keyword argument 'timestamps'
+
+tests\test_us06_pose_quality.py:23: TypeError
+_ test_us06_missing_landmark_keys_and_nonfinite_points_cannot_fabricate_metrics _
+
+    def test_us06_missing_landmark_keys_and_nonfinite_points_cannot_fabricate_metrics():
+        frames = squat(2)
+        for f in frames:
+            del f.landmarks["right_hip"]
+            f.landmarks["left_knee"] = replace(f.landmarks["left_knee"], x=float("nan"))
+>       outcome = analyze_set(frames, "squat", None, SpyLLM(), 30)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_us06_segmentation_reliability.py:109:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+app\pipeline.py:51: in analyze_set
+    m = measure_set(frames, lift, fps)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app\measure.py:423: in measure_set
+    camera = classify_camera_angle(frames)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+frames = [PoseFrame(index=0, timestamp=0.0, landmarks={'nose': Landmark(x=0.5, y=0.12999999999999995, confidence=0.95), 'left_e...index': Landmark(x=0.5, y=0.9, confidence=0.95), 'right_foot_index': Landmark(x=0.51, y=0.905, confidence=0.95)}), ...]
+
+    def classify_camera_angle(frames: Sequence[PoseFrame]) -> str:
+        """side, front or angled, from shoulder and hip width relative to torso length."""
+        ratios = []
+        for f in frames:
+            if not f.landmarks or min(group_confidence(f, "shoulders"), group_confidence(f, "hips")) < CONFIDENCE_THRESHOLD:
+                continue
+            lm = f.landmarks
+            sw = math.dist(_xy(lm["left_shoulder"]), _xy(lm["right_shoulder"]))
+>           hw = math.dist(_xy(lm["left_hip"]), _xy(lm["right_hip"]))
+                                                    ^^^^^^^^^^^^^^^
+E           KeyError: 'right_hip'
+
+app\measure.py:318: KeyError
+=========================== short test summary info ===========================
+FAILED tests/test_us06_pose_quality.py::test_us06_nonfinite_mediapipe_coordinates_are_marked_unusable
+FAILED tests/test_us06_pose_quality.py::test_us06_pose_estimation_accepts_source_timestamps_for_variable_frame_rate
+FAILED tests/test_us06_segmentation_reliability.py::test_us06_missing_landmark_keys_and_nonfinite_points_cannot_fabricate_metrics
+3 failed, 20 passed in 1.93s

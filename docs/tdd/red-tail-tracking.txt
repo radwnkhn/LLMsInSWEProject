@@ -1,0 +1,20 @@
+F                                                                        [100%]
+================================== FAILURES ===================================
+______ test_us06_tracking_lost_at_end_cannot_silently_hide_the_last_rep _______
+
+    def test_us06_tracking_lost_at_end_cannot_silently_hide_the_last_rep():
+        frames = squat(2)
+        for i in range(75, len(frames)):
+            frames[i].landmarks = None
+        llm = SpyLLM()
+        outcome = analyze_set(frames, "squat", None, llm, 30)
+>       assert outcome.final_status == "unanalyzable"
+E       AssertionError: assert 'passed_first_try' == 'unanalyzable'
+E
+E         - unanalyzable
+E         + passed_first_try
+
+tests\test_us06_segmentation_reliability.py:74: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_us06_segmentation_reliability.py::test_us06_tracking_lost_at_end_cannot_silently_hide_the_last_rep
+1 failed, 21 deselected in 2.25s

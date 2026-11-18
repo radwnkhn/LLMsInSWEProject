@@ -1,0 +1,272 @@
+FFFFFFFFFFFFF                                                            [100%]
+================================== FAILURES ===================================
+________ test_us04_invalid_boundaries_rejected_before_storage[bounds0] ________
+
+client = <starlette.testclient.TestClient object at 0x0000025F38858050>
+services = Services(auth=<app.auth.InMemoryAuth object at 0x0000025F3863A900>, repo=<app.repository.InMemoryRepository object at ...715200, compressor=None, test_mode=True, cors_origins=(), prices=<app.pricing.PriceTable object at 0x0000025F38646850>)
+bounds = {'trim_start': -1, 'trim_end': 4}
+
+    @pytest.mark.parametrize('bounds', [
+        {'trim_start': -1, 'trim_end': 4}, {'trim_start': 4, 'trim_end': 4},
+        {'trim_start': 5, 'trim_end': 4}, {'trim_start': 0, 'trim_end': 11},
+        {'trim_start': 'NaN', 'trim_end': 4}, {'trim_start': 0, 'trim_end': 'Infinity'},
+        {'trim_start': 1}, {'trim_end': 4}, {'trim_start': 10, 'trim_end': 10.1},
+    ])
+    def test_us04_invalid_boundaries_rejected_before_storage(client, services, bounds):
+        headers, _ = signup(client)
+        response = send(client, headers, **bounds)
+>       assert response.status_code == 422
+E       assert 201 == 422
+E        +  where 201 = <Response [201 Created]>.status_code
+
+tests\test_us04_video_trimming.py:30: AssertionError
+________ test_us04_invalid_boundaries_rejected_before_storage[bounds1] ________
+
+client = <starlette.testclient.TestClient object at 0x0000025F389ACE10>
+services = Services(auth=<app.auth.InMemoryAuth object at 0x0000025F38646490>, repo=<app.repository.InMemoryRepository object at ...715200, compressor=None, test_mode=True, cors_origins=(), prices=<app.pricing.PriceTable object at 0x0000025F387E10F0>)
+bounds = {'trim_start': 4, 'trim_end': 4}
+
+    @pytest.mark.parametrize('bounds', [
+        {'trim_start': -1, 'trim_end': 4}, {'trim_start': 4, 'trim_end': 4},
+        {'trim_start': 5, 'trim_end': 4}, {'trim_start': 0, 'trim_end': 11},
+        {'trim_start': 'NaN', 'trim_end': 4}, {'trim_start': 0, 'trim_end': 'Infinity'},
+        {'trim_start': 1}, {'trim_end': 4}, {'trim_start': 10, 'trim_end': 10.1},
+    ])
+    def test_us04_invalid_boundaries_rejected_before_storage(client, services, bounds):
+        headers, _ = signup(client)
+        response = send(client, headers, **bounds)
+>       assert response.status_code == 422
+E       assert 201 == 422
+E        +  where 201 = <Response [201 Created]>.status_code
+
+tests\test_us04_video_trimming.py:30: AssertionError
+________ test_us04_invalid_boundaries_rejected_before_storage[bounds2] ________
+
+client = <starlette.testclient.TestClient object at 0x0000025F388BA850>
+services = Services(auth=<app.auth.InMemoryAuth object at 0x0000025F386465D0>, repo=<app.repository.InMemoryRepository object at ...715200, compressor=None, test_mode=True, cors_origins=(), prices=<app.pricing.PriceTable object at 0x0000025F3897E450>)
+bounds = {'trim_start': 5, 'trim_end': 4}
+
+    @pytest.mark.parametrize('bounds', [
+        {'trim_start': -1, 'trim_end': 4}, {'trim_start': 4, 'trim_end': 4},
+        {'trim_start': 5, 'trim_end': 4}, {'trim_start': 0, 'trim_end': 11},
+        {'trim_start': 'NaN', 'trim_end': 4}, {'trim_start': 0, 'trim_end': 'Infinity'},
+        {'trim_start': 1}, {'trim_end': 4}, {'trim_start': 10, 'trim_end': 10.1},
+    ])
+    def test_us04_invalid_boundaries_rejected_before_storage(client, services, bounds):
+        headers, _ = signup(client)
+        response = send(client, headers, **bounds)
+>       assert response.status_code == 422
+E       assert 201 == 422
+E        +  where 201 = <Response [201 Created]>.status_code
+
+tests\test_us04_video_trimming.py:30: AssertionError
+________ test_us04_invalid_boundaries_rejected_before_storage[bounds3] ________
+
+client = <starlette.testclient.TestClient object at 0x0000025F387E1BA0>
+services = Services(auth=<app.auth.InMemoryAuth object at 0x0000025F386BC180>, repo=<app.repository.InMemoryRepository object at ...715200, compressor=None, test_mode=True, cors_origins=(), prices=<app.pricing.PriceTable object at 0x0000025F38992F10>)
+bounds = {'trim_start': 0, 'trim_end': 11}
+
+    @pytest.mark.parametrize('bounds', [
+        {'trim_start': -1, 'trim_end': 4}, {'trim_start': 4, 'trim_end': 4},
+        {'trim_start': 5, 'trim_end': 4}, {'trim_start': 0, 'trim_end': 11},
+        {'trim_start': 'NaN', 'trim_end': 4}, {'trim_start': 0, 'trim_end': 'Infinity'},
+        {'trim_start': 1}, {'trim_end': 4}, {'trim_start': 10, 'trim_end': 10.1},
+    ])
+    def test_us04_invalid_boundaries_rejected_before_storage(client, services, bounds):
+        headers, _ = signup(client)
+        response = send(client, headers, **bounds)
+>       assert response.status_code == 422
+E       assert 201 == 422
+E        +  where 201 = <Response [201 Created]>.status_code
+
+tests\test_us04_video_trimming.py:30: AssertionError
+________ test_us04_invalid_boundaries_rejected_before_storage[bounds4] ________
+
+client = <starlette.testclient.TestClient object at 0x0000025F38A84FC0>
+services = Services(auth=<app.auth.InMemoryAuth object at 0x0000025F386BC2B0>, repo=<app.repository.InMemoryRepository object at ...715200, compressor=None, test_mode=True, cors_origins=(), prices=<app.pricing.PriceTable object at 0x0000025F38A0DE50>)
+bounds = {'trim_start': 'NaN', 'trim_end': 4}
+
+    @pytest.mark.parametrize('bounds', [
+        {'trim_start': -1, 'trim_end': 4}, {'trim_start': 4, 'trim_end': 4},
+        {'trim_start': 5, 'trim_end': 4}, {'trim_start': 0, 'trim_end': 11},
+        {'trim_start': 'NaN', 'trim_end': 4}, {'trim_start': 0, 'trim_end': 'Infinity'},
+        {'trim_start': 1}, {'trim_end': 4}, {'trim_start': 10, 'trim_end': 10.1},
+    ])
+    def test_us04_invalid_boundaries_rejected_before_storage(client, services, bounds):
+        headers, _ = signup(client)
+        response = send(client, headers, **bounds)
+>       assert response.status_code == 422
+E       assert 201 == 422
+E        +  where 201 = <Response [201 Created]>.status_code
+
+tests\test_us04_video_trimming.py:30: AssertionError
+________ test_us04_invalid_boundaries_rejected_before_storage[bounds5] ________
+
+client = <starlette.testclient.TestClient object at 0x0000025F38B08170>
+services = Services(auth=<app.auth.InMemoryAuth object at 0x0000025F38A5A690>, repo=<app.repository.InMemoryRepository object at ...715200, compressor=None, test_mode=True, cors_origins=(), prices=<app.pricing.PriceTable object at 0x0000025F389EE300>)
+bounds = {'trim_start': 0, 'trim_end': 'Infinity'}
+
+    @pytest.mark.parametrize('bounds', [
+        {'trim_start': -1, 'trim_end': 4}, {'trim_start': 4, 'trim_end': 4},
+        {'trim_start': 5, 'trim_end': 4}, {'trim_start': 0, 'trim_end': 11},
+        {'trim_start': 'NaN', 'trim_end': 4}, {'trim_start': 0, 'trim_end': 'Infinity'},
+        {'trim_start': 1}, {'trim_end': 4}, {'trim_start': 10, 'trim_end': 10.1},
+    ])
+    def test_us04_invalid_boundaries_rejected_before_storage(client, services, bounds):
+        headers, _ = signup(client)
+        response = send(client, headers, **bounds)
+>       assert response.status_code == 422
+E       assert 201 == 422
+E        +  where 201 = <Response [201 Created]>.status_code
+
+tests\test_us04_video_trimming.py:30: AssertionError
+________ test_us04_invalid_boundaries_rejected_before_storage[bounds6] ________
+
+client = <starlette.testclient.TestClient object at 0x0000025F38A70F30>
+services = Services(auth=<app.auth.InMemoryAuth object at 0x0000025F386D0050>, repo=<app.repository.InMemoryRepository object at ...715200, compressor=None, test_mode=True, cors_origins=(), prices=<app.pricing.PriceTable object at 0x0000025F38AA7A10>)
+bounds = {'trim_start': 1}
+
+    @pytest.mark.parametrize('bounds', [
+        {'trim_start': -1, 'trim_end': 4}, {'trim_start': 4, 'trim_end': 4},
+        {'trim_start': 5, 'trim_end': 4}, {'trim_start': 0, 'trim_end': 11},
+        {'trim_start': 'NaN', 'trim_end': 4}, {'trim_start': 0, 'trim_end': 'Infinity'},
+        {'trim_start': 1}, {'trim_end': 4}, {'trim_start': 10, 'trim_end': 10.1},
+    ])
+    def test_us04_invalid_boundaries_rejected_before_storage(client, services, bounds):
+        headers, _ = signup(client)
+        response = send(client, headers, **bounds)
+>       assert response.status_code == 422
+E       assert 201 == 422
+E        +  where 201 = <Response [201 Created]>.status_code
+
+tests\test_us04_video_trimming.py:30: AssertionError
+________ test_us04_invalid_boundaries_rejected_before_storage[bounds7] ________
+
+client = <starlette.testclient.TestClient object at 0x0000025F38BBE030>
+services = Services(auth=<app.auth.InMemoryAuth object at 0x0000025F386D0160>, repo=<app.repository.InMemoryRepository object at ...715200, compressor=None, test_mode=True, cors_origins=(), prices=<app.pricing.PriceTable object at 0x0000025F38894350>)
+bounds = {'trim_end': 4}
+
+    @pytest.mark.parametrize('bounds', [
+        {'trim_start': -1, 'trim_end': 4}, {'trim_start': 4, 'trim_end': 4},
+        {'trim_start': 5, 'trim_end': 4}, {'trim_start': 0, 'trim_end': 11},
+        {'trim_start': 'NaN', 'trim_end': 4}, {'trim_start': 0, 'trim_end': 'Infinity'},
+        {'trim_start': 1}, {'trim_end': 4}, {'trim_start': 10, 'trim_end': 10.1},
+    ])
+    def test_us04_invalid_boundaries_rejected_before_storage(client, services, bounds):
+        headers, _ = signup(client)
+        response = send(client, headers, **bounds)
+>       assert response.status_code == 422
+E       assert 201 == 422
+E        +  where 201 = <Response [201 Created]>.status_code
+
+tests\test_us04_video_trimming.py:30: AssertionError
+________ test_us04_invalid_boundaries_rejected_before_storage[bounds8] ________
+
+client = <starlette.testclient.TestClient object at 0x0000025F38B0C160>
+services = Services(auth=<app.auth.InMemoryAuth object at 0x0000025F38A0DF50>, repo=<app.repository.InMemoryRepository object at ...715200, compressor=None, test_mode=True, cors_origins=(), prices=<app.pricing.PriceTable object at 0x0000025F389DE200>)
+bounds = {'trim_start': 10, 'trim_end': 10.1}
+
+    @pytest.mark.parametrize('bounds', [
+        {'trim_start': -1, 'trim_end': 4}, {'trim_start': 4, 'trim_end': 4},
+        {'trim_start': 5, 'trim_end': 4}, {'trim_start': 0, 'trim_end': 11},
+        {'trim_start': 'NaN', 'trim_end': 4}, {'trim_start': 0, 'trim_end': 'Infinity'},
+        {'trim_start': 1}, {'trim_end': 4}, {'trim_start': 10, 'trim_end': 10.1},
+    ])
+    def test_us04_invalid_boundaries_rejected_before_storage(client, services, bounds):
+        headers, _ = signup(client)
+        response = send(client, headers, **bounds)
+>       assert response.status_code == 422
+E       assert 201 == 422
+E        +  where 201 = <Response [201 Created]>.status_code
+
+tests\test_us04_video_trimming.py:30: AssertionError
+_ test_us04_trim_limits_feedback_to_selection_and_preserves_original_times_and_video _
+
+    def test_us04_trim_limits_feedback_to_selection_and_preserves_original_times_and_video():
+        clip = squat(1)
+        # Give the excluded first rep an ascent fault; selection contains only the clean second rep.
+        from app.testing.synthetic import SetSpec, RepSpec, make_frames
+        frames = join(make_frames(SetSpec(reps=[RepSpec(torso_bump=35)])), clip)
+        services = build_test_services(video=FakeVideoBackend(frames=frames))
+        client = TestClient(create_app(services))
+        headers, _ = signup(client)
+        start, end = len(clip) / 30, len(frames) / 30
+        response = send(client, headers, trim_start=start, trim_end=end)
+        assert response.status_code == 201
+        body = response.json()
+        row = services.repo.get_upload(body['upload_id'])
+>       assert (row.trim_start, row.trim_end) == (start, end)
+                ^^^^^^^^^^^^^^
+E       AttributeError: 'UploadRecord' object has no attribute 'trim_start'
+
+tests\test_us04_video_trimming.py:48: AttributeError
+__________________ test_us04_untrimmed_upload_uses_all_reps ___________________
+
+client = <starlette.testclient.TestClient object at 0x0000025F38BBDD00>
+services = Services(auth=<app.auth.InMemoryAuth object at 0x0000025F389EE030>, repo=<app.repository.InMemoryRepository object at ...715200, compressor=None, test_mode=True, cors_origins=(), prices=<app.pricing.PriceTable object at 0x0000025F38AE3F50>)
+
+    def test_us04_untrimmed_upload_uses_all_reps(client, services):
+        headers, _ = signup(client)
+        body = send(client, headers).json()
+        row = services.repo.get_upload(body['upload_id'])
+>       assert row.trim_start is None and row.trim_end is None
+               ^^^^^^^^^^^^^^
+E       AttributeError: 'UploadRecord' object has no attribute 'trim_start'
+
+tests\test_us04_video_trimming.py:63: AttributeError
+___________ test_us04_retry_preserves_selection_and_original_video ____________
+
+    def test_us04_retry_preserves_selection_and_original_video():
+        video = FakeVideoBackend(frames=join(squat(1), squat(1)), fail_on_poses=True)
+        services = build_test_services(video=video)
+        client = TestClient(create_app(services))
+        headers, _ = signup(client)
+        start, end = len(squat(1)) / 30, len(squat(1)) * 2 / 30
+        body = send(client, headers, trim_start=start, trim_end=end).json()
+        assert services.repo.get_analysis(body['analysis_id']).status == 'failed'
+        video.fail_on_poses = False
+        retry = client.post('/analyses/' + body['analysis_id'] + '/retry', headers=headers).json()
+        result = client.get('/analyses/' + retry['analysis_id'], headers=headers).json()
+>       assert result['rep_count'] == 1
+E       assert 2 == 1
+
+tests\test_us04_video_trimming.py:80: AssertionError
+------------------------------ Captured log call ------------------------------
+ERROR    app.uploads:uploads.py:70 analysis 281e11c5-a2e9-4201-b420-5f6f05f1129a failed
+Traceback (most recent call last):
+  File "C:\Users\imran\LLMsInSWEProject\backend\.pytest_cache\video-trimming-rep-segmentation\backend\app\uploads.py", line 45, in process_analysis
+    frames = services.video.poses(path, info, upload.filename)
+  File "C:\Users\imran\LLMsInSWEProject\backend\.pytest_cache\video-trimming-rep-segmentation\backend\app\testing\fakes.py", line 177, in poses
+    raise RuntimeError("pose estimation crashed")
+RuntimeError: pose estimation crashed
+_ test_us04_opencv_passes_only_selected_frames_to_pose_and_preserves_source_indices _
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000025F386BC640>
+
+    def test_us04_opencv_passes_only_selected_frames_to_pose_and_preserves_source_indices(monkeypatch):
+        seen = []
+        class Estimator:
+            def estimate(self, images, fps):
+                return [PoseFrame(i, i / fps, None) for i, img in enumerate(images) if not seen.append(int(img[0, 0, 0]))]
+        video = OpenCVMediaPipeBackend(estimator=Estimator())
+        monkeypatch.setattr(video, '_frames', lambda path, stride: ((i, np.full((2, 2, 3), i, np.uint8)) for i in range(90) if i % stride == 0))
+>       frames = video.poses('unused', VideoInfo(3, 30, 90, 2, 2), 'set.mp4', start_time=1, end_time=2)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: OpenCVMediaPipeBackend.poses() got an unexpected keyword argument 'start_time'
+
+tests\test_us04_video_trimming.py:91: TypeError
+=========================== short test summary info ===========================
+FAILED tests/test_us04_video_trimming.py::test_us04_invalid_boundaries_rejected_before_storage[bounds0]
+FAILED tests/test_us04_video_trimming.py::test_us04_invalid_boundaries_rejected_before_storage[bounds1]
+FAILED tests/test_us04_video_trimming.py::test_us04_invalid_boundaries_rejected_before_storage[bounds2]
+FAILED tests/test_us04_video_trimming.py::test_us04_invalid_boundaries_rejected_before_storage[bounds3]
+FAILED tests/test_us04_video_trimming.py::test_us04_invalid_boundaries_rejected_before_storage[bounds4]
+FAILED tests/test_us04_video_trimming.py::test_us04_invalid_boundaries_rejected_before_storage[bounds5]
+FAILED tests/test_us04_video_trimming.py::test_us04_invalid_boundaries_rejected_before_storage[bounds6]
+FAILED tests/test_us04_video_trimming.py::test_us04_invalid_boundaries_rejected_before_storage[bounds7]
+FAILED tests/test_us04_video_trimming.py::test_us04_invalid_boundaries_rejected_before_storage[bounds8]
+FAILED tests/test_us04_video_trimming.py::test_us04_trim_limits_feedback_to_selection_and_preserves_original_times_and_video
+FAILED tests/test_us04_video_trimming.py::test_us04_untrimmed_upload_uses_all_reps
+FAILED tests/test_us04_video_trimming.py::test_us04_retry_preserves_selection_and_original_video
+FAILED tests/test_us04_video_trimming.py::test_us04_opencv_passes_only_selected_frames_to_pose_and_preserves_source_indices
+13 failed in 3.45s
