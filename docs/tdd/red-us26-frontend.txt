@@ -1659,7 +1659,7 @@ TypeError: api.adminCosts is not a function
  FAIL  src/lib/__tests__/us26-cost-requests.test.ts > US-26 cost requests and formatting > us26_costs_are_shown_in_dollars_and_unknown_costs_say_so
 TypeError: formatCost is not a function
  ❯ src/lib/__tests__/us26-cost-requests.test.ts:28:12
-     26|
+     26| 
      27|   it("us26_costs_are_shown_in_dollars_and_unknown_costs_say_so", () =>…
      28|     expect(formatCost(null)).toBe("Unknown cost");
        |            ^
@@ -3379,7 +3379,7 @@ Running 2 tests using 1 worker
   ✓  2 e2e/us26-ai-cost.spec.ts:31:5 › us26_non_admin_cannot_see_costs (369ms)
 
 
-  1) e2e/us26-ai-cost.spec.ts:6:5 › us26_admin_sees_cost_per_attempt_and_a_summary_including_retries
+  1) e2e/us26-ai-cost.spec.ts:6:5 › us26_admin_sees_cost_per_attempt_and_a_summary_including_retries 
 
     Error: expect(locator).toContainText(expected) failed
 
@@ -3405,5 +3405,5 @@ Running 2 tests using 1 worker
     Error Context: test-results/us26-ai-cost-us26-admin-se-4e109-a-summary-including-retries/error-context.md
 
   1 failed
-    e2e/us26-ai-cost.spec.ts:6:5 › us26_admin_sees_cost_per_attempt_and_a_summary_including_retries
+    e2e/us26-ai-cost.spec.ts:6:5 › us26_admin_sees_cost_per_attempt_and_a_summary_including_retries 
   1 passed (43.4s)

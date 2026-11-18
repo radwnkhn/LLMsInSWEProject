@@ -65,7 +65,7 @@ E   AssertionError: assert 404 == 200
      +      where patch = <starlette.testclient.TestClient object at 0x7f471b33dbf0>.patch
 backend/tests/test_us25_fault_list.py:117: AssertionError: assert 404 == 200
 E   AssertionError: assert 'Hips rise be...our shoulders' == 'Hips shoot up first'
-
+      
       - Hips shoot up first
       + Hips rise before your shoulders
 backend/tests/test_us25_fault_list.py:126: AssertionError: assert 'Hips rise be...our shoulders' == 'Hips shoot up first'
@@ -161,7 +161,7 @@ backend/tests/test_us25_fault_list.py:291: AssertionError: assert 404 == 403
 E   AttributeError: module 'app.faults' has no attribute 'FaultCatalog'
 backend/tests/test_us25_fault_list.py:299: AttributeError: module 'app.faults' has no attribute 'FaultCatalog'
 E   AssertionError: assert 'fallback' == 'passed_first_try'
-
+      
       - passed_first_try
       + fallback
 backend/tests/test_us25_fault_list.py:317: AssertionError: assert 'fallback' == 'passed_first_try'
@@ -186,7 +186,7 @@ backend/tests/test_us25_fault_repository.py:63: assert 'create table if not exis
 =============================== warnings summary ===============================
 tests/test_us25_fault_repository.py::test_us25_repo_saves_edits_and_enabled_state[postgres]
   backend/.venv/lib/python3.13/site-packages/_pytest/unraisableexception.py:63: PytestUnraisableExceptionWarning: Exception ignored in: <function ConnectionPool.__del__ at 0x7f4719397420>
-
+  
   Traceback (most recent call last):
     File "backend/.venv/lib/python3.13/site-packages/psycopg_pool/pool.py", line 126, in __del__
       gather(*workers, timeout=5.0, timeout_hint=hint)
@@ -197,7 +197,7 @@ tests/test_us25_fault_repository.py::test_us25_repo_saves_edits_and_enabled_stat
     File "/usr/local/lib/python3.13/threading.py", line 1088, in join
       raise RuntimeError("cannot join current thread")
   RuntimeError: cannot join current thread
-
+  
   Enable tracemalloc to get traceback where the object was allocated.
   See https://docs.pytest.org/en/stable/how-to/capture-warnings.html#resource-warnings for more info.
     warnings.warn(pytest.PytestUnraisableExceptionWarning(msg))

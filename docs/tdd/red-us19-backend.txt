@@ -26,14 +26,14 @@ _____ test_us19_pipeline_reports_real_steps_before_the_corresponding_work _____
 tests\test_us19_processing.py:56: in test_us19_pipeline_reports_real_steps_before_the_corresponding_work
     assert observed == [("poses", "measuring"), ("llm", "writing_feedback"), ("validator", "checking")]
 E   AssertionError: assert [('poses', No...dator', None)] == [('poses', 'm..., 'checking')]
-E
+E     
 E     At index 0 diff: ('poses', None) != ('poses', 'measuring')
 E     Use -v to get more diff
 _______ test_us19_each_correction_attempt_reports_writing_then_checking _______
 tests\test_us19_processing.py:76: in test_us19_each_correction_attempt_reports_writing_then_checking
     assert observed == ["writing_feedback", "writing_feedback"]
 E   AssertionError: assert [None, None] == ['writing_fee...ing_feedback']
-E
+E     
 E     At index 0 diff: None != 'writing_feedback'
 E     Use -v to get more diff
 _ test_us19_completion_exposes_results_and_clears_the_stage[no_person.mp4-unanalyzable] _

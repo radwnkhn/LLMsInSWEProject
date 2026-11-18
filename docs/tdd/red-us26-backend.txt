@@ -54,7 +54,7 @@ backend/tests/test_us26_ai_cost.py:128: AttributeError: 'LLMReply' object has no
 E   AttributeError: 'LLMReply' object has no attribute 'model'
 backend/tests/test_us26_ai_cost.py:128: AttributeError: 'LLMReply' object has no attribute 'model'
 E   AssertionError: assert 'fallback' == 'passed_after_retry'
-
+      
       - passed_after_retry
       + fallback
 backend/tests/test_us26_ai_cost.py:138: AssertionError: assert 'fallback' == 'passed_after_retry'

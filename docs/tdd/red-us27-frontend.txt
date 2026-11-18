@@ -1202,7 +1202,7 @@ Running 2 tests using 1 worker
   ✘  2 e2e/us27-moderation.spec.ts:57:5 › us27_non_admin_sees_403_on_usage_and_moderation (10.4s)
 
 
-  1) e2e/us27-moderation.spec.ts:13:5 › us27_admin_reviews_usage_and_removes_an_upload_and_the_owner_is_told
+  1) e2e/us27-moderation.spec.ts:13:5 › us27_admin_reviews_usage_and_removes_an_upload_and_the_owner_is_told 
 
     Test timeout of 60000ms exceeded.
 
@@ -1247,5 +1247,5 @@ Running 2 tests using 1 worker
     Error Context: test-results/us27-moderation-us27-non-a-7acba-403-on-usage-and-moderation/error-context.md
 
   2 failed
-    e2e/us27-moderation.spec.ts:13:5 › us27_admin_reviews_usage_and_removes_an_upload_and_the_owner_is_told
+    e2e/us27-moderation.spec.ts:13:5 › us27_admin_reviews_usage_and_removes_an_upload_and_the_owner_is_told 
     e2e/us27-moderation.spec.ts:57:5 › us27_non_admin_sees_403_on_usage_and_moderation ─────────────
