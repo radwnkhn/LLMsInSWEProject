@@ -1,7 +1,7 @@
 # Alibi
 
 Alibi is a web application that helps lifters review their squat, deadlift, and bench press
-technique. Upload a video of a set to get a prioritized form correction, a cue for the next set,
+technique, including overhead press and Romanian deadlift. Upload a video of a set to get a prioritized form correction, a cue for the next set,
 an annotated frame, and a rep-by-rep breakdown.
 
 The application combines pose estimation, measured movement data, and AI coaching. Generated
@@ -13,6 +13,7 @@ video does not support a reliable assessment, Alibi explains what could not be m
 - Create an account and upload a squat, deadlift, bench press, overhead press or Romanian deadlift
   video with guidance on camera placement.
 - Follow analysis progress, view results, and retry a failed analysis using the saved video.
+- Preview an upload and optionally choose a start and end time for analysis while keeping the full video.
 - Review measured reps, annotated frames, and coaching feedback.
 - Browse your history and compare completed sets of the same lift.
 - Rate feedback and delete individual uploads or your account.
@@ -49,17 +50,22 @@ render.yaml           Backend deployment configuration
 
 ## How analysis works
 
-1. The lifter uploads an MP4 or MOV video and selects a lift.
-2. OpenCV reads the video, and MediaPipe estimates body landmarks for sampled frames.
+1. The lifter uploads an MP4 or MOV video, selects a lift, and optionally selects an analysis segment.
+2. OpenCV reads that segment, and MediaPipe estimates body landmarks for sampled frames.
 3. The measurement code calculates reps, joint angles, movement metrics, and camera visibility.
 4. The configured LLM receives measurements and selected frames and returns structured feedback.
 5. A deterministic validator checks the response's schema, cited reps, faults, and measurements.
 6. Invalid feedback goes through a correction loop, with at most three attempts. If it still
-   fails validation, the application returns verified measurements and the rep breakdown.
+   fails validation, the application returns pose-based measurements and the rep breakdown.
 
 Videos with insufficient visibility or usable movement receive an explanation instead of a
 coaching result. Completed analyses, their measurements, and validation attempts are saved for
 later review.
+
+Squat counting checks standing, descent, bottom, ascent, and return phases using local body-normalized
+movement evidence. Tracking gaps or abrupt camera changes can prevent coaching. Measurements remain
+estimates; matching the LLM reply to them does not independently verify their accuracy. See the
+[segmentation investigation and release checks](docs/video-segmentation-investigation.md).
 
 ## Run locally
 

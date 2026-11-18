@@ -555,7 +555,7 @@ Ignored nodes: comments, script, style
  ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
  ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
  ❯ fill src/components/__tests__/us01-auth.test.tsx:10:31
-      8| 
+      8|
       9| async function fill(email: string, password: string) {
      10|   await userEvent.type(screen.getByLabelText("Email"), email);
        |                               ^
@@ -598,7 +598,7 @@ Ignored nodes: comments, script, style
  ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
  ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
  ❯ fill src/components/__tests__/us01-auth.test.tsx:10:31
-      8| 
+      8|
       9| async function fill(email: string, password: string) {
      10|   await userEvent.type(screen.getByLabelText("Email"), email);
        |                               ^
@@ -620,7 +620,7 @@ Ignored nodes: comments, script, style
  ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
  ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
  ❯ fill src/components/__tests__/us01-auth.test.tsx:10:31
-      8| 
+      8|
       9| async function fill(email: string, password: string) {
      10|   await userEvent.type(screen.getByLabelText("Email"), email);
        |                               ^
@@ -649,7 +649,7 @@ Error: not implemented
       4| export function clearSession(): void { throw new Error("not implemente…
       5| export function isProtectedPath(_path: string): boolean { throw new Er…
        |                                                                 ^
-      6| 
+      6|
  ❯ src/components/__tests__/us01-auth.test.tsx:61:14
 
 ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/82]⎯
@@ -763,7 +763,7 @@ Ignored nodes: comments, script, style
  FAIL  src/components/__tests__/us03-filming-guide.test.tsx > US-03 filming guidance before recording > us03_guide_tips_are_specific_to_the_lift
 TypeError: Cannot read properties of undefined (reading 'tips')
  ❯ src/components/__tests__/us03-filming-guide.test.tsx:23:33
-     21| 
+     21|
      22|   it("us03_guide_tips_are_specific_to_the_lift", () => {
      23|     expect(FILMING_GUIDES.squat.tips).not.toEqual(FILMING_GUIDES.bench…
        |                                 ^
@@ -877,7 +877,7 @@ Ignored nodes: comments, script, style
      62|     expect(screen.getByRole("button", { name: "Filming tips" })).toBeD…
        |                   ^
      63|   });
-     64| 
+     64|
 
 ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[17/82]⎯
 
@@ -958,7 +958,7 @@ Ignored nodes: comments, script, style
  ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
  ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
  ❯ chooseLiftAndFile src/components/__tests__/us04-upload-form.test.tsx:10:32
-      8| 
+      8|
       9| async function chooseLiftAndFile(file = videoFile()) {
      10|   await userEvent.click(screen.getByLabelText("Squat"));
        |                                ^
@@ -980,7 +980,7 @@ Ignored nodes: comments, script, style
  ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
  ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
  ❯ chooseLiftAndFile src/components/__tests__/us04-upload-form.test.tsx:10:32
-      8| 
+      8|
       9| async function chooseLiftAndFile(file = videoFile()) {
      10|   await userEvent.click(screen.getByLabelText("Squat"));
        |                                ^
@@ -1002,7 +1002,7 @@ Ignored nodes: comments, script, style
  ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
  ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
  ❯ chooseLiftAndFile src/components/__tests__/us04-upload-form.test.tsx:10:32
-      8| 
+      8|
       9| async function chooseLiftAndFile(file = videoFile()) {
      10|   await userEvent.click(screen.getByLabelText("Squat"));
        |                                ^
@@ -1024,7 +1024,7 @@ Ignored nodes: comments, script, style
  ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
  ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
  ❯ chooseLiftAndFile src/components/__tests__/us04-upload-form.test.tsx:10:32
-      8| 
+      8|
       9| async function chooseLiftAndFile(file = videoFile()) {
      10|   await userEvent.click(screen.getByLabelText("Squat"));
        |                                ^
@@ -1046,7 +1046,7 @@ Ignored nodes: comments, script, style
  ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
  ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
  ❯ chooseLiftAndFile src/components/__tests__/us04-upload-form.test.tsx:10:32
-      8| 
+      8|
       9| async function chooseLiftAndFile(file = videoFile()) {
      10|   await userEvent.click(screen.getByLabelText("Squat"));
        |                                ^
@@ -1068,7 +1068,7 @@ Ignored nodes: comments, script, style
  ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
  ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
  ❯ chooseLiftAndFile src/components/__tests__/us04-upload-form.test.tsx:10:32
-      8| 
+      8|
       9| async function chooseLiftAndFile(file = videoFile()) {
      10|   await userEvent.click(screen.getByLabelText("Squat"));
        |                                ^
@@ -1090,7 +1090,7 @@ Ignored nodes: comments, script, style
  ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
  ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
  ❯ chooseLiftAndFile src/components/__tests__/us04-upload-form.test.tsx:10:32
-      8| 
+      8|
       9| async function chooseLiftAndFile(file = videoFile()) {
      10|   await userEvent.click(screen.getByLabelText("Squat"));
        |                                ^
@@ -1305,7 +1305,7 @@ Error: not implemented
       1| // TDD stub: not implemented yet.
       2| export function formatTime(_s: number): string { throw new Error("not …
        |                                                        ^
-      3| 
+      3|
  ❯ src/components/__tests__/us11-us12-frame-and-reps.test.tsx:28:12
 
 ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[37/82]⎯
@@ -1573,7 +1573,7 @@ Ignored nodes: comments, script, style
      99|     expect(screen.getByRole("note", { name: "See a professional" })).t…
        |                   ^
     100|   });
-    101| 
+    101|
 
 ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[49/82]⎯
 
@@ -1661,7 +1661,7 @@ Ignored nodes: comments, script, style
      38|     expect(screen.getByRole("button", { name: "Send feedback" })).toBe…
        |                   ^
      39|   });
-     40| 
+     40|
 
 ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[53/82]⎯
 
@@ -1898,7 +1898,7 @@ Ignored nodes: comments, script, style
      97|     expect(screen.getByText("No validator errors yet.")).toBeInTheDocu…
        |                   ^
      98|   });
-     99| 
+     99|
 
 ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[64/82]⎯
 
@@ -1932,7 +1932,7 @@ Error: not implemented
       5| // eslint-disable-next-line @typescript-eslint/no-explicit-any
       6| export function uploadVideo(_args: any): Promise<{ analysis_id: string…
        |                                                                                   ^
-      7| 
+      7|
  ❯ src/lib/__tests__/us04-upload-request.test.ts:31:21
 
 ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[66/82]⎯
@@ -1944,7 +1944,7 @@ Error: not implemented
       5| // eslint-disable-next-line @typescript-eslint/no-explicit-any
       6| export function uploadVideo(_args: any): Promise<{ analysis_id: string…
        |                                                                                   ^
-      7| 
+      7|
  ❯ src/lib/__tests__/us04-upload-request.test.ts:46:21
 
 ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[67/82]⎯
@@ -1956,7 +1956,7 @@ Error: not implemented
       5| // eslint-disable-next-line @typescript-eslint/no-explicit-any
       6| export function uploadVideo(_args: any): Promise<{ analysis_id: string…
        |                                                                                   ^
-      7| 
+      7|
  ❯ src/lib/__tests__/us04-upload-request.test.ts:62:21
 
 ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[68/82]⎯
@@ -1968,7 +1968,7 @@ Error: not implemented
       5| // eslint-disable-next-line @typescript-eslint/no-explicit-any
       6| export function uploadVideo(_args: any): Promise<{ analysis_id: string…
        |                                                                                   ^
-      7| 
+      7|
  ❯ src/lib/__tests__/us04-upload-request.test.ts:71:21
 
 ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[69/82]⎯
@@ -2003,7 +2003,7 @@ Error: not implemented
       7| export function checkVideoType(_file: File): string | null { throw new…
        |                                                                    ^
       8| export function validateVideoFile(_file: File, _duration: number): str…
-      9| 
+      9|
  ❯ src/lib/__tests__/us04-video-file.test.ts:23:12
 
 ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[71/82]⎯
@@ -2020,7 +2020,7 @@ Error: not implemented
       7| export function checkVideoType(_file: File): string | null { throw new…
        |                                                                    ^
       8| export function validateVideoFile(_file: File, _duration: number): str…
-      9| 
+      9|
  ❯ src/lib/__tests__/us04-video-file.test.ts:33:12
 
 ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[72/82]⎯
@@ -2032,7 +2032,7 @@ Error: not implemented
       7| export function checkVideoType(_file: File): string | null { throw new…
       8| export function validateVideoFile(_file: File, _duration: number): str…
        |                                                                                          ^
-      9| 
+      9|
  ❯ src/lib/__tests__/us04-video-file.test.ts:37:12
 
 ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[73/82]⎯
@@ -2044,7 +2044,7 @@ Error: not implemented
       7| export function checkVideoType(_file: File): string | null { throw new…
       8| export function validateVideoFile(_file: File, _duration: number): str…
        |                                                                                          ^
-      9| 
+      9|
  ❯ src/lib/__tests__/us04-video-file.test.ts:42:12
 
 ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[74/82]⎯
@@ -2056,7 +2056,7 @@ Error: not implemented
       7| export function checkVideoType(_file: File): string | null { throw new…
       8| export function validateVideoFile(_file: File, _duration: number): str…
        |                                                                                          ^
-      9| 
+      9|
  ❯ src/lib/__tests__/us04-video-file.test.ts:47:12
 
 ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[75/82]⎯

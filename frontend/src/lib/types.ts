@@ -52,6 +52,8 @@ export type AnalysisResult = {
   lift_label: string;
   camera_angle: string | null;
   rep_count: number | null;
+  analysis_range?: { start_time: number; end_time: number } | null;
+  measurement_quality?: { source: "pose_estimate"; independently_verified: false; segmentation_reliable: boolean; notes: string[] };
   unanalyzable_reason: string | null;
   top_fix: FaultView | null;
   cue: string | null;

@@ -42,7 +42,8 @@ def process_analysis(services, analysis_id: str) -> None:
             f.write(storage.download(upload.video_path))
             path = f.name
         info = services.video.probe(path)
-        frames = services.video.poses(path, info, upload.filename)
+        selection = {} if upload.trim_start is None else {"start_time": upload.trim_start, "end_time": upload.trim_end}
+        frames = services.video.poses(path, info, upload.filename, **selection)
         outcome = analyze_set(frames, analysis.lift, upload.note, services.llm, fps=info.fps,
                               frame_loader=lambda i: services.video.frame(path, i),
                               on_stage=lambda stage: repo.update_analysis(analysis_id, processing_stage=stage),
@@ -58,6 +59,8 @@ def process_analysis(services, analysis_id: str) -> None:
             frame_path = f"frames/{analysis.user_id}/{analysis_id}.png"
             storage.upload(frame_path, outcome.annotated_png, "image/png")
         result = build_result_view(outcome, upload.note)
+        result["analysis_range"] = (None if upload.trim_start is None else
+                                    {"start_time": upload.trim_start, "end_time": upload.trim_end})
         repo.update_analysis(
             analysis_id, status="done", processing_stage=None, final_status=outcome.final_status,
             rep_count=outcome.measurements.rep_count if outcome.final_status != "unanalyzable" else 0,

@@ -94,6 +94,18 @@ def test_setup02_migration_applies_cleanly(pg):
 
 
 @needs_pg
+def test_us04_database_enforces_paired_finite_ordered_trim_bounds(pg):
+    import psycopg
+    uid, _, _ = _seed(pg)
+    # Existing rows retain full-video behavior after the additive migration.
+    assert pg.execute("select trim_start, trim_end from public.uploads limit 1").fetchone() == (None, None)
+    for start, end in ((None, 4), (1, None), (-1, 4), (4, 4), (5, 4), (float('nan'), 4), (0, float('inf'))):
+        with pytest.raises(psycopg.errors.CheckViolation):
+            pg.execute("insert into public.uploads (id, user_id, lift, video_path, filename, trim_start, trim_end) "
+                       "values (%s, %s, 'squat', 'set.mp4', 'set.mp4', %s, %s)", (uuid.uuid4(), uid, start, end))
+
+
+@needs_pg
 def test_setup02_rls_user_reads_only_own_uploads_and_analyses(pg):
     a, b, _ = _seed(pg)
     _as_user(pg, a)

@@ -4,6 +4,7 @@ Each problem becomes a ValidationIssue whose message is sent back to the LLM wor
 """
 from __future__ import annotations
 
+import math
 import re
 from dataclasses import dataclass, field
 
@@ -35,6 +36,7 @@ class ValidationContext:
     confirmed: dict[str, list[int]]
     note_mentions_pain: bool
     catalog: FaultCatalog = DEFAULT_CATALOG  # the fault list this analysis started with (US-25)
+    measurement_issues: list[str] = field(default_factory=list)
 
 
 @dataclass
@@ -56,7 +58,25 @@ def build_validation_context(m: SetMeasurements, not_measured: list[NotMeasured]
                              catalog: FaultCatalog | None = None) -> ValidationContext:
     return ValidationContext(lift=m.analysis_lift, camera_angle=m.camera_angle, rep_count=m.rep_count,
                              reps=list(m.reps), not_measured=list(not_measured), confirmed=dict(confirmed),
-                             note_mentions_pain=mentions_pain(note), catalog=catalog or DEFAULT_CATALOG)
+                             note_mentions_pain=mentions_pain(note), catalog=catalog or DEFAULT_CATALOG,
+                             measurement_issues=measurement_issues(m))
+
+
+def measurement_issues(m: SetMeasurements) -> list[str]:
+    issues = [] if m.segmentation_reliable else (m.segmentation_notes or ["Rep segmentation is uncertain."])
+    previous_end = -1
+    previous_time = 0.0
+    for n, r in enumerate(m.reps, 1):
+        if (r.rep != n or r.start_frame < 0 or not previous_end <= r.start_frame < r.turn_frame < r.end_frame
+                or not previous_time <= r.start_time < r.end_time
+                or any(not math.isfinite(v) for v in (r.start_time, r.end_time))
+                or any(i < r.start_frame or i > r.end_frame for i in r.worst_frames.values())):
+            issues = [*issues, "Rep intervals or evidence frames are inconsistent."]
+        if any(v is not None and not math.isfinite(v) for v in r.metrics.values()):
+            issues = [*issues, "A movement measurement is not finite."]
+        previous_end = r.end_frame
+        previous_time = r.end_time
+    return list(dict.fromkeys(issues))
 
 
 def validate(raw: str | dict, ctx: ValidationContext) -> ValidationResult:
@@ -67,6 +87,9 @@ def validate(raw: str | dict, ctx: ValidationContext) -> ValidationResult:
 
     def add(code, message):
         issues.append(ValidationIssue(code, message))
+
+    for message in ctx.measurement_issues:
+        add("unreliable_measurements", message)
 
     if out.lift != ctx.lift:
         add("lift_mismatch", f"feedback says {LIFT_NOUNS[out.lift]} but the video shows {with_article(LIFT_NOUNS[ctx.lift])}")

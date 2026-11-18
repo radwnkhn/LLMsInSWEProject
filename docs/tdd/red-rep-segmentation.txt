@@ -1,0 +1,85 @@
+F...F.F.FFF....                                                          [100%]
+================================== FAILURES ===================================
+_ test_us06_two_squats_and_a_bend_with_an_occluded_hip_error_count_exactly_two _
+
+    def test_us06_two_squats_and_a_bend_with_an_occluded_hip_error_count_exactly_two():
+        frames = red_team_hypothesis()
+        measured = measure_set(frames, "squat", 30)
+>       assert measured.rep_count == 2
+E       AssertionError: assert 1 == 2
+E        +  where 1 = SetMeasurements(lift='squat', detected_lift='squat', camera_angle='side', fps=30, reps=[RepMeasurement(rep=1, start_fr...tio': 144}, depth_reached=True)], low_confidence_groups=frozenset(), frame_count=176, thigh_length=0.2, holds_bar=True).rep_count
+
+tests\test_us06_segmentation_reliability.py:20: AssertionError
+______ test_us06_a_forward_bend_with_pose_error_does_not_become_a_squat _______
+
+    def test_us06_a_forward_bend_with_pose_error_does_not_become_a_squat():
+        llm = SpyLLM()
+        outcome = analyze_set(forward_bend(occluded_hip_error=True), "squat", None, llm, 30)
+>       assert outcome.measurements.rep_count == 0
+E       AssertionError: assert 1 == 0
+E        +  where 1 = SetMeasurements(lift='squat', detected_lift='deadlift', camera_angle='side', fps=30, reps=[RepMeasurement(rep=1, start...atio': 30}, depth_reached=True)], low_confidence_groups=frozenset(), frame_count=62, thigh_length=0.2, holds_bar=False).rep_count
+E        +    where SetMeasurements(lift='squat', detected_lift='deadlift', camera_angle='side', fps=30, reps=[RepMeasurement(rep=1, start...atio': 30}, depth_reached=True)], low_confidence_groups=frozenset(), frame_count=62, thigh_length=0.2, holds_bar=False) = AnalysisOutcome(final_status='passed_first_try', measurements=SetMeasurements(lift='squat', detected_lift='deadlift', ...one, annotated_png=None, key_frame_indices=[8, 30, 52], catalog=<app.faults.FaultCatalog object at 0x0000014E0A189FD0>).measurements
+
+tests\test_us06_segmentation_reliability.py:47: AssertionError
+____ test_us06_long_tracking_gap_through_a_rep_does_not_generate_coaching _____
+
+    def test_us06_long_tracking_gap_through_a_rep_does_not_generate_coaching():
+        frames = squat(1)
+        for i in range(20, 41):
+            frames[i] = replace(frames[i], landmarks=None)
+        llm = SpyLLM()
+        result = analyze_set(frames, "squat", None, llm, 30)
+>       assert result.final_status == "unanalyzable"
+E       AssertionError: assert 'passed_first_try' == 'unanalyzable'
+E
+E         - unanalyzable
+E         + passed_first_try
+
+tests\test_us06_segmentation_reliability.py:63: AssertionError
+____ test_us06_low_confidence_coordinates_do_not_pollute_the_height_signal ____
+
+    def test_us06_low_confidence_coordinates_do_not_pollute_the_height_signal():
+        frames = squat(1)
+        baseline = height_signal(frames, "squat").copy()
+        for f in frames:
+            f.landmarks["right_hip"] = replace(f.landmarks["right_hip"], y=0.99, confidence=0.01)
+        signal = height_signal(frames, "squat")
+>       assert np.max(np.abs(signal - baseline)) < 0.01
+E       AssertionError: assert np.float64(0.24250000000000005) < 0.01
+E        +  where np.float64(0.24250000000000005) = <function max at 0x0000014E0B3B6AB0>(array([0.2425    , 0.2425    , 0.2425    , 0.2425    , 0.2425    ,\n       0.2425    , 0.2425    , 0.2425    , 0.2425  ...425    , 0.2425    ,\n       0.2425    , 0.2425    , 0.2425    , 0.2425    , 0.2425    ,\n       0.2425    , 0.2425    ]))
+E        +    where <function max at 0x0000014E0B3B6AB0> = np.max
+E        +    and   array([0.2425    , 0.2425    , 0.2425    , 0.2425    , 0.2425    ,\n       0.2425    , 0.2425    , 0.2425    , 0.2425  ...425    , 0.2425    ,\n       0.2425    , 0.2425    , 0.2425    , 0.2425    , 0.2425    ,\n       0.2425    , 0.2425    ]) = <ufunc 'absolute'>((array([0.1575    , 0.1575    , 0.1575    , 0.1575    , 0.1575    ,\n       0.1575    , 0.1575    , 0.1575    , 0.1575  ...575    , 0.1575    ,\n       0.1575    , 0.1575    , 0.1575    , 0.1575    , 0.1575    ,\n       0.1575    , 0.1575    ]) - array([0.4       , 0.4       , 0.4       , 0.4       , 0.4       ,\n       0.4       , 0.4       , 0.4       , 0.4     ...       , 0.4       ,\n       0.4       , 0.4       , 0.4       , 0.4       , 0.4       ,\n       0.4       , 0.4       ])))
+E        +      where <ufunc 'absolute'> = np.abs
+
+tests\test_us06_segmentation_reliability.py:85: AssertionError
+_______ test_us06_low_confidence_knees_do_not_create_angle_measurements _______
+
+    def test_us06_low_confidence_knees_do_not_create_angle_measurements():
+        frames = make_frames(SetSpec(reps=[RepSpec(), RepSpec()], low_confidence={"knees": 1}))
+        m = measure_set(frames, "squat", 30)
+>       assert all(rep.metrics["knee_angle_min_deg"] is None for rep in m.reps)
+E       assert False
+E        +  where False = all(<generator object test_us06_low_confidence_knees_do_not_create_angle_measurements.<locals>.<genexpr> at 0x0000014E29AA1700>)
+
+tests\test_us06_segmentation_reliability.py:91: AssertionError
+_ test_us06_validator_rejects_a_self_consistent_reply_when_segmentation_is_unreliable _
+
+    def test_us06_validator_rejects_a_self_consistent_reply_when_segmentation_is_unreliable():
+        m = measure_set(squat(1), "squat", 30)
+        m.segmentation_reliable = False
+        m.segmentation_notes = ["Tracking was lost during the movement"]
+        ctx = build_validation_context(m, [], {}, None)
+        result = validate(coach_output(ctx, m, top=None), ctx)
+>       assert not result.ok
+E       AssertionError: assert not True
+E        +  where True = ValidationResult(issues=[], output=CoachOutput(lift='squat', camera_angle='side', rep_count=1, top_fault_id=None, faul...rement=None, other_faults=[], cue='', explanation='Keep the bar over your midfoot.', professional_recommendation=None)).ok
+
+tests\test_us06_segmentation_reliability.py:100: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_us06_segmentation_reliability.py::test_us06_two_squats_and_a_bend_with_an_occluded_hip_error_count_exactly_two
+FAILED tests/test_us06_segmentation_reliability.py::test_us06_a_forward_bend_with_pose_error_does_not_become_a_squat
+FAILED tests/test_us06_segmentation_reliability.py::test_us06_long_tracking_gap_through_a_rep_does_not_generate_coaching
+FAILED tests/test_us06_segmentation_reliability.py::test_us06_low_confidence_coordinates_do_not_pollute_the_height_signal
+FAILED tests/test_us06_segmentation_reliability.py::test_us06_low_confidence_knees_do_not_create_angle_measurements
+FAILED tests/test_us06_segmentation_reliability.py::test_us06_validator_rejects_a_self_consistent_reply_when_segmentation_is_unreliable
+6 failed, 9 passed in 1.46s

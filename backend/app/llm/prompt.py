@@ -19,6 +19,8 @@ SYSTEM_PROMPT = """You are an experienced strength coach reviewing one set of a 
 Romanian deadlift.
 You get measurements computed from the video, the faults those measurements confirm, the checks that
 couldn't be measured, a few key frames and the lifter's optional note.
+These are pose-based estimates. Agreement with these numbers is a consistency
+check, not independent verification of the movement or a guarantee of accuracy.
 
 Rules:
 - Reply with one JSON object that matches the given schema. No prose outside the JSON.

@@ -146,7 +146,7 @@ AssertionError: expected [ 'Squat', 'Deadlift', 'Bench Press' ] to deeply equal 
      21|       .toEqual(["Squat", "Deadlift", "Bench Press", "Overhead Press", …
        |        ^
      22|   });
-     23| 
+     23|
 
 ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/10]⎯
 
@@ -293,7 +293,7 @@ AssertionError: expected false to be true // Object.is equality
 [31m+ false[39m
 
  ❯ src/components/__tests__/us28-more-lifts.test.tsx:32:24
-     30| 
+     30|
      31|   it.each(NEW_LIFTS)("us28_%s_has_a_label_and_noun", (id, label, noun)…
      32|     expect(isLift(id)).toBe(true);
        |                        ^
@@ -306,7 +306,7 @@ AssertionError: expected false to be true // Object.is equality
  FAIL  src/components/__tests__/us28-more-lifts.test.tsx > US-28 more lifts > us28_romanian_deadlift_filming_guide_covers_view_phone_height_distance_and_framing
 TypeError: Cannot read properties of undefined (reading 'tips')
  ❯ src/components/__tests__/us28-more-lifts.test.tsx:39:77
-     37| 
+     37|
      38|   it.each(NEW_LIFTS)("us28_%s_filming_guide_covers_view_phone_height_d…
      39|     const tips = (FILMING_GUIDES as Record<string, { tips: string[] }>…
        |                                                                             ^
@@ -361,7 +361,7 @@ Running 4 tests using 1 worker
   ✘  4 e2e/us28-more-lifts.spec.ts:29:7 › us28_romanian_deadlift_upload_gets_a_top_fix_cue_annotated_frame_and_rep_breakdown (1.0m)
 
 
-  1) e2e/us28-more-lifts.spec.ts:16:7 › us28_overhead_press_filming_guide_fits_375px_without_sideways_scroll 
+  1) e2e/us28-more-lifts.spec.ts:16:7 › us28_overhead_press_filming_guide_fits_375px_without_sideways_scroll
 
     Test timeout of 60000ms exceeded.
 
@@ -381,7 +381,7 @@ Running 4 tests using 1 worker
 
     Error Context: test-results/us28-more-lifts-us28-overh-2be54-5px-without-sideways-scroll/error-context.md
 
-  2) e2e/us28-more-lifts.spec.ts:29:7 › us28_overhead_press_upload_gets_a_top_fix_cue_annotated_frame_and_rep_breakdown 
+  2) e2e/us28-more-lifts.spec.ts:29:7 › us28_overhead_press_upload_gets_a_top_fix_cue_annotated_frame_and_rep_breakdown
 
     Test timeout of 60000ms exceeded.
 
@@ -404,7 +404,7 @@ Running 4 tests using 1 worker
 
     Error Context: test-results/us28-more-lifts-us28-overh-52c2c-ted-frame-and-rep-breakdown/error-context.md
 
-  3) e2e/us28-more-lifts.spec.ts:16:7 › us28_romanian_deadlift_filming_guide_fits_375px_without_sideways_scroll 
+  3) e2e/us28-more-lifts.spec.ts:16:7 › us28_romanian_deadlift_filming_guide_fits_375px_without_sideways_scroll
 
     Test timeout of 60000ms exceeded.
 
@@ -424,7 +424,7 @@ Running 4 tests using 1 worker
 
     Error Context: test-results/us28-more-lifts-us28-roman-fedea-5px-without-sideways-scroll/error-context.md
 
-  4) e2e/us28-more-lifts.spec.ts:29:7 › us28_romanian_deadlift_upload_gets_a_top_fix_cue_annotated_frame_and_rep_breakdown 
+  4) e2e/us28-more-lifts.spec.ts:29:7 › us28_romanian_deadlift_upload_gets_a_top_fix_cue_annotated_frame_and_rep_breakdown
 
     Test timeout of 60000ms exceeded.
 
@@ -448,7 +448,7 @@ Running 4 tests using 1 worker
     Error Context: test-results/us28-more-lifts-us28-roman-25091-ted-frame-and-rep-breakdown/error-context.md
 
   4 failed
-    e2e/us28-more-lifts.spec.ts:16:7 › us28_overhead_press_filming_guide_fits_375px_without_sideways_scroll 
-    e2e/us28-more-lifts.spec.ts:29:7 › us28_overhead_press_upload_gets_a_top_fix_cue_annotated_frame_and_rep_breakdown 
-    e2e/us28-more-lifts.spec.ts:16:7 › us28_romanian_deadlift_filming_guide_fits_375px_without_sideways_scroll 
-    e2e/us28-more-lifts.spec.ts:29:7 › us28_romanian_deadlift_upload_gets_a_top_fix_cue_annotated_frame_and_rep_breakdown 
+    e2e/us28-more-lifts.spec.ts:16:7 › us28_overhead_press_filming_guide_fits_375px_without_sideways_scroll
+    e2e/us28-more-lifts.spec.ts:29:7 › us28_overhead_press_upload_gets_a_top_fix_cue_annotated_frame_and_rep_breakdown
+    e2e/us28-more-lifts.spec.ts:16:7 › us28_romanian_deadlift_filming_guide_fits_375px_without_sideways_scroll
+    e2e/us28-more-lifts.spec.ts:29:7 › us28_romanian_deadlift_upload_gets_a_top_fix_cue_annotated_frame_and_rep_breakdown

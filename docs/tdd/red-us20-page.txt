@@ -193,7 +193,7 @@ Number of calls: 0
      62|     expect(navigation.push).toHaveBeenCalledWith(expect.stringContaini…
        |                             ^
      63|   });
-     64| 
+     64|
 
 ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/8]⎯
 

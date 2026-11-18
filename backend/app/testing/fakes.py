@@ -172,10 +172,11 @@ class FakeVideoBackend:
             return probe_video(path)
         return VideoInfo(duration=self.duration, fps=self.fps, frame_count=int(self.duration * self.fps), width=640, height=360)
 
-    def poses(self, path: str, info: VideoInfo, filename: str) -> list[PoseFrame]:
+    def poses(self, path: str, info: VideoInfo, filename: str, *, start_time=0, end_time=None) -> list[PoseFrame]:
         if self.fail_on_poses:
             raise RuntimeError("pose estimation crashed")
-        return self._frames(filename) if callable(self._frames) else list(self._frames)
+        frames = self._frames(filename) if callable(self._frames) else list(self._frames)
+        return [f for f in frames if f.timestamp >= start_time and (end_time is None or f.timestamp < end_time)]
 
     def frame(self, path: str, index: int) -> np.ndarray:
         return np.zeros((360, 640, 3), np.uint8)
@@ -188,8 +189,8 @@ class ScenarioVideoBackend(FakeVideoBackend):
         super().__init__(probe_files=True)
         self.failed_filenames: set[str] = set()
 
-    def poses(self, path: str, info: VideoInfo, filename: str) -> list[PoseFrame]:
+    def poses(self, path: str, info: VideoInfo, filename: str, *, start_time=0, end_time=None) -> list[PoseFrame]:
         if filename.startswith("fail_once-") and filename not in self.failed_filenames:
             self.failed_filenames.add(filename)
             raise RuntimeError("Simulated transient pose failure")
-        return super().poses(path, info, filename)
+        return super().poses(path, info, filename, start_time=start_time, end_time=end_time)

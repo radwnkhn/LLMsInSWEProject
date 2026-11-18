@@ -1461,9 +1461,9 @@ Ignored nodes: comments, script, style
               <span
                 class="font-medium"
               >
-                Rep 
+                Rep
                 1
-                 
+
                 <span
                   class="font-normal text-zinc-500"
                 >
@@ -1492,9 +1492,9 @@ Ignored nodes: comments, script, style
               <span
                 class="font-medium"
               >
-                Rep 
+                Rep
                 2
-                 
+
                 <span
                   class="font-normal text-zinc-500"
                 >
@@ -1523,9 +1523,9 @@ Ignored nodes: comments, script, style
               <span
                 class="font-medium"
               >
-                Rep 
+                Rep
                 3
-                 
+
                 <span
                   class="font-normal text-zinc-500"
                 >
@@ -1554,9 +1554,9 @@ Ignored nodes: comments, script, style
               <span
                 class="font-medium"
               >
-                Rep 
+                Rep
                 4
-                 
+
                 <span
                   class="font-normal text-zinc-500"
                 >
@@ -1585,9 +1585,9 @@ Ignored nodes: comments, script, style
               <span
                 class="font-medium"
               >
-                Rep 
+                Rep
                 5
-                 
+
                 <span
                   class="font-normal text-zinc-500"
                 >

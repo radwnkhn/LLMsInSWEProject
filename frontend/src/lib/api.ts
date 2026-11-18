@@ -113,8 +113,8 @@ export const api = {
 export type UploadResponse = { upload_id: string; analysis_id: string; status: string };
 
 /** Uploads with XMLHttpRequest, because fetch can't report upload progress. */
-export function uploadVideo({ file, lift, note, token, onProgress }: {
-  file: File; lift: Lift | string; note: string; token: string | null; onProgress: (percent: number) => void;
+export function uploadVideo({ file, lift, note, token, trim, onProgress }: {
+  file: File; lift: Lift | string; note: string; token: string | null; trim?: { start: number; end: number }; onProgress: (percent: number) => void;
 }): Promise<UploadResponse> {
   return new Promise((resolve, reject) => {
     const xhr = new XMLHttpRequest();
@@ -138,6 +138,10 @@ export function uploadVideo({ file, lift, note, token, onProgress }: {
     form.append("file", file);
     form.append("lift", lift);
     if (note) form.append("note", note);
+    if (trim) {
+      form.append("trim_start", String(trim.start));
+      form.append("trim_end", String(trim.end));
+    }
     xhr.send(form);
   });
 }

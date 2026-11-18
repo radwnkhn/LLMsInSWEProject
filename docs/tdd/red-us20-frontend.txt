@@ -1909,7 +1909,7 @@ Ignored nodes: comments, script, style
     101|     expect(screen.getByRole("note")).toHaveTextContent("different came…
        |                   ^
     102|   });
-    103| 
+    103|
 
 ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/12]⎯
 
@@ -1923,7 +1923,7 @@ AssertionError: expected false to be true // Object.is equality
 + false
 
  ❯ src/components/__tests__/us20-comparison.test.tsx:105:41
-    103| 
+    103|
     104|   it("us20_comparison_page_requires_a_session", () => {
     105|     expect(isProtectedPath("/compare")).toBe(true);
        |                                         ^

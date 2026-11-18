@@ -1,0 +1,58 @@
+....FF                                                                   [100%]
+================================== FAILURES ===================================
+_ test_us06_validator_independently_checks_interval_and_evidence_consistency[time_overlap] _
+
+broken = 'time_overlap'
+
+    @pytest.mark.parametrize("broken", ["overlap", "turn", "evidence", "time", "time_overlap", "metric"])
+    def test_us06_validator_independently_checks_interval_and_evidence_consistency(broken):
+        m = measure_set(squat(2), "squat", 30)
+        if broken == "overlap":
+            m.reps[1].start_frame = m.reps[0].start_frame
+        elif broken == "turn":
+            m.reps[0].turn_frame = m.reps[0].end_frame + 1
+        elif broken == "evidence":
+            m.reps[0].worst_frames["depth_margin"] = m.reps[0].end_frame + 1
+        elif broken == "time_overlap":
+            m.reps[1].start_time = m.reps[0].start_time
+        elif broken == "metric":
+            m.reps[0].metrics["knee_angle_min_deg"] = float("inf")
+        else:
+            m.reps[0].end_time = float("nan")
+        ctx = build_validation_context(m, [], {}, None)
+        result = validate(coach_output(ctx, m), ctx)
+>       assert not result.ok
+E       AssertionError: assert not True
+E        +  where True = ValidationResult(issues=[], output=CoachOutput(lift='squat', camera_angle='side', rep_count=2, top_fault_id=None, faul...rement=None, other_faults=[], cue='', explanation='Keep the bar over your midfoot.', professional_recommendation=None)).ok
+
+tests\test_us06_segmentation_reliability.py:151: AssertionError
+_ test_us06_validator_independently_checks_interval_and_evidence_consistency[metric] _
+
+broken = 'metric'
+
+    @pytest.mark.parametrize("broken", ["overlap", "turn", "evidence", "time", "time_overlap", "metric"])
+    def test_us06_validator_independently_checks_interval_and_evidence_consistency(broken):
+        m = measure_set(squat(2), "squat", 30)
+        if broken == "overlap":
+            m.reps[1].start_frame = m.reps[0].start_frame
+        elif broken == "turn":
+            m.reps[0].turn_frame = m.reps[0].end_frame + 1
+        elif broken == "evidence":
+            m.reps[0].worst_frames["depth_margin"] = m.reps[0].end_frame + 1
+        elif broken == "time_overlap":
+            m.reps[1].start_time = m.reps[0].start_time
+        elif broken == "metric":
+            m.reps[0].metrics["knee_angle_min_deg"] = float("inf")
+        else:
+            m.reps[0].end_time = float("nan")
+        ctx = build_validation_context(m, [], {}, None)
+        result = validate(coach_output(ctx, m), ctx)
+>       assert not result.ok
+E       AssertionError: assert not True
+E        +  where True = ValidationResult(issues=[], output=CoachOutput(lift='squat', camera_angle='side', rep_count=2, top_fault_id=None, faul...rement=None, other_faults=[], cue='', explanation='Keep the bar over your midfoot.', professional_recommendation=None)).ok
+
+tests\test_us06_segmentation_reliability.py:151: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_us06_segmentation_reliability.py::test_us06_validator_independently_checks_interval_and_evidence_consistency[time_overlap]
+FAILED tests/test_us06_segmentation_reliability.py::test_us06_validator_independently_checks_interval_and_evidence_consistency[metric]
+2 failed, 4 passed, 18 deselected in 1.61s
