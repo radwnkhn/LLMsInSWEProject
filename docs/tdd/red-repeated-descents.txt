@@ -1,0 +1,20 @@
+F                                                                        [100%]
+================================== FAILURES ===================================
+_ test_us06_repeated_descents_without_clear_standing_are_not_merged_into_one_confident_rep _
+
+    def test_us06_repeated_descents_without_clear_standing_are_not_merged_into_one_confident_rep():
+        original = squat(2)
+        # Both bottoms remain, but the top between them never fully returns to standing.
+        frames = join(original[:44], original[70:])
+        llm = SpyLLM()
+        outcome = analyze_set(frames, "squat", None, llm, 30)
+>       assert outcome.final_status == "unanalyzable"
+E       AssertionError: assert 'passed_first_try' == 'unanalyzable'
+E
+E         - unanalyzable
+E         + passed_first_try
+
+tests\test_us06_segmentation_reliability.py:63: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_us06_segmentation_reliability.py::test_us06_repeated_descents_without_clear_standing_are_not_merged_into_one_confident_rep
+1 failed, 24 deselected in 0.40s

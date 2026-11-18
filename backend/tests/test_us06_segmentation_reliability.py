@@ -54,6 +54,17 @@ def test_us06_incomplete_final_squat_is_not_counted():
     assert measure_set(frames, "squat", 30).rep_count == 2
 
 
+def test_us06_repeated_descents_without_clear_standing_are_not_merged_into_one_confident_rep():
+    original = squat(2)
+    # Both bottoms remain, but the top between them never fully returns to standing.
+    frames = join(original[:44], original[70:])
+    llm = SpyLLM()
+    outcome = analyze_set(frames, "squat", None, llm, 30)
+    assert outcome.final_status == "unanalyzable"
+    assert not outcome.measurements.segmentation_reliable
+    assert llm.calls == 0
+
+
 def test_us06_long_tracking_gap_through_a_rep_does_not_generate_coaching():
     frames = squat(1)
     for i in range(20, 41):

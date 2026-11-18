@@ -1,0 +1,85 @@
+{
+  "comparison": {
+    "Alpha": "5e15c33",
+    "audited_main": "2346c2c",
+    "count_reps_AST_identical": true,
+    "_fill_gaps_AST_identical": true,
+    "backend/app/video.py_identical": true,
+    "backend/app/pose.py_identical": true
+  },
+  "reproductions": [
+    {
+      "synthetic_case": "two_shallow_squats",
+      "old_clip_range": 0.0936,
+      "old_descent_threshold": 0.0468,
+      "audited_count": 2,
+      "new_count": 2,
+      "audited_intervals": [
+        [
+          7,
+          30,
+          53
+        ],
+        [
+          59,
+          82,
+          105
+        ]
+      ],
+      "new_intervals": [
+        [
+          17,
+          29,
+          47
+        ],
+        [
+          69,
+          81,
+          99
+        ]
+      ]
+    },
+    {
+      "synthetic_case": "two_squats_plus_bend",
+      "old_clip_range": 0.2473,
+      "old_descent_threshold": 0.1236,
+      "audited_count": 1,
+      "new_count": 2,
+      "audited_intervals": [
+        [
+          122,
+          144,
+          166
+        ]
+      ],
+      "new_intervals": [
+        [
+          17,
+          29,
+          47
+        ],
+        [
+          69,
+          81,
+          99
+        ]
+      ]
+    },
+    {
+      "synthetic_case": "bend_only",
+      "old_clip_range": 0.2474,
+      "old_descent_threshold": 0.1237,
+      "audited_count": 1,
+      "new_count": 0,
+      "audited_intervals": [
+        [
+          8,
+          30,
+          52
+        ]
+      ],
+      "new_intervals": []
+    }
+  ],
+  "limitation": "Synthetic hypothesis; original Red Team clip not supplied."
+}

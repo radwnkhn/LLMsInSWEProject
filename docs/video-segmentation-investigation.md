@@ -7,6 +7,8 @@ The supplied [feature specification](plans/video-trimming-rep-segmentation.md) i
 ## Findings and Alpha comparison
 
 Compared Alpha `5e15c33` with audited main `2346c2c` using file diffs and Python AST comparisons:
+The machine-readable comparison and before/after intervals are saved in
+[`tdd/alpha-comparison.json`](tdd/alpha-comparison.json).
 
 | Component | Alpha → audited main | Consequence |
 | --- | --- | --- |
@@ -41,6 +43,8 @@ a low-confidence error into the far hip during the hinge:
 This is a **plausible reproduction**, not a reconstruction of the original Red Team video. Neither
 that video nor labeled workout videos are present in the repository, so its exact cause cannot be
 confirmed from frames. Automated synthetic results are not a real-world accuracy score.
+In this reproduction, the bend increased the old clip range from 0.0936 to 0.2473, raising its
+descent threshold from 0.0468 to 0.1236—larger than either shallow squat's entire height change.
 
 ## Implementation
 
@@ -84,6 +88,8 @@ Current engineering defaults, which still need calibration on labeled video:
 | Abrupt camera/pose change | torso scale changes > 35% between usable observations |
 
 Pauses do not extend one rep into the next. Incomplete final movements are excluded and noted.
+Another descent after an ascent but before a clear standing return marks the selection uncertain,
+instead of merging repeated valleys into one confident rep.
 Small walking bobs and hinges do not satisfy the combined bottom evidence. No positions are
 interpolated for squat phase detection or form metrics. Legacy out-of-shot height candidates remain
 available diagnostically, but are explicitly marked unreliable and cannot produce coaching.
@@ -127,6 +133,7 @@ Failing tests were run before the corresponding production changes. Raw red evid
 `red-video-trimmer-ui.txt` (4 failures), and `red-pose-quality.txt` (3 additional failures).
 Further edge cases were recorded in `red-tail-tracking.txt` (1 failure) and
 `red-interval-validation.txt` (2 failures) before their fixes.
+`red-repeated-descents.txt` records the additional ambiguous-return merge case (1 failure).
 
 Acceptance coverage includes two squats plus a bend, walking before/after, five consecutive reps,
 pauses, incomplete final reps, camera changes, long missing spans, low-confidence coordinates,
@@ -135,6 +142,17 @@ lifts, boundary validation, selected-only inference/feedback, original timestamp
 full-video defaults, reset/file replacement, preview playback, and multipart fields.
 
 Verification results are recorded in the adjacent TDD report after the final checks.
+
+## Changed files
+
+| Area | Files |
+| --- | --- |
+| Phase detection and confidence | `backend/app/segmentation.py`, `measure.py`, `pose.py`, `video.py` |
+| Coaching safeguards and estimate disclosure | `backend/app/pipeline.py`, `validator.py`, `results.py`, `llm/prompt.py` |
+| Saved selection and retries | `backend/app/main.py`, `uploads.py`, `repository.py`, `testing/fakes.py`, trim-bounds migration |
+| Upload preview and playback | `frontend/src/components/VideoTrimmer.tsx`, `UploadForm.tsx`, `ResultsView.tsx`, `lib/api.ts`, `lib/types.ts` |
+| Acceptance and regression tests | `test_us04_video_trimming.py`, `test_us06_segmentation_reliability.py`, `test_us06_pose_quality.py`, sequence fixtures, repository/DB tests, upload/UI unit tests, `e2e/us04-trimming.spec.ts` |
+| Documentation | README, preserved feature specification, this investigation, TDD logs and report |
 
 ## Limits and release validation
 

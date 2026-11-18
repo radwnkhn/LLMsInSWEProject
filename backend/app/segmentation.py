@@ -35,6 +35,7 @@ def segment_squats(height, knee, hip, torso, shin, times, *, front=False) -> Squ
     start = turn = last_standing = 0
     previous = None
     return_since = None
+    ascent_peak = None
     for i, t in enumerate(times):
         valid = all(np.isfinite(a[i]) for a in (height, knee, hip, torso, shin)) and torso[i] > 1e-6
         if not valid:
@@ -80,6 +81,16 @@ def segment_squats(height, knee, hip, torso, shin, times, *, front=False) -> Squ
             state = "bottom"
         if state == "bottom" and h - height[turn] >= 0.03:
             state = "ascending"
+            ascent_peak = i
+        if state == "ascending":
+            if h >= height[ascent_peak]:
+                ascent_peak = i
+            elif (height[ascent_peak] - h >= 0.12 and t - times[ascent_peak] >= 0.10
+                  and (front or knee[ascent_peak] - k >= 10)):
+                # Don't merge several valleys merely because a return threshold was missed.
+                result.reject("Movement descended again before a clear standing return; the rep count is uncertain.")
+                state, rest, baseline, return_since = "standing", [], None, None
+                continue
         returned = h >= bh - 0.08 and k >= bk - 12 and p >= bp - 15
         if returned:
             if return_since is None:
