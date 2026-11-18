@@ -14,6 +14,7 @@ changes. They are not tagged as human-refined tests.
 | `red-tail-tracking.txt` | 1 failure: tracking loss at the end silently hides the last rep |
 | `red-interval-validation.txt` | 2 failures, 4 passes: overlapping times and nonfinite metrics |
 | `red-repeated-descents.txt` | 1 failure: repeated descents were merged when the standing return was unclear |
+| `red-unseen-bar.txt` | 1 failure: an unseen bar path was reported as zero instead of unavailable |
 
 Verification already completed locally:
 

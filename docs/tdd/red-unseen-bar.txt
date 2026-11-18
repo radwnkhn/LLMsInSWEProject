@@ -1,0 +1,18 @@
+F                                                                        [100%]
+================================== FAILURES ===================================
+____ test_us06_unseen_bar_path_is_unavailable_instead_of_a_fabricated_zero ____
+
+    def test_us06_unseen_bar_path_is_unavailable_instead_of_a_fabricated_zero():
+        from app.measure import measure_set
+        from app.testing.synthetic import SetSpec, RepSpec, make_frames
+        frames = make_frames(SetSpec(lift='deadlift', reps=[RepSpec(), RepSpec()], low_confidence={'wrists': 1}))
+        measured = measure_set(frames, 'deadlift', 30)
+        assert measured.rep_count == 2
+>       assert all(r.metrics['bar_drift_ratio'] is None for r in measured.reps)
+E       assert False
+E        +  where False = all(<generator object test_us06_unseen_bar_path_is_unavailable_instead_of_a_fabricated_zero.<locals>.<genexpr> at 0x000001C2E31F75E0>)
+
+tests\test_us06_pose_quality.py:35: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_us06_pose_quality.py::test_us06_unseen_bar_path_is_unavailable_instead_of_a_fabricated_zero
+1 failed, 2 deselected in 0.34s

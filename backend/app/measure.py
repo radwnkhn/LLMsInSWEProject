@@ -510,7 +510,8 @@ def measure_set(frames: Sequence[PoseFrame], lift: str, fps: float) -> SetMeasur
             extreme("elbow_angle_min_deg", elbow, span, "min")
             extreme("lockout_elbow_angle_deg", elbow, span, "max")
 
-        metrics["bar_drift_ratio"] = _r(bar_drift_ratio(bar[span], thigh)) if thigh else None
+        metrics["bar_drift_ratio"] = (_r(bar_drift_ratio(bar[span], thigh))
+                                      if thigh and np.isfinite(bar[span]).any() else None)
         worst["bar_drift_ratio"] = frames[seg.turn].index
         if lift == "squat":
             if front:

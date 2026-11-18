@@ -24,3 +24,12 @@ def test_us06_pose_estimation_accepts_source_timestamps_for_variable_frame_rate(
         [np.zeros((2, 2, 3)) for _ in range(3)], 30, timestamps=[2, 2.05, 2.12])
     assert times == [2000, 2050, 2120]
     assert [f.timestamp for f in frames] == [2, 2.05, 2.12]
+
+
+def test_us06_unseen_bar_path_is_unavailable_instead_of_a_fabricated_zero():
+    from app.measure import measure_set
+    from app.testing.synthetic import SetSpec, RepSpec, make_frames
+    frames = make_frames(SetSpec(lift='deadlift', reps=[RepSpec(), RepSpec()], low_confidence={'wrists': 1}))
+    measured = measure_set(frames, 'deadlift', 30)
+    assert measured.rep_count == 2
+    assert all(r.metrics['bar_drift_ratio'] is None for r in measured.reps)

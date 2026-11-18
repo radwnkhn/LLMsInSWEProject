@@ -134,6 +134,7 @@ Failing tests were run before the corresponding production changes. Raw red evid
 Further edge cases were recorded in `red-tail-tracking.txt` (1 failure) and
 `red-interval-validation.txt` (2 failures) before their fixes.
 `red-repeated-descents.txt` records the additional ambiguous-return merge case (1 failure).
+`red-unseen-bar.txt` records an unavailable bar path being reported as zero (1 failure); it now remains unavailable.
 
 Acceptance coverage includes two squats plus a bend, walking before/after, five consecutive reps,
 pauses, incomplete final reps, camera changes, long missing spans, low-confidence coordinates,
